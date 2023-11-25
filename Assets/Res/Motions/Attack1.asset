@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5e38fec6ae0204b973e034294e8659, type: 3}
+  m_Name: Attack1
+  m_EditorClassIdentifier: 
+  UID: 20000
+  maxTime: 2.0333335
+  eventNodes: []
+  animationNodes:
+  - time: 0
+    active: 1
+    AnimClipID: 30000
+    playLayer: 0
+    duration: 2.0333335
+    playTime: 0
+    playTransTime: 0.116190486
+    isResetBaseLayer: 0
+  triggerAnimationNodes:
+  - time: 0
+    active: 0
+    triggerTime: 5c010000b2060000
+    triggerType: 4000000040000000
+    triggerParam: 00000000c8000000
+  - time: 0.7367188
+    active: 1
+    triggerTime: 00000000e2000000b50200007f040000
+    triggerType: 01000000100000000400000010000000
+    triggerParam: 64000000640000000000000064000000
+  - time: 0
+    active: 1
+    triggerTime: 000000002b000000
+    triggerType: 0400000002000000
+    triggerParam: 6400000000000000
+  - time: 0
+    active: 1
+    triggerTime: 92000000b0010000e8020000
+    triggerType: 000200000800000000040000
+    triggerParam: 640000000000000000000000
+  conditionTriggerNodes: []
+  eventTriggerNodes:
+  - time: 0
+    active: 1
+    triggerTime: 9a000000
+    triggerType: 00010000
+    triggerParam: 2b4e0000
+    eventType:
+      mainType: 0
+      subType: 1
+      subTypeParam: 0
+      eventType: 4
+      eventParam: 0
+    duration: 234
+  byteCodeCommandNodes:
+  - time: 0
+    active: 1
+    commandTime: ac0000005f01000006020000
+    commandType: 010000000010000000010000
+    commandParam: 180100000000000006000000
+  nextReaction: 20000000040000000100000040000000f0fffffffefffffff8ffffff80ffffff
+  transTime: 27050000df02000081050000740600000100000002000000c403000000000000
+  nextBreaking: 200000001000000040000000fefffffffcfffffff8ffffffffffffff80ffffff
+  breakTime: d1010000e9000000ec0000000000000000000000000000000000000000000000

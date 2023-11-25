@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5e38fec6ae0204b973e034294e8659, type: 3}
+  m_Name: Hit1
+  m_EditorClassIdentifier: 
+  UID: 20005
+  maxTime: 1.9666668
+  eventNodes: []
+  animationNodes:
+  - time: 0
+    active: 1
+    AnimClipID: 30005
+    playLayer: 0
+    duration: 1.9666668
+    playTime: 0
+    playTransTime: 0.083571434
+    isResetBaseLayer: 0
+  triggerAnimationNodes:
+  - time: 0
+    active: 1
+    triggerTime: 2d000000
+    triggerType: 02000000
+    triggerParam: 00000000
+  - time: 0
+    active: 1
+    triggerTime: 1b000000
+    triggerType: 04000000
+    triggerParam: 00000000
+  conditionTriggerNodes: []
+  eventTriggerNodes: []
+  byteCodeCommandNodes: []
+  nextReaction: 20000000080000001000000001000000fefffffffcffffff
+  transTime: 4d0500006e0400004e0500004d0500000200000002000000
+  nextBreaking: 000000000000000000000000000000000000000000000000
+  breakTime: 000000000000000000000000000000000000000000000000

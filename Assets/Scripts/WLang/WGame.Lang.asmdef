@@ -1,0 +1,21 @@
+{
+    "name": "WGame.Lang",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d274c6a4453e1d04dbd09c5497aae871",
+        "GUID:8513b3a19e5f74743bf870b096083e69",
+        "GUID:237cbb5df8d2d4f479a9e1f12e52df95",
+        "GUID:d6551bdae6cf62d4fac0e94729dc3c1f",
+        "GUID:a1d2aafb63704447b379c9daae015645",
+        "GUID:c1c191f8284c4a2488a9772115ccf46c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

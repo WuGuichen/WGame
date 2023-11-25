@@ -1,0 +1,58 @@
+[
+  {
+    "id": 30000,
+    "path": "Longs_Attack_D"
+  },
+  {
+    "id": 30001,
+    "path": "Longs_Jump_Platformer_Start"
+  },
+  {
+    "id": 30002,
+    "path": "Longs_Attack_L"
+  },
+  {
+    "id": 30003,
+    "path": "Longs_Attack_L2"
+  },
+  {
+    "id": 30004,
+    "path": "Longs_Hit_Back"
+  },
+  {
+    "id": 30005,
+    "path": "Longs_Hit_D"
+  },
+  {
+    "id": 30006,
+    "path": "Longs_RollFwd"
+  },
+  {
+    "id": 30007,
+    "path": "Longs_Idle2"
+  },
+  {
+    "id": 30008,
+    "path": "Longs_Jump_Platformer_Land"
+  },
+  {
+    "id": 30009,
+    "path": "Longs_BlockLoop"
+  },
+  {
+    "id": 30010,
+    "path": "Longs_BlockStart"
+  },
+  {
+    "id": 30011,
+    "path": "Longs_Death_R"
+  },
+  {
+    "id": 30012,
+    "path": "Longs_Death_L"
+  },
+  {
+    "id": 30030,
+    "path": "Base_Attack_L_1"
+  }
+]

@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2646954518	Play_wooden_hit			\Default Work Unit\Play_wooden_hit	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	43693727	wooden-hit	C:\2023UnityFile\ARPG_2023\Wwise\GameAudio\.cache\Android\SFX\506718__jackyyang09__wooden-hit_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\wooden-hit		30066
+

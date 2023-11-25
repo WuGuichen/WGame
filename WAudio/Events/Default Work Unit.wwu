@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E2CE884C-F8DF-44C9-8E18-758BBDABABC0}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{E2CE884C-F8DF-44C9-8E18-758BBDABABC0}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="play_wooden_hit" ID="{4E4603E7-5223-4A53-A0A2-FCDEB1406504}">
+					<ChildrenList>
+						<Action Name="" ID="{79037061-8AFB-4DE4-8AA4-D92BBE46EECB}" ShortID="262431546"/>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

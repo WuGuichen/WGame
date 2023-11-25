@@ -1,0 +1,13 @@
+b = 2
+/*
+t:
+e b,2,3,4,5
+c ALWAYS
+a PRINT "Hello world"
+a PRINT "YES"
+a trigger_cancel 2
+#2
+*/
+//bb = 2 + (3 - 1)
+//PRINT bb,"HI"
+PRINT 3.2+2, true, 30 > 4, "world", 3.4

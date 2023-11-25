@@ -1,0 +1,3 @@
+## OnGameCodeInitted
+
+PRINT("hello")

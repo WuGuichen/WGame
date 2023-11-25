@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{029350CE-EEBF-477B-95FC-593450A9F681}" SchemaVersion="119">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{029350CE-EEBF-477B-95FC-593450A9F681}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Wooden_hit" ID="{A8D008B9-9026-4CD1-A359-F797EA926B6A}" ShortID="825278391">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{80CFFF8F-483D-4F0D-A37F-2731FA1AFFF8}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CC027D32-7638-4BBF-A0D4-9EE8818B2DFF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="506718__jackyyang09__wooden-hit" ID="{475107FD-9ABC-45DC-9591-7610C0D99EC9}">
+							<Language>SFX</Language>
+							<AudioFile>506718__jackyyang09__wooden-hit.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="111416178"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="506718__jackyyang09__wooden-hit" ID="{475107FD-9ABC-45DC-9591-7610C0D99EC9}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

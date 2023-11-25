@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "玩家_测试",
+    "weapon": 1,
+    "job": 1,
+    "gender": 1,
+    "race": 1,
+    "camp": 1,
+    "moveSpeed": 400,
+    "rotationSpeed": 800,
+    "runSpeedMul": 200,
+    "maxHP": 150,
+    "curHP": 150,
+    "maxMP": 130,
+    "curMP": 130,
+    "ATK": 100,
+    "DEF": 100,
+    "patrolMul": 60,
+    "chaseMul": 100
+  },
+  {
+    "id": 2,
+    "name": "敌人_测试",
+    "weapon": 1,
+    "job": 1,
+    "gender": 1,
+    "race": 1,
+    "camp": 2,
+    "moveSpeed": 400,
+    "rotationSpeed": 800,
+    "runSpeedMul": 200,
+    "maxHP": 150,
+    "curHP": 150,
+    "maxMP": 130,
+    "curMP": 130,
+    "ATK": 100,
+    "DEF": 100,
+    "patrolMul": 60,
+    "chaseMul": 100
+  }
+]

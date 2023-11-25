@@ -1,0 +1,143 @@
+{
+    "$id": 0,
+    "$type": "0|Motion.EventNodeScriptableObject, WGame.Motion",
+    "UID": 20003,
+    "maxTime": 0,
+    "eventNodes": {
+        "$id": 1,
+        "$type": "1|System.Collections.Generic.List`1[[Motion.EventNode, WGame.Motion]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "animationNodes": {
+        "$id": 2,
+        "$type": "2|System.Collections.Generic.List`1[[Motion.PlayAnimationNode, WGame.Motion]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "triggerAnimationNodes": {
+        "$id": 3,
+        "$type": "3|System.Collections.Generic.List`1[[Motion.TriggerAnimationNode, WGame.Motion]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "conditionTriggerNodes": {
+        "$id": 4,
+        "$type": "4|System.Collections.Generic.List`1[[Motion.ConditionTriggerNode, WGame.Motion]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "eventTriggerNodes": {
+        "$id": 5,
+        "$type": "5|System.Collections.Generic.List`1[[Motion.EventTriggerNode, WGame.Motion]], mscorlib",
+        "$rlength": 1,
+        "$rcontent": [
+            {
+                "$id": 6,
+                "$type": "6|Motion.EventTriggerNode, WGame.Motion",
+                "time": 0,
+                "active": true,
+                "triggerTime": {
+                    "$id": 7,
+                    "$type": "7|System.Int32[], mscorlib",
+                    "$plength": 1,
+                    "$pcontent": [
+                        265
+                    ]
+                },
+                "triggerType": {
+                    "$id": 8,
+                    "$type": 7,
+                    "$plength": 1,
+                    "$pcontent": [
+                        256
+                    ]
+                },
+                "triggerParam": {
+                    "$id": 9,
+                    "$type": 7,
+                    "$plength": 1,
+                    "$pcontent": [
+                        20011
+                    ]
+                },
+                "eventType": {
+                    "$type": "8|WGame.Trigger.WtEventType, WGame.Trigger",
+                    "mainType": 0,
+                    "subType": 1,
+                    "subTypeParam": 0,
+                    "eventType": 4,
+                    "eventParam": 0
+                },
+                "duration": 0
+            }
+        ]
+    },
+    "byteCodeCommandNodes": {
+        "$id": 10,
+        "$type": "9|System.Collections.Generic.List`1[[Motion.ByteCodeCommandNode, WGame.Motion]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "nextReaction": {
+        "$id": 11,
+        "$type": 7,
+        "$plength": 7,
+        "$pcontent": [
+            2,
+            16,
+            32,
+            64,
+            -4,
+            -1,
+            -8
+        ]
+    },
+    "transTime": {
+        "$id": 12,
+        "$type": 7,
+        "$plength": 7,
+        "$pcontent": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            2
+        ]
+    },
+    "nextBreaking": {
+        "$id": 13,
+        "$type": 7,
+        "$plength": 7,
+        "$pcontent": [
+            -1,
+            -2,
+            -4,
+            -8,
+            -16,
+            -32,
+            -64
+        ]
+    },
+    "breakTime": {
+        "$id": 14,
+        "$type": 7,
+        "$plength": 7,
+        "$pcontent": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    }
+}

@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2646954518	play_wooden_hit			\Default Work Unit\play_wooden_hit	
+

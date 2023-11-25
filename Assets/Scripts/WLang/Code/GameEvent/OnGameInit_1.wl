@@ -1,0 +1,3 @@
+## OnGameAssetsManagerInitted
+
+PRINT("Wrold")

@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "普通长剑",
+    "desc": "有些钝的长剑",
+    "objectId": 3,
+    "dropId": 3,
+    "localMotion": 20003,
+    "attack1": 20000,
+    "attack2": 20001,
+    "attack3": 20002,
+    "block1": 20009,
+    "deadR1": 20016,
+    "hitFwd1": 20005,
+    "hitBwd1": 20044,
+    "jump1": 20007,
+    "jumpLand1": 20008,
+    "Spare1": 20006,
+    "Step1": 20004,
+    "Walk_F": "Longs_WalkFwd",
+    "Run_F": "Longs_RunFwd",
+    "Idle": "Longs_Idle1"
+  }
+]

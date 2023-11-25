@@ -1,0 +1,17 @@
+{
+    "name": "WGame.Motion",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d274c6a4453e1d04dbd09c5497aae871",
+        "GUID:d4e9faf3ce7cddc419ee11dbb03b06a6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

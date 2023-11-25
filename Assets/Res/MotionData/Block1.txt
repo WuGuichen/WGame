@@ -1,0 +1,200 @@
+{
+    "$id": 0,
+    "$type": "0|Motion.EventNodeScriptableObject, TWY.ECS",
+    "UID": 20009,
+    "maxTime": 2.31506848,
+    "eventNodes": {
+        "$id": 1,
+        "$type": "1|System.Collections.Generic.List`1[[Motion.EventNode, TWY.ECS]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "animationNodes": {
+        "$id": 2,
+        "$type": "2|System.Collections.Generic.List`1[[Motion.PlayAnimationNode, TWY.ECS]], mscorlib",
+        "$rlength": 2,
+        "$rcontent": [
+            {
+                "$id": 3,
+                "$type": "3|Motion.PlayAnimationNode, TWY.ECS",
+                "time": 0,
+                "active": true,
+                "AnimClipID": 30010,
+                "playLayer": 1,
+                "duration": 0.333333343,
+                "playTime": 0,
+                "playTransTime": 0.083571434,
+                "isResetBaseLayer": true
+            },
+            {
+                "$id": 4,
+                "$type": 3,
+                "time": 0.315068483,
+                "active": true,
+                "AnimClipID": 30009,
+                "playLayer": 1,
+                "duration": 2,
+                "playTime": 0,
+                "playTransTime": 0.1,
+                "isResetBaseLayer": true
+            }
+        ]
+    },
+    "triggerAnimationNodes": {
+        "$id": 5,
+        "$type": "4|System.Collections.Generic.List`1[[Motion.TriggerAnimationNode, TWY.ECS]], mscorlib",
+        "$rlength": 1,
+        "$rcontent": [
+            {
+                "$id": 6,
+                "$type": "5|Motion.TriggerAnimationNode, TWY.ECS",
+                "time": 0,
+                "active": true,
+                "triggerTime": {
+                    "$id": 7,
+                    "$type": "6|System.Int32[], mscorlib",
+                    "$plength": 3,
+                    "$pcontent": [
+                        27,
+                        317,
+                        2189
+                    ]
+                },
+                "triggerType": {
+                    "$id": 8,
+                    "$type": 6,
+                    "$plength": 3,
+                    "$pcontent": [
+                        2,
+                        64,
+                        64
+                    ]
+                },
+                "triggerParam": {
+                    "$id": 9,
+                    "$type": 6,
+                    "$plength": 3,
+                    "$pcontent": [
+                        60,
+                        0,
+                        100
+                    ]
+                }
+            }
+        ]
+    },
+    "conditionTriggerNodes": {
+        "$id": 10,
+        "$type": "7|System.Collections.Generic.List`1[[Motion.ConditionTriggerNode, TWY.ECS]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "eventTriggerNodes": {
+        "$id": 11,
+        "$type": "8|System.Collections.Generic.List`1[[Motion.EventTriggerNode, TWY.ECS]], mscorlib",
+        "$rlength": 1,
+        "$rcontent": [
+            {
+                "$id": 12,
+                "$type": "9|Motion.EventTriggerNode, TWY.ECS",
+                "time": 0,
+                "active": true,
+                "triggerTime": {
+                    "$id": 13,
+                    "$type": 6,
+                    "$plength": 1,
+                    "$pcontent": [
+                        523
+                    ]
+                },
+                "triggerType": {
+                    "$id": 14,
+                    "$type": 6,
+                    "$plength": 1,
+                    "$pcontent": [
+                        128
+                    ]
+                },
+                "triggerParam": {
+                    "$id": 15,
+                    "$type": 6,
+                    "$plength": 1,
+                    "$pcontent": [
+                        1
+                    ]
+                },
+                "eventType": {
+                    "$type": "10|WGame.Trigger.WtEventType, TWY.ECS",
+                    "mainType": 0,
+                    "subType": 3,
+                    "subTypeParam": 0,
+                    "eventType": 2,
+                    "eventParam": 0
+                },
+                "duration": 2315
+            }
+        ]
+    },
+    "nextReaction": {
+        "$id": 16,
+        "$type": 6,
+        "$plength": 8,
+        "$pcontent": [
+            -1,
+            -32,
+            -8,
+            -16,
+            -2,
+            -4,
+            -64,
+            -128
+        ]
+    },
+    "transTime": {
+        "$id": 17,
+        "$type": 6,
+        "$plength": 8,
+        "$pcontent": [
+            0,
+            0,
+            1134,
+            0,
+            0,
+            2,
+            0,
+            0
+        ]
+    },
+    "nextBreaking": {
+        "$id": 18,
+        "$type": 6,
+        "$plength": 8,
+        "$pcontent": [
+            2,
+            4,
+            8,
+            16,
+            32,
+            -64,
+            -1,
+            -128
+        ]
+    },
+    "breakTime": {
+        "$id": 19,
+        "$type": 6,
+        "$plength": 8,
+        "$pcontent": [
+            2315,
+            2315,
+            2315,
+            2315,
+            2315,
+            0,
+            0,
+            0
+        ]
+    }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "initGame",
+  "event" : "GAME_OnInitted",
+  "condition": "Always",
+  "action": {}
+}

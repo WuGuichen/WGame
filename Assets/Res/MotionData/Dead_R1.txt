@@ -1,0 +1,136 @@
+{
+    "$id": 0,
+    "$type": "0|Motion.EventNodeScriptableObject, TWY.ECS",
+    "UID": 20016,
+    "maxTime": 2.38333344,
+    "eventNodes": {
+        "$id": 1,
+        "$type": "1|System.Collections.Generic.List`1[[Motion.EventNode, TWY.ECS]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "animationNodes": {
+        "$id": 2,
+        "$type": "2|System.Collections.Generic.List`1[[Motion.PlayAnimationNode, TWY.ECS]], mscorlib",
+        "$rlength": 1,
+        "$rcontent": [
+            {
+                "$id": 3,
+                "$type": "3|Motion.PlayAnimationNode, TWY.ECS",
+                "time": 0,
+                "active": true,
+                "AnimClipID": 30011,
+                "playLayer": 0,
+                "duration": 2.38333344,
+                "playTime": 0,
+                "playTransTime": 0.083571434,
+                "isResetBaseLayer": false
+            }
+        ]
+    },
+    "triggerAnimationNodes": {
+        "$id": 4,
+        "$type": "4|System.Collections.Generic.List`1[[Motion.TriggerAnimationNode, TWY.ECS]], mscorlib",
+        "$rlength": 1,
+        "$rcontent": [
+            {
+                "$id": 5,
+                "$type": "5|Motion.TriggerAnimationNode, TWY.ECS",
+                "time": 0.321244121,
+                "active": true,
+                "triggerTime": {
+                    "$id": 6,
+                    "$type": "6|System.Int32[], mscorlib",
+                    "$plength": 1,
+                    "$pcontent": [
+                        0
+                    ]
+                },
+                "triggerType": {
+                    "$id": 7,
+                    "$type": 6,
+                    "$plength": 1,
+                    "$pcontent": [
+                        1
+                    ]
+                },
+                "triggerParam": {
+                    "$id": 8,
+                    "$type": 6,
+                    "$plength": 1,
+                    "$pcontent": [
+                        100
+                    ]
+                }
+            }
+        ]
+    },
+    "conditionTriggerNodes": {
+        "$id": 9,
+        "$type": "7|System.Collections.Generic.List`1[[Motion.ConditionTriggerNode, TWY.ECS]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    },
+    "nextReaction": {
+        "$id": 10,
+        "$type": 6,
+        "$plength": 8,
+        "$pcontent": [
+            -1,
+            -2,
+            -8,
+            -4,
+            -16,
+            -32,
+            -64,
+            -128
+        ]
+    },
+    "transTime": {
+        "$id": 11,
+        "$type": 6,
+        "$plength": 8,
+        "$pcontent": [
+            1,
+            2,
+            2,
+            2,
+            1,
+            0,
+            0,
+            0
+        ]
+    },
+    "nextBreaking": {
+        "$id": 12,
+        "$type": 6,
+        "$plength": 8,
+        "$pcontent": [
+            -1,
+            -2,
+            -4,
+            -8,
+            -16,
+            -32,
+            -64,
+            -128
+        ]
+    },
+    "breakTime": {
+        "$id": 13,
+        "$type": 6,
+        "$plength": 8,
+        "$pcontent": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    }
+}

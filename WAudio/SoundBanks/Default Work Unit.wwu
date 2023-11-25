@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{BA7D16FD-11B2-4950-997A-8BABCD8C07D1}" SchemaVersion="119">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{BA7D16FD-11B2-4950-997A-8BABCD8C07D1}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{05E524A7-2B98-4383-9F30-DD30AC1C0E4F}">
+					<ObjectInclusionList>
+						<ObjectRef Name="play_wooden_hit" ID="{4E4603E7-5223-4A53-A0A2-FCDEB1406504}" WorkUnitID="{E2CE884C-F8DF-44C9-8E18-758BBDABABC0}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

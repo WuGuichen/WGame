@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5e38fec6ae0204b973e034294e8659, type: 3}
+  m_Name: Block1
+  m_EditorClassIdentifier: 
+  UID: 20009
+  maxTime: 2.3150685
+  eventNodes: []
+  animationNodes:
+  - time: 0
+    active: 1
+    AnimClipID: 30010
+    playLayer: 1
+    duration: 0.33333334
+    playTime: 0
+    playTransTime: 0.083571434
+    isResetBaseLayer: 1
+  - time: 0.31506848
+    active: 1
+    AnimClipID: 30009
+    playLayer: 1
+    duration: 2
+    playTime: 0
+    playTransTime: 0.1
+    isResetBaseLayer: 1
+  triggerAnimationNodes:
+  - time: 0
+    active: 1
+    triggerTime: 1b0000003d0100008d080000
+    triggerType: 020000004000000040000000
+    triggerParam: 3c0000000000000064000000
+  conditionTriggerNodes: []
+  eventTriggerNodes:
+  - time: 0
+    active: 1
+    triggerTime: 0b020000
+    triggerType: 80000000
+    triggerParam: 01000000
+    eventType:
+      mainType: 0
+      subType: 3
+      subTypeParam: 0
+      eventType: 2
+      eventParam: 0
+    duration: 2315
+  nextReaction: ffffffffe0fffffff8fffffff0fffffffefffffffcffffffc0ffffff80ffffff
+  transTime: 00000000000000006e0400000000000000000000020000000000000000000000
+  nextBreaking: 0200000004000000080000001000000020000000c0ffffffffffffff80ffffff
+  breakTime: 0b0900000b0900000b0900000b0900000b090000000000000000000000000000

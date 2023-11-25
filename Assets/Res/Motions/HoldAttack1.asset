@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5e38fec6ae0204b973e034294e8659, type: 3}
+  m_Name: HoldAttack1
+  m_EditorClassIdentifier: 
+  UID: 20011
+  maxTime: 2.0333335
+  eventNodes: []
+  animationNodes:
+  - time: 0
+    active: 1
+    AnimClipID: 30000
+    playLayer: 0
+    duration: 2.0333335
+    playTime: 0
+    playTransTime: 0.116190486
+    isResetBaseLayer: 0
+  triggerAnimationNodes:
+  - time: 0
+    active: 1
+    triggerTime: 000000006f000000
+    triggerType: 1000000010000000
+    triggerParam: 0a00000000000000
+  - time: 0
+    active: 1
+    triggerTime: 0000000041000000
+    triggerType: 0200000002000000
+    triggerParam: 0a00000000000000
+  - time: 0
+    active: 1
+    triggerTime: 000000003f000000
+    triggerType: 0400000004000000
+    triggerParam: 0a00000000000000
+  conditionTriggerNodes: []
+  eventTriggerNodes:
+  - time: 0
+    active: 1
+    triggerTime: 8d000000
+    triggerType: 80000000
+    triggerParam: 08000000
+    eventType:
+      mainType: 0
+      subType: 1
+      subTypeParam: 0
+      eventType: 2
+      eventParam: 0
+    duration: 2033
+  byteCodeCommandNodes: []
+  nextReaction: 2000000040000000fcfffffffffffffff0fffffffefffffff8ffffff80ffffff
+  transTime: 0000000000000000df020000810500000100000002000000c403000000000000
+  nextBreaking: e0fffffff0ffffffc0fffffffefffffffcfffffff8ffffffffffffff80ffffff
+  breakTime: d1010000e9000000ec0000000000000000000000000000000000000000000000

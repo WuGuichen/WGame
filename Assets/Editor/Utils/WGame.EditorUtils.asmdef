@@ -1,0 +1,16 @@
+{
+    "name": "WGame.EditorUtils",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d274c6a4453e1d04dbd09c5497aae871"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
