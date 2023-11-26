@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_BLOODY_PUNCH = 1906225022U;
         static const AkUniqueID PLAY_WOODEN_HIT = 2646954518U;
     } // namespace EVENTS
 

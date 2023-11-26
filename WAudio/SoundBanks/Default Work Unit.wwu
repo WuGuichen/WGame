@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{05E524A7-2B98-4383-9F30-DD30AC1C0E4F}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_Bloody_punch" ID="{71BAF074-4AAD-4378-B5FF-5DD1BADBCC3F}" WorkUnitID="{E2CE884C-F8DF-44C9-8E18-758BBDABABC0}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="play_wooden_hit" ID="{4E4603E7-5223-4A53-A0A2-FCDEB1406504}" WorkUnitID="{E2CE884C-F8DF-44C9-8E18-758BBDABABC0}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

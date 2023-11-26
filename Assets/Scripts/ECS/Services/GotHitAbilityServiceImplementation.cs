@@ -58,5 +58,7 @@ public class GotHitAbilityServiceImplementation : IGotHitService
         var vm = entity.linkVM.VM.vMService.service;
         vm.Set("E_HIT_TARGET", hitInfo.entity.entityID.id);
         // vm.Call("HitTarget1");
+        WAudioMgr.Inst.SetSoundVolume(Random.Range(0, 100));
+        WAudioMgr.Inst.PlaySound("Play_Bloody_punch", hitInfo.entity.gameViewService.service.Model.gameObject);
     }
 }

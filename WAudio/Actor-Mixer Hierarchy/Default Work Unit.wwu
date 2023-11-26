@@ -25,6 +25,28 @@
 						<ActiveSource Name="506718__jackyyang09__wooden-hit" ID="{475107FD-9ABC-45DC-9591-7610C0D99EC9}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Bloody punch" ID="{91C76871-A5BE-435E-AFF8-8D2093BCD2E2}" ShortID="12798327">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{80CFFF8F-483D-4F0D-A37F-2731FA1AFFF8}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CC027D32-7638-4BBF-A0D4-9EE8818B2DFF}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Bloody punch" ID="{2E3EC6BB-C95D-4BFC-81DB-CC2AD7F907FA}">
+							<Language>SFX</Language>
+							<AudioFile>Bloody punch.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="896962063"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Bloody punch" ID="{2E3EC6BB-C95D-4BFC-81DB-CC2AD7F907FA}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

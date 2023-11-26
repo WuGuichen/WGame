@@ -162,13 +162,24 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{5DDFB1D1-950F-82E2-6247-CD832183302A}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{6087783B-0F53-5F22-0E93-E14E2A6CA75B}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="896962063" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Bloody punch.wav</ShortName>
+					<CachePath>SFX/Bloody punch_818F3B66.wem</CachePath>
+				</File>
+			</Media>
 			<Events>
-				<Event Id="2646954518" Name="play_wooden_hit"/>
+				<Event Id="1906225022" Name="Play_Bloody_punch">
+					<MediaRefs>
+						<MediaRef Id="896962063"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2646954518" Name="play_wooden_hit" MaxAttenuation="0"/>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{96028AB1-2B55-C775-F7AA-CA2B6AF3A099}</FileHash>
+	<FileHash>{46D1225B-C76E-8C76-DCC8-81A333E0962D}</FileHash>
 </SoundBanksInfo>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectInfo>
-	<Project Name="GameAudio" GUID="{A1E947DC-1431-4434-9A0B-439ADAB5C543}" Generator="2023.1.0.8367"/>
-	<CacheRoot>../../../../Wwise/GameAudio/.cache</CacheRoot>
+	<Project Name="WAudio" GUID="{EA6B1E17-955C-40AE-B276-4C6E23AE5D1A}" Generator="2023.1.0.8367"/>
+	<CacheRoot>../../../../WAudio/.cache</CacheRoot>
 	<Platforms>
-		<Platform Name="Android" GUID="{6C32326A-F4A2-4444-A575-844C3871F23D}" BasePlatform="Android" BasePlatformGUID="{A2D401DE-B8B6-4FEB-8142-137C34D507CA}" Path="../../../../Wwise/GameAudio/GeneratedSoundBanks/Android"/>
-		<Platform Name="Windows" GUID="{E9283D9C-030E-40DA-BD56-9056F1B63800}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../Wwise/GameAudio/GeneratedSoundBanks/Windows"/>
+		<Platform Name="Windows" GUID="{03B2D796-F637-4DAA-B4D2-4E97BBA191F3}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../WAudio/GeneratedSoundBanks/Windows"/>
 	</Platforms>
 	<Languages>
-		<Language Name="English(US)" Id="684519430" GUID="{02C3ACE7-9BD6-4173-9C89-2856247F2AB4}" Default="true" UseAsStandIn="true"/>
+		<Language Name="English(US)" Id="684519430" GUID="{81A1139F-EFF9-4BA9-BECC-9CC7B85DB566}" Default="true" UseAsStandIn="true"/>
 	</Languages>
-	<FileHash>{5817E653-2C34-33F5-B770-B0A6483E6EE7}</FileHash>
+	<FileHash>{86057128-B5A0-F82A-7FC0-57CB25AD5663}</FileHash>
 </ProjectInfo>

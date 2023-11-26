@@ -8,6 +8,17 @@
 						<Action Name="" ID="{79037061-8AFB-4DE4-8AA4-D92BBE46EECB}" ShortID="262431546"/>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Bloody_punch" ID="{71BAF074-4AAD-4378-B5FF-5DD1BADBCC3F}">
+					<ChildrenList>
+						<Action Name="" ID="{A97D87FE-0B87-4867-B423-2EF3247BEA71}" ShortID="600345594">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bloody punch" ID="{91C76871-A5BE-435E-AFF8-8D2093BCD2E2}" WorkUnitID="{029350CE-EEBF-477B-95FC-593450A9F681}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
