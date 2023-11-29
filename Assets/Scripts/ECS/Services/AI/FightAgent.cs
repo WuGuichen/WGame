@@ -9,10 +9,12 @@ public class FightAgent
     private readonly GameEntity _entity;
     
     private BehaviorTree _onAttackTree;
+    private readonly BaseData.CharAI _aiCfg = null;
     public FightAgent(IAiAgentService service, GameEntity entity)
     {
         _service = service;
         _entity = entity;
+        _aiCfg = _entity.characterInfo.value.AICfg;
         
         InitTree();
         EventCenter.AddListener(EventDefine.OnBTreeHotUpdate, UpdateTree);
@@ -20,7 +22,7 @@ public class FightAgent
 
     private void UpdateTree(WEventContext ctx)
     {
-        if (ctx.pString == "OnAttack")
+        if (ctx.pString == _aiCfg.OnFightLogicBTree)
         {
             InitTree();
         }
@@ -31,7 +33,7 @@ public class FightAgent
         var service = _entity.linkVM.VM.vMService.service;
         var obj = _entity.gameViewService.service.Model.gameObject;
 
-        var builder = service.AppendBehaviorTree("OnAttack", obj);
+        var builder = service.AppendBehaviorTree(_aiCfg.OnFightLogicBTree, obj);
         _onAttackTree = builder.TREE.Build();
         
         var motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;

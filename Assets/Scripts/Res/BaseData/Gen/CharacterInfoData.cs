@@ -21,6 +21,7 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         { if(!_json["id"].IsNumber) { throw new SerializationException(); }  Id = _json["id"]; }
         { if(!_json["name"].IsString) { throw new SerializationException(); }  Name = _json["name"]; }
         { if(!_json["weapon"].IsNumber) { throw new SerializationException(); }  Weapon = _json["weapon"]; }
+        { if(!_json["AI"].IsNumber) { throw new SerializationException(); }  AI = _json["AI"]; }
         { if(!_json["job"].IsNumber) { throw new SerializationException(); }  Job = (Character.Job)_json["job"].AsInt; }
         { if(!_json["gender"].IsNumber) { throw new SerializationException(); }  Gender = (Character.Gender)_json["gender"].AsInt; }
         { if(!_json["race"].IsNumber) { throw new SerializationException(); }  Race = (Character.Race)_json["race"].AsInt; }
@@ -39,11 +40,12 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         PostInit();
     }
 
-    public CharacterInfoData(int id, string name, int weapon, Character.Job job, Character.Gender gender, Character.Race race, Character.Camp camp, int moveSpeed, int rotationSpeed, int runSpeedMul, int maxHP, int curHP, int maxMP, int curMP, int ATK, int DEF, int patrolMul, int chaseMul ) 
+    public CharacterInfoData(int id, string name, int weapon, int AI, Character.Job job, Character.Gender gender, Character.Race race, Character.Camp camp, int moveSpeed, int rotationSpeed, int runSpeedMul, int maxHP, int curHP, int maxMP, int curMP, int ATK, int DEF, int patrolMul, int chaseMul ) 
     {
         this.Id = id;
         this.Name = name;
         this.Weapon = weapon;
+        this.AI = AI;
         this.Job = job;
         this.Gender = gender;
         this.Race = race;
@@ -79,6 +81,10 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
     /// 初始武器
     /// </summary>
     public int Weapon { get; private set; }
+    /// <summary>
+    /// AI配置ID
+    /// </summary>
+    public int AI { get; private set; }
     /// <summary>
     /// 职业
     /// </summary>
@@ -140,6 +146,7 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "Weapon:" + Weapon + ","
+        + "AI:" + AI + ","
         + "Job:" + Job + ","
         + "Gender:" + Gender + ","
         + "Race:" + Race + ","

@@ -504,6 +504,14 @@
             "DependIDs": []
         },
         {
+            "Address": "tbcharai",
+            "AssetPath": "Assets/Res/BaseDataJson/tbcharai.json",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 24,
+            "DependIDs": []
+        },
+        {
             "Address": "tbobjectdata",
             "AssetPath": "Assets/Res/BaseDataJson/tbobjectdata.json",
             "AssetGUID": "",
@@ -680,11 +688,19 @@
             "DependIDs": []
         },
         {
+            "Address": "FSM_Template",
+            "AssetPath": "Assets/Scripts/WLang/Code/FSM/Template.wl",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 45,
+            "DependIDs": []
+        },
+        {
             "Address": "FSM_TestFSM",
             "AssetPath": "Assets/Scripts/WLang/Code/FSM/TestFSM.wl",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 45,
+            "BundleID": 46,
             "DependIDs": []
         }
     ],
@@ -1131,6 +1147,16 @@
         },
         {
             "BundleName": "assets_scripts_wlang_code_fsm_fsmfight_wl.rawfile",
+            "FileHash": "00000000000000000000000000000000",
+            "FileCRC": "00000000",
+            "FileSize": 0,
+            "IsRawFile": true,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_scripts_wlang_code_fsm_template_wl.rawfile",
             "FileHash": "00000000000000000000000000000000",
             "FileCRC": "00000000",
             "FileSize": 0,

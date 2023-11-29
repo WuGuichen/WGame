@@ -1,0 +1,8 @@
+[
+  {
+    "id": 1,
+    "name": "默认",
+    "baseFSM": "FSMAI",
+    "onFightLogicBTree": "OnAttack"
+  }
+]

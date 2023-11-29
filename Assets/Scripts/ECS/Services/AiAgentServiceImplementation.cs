@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BaseData;
 using CleverCrow.Fluid.BTs.Trees;
 using Pathfinding;
 using UnityEngine;
@@ -38,6 +39,8 @@ public class AiAgentServiceImplementation : IAiAgentService
 
     private readonly CharacterInitInfo _initInfo;
 
+    private readonly CharAI _aiCfg = null;
+
     private Path path
     {
         get => _path;
@@ -55,6 +58,7 @@ public class AiAgentServiceImplementation : IAiAgentService
     {
         _seeker = seeker;
         _entity = entity;
+        _aiCfg = entity.characterInfo.value.AICfg;
         _initInfo = entity.characterInfo.value;
         moveAgent = new MoveAgent(this, seeker, entity, patrolPoints);
         fightAgent = new FightAgent(this, entity);
@@ -324,7 +328,7 @@ public class AiAgentServiceImplementation : IAiAgentService
 
     public void TriggerFSM(int type)
     {
-        TriggerFSM("FSMAI", type);
+        TriggerFSM(_aiCfg.BaseFSM, type);
     }
 
     public void TriggerFSM(string name, int type)

@@ -1,3 +1,4 @@
+using BaseData;
 using BaseData.Character;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public struct CharacterInitInfo
     public int Weapon { get; set; }
     public float ChaseMul { get; set; }
     public float PatrolMul { get; set; }
+    public CharAI AICfg { get; set; }
 
     public static CharacterInitInfo Empty = new CharacterInitInfo();
 

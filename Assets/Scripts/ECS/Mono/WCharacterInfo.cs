@@ -1,3 +1,4 @@
+using BaseData;
 using BaseData.Character;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class WCharacterInfo : MonoBehaviour
     [Header("属性ID")]
     [SerializeField] private int infoID;
     [Header("初始武器")] [SerializeField] private int weaponID;
+    [Header("AI配置ID")] [SerializeField] private int aiID;
     [SerializeField] private Job job;
     [SerializeField] private Gender gender;
     [SerializeField] private Race race;
@@ -65,7 +67,8 @@ public class WCharacterInfo : MonoBehaviour
             DEF = data.DEF,
             Weapon = data.Weapon,
             PatrolMul = data.PatrolMul*0.01f,
-            ChaseMul =data.ChaseMul*0.01f
+            ChaseMul =data.ChaseMul*0.01f,
+            AICfg = GameData.Tables.TbCharAI.Get(data.AI)
         };
         return info;
     }
@@ -89,6 +92,7 @@ public class WCharacterInfo : MonoBehaviour
         Weapon = 0,
         PatrolMul = 60*0.01f,
         ChaseMul = 100*0.01f,
+        AICfg = new CharAI(1, "DefaultAI", "BaseFSM", "OnAttack"),
     };
     public CharacterInitInfo GetCharacterInfo()
     {
@@ -96,6 +100,9 @@ public class WCharacterInfo : MonoBehaviour
         {
             return GetCharacterInfo(infoID);
         }
+
+        if (aiID < 0)
+            aiID = 1;
         var points = new Vector3[patrolPoints.Length];
         for (int i = 0; i < patrolPoints.Length; i++)
             points[i] = patrolPoints[i] + transform.position;
@@ -118,6 +125,7 @@ public class WCharacterInfo : MonoBehaviour
             Weapon = weaponID,
             PatrolMul = PatrolMul*0.01f,
             ChaseMul = ChaseMul*0.01f,
+            AICfg = GameData.Tables.TbCharAI.Get(aiID),
         };
         return info;
     }

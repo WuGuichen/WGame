@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Motion;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using YooAsset;
 using Object = UnityEngine.Object;
 using WGame.Runtime;
@@ -25,6 +27,8 @@ namespace WGame.Res
         private EPlayMode PlayMode = EPlayMode.OfflinePlayMode;
         #endif
 
+        public bool IsInitted { get; private set; } = false;
+
         private void Awake()
         {
             _inst = this;
@@ -35,6 +39,7 @@ namespace WGame.Res
 
         IEnumerator InitYooasset()
         {
+            IsInitted = false;
             InitializeParameters initParameters;
             switch (PlayMode)
             {
@@ -53,6 +58,7 @@ namespace WGame.Res
 
             if (package.InitializeStatus == EOperationStatus.Succeed)
             {
+                IsInitted = true;
                 EventCenter.Trigger(EventDefine.OnGameAssetsManagerInitted);
             }
         }

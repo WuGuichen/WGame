@@ -536,6 +536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 10000001
       objectReference: {fileID: 0}
+    - target: {fileID: 8265186659628606040, guid: 3148a40b0d734d34ab0b175866e0c58a, type: 3}
+      propertyPath: aiID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9029087133655704347, guid: 3148a40b0d734d34ab0b175866e0c58a, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2167,6 +2171,10 @@ PrefabInstance:
     - target: {fileID: 2985564020142649649, guid: 71c444d070c713f4d986bb31bb0c316c, type: 3}
       propertyPath: m_Name
       value: 10000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441360642216505004, guid: 71c444d070c713f4d986bb31bb0c316c, type: 3}
+      propertyPath: aiID
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6441360642216505004, guid: 71c444d070c713f4d986bb31bb0c316c, type: 3}
       propertyPath: PatrolMul

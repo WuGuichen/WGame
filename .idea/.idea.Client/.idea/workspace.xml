@@ -7,6 +7,27 @@
     <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/anim_tbclip.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/anim_tbclip.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/item_tbitem.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/item_tbitem.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacter.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacterinfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacterinfo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbobjectdata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbobjectdata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/weapon_tbweapon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/weapon_tbweapon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/CharacterInitInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/CharacterInitInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/GameData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/Tables.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/Tables.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.bytes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.hash" beforeDir="false" afterPath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.hash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.json" beforeDir="false" afterPath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/.cache.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/.cache.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/__tables__.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/__tables__.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/characterInfoData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/characterInfoData.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +118,7 @@
       <workItem from="1700948712785" duration="604000" />
       <workItem from="1701007337764" duration="5865000" />
       <workItem from="1701257267382" duration="2194000" />
-      <workItem from="1701286933903" duration="2674000" />
+      <workItem from="1701286933903" duration="5427000" />
     </task>
     <servers />
   </component>
