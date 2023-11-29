@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using WGame.Runtime;
 
@@ -128,7 +126,10 @@ public class WAudioMgr : SingletonMono<WAudioMgr>
         if (gameObj == null)
             gameObj = _globalObject;
         if (!string.IsNullOrEmpty(eventName))
+        {
+            AkSoundEngine.SetObjectPosition(gameObj, gameObj.transform);
             playingID = AkSoundEngine.PostEvent(eventName, gameObj, (uint)AkCallbackType.AK_EndOfEvent, Callback, cb);
+        }
         return playingID;
     }
     

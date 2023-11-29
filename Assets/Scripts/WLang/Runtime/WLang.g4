@@ -1,6 +1,6 @@
 grammar WLang;
 
-file    :   (bTreeBuilder | statement | ifStatement | whileStatement | forStatement | waitStatement)*
+file    :   (statement | ifStatement | whileStatement | forStatement | waitStatement)*
         ;
         
 fsmBuilder      : fileCode? fsmBlock*
@@ -46,6 +46,7 @@ treeBlock       :   SELECTOR treeContent    #TreeSelector
                 |   DO block           #TreeDo
                 |   WAITTIME numParam       #TreeWaitTime
                 |   WAIT numParam           #TreeWait
+//                |   DECORATOR ID treeContent #TreeDecorator  有需要再实现
 ;
 
 treeContent     :   numParam? OPENBRACE treeBlock+ CLOSEBRACE
@@ -170,6 +171,7 @@ TRANS_TO_ANY    : 'TRANS_TO_ANY';
 STATE   :   'STATE';
 CODE    :   'CODE';
 BTREE   :   'BTREE';
+DECORATOR : 'DECORATOR';
 
 AT      :   '@';
 SHARP   :   '#';

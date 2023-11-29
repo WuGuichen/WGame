@@ -132,7 +132,7 @@ public class FSMInterpreter : WLangBaseVisitor<Symbol>
             var callbacks = new Action<State<int, int>>[3];
             if (context.ChildCount > 2)
             {
-                if (context.children[1].GetText() == ":")
+                if (context.children[1].GetText() == ":")  // 有后序方法
                 {
                     var param = context.children[2];
                     int cbIndex = 0;
@@ -169,6 +169,7 @@ public class FSMInterpreter : WLangBaseVisitor<Symbol>
             }
             else
             {
+                // 空state
                 curFSM.AddState(GetStateDefine(context.i).Value
                     , new State<int, int>());
             }

@@ -55,13 +55,6 @@ public class FightAgent
     public void OnAttackLogic()
     {
         _onAttackTree.Tick();
-        // if (_service.MoveAgent.MoveToTarget(2f))
-        // {
-        //     if(_entity.hasDetectedCharacter)
-        //         DoAttack();
-        //     else
-        //         _service.TriggerFSM(StateDefine.LoseTarget);
-        // }
     }
 
     private void DoAttack()

@@ -128,7 +128,6 @@ public class AiAgentServiceImplementation : IAiAgentService
         
         SetMethod("OnAISearchEnter", (list, interpreter) =>
         {
-            WLogger.Print("我进来了");
         });
     }
 
