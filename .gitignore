@@ -16,3 +16,4 @@ logRunSetup.txt
 *.userprefs
 *.unityproj
 *.DS_Store
+*.dwlt

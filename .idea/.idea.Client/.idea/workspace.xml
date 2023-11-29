@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/README.md.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/Template.wl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/Template.wl.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/README.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Audio/WAudioMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/WAudioMgr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/FSMInterpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/FSMInterpreter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +97,7 @@
       <workItem from="1700948712785" duration="604000" />
       <workItem from="1701007337764" duration="5865000" />
       <workItem from="1701257267382" duration="2194000" />
-      <workItem from="1701286933903" duration="2434000" />
+      <workItem from="1701286933903" duration="2674000" />
     </task>
     <servers />
   </component>
