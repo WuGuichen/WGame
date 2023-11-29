@@ -43,6 +43,7 @@ public class MethodDefine
         bind("RemoveFSM", RemoveFSM);
         bind("TriggerFSM", TriggerFSM);
         bind("InitGotHitDict", InitGotHitDict);
+        bind("GetTargetSensorLayer", GetTargetSensorLayer);
     }
 
     public void TransMotionType(List<Symbol> param, Interpreter interpreter)
@@ -367,5 +368,19 @@ public class MethodDefine
                 MotionIDs.onHitDict[item[0].Value] = item[1].Text;
             }
         }
+    }
+
+    private void GetTargetSensorLayer(List<Symbol> param, Interpreter interpreter)
+    {
+        if (CheckEntity(param[0].Value, out var entity))
+            return;
+        interpreter.SetRetrun(new Symbol(EntityUtils.GetTargetSensorLayer(entity)));
+    }
+
+    public void SetDetectState(List<Symbol> param, Interpreter interpreter)
+    {
+        if (CheckEntity(param[0].Value, out var entity))
+            return;
+        // entity.ReplaceDetectedCharacter();
     }
 }

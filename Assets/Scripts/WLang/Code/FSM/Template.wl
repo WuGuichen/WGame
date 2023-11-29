@@ -9,7 +9,7 @@ STATE{
 
 TRIGGER{
     S1 -> S2 : TriggerNameID, ConditionMethod
-    S2 -> S1 : TriggerName
+    S2 -> S1 : T1
     Any -> S3 : TriggerNameID
 }
 TRIGGER_TIME{

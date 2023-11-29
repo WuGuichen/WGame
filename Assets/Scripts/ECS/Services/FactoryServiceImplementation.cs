@@ -27,11 +27,6 @@ public class FactoryServiceImplementation : IFactoryService
     private const int weaponBaseID = 9000000;
     private int genWeaponNum = 0;
 
-    private readonly int playerLayer = LayerMask.NameToLayer("Player");
-    private readonly int enemyLayer = LayerMask.NameToLayer("Enemy");
-    private readonly int enemySensorLayer = LayerMask.NameToLayer("EnemyHitSensor");
-    private readonly int playerSensorLayer = LayerMask.NameToLayer("PlayerHitSensor");
-
     #if UNITY_EDITOR
     private FileSystemWatcher motionWatcher;
     #endif
@@ -197,20 +192,24 @@ public class FactoryServiceImplementation : IFactoryService
         // 刚体
         entity.AddRigidbodyService(obj.GetComponent<IRigidbodyService>().OnInit());
         entity.rigidbodyService.service.SetEntity(entity);
-        if (info.camp == Camp.Player)
-        {
-            // player层
-            obj.layer = playerLayer;
-            entity.gameViewService.service.Model.gameObject.layer = playerSensorLayer;
-            entity.AddCharacterSensor(1 << enemySensorLayer, 10f);
-        }
-        else
-        {
-            // enemy层
-            obj.layer = enemyLayer;
-            entity.gameViewService.service.Model.gameObject.layer = enemySensorLayer;
-            entity.AddCharacterSensor(1 << playerSensorLayer, 10f);
-        }
+        
+        obj.layer = EntityUtils.GetLayer(entity);
+        entity.gameViewService.service.Model.gameObject.layer = EntityUtils.GetSensorLayer(entity);
+        entity.AddCharacterSensor(1 << EntityUtils.GetTargetSensorLayer(entity), 10f);
+        // if (info.camp == Camp.Player)
+        // {
+        //     // player层
+        //     obj.layer = playerLayer;
+        //     entity.gameViewService.service.Model.gameObject.layer = playerSensorLayer;
+        //     entity.AddCharacterSensor(1 << EntityUtils.GetTargetLayer(entity), 10f);
+        // }
+        // else
+        // {
+        //     // enemy层
+        //     obj.layer = enemyLayer;
+        //     entity.gameViewService.service.Model.gameObject.layer = enemySensorLayer;
+        //     entity.AddCharacterSensor(1 << playerSensorLayer, 10f);
+        // }
 
         // motion
         var motion = Contexts.sharedInstance.motion.CreateEntity();

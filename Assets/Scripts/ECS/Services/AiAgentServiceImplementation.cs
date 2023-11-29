@@ -324,6 +324,10 @@ public class AiAgentServiceImplementation : IAiAgentService
         {
             _entity.ReplaceDetectedCharacter(entity);
         }
+        else
+        {
+            
+        }
     }
 
     public void TriggerFSM(int type)

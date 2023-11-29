@@ -6,14 +6,14 @@ using Timer = UnityTimer.Timer;
 
 public class Interpreter : WLangBaseVisitor<Symbol>
 {
-    public const int TYPE_BOOLEN = BaseDefinition.TYPE_BOOLEN;
-    public const int TYPE_STRING = BaseDefinition.TYPE_STRING;
-    public const int TYPE_FLOAT = BaseDefinition.TYPE_FLOAT;
-    public const int TYPE_CHAR = BaseDefinition.TYPE_CHAR;
-    public const int TYPE_INT = BaseDefinition.TYPE_INT;
-    public const int TYPE_TABLE = BaseDefinition.TYPE_TABLE;
-    public const int TYPE_METHOD = BaseDefinition.TYPE_METHOD;
-    public const string RETURN = "Return";
+    private const int TYPE_BOOLEN = BaseDefinition.TYPE_BOOLEN;
+    private const int TYPE_STRING = BaseDefinition.TYPE_STRING;
+    private const int TYPE_FLOAT = BaseDefinition.TYPE_FLOAT;
+    private const int TYPE_CHAR = BaseDefinition.TYPE_CHAR;
+    private const int TYPE_INT = BaseDefinition.TYPE_INT;
+    private const int TYPE_TABLE = BaseDefinition.TYPE_TABLE;
+    private const int TYPE_METHOD = BaseDefinition.TYPE_METHOD;
+    private const string RETURN = "Return";
 
     private Scope baseScope;
     private Scope currentScope;

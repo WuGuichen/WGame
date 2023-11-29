@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
 using CleverCrow.Fluid.BTs.Tasks;
 using CleverCrow.Fluid.BTs.Trees;
 using UnityEngine;
@@ -33,6 +30,12 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
     private string treeName;
     private Interpreter interpreter;
     private UnityEngine.GameObject _treeOwner;
+
+    private const int TYPE_FLOAT = BaseDefinition.TYPE_FLOAT;
+    private const int TYPE_CHAR = BaseDefinition.TYPE_CHAR;
+    private const int TYPE_INT = BaseDefinition.TYPE_INT;
+    private const int TYPE_TABLE = BaseDefinition.TYPE_TABLE;
+    private const int TYPE_METHOD = BaseDefinition.TYPE_METHOD;
 
     public BTreeInterpreter(Interpreter interpreter, GameObject owner, string treeName, Scope scope, BaseDefinition definition)
     {
@@ -124,14 +127,12 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitTreeWaitTime(WLangParser.TreeWaitTimeContext context)
     {
-        var p = context.numParam().s;
-        if (p.Type == WLangParser.INT)
-            _builder.WaitTime(int.Parse(p.Text));
-        else if(p.Type == WLangParser.FLOAT)
-            _builder.WaitTime(float.Parse(p.Text));
+        var p = context.numParam().Accept(interpreter);
+        if (p.Type == TYPE_METHOD)
+            _builder.WaitTime(interpreter.Definition.GetMethod(p.Value).Call(interpreter).Value);
         else
         {
-            WLogger.Error("数据错误");
+            _builder.WaitTime(p.ToFloat(interpreter.Definition));
         }
         return Symbol.NULL;
     }

@@ -1,7 +1,13 @@
+using BaseData.Character;
 using UnityEngine;
 
 public class EntityUtils
 {
+    private static readonly int playerLayer = LayerMask.NameToLayer("Player");
+    private static readonly int enemyLayer = LayerMask.NameToLayer("Enemy");
+    private static readonly int enemySensorLayer = LayerMask.NameToLayer("EnemyHitSensor");
+    private static readonly int playerSensorLayer = LayerMask.NameToLayer("PlayerHitSensor");
+    
     public static GameEntity GetGameEntity(GameObject obj)
     {
         var entity = Contexts.sharedInstance.game.GetEntityWithEntityID(int.Parse(obj.name));
@@ -92,5 +98,44 @@ public class EntityUtils
         int weaponId = 1;
         factory.GenWeaponEntity(weaponId, out var weapon);
         factory.SetWeaponDrop(weapon, GetRandomPositionAroundCharacter(), Quaternion.identity, Vector3.one);
+    }
+
+    public static int GetTargetSensorLayer(GameEntity entity)
+    {
+        if (entity.characterInfo.value.camp == Camp.Enemy)
+        {
+            return playerSensorLayer;
+        }
+        else if (entity.characterInfo.value.camp == Camp.Player)
+        {
+            return enemySensorLayer;
+        }
+        return 0;
+    }
+
+    public static int GetLayer(GameEntity entity)
+    {
+        if (entity.characterInfo.value.camp == Camp.Enemy)
+        {
+            return enemyLayer;
+        }
+        else if (entity.characterInfo.value.camp == Camp.Player)
+        {
+            return playerLayer;
+        }
+        return 0;
+    }
+    
+    public static int GetSensorLayer(GameEntity entity)
+    {
+        if (entity.characterInfo.value.camp == Camp.Enemy)
+        {
+            return enemySensorLayer;
+        }
+        else if (entity.characterInfo.value.camp == Camp.Player)
+        {
+            return playerSensorLayer;
+        }
+        return 0;
     }
 }

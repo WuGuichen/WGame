@@ -33,6 +33,12 @@ public class ConstDefine
         BindIntDefine("MODEL_", typeof(CharacterModelPart), bind);
         BindIntDefine("SIG_", typeof(InputSignalSubType), bind);
         BindIntDefine("SD_", typeof(StateDefine), bind);
+        int stateNum = 10;
+        for (int i = 0; i < stateNum; i++)
+        {
+            bind("S" + i, i+100);
+            bind("T" + i, i+100+stateNum);
+        }
 
         for (int i = 0; i < MotionIDs.IDList.Length; i++)
         {

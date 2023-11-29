@@ -1,24 +1,24 @@
 ## OnAttack
 
-    SELECTOR{
-        DO{
-            hasTarget = HasDetectedCharacter()
-            if MoveToTarget(2){
-                if hasTarget{
-                    @E_SELF:Signal(SIG_ATTACK, 0.2)
-                    return FAIL
-                }
-                else{
-                    Print("Lose")
-                    TriggerFSM(SD_LOSE_TARGET)
-                }
+SELECTOR{
+    DO{
+        hasTarget = HasDetectedCharacter()
+        if MoveToTarget(2){
+            if hasTarget{
+                @E_SELF:Signal(SIG_ATTACK, 0.2)
                 return FAIL
             }
-            if hasTarget == false{
+            else{
                 Print("Lose")
-                TriggerFSM(SD_LOSE_TARGET)
+                @E_SELF:TriggerFSM(SD_LOSE_TARGET)
             }
-            return SUCCESS
+            return FAIL
         }
-        WAIT 200
+        if hasTarget == false{
+            Print("Lose")
+            @E_SELF:TriggerFSM(SD_LOSE_TARGET)
+        }
+        return SUCCESS
     }
+    WAIT 200
+}
