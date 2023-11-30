@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/OnAttack_2.wl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/OnAttack_2.wl.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/README.md.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GotHitAbilityServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GotHitAbilityServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/ConstDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/ConstDefine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/OnAttack.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/OnAttack.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioCtrl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Audio/WAudioMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/WAudioMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/README.md.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/Template.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/Template.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/BTreeInterpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/BTreeInterpreter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.bytes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.hash" beforeDir="false" afterPath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.hash" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.json" beforeDir="false" afterPath="$PROJECT_DIR$/Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +44,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.fileTypes",
     "vue.rearranger.settings.migration": "true"
   },
@@ -113,7 +106,8 @@
       <workItem from="1700948712785" duration="604000" />
       <workItem from="1701007337764" duration="5865000" />
       <workItem from="1701257267382" duration="2194000" />
-      <workItem from="1701286933903" duration="9891000" />
+      <workItem from="1701286933903" duration="10190000" />
+      <workItem from="1701356999063" duration="5755000" />
     </task>
     <servers />
   </component>
