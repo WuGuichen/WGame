@@ -26,11 +26,12 @@ public partial class Contexts : Entitas.IContexts {
     public InputContext input { get; set; }
     public MetaContext meta { get; set; }
     public MotionContext motion { get; set; }
+    public SensorContext sensor { get; set; }
     public SettingContext setting { get; set; }
     public VMContext vM { get; set; }
     public WeaponContext weapon { get; set; }
 
-    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { ability, game, input, meta, motion, setting, vM, weapon }; } }
+    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { ability, game, input, meta, motion, sensor, setting, vM, weapon }; } }
 
     public Contexts() {
         ability = new AbilityContext();
@@ -38,6 +39,7 @@ public partial class Contexts : Entitas.IContexts {
         input = new InputContext();
         meta = new MetaContext();
         motion = new MotionContext();
+        sensor = new SensorContext();
         setting = new SettingContext();
         vM = new VMContext();
         weapon = new WeaponContext();
@@ -115,6 +117,7 @@ public partial class Contexts {
             CreateContextObserver(input);
             CreateContextObserver(meta);
             CreateContextObserver(motion);
+            CreateContextObserver(sensor);
             CreateContextObserver(setting);
             CreateContextObserver(vM);
             CreateContextObserver(weapon);

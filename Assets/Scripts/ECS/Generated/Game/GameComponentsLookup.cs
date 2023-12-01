@@ -57,49 +57,50 @@ public static class GameComponentsLookup {
     public const int KeepTargetDistance = 46;
     public const int LinkAbility = 47;
     public const int LinkMotion = 48;
-    public const int LinkVM = 49;
-    public const int LinkWeapon = 50;
-    public const int LockPlanarVec = 51;
-    public const int Moveable = 52;
-    public const int MoveDirection = 53;
-    public const int MoveDirectionListener = 54;
-    public const int MovementSpeed = 55;
-    public const int Moving = 56;
-    public const int OnGroundState = 57;
-    public const int PlayerInputState = 58;
-    public const int Position = 59;
-    public const int PrepareAttackState = 60;
-    public const int PrepareDefenseState = 61;
-    public const int PrepareHoldAttackState = 62;
-    public const int PrepareJumpAttackState = 63;
-    public const int PrepareJumpState = 64;
-    public const int PrepareLocalMotionState = 65;
-    public const int PrepareStepState = 66;
-    public const int RigidbodyService = 67;
-    public const int RotateInFocus = 68;
-    public const int RotationSpeed = 69;
-    public const int RunningMultiRate = 70;
-    public const int RunState = 71;
-    public const int SignalAttack = 72;
-    public const int SignalDefense = 73;
-    public const int SignalJump = 74;
-    public const int SignalLocalMotion = 75;
-    public const int SignalState = 76;
-    public const int SignalStep = 77;
-    public const int SpawnPoint = 78;
-    public const int StateChanged = 79;
-    public const int StateSwitchState = 80;
-    public const int StateSwitchStateListener = 81;
-    public const int StepEndState = 82;
-    public const int StepState = 83;
-    public const int TargetPlanarSqrDistance = 84;
-    public const int UIHeadPad = 85;
-    public const int Unbalanced = 86;
-    public const int WalkState = 87;
-    public const int WeaponDropService = 88;
-    public const int WeaponService = 89;
+    public const int LinkSensor = 49;
+    public const int LinkVM = 50;
+    public const int LinkWeapon = 51;
+    public const int LockPlanarVec = 52;
+    public const int Moveable = 53;
+    public const int MoveDirection = 54;
+    public const int MoveDirectionListener = 55;
+    public const int MovementSpeed = 56;
+    public const int Moving = 57;
+    public const int OnGroundState = 58;
+    public const int PlayerInputState = 59;
+    public const int Position = 60;
+    public const int PrepareAttackState = 61;
+    public const int PrepareDefenseState = 62;
+    public const int PrepareHoldAttackState = 63;
+    public const int PrepareJumpAttackState = 64;
+    public const int PrepareJumpState = 65;
+    public const int PrepareLocalMotionState = 66;
+    public const int PrepareStepState = 67;
+    public const int RigidbodyService = 68;
+    public const int RotateInFocus = 69;
+    public const int RotationSpeed = 70;
+    public const int RunningMultiRate = 71;
+    public const int RunState = 72;
+    public const int SignalAttack = 73;
+    public const int SignalDefense = 74;
+    public const int SignalJump = 75;
+    public const int SignalLocalMotion = 76;
+    public const int SignalState = 77;
+    public const int SignalStep = 78;
+    public const int SpawnPoint = 79;
+    public const int StateChanged = 80;
+    public const int StateSwitchState = 81;
+    public const int StateSwitchStateListener = 82;
+    public const int StepEndState = 83;
+    public const int StepState = 84;
+    public const int TargetPlanarSqrDistance = 85;
+    public const int UIHeadPad = 86;
+    public const int Unbalanced = 87;
+    public const int WalkState = 88;
+    public const int WeaponDropService = 89;
+    public const int WeaponService = 90;
 
-    public const int TotalComponents = 90;
+    public const int TotalComponents = 91;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -151,6 +152,7 @@ public static class GameComponentsLookup {
         "KeepTargetDistance",
         "LinkAbility",
         "LinkMotion",
+        "LinkSensor",
         "LinkVM",
         "LinkWeapon",
         "LockPlanarVec",
@@ -244,6 +246,7 @@ public static class GameComponentsLookup {
         typeof(KeepTargetDistanceComponent),
         typeof(LinkAbilityComponent),
         typeof(LinkMotionComponent),
+        typeof(LinkSensor),
         typeof(LinkVM),
         typeof(LinkWeaponComponent),
         typeof(LockPlanarVec),

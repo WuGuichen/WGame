@@ -7,7 +7,7 @@ public class LinkMotionComponent : IComponent
     public MotionEntity Motion;
 }
 
-[Motion, Weapon, Ability, VM][DontDrawComponent]
+[Motion, Weapon, Ability, VM, Sensor][DontDrawComponent]
 public class LinkCharacterComponent : IComponent
 {
     public GameEntity Character;
@@ -30,4 +30,11 @@ public class LinkAbilityComponent : IComponent
 public class LinkVM : IComponent
 {
     public VMEntity VM;
+}
+
+[Game]
+[DontDrawComponent]
+public class LinkSensor : IComponent
+{
+    public SensorEntity Sensor;
 }

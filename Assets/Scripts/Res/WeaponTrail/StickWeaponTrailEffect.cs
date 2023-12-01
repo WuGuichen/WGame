@@ -77,6 +77,15 @@ public class StickWeaponTrailEffect : MonoBehaviour
         }
     }
 
+    private int divDegreeResolution180;
+    private float divDegreeResolution;
+
+    private void Awake()
+    {
+        divDegreeResolution180 = Mathf.CeilToInt(180f / degreeResolution);
+        divDegreeResolution = 1 / degreeResolution;
+    }
+
     private void LateUpdate()
     {
         Profiler.BeginSample(nameof(LateUpdate));
@@ -85,7 +94,7 @@ public class StickWeaponTrailEffect : MonoBehaviour
 
         if (stickshotBuffer.Count > 1)
         {
-            var verticesMaxCount = stickshotBuffer.Count * Mathf.CeilToInt(180f / degreeResolution);
+            var verticesMaxCount = stickshotBuffer.Count * divDegreeResolution180;
             var vertices = new NativeArray<Vector3>(verticesMaxCount * CountOfPointOnStick, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
             var verticesCount = UpdateSegments(vertices);
             UpdateMesh(vertices, verticesCount);
@@ -175,7 +184,7 @@ public class StickWeaponTrailEffect : MonoBehaviour
                 Vector3.Angle(centerP1 - centerC0, centerC1 - centerP0),
                 Vector3.Angle(radiusP0, radiusP1)
             );
-            var interpolations = Mathf.CeilToInt(deltaDegrees / degreeResolution) + 1;
+            var interpolations = Mathf.CeilToInt(deltaDegrees * divDegreeResolution) + 1;
             if (interpolations > 1)
             {
                 for (int k = 0; k < interpolations; ++k)

@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Duration: 0.2
-  m_DegreeResolution: 1
+  m_DegreeResolution: 8
   m_Top: {fileID: 5804321222200961554}
   m_Bottom: {fileID: 7898537689503751003}
   m_Material: {fileID: 2100000, guid: 75f756109f216ad409ff1a5ea7dd7b2c, type: 2}

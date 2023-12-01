@@ -37,7 +37,6 @@ public class SandboxSystem : MonoBehaviour
 		_systems.Add(new UpdateStepInputSystem(_contexts));
 		_systems.Add(new CharacterFocusSystem(_contexts));
 		
-		_rigidSystems.Add(new HitCharacterSystem(_contexts));
 		_rigidSystems.Add(new MoveCharacterSystem(_contexts));
 		_rigidSystems.Add(new RotatePlayerSystem(_contexts));
 		_rigidSystems.Add(new UpdateMoveDirectionSystem(_contexts));

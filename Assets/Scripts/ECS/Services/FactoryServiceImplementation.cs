@@ -196,20 +196,6 @@ public class FactoryServiceImplementation : IFactoryService
         obj.layer = EntityUtils.GetLayer(entity);
         entity.gameViewService.service.Model.gameObject.layer = EntityUtils.GetSensorLayer(entity);
         entity.AddCharacterSensor(1 << EntityUtils.GetTargetSensorLayer(entity), 10f);
-        // if (info.camp == Camp.Player)
-        // {
-        //     // player层
-        //     obj.layer = playerLayer;
-        //     entity.gameViewService.service.Model.gameObject.layer = playerSensorLayer;
-        //     entity.AddCharacterSensor(1 << EntityUtils.GetTargetLayer(entity), 10f);
-        // }
-        // else
-        // {
-        //     // enemy层
-        //     obj.layer = enemyLayer;
-        //     entity.gameViewService.service.Model.gameObject.layer = enemySensorLayer;
-        //     entity.AddCharacterSensor(1 << playerSensorLayer, 10f);
-        // }
 
         // motion
         var motion = Contexts.sharedInstance.motion.CreateEntity();
@@ -284,6 +270,11 @@ public class FactoryServiceImplementation : IFactoryService
             info.patrolPoints));
 
         obj.Link(entity);
+        
+        // Sensor
+        var sensor = Contexts.sharedInstance.sensor.CreateEntity();
+        sensor.AddSensorCharacterService(new SensorCharacterImplementation(entity.gameViewService.service.Model));
+        sensor.isSensorCharOpen = true;
 
         // 事件监听
         var listeners = obj.GetComponentsInChildren<IEventListener>();
