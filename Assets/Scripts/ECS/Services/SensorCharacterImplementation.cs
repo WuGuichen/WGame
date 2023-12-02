@@ -3,41 +3,77 @@ using UnityEngine;
 
 public class SensorCharacterImplementation : ISensorService
 {
-    private WDrawer.CircleDrawInfo drawInfo;
+    private WDrawer.CircleDrawInfo drawWarning;
+    private WDrawer.CircleDrawInfo drawSpotted;
+    private WDrawer.CircleDrawInfo drawSensor;
     private readonly Transform _model;
     private Color _color = Color.cyan*0.6f;
+    private Color _colorSpotted = Color.red*0.6f;
+    private Color _colorSensor = Color.green*0.6f;
     private Quaternion _rotation = Quaternion.Euler(90, 0, 0);
 
-    public SensorCharacterImplementation(Transform model)
+    private readonly SensorEntity _sensor;
+
+    public SensorCharacterImplementation(Transform model, SensorEntity sensor)
     {
+        _sensor = sensor;
         _model = model;
     }
     
+    public void UpdateDetectorDrawer()
+    {
+        if (_sensor.hasDetectCharRange)
+        {
+            if (drawWarning == null)
+                drawWarning = WDrawer.Inst.RegisterCircle(_model, _model.position + Vector3.up * 0.2f, _rotation);
+            if(drawSpotted == null)
+                drawSpotted = WDrawer.Inst.RegisterCircle(_model, _model.position + Vector3.up * 0.2f, _rotation);
+
+            CircleInfo info = new CircleInfo()
+            {
+                center = drawWarning.Drawer.position,
+                forward = _model.up,
+                fillColor = _color,
+                radius = _sensor.detectCharRange.warning,
+                isSector = true,
+                sectorArcLengthInDegrees = _sensor.detectCharDegreeAngle.warning,
+                sectorInitialAngleInDegrees = _model.eulerAngles.y - 150 + _sensor.detectCharDegreeInit.warning,
+            };
+            
+            drawWarning.Info = info;
+            drawSpotted.Info = new CircleInfo()
+            {
+                center = drawWarning.Drawer.position,
+                forward = _model.up,
+                fillColor = _colorSpotted,
+                radius = _sensor.detectCharRange.spotted,
+                isSector = true,
+                sectorArcLengthInDegrees = _sensor.detectCharDegreeAngle.spotted,
+                sectorInitialAngleInDegrees = _model.eulerAngles.y - 150 + _sensor.detectCharDegreeInit.spotted,
+            };
+        }
+    }
+
     public void UpdateSensorDrawer()
     {
-        if (drawInfo == null)
+        if(drawSensor == null)
+            drawSensor = WDrawer.Inst.RegisterCircle(_model, _model.position + Vector3.up * 0.2f, _rotation);
+        drawSensor.Info = new CircleInfo()
         {
-            drawInfo = WDrawer.Inst.RegisterCircle(_model, _model.position+Vector3.up*0.2f, _rotation);
-        }
-        
-        CircleInfo info = new CircleInfo()
-        {
-            center = drawInfo.Drawer.position,
+            center = drawWarning.Drawer.position,
             forward = _model.up,
-            fillColor = _color,
-            radius = 4f,
+            fillColor = _colorSensor,
+            radius = _sensor.sensorCharRadius.value,
             isSector = true,
-            sectorArcLengthInDegrees = 120,
-            sectorInitialAngleInDegrees = _model.eulerAngles.y - 150,
+            sectorArcLengthInDegrees = 360,
         };
-        drawInfo.Info = info;
     }
 
     public void Dispose()
     {
-        if (drawInfo != null)
+        if (drawWarning != null)
         {
-            WDrawer.Inst.CancelCircle(drawInfo);
+            WDrawer.Inst.CancelCircle(drawWarning);
         }
     }
 }

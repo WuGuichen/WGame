@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using BaseData.Character;
 using Entitas.Unity;
 #if UNITY_EDITOR
 using System.IO;
@@ -273,7 +272,12 @@ public class FactoryServiceImplementation : IFactoryService
         
         // Sensor
         var sensor = Contexts.sharedInstance.sensor.CreateEntity();
-        sensor.AddSensorCharacterService(new SensorCharacterImplementation(entity.gameViewService.service.Model));
+        sensor.AddSensorCharacterService(new SensorCharacterImplementation(entity.gameViewService.service.Model, sensor));
+        sensor.AddDetectCharRange(10f, 4f);
+        sensor.AddDetectCharDegreeAngle(120f, 120f);
+        sensor.AddDetectCharDegreeInit(0f, 0f);
+        sensor.AddSensorCharRadius(2f);
+        sensor.isDetectCharOpen = true;
         sensor.isSensorCharOpen = true;
 
         // 事件监听
