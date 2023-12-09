@@ -8,22 +8,24 @@
 //------------------------------------------------------------------------------
 public static class SensorComponentsLookup {
 
-    public const int DetectCharDegreeAngle = 0;
-    public const int DetectCharDegreeInit = 1;
+    public const int DetectChar = 0;
+    public const int DetectCharacterDegree = 1;
     public const int DetectCharOpen = 2;
-    public const int DetectCharRange = 3;
-    public const int LinkCharacter = 4;
-    public const int SensorCharacterService = 5;
-    public const int SensorCharOpen = 6;
-    public const int SensorCharRadius = 7;
+    public const int DetectSpottedRadius = 3;
+    public const int DetectWarningRadius = 4;
+    public const int LinkCharacter = 5;
+    public const int SensorCharacterService = 6;
+    public const int SensorCharOpen = 7;
+    public const int SensorCharRadius = 8;
 
-    public const int TotalComponents = 8;
+    public const int TotalComponents = 9;
 
     public static readonly string[] componentNames = {
-        "DetectCharDegreeAngle",
-        "DetectCharDegreeInit",
+        "DetectChar",
+        "DetectCharacterDegree",
         "DetectCharOpen",
-        "DetectCharRange",
+        "DetectSpottedRadius",
+        "DetectWarningRadius",
         "LinkCharacter",
         "SensorCharacterService",
         "SensorCharOpen",
@@ -31,10 +33,11 @@ public static class SensorComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(DetectCharDegreeAngle),
-        typeof(DetectCharDegreeInit),
+        typeof(DetectChar),
+        typeof(DetectCharacterDegreeComponent),
         typeof(DetectCharOpen),
-        typeof(DetectCharRange),
+        typeof(DetectSpottedRadiusComponent),
+        typeof(DetectWarningRadiusComponent),
         typeof(LinkCharacterComponent),
         typeof(SensorCharacterServiceComponent),
         typeof(SensorCharOpen),

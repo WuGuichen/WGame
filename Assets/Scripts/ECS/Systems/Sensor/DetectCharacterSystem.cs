@@ -1,11 +1,11 @@
 using Entitas;
 
-public class DrawDetectCharacterSystem : IExecuteSystem
+public class DetectCharacterSystem : IExecuteSystem
 {
     private readonly IGroup<SensorEntity> charDetectorGroup;
-    public DrawDetectCharacterSystem(Contexts contexts)
+    public DetectCharacterSystem(Contexts contexts)
     {
-        charDetectorGroup = contexts.sensor.GetGroup(SensorMatcher.DetectCharOpen);
+        charDetectorGroup = contexts.sensor.GetGroup(SensorMatcher.AllOf(SensorMatcher.DetectCharOpen));
     }
     public void Execute()
     {
@@ -13,7 +13,7 @@ public class DrawDetectCharacterSystem : IExecuteSystem
         {
             if (sensor.hasSensorCharacterService)
             {
-                sensor.sensorCharacterService.service.UpdateDetectorDrawer();
+                sensor.sensorCharacterService.service.UpdateDetect();
             }
         }
     }

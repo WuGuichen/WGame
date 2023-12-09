@@ -18,22 +18,7 @@ public class DetectCharOpen : IComponent
 }
 
 [Sensor]
-public class DetectCharRange : IComponent
+public class DetectChar : IComponent
 {
-    public float warning;
-    public float spotted;
-}
-
-[Sensor]
-public class DetectCharDegreeInit : IComponent
-{
-    public float warning;
-    public float spotted;
-}
-
-[Sensor]
-public class DetectCharDegreeAngle : IComponent
-{
-    public float warning;
-    public float spotted;
+    
 }

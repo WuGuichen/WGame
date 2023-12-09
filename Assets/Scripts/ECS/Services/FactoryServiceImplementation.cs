@@ -272,13 +272,16 @@ public class FactoryServiceImplementation : IFactoryService
         
         // Sensor
         var sensor = Contexts.sharedInstance.sensor.CreateEntity();
+        entity.AddLinkSensor(sensor);
+        sensor.AddLinkCharacter(entity);
         sensor.AddSensorCharacterService(new SensorCharacterImplementation(entity.gameViewService.service.Model, sensor));
-        sensor.AddDetectCharRange(10f, 4f);
-        sensor.AddDetectCharDegreeAngle(120f, 120f);
-        sensor.AddDetectCharDegreeInit(0f, 0f);
+        sensor.AddDetectSpottedRadius(5f);
+        sensor.AddDetectWarningRadius(10f);
+        sensor.AddDetectCharacterDegree(120);
         sensor.AddSensorCharRadius(2f);
         sensor.isDetectCharOpen = true;
         sensor.isSensorCharOpen = true;
+        
 
         // 事件监听
         var listeners = obj.GetComponentsInChildren<IEventListener>();
