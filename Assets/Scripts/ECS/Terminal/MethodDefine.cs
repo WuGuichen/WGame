@@ -7,6 +7,7 @@ using WGame.Runtime;
 using WGame.Trigger;
 using Random = UnityEngine.Random;
 
+
 public class MethodDefine
 {
     private const int TYPE_INT = BaseDefinition.TYPE_INT;
@@ -18,12 +19,28 @@ public class MethodDefine
     private const int TYPE_CHAR = BaseDefinition.TYPE_CHAR;
 
     private static object locker = new object();
-    
+
+
+    private WLangFunc testFunc = (list, interpreter) =>
+    {
+        MoveEntityToTarget(list, interpreter);
+    };
+
+    public void BindAll(Action<string, WLangFunc> bind)
+    {
+        bind("MoveEntityToTarget", ((list, interpreter) =>
+        {
+            MoveEntityToTarget(list, interpreter);
+        }));
+        bind("InputDown", ((list, interpreter) =>
+        {
+            // InputDown(list, interpreter);
+        }));
+    }
     public void BindAll(Action<string, Action<List<Symbol>, Interpreter>> bind)
     {
         bind("Print", Print);
         bind("print", Print);
-        bind("InputDown", InputDown);
         bind("GetAttr", GetAttr);
         bind("SetAttr", SetAttr);
         bind("Random_100", Random_100);
@@ -44,7 +61,6 @@ public class MethodDefine
         bind("TriggerFSM", TriggerFSM);
         bind("InitGotHitDict", InitGotHitDict);
         bind("GetTargetSensorLayer", GetTargetSensorLayer);
-        bind("MoveEntityToTarget", MoveEntityToTarget);
     }
 
     public void TransMotionType(List<Symbol> param, Interpreter interpreter)

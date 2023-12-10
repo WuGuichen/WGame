@@ -14,10 +14,16 @@ public class SharedScope : BaseScope
         methodDef = new MethodDefine();
         constDef = new ConstDefine();
         methodDef.BindAll(Define);
+        methodDef.BindAll(DefineFunc);
         constDef.BindInt(Define);
     }
 
     private void Define(string name, Action<List<Symbol>, Interpreter> action)
+    {
+        Define(name, SharedDefinition.Inst.Define(Method.Get(name, action)));
+    }
+
+    private void DefineFunc(string name, WLangFunc action)
     {
         Define(name, SharedDefinition.Inst.Define(Method.Get(name, action)));
     }

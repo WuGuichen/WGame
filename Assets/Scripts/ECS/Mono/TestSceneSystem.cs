@@ -127,7 +127,9 @@ public class TestSceneSystem : MonoBehaviour
 		    }
 	    }
 
+	    UnityEngine.Profiling.Profiler.BeginSample("OnGameUpdate");
 	    EventCenter.Trigger(EventDefine.OnGameUpdate);
+	    UnityEngine.Profiling.Profiler.EndSample();
 
 	    UnityEngine.Profiling.Profiler.BeginSample("TickSystem");
 	    TickManager.Inst.UpdateTick(_contexts.meta.timeService.instance.deltaTime);
@@ -171,6 +173,11 @@ public class TestSceneSystem : MonoBehaviour
 	    {
 			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(Cursor.visible ? 0 : 1));
 	    }
+	    
+        UnityEngine.Profiling.Profiler.BeginSample("GameUpdateIntParse");
+        var tt = "132";
+        var t = int.Parse(tt);
+	    UnityEngine.Profiling.Profiler.EndSample();
     }
 
     private void FixedUpdate()

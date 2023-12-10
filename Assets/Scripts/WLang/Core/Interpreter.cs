@@ -322,7 +322,9 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                 if (caller.IsNull)
                     WLogger.Warning("方法调用者为空:" + text);
             }
+            UnityEngine.Profiling.Profiler.BeginSample("GameUpdateMethod");
             res = method.Call(ParseParameters(context.parameters(), caller), this);
+            UnityEngine.Profiling.Profiler.EndSample();
             PushScope();
         }
         else
@@ -344,24 +346,25 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
         return null;
     }
-    
+
+    private List<Symbol> parseRes = new List<Symbol>();
     private List<Symbol> ParseParameters(WLangParser.ParametersContext context, Symbol caller)
     {
-        List<Symbol> res = new List<Symbol>();
+        parseRes.Clear();
         if(caller.IsNotNull)
-            res.Add(caller);
+            parseRes.Add(caller);
         if (context == null)
-            return res;
+            return parseRes;
         for (int i = 0; i < context.ChildCount; i++)
         {
             var child = context.children[i];
             if (child is TerminalNodeImpl == false)
-            {
-                res.Add(child.Accept(this));
+            { 
+                parseRes.Add(child.Accept(this));
             }
         }
 
-        return res;
+        return parseRes;
     }
 
     public override Symbol VisitWaitStatement(WLangParser.WaitStatementContext context)
@@ -773,7 +776,11 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitPrimaryINT(WLangParser.PrimaryINTContext context)
     {
-        return new Symbol(int.Parse(context.GetText()), TYPE_INT);
+        UnityEngine.Profiling.Profiler.BeginSample("GameUpdateParse");
+        var text = context.Start.Text;
+        UnityEngine.Profiling.Profiler.EndSample();
+        var res = new Symbol(int.Parse(text), TYPE_INT);
+        return res;
     }
 
     public override Symbol VisitPrimaryFLOAT(WLangParser.PrimaryFLOATContext context)
@@ -829,7 +836,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitExprLambda(WLangParser.ExprLambdaContext context)
     {
-        var m = Method.Get(null, (list, interpreter) =>
+        var m = Method.Get((list, interpreter) =>
         {
             SetRetrun(context.b.Accept(this));
         });

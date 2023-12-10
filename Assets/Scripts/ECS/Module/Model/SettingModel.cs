@@ -67,6 +67,12 @@ namespace WGame.UI
 		{
 			EventCenter.AddListener(EventDefine.OnJoystickStateChanged, RefreshGamePlayInputState);	
 			EventCenter.AddListener(EventDefine.OnGameExit, OnGameExit);
+			EventCenter.AddListener(EventDefine.OnGameUpdate, OnGameUpdate);
+		}
+
+		private void OnGameUpdate()
+		{
+			int t = 0;
 		}
 
 		private void RefreshGamePlayInputState()

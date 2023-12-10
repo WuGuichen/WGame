@@ -145,7 +145,9 @@ namespace WGame.Runtime
         {
             if (eventList.TryGetValue(type, out var bridge))
             {
+                UnityEngine.Profiling.Profiler.BeginSample("TriggerEvent");
                 bridge.CallInternal();
+                UnityEngine.Profiling.Profiler.EndSample();
             }
         }
 

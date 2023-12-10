@@ -3,12 +3,33 @@ using System.Collections.Generic;
 using System.Text;
 using Antlr4.Runtime;
 
+public delegate void WLangFunc(List<Symbol> param, Interpreter interpreter);
 public class Method : IType
 {
     private static Stack<Method> pool = new Stack<Method>();
     
     public string Name { get; private set; }
 
+    public static Method Get(WLangFunc callback)
+    {
+        return Get(null, callback);
+    }
+    public static Method Get(string name, WLangFunc callback)
+    {
+        Method m = null;
+        if (pool.Count > 0)
+        {
+            m = pool.Pop();
+        }
+        else
+        {
+            m = new Method();
+        }
+
+        m.SetFile(callback);
+        m.Name = name;
+        return m;
+    }
     public static Method Get(string name, Action<List<Symbol>, Interpreter> callback)
     {
         Method m = null;
@@ -55,10 +76,15 @@ public class Method : IType
     public static Method Empty = new Method();
 
     private Action<List<Symbol>, Interpreter> callback;
+    private WLangFunc callback1;
 
     public void SetFile(Action<List<Symbol>, Interpreter> call)
     {
         callback = call;
+    }
+    public void SetFile(WLangFunc call)
+    {
+        callback1 = call;
     }
 
     public void SetFile(string code, string[] param)
@@ -80,6 +106,7 @@ public class Method : IType
     public Method()
     {
         callback = null;
+        callback1 = null;
         file = null;
     }
 
@@ -93,6 +120,10 @@ public class Method : IType
         if (callback != null)
         {
             callback.Invoke(param, interpreter);
+        }
+        else if (callback1 != null)
+        {
+            callback1.Invoke(param, interpreter);
         }
         else
         {

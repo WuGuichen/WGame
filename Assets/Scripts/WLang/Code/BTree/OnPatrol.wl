@@ -2,7 +2,7 @@
 
     SELECTOR{
         DO{
-//            if MoveToTarget(){
+//            if @E_SELF:MoveEntityToTarget(){
 //                a = 1
 //            }
             if MoveToTarget(){

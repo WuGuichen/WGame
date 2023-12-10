@@ -437,12 +437,11 @@ public class WLangMgr : Singleton<WLangMgr>
                 var inter = interpreter;
 
                 RemoveEvent(id);
-                void Callback0()
+
+                eventCallback0s[id] = () =>
                 {
                     ctxList.ForEach(ctx => { inter.ReVisitFile(ctx); });
-                }
-
-                eventCallback0s[id] = Callback0;
+                };
                 EventCenter.AddListener(id, eventCallback0s[id]);
                 codeCache[path] = fileContext;
             }
