@@ -450,4 +450,8 @@ public class FactoryServiceImplementation : IFactoryService
         return null;
     }
 
+    public GameEntity GetGameEntity(int instId)
+    {
+        return _gameEntityDB[instId];
+    }
 }

@@ -7,8 +7,9 @@ public class EntityUtils
     private static readonly int enemyLayer = LayerMask.NameToLayer("Enemy");
     private static readonly int enemySensorLayer = LayerMask.NameToLayer("EnemyHitSensor");
     private static readonly int playerSensorLayer = LayerMask.NameToLayer("PlayerHitSensor");
-
-    public const int CharacterBaseID = 9000000;
+    
+    // 必须小于自定义ID
+    public const int CharacterBaseID = 9000000;   
     public const int WeaponBaseID = 9000000;
 
     private static IFactoryService _factory;
@@ -102,7 +103,7 @@ public class EntityUtils
 
     public static void GenRandomWeapon()
     {
-        var factory = Contexts.sharedInstance.meta.factoryService.instance;
+        var factory = FactoryService;
         int weaponId = 1;
         factory.GenWeaponEntity(weaponId, out var weapon);
         factory.SetWeaponDrop(weapon, GetRandomPositionAroundCharacter(), Quaternion.identity, Vector3.one);
@@ -150,5 +151,17 @@ public class EntityUtils
     public static void Dispose()
     {
         _factory = null;
+    }
+
+    public static GameEntity GetGameEntity(int id)
+    {
+        if (id < CharacterBaseID)
+        {
+            return FactoryService.GetGameEntity(id);
+        }
+        else
+        {
+            return Contexts.sharedInstance.game.GetEntityWithEntityID(id);
+        }
     }
 }

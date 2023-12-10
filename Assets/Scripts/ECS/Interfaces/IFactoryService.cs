@@ -17,4 +17,5 @@ public interface IFactoryService
     public void SetWeaponDrop(WeaponEntity weapon, Vector3 pos, Quaternion rot, Vector3 scale);
     public void SetWeaponEquipTo(WeaponEntity weapon, GameEntity entity);
     public GameEntity SelectRandomGenCharacter();
+    public GameEntity GetGameEntity(int instId);
 }

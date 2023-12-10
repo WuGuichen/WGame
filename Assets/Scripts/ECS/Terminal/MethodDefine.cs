@@ -207,7 +207,7 @@ public class MethodDefine
 
     private bool CheckEntity(int id, out GameEntity entity)
     {
-        entity = Contexts.sharedInstance.game.GetEntityWithEntityID(id);
+        entity = EntityUtils.GetGameEntity(id);
         if (entity != null && entity.isEnabled)
             return false;
         WLogger.Warning("没有目标角色:" + id);
