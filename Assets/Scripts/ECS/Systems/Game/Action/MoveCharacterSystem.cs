@@ -133,6 +133,8 @@ public class MoveCharacterSystem : IExecuteSystem
             entity.rigidbodyService.service.OnFixedUpdate(_timeService.fixedDeltaTime);
             entity.ReplaceCharCurSpeed(curSpeed);
             entity.ReplaceCharSpeedMulti(speedMulti);
+            
+            EntityUtils.GameBVH.MarkForUpdate(entity.gameViewService.service);
         }
     }
 

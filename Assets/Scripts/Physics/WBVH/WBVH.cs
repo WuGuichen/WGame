@@ -17,6 +17,19 @@ namespace TWY.Physics
         }
     }
 
+    internal class BVHNodeCmp<T> : IEqualityComparer<WBVHNode<T>>
+    {
+        public bool Equals(WBVHNode<T> x, WBVHNode<T> y)
+        {
+            return x.GetHashCode() == y.GetHashCode();
+        }
+
+        public int GetHashCode(WBVHNode<T> obj)
+        {
+            return obj.GetHashCode();
+        }
+    }
+
     public class WBVH<T>
     {
         private Material _debugMat = null;
@@ -27,7 +40,7 @@ namespace TWY.Physics
         public int nodeCount = 0;
         public int maxDepth = 0;
 
-        public HashSet<WBVHNode<T>> refitNodes = new HashSet<WBVHNode<T>>();
+        public HashSet<WBVHNode<T>> refitNodes = new HashSet<WBVHNode<T>>(new BVHNodeCmp<T>());
 
         // private float3 actualBoxSize;
         public WBVH(WBVHNodeAdapter<T> nodeAdapter, List<T> objs, int leafObjMax = 1)
@@ -75,7 +88,7 @@ namespace TWY.Physics
             while (refitNodes.Count > 0)
             {
                 int maxDepth = refitNodes.Max(n => n.depth);
-
+            
                 var sweepNodes = refitNodes.Where(n => n.depth == maxDepth).ToList();
                 sweepNodes.ForEach(n => refitNodes.Remove(n));
                 sweepNodes.ForEach(n => n.TryRotate(this));
@@ -160,7 +173,7 @@ namespace TWY.Physics
             }
         }
         
-        internal void DrawAllBounds()
+        public void DrawAllBounds()
         {
             root.DrawAllBounds();
         }

@@ -105,6 +105,9 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
         }
     }
 
+    private int instanceID;
+    public int InstanceID => instanceID;
+
     public Vector3 GetCameraPos()
     {
         return _cameraTransform.position;
@@ -126,15 +129,16 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     public Vector3 Position => transform.position;
     public Vector2 PlanarPosition => new Vector2(Position.x, Position.z);
     
-    public IGameViewService OnInit()
+    public IGameViewService OnInit(int instId)
     {
+        instanceID = instId;
         if (_cameraTransform != null)
             return this;
         _cameraTransform = transform.GetChild(0);
         _model = transform.GetChild(1);
         _focusPoint = transform.GetChild(2);
         _focusPoint.gameObject.SetActive(true);
-        var capsule = transform.GetComponent<CapsuleCollider>();
+        var capsule = transform.GetComponent<CharacterController>();
         if (capsule)
         {
             height = capsule.height;
@@ -182,5 +186,10 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
         {
             WLogger.Info("Alive");
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return InstanceID;
     }
 }

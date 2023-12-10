@@ -284,28 +284,75 @@ namespace TWY.Physics
             LL_RL,
         }
 
-        internal class RotOpt : IComparable<RotOpt>
-        {
-            // rotation option
-            public float SAH;
-            public Rot rot;
+        // internal class RotOpt : IComparable<RotOpt>
+        // {
+        //     private static Stack<RotOpt> _pool = new();
+        //
+        //     public static RotOpt Get()
+        //     {
+        //         if (_pool.Count > 0)
+        //         {
+        //             return _pool.Pop();
+        //         }
+        //
+        //         return new RotOpt();
+        //     }
+        //     public static RotOpt Get(float SAH, Rot rot)
+        //     {
+        //         if (_pool.Count > 0)
+        //         {
+        //             var res = _pool.Pop();
+        //             res.rot = rot;
+        //             res.SAH = SAH;
+        //             return res;
+        //         }
+        //
+        //         return new RotOpt(SAH, rot);
+        //     }
+        //
+        //     public static void WarmUp(int num)
+        //     {
+        //         for (int i = _pool.Count; i < num; i++)
+        //         {
+        //             Push(new RotOpt());
+        //         }
+        //     }
+        //
+        //     public static void Push(RotOpt opt)
+        //     {
+        //         _pool.Push(opt);
+        //     }
+        //     // rotation option
+        //     public float SAH;
+        //     public Rot rot;
+        //
+        //     internal RotOpt()
+        //     {
+        //         
+        //     }
+        //     internal RotOpt(float SAH, Rot rot)
+        //     {
+        //         this.SAH = SAH;
+        //         this.rot = rot;
+        //     }
+        //
+        //     public int CompareTo(RotOpt other)
+        //     {
+        //         return SAH.CompareTo(other.SAH);
+        //     }
+        // }
 
-            internal RotOpt(float SAH, Rot rot)
-            {
-                this.SAH = SAH;
-                this.rot = rot;
-            }
-
-            public int CompareTo(RotOpt other)
-            {
-                return SAH.CompareTo(other.SAH);
-            }
-        }
+        private static List<Rot> eachRot;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private static List<Rot> EachRot
         {
-            get { return new List<Rot>((Rot[])Enum.GetValues(typeof(Rot))); }
+            get
+            {
+                if(eachRot == null)
+                    eachRot = new List<Rot>((Rot[])Enum.GetValues(typeof(Rot)));
+                return eachRot;
+            }
         }
 
         // node表面积
@@ -573,44 +620,60 @@ namespace TWY.Physics
             // SAH, 左右相加，不考虑有交集的情况
             float mySA = SA(left) + SA(right);
 
+		    UnityEngine.Profiling.Profiler.BeginSample("OptimizeBVHTryRotate");
+            float minSAH = float.MaxValue;
+            Rot bestRot = Rot.NONE;
+            float tmpSA = mySA;
             // 把每个方向的rotate都试一次
-            RotOpt bestRot = EachRot.Min((rot) =>
+            for (int i = 0; i < EachRot.Count; i++)
             {
+                var rot = EachRot[i];
+                tmpSA = mySA;
                 switch (rot)
                 {
-                    case Rot.NONE: return new RotOpt(mySA, Rot.NONE);
+                    case Rot.NONE:
+                        tmpSA = mySA;
+                        break;
                     // child to grandchild rotations
                     case Rot.L_RL:
-                        if (right.IsLeaf) return new RotOpt(float.MaxValue, Rot.NONE);
-                        else return new RotOpt(SA(right.left) + SA(AABBofPair(left, right.right)), rot);
+                        if (!right.IsLeaf)
+                            tmpSA = SA(right.left) + SA(AABBofPair(left, right.right));
+                        break;
                     case Rot.L_RR:
-                        if (right.IsLeaf) return new RotOpt(float.MaxValue, Rot.NONE);
-                        else return new RotOpt(SA(right.right) + SA(AABBofPair(left, right.left)), rot);
+                        if (!right.IsLeaf)
+                            tmpSA = SA(right.right) + SA(AABBofPair(left, right.left));
+                        break;
                     case Rot.R_LL:
-                        if (left.IsLeaf) return new RotOpt(float.MaxValue, Rot.NONE);
-                        else return new RotOpt(SA(AABBofPair(right, left.right)) + SA(left.left), rot);
+                        if (!left.IsLeaf)
+                            tmpSA = SA(AABBofPair(right, left.right)) + SA(left.left);
+                        break;
                     case Rot.R_LR:
-                        if (left.IsLeaf) return new RotOpt(float.MaxValue, Rot.NONE);
-                        else return new RotOpt(SA(AABBofPair(right, left.left)) + SA(left.right), rot);
-                    // grandchild to grandchild rotations
+                        if (!left.IsLeaf)
+                            tmpSA = SA(AABBofPair(right, left.left)) + SA(left.right);
+                        break;
                     case Rot.LL_RR:
-                        if (left.IsLeaf || right.IsLeaf) return new RotOpt(float.MaxValue, Rot.NONE);
-                        else
-                            return new RotOpt(
-                                SA(AABBofPair(right.right, left.right)) + SA(AABBofPair(right.left, left.left)), rot);
+                        if (!(left.IsLeaf || right.IsLeaf))
+                            tmpSA = SA(AABBofPair(right.right, left.right)) + SA(AABBofPair(right.left, left.left));
+                        break;
                     case Rot.LL_RL:
-                        if (left.IsLeaf || right.IsLeaf) return new RotOpt(float.MaxValue, Rot.NONE);
-                        else
-                            return new RotOpt(
-                                SA(AABBofPair(right.left, left.right)) + SA(AABBofPair(left.left, right.right)), rot);
+                        if (!(left.IsLeaf || right.IsLeaf))
+                            tmpSA = SA(AABBofPair(right.left, left.right)) + SA(AABBofPair(left.left, right.right));
+                        break;
                     // unknown...
                     default:
                         throw new NotImplementedException(
                             "missing implementation for BVH Rotation SAH Computation .. " + rot.ToString());
                 }
-            });
 
-            if (bestRot.rot == Rot.NONE)
+                if (tmpSA < minSAH)
+                {
+                    minSAH = tmpSA;
+                    bestRot = rot;
+                }
+            }
+
+            UnityEngine.Profiling.Profiler.EndSample();
+            if (bestRot == Rot.NONE)
             {
                 if (parent != null)
                 {
@@ -626,7 +689,7 @@ namespace TWY.Physics
                 if (parent != null) bvh.refitNodes.Add(parent);
 
                 // 看优化了多少，以此判断是否需要旋转
-                if ((mySA - bestRot.SAH) < mySA * 0.1f)
+                if ((mySA - minSAH) < mySA * 0.1f)
                     return;
                 // UnityEngine.Debug.Log(String.Format("BVH swap {0} from {1} to {2}", bestRot.rot.ToString(), mySA,
                     // bestRot.SAH));
@@ -637,7 +700,7 @@ namespace TWY.Physics
                 //  3. update the parent pointers
                 //  4. refit the boundary box
                 WBVHNode<T> swap = null;
-                switch (bestRot.rot)
+                switch (bestRot)
                 {
                     case Rot.NONE: break;
                     // child to grandchild rotations
@@ -698,10 +761,10 @@ namespace TWY.Physics
                     // unknown...
                     default:
                         throw new NotImplementedException("missing implementation for BVH Rotation .. " +
-                                                          bestRot.rot.ToString());
+                                                          bestRot.ToString());
                 }
                 
-                switch (bestRot.rot)
+                switch (bestRot)
                 {
                     case Rot.L_RL:
                     case Rot.L_RR:
@@ -756,6 +819,8 @@ namespace TWY.Physics
 
         internal void DrawAllBounds(float depth = 0)
         {
+            if (box.Size.x == 0)
+                return;
             if (depth <= 4)
             {
                 float tintVal = depth / 4;
@@ -787,5 +852,18 @@ namespace TWY.Physics
             Gizmos.color = Color.white;
         }
 
+        public override int GetHashCode()
+        {
+            if (_objects == null)
+            {
+                return -2;
+            }
+
+            if (_objects.Count == 0)
+            {
+                return -1;
+            }
+            return _objects[0].GetHashCode();
+        }
     }
 }

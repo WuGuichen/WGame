@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
@@ -171,6 +172,14 @@ public class TestSceneSystem : MonoBehaviour
 		_lateUpdateSystems.Cleanup();
 		
 		WTriggerMgr.Inst.OnEndUpdate();
+		UnityEngine.Profiling.Profiler.BeginSample("OptimizeBVH");
+		EntityUtils.GameBVH.Optimize();
+		UnityEngine.Profiling.Profiler.EndSample();
+    }
+
+    private void OnDrawGizmos()
+    {
+		EntityUtils.GameBVH.DrawAllBounds();
     }
 
     private void OnGUI()

@@ -4,6 +4,12 @@ public class InstaceDB<T> where T : new()
     private int count = 0;
     private System.Collections.Generic.Stack<int> emptyStk = new();
     private readonly T empty = default;
+    private int _maxNum;
+
+    public InstaceDB(int maxNum)
+    {
+        _maxNum = maxNum;
+    }
 
     public int Register(T entity)
     {
@@ -24,6 +30,8 @@ public class InstaceDB<T> where T : new()
     private void Ensure()
     {
         int len = list.Length;
+        if(count > _maxNum)
+            WLogger.Error("超过最大可生成实体数");
         if (count >= len)
         {
             var tmp = new T[len*2];

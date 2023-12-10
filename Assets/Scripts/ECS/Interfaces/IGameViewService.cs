@@ -2,6 +2,8 @@ using UnityEngine;
 
 public interface IGameViewService
 {
+    int InstanceID { get; }
+    float Height { get; }
     Vector3 GetCameraPos();
     Vector3 LocalizeVectorXY(Vector2 vector, bool isFocus = false);
     Transform Model { get; }
@@ -15,5 +17,6 @@ public interface IGameViewService
     void Thrust();
     void OnUpdateMove(float deltaTime);
     Transform FocusPoint { get; }
-    IGameViewService OnInit();
+    IGameViewService OnInit(int instID);
+    int GetHashCode();
 }

@@ -7,7 +7,7 @@ namespace TWY.Physics
         float3 Center { get; set; }
         float3 Support(float3 direction);
     }
-    public struct AABBF : WCollider
+    public struct AABBF
     {
         public float3 c;
         public float3 r;

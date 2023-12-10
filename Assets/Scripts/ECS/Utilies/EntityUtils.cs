@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using BaseData.Character;
+using TWY.Physics;
 using UnityEngine;
 
 public class EntityUtils
@@ -8,11 +10,24 @@ public class EntityUtils
     private static readonly int enemySensorLayer = LayerMask.NameToLayer("EnemyHitSensor");
     private static readonly int playerSensorLayer = LayerMask.NameToLayer("PlayerHitSensor");
     
-    // 必须小于自定义ID
+    // 约定必须小于自定义ID且大于最大存在实体数
     public const int CharacterBaseID = 9000000;   
     public const int WeaponBaseID = 9000000;
 
     private static IFactoryService _factory;
+
+    private static WBVH<IGameViewService> _gameBVH =
+        new WBVH<IGameViewService>(new WBVHEntityAdapter(), new List<IGameViewService>());
+
+    public static WBVH<IGameViewService> GameBVH
+    {
+        get
+        {
+            if(_gameBVH == null)
+                _gameBVH = new WBVH<IGameViewService>(new WBVHEntityAdapter(), new List<IGameViewService>());
+            return _gameBVH;
+        }
+    }
 
     private static IFactoryService FactoryService
     {
@@ -151,6 +166,7 @@ public class EntityUtils
     public static void Dispose()
     {
         _factory = null;
+        _gameBVH = null;
     }
 
     public static GameEntity GetGameEntity(int id)

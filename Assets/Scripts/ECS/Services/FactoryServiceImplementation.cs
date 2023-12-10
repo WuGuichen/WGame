@@ -42,7 +42,7 @@ public class FactoryServiceImplementation : IFactoryService
 #endif
         _gameContext = contexts.game;
         _weaponContext = contexts.weapon;
-        _gameEntityDB = new InstaceDB<GameEntity>();
+        _gameEntityDB = new InstaceDB<GameEntity>(EntityUtils.CharacterBaseID);
     }
     
     #if UNITY_EDITOR
@@ -200,7 +200,7 @@ public class FactoryServiceImplementation : IFactoryService
         
         var info = entity.characterInfo.value;
         // 游戏物体
-        entity.AddGameViewService(obj.GetComponent<IGameViewService>().OnInit());
+        entity.AddGameViewService(obj.GetComponent<IGameViewService>().OnInit(instanceID));
         // 刚体
         entity.AddRigidbodyService(obj.GetComponent<IRigidbodyService>().OnInit());
         entity.rigidbodyService.service.SetEntity(entity);
@@ -315,6 +315,9 @@ public class FactoryServiceImplementation : IFactoryService
         {
             motion.motionService.service.ResetMotion();
         }
+        
+        // 加入bvh
+        EntityUtils.GameBVH.Add(entity.gameViewService.service);
     }
 
     public void GenWeaponEntity(int weaponID, out WeaponEntity weapon)
