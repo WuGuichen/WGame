@@ -7,13 +7,22 @@ public class EntityUtils
     private static readonly int enemyLayer = LayerMask.NameToLayer("Enemy");
     private static readonly int enemySensorLayer = LayerMask.NameToLayer("EnemyHitSensor");
     private static readonly int playerSensorLayer = LayerMask.NameToLayer("PlayerHitSensor");
-    
-    public static GameEntity GetGameEntity(GameObject obj)
+
+    public const int CharacterBaseID = 9000000;
+    public const int WeaponBaseID = 9000000;
+
+    private static IFactoryService _factory;
+
+    private static IFactoryService FactoryService
     {
-        var entity = Contexts.sharedInstance.game.GetEntityWithEntityID(int.Parse(obj.name));
-        return entity;
+        get
+        {
+            if (_factory == null)
+                _factory = Contexts.sharedInstance.meta.factoryService.instance;
+            return _factory;
+        }
     }
-    
+
     public static Vector3 GetCameraPos()
     {
         var cam = Contexts.sharedInstance.meta.mainCameraService.service.Camera;
@@ -29,7 +38,7 @@ public class EntityUtils
     {
         if (entity.hasLinkWeapon)
         {
-            Contexts.sharedInstance.meta.factoryService.instance.SetWeaponDrop(entity.linkWeapon.Weapon, entity.gameViewService.service.Position + entity.gameViewService.service.Model.forward, Quaternion.identity, Vector3.one);
+            FactoryService.SetWeaponDrop(entity.linkWeapon.Weapon, entity.gameViewService.service.Position + entity.gameViewService.service.Model.forward, Quaternion.identity, Vector3.one);
             entity.linkMotion.Motion.motionService.service.ResetMotion();
         }
     }
@@ -85,11 +94,10 @@ public class EntityUtils
 
     public static void GenRandomCharacter()
     {
-        var factory = Contexts.sharedInstance.meta.factoryService.instance;
         int num = Random.Range(1, 3);
         int charId = num;
         int infoId = num;
-        factory.GenCharacter(charId, infoId, GetRandomPositionAroundCharacter(), Quaternion.identity, out var entity);
+        FactoryService.GenCharacter(charId, infoId, GetRandomPositionAroundCharacter(), Quaternion.identity, out var entity);
     }
 
     public static void GenRandomWeapon()
@@ -137,5 +145,10 @@ public class EntityUtils
             return playerSensorLayer;
         }
         return 0;
+    }
+
+    public static void Dispose()
+    {
+        _factory = null;
     }
 }

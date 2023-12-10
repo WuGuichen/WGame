@@ -5,7 +5,6 @@ using UnityEngine;
 public interface IFactoryService
 {
     public void InitSceneObjectRoot(Transform sceneRoot);
-    // public void RemovePlayer(int type, bool force = false);
     public AnimationClip GetAnimationClip(int clipID);
     public void LoadAnimationClip(string clipName, Action<AnimationClip> callback);
     public EventNodeScriptableObject GetMotion(int motionID);

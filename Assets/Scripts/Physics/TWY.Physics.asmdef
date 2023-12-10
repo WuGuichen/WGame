@@ -1,0 +1,20 @@
+{
+    "name": "TWY.Physics",
+    "rootNamespace": "",
+    "references": [
+        "Unity.Mathematics",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

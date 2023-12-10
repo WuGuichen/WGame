@@ -162,6 +162,7 @@ public class TestSceneSystem : MonoBehaviour
         _settingContext.RemoveGameSetting();
         WLangMgr.Inst.OnDispose();
         EventCenter.RemoveListener(EventDefine.OnGameResourcesLoaded, OnGameStart);
+        EntityUtils.Dispose();
     }
 
     private void LateUpdate()

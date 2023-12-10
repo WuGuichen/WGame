@@ -21,9 +21,11 @@ public class FactoryServiceImplementation : IFactoryService
     private Dictionary<int, AnimationClip> _clips = new();
     private Dictionary<int, EventNodeScriptableObject> _motions = new Dictionary<int, EventNodeScriptableObject>();
 
-    private const int characterBaseID = 9000000;
+    private readonly InstaceDB<GameEntity> _gameEntityDB;
+
+    private const int characterBaseID = EntityUtils.CharacterBaseID;
     private int genCharacterNum = 0;
-    private const int weaponBaseID = 9000000;
+    private const int weaponBaseID = EntityUtils.WeaponBaseID;
     private int genWeaponNum = 0;
 
     #if UNITY_EDITOR
@@ -40,6 +42,7 @@ public class FactoryServiceImplementation : IFactoryService
 #endif
         _gameContext = contexts.game;
         _weaponContext = contexts.weapon;
+        _gameEntityDB = new InstaceDB<GameEntity>();
     }
     
     #if UNITY_EDITOR
@@ -124,6 +127,7 @@ public class FactoryServiceImplementation : IFactoryService
             motionWatcher = null;
         }
         #endif
+        _gameEntityDB.Clear();
     }
 
 #if UNITY_EDITOR
@@ -145,6 +149,11 @@ public class FactoryServiceImplementation : IFactoryService
     }
 #endif
 
+    public void RemoveCharacter(int instanceID)
+    {
+        _gameEntityDB.Cancel(instanceID);
+    }
+
     public void GenCharacter(int charID, int infoID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback = null)
     {
         var data = GameData.Tables.TbCharacter[charID];
@@ -154,6 +163,7 @@ public class FactoryServiceImplementation : IFactoryService
             WLogger.Error("没有相应角色id：" + charID);
             return;
         }
+
         int id = characterBaseID + genCharacterNum;
         genCharacterNum++;
         entity = _gameContext.CreateEntity();
@@ -185,6 +195,9 @@ public class FactoryServiceImplementation : IFactoryService
 
     private void InitCharacter(ref GameEntity entity, GameObject obj)
     {
+        int instanceID = _gameEntityDB.Register(entity);
+        entity.AddInstanceID(instanceID);
+        
         var info = entity.characterInfo.value;
         // 游戏物体
         entity.AddGameViewService(obj.GetComponent<IGameViewService>().OnInit());
