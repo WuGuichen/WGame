@@ -197,7 +197,9 @@ public class MoveAgent
             // 发现目标
             _service.TriggerFSM(StateDefine.SpottedTarget);
         }
+        UnityEngine.Profiling.Profiler.BeginSample("FSM_BTreeTick");
         _onPatrolTree.Tick();
+        UnityEngine.Profiling.Profiler.EndSample();
     }
     
     public void OnPatrolExit()

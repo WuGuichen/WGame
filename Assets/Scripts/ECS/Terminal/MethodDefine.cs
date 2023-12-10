@@ -44,6 +44,7 @@ public class MethodDefine
         bind("TriggerFSM", TriggerFSM);
         bind("InitGotHitDict", InitGotHitDict);
         bind("GetTargetSensorLayer", GetTargetSensorLayer);
+        bind("MoveEntityToTarget", MoveEntityToTarget);
     }
 
     public void TransMotionType(List<Symbol> param, Interpreter interpreter)
@@ -205,7 +206,7 @@ public class MethodDefine
         ActionHelper.DoMove(entity, param[1].ToVector3(def), speed);
     }
 
-    private bool CheckEntity(int id, out GameEntity entity)
+    private static bool CheckEntity(int id, out GameEntity entity)
     {
         entity = EntityUtils.GetGameEntity(id);
         if (entity != null && entity.isEnabled)
@@ -382,5 +383,21 @@ public class MethodDefine
         if (CheckEntity(param[0].Value, out var entity))
             return;
         // entity.ReplaceDetectedCharacter();
+    }
+    
+    public static void MoveEntityToTarget(List<Symbol> param, Interpreter interpreter)
+    {
+        if (CheckEntity(param[0].Value, out var entity))
+            return;
+        var agent = entity.aiAgent.service.MoveAgent;
+        if(param.Count < 2)
+            interpreter.SetRetrun(agent.MoveToTarget());
+        else
+        {
+            if (param[1].Type == BaseDefinition.TYPE_FLOAT)
+                interpreter.SetRetrun(agent.MoveToTarget(param[1].ToFloat(interpreter.Definition)));
+            else
+                interpreter.SetRetrun(agent.MoveToTarget(param[1].Value));
+        }
     }
 }

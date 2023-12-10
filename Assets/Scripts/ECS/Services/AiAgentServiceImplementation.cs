@@ -141,6 +141,7 @@ public class AiAgentServiceImplementation : IAiAgentService
     }
     private void MoveToTarget(List<Symbol> list, Interpreter interpreter)
     {
+        UnityEngine.Profiling.Profiler.BeginSample("FSM_BTree_MoveToTarget");
         if (list.Count == 0)
         {
             interpreter.SetRetrun(moveAgent.MoveToTarget());
@@ -152,6 +153,7 @@ public class AiAgentServiceImplementation : IAiAgentService
             else
                 interpreter.SetRetrun(moveAgent.MoveToTarget(list[0].Value));
         }
+        UnityEngine.Profiling.Profiler.EndSample();
     }
 
     private void OnTestWaitEnter(List<Symbol> param, Interpreter interpreter)
@@ -294,12 +296,14 @@ public class AiAgentServiceImplementation : IAiAgentService
     {
         if (!_entity.isDeadState && !_entity.isCamera)
         {
+            UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
             for (int i = 0; i < _fsmList.Count; i++)
             {
                 _fsmList[i].OnLogic();
-                _uiService.SetMessage("state: " + ConstDefine.GetStateDefineName(_fsmList[i].ActiveStateName));
+                // _uiService.SetMessage("state: " + ConstDefine.GetStateDefineName(_fsmList[i].ActiveStateName));
             }
             IsActing = true;
+            UnityEngine.Profiling.Profiler.EndSample();
         }
         else
         {
