@@ -180,4 +180,9 @@ public class EntityUtils
             return Contexts.sharedInstance.game.GetEntityWithEntityID(id);
         }
     }
+
+    public static GameEntity[] GetGameEntities()
+    {
+        return Contexts.sharedInstance.game.GetEntities();
+    }
 }

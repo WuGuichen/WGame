@@ -15,5 +15,6 @@ namespace TWY.Physics
         void UnmapObject(T obj);
         void CheckMap(T obj);
         WBVHNode<T> GetLeaf(T obj);
+        void Optimize();
     }
 }

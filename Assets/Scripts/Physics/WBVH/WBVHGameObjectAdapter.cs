@@ -49,5 +49,12 @@ namespace TWY.Physics
         }
 
         public WBVHNode<GameObject> GetLeaf(GameObject obj) => gameObjectToLeafMap[obj];
+        public void Optimize()
+        {
+            for (int i = BVH.maxDepth; i >= 0; i--)
+            {
+                
+            }
+        }
     }
 }

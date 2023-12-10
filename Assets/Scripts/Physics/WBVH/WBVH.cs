@@ -40,8 +40,6 @@ namespace TWY.Physics
         public int nodeCount = 0;
         public int maxDepth = 0;
 
-        public HashSet<WBVHNode<T>> refitNodes = new HashSet<WBVHNode<T>>(new BVHNodeCmp<T>());
-
         // private float3 actualBoxSize;
         public WBVH(WBVHNodeAdapter<T> nodeAdapter, List<T> objs, int leafObjMax = 1)
         {
@@ -85,14 +83,13 @@ namespace TWY.Physics
                 throw new System.Exception("In order to use optimize, you must set LEAF_OBJ_MAX=1");
             }
 
-            while (refitNodes.Count > 0)
-            {
-                int maxDepth = refitNodes.Max(n => n.depth);
-            
-                var sweepNodes = refitNodes.Where(n => n.depth == maxDepth).ToList();
-                sweepNodes.ForEach(n => refitNodes.Remove(n));
-                sweepNodes.ForEach(n => n.TryRotate(this));
-            }
+            // var list = refitNodes.ToList();
+            //
+            // var sweepNodes = refitNodes.Where(n => n.depth == maxDepth).ToList();
+            // sweepNodes.ForEach(n => refitNodes.Remove(n));
+            // 就是从最深层开始进行tryRotate
+            // sweepNodes.ForEach(n => n.TryRotate(this));
+            adapter.Optimize();
         }
 
         public void Add(T newObj)
