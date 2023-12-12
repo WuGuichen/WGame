@@ -127,67 +127,30 @@ public class TestSceneSystem : MonoBehaviour
 		    }
 	    }
 
-	    UnityEngine.Profiling.Profiler.BeginSample("OnGameUpdate");
 	    EventCenter.Trigger(EventDefine.OnGameUpdate);
-	    UnityEngine.Profiling.Profiler.EndSample();
 
-	    UnityEngine.Profiling.Profiler.BeginSample("TickSystem");
 	    TickManager.Inst.UpdateTick(_contexts.meta.timeService.instance.deltaTime);
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    UnityEngine.Profiling.Profiler.BeginSample("VmSystem");
 	    _vmSystems.Execute();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    
-	    UnityEngine.Profiling.Profiler.BeginSample("GameSystem");
 	    _gameSystems.Execute();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    
-	    UnityEngine.Profiling.Profiler.BeginSample("DetectSystem");
 	    _detectSystems.Execute();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    
-	    UnityEngine.Profiling.Profiler.BeginSample("GameEventSystem");
 	    _gameEventSystems.Execute();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    
-	    // 3.9kb
-	    UnityEngine.Profiling.Profiler.BeginSample("OtherSystem");
 	    _systems.Execute();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    
-	    // 5.3kb
-	    UnityEngine.Profiling.Profiler.BeginSample("MotionSystem");
 	    _processMotionSystems.Execute();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    UnityEngine.Profiling.Profiler.BeginSample("CleanSystem");
 	    _systems.Cleanup();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    UnityEngine.Profiling.Profiler.BeginSample("CleanMotionSystem");
 	    _processMotionSystems.Cleanup();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    UnityEngine.Profiling.Profiler.BeginSample("CleanEventSystem");
 	    _gameEventSystems.Cleanup();
-	    UnityEngine.Profiling.Profiler.EndSample();
 
 	    if (Input.GetKeyDown(KeyCode.LeftAlt))
 	    {
 			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(Cursor.visible ? 0 : 1));
 	    }
 	    
-        UnityEngine.Profiling.Profiler.BeginSample("GameUpdateIntParse");
-        var tt = "132";
-        var t = int.Parse(tt);
-	    UnityEngine.Profiling.Profiler.EndSample();
     }
 
     private void FixedUpdate()
     {
-	    UnityEngine.Profiling.Profiler.BeginSample("RigidSystem");
 	    _rigidSystems.Execute();
-	    UnityEngine.Profiling.Profiler.EndSample();
-	    UnityEngine.Profiling.Profiler.BeginSample("LateRigidSystem");
 	    _lateFixedUpdateSystems.Execute();
-	    UnityEngine.Profiling.Profiler.EndSample();
 	    _rigidSystems.Cleanup();
 	    _lateFixedUpdateSystems.Cleanup();
     }
@@ -210,9 +173,7 @@ public class TestSceneSystem : MonoBehaviour
 		_lateUpdateSystems.Cleanup();
 		
 		WTriggerMgr.Inst.OnEndUpdate();
-		UnityEngine.Profiling.Profiler.BeginSample("OptimizeBVH");
 		EntityUtils.GameBVH.Optimize();
-		UnityEngine.Profiling.Profiler.EndSample();
     }
 
     private void OnDrawGizmos()
