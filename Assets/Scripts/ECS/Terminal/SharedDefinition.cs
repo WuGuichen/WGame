@@ -72,7 +72,7 @@ public class SharedDefinition : Singleton<SharedDefinition>, ISharedDefinition
     
     private void EnsureCapacity(ref float[] code)
     {
-        if (idxMethod >= code.Length)
+        if (idxFloat >= code.Length)
         {
             int newSize = code.Length * 2;
             var newCode = new float[newSize];
@@ -83,7 +83,7 @@ public class SharedDefinition : Singleton<SharedDefinition>, ISharedDefinition
     
     private void EnsureCapacity(ref List<Symbol>[] code)
     {
-        if (idxMethod >= code.Length)
+        if (idxTable >= code.Length)
         {
             int newSize = code.Length * 2;
             var newCode = new List<Symbol>[newSize];

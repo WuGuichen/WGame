@@ -57,7 +57,7 @@ numParam       :   s=(INT|FLOAT|ID)
         
 parameters  : (exprRight | exprID) (',' (exprRight | exprID))*;
 
-parametersDef  : ID (',' ID)*;
+parametersDef  : i=ID (',' ID)*;
         
 expr:
     o='-' exprRight    #ExprUnary
@@ -88,7 +88,7 @@ exprMethod  :
             |d=ID '(' parameters? ')'
 ;
 
-exprID    : '@' ID
+exprID    : '@' i=ID
 ;
 
 exprMethodRef : i=ID         #ExprMethodRefID
@@ -100,25 +100,25 @@ exprList    :   OPENBRACK exprRight? (',' exprRight)* CLOSEBRACK
             |   exprInt ':' exprInt (':' exprInt)?
 ;
 
-exprInt  :    ID    #ExprIntID
-            | INT   #ExprIntINT
+exprInt  :    i=ID    #ExprIntID
+            | i=INT   #ExprIntINT
             ;
 
-primary:    ID      #PrimaryID
-    |       INT     #PrimaryINT
-    |       FLOAT   #PrimaryFLOAT
-    |       CHAR    #PrimaryCHAR
-    |       STRING  #PrimarySTRING
-    |       BOOLEAN #PrimaryBOOL
-    |       NULL    #PrimaryNULL
+primary:    i=ID      #PrimaryID
+    |       i=INT     #PrimaryINT
+    |       i=FLOAT   #PrimaryFLOAT
+    |       i=CHAR    #PrimaryCHAR
+    |       i=STRING  #PrimarySTRING
+    |       i=BOOLEAN #PrimaryBOOL
+    |       i=NULL    #PrimaryNULL
     ;
 
 statement  :
-              k=expr '=' exprRight     #StatAssign
+              k=expr '=' r=exprRight     #StatAssign
             | PASS                  #StatPass
             | RETURN r=exprRight         #StatReturn
             | IMPORT f=ID ('.' ID)* #StatImport
-            | DEFINE f=ID OPENPAREN parametersDef? CLOSEPAREN b=block #StatMethod
+            | DEFINE f=ID OPENPAREN p=parametersDef? CLOSEPAREN b=block #StatMethod
             | exprMethod    #StatCommand
             ;
             

@@ -42,11 +42,14 @@ public class MotionEventTriggerProcessor
             if (triggers[curNodeIndex] == null)
             {
                 var trigger = WTrigger.Get(node.eventType, context => context.pInt == _character.entityID.id);
+                var types = node.triggerType;
+                var len = node.triggerType.Length;
+                var parameters = node.triggerParam;
                 trigger.onTrigger.Add(() =>
                 {
-                    for (int i = 0; i < node.triggerType.Length; i++)
+                    for (int i = 0; i < len; i++)
                     {
-                        triggerProcessor.DoTrigger(node.triggerType[i], node.triggerParam[i]);
+                        triggerProcessor.DoTrigger(types[i], parameters[i]);
                     }
                 });
                 WTriggerMgr.Inst.Register(trigger);
@@ -86,11 +89,14 @@ public class MotionEventTriggerProcessor
                 {
                     trigger = WTrigger.Get(node.eventType, null);
                 }
+                var types = node.triggerType;
+                var len = node.triggerType.Length;
+                var parameters = node.triggerParam;
                 trigger.onTrigger.Add(() =>
                 {
-                    for (int i = 0; i < node.triggerType.Length; i++)
+                    for (int i = 0; i < len; i++)
                     {
-                        triggerProcessor.DoTrigger(node.triggerType[i], node.triggerParam[i]);
+                        triggerProcessor.DoTrigger(types[i], parameters[i]);
                     }
                 });
                 WTriggerMgr.Inst.Register(trigger);

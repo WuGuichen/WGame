@@ -41,7 +41,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         this._def = def;
         this.baseScope = baseScope;
         _objectPool = new WObjectPool();
-        currentScope = new LocalScope(baseScope);
+        currentScope = LocalScope.Get(baseScope);
         currentScope.Define("PRINT", _def.Define(Method.PRINT, true));
     }
 
@@ -206,17 +206,18 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     {
         var res = context.children[2].Accept(this);
         var ctx = context.children[0];
-        if (ctx is WLangParser.ExprPointContext)
+        var pointCtx = ctx as WLangParser.ExprPointContext;
+        if (pointCtx != null)
         {
-            Symbol symList = currentScope.Resolve(ctx.GetChild(0).GetText());
+            Symbol symList = currentScope.Resolve(pointCtx.l.Text);
             List<Symbol> list = null;
             int point = 0;
-            for (int i = 1; i < ctx.ChildCount; i++)
+            for (int i = 1; i < pointCtx.ChildCount; i++)
             {
                 if (symList.Type == TYPE_TABLE)
                 {
                     list = _def.GetTable(symList.Value);
-                    point = ctx.GetChild(i).Accept(this).Value;
+                    point = pointCtx.children[i].Accept(this).Value;
                     symList = list[point];
                 }
             }
@@ -285,10 +286,10 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     public override Symbol VisitStatMethod(WLangParser.StatMethodContext context)
     {
         var text = context.f.Text;
-        var def = context.parametersDef();
+        var def = context.p;
         string[] param = null;
-        if(def != null)
-            param = def.GetText().Split(',');
+        if (def != null)
+            param = def.GetParams();
         currentScope.Define(text
             , DefineValue(Method.Get(text, context.b.f, param)));
 
@@ -322,9 +323,8 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                 if (caller.IsNull)
                     WLogger.Warning("方法调用者为空:" + text);
             }
-            UnityEngine.Profiling.Profiler.BeginSample("GameUpdateMethod");
+
             res = method.Call(ParseParameters(context.parameters(), caller), this);
-            UnityEngine.Profiling.Profiler.EndSample();
             PushScope();
         }
         else
@@ -453,10 +453,6 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                 if(child is TerminalNodeImpl == false)
                     list.Add(child.Accept(this));
             }
-        }
-        else if (context.Start.Text == "@")
-        {
-            return currentScope.Resolve(context.children[1].GetText());
         }
         else
         {
@@ -771,37 +767,34 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitPrimaryID(WLangParser.PrimaryIDContext context)
     {
-        return currentScope.Resolve(context.GetText());
+        return currentScope.Resolve(context.i.Text);
     }
 
     public override Symbol VisitPrimaryINT(WLangParser.PrimaryINTContext context)
     {
-        UnityEngine.Profiling.Profiler.BeginSample("GameUpdateParse");
-        var text = context.Start.Text;
-        UnityEngine.Profiling.Profiler.EndSample();
-        var res = new Symbol(int.Parse(text), TYPE_INT);
+        var res = new Symbol(int.Parse(context.i.Text), TYPE_INT);
         return res;
     }
 
     public override Symbol VisitPrimaryFLOAT(WLangParser.PrimaryFLOATContext context)
     {
-        return DefineValue(float.Parse(context.GetText()));
+        return DefineValue(float.Parse(context.i.Text));
     }
 
     public override Symbol VisitPrimarySTRING(WLangParser.PrimarySTRINGContext context)
     {
-        return new Symbol(context.GetText().Trim('"'), TYPE_STRING);
+        return new Symbol(context.i.Text.Trim('"'), TYPE_STRING);
     }
 
     public override Symbol VisitPrimaryBOOL(WLangParser.PrimaryBOOLContext context)
     {
-        string text = context.GetText();
+        string text = context.i.Text;
         return text == "true" ? Symbol.TRUE : Symbol.FALSE;
     }
 
     public override Symbol VisitPrimaryCHAR(WLangParser.PrimaryCHARContext context)
     {
-        return new Symbol(context.GetText(), TYPE_CHAR);
+        return new Symbol(context.i.Text, TYPE_CHAR);
     }
     
     public override Symbol VisitPrimaryNULL(WLangParser.PrimaryNULLContext context)
@@ -811,12 +804,12 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitExprIntID(WLangParser.ExprIntIDContext context)
     {
-        return currentScope.Resolve(context.GetText());
+        return currentScope.Resolve(context.i.Text);
     }
 
     public override Symbol VisitExprIntINT(WLangParser.ExprIntINTContext context)
     {
-        return new Symbol(int.Parse(context.GetText()), TYPE_INT);
+        return new Symbol(int.Parse(context.i.Text), TYPE_INT);
     }
 
     public override Symbol VisitExprExpr(WLangParser.ExprExprContext context)
@@ -872,12 +865,8 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitExprID(WLangParser.ExprIDContext context)
     {
-        return currentScope.Resolve(context.children[1].GetText());
+        return currentScope.Resolve(context.i.Text);
     }
-    // public override Symbol VisitExprEntity(WLangParser.ExprEntityContext context)
-    // {
-    //     return new Symbol(currentScope.Resolve(context.children[1].GetText()).Value, TYPE_INT, "entity");
-    // }
     public override Symbol VisitExprCommand(WLangParser.ExprCommandContext context)
     {
         return context.children[0].Accept(this);
@@ -885,12 +874,13 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     private void PopScope()
     {
-        var scope = new LocalScope(currentScope);
+        var scope = LocalScope.Get(currentScope);
         currentScope = scope;
     }
 
     private void PushScope()
     {
+        LocalScope.Push(currentScope);
         currentScope = currentScope.EnclosingScope;
     }
 

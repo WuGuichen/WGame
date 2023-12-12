@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 public class BaseScope : Scope
 {
-    private Scope enclosingScope;
-    private Dictionary<string, Symbol> symbols = new Dictionary<string, Symbol>();
+    protected Scope enclosingScope;
+    protected Dictionary<string, Symbol> symbols = new Dictionary<string, Symbol>();
 
     public BaseScope(Scope parent)
     {

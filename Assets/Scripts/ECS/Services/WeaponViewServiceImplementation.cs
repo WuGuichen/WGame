@@ -157,12 +157,13 @@ namespace Weapon
 
         }
 
+        // todo 用WCollider优化
         public void OnUpdateAttackSensor()
         {
             for (int i = 0; i < checkNum - 1; i++)
             {
-                Debug.DrawLine(lastOriginPosition + i * checkOffset * lastUpDir,
-                    transform.position + lastUpDir * lenUp + i * checkOffset * transform.up, Color.cyan, 3f);
+                // Debug.DrawLine(lastOriginPosition + i * checkOffset * lastUpDir,
+                //     transform.position + lastUpDir * lenUp + i * checkOffset * transform.up, Color.cyan, 3f);
                 var start = lastOriginPosition + i * checkOffset * lastUpDir;
                 var end = transform.position + lastUpDir * lenUp + i * checkOffset * transform.up;
                 var dir = end - start;

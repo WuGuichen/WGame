@@ -7,6 +7,8 @@ public class DeadCharacterSystem : IExecuteSystem
     private readonly IGroup<GameEntity> _attrGroup;
     private readonly IGroup<GameEntity> _focusGroup;
     private readonly IGroup<GameEntity> _detectedCharGroup;
+        private readonly List<GameEntity> listFocus = new List<GameEntity>();
+        private readonly List<GameEntity> listDetected = new List<GameEntity>();
     public DeadCharacterSystem(Contexts contexts)
     {
         _attrGroup = contexts.game.GetGroup(GameMatcher.Attribute);
@@ -31,8 +33,8 @@ public class DeadCharacterSystem : IExecuteSystem
             }
         }
 
-        var listFocus = new List<GameEntity>();
-        var listDetected = new List<GameEntity>();
+        listFocus.Clear();
+        listDetected.Clear();
 
         foreach (var entity in _focusGroup)
         {

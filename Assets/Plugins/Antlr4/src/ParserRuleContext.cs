@@ -241,8 +241,9 @@ namespace Antlr4.Runtime
 
             int j = -1;
             // what element have we found with ctxType?
-            foreach (IParseTree o in children)
+            for (int ii =0; ii < ChildCount; ii++)
             {
+                var o = children[ii];
                 if (o is T)
                 {
                     j++;

@@ -26,7 +26,7 @@ namespace Antlr4.Runtime
         /// This token factory does not explicitly copy token text when constructing
         /// tokens.</p>
         /// </summary>
-        public static readonly ITokenFactory Default = new Antlr4.Runtime.CommonTokenFactory();
+        public static readonly ITokenFactory Default = new Antlr4.Runtime.CommonTokenFactory(true);
 
         /// <summary>
         /// Indicates whether

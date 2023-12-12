@@ -254,11 +254,30 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
     #region 处理节点
     private void ProcessNodes()
     {
-        currentMotion.animationNodes?.ForEach(animationProcessor.ProcessAnimationNode);
+        if (currentMotion.animationNodes != null)
+        {
+            for(int i = 0; i < currentMotion.animationNodes.Count; i++)
+                animationProcessor.ProcessAnimationNode(currentMotion.animationNodes[i]);
+        }
         // 指向第i个节点列表
-        currentMotion.triggerAnimationNodes?.ForEach(animTriggerProcessor.Process);
-        currentMotion.eventTriggerNodes?.ForEach(eventTriggerProcessor.Process);
-        currentMotion.byteCodeCommandNodes?.ForEach(ProcessByteCodeCommandNode);
+        if (currentMotion.triggerAnimationNodes != null)
+        {
+            for(int i = 0; i < currentMotion.triggerAnimationNodes.Count; i++)
+                animTriggerProcessor.Process(currentMotion.triggerAnimationNodes[i]);
+        }
+        // currentMotion.triggerAnimationNodes?.ForEach(animTriggerProcessor.Process);
+        if (currentMotion.eventTriggerNodes != null)
+        {
+            for(int i = 0; i < currentMotion.eventTriggerNodes.Count; i++)
+                eventTriggerProcessor.Process(currentMotion.eventTriggerNodes[i]);
+        }
+        // currentMotion.eventTriggerNodes?.ForEach(eventTriggerProcessor.Process);
+        if (currentMotion.byteCodeCommandNodes != null)
+        {
+            for(int i = 0; i < currentMotion.byteCodeCommandNodes.Count; i++)
+                ProcessByteCodeCommandNode(currentMotion.byteCodeCommandNodes[i]);
+        }
+        // currentMotion.byteCodeCommandNodes?.ForEach(ProcessByteCodeCommandNode);
         hasCheckCodeTime = checkTime;
     }
 
