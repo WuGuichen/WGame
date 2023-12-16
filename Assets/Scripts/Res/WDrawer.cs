@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Shapes;
 using UnityEngine;
+using UnityTimer;
 using WGame.Runtime;
 
 public class WDrawer : SingletonMono<WDrawer>
@@ -8,6 +10,14 @@ public class WDrawer : SingletonMono<WDrawer>
     private static Stack<Transform> _poolStack = new Stack<Transform>();
 
     private static int _poolHead = 0;
+
+    private Transform _transform;
+    public Transform Trans => _transform;
+
+    private void Awake()
+    {
+        _transform = transform;
+    }
 
     private static Transform GetDrawer(Transform parent, Vector3 position, Quaternion rotation, Vector3 scale)
     {
@@ -83,9 +93,31 @@ public class WDrawer : SingletonMono<WDrawer>
     private List<Transform> drawers = new List<Transform>();
     private List<CircleDrawInfo> drawerInfoList = new List<CircleDrawInfo>();
 
-    public CircleDrawInfo RegisterCircle(Transform parent)
+    private readonly Color defaulColor = Color.cyan * 0.4f;
+    
+    public void RegisterCircle(Vector3 center, Vector3 forward, float radius, float autoReleaseTime = 4f)
     {
-        return RegisterCircle(parent, parent.position, parent.rotation, Vector3.one);
+        RegisterCircle(center, forward, radius, defaulColor, autoReleaseTime);
+    }
+    
+    public void RegisterCircle(Vector3 center, Vector3 forward, float radius, Color color, float autoReleaseTime = 4f)
+    {
+        var info = new CircleInfo()
+        {
+            center = center,
+            forward = forward,
+            radius = radius,
+            fillColor = color,
+        };
+        var circle = RegisterCircle(info);
+        Timer.Register(autoReleaseTime, () =>
+        {
+            CancelCircle(circle);
+        });
+    }
+    public CircleDrawInfo RegisterCircle(CircleInfo info)
+    {
+        return RegisterCircle(_transform, info);
     }
     
     public CircleDrawInfo RegisterCircle(Transform parent, Vector3 position, Quaternion rotation)
@@ -102,6 +134,15 @@ public class WDrawer : SingletonMono<WDrawer>
     {
         var trans = GetDrawer(parent, position, rotate, scale);
         var drawInfo = GetCircleInfo(trans);
+        drawerInfoList.Add(drawInfo);
+        return drawInfo;
+    }
+    
+    public CircleDrawInfo RegisterCircle(Transform parent, CircleInfo info)
+    {
+        var trans = GetDrawer(parent, info.center, Quaternion.identity, Vector3.one);
+        var drawInfo = GetCircleInfo(trans);
+        drawInfo.Info = info;
         drawerInfoList.Add(drawInfo);
         return drawInfo;
     }
@@ -124,13 +165,13 @@ public class WDrawer : SingletonMono<WDrawer>
     public void CancelCircle(CircleDrawInfo drawInfo)
     {
         drawerInfoList.Remove(drawInfo);
-        PushCircleInfo(drawInfo, transform);
+        PushCircleInfo(drawInfo, _transform);
     }
 
     public void RecycleDrawObj(Transform filter)
     {
         drawers.Remove(filter);
-        Push(filter, transform);
+        Push(filter, _transform);
     }
 
     private void LateUpdate()

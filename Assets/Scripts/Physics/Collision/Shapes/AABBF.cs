@@ -204,12 +204,13 @@ namespace TWY.Physics
 
         public bool IntersectSphere(SphereF sphere)
         {
-            // float3 actualSize = Size;
-            // Expand(sphere.Radius);
-            // bool intersected = Contains(sphere.Center);
-            // this.Size = actualSize;
-            // return intersected;
             var sqrDist = ClosestPointSqDist(sphere.Center);
+            return sqrDist <= sphere.Radius * sphere.Radius;
+        }
+        
+        public bool IntersectSphere(SphereF sphere, out float sqrDist)
+        {
+            sqrDist = ClosestPointSqDist(sphere.Center);
             return sqrDist <= sphere.Radius * sphere.Radius;
         }
 

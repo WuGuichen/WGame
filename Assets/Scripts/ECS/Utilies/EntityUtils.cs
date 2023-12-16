@@ -39,6 +39,22 @@ public class EntityUtils
         }
     }
 
+    public static void SetEntityCamp(ref GameEntity entity)
+    {
+        var camp = entity.characterInfo.value.camp;
+        switch (camp)
+        {
+            case Camp.Red:
+                entity.isCampRed = true;
+                return;
+            case Camp.White:
+                entity.isCampWhite = true;
+                return;
+            default:
+                break;
+        }
+    }
+
     public static Vector3 GetCameraPos()
     {
         var cam = Contexts.sharedInstance.meta.mainCameraService.service.Camera;

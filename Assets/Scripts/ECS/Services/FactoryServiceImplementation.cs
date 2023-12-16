@@ -209,6 +209,7 @@ public class FactoryServiceImplementation : IFactoryService
         obj.layer = EntityUtils.GetLayer(entity);
         entity.gameViewService.service.Model.gameObject.layer = EntityUtils.GetSensorLayer(entity);
         entity.AddCharacterSensor(1 << EntityUtils.GetTargetSensorLayer(entity), 10f);
+        EntityUtils.SetEntityCamp(ref entity);
 
         // motion
         var motion = Contexts.sharedInstance.motion.CreateEntity();

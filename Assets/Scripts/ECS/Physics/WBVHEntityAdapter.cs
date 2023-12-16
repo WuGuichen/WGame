@@ -4,7 +4,6 @@ using BaseData.Character;
 using Entitas;
 using TWY.Physics;
 using Unity.Mathematics;
-using UnityEngine;
 
 public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
 {
@@ -28,6 +27,11 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
     {
         var pos = obj.Position;
         return new float3(pos.x, pos.y+obj.HalfHeight, pos.z);
+    }
+
+    public HitInfo GetHitInfo(IGameViewService obj, float sqrDist)
+    {
+        return new HitInfo(obj.InstanceID, sqrDist);
     }
 
     public AABBF GetBounds(IGameViewService obj)

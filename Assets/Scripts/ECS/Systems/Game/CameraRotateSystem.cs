@@ -56,7 +56,7 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
             {
                 if (entity.focus.target == null || !entity.focus.target.gameObject.activeInHierarchy)
                 {
-                    entity.ReplaceActionFocus(FocusType.Switch, 8f);
+                    entity.ReplaceActionFocus(FocusType.Switch, 18f);
                     _lookAngle = _cameraTransform.eulerAngles.y;
                     _pivotAngle = _cameraPivotTransform.localEulerAngles.x;
                 }

@@ -20,7 +20,7 @@ public class UpdateFocusInputSystem : IExecuteSystem
     {
         foreach (var entity in _cameraGroup)
         {
-            float area = 8f;
+            float area = 18f;
             if (_inputContext.focusInput.value)
             {
 

@@ -17,6 +17,11 @@ namespace TWY.Physics
             return new float3(pos.x, pos.y, pos.z);
         }
 
+        public HitInfo GetHitInfo(GameObject obj, float sqrDist)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public float GetRadius(GameObject obj)
         {
             AABBF bounds = GetBounds(obj);
