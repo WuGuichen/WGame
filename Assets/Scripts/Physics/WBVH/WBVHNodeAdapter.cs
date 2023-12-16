@@ -9,6 +9,7 @@ namespace TWY.Physics
     {
         WBVH<T> BVH { get; set; }
         float3 GetObjectPos(T obj);
+        AABBF GetBounds(T obj);
         float GetRadius(T obj);
         void MapObj2BVHLeaf(T obj, WBVHNode<T> leaf);
         void OnPositionOrSizeChanged(T changed);

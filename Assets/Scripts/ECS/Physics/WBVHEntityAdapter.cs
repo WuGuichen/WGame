@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using BaseData.Character;
+using Entitas;
 using TWY.Physics;
 using Unity.Mathematics;
 using UnityEngine;
@@ -12,15 +14,30 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
 
     private List<WBVHNode<IGameViewService>>[] bucket = new List<WBVHNode<IGameViewService>>[16];
 
+    private readonly IGroup<GameEntity> _entityGroup;
+
+    public WBVHEntityAdapter(Camp camp)
+    {
+        if (camp == Camp.Red)
+        {
+            _entityGroup = Contexts.sharedInstance.game.GetGroup(GameMatcher.CampRed);
+        }
+    }
+
     public float3 GetObjectPos(IGameViewService obj)
     {
         var pos = obj.Position;
-        return new float3(pos.x, pos.y, pos.z);
+        return new float3(pos.x, pos.y+obj.HalfHeight, pos.z);
+    }
+
+    public AABBF GetBounds(IGameViewService obj)
+    {
+        return obj.Bounds;
     }
 
     public float GetRadius(IGameViewService obj)
     {
-        return obj.Height;
+        return obj.HalfHeight;
     }
 
     public void MapObj2BVHLeaf(IGameViewService obj, WBVHNode<IGameViewService> leaf)
@@ -51,10 +68,8 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
 
     public void Optimize()
     {
-        var entities = EntityUtils.GetGameEntities();
-        for (int i = 0; i < entities.Length; i++)
+        foreach (var entity in _entityGroup)
         {
-            var entity = entities[i];
             if (entity.isEnabled && entity.hasGameViewService)
             {
                 var node = GetLeaf(entity.gameViewService.service);

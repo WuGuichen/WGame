@@ -8,11 +8,14 @@ namespace TWY.Physics
         {
             this.Center = center;
             this.Radius = radius;
+            this.SqrRadius = radius * radius;
         }
 
         public float3 Center { get; set; }
 
         public float Radius { get; set; }
+
+        public float SqrRadius { get; set; }
 
         /// <summary>
         /// 光线与球是否相交

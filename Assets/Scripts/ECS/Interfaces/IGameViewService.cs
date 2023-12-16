@@ -1,9 +1,11 @@
+using TWY.Physics;
 using UnityEngine;
 
 public interface IGameViewService
 {
     int InstanceID { get; }
     float Height { get; }
+    float HalfHeight { get; }
     Vector3 GetCameraPos();
     Vector3 LocalizeVectorXY(Vector2 vector, bool isFocus = false);
     Transform Model { get; }
@@ -16,7 +18,7 @@ public interface IGameViewService
     void BeFocused(bool value);
     void Thrust();
     void OnUpdateMove(float deltaTime);
-    Transform FocusPoint { get; }
-    IGameViewService OnInit(int instID);
+    IGameViewService OnInit(GameEntity entity);
     int GetHashCode();
+    AABBF Bounds { get; }
 }

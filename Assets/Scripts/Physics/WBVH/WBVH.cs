@@ -55,6 +55,20 @@ namespace TWY.Physics
                 root.Objects = new List<T>();
             }
         }
+        
+        private void Traverse(WBVHNode<T> curNode, CapsuleF capsule, List<WBVHNode<T>> hitList)
+        {
+            if (curNode == null)
+                return;
+
+            // 检查hitPoint是否在box中
+            if (curNode.box.IntersectCapsule(capsule))
+            {
+                hitList.Add(curNode);
+                Traverse(curNode.left, capsule, hitList);
+                Traverse(curNode.right, capsule, hitList);
+            }
+        }
 
         private void Traverse(WBVHNode<T> curNode, SphereF sphere, List<WBVHNode<T>> hitList)
         {
@@ -75,6 +89,12 @@ namespace TWY.Physics
             hitList.Clear();
             this.Traverse(root, sphere, hitList);
         }
+        
+        public void TestHitCapsuleNonAlloc(CapsuleF capsuleF, List<WBVHNode<T>> hitList)
+        {
+            hitList.Clear();
+            this.Traverse(root, capsuleF, hitList);
+        }
 
         public void Optimize()
         {
@@ -94,7 +114,7 @@ namespace TWY.Physics
 
         public void Add(T newObj)
         {
-            AABBF box = new AABBF(adapter.GetObjectPos(newObj), new float3(adapter.GetRadius(newObj)));
+            AABBF box = adapter.GetBounds(newObj);
             float sah = WBVHNode<T>.SA(ref box);
             root.Add(adapter, newObj, ref box, sah);
         }

@@ -147,7 +147,13 @@ namespace TWY.Physics
         {
             float dist2 = SqDistSegmentToPoint(sphere.Center);
             float r = sphere.Radius + radius;
-            return dist2 <= radius * radius;
+            return dist2 <= r * r;
+        }
+        
+        public bool IntersectPoint(float3 point)
+        {
+            float dist2 = SqDistSegmentToPoint(point);
+            return dist2 <= Radius*Radius;
         }
 
         public bool IntersectCapsule(CapsuleF capsule)

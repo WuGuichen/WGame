@@ -16,16 +16,16 @@ public class EntityUtils
 
     private static IFactoryService _factory;
 
-    private static WBVH<IGameViewService> _gameBVH =
-        new WBVH<IGameViewService>(new WBVHEntityAdapter(), new List<IGameViewService>());
+    private static WBVH<IGameViewService> _BVHEnemy =
+        new WBVH<IGameViewService>(new WBVHEntityAdapter(Camp.Red), new List<IGameViewService>());
 
-    public static WBVH<IGameViewService> GameBVH
+    public static WBVH<IGameViewService> BvhEnemy
     {
         get
         {
-            if(_gameBVH == null)
-                _gameBVH = new WBVH<IGameViewService>(new WBVHEntityAdapter(), new List<IGameViewService>());
-            return _gameBVH;
+            if(_BVHEnemy == null)
+                _BVHEnemy = new WBVH<IGameViewService>(new WBVHEntityAdapter(Camp.Red), new List<IGameViewService>());
+            return _BVHEnemy;
         }
     }
 
@@ -126,11 +126,11 @@ public class EntityUtils
 
     public static int GetTargetSensorLayer(GameEntity entity)
     {
-        if (entity.characterInfo.value.camp == Camp.Enemy)
+        if (entity.characterInfo.value.camp == Camp.Red)
         {
             return playerSensorLayer;
         }
-        else if (entity.characterInfo.value.camp == Camp.Player)
+        else if (entity.characterInfo.value.camp == Camp.White)
         {
             return enemySensorLayer;
         }
@@ -139,11 +139,11 @@ public class EntityUtils
 
     public static int GetLayer(GameEntity entity)
     {
-        if (entity.characterInfo.value.camp == Camp.Enemy)
+        if (entity.characterInfo.value.camp == Camp.Red)
         {
             return enemyLayer;
         }
-        else if (entity.characterInfo.value.camp == Camp.Player)
+        else if (entity.characterInfo.value.camp == Camp.White)
         {
             return playerLayer;
         }
@@ -152,11 +152,11 @@ public class EntityUtils
     
     public static int GetSensorLayer(GameEntity entity)
     {
-        if (entity.characterInfo.value.camp == Camp.Enemy)
+        if (entity.characterInfo.value.camp == Camp.Red)
         {
             return enemySensorLayer;
         }
-        else if (entity.characterInfo.value.camp == Camp.Player)
+        else if (entity.characterInfo.value.camp == Camp.White)
         {
             return playerSensorLayer;
         }
@@ -166,7 +166,7 @@ public class EntityUtils
     public static void Dispose()
     {
         _factory = null;
-        _gameBVH = null;
+        _BVHEnemy = null;
     }
 
     public static GameEntity GetGameEntity(int id)

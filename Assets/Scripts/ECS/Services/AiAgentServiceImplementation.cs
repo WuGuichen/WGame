@@ -231,7 +231,7 @@ public class AiAgentServiceImplementation : IAiAgentService
     private void OnChaseEnter()
     {
         _entity.ReplaceMovementSpeed(_initInfo.moveSpeed*_initInfo.ChaseMul);
-        _entity.ReplaceFocus(_entity.detectedCharacter.entity.gameViewService.service.FocusPoint);
+        // _entity.ReplaceFocus(_entity.detectedCharacter.entity.gameViewService.service.FocusPoint);
         _entity.ReplaceFocusEntity(_entity.detectedCharacter.entity);
         moveAgent.OnChaseEnter();
     }

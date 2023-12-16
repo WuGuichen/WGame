@@ -1,3 +1,4 @@
+using BaseData.Character;
 using Entitas;
 using UnityEngine;
 using WGame.UI;
@@ -133,8 +134,11 @@ public class MoveCharacterSystem : IExecuteSystem
             entity.rigidbodyService.service.OnFixedUpdate(_timeService.fixedDeltaTime);
             entity.ReplaceCharCurSpeed(curSpeed);
             entity.ReplaceCharSpeedMulti(speedMulti);
-            
-            EntityUtils.GameBVH.MarkForUpdate(entity.gameViewService.service);
+
+            if (entity.characterInfo.value.camp == Camp.Red)
+            {
+                EntityUtils.BvhEnemy.MarkForUpdate(entity.gameViewService.service);
+            }
         }
     }
 

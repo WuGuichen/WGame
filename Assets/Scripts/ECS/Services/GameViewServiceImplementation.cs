@@ -1,13 +1,15 @@
 using Entitas;
 using Entitas.Unity;
+using TWY.Physics;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEventListener, IActionCameraRotateListener, IActionModelRotateListener
 {
     private Transform _cameraTransform;
     private Transform _model;
-    private Transform _focusPoint;
     private GameEntity _entity;
+    private Transform _transform;
     private Vector3[] thrustPos;
     private float[] thrustTime;
     private int[] thrustType;
@@ -17,20 +19,21 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     private Transform headTrans;
     
     private float height;
+    private float halfHeight;
+    private float radius;
     public void OnDead()
     {
-        _focusPoint.gameObject.SetActive(false);
         GetEntity().isMoveable = false;
         gameObject.Unlink();
     }
 
     public void OnAlive()
     {
-        _focusPoint.gameObject.SetActive(true);
         GetEntity().isMoveable = true;
     }
 
     public float Height => height;
+    public float HalfHeight => halfHeight;
 
     public Vector3 HeadPos
     {
@@ -73,15 +76,13 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
             if (deltaTime > thrustTime[curThrustIndex])
                 delta = thrustTime[curThrustIndex];
             thrustTime[curThrustIndex] -= deltaTime;
-            transform.position += curDeltaTarThrustPos * delta;
+            _transform.position += curDeltaTarThrustPos * delta;
         }
         else
         {
             NextThrust();
         }
     }
-
-    public Transform FocusPoint => _focusPoint;
 
     public Transform RightHand => null;
 
@@ -105,8 +106,7 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
         }
     }
 
-    private int instanceID;
-    public int InstanceID => instanceID;
+    public int InstanceID => _entity.instanceID.ID;
 
     public Vector3 GetCameraPos()
     {
@@ -126,22 +126,27 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     }
 
     public Transform Model => _model;
-    public Vector3 Position => transform.position;
+    public Vector3 Position => _transform.position;
     public Vector2 PlanarPosition => new Vector2(Position.x, Position.z);
+
+    private WEntityPoint _focusPoint;
     
-    public IGameViewService OnInit(int instId)
+    public IGameViewService OnInit(GameEntity entity)
     {
-        instanceID = instId;
+        _transform = transform;
+        _entity = entity;
         if (_cameraTransform != null)
             return this;
-        _cameraTransform = transform.GetChild(0);
-        _model = transform.GetChild(1);
-        _focusPoint = transform.GetChild(2);
-        _focusPoint.gameObject.SetActive(true);
-        var capsule = transform.GetComponent<CharacterController>();
+        _cameraTransform = _transform.GetChild(0);
+        _model = _transform.GetChild(1);
+        var focusTrans = _transform.GetChild(2);
+        _focusPoint = new WEntityPoint(focusTrans, entity);
+        var capsule = _transform.GetComponent<CharacterController>();
         if (capsule)
         {
             height = capsule.height;
+            halfHeight = height / 2;
+            radius = capsule.radius;
         }
         return this;
     }
@@ -165,8 +170,8 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     
     public GameEntity GetEntity()
     {
-        if (_entity == null)
-            _entity = Model.GetComponent<IMotionService>().LinkEntity;
+        // if (_entity == null)
+        //     _entity = Model.GetComponent<IMotionService>().LinkEntity;
         return _entity;
     }
 
@@ -191,5 +196,13 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     public override int GetHashCode()
     {
         return InstanceID;
+    }
+
+    public AABBF Bounds {
+        get
+        {
+            var pos = _transform.position;
+            return new AABBF(new float3(pos.x, pos.y + halfHeight, pos.z), new float3(radius, height, radius));
+        }
     }
 }

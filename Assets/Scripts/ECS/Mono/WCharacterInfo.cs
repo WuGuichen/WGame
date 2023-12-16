@@ -76,7 +76,7 @@ public class WCharacterInfo : MonoBehaviour
     private static CharacterInitInfo DefaultValue = new CharacterInitInfo()
     {
         job = Job.Swordman,
-        camp = Camp.Enemy,
+        camp = Camp.Red,
         gender = Gender.Male,
         race = Race.Skeleton,
         patrolPoints = defaultPatrolPoints,

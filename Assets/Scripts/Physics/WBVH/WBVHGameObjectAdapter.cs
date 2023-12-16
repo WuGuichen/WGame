@@ -23,7 +23,7 @@ namespace TWY.Physics
             return math.max(bounds.Radius.x, math.max(bounds.Radius.y, bounds.Radius.z));
         }
 
-        private AABBF GetBounds(GameObject obj)
+        public AABBF GetBounds(GameObject obj)
         {
             Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
             AABBF bounds = new AABBF(GetObjectPos(obj), float3.zero);

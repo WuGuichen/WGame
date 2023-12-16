@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using BaseData.Character;
 using Entitas.Unity;
 #if UNITY_EDITOR
 using System.IO;
@@ -200,7 +201,7 @@ public class FactoryServiceImplementation : IFactoryService
         
         var info = entity.characterInfo.value;
         // 游戏物体
-        entity.AddGameViewService(obj.GetComponent<IGameViewService>().OnInit(instanceID));
+        entity.AddGameViewService(obj.GetComponent<IGameViewService>().OnInit(entity));
         // 刚体
         entity.AddRigidbodyService(obj.GetComponent<IRigidbodyService>().OnInit());
         entity.rigidbodyService.service.SetEntity(entity);
@@ -317,7 +318,10 @@ public class FactoryServiceImplementation : IFactoryService
         }
         
         // 加入bvh
-        EntityUtils.GameBVH.Add(entity.gameViewService.service);
+        if (info.camp == Camp.Red)
+        {
+            EntityUtils.BvhEnemy.Add(entity.gameViewService.service);
+        }
     }
 
     public void GenWeaponEntity(int weaponID, out WeaponEntity weapon)

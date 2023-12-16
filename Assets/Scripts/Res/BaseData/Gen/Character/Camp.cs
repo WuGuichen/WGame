@@ -18,11 +18,11 @@ namespace BaseData.Character
         /// <summary>
         /// 名字只是代号
         /// </summary>
-        Player = 1,
+        White = 1,
         /// <summary>
         /// 阵营2
         /// </summary>
-        Enemy = 2,
+        Red = 2,
     }
 
 } 

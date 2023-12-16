@@ -147,6 +147,10 @@ namespace TWY.Physics
             return IntersectSegment(ray.origin, ray.GetPoint(length));
         }
 
+        public bool IntersectCapsule(CapsuleF capsuleF)
+        {
+            return false;
+        }
         public bool IntersectRay(RayF ray)
         {
             float tMin = 0.0f;

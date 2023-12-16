@@ -78,7 +78,8 @@ public class TestSceneSystem : MonoBehaviour
 		_systems.Add(new UpdateAttackInputSystem(_contexts));
 		_systems.Add(new UpdateStepInputSystem(_contexts));
 		_systems.Add(new UpdateFocusInputSystem(_contexts));
-		_systems.Add(new CharacterFocusSystem(_contexts));
+		// _systems.Add(new CharacterFocusSystem(_contexts));
+		_systems.Add(new FocusEntitySystem(_contexts));
 		_systems.Add(new ThrustCharacterSystem(_contexts));
 		_systems.Add(new AIAgentUpdateSystem(_contexts));
 		_systems.Add(new RefreshCharacterUISystem(_contexts));
@@ -173,12 +174,12 @@ public class TestSceneSystem : MonoBehaviour
 		_lateUpdateSystems.Cleanup();
 		
 		WTriggerMgr.Inst.OnEndUpdate();
-		EntityUtils.GameBVH.Optimize();
+		EntityUtils.BvhEnemy.Optimize();
     }
 
     private void OnDrawGizmos()
     {
-		EntityUtils.GameBVH.DrawAllBounds();
+		EntityUtils.BvhEnemy.DrawAllBounds();
     }
 
     private void OnGUI()
