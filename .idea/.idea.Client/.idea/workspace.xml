@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="" />
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ISensorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ISensorService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WBVHEntityAdapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WBVHEntityAdapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WEntityPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WEntityPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/SensorCharacterImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/SensorCharacterImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/DetectCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/DetectCharacterSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/SensorCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/SensorCharacterSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/HitInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/HitInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/Vector3Extension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/Vector3Extension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/OnPatrol.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/OnPatrol.wl" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +31,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/673908c2ea674418a53dc8058a28ff3810fc00/70/1d19218c/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/76/d3ebac2a/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/c9/04a4095d/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/54/d2dddf1a/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/59/fa2c80f9/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/65/fc3f7a18/Graphics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/6b/8e1c9bce/KeyCode.cs" root0="SKIP_HIGHLIGHTING" />
@@ -43,7 +57,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ICapsuleSensor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ISensorService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ISphereSensor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Physics/FocusSystem/FocusInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WBVHEntityAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/SensorCharacterImplementation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/DrawDetectCharacterSystem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -112,10 +125,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6604">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8112">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6604" />
+      <option name="pid" value="8112" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -152,6 +165,9 @@
       <workItem from="1702644899857" duration="1801000" />
       <workItem from="1702646741707" duration="1508000" />
       <workItem from="1702737331206" duration="4286000" />
+      <workItem from="1702747440138" duration="77000" />
+      <workItem from="1702787863156" duration="823000" />
+      <workItem from="1702999321420" duration="8993000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -216,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702401702359</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="可视化范围探测">
+      <created>1702747512667</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1702747512667</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +262,8 @@
     <MESSAGE value="WLang函数调用待优化" />
     <MESSAGE value="需要处理antlr解析的gc" />
     <MESSAGE value="主要优化代码gc，修复bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="主要优化代码gc，修复bug" />
+    <MESSAGE value="可视化范围探测" />
+    <option name="LAST_COMMIT_MESSAGE" value="可视化范围探测" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -31,7 +31,7 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
 
     public HitInfo GetHitInfo(IGameViewService obj, float sqrDist)
     {
-        return new HitInfo(obj.InstanceID, sqrDist);
+        return new HitInfo(obj.InstanceID, sqrDist, obj.Position);
     }
 
     public AABBF GetBounds(IGameViewService obj)

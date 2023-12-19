@@ -1,10 +1,11 @@
 using TWY.Physics;
+using UnityEngine;
 
 public struct WEntityPoint
 {
-    private UnityEngine.Transform _transform;
+    private Transform _transform;
     private readonly GameEntity _entity;
-
+    
     public WEntityPoint(UnityEngine.Transform transform, GameEntity entity)
     {
         _transform = transform;
@@ -12,6 +13,7 @@ public struct WEntityPoint
     }
 
     public GameEntity Entity => _entity;
+    public Vector3 Position => _transform.position;
 
     public bool Intersect(SphereF sphere) => (sphere.Center.ToVector3() - _transform.position).sqrMagnitude <= sphere.SqrRadius;
 
