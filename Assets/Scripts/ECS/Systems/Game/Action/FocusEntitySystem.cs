@@ -79,13 +79,13 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
         
         var fwd = entity.gameViewService.service.Model.forward;
         var area = entity.actionFocus.area;
-        var center = entity.gameViewService.service.Position + fwd * area * 0.9f;
+        var center = entity.position.value + fwd * area * 0.9f;
         WDrawer.Inst.RegisterCircle(center+Vector3.up*0.2f,entity.gameViewService.service.Model.up, area);
         WLogger.Info("Draw");
         SphereF sphere = new SphereF(center.ToFloat3(), area);
         if (entity.isCampWhite)
         {
-            EntityUtils.BvhEnemy.TestHitSphereNonAlloc(sphere, ref hitTargets);
+            EntityUtils.BvhRed.TestHitSphereNonAlloc(sphere, ref hitTargets);
             WLogger.Info(hitTargets.Count);
         }
     }

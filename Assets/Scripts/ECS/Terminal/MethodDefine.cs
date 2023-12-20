@@ -106,7 +106,7 @@ public class MethodDefine
     {
         if (CheckEntity(param[0].Value, out var entity))
             return;
-        interpreter.SetRetrun(entity.gameViewService.service.Position);
+        interpreter.SetRetrun(entity.position.value);
     }
 
     public void GetAttr(List<Symbol> param, Interpreter interpreter)

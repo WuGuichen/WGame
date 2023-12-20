@@ -7,7 +7,7 @@ public class SensorDetectSystems : Feature
         Add(new DropItemDetectSystem(contexts));
         Add(new SensorCharacterSystem(contexts));
         Add(new DetectCharacterSystem(contexts));
-        Add(new DrawDetectCharacterSystem(contexts));
+        // Add(new DrawDetectCharacterSystem(contexts));
         Add(new DrawSensorCharacterSystem(contexts));
     }
 }

@@ -14,9 +14,9 @@ public class DetectCharacterSystem : IExecuteSystem
         UnityEngine.Profiling.Profiler.BeginSample("DetectSensorCharacter");
         foreach (var sensor in charDetectorGroup)
         {
-            if (sensor.hasSensorCharacterService)
+            if (sensor.hasDetectorCharacterService)
             {
-                sensor.sensorCharacterService.service.UpdateDetect(_time.deltaTime);
+                sensor.detectorCharacterService.service.UpdateDetect(_time.deltaTime);
             }
         }
         UnityEngine.Profiling.Profiler.EndSample();

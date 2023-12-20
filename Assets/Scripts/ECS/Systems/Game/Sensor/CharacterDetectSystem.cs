@@ -37,7 +37,7 @@ public class CharacterDetectSystem : IExecuteSystem
                 continue;
             lm = entity.characterSensor.detectMask;
             Physics.OverlapSphereNonAlloc(
-                entity.gameViewService.service.Position, entity.characterSensor.radius, cols, lm);
+                entity.position.value, entity.characterSensor.radius, cols, lm);
             for (int i = 0; i < cols.Length; i++)
             {
                 if (cols[i] != null)

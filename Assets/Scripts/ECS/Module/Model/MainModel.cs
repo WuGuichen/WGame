@@ -332,7 +332,7 @@ namespace WGame.UI
 					break;
 				case 1:
 					ActionHelper.DoReachPoint(Contexts.sharedInstance.game.GetEntityWithEntityID(10000002)
-						, Contexts.sharedInstance.game.GetEntityWithEntityID(10000001).gameViewService.service.Position);
+						, Contexts.sharedInstance.game.GetEntityWithEntityID(10000001).position.value);
 					break;
 				default:
 					break;

@@ -23,7 +23,7 @@ public class GroundSensorDetectSystem : IExecuteSystem
     {
         foreach (var entity in _groundSensorGroup)
         {
-            var startPoint = entity.gameViewService.service.Position;
+            var startPoint = entity.position.value;
 
             Physics.OverlapBoxNonAlloc(startPoint, size, cols, Quaternion.identity, lm);
             if (cols[0] != null)

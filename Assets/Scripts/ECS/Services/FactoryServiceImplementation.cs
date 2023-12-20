@@ -289,7 +289,7 @@ public class FactoryServiceImplementation : IFactoryService
         var sensor = Contexts.sharedInstance.sensor.CreateEntity();
         entity.AddLinkSensor(sensor);
         sensor.AddLinkCharacter(entity);
-        sensor.AddSensorCharacterService(new SensorCharacterImplementation(entity.gameViewService.service.Model, sensor));
+        sensor.AddDetectorCharacterService(new DetectorCharacterImplementation(entity.gameViewService.service.Model, sensor));
         sensor.AddDetectSpottedRadius(5f);
         sensor.AddDetectWarningRadius(10f);
         sensor.AddDetectCharacterDegree(120);
@@ -321,7 +321,7 @@ public class FactoryServiceImplementation : IFactoryService
         // 加入bvh
         if (info.camp == Camp.Red)
         {
-            EntityUtils.BvhEnemy.Add(entity.gameViewService.service);
+            EntityUtils.BvhRed.Add(entity.gameViewService.service);
         }
     }
 

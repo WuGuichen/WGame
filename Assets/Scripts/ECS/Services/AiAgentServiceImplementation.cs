@@ -289,7 +289,7 @@ public class AiAgentServiceImplementation : IAiAgentService
 
     public void StartPath(Vector3 tarPos)
     {
-        _seeker.StartPath(_entity.gameViewService.service.Position, tarPos);
+        _seeker.StartPath(_entity.position.value, tarPos);
     }
 
     public void UpdateFSM()

@@ -19,7 +19,7 @@ public class EntityUtils
     private static WBVH<IGameViewService> _BVHEnemy =
         new WBVH<IGameViewService>(new WBVHEntityAdapter(Camp.Red), new List<IGameViewService>());
 
-    public static WBVH<IGameViewService> BvhEnemy
+    public static WBVH<IGameViewService> BvhRed
     {
         get
         {
@@ -70,7 +70,7 @@ public class EntityUtils
     {
         if (entity.hasLinkWeapon)
         {
-            FactoryService.SetWeaponDrop(entity.linkWeapon.Weapon, entity.gameViewService.service.Position + entity.gameViewService.service.Model.forward, Quaternion.identity, Vector3.one);
+            FactoryService.SetWeaponDrop(entity.linkWeapon.Weapon, entity.position.value + entity.gameViewService.service.Model.forward, Quaternion.identity, Vector3.one);
             entity.linkMotion.Motion.motionService.service.ResetMotion();
         }
     }
@@ -80,7 +80,7 @@ public class EntityUtils
         var entity = Contexts.sharedInstance.game.GetEntityWithEntityID(ActionHelper.CurCameraEntityID);
         if (entity != null && entity.isEnabled)
         {
-            return entity.gameViewService.service.Position;
+            return entity.position.value;
         }
 
         return GetCameraPos();
@@ -201,4 +201,20 @@ public class EntityUtils
     {
         return Contexts.sharedInstance.game.GetEntities();
     }
+
+    // /// <summary>
+    // /// 获取两个实体的距离(优先获取上次获取的数据)
+    // /// </summary>
+    // public static float GetDist(GameEntity red, GameEntity white)
+    // {
+    //     var redService = red.linkSensor.Sensor.detectorCharacterService.service;
+    //     if (redService.TryGetDist(white.instanceID.ID, out float dist))
+    //     {
+    //         return dist;
+    //     }
+    //
+    //     dist = (red.gameViewService.service.Position - white.gameViewService.service.Position).magnitude;
+    //     redService.RefreshDist(white.instanceID.ID, dist);
+    //     return dist;
+    // }
 }

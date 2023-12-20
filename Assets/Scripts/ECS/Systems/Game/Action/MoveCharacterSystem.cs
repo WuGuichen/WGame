@@ -46,7 +46,7 @@ public class MoveCharacterSystem : IExecuteSystem
             {
                 var pos = entity.focus.target.position;
                 Vector2 tarPos = new Vector2(pos.x, pos.z);
-                pos = entity.gameViewService.service.Position;
+                pos = entity.position.value;
                 Vector2 myPos = new Vector2(pos.x, pos.z);
                 var sqrDist = (myPos - tarPos).sqrMagnitude;
                 entity.ReplaceTargetPlanarSqrDistance(sqrDist);
@@ -137,7 +137,7 @@ public class MoveCharacterSystem : IExecuteSystem
 
             if (entity.characterInfo.value.camp == Camp.Red)
             {
-                EntityUtils.BvhEnemy.MarkForUpdate(entity.gameViewService.service);
+                EntityUtils.BvhRed.MarkForUpdate(entity.gameViewService.service);
             }
         }
     }

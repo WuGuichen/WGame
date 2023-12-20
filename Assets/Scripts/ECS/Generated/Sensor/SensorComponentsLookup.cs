@@ -11,10 +11,10 @@ public static class SensorComponentsLookup {
     public const int DetectChar = 0;
     public const int DetectCharacterDegree = 1;
     public const int DetectCharOpen = 2;
-    public const int DetectSpottedRadius = 3;
-    public const int DetectWarningRadius = 4;
-    public const int LinkCharacter = 5;
-    public const int SensorCharacterService = 6;
+    public const int DetectorCharacterService = 3;
+    public const int DetectSpottedRadius = 4;
+    public const int DetectWarningRadius = 5;
+    public const int LinkCharacter = 6;
     public const int SensorCharOpen = 7;
     public const int SensorCharRadius = 8;
 
@@ -24,10 +24,10 @@ public static class SensorComponentsLookup {
         "DetectChar",
         "DetectCharacterDegree",
         "DetectCharOpen",
+        "DetectorCharacterService",
         "DetectSpottedRadius",
         "DetectWarningRadius",
         "LinkCharacter",
-        "SensorCharacterService",
         "SensorCharOpen",
         "SensorCharRadius"
     };
@@ -36,10 +36,10 @@ public static class SensorComponentsLookup {
         typeof(DetectChar),
         typeof(DetectCharacterDegreeComponent),
         typeof(DetectCharOpen),
+        typeof(DetectorCharacterServiceComponent),
         typeof(DetectSpottedRadiusComponent),
         typeof(DetectWarningRadiusComponent),
         typeof(LinkCharacterComponent),
-        typeof(SensorCharacterServiceComponent),
         typeof(SensorCharOpen),
         typeof(SensorCharRadius)
     };

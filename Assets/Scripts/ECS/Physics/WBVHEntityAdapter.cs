@@ -25,13 +25,13 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
 
     public float3 GetObjectPos(IGameViewService obj)
     {
-        var pos = obj.Position;
+        var pos = obj.GetEntity().position.value;
         return new float3(pos.x, pos.y+obj.HalfHeight, pos.z);
     }
 
     public HitInfo GetHitInfo(IGameViewService obj, float sqrDist)
     {
-        return new HitInfo(obj.InstanceID, sqrDist, obj.Position);
+        return new HitInfo(obj.InstanceID, sqrDist, obj.GetEntity().position.value);
     }
 
     public AABBF GetBounds(IGameViewService obj)

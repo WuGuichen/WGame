@@ -9,7 +9,7 @@ public interface IGameViewService
     Vector3 GetCameraPos();
     Vector3 LocalizeVectorXY(Vector2 vector, bool isFocus = false);
     Transform Model { get; }
-    Vector3 Position { get; }
+    Vector3 Center { get; }
     Vector2 PlanarPosition { get; }
     GameEntity GetEntity();
     void Destroy();
@@ -19,6 +19,5 @@ public interface IGameViewService
     void Thrust();
     void OnUpdateMove(float deltaTime);
     IGameViewService OnInit(GameEntity entity);
-    int GetHashCode();
     AABBF Bounds { get; }
 }

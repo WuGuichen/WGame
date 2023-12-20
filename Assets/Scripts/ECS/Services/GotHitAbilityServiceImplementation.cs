@@ -34,7 +34,7 @@ public class GotHitAbilityServiceImplementation : IGotHitService
         var thrustFwd = hitInfo.entity.attribute.value.Get(WAttrType.AtkForceFwd);
 
         var isFwd = Vector3.Dot(entity.gameViewService.service.Model.forward,
-            hitInfo.pos - entity.gameViewService.service.Position) > 0;
+            hitInfo.pos - entity.position.value) > 0;
         
         vm.Set("THRUST_FWD", thrustFwd);
         vm.Set("E_ATTACKER", hitInfo.entity.entityID.id);

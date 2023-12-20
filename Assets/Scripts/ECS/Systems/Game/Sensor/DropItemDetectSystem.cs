@@ -42,7 +42,7 @@ public class DropItemDetectSystem : IExecuteSystem
                 Interactable tarInter = null;
                 float minSqrDist = float.MaxValue;
                 Physics.OverlapSphereNonAlloc(
-                    entity.gameViewService.service.Position + entity.gameViewService.service.Model.forward, 1.5f, cols,
+                    entity.position.value + entity.gameViewService.service.Model.forward, 1.5f, cols,
                     lm);
                 for (int i = 0; i < cols.Length; i++)
                 {
@@ -50,7 +50,7 @@ public class DropItemDetectSystem : IExecuteSystem
                     {
                         var interaction = cols[i].GetComponent<Interactable>();
 
-                        var sqrDist = (entity.gameViewService.service.Position - interaction.TagPos).sqrMagnitude;
+                        var sqrDist = (entity.position.value - interaction.TagPos).sqrMagnitude;
                         if (sqrDist < minSqrDist)
                         {
                             minSqrDist = sqrDist - 0.001f;

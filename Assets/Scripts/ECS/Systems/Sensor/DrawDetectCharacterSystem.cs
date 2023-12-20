@@ -11,9 +11,9 @@ public class DrawDetectCharacterSystem : IExecuteSystem
     {
         foreach (var sensor in charDetectorGroup)
         {
-            if (sensor.hasSensorCharacterService)
+            if (sensor.hasDetectorCharacterService)
             {
-                sensor.sensorCharacterService.service.UpdateDetectorDrawer();
+                // sensor.detectorCharacterService.service.UpdateDetectorDrawer();
             }
         }
     }

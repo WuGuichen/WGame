@@ -71,6 +71,7 @@ public class TestSceneSystem : MonoBehaviour
 		_vmSystems = new VMSystems(_contexts);
 		
 		// 注意系统顺序
+		_systems.Add(new UpdateCharacterDataSystem(_contexts));
 		_systems.Add(new AnimSpeedSystem(_contexts));
 		
 		_systems.Add(new CharacterOnGroundSystem(_contexts));
@@ -174,12 +175,12 @@ public class TestSceneSystem : MonoBehaviour
 		_lateUpdateSystems.Cleanup();
 		
 		WTriggerMgr.Inst.OnEndUpdate();
-		EntityUtils.BvhEnemy.Optimize();
+		EntityUtils.BvhRed.Optimize();
     }
 
     private void OnDrawGizmos()
     {
-		EntityUtils.BvhEnemy.DrawAllBounds();
+		EntityUtils.BvhRed.DrawAllBounds();
     }
 
     private void OnGUI()
