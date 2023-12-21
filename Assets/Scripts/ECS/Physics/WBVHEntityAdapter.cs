@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using BaseData.Character;
 using Entitas;
@@ -34,6 +33,11 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
         return new HitInfo(obj.InstanceID, sqrDist, obj.GetEntity().position.value);
     }
 
+    public float3 GetSize(IGameViewService obj)
+    {
+        return obj.Size;
+    }
+
     public AABBF GetBounds(IGameViewService obj)
     {
         return obj.Bounds;
@@ -41,7 +45,7 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
 
     public float GetRadius(IGameViewService obj)
     {
-        return obj.HalfHeight;
+        return obj.Radius;
     }
 
     public void MapObj2BVHLeaf(IGameViewService obj, WBVHNode<IGameViewService> leaf)

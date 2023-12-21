@@ -142,6 +142,11 @@ namespace TWY.Physics
             }
         }
 
+        private void ExpandVolume(WBVHNodeAdapter<T> adapter, AABBF bounds)
+        {
+            if (ExpandBox(bounds) && parent != null)
+                parent.ChildExpanded(adapter, this);
+        }
         private void ExpandVolume(WBVHNodeAdapter<T> adapter, float3 objPos, float radius)
         {
             if (ExpandBox(new AABBF(objPos, new float3(radius * 2))) && parent != null)
@@ -247,12 +252,19 @@ namespace TWY.Physics
 
         private void AssignVolume(float3 objPos, float radius) => box = new AABBF(objPos, new float3(radius * 2));
 
+        private void AssignVolume(AABBF bounds)
+        {
+            box = bounds;
+        }
+
         private void ComputeVolume(WBVHNodeAdapter<T> adapter)
         {
-            AssignVolume(adapter.GetObjectPos(_objects[0]), adapter.GetRadius(_objects[0]));
+            // AssignVolume(adapter.GetObjectPos(_objects[0]), adapter.GetRadius(_objects[0]));
+            AssignVolume(new AABBF(adapter.GetObjectPos(_objects[0]), adapter.GetSize(_objects[0])));
             for (int i = 1; i < _objects.Count; i++)
             {
-                ExpandVolume(adapter, adapter.GetObjectPos(_objects[i]), adapter.GetRadius(_objects[i]));
+                // ExpandVolume(adapter, adapter.GetObjectPos(_objects[i]), adapter.GetRadius(_objects[i]));
+                ExpandVolume(adapter, adapter.GetBounds(_objects[i]));
             }
         }
 
@@ -558,11 +570,12 @@ namespace TWY.Physics
             // todo 这里AABB的中点都是零点，不知道有没有问题
             if (list.Count <= 0)
                 Debug.LogError("VAR");
-            var box = new AABBF(float3.zero, new float3(adapter.GetRadius(list[0])));
+            var box = new AABBF(float3.zero, adapter.GetSize(list[0]));
+            // var box = adapter.GetBounds(list[0]);
             
             list.ToList<T>().GetRange(1, list.Count - 1).ForEach(obj =>
             {
-                var newBox = new AABBF(float3.zero, new float3(adapter.GetRadius(obj)));
+                var newBox = new AABBF(float3.zero, adapter.GetSize(obj));
                 box.Encapsulate(newBox);
             });
 

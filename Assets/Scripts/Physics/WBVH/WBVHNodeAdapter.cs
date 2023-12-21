@@ -11,6 +11,8 @@ namespace TWY.Physics
         float3 GetObjectPos(T obj);
         HitInfo GetHitInfo(T obj, float sqrDist);
         float GetRadius(T obj);
+        float3 GetSize(T obj);
+        AABBF GetBounds(T obj);
         void MapObj2BVHLeaf(T obj, WBVHNode<T> leaf);
         void OnPositionOrSizeChanged(T changed);
         void UnmapObject(T obj);

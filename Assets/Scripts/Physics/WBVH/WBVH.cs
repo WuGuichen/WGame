@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace TWY.Physics
 {
@@ -137,7 +134,8 @@ namespace TWY.Physics
 
         public void Add(T newObj)
         {
-            AABBF box = new AABBF(adapter.GetObjectPos(newObj), new float3(adapter.GetRadius(newObj)));
+            // AABBF box = new AABBF(adapter.GetObjectPos(newObj), new float3(adapter.GetRadius(newObj)));
+            var box = adapter.GetBounds(newObj);
             float sah = WBVHNode<T>.SA(ref box);
             root.Add(adapter, newObj, ref box, sah);
         }

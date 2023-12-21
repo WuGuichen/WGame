@@ -20,4 +20,6 @@ public interface IGameViewService
     void OnUpdateMove(float deltaTime);
     IGameViewService OnInit(GameEntity entity);
     AABBF Bounds { get; }
+    float Radius { get; }
+    Unity.Mathematics.float3 Size { get; }
 }

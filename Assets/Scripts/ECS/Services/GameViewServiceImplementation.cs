@@ -21,6 +21,7 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     private float height;
     private float halfHeight;
     private float radius;
+    private float radiusTwo;
     public void OnDead()
     {
         GetEntity().isMoveable = false;
@@ -148,6 +149,7 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
             height = capsule.height;
             halfHeight = height / 2;
             radius = capsule.radius;
+            radiusTwo = radius *2;
         }
         return this;
     }
@@ -203,7 +205,10 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
         get
         {
             var pos = _transform.position;
-            return new AABBF(new float3(pos.x, pos.y + halfHeight, pos.z), new float3(radius, height, radius));
+            return new AABBF(new float3(pos.x, pos.y + halfHeight, pos.z), Size);
         }
     }
+
+    public float Radius => radiusTwo;
+    public float3 Size => new float3(radiusTwo, height, radiusTwo);
 }
