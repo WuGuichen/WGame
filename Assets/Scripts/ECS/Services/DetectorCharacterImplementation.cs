@@ -15,9 +15,6 @@ public class DetectorCharacterImplementation : IDetectorService
 
     private readonly List<HitInfo> detectList = new();
 
-    private readonly Dictionary<int, float> _hatePointDict = new();
-    private readonly Dictionary<int, float> _distanceDict = new();
-
     #region 距离信息
     private float radiusSpotted = 0;
     private float radiusSpottedSqr = 0;
@@ -165,7 +162,6 @@ public class DetectorCharacterImplementation : IDetectorService
                 var point = detectList[i];
                 var dir = point.Position - _model.position;
                 var normalDir = dir / point.Dist;
-                WLogger.Info(point.Dist);
                 var angle = normalDir.GetAngle(_model.forward);
                 // 距离仇恨值增加
                 AddDistanceHatePoint(point.EntityId, point.SqrDist, angle, deltaTime);

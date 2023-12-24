@@ -12,7 +12,12 @@ public static class Vector3Extension
 
     public static float GetAngle(this Vector3 v, Vector3 origin)
     {
-        return Mathf.Acos(Vector3.Dot(v, origin));
+        var d = Vector3.Dot(v, origin);
+        if (d > 1)
+            d = 1;
+        else if (d < -1)
+            d = -1;
+        return Mathf.Acos(d);
     }
     
     public static Vector3 GetNormal(this Vector3 v, float len)

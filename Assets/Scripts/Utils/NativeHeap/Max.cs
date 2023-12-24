@@ -23,7 +23,7 @@ namespace Unity.Collections {
 
         public int Compare(short x, short y) {
             return y.CompareTo(x);
-        }
+     }
 
         public int Compare(uint x, uint y) {
             return y.CompareTo(x);
