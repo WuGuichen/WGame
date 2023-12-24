@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Unity.Collections;
 
@@ -36,6 +35,7 @@ public class HatePointInfo
         }
     }
 
+    private const int MAX_HATEPOINT = 360;
     private readonly Dictionary<int, HateInfo> _hatePointDict = new();
     
     private HateInfo maxHateInfo = HateInfo.NULL;
@@ -67,30 +67,60 @@ public class HatePointInfo
         }
     }
     
-    public void Add(int id, float value)
+    public void Add(int id, float value, int type)
     {
         int rank = 0;
-        bool isContain = false;
         if (_hatePointDict.TryGetValue(id, out var info))
         {
             value = info.Value + value;
             rank = info.Rank;
-            isContain = true;
         }
 
         if (value < 0)
-            value = 0;
-        else if (value > 360)
-            value = 360;
-        if (isContain)
         {
-            // _hateHeap.Remove(info.Index);
-            info = new HateInfo(id, rank, value);
+            if (type == HatePointType.OutSign)
+            {
+                if (rank > HateRankType.Null)
+                {
+                    while (rank > HateRankType.Null && value < 0)
+                    {
+                        rank -= 1;
+                        value = MAX_HATEPOINT - value;
+                    }
+
+                    if (value < 0)
+                        value = 0;
+                }
+                else
+                    value = 0;
+            }
+            else
+            {
+                value = 0;
+            }
         }
-        else
+        else if (value > MAX_HATEPOINT)
         {
-            info = new HateInfo(id, rank, value);
+            if (rank < HateRankType.Focus)
+            {
+                if ((type & (HatePointType.BeHitted | HatePointType.Spotted | HatePointType.BeHitted)) > 0)
+                {
+                    while (rank < HateRankType.Focus && value > MAX_HATEPOINT)
+                    {
+                        value = value - MAX_HATEPOINT;
+                        rank += 1;
+                    }
+
+                    if (value > MAX_HATEPOINT)
+                        value = MAX_HATEPOINT;
+                }
+            }
+            else
+            {
+                value = MAX_HATEPOINT;
+            }
         }
+        info = new HateInfo(id, rank, value);
         _hatePointDict[id] = info;
         RefreshMaxHate(id, rank, value);
     }

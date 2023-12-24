@@ -181,16 +181,16 @@ public class DetectorCharacterImplementation : IDetectorService
         {
             if (sqrDist <= RadiusSpottedSqr)
             {
-                hateInfo.Add(id, 200 * deltaTime);
+                hateInfo.Add(id, 200 * deltaTime, HatePointType.Spotted);
                 return;
             }
             if (sqrDist <= RadiusWarningSqr)
             {
-                hateInfo.Add(id, 50 * deltaTime);
+                hateInfo.Add(id, 50 * deltaTime, HatePointType.Warning);
                 return;
             }
         }
-        hateInfo.Add(id, -150 * deltaTime);
+        hateInfo.Add(id, -150 * deltaTime, HatePointType.OutSign);
     }
 
     public void Dispose()
