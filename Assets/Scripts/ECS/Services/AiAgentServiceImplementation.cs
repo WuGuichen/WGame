@@ -181,32 +181,32 @@ public class AiAgentServiceImplementation : IAiAgentService
         stateAttack = new State<int, int>();
     }
     
-    private void InitFSM()
-    {
-        InitState();
-        fsm = new StateMachine<int, int, int>();
-
-        var fsmFight = new StateMachine<int, int, int>(needsExitTime: true);
-        fsmFight.AddState(StateDefine.Wait,stateWait);
-        fsmFight.AddState(StateDefine.Attack, stateAttack);
-        fsmFight.AddTransition( new TransitionAfter<int>(StateDefine.Wait, StateDefine.Attack, 2f));
-        fsmFight.AddTransition( new TransitionAfter<int>(StateDefine.Attack, StateDefine.Wait, 2f));
-        fsmFight.AddExitTransition(StateDefine.Wait);
-
-        fsm.SetStartState(StateDefine.Patrol);
-
-        fsm.AddState(StateDefine.Patrol, statePatrol);
-        fsm.AddState(StateDefine.Chase, stateChase);
-        fsm.AddState(StateDefine.Fight, fsmFight);
-        
-        fsm.AddTriggerTransition(StateDefine.SpottedTarget,StateDefine.Patrol, StateDefine.Chase);
-        fsm.AddTriggerTransition(StateDefine.LoseTarget, StateDefine.Fight, StateDefine.Chase, _ => _entity.hasDetectedCharacter);
-        fsm.AddTriggerTransition(StateDefine.LoseTarget, StateDefine.Fight, StateDefine.Patrol, _ => !_entity.hasDetectedCharacter);
-        fsm.AddTransition(StateDefine.Chase, StateDefine.Patrol, _ => !_entity.hasDetectedCharacter);
-        fsm.AddTriggerTransition(StateDefine.ReachTarget, StateDefine.Chase, StateDefine.Fight);
-        
-        fsm.Init();
-    }
+    // private void InitFSM()
+    // {
+    //     InitState();
+    //     fsm = new StateMachine<int, int, int>();
+    //
+    //     var fsmFight = new StateMachine<int, int, int>(needsExitTime: true);
+    //     fsmFight.AddState(StateDefine.Wait,stateWait);
+    //     fsmFight.AddState(StateDefine.Attack, stateAttack);
+    //     fsmFight.AddTransition( new TransitionAfter<int>(StateDefine.Wait, StateDefine.Attack, 2f));
+    //     fsmFight.AddTransition( new TransitionAfter<int>(StateDefine.Attack, StateDefine.Wait, 2f));
+    //     fsmFight.AddExitTransition(StateDefine.Wait);
+    //
+    //     fsm.SetStartState(StateDefine.Patrol);
+    //
+    //     fsm.AddState(StateDefine.Patrol, statePatrol);
+    //     fsm.AddState(StateDefine.Chase, stateChase);
+    //     fsm.AddState(StateDefine.Fight, fsmFight);
+    //     
+    //     fsm.AddTriggerTransition(StateDefine.SpottedTarget,StateDefine.Patrol, StateDefine.Chase);
+    //     fsm.AddTriggerTransition(StateDefine.LoseTarget, StateDefine.Fight, StateDefine.Chase, _ => _entity.hasDetectedCharacter);
+    //     fsm.AddTriggerTransition(StateDefine.LoseTarget, StateDefine.Fight, StateDefine.Patrol, _ => !_entity.hasDetectedCharacter);
+    //     fsm.AddTransition(StateDefine.Chase, StateDefine.Patrol, _ => !_entity.hasDetectedCharacter);
+    //     fsm.AddTriggerTransition(StateDefine.ReachTarget, StateDefine.Chase, StateDefine.Fight);
+    //     
+    //     fsm.Init();
+    // }
 
     private void OnPatrolEnter()
     {

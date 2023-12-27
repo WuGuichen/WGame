@@ -20,17 +20,6 @@ public class CharacterControllerImplamentation : MonoBehaviour, IRigidbodyServic
         throw new System.NotImplementedException();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            ActionHelper.DoSetCharacterCameraByID(10000002);
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-            ActionHelper.DoSetCharacterCameraByID(10000001);
-    }
-
     public Vector3 Velocity
     {
         get => _controller.velocity;
