@@ -1,2 +1,0 @@
-含有对应 MinBinaryHeapObject 脚本的UI的场景
-注意 输出堆顶元素值 是用Log输出在console面板里的

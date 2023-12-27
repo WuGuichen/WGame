@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using CleverCrow.Fluid.BTs.Tasks;
 using CleverCrow.Fluid.BTs.Trees;
@@ -29,7 +28,7 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
     private BehaviorTreeBuilder _builder;
     private string treeName;
     private Interpreter interpreter;
-    private UnityEngine.GameObject _treeOwner;
+    private GameObject _treeOwner;
 
     private const int TYPE_FLOAT = BaseDefinition.TYPE_FLOAT;
     private const int TYPE_CHAR = BaseDefinition.TYPE_CHAR;
@@ -62,6 +61,11 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
     
     public WBTree BuildBTree(WLangParser.BTreeBuilderContext context, string treeName)
     {
+        var code = context.fileCode();
+        if (code != null)
+        {
+            context.Accept(interpreter);
+        }
         string name = treeName;
         var tree = interpreter.ObjectPool.GetWBTree(_treeOwner);
         _builder = tree.TREE;

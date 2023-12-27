@@ -68,6 +68,12 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             _treeOwner = new GameObject("BTreeOwner");
         var inter = BTreeInterpreter.Get(this, _treeOwner, treeName, currentScope, _def);
         var res = inter.BuildBTree(context, treeName);
+        res.SetCacheFloat(cachedFloatList);
+        res.SetCacheMethod(cachedMethodList);
+        res.SetCacheTable(cachedTableList);
+        cachedFloatList = new List<int>();
+        cachedMethodList = new List<int>();
+        cachedTableList = new List<int>();
         cacheToObject = false;
         return res;
     }
@@ -705,14 +711,18 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             case "==":
                 if (l.Type == r.Type)
                 {
-                    if (l.Type == TYPE_FLOAT)
+                    if (l.IsNull)
+                        res = Symbol.FALSE;
+                    else if (l.Type == TYPE_FLOAT)
                         res = _def.GetFloat(l.Value) == _def.GetFloat(r.Value) ? Symbol.TRUE : Symbol.FALSE;
                     else
                         res = l.Value == r.Value ? Symbol.TRUE : Symbol.FALSE;
                 }
                 else
                 {
-                    if(l.Type == TYPE_FLOAT)
+                    if (l.IsNull || r.IsNull)
+                        res = Symbol.FALSE;
+                    else if(l.Type == TYPE_FLOAT)
                         res = _def.GetFloat(l.Value) == r.Value ? Symbol.TRUE : Symbol.FALSE;
                     else
                         res = l.Value == _def.GetFloat(r.Value) ? Symbol.TRUE : Symbol.FALSE;
@@ -721,14 +731,18 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             case "!=":
                 if (l.Type == r.Type)
                 {
-                    if (l.Type == TYPE_INT)
+                    if (l.IsNull)
+                        res = Symbol.FALSE;
+                    else if (l.Type == TYPE_INT)
                         res = l.Value != r.Value ? Symbol.TRUE : Symbol.FALSE;
                     else
                         res = _def.GetFloat(l.Value) != _def.GetFloat(r.Value) ? Symbol.TRUE : Symbol.FALSE;
                 }
                 else
                 {
-                    if(l.Type == TYPE_FLOAT)
+                    if (l.IsNull || r.IsNull)
+                        res = Symbol.TRUE;
+                    else if (l.Type == TYPE_FLOAT)
                         res = _def.GetFloat(l.Value) != r.Value ? Symbol.TRUE : Symbol.FALSE;
                     else
                         res = l.Value != _def.GetFloat(r.Value) ? Symbol.TRUE : Symbol.FALSE;
