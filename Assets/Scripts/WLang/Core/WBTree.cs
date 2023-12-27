@@ -13,7 +13,16 @@ public class WBTree : WObject
     public List<int> CachedFloat { get; private set; }
 
     private BehaviorTreeBuilder builder;
-    public BehaviorTreeBuilder TREE => builder;
+    public BehaviorTreeBuilder TREE_BUILDER => builder;
+    private BehaviorTree _tree;
+    public BehaviorTree TREE{
+        get
+        {
+            if (_tree == null)
+                _tree = builder.Build();
+            return _tree;
+        }
+    }
 
     public WBTree(int objID, GameObject obj)
     {

@@ -30,14 +30,14 @@ public class FightAgent
 
     private void InitTree()
     {
-        var service = _entity.linkVM.VM.vMService.service;
-        var obj = _entity.gameViewService.service.Model.gameObject;
+        // var service = _entity.linkVM.VM.vMService.service;
+        // var obj = _entity.gameViewService.service.Model.gameObject;
 
-        var builder = service.AppendBehaviorTree(_aiCfg.OnFightLogicBTree, obj);
-        _onAttackTree = builder.TREE.Build();
+        // var builder = service.AppendBehaviorTree(_aiCfg.OnFightLogicBTree, obj);
+        // _onAttackTree = builder.TREE.Build();
         
-        var motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
-        motion.OnAttackTree = _onAttackTree;
+        // var motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
+        // motion.OnAttackTree = _onAttackTree;
     }
 
     public void OnAttackEnter()

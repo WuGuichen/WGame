@@ -342,7 +342,7 @@ public class MethodDefine
         if (CheckEntity(param[0].Value, out var entity))
             return;
         
-        entity.aiAgent.service.SetFSM(param[1].Text);
+        entity.aiAgent.service.FSMAgent.SetObject(param[1].Text);
     }
 
     private void RemoveFSM(List<Symbol> param, Interpreter interpreter)
@@ -350,7 +350,7 @@ public class MethodDefine
         if (CheckEntity(param[0].Value, out var entity))
             return;
         
-        entity.aiAgent.service.SetFSM(param[1].Text);
+        entity.aiAgent.service.FSMAgent.SetObject(param[1].Text);
     }
 
     private void TriggerFSM(List<Symbol> param, Interpreter interpreter)

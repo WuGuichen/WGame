@@ -44,7 +44,7 @@ public class HatePointInfo
     public float MaxHateEntityRank => maxHateInfo.Rank;
 
 
-    private NativeHeap<HateInfo, MaxHate> _hateHeap = new NativeHeap<HateInfo, MaxHate>(Allocator.Persistent);
+    // private NativeHeap<HateInfo, MaxHate> _hateHeap = new NativeHeap<HateInfo, MaxHate>(Allocator.Persistent);
 
     private void RefreshMaxHate(int id, int rank, float value)
     {
@@ -146,6 +146,6 @@ public class HatePointInfo
 
     public void Dispose()
     {
-        _hateHeap.Dispose();
+        // _hateHeap.Dispose();
     }
 }

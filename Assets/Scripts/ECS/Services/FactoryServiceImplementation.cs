@@ -273,8 +273,7 @@ public class FactoryServiceImplementation : IFactoryService
 
         // 虚拟机
         var vm = Contexts.sharedInstance.vM.CreateEntity();
-        vm.AddVMService(new VMServiceImplementation());
-        vm.vMService.service.Set("E_SELF", entity.entityID.id);
+        vm.AddVMService(new VMServiceImplementation(entity));
 
         entity.AddLinkVM(vm);
         vm.AddLinkCharacter(entity);

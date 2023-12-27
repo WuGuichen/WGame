@@ -7,12 +7,16 @@ using WGame.Runtime;
 public class VMServiceImplementation : IVMService
 {
     private Interpreter visitor;
-
+    private GameEntity _entity;
+    public GameEntity Entity => _entity;
+    
     private static object locker = new object();
 
-    public VMServiceImplementation()
+    public VMServiceImplementation(GameEntity entity)
     {
+        _entity = entity;
         visitor = new Interpreter(new BaseDefinition(SharedDefinition.Inst), SharedScope.Inst);
+        Set("E_SELF", entity.instanceID.ID);
     }
     
     public void DoString(string str)
@@ -108,6 +112,7 @@ public class VMServiceImplementation : IVMService
     {
         visitor.ReleaseWObject(obj);
     }
+
 
     public void CleanUp()
     {

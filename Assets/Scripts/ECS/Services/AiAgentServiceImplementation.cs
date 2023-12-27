@@ -31,11 +31,10 @@ public class AiAgentServiceImplementation : IAiAgentService
 
     private readonly MoveAgent moveAgent;
     private readonly FightAgent fightAgent;
+    private readonly FSMAgent fsmAgent;
+    private readonly BTreeAgent bTreeAgent;
 
     private readonly MotionServiceImplementation _motion;
-    private Dictionary<string, WFSM> _stateMachines = new();
-    private List<StateMachine<int, int, int>> _fsmList = new();
-    private List<WFSM> _fsmListWaitRemove =new();
 
     private readonly CharacterInitInfo _initInfo;
 
@@ -65,17 +64,14 @@ public class AiAgentServiceImplementation : IAiAgentService
         _timeService = Contexts.sharedInstance.meta.timeService.instance;
         _uiService = entity.uIHeadPad.service;
         _vmService = _entity.linkVM.VM.vMService.service;
+        fsmAgent = FSMAgent.Get(_vmService);
+        bTreeAgent = BTreeAgent.Get(_vmService);
         _motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
-        _treeDict = new Dictionary<string, BehaviorTree>();
 
         // var vm = _entity.linkVM.VM.vMService.service;
         
         InitMethod();
-        // InitFSM();
-        
-        
-        
-        EventCenter.AddListener(EventDefine.OnFSMHotUpdate, RefreshFSM);
+        fsmAgent.SetObject(_aiCfg.BaseFSM);
     }
 
     private void InitMethod()
@@ -86,6 +82,11 @@ public class AiAgentServiceImplementation : IAiAgentService
         SetMethod("SetPatrolPointTarget", SetPatrolPointTarget);
         SetMethod("NoDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(!_entity.hasDetectedCharacter);});
         SetMethod("HasDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(_entity.hasDetectedCharacter);});
+        SetMethod("TickBTree", ((list, interpreter) =>
+        {
+            if(list.Count > 0)
+                TickBTree(list[0].Text);
+        }));
         
         SetMethod("OnAIPatrolEnter", (list, interpreter) =>
         {
@@ -179,11 +180,7 @@ public class AiAgentServiceImplementation : IAiAgentService
         stateWait = new State<int, int>();
         stateAttack = new State<int, int>();
     }
-
-    private void RefreshFSM(WEventContext context)
-    {
-        SetFSM(context.pString, true);
-    }
+    
     private void InitFSM()
     {
         InitState();
@@ -286,6 +283,9 @@ public class AiAgentServiceImplementation : IAiAgentService
             isActing = value;
         }
     }
+    
+    private Dictionary<string, BehaviorTree> _treeDict = new();
+    private List<BehaviorTree> _treeList = new();
 
     public void StartPath(Vector3 tarPos)
     {
@@ -297,11 +297,7 @@ public class AiAgentServiceImplementation : IAiAgentService
         if (!_entity.isDeadState && !_entity.isCamera)
         {
             UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
-            for (int i = 0; i < _fsmList.Count; i++)
-            {
-                _fsmList[i].OnLogic();
-                // _uiService.SetMessage("state: " + ConstDefine.GetStateDefineName(_fsmList[i].ActiveStateName));
-            }
+            fsmAgent.OnUpdate();
             IsActing = true;
             UnityEngine.Profiling.Profiler.EndSample();
         }
@@ -309,16 +305,6 @@ public class AiAgentServiceImplementation : IAiAgentService
         {
             _uiService.SetMessage(null);
             IsActing = false;
-        }
-
-        if (_fsmListWaitRemove.Count > 0)
-        {
-            for (int i = 0; i < _fsmListWaitRemove.Count; i++)
-            {
-                // todo
-                _fsmList.Remove(_fsmListWaitRemove[i].FSM);
-            }
-            _fsmListWaitRemove.Clear();
         }
     }
 
@@ -341,87 +327,45 @@ public class AiAgentServiceImplementation : IAiAgentService
 
     public void TriggerFSM(string name, int type)
     {
-        if (_stateMachines.TryGetValue(name, out var fsm))
-        {
-            fsm.FSM.Trigger(type);
-        }
+        fsmAgent.Trigger(name, type);
     }
 
-
-    public void SetFSM(string name, bool isRefresh = false)
-    {
-        if (_stateMachines.TryGetValue(name, out var fsm))
-        {
-            fsm.FSM.RequestExit();
-            _fsmList.Remove(fsm.FSM);
-            if (isRefresh)
-            {
-                _vmService.ReleaseWObject(fsm);
-                fsm = _vmService.GetFSM(name);
-            }
-        }
-
-        if (!isRefresh)
-        {
-            fsm = _vmService.GetFSM(name);
-        }
-
-        if (fsm != null)
-        {
-            _stateMachines[name] = fsm;
-            fsm.FSM.Init();
-            _fsmList.Add(fsm.FSM);
-        }
-    }
-
-    private Dictionary<string, BehaviorTree> _treeDict;
+    /// <summary>
+    /// 设置BehaviorTree，已有同名的会被替换
+    /// </summary>
     public void SetBTree(string name)
     {
         if (_treeDict.TryGetValue(name, out var tree))
         {
             tree.Reset();
         }
-    }
-
-    public void UpdateBTree(string name)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void RemoveFSM(string name)
-    {
-        if (_stateMachines.TryGetValue(name, out var fsm))
+        else
         {
-            if(_fsmListWaitRemove.Contains(fsm)== false)
-                _fsmListWaitRemove.Add(fsm);
+            var wbTree = _vmService.AppendBehaviorTree(name, _entity.gameViewService.service.Model.gameObject);
+            if (wbTree != null)
+            {
+                tree = wbTree.TREE_BUILDER.Build();
+            }
+            else
+            {
+                WLogger.Warning("没有加载成功");
+            }
         }
     }
 
-    public StateMachine<int, int, int> GetFSM(string name)
+    public void TickBTree(string name)
     {
-        if (_stateMachines.TryGetValue(name, out var fsm))
-        {
-            return fsm.FSM;
-        }
-
-        return null;
+        bTreeAgent.TickTree(name);
     }
 
     public MoveAgent MoveAgent => moveAgent;
     public FightAgent FightAgent => fightAgent;
+    public FSMAgent FSMAgent => fsmAgent;
 
-    public void Dispose()
+    public void Destroy()
     {
         fsm.RequestExit();
-        for (int i = 0; i < _fsmList.Count; i++)
-        {
-            _fsmList[i].RequestExit();
-        }
-
-        foreach (var kv in _stateMachines)
-        {
-            var wfsm = kv.Value;
-            _vmService.ReleaseWObject(wfsm);
-        }
+        
+        FSMAgent.Push(fsmAgent);
     }
 }

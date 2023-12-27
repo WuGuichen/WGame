@@ -20,6 +20,8 @@ public interface IVMService
     public WBTree AppendBehaviorTree(string name, GameObject obj);
     public WFSM GetFSM(string name);
     public void ReleaseWObject(WObject wfsm);
+    
+    GameEntity Entity { get; }
 
     public void CleanUp();
 }

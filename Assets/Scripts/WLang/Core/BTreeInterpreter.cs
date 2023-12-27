@@ -68,7 +68,7 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
         }
         string name = treeName;
         var tree = interpreter.ObjectPool.GetWBTree(_treeOwner);
-        _builder = tree.TREE;
+        _builder = tree.TREE_BUILDER;
         var blocks = context.treeBlock();
         for (int i = 0; i < blocks.Length; i++)
         {

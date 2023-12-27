@@ -78,10 +78,10 @@ public class MoveAgent
             // }));
         }
 
-        var builder = service.AppendBehaviorTree("OnPatrol", obj);
-        _onPatrolTree = builder.TREE.Build();
-        var motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
-        motion.OnPatrolTree = _onPatrolTree;
+        // var builder = service.AppendBehaviorTree("OnPatrol", obj);
+        // _onPatrolTree = builder.TREE.Build();
+        // var motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
+        // motion.OnPatrolTree = _onPatrolTree;
     }
 
     public bool MoveToTarget(float sqrReachDist = 0.2f)

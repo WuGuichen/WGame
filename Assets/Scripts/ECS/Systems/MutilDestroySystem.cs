@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Entitas;
-using UnityEngine;
 
 // inherit from MultiReactiveSystem using the IDestroyed interface defined above
 public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contexts>
@@ -55,6 +54,11 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
                 if (entity.hasAttribute)
                 {
                     entity.attribute.value.Destroy();
+                }
+
+                if (entity.hasAiAgent)
+                {
+                    entity.aiAgent.service.Destroy();
                 }
 
                 if (entity.hasUIHeadPad)

@@ -4,10 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="删除无用代码">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/Test.wl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/Test.wl.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/BaseFSM.wl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/BaseFSM.wl.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/BaseFight.wl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/BaseFight.wl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharai.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharai.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/HatePointInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/HatePointInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IAiAgentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IAiAgentService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IVMService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IVMService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/MoveAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/MoveAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/MotionServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/MotionServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/VMServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/VMServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/MutilDestroySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/MutilDestroySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/_Init.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/_Init.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/_Init.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/_Init.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnCharacterInit.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnCharacterInit.wl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/BTreeInterpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/BTreeInterpreter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/WBTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/WBTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/.cache.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/.cache.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/charactersAI.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/charactersAI.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +46,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/05/f8ad814b/Interlocked.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/10/ed622220/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/50/e276bcaf/Int16.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/60/06cb223b/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/76/d3ebac2a/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/c9/04a4095d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/fa/8f6bf596/Buffer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -34,6 +58,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/87/994ce2f2/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/8b/e925990d/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/9f/ac071a2e/AtomicSafetyHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7fb6dbaed5894b58b747e385194eed603e00/de/ef8a49d5/DebugSystems.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/00/74f9bf9f/IEntity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/07/99383d85/Context`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/09/d94528d1/ReactiveSystem`1.cs" root0="SKIP_HIGHLIGHTING" />
@@ -58,6 +83,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IDetectorService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ISphereSensor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WBVHEntityAdapter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FSMAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/DetectorCharacterImplementation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdateCharacterDataSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/DrawDetectCharacterSystem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,7 +94,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectorDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/WBVH/WBVHNodeAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Res/WDrawer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Binary Heap/Example/MinBinaryHeapObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests/NativeHeapTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Tests/BinaryHeap.Tests/Tests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Tests/Editor/BinaryHeapTest.cs" root0="FORCE_HIGHLIGHTING" />
@@ -137,10 +162,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6348">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="6348" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -182,7 +207,8 @@
       <workItem from="1702999321420" duration="9909000" />
       <workItem from="1703103195832" duration="12934000" />
       <workItem from="1703417598623" duration="8583000" />
-      <workItem from="1703681129512" duration="260000" />
+      <workItem from="1703681129512" duration="7871000" />
+      <workItem from="1703699689541" duration="2121000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -289,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703426161086</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="删除无用代码">
+      <created>1703681476116</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1703681476116</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +351,15 @@
     <MESSAGE value="BVH优化" />
     <MESSAGE value="准备用堆结构来管理仇恨值信息" />
     <MESSAGE value="探测类型分类和探测等级分级" />
-    <option name="LAST_COMMIT_MESSAGE" value="探测类型分类和探测等级分级" />
+    <MESSAGE value="删除无用代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除无用代码" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#Antlr4.Runtime.ParserRuleContext" memberName="children" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

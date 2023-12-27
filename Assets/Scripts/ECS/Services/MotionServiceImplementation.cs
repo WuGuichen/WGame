@@ -41,8 +41,7 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
     public MotionAnimTriggerProcessor AnimTriggerProcessor => animTriggerProcessor;
     private MotionEventTriggerProcessor eventTriggerProcessor;
 
-    public BehaviorTree OnPatrolTree;
-    public BehaviorTree OnAttackTree;
+    public BehaviorTree CurShowBehaviorTree;
     public int curFSMState;
     
     public IMotionService OnInit(MotionEntity entity)
