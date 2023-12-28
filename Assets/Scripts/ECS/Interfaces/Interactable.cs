@@ -1,4 +1,3 @@
-using FairyGUI;
 using UnityEngine;
 
 public interface Interactable

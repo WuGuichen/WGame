@@ -384,7 +384,7 @@ public class WLangMgr : Singleton<WLangMgr>
         }
         else
         {
-            WLogger.Warning("未找到相应Motion: " + name);
+            WLogger.Warning("未找到相应Motion: " + name + "请检查是否import");
         }
     }
 

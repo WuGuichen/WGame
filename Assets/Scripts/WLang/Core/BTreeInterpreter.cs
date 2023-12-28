@@ -109,7 +109,9 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
         var inter = interpreter;
         _builder.Do(() =>
         {
+            inter.IgnoreReturn = true;
             var val = context.children[1].Accept(inter);
+            inter.IgnoreReturn = false;
             return (TaskStatus)val.Value;
         });
         return Symbol.NULL;

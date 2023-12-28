@@ -21,7 +21,7 @@ public class CharacterDetectSystem : IExecuteSystem
     
     public void Execute()
     {
-        coolDownTimer -= _time.deltaTime;
+        coolDownTimer -= _time.DeltaTime;
         if (coolDownTimer > 0)
             return;
         else

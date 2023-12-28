@@ -1,3 +1,4 @@
+using System;
 using System.Data;
 using System.Text;
 using UnityEngine;
@@ -86,8 +87,13 @@ public class WLogger
         Debug.LogException(msg);
     }
 
-    public static void ThrowError(string msg)
+    public static InvalidExpressionException ThrowError(string msg)
     {
-        throw new SyntaxErrorException(msg);
+        return new SyntaxErrorException(msg);
+    }
+
+    public static ArgumentException ThrowArgumentError(string msg)
+    {
+        return new ArgumentException(msg);
     }
 }

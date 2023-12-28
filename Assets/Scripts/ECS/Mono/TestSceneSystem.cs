@@ -30,6 +30,7 @@ public class TestSceneSystem : MonoBehaviour
 	private GameEventSystems _gameEventSystems;
 	private ProcessMotionSystems _processMotionSystems;
 	private VMSystems _vmSystems;
+	private ITimeService _timeService;
 
 	private Dictionary<int, GameEntity> inittedEntities;
 
@@ -55,6 +56,7 @@ public class TestSceneSystem : MonoBehaviour
         _registrationSystems.Initialize();
         _gameSystems.Initialize();
 
+        _timeService = _contexts.meta.timeService.instance;
         gameObject.AddComponent<YooassetManager>();
     }
     
@@ -117,6 +119,8 @@ public class TestSceneSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+	    _timeService.UpdateDeltaTime(Time.deltaTime);
+	    _timeService.UpdateRealTimeSinceStart(Time.realtimeSinceStartup);
 	    if (MainModel.Inst.frames >= 0)
 	    {
 		    frames++;
@@ -131,7 +135,7 @@ public class TestSceneSystem : MonoBehaviour
 
 	    EventCenter.Trigger(EventDefine.OnGameUpdate);
 
-	    TickManager.Inst.UpdateTick(_contexts.meta.timeService.instance.deltaTime);
+	    TickManager.Inst.UpdateTick(_contexts.meta.timeService.instance.DeltaTime);
 	    _vmSystems.Execute();
 	    _gameSystems.Execute();
 	    _detectSystems.Execute();
@@ -151,6 +155,7 @@ public class TestSceneSystem : MonoBehaviour
 
     private void FixedUpdate()
     {
+	    _timeService.UpdateFixedDeltaTime(Time.fixedDeltaTime);
 	    _rigidSystems.Execute();
 	    _lateFixedUpdateSystems.Execute();
 	    _rigidSystems.Cleanup();

@@ -63,7 +63,11 @@ public class FSMInterpreter : WLangBaseVisitor<Symbol>
         var code = context.fileCode();
         if (code != null)
         {
+            interpreter.DoImportCode = true;
+            interpreter.IgnoreReturn = true;
             context.Accept(interpreter);
+            interpreter.IgnoreReturn = false;
+            interpreter.DoImportCode = false;
         }
         var fsm = interpreter.ObjectPool.GetWFSM();
         curFSM = fsm.FSM;

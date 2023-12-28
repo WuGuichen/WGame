@@ -1,7 +1,6 @@
 using CleverCrow.Fluid.BTs.Trees;
 using Pathfinding;
 using UnityEngine;
-using UnityHFSM;
 using WGame.Runtime;
 
 public class MoveAgent
@@ -10,11 +9,23 @@ public class MoveAgent
     private GameEntity _entity;
     private Vector3[] _patrolPoints;
     private int _curPatrolIndex = 0;
+    public int CurPatrolIndex
+    {
+        get => _curPatrolIndex;
+        set
+        {
+            _curPatrolIndex = value; 
+            if(_vmService != null)
+                _vmService.Set("E_CUR_PATROL_INDEX", value);
+        }
+    }
+
     private Transform _target;
     private Vector3 _tarPos;
     private Vector3 _targetDirRotation;
     private Quaternion _targetDirQuaternion;
     private IAiAgentService _service;
+    private IVMService _vmService;
     private Transform _transform;
     private readonly ITimeService _time;
 
@@ -29,10 +40,12 @@ public class MoveAgent
         _service = service;
         _seeker = seeker;
         _entity = entity;
+        if(entity.hasLinkVM)
+            _vmService = entity.linkVM.VM.vMService.service;
         _transform = _entity.gameViewService.service.Model;
         _patrolPoints = patrolPoints;
-        _curPatrolIndex = Random.Range(0, _patrolPoints.Length);
-        _tarPos = _patrolPoints[_curPatrolIndex];
+        CurPatrolIndex = Random.Range(0, _patrolPoints.Length);
+        _tarPos = _patrolPoints[CurPatrolIndex];
         _time = Contexts.sharedInstance.meta.timeService.instance;
         InitTree();
         EventCenter.AddListener(EventDefine.OnBTreeHotUpdate, UpdateTree);
@@ -82,6 +95,33 @@ public class MoveAgent
         // _onPatrolTree = builder.TREE.Build();
         // var motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
         // motion.OnPatrolTree = _onPatrolTree;
+    }
+
+    public bool MoveToPoint(Vector3 point, float reachDist = 0.2f)
+    {
+        UpdateRotateDir();
+        RotateToTarget();
+        _tarPos = point;
+        var fwd = _transform.forward;
+        fwd.y = 0;
+        if (Vector3.Angle(fwd, _targetDirRotation) > 0.1f)
+        {
+            needRotate = true;
+            StopMove();
+        }
+
+        var pos = _transform.position;
+        if (new Vector2(pos.x - _tarPos.x, pos.z - _tarPos.z).sqrMagnitude < (reachDist*reachDist))
+        {
+            return true;
+        }
+        else
+        {
+            if(!isMoving)
+                StartMove(_targetDirRotation);
+        }
+
+        return false;
     }
 
     public bool MoveToTarget(float sqrReachDist = 0.2f)
@@ -135,7 +175,7 @@ public class MoveAgent
             UpdateRotateDir();
             // 旋转目标
             var rot = Quaternion.RotateTowards(_transform.rotation, _targetDirQuaternion
-                , _entity.rotationSpeed.value * _entity.animRotateMulti.rate * _time.deltaTime);
+                , _entity.rotationSpeed.value * _entity.animRotateMulti.rate * _time.DeltaTime);
 
             _transform.rotation = rot;
         }
@@ -165,21 +205,38 @@ public class MoveAgent
         _entity.ReplaceMoveDirection(dir);
     }
 
-    public void SetPatrolPointTarget()
+    public bool MoveToPatrolPoint(int index, float reachDist = 0.2f)
     {
-        StopMove();
+        if (index > _patrolPoints.Length)
+        {
+            WLogger.Error("超出巡逻点范围：" + index +"要限制在：" +(_patrolPoints.Length-1));
+            return false;
+        }
+
+        _curPatrolIndex = index;
+        return MoveToPoint(_patrolPoints[index], reachDist);
+    }
+
+    public Vector3 GetOtherPatrolPoint(ref int curIndex)
+    {
         int len = _patrolPoints.Length;
         if (len < 2)
         {
             WLogger.Error("巡逻点数少于两个");
-            return;
+            return Vector3.zero;
         }
-        
         int randNum = Random.Range(1, len-1);
-        _curPatrolIndex += randNum;
-        if (_curPatrolIndex >= len)
-            _curPatrolIndex -= len;
-        _tarPos = _patrolPoints[_curPatrolIndex];
+        curIndex += randNum;
+        if (curIndex >= len)
+            curIndex -= len;
+        var res = _patrolPoints[curIndex];
+        return res;
+    }
+
+    public void SetPatrolPointTarget()
+    {
+        StopMove();
+        _tarPos = GetOtherPatrolPoint(ref _curPatrolIndex);
     }
 
     public void OnPatrolEnter()

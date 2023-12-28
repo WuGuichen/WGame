@@ -12,6 +12,7 @@ public class DetectorCharacterImplementation : IDetectorService
 
     private readonly SensorEntity _sensor;
     private readonly GameEntity _character;
+    private readonly IVMService _vmService;
 
     private readonly List<HitInfo> detectList = new();
 
@@ -110,6 +111,14 @@ public class DetectorCharacterImplementation : IDetectorService
         _model = model;
         detectorDrawer = new DetectorDrawer();
         hateInfo = DetectMgr.Inst.RegisterHatePoint(_character.instanceID.ID);
+        _vmService = _character.linkVM.VM.vMService.service;
+        _vmService.Set("E_MAX_HATE_RANK", hateInfo.MaxHateEntityRank);
+        var vm = _vmService;
+        var info = hateInfo;
+        hateInfo.RegisterOnHateRankChanged((() =>
+        {
+            vm.Set("E_MAX_HATE_RANK", info.MaxHateEntityRank);
+        }));
     }
 
     public void UpdateSensorDrawer()

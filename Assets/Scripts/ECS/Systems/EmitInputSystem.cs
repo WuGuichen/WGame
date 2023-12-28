@@ -55,7 +55,7 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
         {
             if (MainModel.Inst.IsUseJoystick)
             {
-                model.TickInputUpdate(_metaContext.timeService.instance.deltaTime);
+                model.TickInputUpdate(_metaContext.timeService.instance.DeltaTime);
                 _inputContext.ReplaceMoveInput(model.MoveDir);
                 if (model.isLooking)
                 {

@@ -131,7 +131,7 @@ public class MoveCharacterSystem : IExecuteSystem
             }
             var move = entity.moveDirection.value * curSpeed;
             entity.rigidbodyService.service.Velocity = new Vector3(move.x, speedY, move.z);
-            entity.rigidbodyService.service.OnFixedUpdate(_timeService.fixedDeltaTime);
+            entity.rigidbodyService.service.OnFixedUpdate(_timeService.FixedDeltaTime);
             entity.ReplaceCharCurSpeed(curSpeed);
             entity.ReplaceCharSpeedMulti(speedMulti);
 
@@ -146,7 +146,7 @@ public class MoveCharacterSystem : IExecuteSystem
     {
         if (entity.hasGameViewService)
         {
-            entity.gameViewService.service.OnUpdateMove(_timeService.deltaTime);
+            entity.gameViewService.service.OnUpdateMove(_timeService.DeltaTime);
         }
     }
 
@@ -157,7 +157,7 @@ public class MoveCharacterSystem : IExecuteSystem
         switch (entity.doMoveType.type)
         {
             case DoMoveType.Lerp:
-                var movePos = tarPos * entity.doMoveSpeed.value * _timeService.fixedDeltaTime;
+                var movePos = tarPos * entity.doMoveSpeed.value * _timeService.FixedDeltaTime;
                 var dirX = tarPos.x;
                 var leftPos = tarPos - movePos;
                 bool needRemove = false;

@@ -16,7 +16,7 @@ public class DetectCharacterSystem : IExecuteSystem
         {
             if (sensor.hasDetectorCharacterService)
             {
-                sensor.detectorCharacterService.service.UpdateDetect(_time.deltaTime);
+                sensor.detectorCharacterService.service.UpdateDetect(_time.DeltaTime);
             }
         }
         UnityEngine.Profiling.Profiler.EndSample();

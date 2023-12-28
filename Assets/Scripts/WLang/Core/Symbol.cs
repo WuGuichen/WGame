@@ -107,8 +107,7 @@ public static class SymbolExtention
             return def.GetFloat(sym.Value);
         else if (sym.Type == BaseDefinition.TYPE_INT)
             return sym.Value;
-        WLogger.Error("类型转换错误");
-        return 0;
+        throw WLogger.ThrowError("类型转换错误");
     }
     
     public static List<Symbol> ToTable(this Symbol sym, in BaseDefinition def)
@@ -124,25 +123,24 @@ public static class SymbolExtention
     {
         if (sym.Type != BaseDefinition.TYPE_TABLE)
         {
-            WLogger.Error("类型转换失败");
-            return Vector3.zero;
+            throw WLogger.ThrowError("类型转换错误");
         }
         var table = def.GetTable(sym.Value);
-        return new Vector3(def.GetFloat(table[0].Value), def.GetFloat(table[1].Value), def.GetFloat(table[2].Value));
+        if(table.Count >= 3)
+            return new Vector3(def.GetFloat(table[0].Value), def.GetFloat(table[1].Value), def.GetFloat(table[2].Value));
+        throw WLogger.ThrowError("类型转换失败");
     }
 
     public static Quaternion ToQuaternion(this Symbol sym, BaseDefinition def)
     {
         if (sym.Type != BaseDefinition.TYPE_TABLE)
         {
-            WLogger.Error("类型转换失败");
-            return Quaternion.identity;
+            throw WLogger.ThrowError("类型转换错误");
         }
         var table = def.GetTable(sym.Value);
         if (table.Count < 3)
         {
-            WLogger.Error("类型转换失败, 参数数量不对");
-            return Quaternion.identity;
+            throw WLogger.ThrowError("类型转换失败, 参数数量不对");
         }
 
         if (table.Count == 3)

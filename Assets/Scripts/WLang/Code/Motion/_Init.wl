@@ -6,5 +6,6 @@ import MyHotAction
 import GotHit_10
 import GotHit_21
 import GotHit_31
+import BaseFSMCode
 
 CallMotion(InitGotHitDict)

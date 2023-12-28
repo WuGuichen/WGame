@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Antlr4.Runtime.Tree;
 using UnityEngine;
 using Timer = UnityTimer.Timer;
@@ -20,6 +21,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     private BaseDefinition _def;
     public BaseDefinition Definition => _def;
 
+    public bool IgnoreReturn { get; set; } = false;
     private bool isNeedReturn = false;
     private WLangParser.ExprRightContext returnVal = null;
     private Symbol returnSym = Symbol.NULL;
@@ -36,6 +38,8 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     private List<int> cachedTableList = new();
 
     private object locker = new object();
+    
+    public bool DoImportCode { get; set; } = false;
     public Interpreter(BaseDefinition def, BaseScope baseScope)
     {
         this._def = def;
@@ -275,7 +279,8 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitStatReturn(WLangParser.StatReturnContext context)
     {
-        isNeedReturn = true;
+        if(!IgnoreReturn)
+            isNeedReturn = true;
         returnVal = context.r;
         returnSym = returnVal.Accept(this);
 
@@ -285,7 +290,14 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     public override Symbol VisitStatImport(WLangParser.StatImportContext context)
     {
         string file = context.f.Text.Replace('.', '_');
-        WLangMgr.Inst.LoadCode(file, this);
+        if (DoImportCode)
+        {
+            WLangMgr.Inst.CallCode(file, this);
+        }
+        else
+        {
+            WLangMgr.Inst.LoadCode(file, this);
+        }
         return Symbol.NULL;
     }
 
@@ -561,9 +573,28 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     public override Symbol VisitExprBinary(WLangParser.ExprBinaryContext context)
     {
         Symbol res = Symbol.ERROR;
-        Symbol l = context.GetChild(0).Accept(this);
-        Symbol r = context.GetChild(2).Accept(this);
+        Symbol l = context.children[0].Accept(this);
+        Symbol r = context.children[2].Accept(this);
         string op = context.o.Text;
+        if (l.IsNull || r.IsNull)
+        {
+            switch (op)
+            {
+                case "==":
+                    break;
+                case "!=":
+                    break;
+                default:
+                    var builder = new StringBuilder();
+                    builder.Append("非法的二元运算：");
+                    if (l.IsNull)
+                        builder.Append("左值为NULL: ");
+                    if (r.IsNull)
+                        builder.Append("右值为NULL: ");
+                    builder.Append(context.GetText());
+                    throw new ArgumentException(builder.ToString());
+            }
+        }
         switch (op)
         {
             case "+":
@@ -973,4 +1004,87 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     {
         _objectPool.PushObj(obj, Definition.Cached);
     }
+    #region 解析参数方法
+
+    private static bool CheckParamFail(in List<Symbol> param, int index, out Symbol sym)
+    {
+        if (index >= param.Count)
+        {
+            throw WLogger.ThrowArgumentError("参数数量不对,应该至少为: "+(index+1));
+        }
+        sym = param[index];
+        return false;
+    }
+    
+    public int ParseInt(in List<Symbol> param, int index)
+    {
+        if (CheckParamFail(param, index, out var sym)) return 0;
+        if (sym.Type == TYPE_INT)
+            return sym.Value;
+        if (sym.Type == TYPE_FLOAT)
+            return (int)_def.GetFloat(sym.Value);
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+
+    public float ParseFloat(in List<Symbol> param, int index)
+    {
+        if (CheckParamFail(param, index, out var sym)) return 0;
+        return sym.ToFloat(_def);
+    }
+    
+    public Vector2 ParseVector2(in List<Symbol> param, int index)
+    {
+        if (CheckParamFail(param, index, out var sym)) return Vector2.zero;
+        if (sym.Type == TYPE_TABLE)
+        {
+            var tbl = _def.GetTable(sym.Value);
+            if(tbl.Count < 2)
+                throw WLogger.ThrowArgumentError("参数类型错误");
+            return new Vector2(tbl[0].ToFloat(_def), tbl[1].ToFloat(_def));
+        }
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+    
+    public Vector3 ParseVector3(in List<Symbol> param, int index)
+    {
+        if (CheckParamFail(param, index, out var sym)) return Vector3.zero;
+        if (sym.Type == TYPE_TABLE)
+        {
+            return sym.ToVector3(_def);
+        }
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+
+    public static bool ParseBool(in List<Symbol> param, int index)
+    {
+        if (CheckParamFail(param, index, out var sym)) return false;
+        if (sym.Type == TYPE_BOOLEN)
+        {
+            return sym.IsTrue;
+        }
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+
+    public Method ParseMethod(in List<Symbol> param, int index)
+    {
+        if (CheckParamFail(param, index, out var sym)) return null;
+        if (sym.Type == TYPE_METHOD)
+        {
+            return sym.ToMethod(_def);
+        }
+        
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+
+    public Quaternion ParseQuaternion(in List<Symbol> param, int index)
+    {
+        if (CheckParamFail(param, index, out var sym)) return Quaternion.identity;
+        if (sym.Type == TYPE_TABLE)
+        {
+            return sym.ToQuaternion(_def);
+        }
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+
+    #endregion
 }

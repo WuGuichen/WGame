@@ -6,9 +6,8 @@ using CleverCrow.Fluid.BTs.Trees;
 using Pathfinding;
 using UnityEngine;
 using UnityHFSM;
-using WGame.Runtime;
 
-public class AiAgentServiceImplementation : IAiAgentService
+public partial class AiAgentServiceImplementation : IAiAgentService
 {
     private GameEntity _entity;
     private Seeker _seeker;
@@ -24,10 +23,6 @@ public class AiAgentServiceImplementation : IAiAgentService
     private float preSqrDist;
 
     private StateMachine<int, int, int> fsm;
-    private State<int, int> statePatrol;
-    private State<int, int> stateChase;
-    private State<int, int> stateWait;
-    private State<int, int> stateAttack;
 
     private readonly MoveAgent moveAgent;
     private readonly FightAgent fightAgent;
@@ -68,74 +63,10 @@ public class AiAgentServiceImplementation : IAiAgentService
         bTreeAgent = BTreeAgent.Get(_vmService);
         _motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
 
-        // var vm = _entity.linkVM.VM.vMService.service;
-        
         InitMethod();
         fsmAgent.SetObject(_aiCfg.BaseFSM);
     }
-
-    private void InitMethod()
-    {
-        SetMethod("MoveToTarget", MoveToTarget);
-        SetMethod("OnTestWaitEnter", OnTestWaitEnter);
-        SetMethod("OnTestAttackEnter", OnTestAttackEnter);
-        SetMethod("SetPatrolPointTarget", SetPatrolPointTarget);
-        SetMethod("NoDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(!_entity.hasDetectedCharacter);});
-        SetMethod("HasDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(_entity.hasDetectedCharacter);});
-        SetMethod("TickBTree", ((list, interpreter) =>
-        {
-            if(list.Count > 0)
-                TickBTree(list[0].Text);
-        }));
-        
-        SetMethod("OnAIPatrolEnter", (list, interpreter) =>
-        {
-            OnPatrolEnter();
-        });
-        SetMethod("OnAIPatrolLogic", (list, interpreter) =>
-        {
-            OnPatrolLogic();
-        });
-        SetMethod("OnAIPatrolExit", (list, interpreter) =>
-        {
-            OnPatrolExit();
-        });
-        
-        SetMethod("OnAIChaseEnter", (list, interpreter) =>
-        {
-            OnChaseEnter();
-        });
-        
-        SetMethod("OnAIChaseLogic", (list, interpreter) =>
-        {
-            OnChaseLogic();
-        });
-        
-        SetMethod("OnAIChaseExit", (list, interpreter) =>
-        {
-            OnChaseExit();
-        });
-        
-        SetMethod("OnFightAttackEnter", (list, interpreter) =>
-        {
-            fightAgent.OnAttackEnter();
-        });
-        
-        SetMethod("OnFightAttackLogic", (list, interpreter) =>
-        {
-            fightAgent.OnAttackLogic();
-        });
-        
-        SetMethod("OnFightAttackExit", (list, interpreter) =>
-        {
-            fightAgent.OnAttackExit();
-        });
-        
-        SetMethod("OnAISearchEnter", (list, interpreter) =>
-        {
-        });
-    }
-
+    
     private void SetPatrolPointTarget(List<Symbol> list, Interpreter interpreter)
     {
         moveAgent.SetPatrolPointTarget();
@@ -171,64 +102,74 @@ public class AiAgentServiceImplementation : IAiAgentService
     {
         _vmService.Set(name, Method.Get(name, callback));
     }
+    
+    #region 设置属性方法(Set)
 
-    private void InitState()
+    /// <summary>
+    /// 设置当前移动速度为初始值*rate%
+    /// </summary>
+    /// <param name="rate">百分比值,可以小于0</param>
+    private void SetMoveSpeedRate(int rate = 100)
     {
-        statePatrol = new State<int, int>();
-        stateChase = new State<int, int>();
-        
-        stateWait = new State<int, int>();
-        stateAttack = new State<int, int>();
+        _entity.ReplaceMovementSpeed(_initInfo.moveSpeed * (rate * 0.01f));
     }
-    
-    // private void InitFSM()
-    // {
-    //     InitState();
-    //     fsm = new StateMachine<int, int, int>();
-    //
-    //     var fsmFight = new StateMachine<int, int, int>(needsExitTime: true);
-    //     fsmFight.AddState(StateDefine.Wait,stateWait);
-    //     fsmFight.AddState(StateDefine.Attack, stateAttack);
-    //     fsmFight.AddTransition( new TransitionAfter<int>(StateDefine.Wait, StateDefine.Attack, 2f));
-    //     fsmFight.AddTransition( new TransitionAfter<int>(StateDefine.Attack, StateDefine.Wait, 2f));
-    //     fsmFight.AddExitTransition(StateDefine.Wait);
-    //
-    //     fsm.SetStartState(StateDefine.Patrol);
-    //
-    //     fsm.AddState(StateDefine.Patrol, statePatrol);
-    //     fsm.AddState(StateDefine.Chase, stateChase);
-    //     fsm.AddState(StateDefine.Fight, fsmFight);
-    //     
-    //     fsm.AddTriggerTransition(StateDefine.SpottedTarget,StateDefine.Patrol, StateDefine.Chase);
-    //     fsm.AddTriggerTransition(StateDefine.LoseTarget, StateDefine.Fight, StateDefine.Chase, _ => _entity.hasDetectedCharacter);
-    //     fsm.AddTriggerTransition(StateDefine.LoseTarget, StateDefine.Fight, StateDefine.Patrol, _ => !_entity.hasDetectedCharacter);
-    //     fsm.AddTransition(StateDefine.Chase, StateDefine.Patrol, _ => !_entity.hasDetectedCharacter);
-    //     fsm.AddTriggerTransition(StateDefine.ReachTarget, StateDefine.Chase, StateDefine.Fight);
-    //     
-    //     fsm.Init();
-    // }
 
-    private void OnPatrolEnter()
+    /// <summary>
+    /// 设置当前移动速度为初始+value%
+    /// </summary>
+    /// <param name="value">百分比值,可以小于0</param>
+    private void SetMoveSpeedAddValue(int value = 0)
     {
-        _entity.ReplaceMovementSpeed(_initInfo.moveSpeed*_initInfo.PatrolMul);
-        moveAgent.OnPatrolEnter();
+        var real = _initInfo.moveSpeed + value * 0.01f;
+        _entity.ReplaceMovementSpeed(real);
     }
     
-    private void OnPatrolLogic()
+    #endregion
+    
+    #region 获取属性方法(Get)
+
+    /// <summary>
+    /// 获取除了
+    /// </summary>
+    /// <param name="curIndex"></param>
+    /// <returns></returns>
+    private Vector3 GetRandomPatrolPos(int curIndex)
     {
-        moveAgent.OnPatrolLogic();
+        var res = moveAgent.GetOtherPatrolPoint(ref curIndex);
+        return res;
     }
     
-    private void OnPatrolExit()
+    #endregion
+    
+    #region AI行为方法(Do)
+
+    /// <summary>
+    /// 移动到巡逻点位
+    /// </summary>
+    /// <param name="index">点位序号</param>
+    /// <param name="reachDist">距离多少算到达，单位厘米</param>
+    private bool DoMoveToPatrolPoint(int index = -1, int reachDist = 20)
     {
-        _entity.ReplaceMovementSpeed(_initInfo.moveSpeed);
-        moveAgent.OnPatrolExit();
+        if (index < 0)
+            index = moveAgent.CurPatrolIndex;
+        return moveAgent.MoveToPatrolPoint(index, reachDist*0.01f);
     }
+
+    /// <summary>
+    /// 移动到世界坐标点
+    /// </summary>
+    /// <param name="point">世界坐标点</param>
+    /// <param name="reachDist">表示到达的距离，单位厘米</param>
+    private bool DoMoveToPoint(Vector3 point, int reachDist = 20)
+    {
+        return moveAgent.MoveToPoint(point, reachDist*0.01f);
+    }
+    
+    #endregion
 
     private void OnChaseEnter()
     {
         _entity.ReplaceMovementSpeed(_initInfo.moveSpeed*_initInfo.ChaseMul);
-        // _entity.ReplaceFocus(_entity.detectedCharacter.entity.gameViewService.service.FocusPoint);
         _entity.ReplaceFocusEntity(_entity.detectedCharacter.entity);
         moveAgent.OnChaseEnter();
     }

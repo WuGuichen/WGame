@@ -35,7 +35,7 @@ public class RotatePlayerSystem : IExecuteSystem
                 fwd.y = 0;
                 var tarRot = Quaternion.LookRotation(fwd);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
-                var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.fixedDeltaTime);
+                var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
                 playerTrans.localRotation = playerRot;
             }
             else
@@ -52,7 +52,7 @@ public class RotatePlayerSystem : IExecuteSystem
 
                 var tarRot = Quaternion.LookRotation(tarDir);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
-                var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.fixedDeltaTime);
+                var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
 
                 playerTrans.localRotation = playerRot;
             }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Collections;
 
@@ -25,15 +26,6 @@ public class HatePointInfo
         public static HateInfo NULL = new HateInfo(-1, -1, 0);
     }
 
-    private struct MaxHate : IComparer<HateInfo>
-    {
-        public int Compare(HateInfo x, HateInfo y)
-        {
-            var rankComparison = x.Rank.CompareTo(y.Rank);
-            if (rankComparison != 0) return rankComparison;
-            return x.Value.CompareTo(y.Value);
-        }
-    }
 
     private const int MAX_HATEPOINT = 360;
     private readonly Dictionary<int, HateInfo> _hatePointDict = new();
@@ -43,6 +35,7 @@ public class HatePointInfo
     public float MaxHateEntityPoint => maxHateInfo.Value;
     public float MaxHateEntityRank => maxHateInfo.Rank;
 
+    private Action OnHateRankUpdate;
 
     // private NativeHeap<HateInfo, MaxHate> _hateHeap = new NativeHeap<HateInfo, MaxHate>(Allocator.Persistent);
 
@@ -144,8 +137,15 @@ public class HatePointInfo
         }
     }
 
+    public void RegisterOnHateRankChanged(Action action)
+    {
+        OnHateRankUpdate -= action;
+        OnHateRankUpdate += action;
+    }
+
     public void Dispose()
     {
         // _hateHeap.Dispose();
+        OnHateRankUpdate = null;
     }
 }

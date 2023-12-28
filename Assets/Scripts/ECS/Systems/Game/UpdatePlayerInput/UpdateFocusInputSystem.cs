@@ -56,7 +56,7 @@ public class UpdateFocusInputSystem : IExecuteSystem
 
                 if (thresholds > THRESHOLDS)
                 {
-                    timer -= _timeService.deltaTime;
+                    timer -= _timeService.DeltaTime;
                     if (timer < 0)
                     {
                         thresholds = THRESHOLDS;
