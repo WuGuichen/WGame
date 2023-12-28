@@ -18,6 +18,7 @@ public class WLogger
         WTerminal.Output(_buf.ToString());
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
     public static void PrintErrorBuffer()
     {
         WLogger.Error(_buf.ToString());
@@ -29,6 +30,7 @@ public class WLogger
         _buf.Clear();
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
     public static void Info(object msg)
     {
 #if UNITY_EDITOR
@@ -37,6 +39,7 @@ public class WLogger
         WTerminal.Output(msg.ToString());
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
     public static void Print(object msg)
     {
 #if UNITY_EDITOR
@@ -74,10 +77,12 @@ public class WLogger
         #endif
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
     public static void Warning(string msg)
     {
         Debug.LogWarning(msg);
     }
+    // ReSharper disable Unity.PerformanceAnalysis
     public static void Error(string msg)
     {
         Debug.LogError(msg);

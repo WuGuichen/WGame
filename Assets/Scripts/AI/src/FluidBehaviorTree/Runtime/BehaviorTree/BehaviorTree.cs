@@ -29,6 +29,7 @@ namespace CleverCrow.Fluid.BTs.Trees {
             SyncNodes(Root);
         }
         
+        // ReSharper disable Unity.PerformanceAnalysis
         public TaskStatus Tick () {
             var status = Root.Update();
             if (status != TaskStatus.Continue) {

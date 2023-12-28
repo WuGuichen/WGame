@@ -1008,16 +1008,29 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     }
     #region 解析参数方法
 
-    private static bool CheckParamFail(in List<Symbol> param, int index, out Symbol sym)
+    private static bool CheckParamFail(in List<Symbol> param, int index, out Symbol sym, bool showError = true)
     {
         if (index >= param.Count)
         {
-            throw WLogger.ThrowArgumentError("参数数量不对,应该至少为: "+(index+1));
+            if (showError)
+                throw WLogger.ThrowArgumentError("参数数量不对,应该至少为: " + (index + 1));
+            sym = Symbol.ERROR;
+            return false;
         }
+
         sym = param[index];
         return false;
     }
-    
+
+    public int ParseInt(in List<Symbol> param, int index, int defaultValue)
+    {
+        if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
+        if (sym.Type == TYPE_INT)
+            return sym.Value;
+        if (sym.Type == TYPE_FLOAT)
+            return (int)_def.GetFloat(sym.Value);
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
     public int ParseInt(in List<Symbol> param, int index)
     {
         if (CheckParamFail(param, index, out var sym)) return 0;
@@ -1027,11 +1040,30 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             return (int)_def.GetFloat(sym.Value);
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
+    
+    public float ParseFloat(in List<Symbol> param, int index, float defaultValue)
+    {
+        if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
+        return sym.ToFloat(_def);
+    }
 
     public float ParseFloat(in List<Symbol> param, int index)
     {
         if (CheckParamFail(param, index, out var sym)) return 0;
         return sym.ToFloat(_def);
+    }
+    
+    public Vector2 ParseVector2(in List<Symbol> param, int index, Vector2 defaultValue)
+    {
+        if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
+        if (sym.Type == TYPE_TABLE)
+        {
+            var tbl = _def.GetTable(sym.Value);
+            if(tbl.Count < 2)
+                throw WLogger.ThrowArgumentError("参数类型错误");
+            return new Vector2(tbl[0].ToFloat(_def), tbl[1].ToFloat(_def));
+        }
+        throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
     public Vector2 ParseVector2(in List<Symbol> param, int index)
@@ -1047,12 +1079,32 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
+    public Vector3 ParseVector3(in List<Symbol> param, int index, Vector3 defaultValue)
+    {
+        if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
+        if (sym.Type == TYPE_TABLE)
+        {
+            return sym.ToVector3(_def);
+        }
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+    
     public Vector3 ParseVector3(in List<Symbol> param, int index)
     {
         if (CheckParamFail(param, index, out var sym)) return Vector3.zero;
         if (sym.Type == TYPE_TABLE)
         {
             return sym.ToVector3(_def);
+        }
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+    
+    public static bool ParseBool(in List<Symbol> param, int index, bool defaultValue)
+    {
+        if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
+        if (sym.Type == TYPE_BOOLEN)
+        {
+            return sym.IsTrue;
         }
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
@@ -1066,6 +1118,17 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         }
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
+    
+    public Method ParseMethod(in List<Symbol> param, int index, Method defaultValue)
+    {
+        if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
+        if (sym.Type == TYPE_METHOD)
+        {
+            return sym.ToMethod(_def);
+        }
+        
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
 
     public Method ParseMethod(in List<Symbol> param, int index)
     {
@@ -1075,6 +1138,16 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             return sym.ToMethod(_def);
         }
         
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+    
+    public Quaternion ParseQuaternion(in List<Symbol> param, int index, Quaternion defaultValue)
+    {
+        if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
+        if (sym.Type == TYPE_TABLE)
+        {
+            return sym.ToQuaternion(_def);
+        }
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
 
