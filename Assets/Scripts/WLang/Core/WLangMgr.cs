@@ -22,6 +22,7 @@ public class WLangMgr : Singleton<WLangMgr>
     private Dictionary<int, string> eventId2Name;
     private Dictionary<string, int> eventName2Id;
     private Dictionary<int, WEventCallback0> eventCallback0s;
+    private Dictionary<string, List<WLangImporter>> codeImporterDict = new();
 
     private const string WL_GAME_EVENT = "GameEvent_";
     private const string WL_MOTION = "Motion_";
@@ -147,23 +148,21 @@ public class WLangMgr : Singleton<WLangMgr>
                     foreach (var name in list)
                     {
                         LoadCode(WL_MOTION + name, _interpreter, true);
-                        WLogger.Print("刷新成功：" + name);
                     }
                     break;
                 case WL_FSM:
                     foreach (var name in list)
                     {
-                        WLogger.Print("刷新成功：" + name);
                         UnityEditor.EditorApplication.delayCall += () => { WBTreeMgr.Inst.RefreshFSM(name); };
                     }
                     break;
                 case WL_BTREE:
                     foreach (var name in list)
                     {
-                        WLogger.Print("刷新成功：" + name);
                         UnityEditor.EditorApplication.delayCall += () =>
                         {
                             EventCenter.Trigger(EventDefine.OnBTreeHotUpdate, WEventContext.Get(name));
+                            WLogger.Print("重载BTree成功：" + name);
                         };
                     }
                     break;
@@ -171,7 +170,7 @@ public class WLangMgr : Singleton<WLangMgr>
                     foreach (var name in list)
                     {
                         RegisterEvent(WL_GAME_EVENT + name, _interpreter);
-                        WLogger.Print("刷新成功：" + name);
+                        WLogger.Print("重载成功：" + name);
                     }
                     break;
                 default:
@@ -367,8 +366,41 @@ public class WLangMgr : Singleton<WLangMgr>
                 }
 
                 codeCache[filePath] = fileContext;
+
+                if (isReload)
+                {
+                    WLogger.Print("重载Code成功:" + title);
+                    if (codeImporterDict.TryGetValue(title, out var list))
+                    {
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            if(list[i].type == ImporterType.FSM)
+                                WBTreeMgr.Inst.RefreshFSM(list[i].name);
+                            else if (list[i].type == ImporterType.BTree)
+                            {
+                                EventCenter.Trigger(EventDefine.OnBTreeHotUpdate, WEventContext.Get(list[i].name));
+                                WLogger.Print("重载BTree成功：" + list[i].name);
+                            }
+                        }
+                    }
+                }
             });
         }
+    }
+
+    public void LinkImportCode(string codeFileName, WLangImporter importer)
+    {
+        if (codeImporterDict.TryGetValue(codeFileName, out var list))
+        {
+            if (list.Contains(importer))
+                return;
+        }
+        else
+        {
+            list = new List<WLangImporter>();
+        }
+        list.Add(importer);
+        codeImporterDict[codeFileName] = list;
     }
 
     public void CallCode(string name, Interpreter interpreter = null)

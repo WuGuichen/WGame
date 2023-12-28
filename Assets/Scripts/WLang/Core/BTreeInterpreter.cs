@@ -64,7 +64,16 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
         var code = context.fileCode();
         if (code != null)
         {
+            interpreter.CacheCodeImporter = new WLangImporter()
+            {
+                name = treeName,
+                type = ImporterType.BTree,
+            };
+            interpreter.DoImportCode = true;
+            interpreter.IgnoreReturn = true;
             context.Accept(interpreter);
+            interpreter.IgnoreReturn = false;
+            interpreter.DoImportCode = false;
         }
         string name = treeName;
         var tree = interpreter.ObjectPool.GetWBTree(_treeOwner);

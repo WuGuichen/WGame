@@ -40,6 +40,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     private object locker = new object();
     
     public bool DoImportCode { get; set; } = false;
+    public WLangImporter CacheCodeImporter { get; set; }
     public Interpreter(BaseDefinition def, BaseScope baseScope)
     {
         this._def = def;
@@ -292,6 +293,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         string file = context.f.Text.Replace('.', '_');
         if (DoImportCode)
         {
+            WLangMgr.Inst.LinkImportCode(file, CacheCodeImporter);
             WLangMgr.Inst.CallCode(file, this);
         }
         else

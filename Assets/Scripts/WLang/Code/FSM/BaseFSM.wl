@@ -1,5 +1,6 @@
 ## BaseFSM
 
+// CODE中的代码以Entity为作用域生效（不同的实体可以用同一个变量名获取不同的值）
 CODE{
     import BaseFSMCode
 }

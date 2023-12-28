@@ -1,7 +1,7 @@
 ## BaseFSMCode
 
     def PatrolEnter(){
-        Print("Enter Patrol")
+        Print("Enter Patrol..................")
     }
     def PatrolLogic(){
         TickBTree("Test")

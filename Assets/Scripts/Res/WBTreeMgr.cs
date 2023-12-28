@@ -29,6 +29,7 @@ public class WBTreeMgr : Singleton<WBTreeMgr>
     { 
         EventCenter.Trigger(EventDefine.OnFSMHotUpdate, WEventContext.Get(text));
         
+        WLogger.Print("重载FSM成功:" + text);
         if (_fsmTree.TryGetValue(text, out var list))
         {
             for (int i = 0; i < list.Count; i++)

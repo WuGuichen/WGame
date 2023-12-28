@@ -63,6 +63,11 @@ public class FSMInterpreter : WLangBaseVisitor<Symbol>
         var code = context.fileCode();
         if (code != null)
         {
+            interpreter.CacheCodeImporter = new WLangImporter()
+            {
+                name = fsmName,
+                type = ImporterType.FSM,
+            };
             interpreter.DoImportCode = true;
             interpreter.IgnoreReturn = true;
             context.Accept(interpreter);
