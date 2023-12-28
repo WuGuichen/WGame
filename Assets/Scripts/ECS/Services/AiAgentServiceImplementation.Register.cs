@@ -5,20 +5,38 @@ public partial class AiAgentServiceImplementation
     {
     #region 设置属性(Set)
         // 设置当前移动速度为初始值*rate%, nil则设置为初始速度
-        // rate->int|nil, 百分比值，可以小于0
+        // rate->int|nil=0, 百分比值，可以小于0
+        // reset->bool|nil=true, 是否先重置
         SetMethod("SetMoveSpeedRate", (list, interpreter) =>
         {
-            var real = _initInfo.moveSpeed + interpreter.ParseInt(list, 0, 0) * 0.01f;
+            var rate = interpreter.ParseInt(list, 0, 0) * 0.01f;
+            var reset = interpreter.ParseBool(list, 1, true);
+            var real = (reset ?  _initInfo.moveSpeed : _entity.movementSpeed.value) * rate;
             _entity.ReplaceMovementSpeed(real);
+        });
+        // 重置角色移动速度
+        SetMethod("ResetMoveSpeed", (list, interpreter) =>
+        {
+            _entity.ReplaceMovementSpeed(_initInfo.moveSpeed);
         });
         // 设置当前移动速度为初始+value%, nil则设置为初始速度
         // value->int|nil, 百分比值，可以小于0
+        // reset->bool|nil=true, 是否先重置
         SetMethod("SetMoveSpeedAddValue", (list, interpreter) =>
         {
             var value = interpreter.ParseInt(list, 0, 0);
-            var real = _initInfo.moveSpeed + value * 0.01f;
+            var reset = interpreter.ParseBool(list, 1, true);
+            var real = (reset ?  _initInfo.moveSpeed : _entity.movementSpeed.value) + value * 0.01f;
             _entity.ReplaceMovementSpeed(real);
         });
+        
+        // 设置当前巡逻点为index或者除当前巡逻点外其他随机点
+        // index->int|nil
+        SetMethod("SetNewPatrolIndex", (list, interpreter) =>
+        {
+            moveAgent.SetNewPatrolPointIndex(interpreter.ParseInt(list, 0, -1));
+        });
+        
     #endregion
         
     #region 获取属性(Get)
@@ -28,7 +46,7 @@ public partial class AiAgentServiceImplementation
         SetMethod("GetRandomPatrolPos", (list, interpreter) =>
         {
             int index = interpreter.ParseInt(list, 0, moveAgent.CurPatrolIndex);
-            var pos = moveAgent.GetOtherPatrolPoint(ref index);
+            var pos = moveAgent.GetOtherPatrolPoint(index);
             interpreter.SetRetrun(pos); 
         });
     #endregion
@@ -58,7 +76,7 @@ public partial class AiAgentServiceImplementation
         });
     #endregion
         
-    #region 其他方法(Get)
+    #region 其他方法
         SetMethod("TickBTree", ((list, interpreter) => {
             if(list.Count > 0)
                 TickBTree(list[0].Text);

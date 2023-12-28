@@ -47,7 +47,6 @@ public class MoveAgent
         CurPatrolIndex = Random.Range(0, _patrolPoints.Length);
         _tarPos = _patrolPoints[CurPatrolIndex];
         _time = Contexts.sharedInstance.meta.timeService.instance;
-        InitTree();
         EventCenter.AddListener(EventDefine.OnBTreeHotUpdate, UpdateTree);
     }
 
@@ -55,46 +54,7 @@ public class MoveAgent
     {
         if (ctx.pString == "OnPatrol")
         {
-            InitTree();
         }
-    }
-
-    private void InitTree()
-    {
-        var service = _entity.linkVM.VM.vMService.service;
-        GameObject obj;
-        if (_onPatrolTree != null)
-        {
-            obj = _onPatrolTree.Root.Owner;
-            _onPatrolTree.Reset();
-        }
-        else
-        {
-            obj = _entity.gameViewService.service.Model.gameObject;
-            // service.Set("MoveToTarget", Method.Get("MoveToTarget", (list, interpreter) =>
-            // {
-            //     if (list.Count == 0)
-            //     {
-            //         interpreter.SetRetrun(MoveToTarget());
-            //     }
-            //     else
-            //     {
-            //         if(list[0].Type == BaseDefinition.TYPE_FLOAT)
-            //             interpreter.SetRetrun(MoveToTarget(list[0].ToFloat(interpreter.Definition)));
-            //         else
-            //             interpreter.SetRetrun(MoveToTarget(list[0].Value));
-            //     }
-            // }));
-            // service.Set("SetPatrolPointTarget", Method.Get("SetPatrolPointTarget", (list, interpreter) =>
-            // {
-            //     SetPatrolPointTarget();
-            // }));
-        }
-
-        // var builder = service.AppendBehaviorTree("OnPatrol", obj);
-        // _onPatrolTree = builder.TREE.Build();
-        // var motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
-        // motion.OnPatrolTree = _onPatrolTree;
     }
 
     public bool MoveToPoint(Vector3 point, float reachDist = 0.2f)
@@ -193,10 +153,13 @@ public class MoveAgent
         _targetDirQuaternion = Quaternion.LookRotation(_targetDirRotation);
     }
 
-    private void StopMove()
+    public void StopMove()
     {
-        isMoving = false;
-        _entity.ReplaceMoveDirection(Vector3.zero);
+        if (isMoving)
+        {
+            isMoving = false;
+            _entity.ReplaceMoveDirection(Vector3.zero);
+        }
     }
 
     private void StartMove(Vector3 dir)
@@ -213,11 +176,11 @@ public class MoveAgent
             return false;
         }
 
-        _curPatrolIndex = index;
+        CurPatrolIndex = index;
         return MoveToPoint(_patrolPoints[index], reachDist);
     }
-
-    public Vector3 GetOtherPatrolPoint(ref int curIndex)
+    
+    public Vector3 GetOtherPatrolPoint(int curIndex)
     {
         int len = _patrolPoints.Length;
         if (len < 2)
@@ -229,14 +192,39 @@ public class MoveAgent
         curIndex += randNum;
         if (curIndex >= len)
             curIndex -= len;
-        var res = _patrolPoints[curIndex];
+        CurPatrolIndex = curIndex;
+        var res = _patrolPoints[CurPatrolIndex];
         return res;
     }
 
+    public void SetNewPatrolPointIndex(int index = -1)
+    {
+        int curIndex = index;
+        if (curIndex < 0)
+        {
+            curIndex = CurPatrolIndex;
+        }
+        else
+        {
+            CurPatrolIndex = index;
+            return;
+        }
+        int len = _patrolPoints.Length;
+        if (len < 2)
+        {
+            WLogger.Error("巡逻点数少于两个");
+            return;
+        }
+        int randNum = Random.Range(1, len-1);
+        curIndex += randNum;
+        if (curIndex >= len)
+            curIndex -= len;
+        CurPatrolIndex = curIndex;
+    }
     public void SetPatrolPointTarget()
     {
         StopMove();
-        _tarPos = GetOtherPatrolPoint(ref _curPatrolIndex);
+        _tarPos = GetOtherPatrolPoint(_curPatrolIndex);
     }
 
     public void OnPatrolEnter()

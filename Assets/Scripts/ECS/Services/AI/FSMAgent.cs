@@ -32,11 +32,34 @@ public class FSMAgent
     
     private readonly Dictionary<string, WFSM> _fsmDict = new();
     private readonly List<WFSM> _fsmList = new();
+    
+    private bool _fsmOpenState = false;
+    private BaseData.CharAI _aiCfg;
 
     private void InternalInit(IVMService vmService)
     {
         _vmService = vmService;
         EventCenter.AddListener(EventDefine.OnFSMHotUpdate, OnFSMHotUpdate);
+    }
+
+    public void SetFSMConfig(BaseData.CharAI cfg)
+    {
+        _aiCfg = cfg;
+    }
+
+    public void SetFSMState(bool state)
+    {
+        if (state == _fsmOpenState)
+            return;
+        _fsmOpenState = state;
+        if (state)
+        {
+            SetObject(_aiCfg.BaseFSM);
+        }
+        else
+        {
+            RemoveAllObject();
+        }
     }
 
     private void OnFSMHotUpdate(WEventContext context)
@@ -68,6 +91,17 @@ public class FSMAgent
         {
             fsm.FSM.Trigger(type);
         }
+    }
+
+    public void RemoveAllObject()
+    {
+        for (int i = 0; i < _fsmList.Count; i++)
+        {
+            _fsmList[i].FSM.ActiveState.OnExit();
+            _vmService.ReleaseWObject(_fsmList[i]);
+        }
+        _fsmList.Clear();
+        _fsmDict.Clear();
     }
 
     public void SetObject(string name)
@@ -110,13 +144,7 @@ public class FSMAgent
     private void InternalDispose()
     {
         EventCenter.RemoveListener(EventDefine.OnFSMHotUpdate, OnFSMHotUpdate);
-        for (int i = 0; i < _fsmList.Count; i++)
-        {
-            _fsmList[i].FSM.RequestExit();
-            _vmService.ReleaseWObject(_fsmList[i]);
-        }
-        _fsmList.Clear();
-        _fsmDict.Clear();
+        RemoveAllObject();
         _vmService = null;
     }
 }

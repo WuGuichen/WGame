@@ -139,6 +139,11 @@ public class MoveCharacterSystem : IExecuteSystem
             {
                 EntityUtils.BvhRed.MarkForUpdate(entity.gameViewService.service);
             }
+
+            if (entity.hasAiAgent)
+            {
+                entity.aiAgent.service.MoveAgent.StopMove();
+            }
         }
     }
 

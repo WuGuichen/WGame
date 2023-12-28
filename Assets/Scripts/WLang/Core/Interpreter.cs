@@ -1015,7 +1015,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             if (showError)
                 throw WLogger.ThrowArgumentError("参数数量不对,应该至少为: " + (index + 1));
             sym = Symbol.ERROR;
-            return false;
+            return true;
         }
 
         sym = param[index];
@@ -1099,7 +1099,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
-    public static bool ParseBool(in List<Symbol> param, int index, bool defaultValue)
+    public bool ParseBool(in List<Symbol> param, int index, bool defaultValue)
     {
         if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
         if (sym.Type == TYPE_BOOLEN)

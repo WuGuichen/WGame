@@ -60,11 +60,11 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         _uiService = entity.uIHeadPad.service;
         _vmService = _entity.linkVM.VM.vMService.service;
         fsmAgent = FSMAgent.Get(_vmService);
+        fsmAgent.SetFSMConfig(_aiCfg);
         bTreeAgent = BTreeAgent.Get(_vmService);
         _motion = _entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
 
         InitMethod();
-        fsmAgent.SetObject(_aiCfg.BaseFSM);
     }
     
     private void SetPatrolPointTarget(List<Symbol> list, Interpreter interpreter)
@@ -173,6 +173,7 @@ public partial class AiAgentServiceImplementation : IAiAgentService
     {
         if (!_entity.isDeadState && !_entity.isCamera)
         {
+            fsmAgent.SetFSMState(true);
             UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
             fsmAgent.OnUpdate();
             IsActing = true;
@@ -180,6 +181,7 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         }
         else
         {
+            fsmAgent.SetFSMState(false);
             _uiService.SetMessage(null);
             IsActing = false;
         }
