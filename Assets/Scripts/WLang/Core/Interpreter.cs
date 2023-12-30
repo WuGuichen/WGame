@@ -63,6 +63,11 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         currentScope.Define("PRINT", _def.Define(Method.PRINT, true));
     }
 
+    public Symbol Resolve(string name)
+    {
+        return currentScope.Resolve(name);
+    }
+
     public WFSM BuildWFSM(WLangParser.FsmBuilderContext context, string fsmName)
     {
         cacheToObject = true;
@@ -1186,6 +1191,6 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         }
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
-
+    
     #endregion
 }

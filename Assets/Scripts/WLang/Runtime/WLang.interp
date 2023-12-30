@@ -28,7 +28,7 @@ null
 'DO'
 'and'
 'or'
-'WAITTIME'
+'WAIT_TIME'
 'SELECTOR'
 'SEQUENCE'
 'TRIGGER'

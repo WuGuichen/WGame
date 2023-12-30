@@ -5,6 +5,7 @@ public interface IVMService
 {
     public void DoString(string str);
     public void Call(string name);
+    public Symbol Resolve(string name);
     public void Set(string name, int value);
     public void Set(string name, bool value);
     public void Set(string name, float value, bool cached = true);

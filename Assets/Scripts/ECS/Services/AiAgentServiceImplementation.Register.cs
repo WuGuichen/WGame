@@ -9,7 +9,7 @@ public partial class AiAgentServiceImplementation
         // reset->bool|nil=true, 是否先重置
         SetMethod("SetMoveSpeedRate", (list, interpreter) =>
         {
-            var rate = interpreter.ParseInt(list, 0, 0) * 0.01f;
+            var rate = interpreter.ParseInt(list, 0, 100) * 0.01f;
             var reset = interpreter.ParseBool(list, 1, true);
             var real = (reset ?  _initInfo.moveSpeed : _entity.movementSpeed.value) * rate;
             _entity.ReplaceMovementSpeed(real);

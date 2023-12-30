@@ -1,12 +1,10 @@
 ## OnGameUpdate
 
-InputDown(105)
-InputDown(105)
-InputDown(105)
-InputDown(105)
-//if InputDown(KEY_I){
-//    SetAttr(10000001, CUR_HP, 0)    
-//}
+if InputDown(KEY_I){
+    redEntity = 10000002
+    rank = @redEntity:Resolve("E_MAX_HATE_RANK")
+    Print(rank)
+}
 //if InputDown(KEY_U)
 //{
 //}

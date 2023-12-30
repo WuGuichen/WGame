@@ -161,7 +161,7 @@ WAIT    :   'WAIT';
 DO      :   'DO';
 AND     :   'and';
 OR      :   'or';
-WAITTIME:   'WAITTIME';
+WAITTIME:   'WAIT_TIME';
 SELECTOR:   'SELECTOR';
 SEQUENCE:   'SEQUENCE';
 TRIGGER :   'TRIGGER';

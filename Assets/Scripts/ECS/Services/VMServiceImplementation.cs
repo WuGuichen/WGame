@@ -33,6 +33,11 @@ public class VMServiceImplementation : IVMService
         WLangMgr.Inst.CallCode(name, visitor);
     }
 
+    public Symbol Resolve(string name)
+    {
+        return visitor.Resolve(name);
+    }
+
     public void Set(string name, int value)
     {
         visitor.Define(name, value);

@@ -70,7 +70,7 @@ public partial class WLangParser : Parser {
 		null, "'->'", "'<-'", "':'", "','", "'!'", "'*='", "'/='", "'+='", "'-='", 
 		"'=='", "'!='", "'>'", "'>='", "'<'", "'<='", "'=>'", "'.'", null, "'nil'", 
 		"'pass'", "'return'", "'import'", "'def'", "'cDef'", "'WAIT'", "'DO'", 
-		"'and'", "'or'", "'WAITTIME'", "'SELECTOR'", "'SEQUENCE'", "'TRIGGER'", 
+		"'and'", "'or'", "'WAIT_TIME'", "'SELECTOR'", "'SEQUENCE'", "'TRIGGER'", 
 		"'CONDITION'", "'TRIGGER_TIME'", "'TRANS_TO_ANY'", "'STATE'", "'CODE'", 
 		"'BTREE'", "'DECORATOR'", "'@'", "'#'", "'='", "'+'", "'-'", "'*'", "'/'", 
 		"'if'", "'elif'", "'else'", "'in'", "'while'", "'for'", "'{'", "'}'", 

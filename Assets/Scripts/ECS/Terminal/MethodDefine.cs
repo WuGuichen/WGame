@@ -30,6 +30,7 @@ public class MethodDefine
     {
         bind("Print", Print);
         bind("print", Print);
+        bind("Resolve", Resolve);
         bind("InputDown", InputDown);
         bind("GetAttr", GetAttr);
         bind("SetAttr", SetAttr);
@@ -394,11 +395,12 @@ public class MethodDefine
         interpreter.SetRetrun(new Symbol(EntityUtils.GetTargetSensorLayer(entity)));
     }
 
-    public void SetDetectState(List<Symbol> param, Interpreter interpreter)
+    public void Resolve(List<Symbol> param, Interpreter interpreter)
     {
-        if (CheckEntity(param[0].Value, out var entity))
-            return;
-        // entity.ReplaceDetectedCharacter();
+        if (CheckEntity(interpreter.ParseInt(param, 0), out var entity))
+            return; 
+        var sym = entity.linkVM.VM.vMService.service.Resolve(interpreter.ParseString(param, 1));
+        interpreter.SetRetrun(sym);
     }
     
     public static void MoveEntityToTarget(List<Symbol> param, Interpreter interpreter)
@@ -416,4 +418,5 @@ public class MethodDefine
                 interpreter.SetRetrun(agent.MoveToTarget(param[1].Value));
         }
     }
+    
 }

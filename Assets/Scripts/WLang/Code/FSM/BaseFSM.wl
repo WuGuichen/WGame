@@ -9,16 +9,19 @@ CODE{
 
 -> Patrol
 
+// 下面的名字都是处理过的缩写,在外部使用要用常数名，即Patrol = SD_PATROL, LoseTarget = SD_LOSE_TARGET
 STATE{
     Patrol : PatrolEnter, PatrolLogic, PatrolEnd
     Chase : ChaseEnter, ChaseLogic, ChaseEnd
     Fight -> BaseFight
 }
 
+// 事件触发转换：当前事件 -> 下一事件 : 触发事件名，条件函数(可省)
 TRIGGER{
     Patrol -> Chase : SpottedTarget
     Fight -> Patrol : LoseTarget
     Chase -> Fight : ReachTarget
+    Chase -> Patrol : LoseTarget
 }
 
 TRIGGER_TIME{
