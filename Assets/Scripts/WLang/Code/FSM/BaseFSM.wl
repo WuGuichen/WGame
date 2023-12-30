@@ -1,7 +1,9 @@
 ## BaseFSM
 
-// CODE中的代码以Entity为作用域生效（不同的实体可以用同一个变量名获取不同的值）
+// CODE中的代码以Entity为作用域生效（不同的实体可以用同一个变量名获取不同的值
+// , 而同一个实体的同一状态机和行为树的CODE作用域相同）
 CODE{
+    fsmName = "BaseFSM"
     import BaseFSMCode
 }
 
@@ -20,6 +22,6 @@ TRIGGER{
 }
 
 TRIGGER_TIME{
-    Patrol -> Chase : 2
-    Chase -> Fight : 1
+//    Patrol -> Chase : 2
+//    Chase -> Fight : 1
 }

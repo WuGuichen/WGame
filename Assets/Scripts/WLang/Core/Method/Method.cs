@@ -10,25 +10,9 @@ public class Method : IType
     
     public string Name { get; private set; }
 
-    public static Method Get(WLangFunc callback)
+    public static Method Get(Action<List<Symbol>, Interpreter> callback)
     {
-        return Get(null, callback);
-    }
-    public static Method Get(string name, WLangFunc callback)
-    {
-        Method m = null;
-        if (pool.Count > 0)
-        {
-            m = pool.Pop();
-        }
-        else
-        {
-            m = new Method();
-        }
-
-        m.SetFile(callback);
-        m.Name = name;
-        return m;
+        return Get("", callback);
     }
     public static Method Get(string name, Action<List<Symbol>, Interpreter> callback)
     {
@@ -76,17 +60,12 @@ public class Method : IType
     public static Method Empty = new Method();
 
     private Action<List<Symbol>, Interpreter> callback;
-    private WLangFunc callback1;
 
     public void SetFile(Action<List<Symbol>, Interpreter> call)
     {
         callback = call;
     }
-    public void SetFile(WLangFunc call)
-    {
-        callback1 = call;
-    }
-
+    
     public void SetFile(string code, string[] param)
     {
         var stream = new AntlrInputStream(code);
@@ -106,7 +85,6 @@ public class Method : IType
     public Method()
     {
         callback = null;
-        callback1 = null;
         file = null;
     }
 
@@ -120,10 +98,6 @@ public class Method : IType
         if (callback != null)
         {
             callback.Invoke(param, interpreter);
-        }
-        else if (callback1 != null)
-        {
-            callback1.Invoke(param, interpreter);
         }
         else
         {

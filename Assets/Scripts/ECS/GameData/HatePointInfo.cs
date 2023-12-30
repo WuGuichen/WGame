@@ -33,7 +33,7 @@ public class HatePointInfo
     private HateInfo maxHateInfo = HateInfo.NULL;
     public int MaxHateEntityId => maxHateInfo.ID;
     public float MaxHateEntityPoint => maxHateInfo.Value;
-    public float MaxHateEntityRank => maxHateInfo.Rank;
+    public int MaxHateEntityRank => maxHateInfo.Rank;
 
     private Action OnHateRankUpdate;
 
@@ -41,23 +41,28 @@ public class HatePointInfo
 
     private void RefreshMaxHate(int id, int rank, float value)
     {
+        var oldRank = maxHateInfo.Rank;
         if (id == maxHateInfo.ID)
         {
             maxHateInfo = _hatePointDict[id];
-            return;
         }
-
-        if (rank > maxHateInfo.Rank)
+        else
         {
-            maxHateInfo = new HateInfo(id, rank, value);
-        }
-        else if (rank == maxHateInfo.Rank)
-        {
-            if (value > maxHateInfo.Value)
+            if (rank > maxHateInfo.Rank)
             {
                 maxHateInfo = new HateInfo(id, rank, value);
             }
+            else if (rank == maxHateInfo.Rank)
+            {
+                if (value > maxHateInfo.Value)
+                {
+                    maxHateInfo = new HateInfo(id, rank, value);
+                }
+            }
         }
+        var newRank = maxHateInfo.Rank;
+        if(oldRank != newRank)
+            OnHateRankUpdate?.Invoke();
     }
     
     public void Add(int id, float value, int type)

@@ -26,21 +26,11 @@ public class MethodDefine
         MoveEntityToTarget(list, interpreter);
     };
 
-    public void BindAll(Action<string, WLangFunc> bind)
-    {
-        bind("MoveEntityToTarget", ((list, interpreter) =>
-        {
-            MoveEntityToTarget(list, interpreter);
-        }));
-        bind("InputDown", ((list, interpreter) =>
-        {
-            // InputDown(list, interpreter);
-        }));
-    }
     public void BindAll(Action<string, Action<List<Symbol>, Interpreter>> bind)
     {
         bind("Print", Print);
         bind("print", Print);
+        bind("InputDown", InputDown);
         bind("GetAttr", GetAttr);
         bind("SetAttr", SetAttr);
         bind("Random_100", Random_100);
@@ -59,6 +49,7 @@ public class MethodDefine
         bind("SetFSM", SetFSM);
         bind("RemoveFSM", RemoveFSM);
         bind("TriggerFSM", TriggerFSM);
+        bind("ChangeFSMState", ChangeFSMState);
         bind("InitGotHitDict", InitGotHitDict);
         bind("GetTargetSensorLayer", GetTargetSensorLayer);
     }
@@ -97,21 +88,21 @@ public class MethodDefine
     
     public void GetForward(List<Symbol> param, Interpreter interpreter)
     {
-        if (CheckEntity(param[0].Value, out var entity))
+        if (CheckEntity(interpreter.ParseInt(param, 0), out var entity))
             return;
         interpreter.SetRetrun(entity.gameViewService.service.Model.forward);
     }
     
     public void GetPosition(List<Symbol> param, Interpreter interpreter)
     {
-        if (CheckEntity(param[0].Value, out var entity))
+        if (CheckEntity(interpreter.ParseInt(param, 0), out var entity))
             return;
         interpreter.SetRetrun(entity.position.value);
     }
 
     public void GetAttr(List<Symbol> param, Interpreter interpreter)
     {
-        if (CheckEntity(param[0].Value, out var entity))
+        if (CheckEntity(interpreter.ParseInt(param, 0), out var entity))
             return;
         var symType = param[1];
         if (symType.Type == TYPE_INT)
@@ -361,6 +352,15 @@ public class MethodDefine
             entity.aiAgent.service.TriggerFSM(param[1].Text, param[2].Value);
         else
             entity.aiAgent.service.TriggerFSM(param[1].Value);
+    }
+    
+    private void ChangeFSMState(List<Symbol> param, Interpreter interpreter)
+    {
+        if (CheckEntity(param[0].Value, out var entity))
+            return;
+        var fsmName = interpreter.ParseString(param, 1);
+        var newState = interpreter.ParseInt(param, 2);
+        entity.aiAgent.service.FSMAgent.TransFSMState(fsmName, newState);
     }
 
     private void ShowMessage(List<Symbol> param, Interpreter interpreter)

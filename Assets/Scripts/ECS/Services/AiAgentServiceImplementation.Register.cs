@@ -74,12 +74,26 @@ public partial class AiAgentServiceImplementation
             int reachDist = interpreter.ParseInt(list, 1, 20);
             interpreter.SetRetrun(moveAgent.MoveToPoint(point, reachDist*0.01f));
         });
+        
+        // 移动到实体位置
+        // point->vector3, 目标坐标
+        // reachDist->int|nil, 完成移动距离限制
+        // return->bool, 是否完成移动
+        SetMethod("DoMoveToEntity", (list, interpreter) =>
+        {
+            var id = interpreter.ParseInt(list, 0);
+            int reachDist = interpreter.ParseInt(list, 1, 20);
+            interpreter.SetRetrun(moveAgent.MoveToEntity(id, reachDist*0.01f));
+        });
+        
     #endregion
         
+  
     #region 其他方法
+        // 运行行为树
+        // treeName->string, 行为树名字
         SetMethod("TickBTree", ((list, interpreter) => {
-            if(list.Count > 0)
-                TickBTree(list[0].Text);
+            bTreeAgent.TickTree(interpreter.ParseString(list, 0));
         }));
     #endregion
     
@@ -88,8 +102,7 @@ public partial class AiAgentServiceImplementation
         SetMethod("OnTestWaitEnter", OnTestWaitEnter);
         SetMethod("OnTestAttackEnter", OnTestAttackEnter);
         SetMethod("SetPatrolPointTarget", SetPatrolPointTarget);
-        SetMethod("NoDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(!_entity.hasDetectedCharacter);});
-        SetMethod("HasDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(_entity.hasDetectedCharacter);});
+        SetMethod("NoDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(!_entity.hasDetectedCharacter);}); SetMethod("HasDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(_entity.hasDetectedCharacter);});
     #endregion
     }
     

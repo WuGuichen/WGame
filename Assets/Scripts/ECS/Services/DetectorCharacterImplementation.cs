@@ -5,8 +5,10 @@ using UnityEngine;
 public class DetectorCharacterImplementation : IDetectorService
 {
     private readonly Transform _model;
-    private Color _colorDetectted = Color.red*0.8f;
-    private Color _colorDetecting = Color.yellow*0.8f;
+    private Color _colorFocus = Color.red*0.8f;
+    private Color _colorAlert = Color.blue *0.8f;
+    private Color _colorDetect = Color.yellow*0.8f;
+    private Color[] _colorList;
     private readonly DetectorDrawer detectorDrawer;
     private readonly HatePointInfo hateInfo;
 
@@ -118,7 +120,17 @@ public class DetectorCharacterImplementation : IDetectorService
         hateInfo.RegisterOnHateRankChanged((() =>
         {
             vm.Set("E_MAX_HATE_RANK", info.MaxHateEntityRank);
+            vm.Set("E_MAX_HATE_POINT", info.MaxHateEntityPoint);
+            vm.Set("E_MAX_HATE_ENTITY", info.MaxHateEntityId);
         }));
+
+        _colorList = new Color[]
+        {
+            Color.white*0.8f,
+            Color.yellow*0.8f,
+            Color.magenta*0.8f,
+            Color.red*0.8f,
+        };
     }
 
     public void UpdateSensorDrawer()
@@ -134,15 +146,14 @@ public class DetectorCharacterImplementation : IDetectorService
             };
 
             tmp.radius = 1f;
+            tmp.fillColor = _colorList[hateInfo.MaxHateEntityRank];
             if (hateInfo.MaxHateEntityPoint <= 360)
             {
                 tmp.sectorArcLengthInDegrees = hateInfo.MaxHateEntityPoint;
-                tmp.fillColor = _colorDetecting;
             }
             else
             {
                 tmp.sectorArcLengthInDegrees = 360;
-                tmp.fillColor = _colorDetectted;
             }
 
             detectorDrawer.Draw(DetectorDrawer.Spotted, _model, RadiusSpotted, DegreeDetect);

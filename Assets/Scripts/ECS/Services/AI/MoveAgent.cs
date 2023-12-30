@@ -84,6 +84,70 @@ public class MoveAgent
         return false;
     }
 
+    public bool MoveToEntity(int id, float reachDist = 0.2f)
+    {
+        var tarEntity = EntityUtils.GetGameEntity(id);
+        if (tarEntity == null)
+            return false;
+        _tarPos = tarEntity.position.value;
+        
+        // UpdateRotateDir
+        var tar = _tarPos - _entity.position.value;
+        tar.y = 0;
+        if (tar == Vector3.zero)
+            _targetDirRotation = _transform.forward;
+        else
+            _targetDirRotation = tar.normalized;
+        
+        _targetDirQuaternion = Quaternion.LookRotation(_targetDirRotation);
+        
+        var dist = DetectMgr.Inst.GetDistance(id, _entity.instanceID.ID);
+        var fwd = _transform.forward;
+        fwd.y = 0;
+        var angle = _targetDirRotation.GetAngle(fwd);
+
+        // RotateToTarget
+        if (needRotate)
+        {
+            if (angle < 0.1f)
+            {
+                // 旋转到位了
+                needRotate = false;
+                // 开始移动
+                StartMove(_targetDirRotation);
+            }
+            else
+            {
+                // 旋转目标
+                var rot = Quaternion.RotateTowards(_transform.rotation, _targetDirQuaternion
+                    , _entity.rotationSpeed.value * _entity.animRotateMulti.rate * _time.DeltaTime);
+
+                _transform.rotation = rot;
+            }
+        }
+        
+        // 
+        
+        if (angle > 0.1f)
+        {
+            needRotate = true;
+            StopMove();
+        }
+
+        if (dist < reachDist)
+        {
+            return true;
+        }
+        else
+        {
+            if(!isMoving)
+                StartMove(_targetDirRotation);
+        }
+
+        return false;
+    }
+    
+
     public bool MoveToTarget(float sqrReachDist = 0.2f)
     {
         UpdateRotateDir();

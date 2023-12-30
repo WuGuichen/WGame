@@ -22,6 +22,19 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     public BaseDefinition Definition => _def;
 
     public bool IgnoreReturn { get; set; } = false;
+
+    private bool isLocalNeedReturn = false;
+    public bool IsLocalNeedReturn
+    {
+        get => isLocalNeedReturn;
+        set
+        {
+            isLocalNeedReturn = value;
+            if (isLocalNeedReturn == false)
+                isNeedReturn = false;
+        }
+    }
+
     private bool isNeedReturn = false;
     private WLangParser.ExprRightContext returnVal = null;
     private Symbol returnSym = Symbol.NULL;
@@ -281,6 +294,8 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     public override Symbol VisitStatReturn(WLangParser.StatReturnContext context)
     {
         if(!IgnoreReturn)
+            isNeedReturn = true;
+        if (IsLocalNeedReturn)
             isNeedReturn = true;
         returnVal = context.r;
         returnSym = returnVal.Accept(this);
@@ -1096,6 +1111,17 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         {
             return sym.ToVector3(_def);
         }
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
+
+    public string ParseString(in List<Symbol> param, int index, string defaultValue = null)
+    {
+        bool showError = defaultValue == null;
+        if (CheckParamFail(param, index, out var sym, showError)) return defaultValue;
+        if (sym.Type == TYPE_STRING)
+            return sym.Text;
+        if (sym.Type == TYPE_INT || sym.Type == TYPE_FLOAT)
+            return sym.ToString();
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     

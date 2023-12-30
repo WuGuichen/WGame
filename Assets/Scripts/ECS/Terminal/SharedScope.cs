@@ -14,7 +14,6 @@ public class SharedScope : BaseScope
         methodDef = new MethodDefine();
         constDef = new ConstDefine();
         methodDef.BindAll(Define);
-        methodDef.BindAll(DefineFunc);
         constDef.BindInt(Define);
     }
 
@@ -23,11 +22,6 @@ public class SharedScope : BaseScope
         Define(name, SharedDefinition.Inst.Define(Method.Get(name, action)));
     }
 
-    private void DefineFunc(string name, WLangFunc action)
-    {
-        Define(name, SharedDefinition.Inst.Define(Method.Get(name, action)));
-    }
-    
     private void Define(string name, int value)
     {
         Define(name, new Symbol(value));

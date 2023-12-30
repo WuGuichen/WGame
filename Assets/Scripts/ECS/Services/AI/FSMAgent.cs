@@ -128,15 +128,19 @@ public class FSMAgent
         }
     }
 
-    public void RegisterMethod()
+    public void TransFSMState(string name, int type)
     {
-        
+        if (_fsmDict.TryGetValue(name, out var fsm))
+        {
+            fsm.FSM.RequestStateChange(type);
+        }
     }
 
     public void OnUpdate()
     {
         for (int i = 0; i < _fsmList.Count; i++)
         {
+            _vmService.Set("E_FSM_SELF", _fsmList[i].FSM.name);
             _fsmList[i].FSM.OnLogic();
         }
     }

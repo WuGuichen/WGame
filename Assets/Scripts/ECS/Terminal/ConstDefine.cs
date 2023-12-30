@@ -33,6 +33,7 @@ public class ConstDefine
         BindIntDefine("MODEL_", typeof(CharacterModelPart), bind);
         BindIntDefine("SIG_", typeof(InputSignalSubType), bind);
         BindIntDefine("SD_", typeof(StateDefine), bind);
+        BindIntDefine("HRT_", typeof(HateRankType), bind);
         int stateNum = 10;
         for (int i = 0; i < stateNum; i++)
         {
