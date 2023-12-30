@@ -36,6 +36,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     }
 
     private bool isNeedReturn = false;
+    private bool isEndCodeByError = false;
     private WLangParser.ExprContext returnVal = null;
     private Symbol returnSym = Symbol.NULL;
 
@@ -106,6 +107,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         lock (locker)
         {
             isNeedReturn = false;
+            isEndCodeByError = false;
             return VisitFile(context);
         }
     }
@@ -115,7 +117,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         for (int i = 0; i < context.ChildCount; i++)
         {
             context.GetChild(i).Accept(this);
-            if (isNeedReturn)
+            if (isNeedReturn || isEndCodeByError)
             {
                 break;
             }
@@ -287,8 +289,11 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                 }
                 else
                 {
-                    if(listSym.IsNotNull)
-                        throw new ArgumentException("point target type need table");
+                    if (listSym.IsNotNull)
+                    {
+                        isEndCodeByError = true;
+                        throw WLogger.ThrowArgumentError("point target type need table");
+                    }
                 }
             }
         }
@@ -333,7 +338,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         currentScope.Define(text
             , DefineValue(Method.Get(text, context.b.f, param)));
 
-        if (isNeedReturn)
+        if (isNeedReturn || isEndCodeByError)
         {
             isNeedReturn = false;
             return returnSym;
@@ -432,7 +437,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             }
         }
 
-        if (isNeedReturn)
+        if (isNeedReturn || isEndCodeByError)
         {
             if (currentScope == baseScope)
                 isNeedReturn = false;
@@ -545,7 +550,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         {
             Define(id.Text, list[i]);
             context.b.Accept(this);
-            if (isNeedReturn)
+            if (isNeedReturn || isEndCodeByError)
                 break;
         }
         PushScope();
@@ -559,7 +564,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         for (int i = 0; i < context.f.ChildCount; i++)
         {
             context.f.GetChild(i).Accept(this);
-            if (isNeedReturn)
+            if (isNeedReturn || isEndCodeByError)
             {
                 break;
             }
@@ -632,6 +637,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                     if (r.IsNull)
                         builder.Append("右值为NULL: ");
                     builder.Append(context.GetText());
+                    isEndCodeByError = true;
                     throw new ArgumentException(builder.ToString());
             }
         }
@@ -1033,7 +1039,9 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         if (index >= param.Count)
         {
             if (showError)
+            {
                 throw WLogger.ThrowArgumentError("参数数量不对,应该至少为: " + (index + 1));
+            }
             sym = Symbol.ERROR;
             return true;
         }
@@ -1049,6 +1057,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             return sym.Value;
         if (sym.Type == TYPE_FLOAT)
             return (int)_def.GetFloat(sym.Value);
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     public int ParseInt(in List<Symbol> param, int index)
@@ -1058,6 +1067,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             return sym.Value;
         if (sym.Type == TYPE_FLOAT)
             return (int)_def.GetFloat(sym.Value);
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
@@ -1079,10 +1089,14 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         if (sym.Type == TYPE_TABLE)
         {
             var tbl = _def.GetTable(sym.Value);
-            if(tbl.Count < 2)
+            if (tbl.Count < 2)
+            {
+                isEndCodeByError = true;
                 throw WLogger.ThrowArgumentError("参数类型错误");
+            }
             return new Vector2(tbl[0].ToFloat(_def), tbl[1].ToFloat(_def));
         }
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
@@ -1092,10 +1106,15 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         if (sym.Type == TYPE_TABLE)
         {
             var tbl = _def.GetTable(sym.Value);
-            if(tbl.Count < 2)
+            if (tbl.Count < 2)
+            {
+                isEndCodeByError = true;
                 throw WLogger.ThrowArgumentError("参数类型错误");
+            }
+
             return new Vector2(tbl[0].ToFloat(_def), tbl[1].ToFloat(_def));
         }
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
@@ -1106,6 +1125,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         {
             return sym.ToVector3(_def);
         }
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
@@ -1116,6 +1136,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         {
             return sym.ToVector3(_def);
         }
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
 
@@ -1127,6 +1148,8 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             return sym.Text;
         if (sym.Type == TYPE_INT || sym.Type == TYPE_FLOAT)
             return sym.ToString();
+        
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
@@ -1137,16 +1160,18 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         {
             return sym.IsTrue;
         }
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
 
-    public static bool ParseBool(in List<Symbol> param, int index)
+    public bool ParseBool(in List<Symbol> param, int index)
     {
         if (CheckParamFail(param, index, out var sym)) return false;
         if (sym.Type == TYPE_BOOLEN)
         {
             return sym.IsTrue;
         }
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
@@ -1157,7 +1182,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         {
             return sym.ToMethod(_def);
         }
-        
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
 
@@ -1169,6 +1194,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
             return sym.ToMethod(_def);
         }
         
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     
@@ -1179,6 +1205,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         {
             return sym.ToQuaternion(_def);
         }
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
 
@@ -1189,6 +1216,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         {
             return sym.ToQuaternion(_def);
         }
+        isEndCodeByError = true;
         throw WLogger.ThrowArgumentError("参数类型错误");
     }
     

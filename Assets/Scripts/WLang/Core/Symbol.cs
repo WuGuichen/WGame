@@ -92,9 +92,10 @@ public struct Symbol
     public static Symbol TRUE = new Symbol(1, BaseDefinition.TYPE_BOOLEN, "true");
     public static Symbol FALSE = new Symbol(0, BaseDefinition.TYPE_BOOLEN, "false");
     public static Symbol PASS = new Symbol(0, 0, "pass");
+    private const int TYPE_BOOLEAN = BaseDefinition.TYPE_BOOLEN;
 
-    public bool IsTrue => (Type != 0 && Value > 0);
-    public bool IsFalse => (Type == 0 || Value <= 0);
+    public bool IsTrue => (Type > 0 && Value > 0);
+    public bool IsFalse => (Type == TYPE_BOOLEAN && Value <= 0);
     public bool IsNull => Type <= 0;
     public bool IsNotNull => Type > 0;
     public Symbol Copy() => new Symbol(Value, Type, Text);

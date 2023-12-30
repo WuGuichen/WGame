@@ -108,32 +108,32 @@ public class StickWeaponTrailEffect : MonoBehaviour
 
         Profiler.EndSample();
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        var color = Gizmos.color;
-        var vertices = mesh.vertices;
-        var interpolatedCount = vertices.Length / CountOfPointOnStick;
-        if (interpolatedCount > stickshotBuffer.Count)
-        {
-            Gizmos.color = Color.gray;
-            for (int i = 0; i < interpolatedCount; ++i)
-            {
-                int baseIndex = i * CountOfPointOnStick;
-                Gizmos.DrawLine(vertices[baseIndex], vertices[baseIndex + 1]);
-                Gizmos.DrawLine(vertices[baseIndex + 1], vertices[baseIndex + 2]);
-            }
-        }
-        Gizmos.color = Color.black;
-        for (int i = 0; i < stickshotBuffer.Count; ++i)
-        {
-            var stickshot = stickshotBuffer[i];
-            Gizmos.DrawLine(stickshot.bottom, stickshot.top);
-        }
-        Gizmos.color = color;
-    }
-#endif
+//
+// #if UNITY_EDITOR
+//     private void OnDrawGizmos()
+//     {
+//         var color = Gizmos.color;
+//         var vertices = mesh.vertices;
+//         var interpolatedCount = vertices.Length / CountOfPointOnStick;
+//         if (interpolatedCount > stickshotBuffer.Count)
+//         {
+//             Gizmos.color = Color.gray;
+//             for (int i = 0; i < interpolatedCount; ++i)
+//             {
+//                 int baseIndex = i * CountOfPointOnStick;
+//                 Gizmos.DrawLine(vertices[baseIndex], vertices[baseIndex + 1]);
+//                 Gizmos.DrawLine(vertices[baseIndex + 1], vertices[baseIndex + 2]);
+//             }
+//         }
+//         Gizmos.color = Color.black;
+//         for (int i = 0; i < stickshotBuffer.Count; ++i)
+//         {
+//             var stickshot = stickshotBuffer[i];
+//             Gizmos.DrawLine(stickshot.bottom, stickshot.top);
+//         }
+//         Gizmos.color = color;
+//     }
+// #endif
 
     private void OnDestroy()
     {
