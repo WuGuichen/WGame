@@ -4,23 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="行为树returnbug">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="发现到丢失的AI过程实例">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnFight.wl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IVMService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IVMService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.Register.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.Register.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/VMServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/VMServiceImplementation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnPatrol.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnPatrol.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFSMCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFSMCode.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/MyHotAction.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/MyHotAction.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/WLogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/WLogger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/_Init.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/_Init.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnGameUpdate.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnGameUpdate.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/_Init.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/_Init.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFightCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFightCode.wl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Method/Method.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Method/Method.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Symbol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Symbol.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangBaseVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangBaseVisitor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangVisitor.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,10 +156,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="252">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="252" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -208,7 +208,7 @@
       <workItem from="1703789481555" duration="11555000" />
       <workItem from="1703853243493" duration="2461000" />
       <workItem from="1703874075615" duration="3455000" />
-      <workItem from="1703918036021" duration="4034000" />
+      <workItem from="1703918036021" duration="7397000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -364,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703921135094</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="发现到丢失的AI过程实例">
+      <created>1703932848964</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1703932848964</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,7 +406,8 @@
     <MESSAGE value="方法定义规范" />
     <MESSAGE value="AI开启和关闭" />
     <MESSAGE value="行为树returnbug" />
-    <option name="LAST_COMMIT_MESSAGE" value="行为树returnbug" />
+    <MESSAGE value="发现到丢失的AI过程实例" />
+    <option name="LAST_COMMIT_MESSAGE" value="发现到丢失的AI过程实例" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

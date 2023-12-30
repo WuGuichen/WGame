@@ -200,6 +200,13 @@ public interface IWLangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitExprPrimary([NotNull] WLangParser.ExprPrimaryContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>ExprCommand</c>
+	/// labeled alternative in <see cref="WLangParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExprCommand([NotNull] WLangParser.ExprCommandContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>ExprBinary</c>
 	/// labeled alternative in <see cref="WLangParser.expr"/>.
 	/// </summary>
@@ -221,6 +228,13 @@ public interface IWLangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitExprPoint([NotNull] WLangParser.ExprPointContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>ExprTable</c>
+	/// labeled alternative in <see cref="WLangParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExprTable([NotNull] WLangParser.ExprTableContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>ExprUnary</c>
 	/// labeled alternative in <see cref="WLangParser.expr"/>.
 	/// </summary>
@@ -228,33 +242,12 @@ public interface IWLangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitExprUnary([NotNull] WLangParser.ExprUnaryContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ExprExpr</c>
-	/// labeled alternative in <see cref="WLangParser.exprRight"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExprExpr([NotNull] WLangParser.ExprExprContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ExprTable</c>
-	/// labeled alternative in <see cref="WLangParser.exprRight"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExprTable([NotNull] WLangParser.ExprTableContext context);
-	/// <summary>
 	/// Visit a parse tree produced by the <c>ExprLambdaRef</c>
-	/// labeled alternative in <see cref="WLangParser.exprRight"/>.
+	/// labeled alternative in <see cref="WLangParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExprLambdaRef([NotNull] WLangParser.ExprLambdaRefContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ExprCommand</c>
-	/// labeled alternative in <see cref="WLangParser.exprRight"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExprCommand([NotNull] WLangParser.ExprCommandContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="WLangParser.exprLambda"/>.
 	/// </summary>

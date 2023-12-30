@@ -1,12 +1,13 @@
 ## BaseFightCode
 
-    loseTarget = SD_LOSE_TARGET
     def FightEnter(){
         Print("Enter Fight !!!!!")
     }
 
     def FightLogic(){
-        @E_SELF:TriggerFSM(loseTarget)
+        TickBTree("BaseOnFight")
+        if E_MAX_HATE_RANK < fightRank{
+        }
     }
 
     def FightEnd(){

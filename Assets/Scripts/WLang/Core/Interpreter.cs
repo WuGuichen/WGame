@@ -36,7 +36,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     }
 
     private bool isNeedReturn = false;
-    private WLangParser.ExprRightContext returnVal = null;
+    private WLangParser.ExprContext returnVal = null;
     private Symbol returnSym = Symbol.NULL;
 
     private bool cacheToObject = false;
@@ -606,6 +606,10 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                     break;
                 case "!=":
                     break;
+                case "and":
+                    break;
+                case "or":
+                    break;
                 default:
                     var builder = new StringBuilder();
                     builder.Append("非法的二元运算：");
@@ -802,22 +806,16 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                 }
                 break;
             case "and":
-                if (l.Type == r.Type)
-                {
-                    if (l.Type == TYPE_BOOLEN)
-                    {
-                        res = (l.Value > 0 && r.Value > 0) ? Symbol.TRUE : Symbol.FALSE;
-                    }
-                }
+                if (l.IsFalse)
+                    res = Symbol.NULL;
+                else
+                    res = r;
                 break;
             case "or":
-                if (l.Type == r.Type)
-                {
-                    if (l.Type == TYPE_BOOLEN)
-                    {
-                        res = (l.Value > 0 || r.Value > 0) ? Symbol.TRUE : Symbol.FALSE;
-                    }
-                }
+                if (l.IsFalse)
+                    res = r;
+                else
+                    res = l;
                 break;
             default:
                 WLogger.Error("运算失败");
@@ -879,10 +877,10 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         return new Symbol(int.Parse(context.i.Text), TYPE_INT);
     }
 
-    public override Symbol VisitExprExpr(WLangParser.ExprExprContext context)
-    {
-        return context.children[0].Accept(this);
-    }
+    // public override Symbol VisitExprExpr(WLangParser.ExprExprContext context)
+    // {
+    //     return context.children[0].Accept(this);
+    // }
 
     public override Symbol VisitExprTable(WLangParser.ExprTableContext context)
     {

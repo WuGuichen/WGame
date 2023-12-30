@@ -5,3 +5,4 @@ import OnGameInit_1
 import OnCharacterInit
 import OnGameUpdate
 
+SetLogEnable(true)

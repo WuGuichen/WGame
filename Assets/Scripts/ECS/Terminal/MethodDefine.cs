@@ -20,18 +20,15 @@ public class MethodDefine
 
     private static object locker = new object();
 
-
-    private WLangFunc testFunc = (list, interpreter) =>
-    {
-        MoveEntityToTarget(list, interpreter);
-    };
-
     public void BindAll(Action<string, Action<List<Symbol>, Interpreter>> bind)
     {
         bind("Print", Print);
         bind("print", Print);
         bind("Resolve", Resolve);
         bind("InputDown", InputDown);
+        bind("SetLogEnable", SetLogEnable);
+        bind("BeginSample", BeginSample);
+        bind("EndSample", EndSample);
         bind("GetAttr", GetAttr);
         bind("SetAttr", SetAttr);
         bind("Random_100", Random_100);
@@ -418,5 +415,21 @@ public class MethodDefine
                 interpreter.SetRetrun(agent.MoveToTarget(param[1].Value));
         }
     }
+
+    private static void SetLogEnable(List<Symbol> param, Interpreter interpreter)
+    {
+        var value = interpreter.ParseBool(param, 0, true);
+        WLogger.IsEnableWLangLog = value;
+    }
     
+    private static void BeginSample(List<Symbol> param, Interpreter interpreter)
+    {
+        var name = interpreter.ParseString(param, 0);
+        UnityEngine.Profiling.Profiler.BeginSample(name);
+    }
+    
+    private static void EndSample(List<Symbol> param, Interpreter interpreter)
+    {
+        UnityEngine.Profiling.Profiler.EndSample();
+    }
 }

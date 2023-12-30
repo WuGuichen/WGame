@@ -133,7 +133,8 @@ public class Method : IType
                 buf.Append(',');
             }
 
-            WLogger.Print(buf.ToString().TrimEnd(','));
+            // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+            WLogger.WLangLog(buf.ToString().TrimEnd(','));
             interp.SetRetrun(Symbol.TRUE);
         })
     };

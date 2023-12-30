@@ -55,30 +55,33 @@ treeContent     :   numParam? OPENBRACE treeBlock+ CLOSEBRACE
 numParam       :   s=(INT|FLOAT|ID)
 ;
         
-parameters  : (exprRight | exprID) (',' (exprRight | exprID))*;
+parameters  : (expr | exprID) (',' (expr | exprID))*;
 
 parametersDef  : i=ID (',' ID)*;
         
 expr:
-    o='-' exprRight    #ExprUnary
-    |   o='!' exprRight    #ExprUnary
-    |   expr o=('*'|'/') exprRight   #ExprBinary
-    |   expr o=('*='|'/=') exprRight   #ExprBinary
-    |   expr o=('+'|'-') exprRight   #ExprBinary
-    |   expr o=('+='|'-=') exprRight   #ExprBinary
-    |   expr o=('=='|'!='|'>'|'>='|'<'|'<=') exprRight #ExprBinary
-    |   expr o=(AND|OR) exprRight #ExprBinary
+    o='-' expr    #ExprUnary
+    |   o='!' expr    #ExprUnary
+    |   expr o=('*'|'/') expr   #ExprBinary
+    |   expr o=('*='|'/=') expr   #ExprBinary
+    |   expr o=('+'|'-') expr   #ExprBinary
+    |   expr o=('+='|'-=') expr   #ExprBinary
+    |   expr o=('=='|'!='|'>'|'>='|'<'|'<=') expr #ExprBinary
+    |   expr o=(AND|OR) expr #ExprBinary
     |   l=ID point+  #ExprPoint
     |   o=primary #ExprPrimary
     |   '('expr ')' #ExprGroup
+    |   l=exprList        #ExprTable
+    |   exprLambda       #ExprLambdaRef
+    |   m=exprMethod    #ExprCommand
     ;
     
-exprRight   :
-            expr                #ExprExpr
-            | l=exprList        #ExprTable
-            |  exprLambda       #ExprLambdaRef
-            |   m=exprMethod    #ExprCommand
-;
+//exprRight   :
+//            expr                #ExprExpr
+//            | l=exprList        #ExprTable
+//            |  exprLambda       #ExprLambdaRef
+//            |   m=exprMethod    #ExprCommand
+//;
 
 exprLambda  : '(' parametersDef? ')' '=>' b=block
 ;
@@ -96,7 +99,7 @@ exprMethodRef : i=ID         #ExprMethodRefID
                 | l=exprLambda #ExprMethodRefLambda
 ;
 
-exprList    :   OPENBRACK exprRight? (',' exprRight)* CLOSEBRACK
+exprList    :   OPENBRACK expr? (',' expr)* CLOSEBRACK
             |   exprInt ':' exprInt (':' exprInt)?
 ;
 
@@ -114,9 +117,9 @@ primary:    i=ID      #PrimaryID
     ;
 
 statement  :
-              k=expr '=' r=exprRight     #StatAssign
+              k=expr '=' r=expr     #StatAssign
             | PASS                  #StatPass
-            | RETURN r=exprRight         #StatReturn
+            | RETURN r=expr         #StatReturn
             | IMPORT f=ID ('.' ID)* #StatImport
             | DEFINE f=ID OPENPAREN p=parametersDef? CLOSEPAREN b=block #StatMethod
             | exprMethod    #StatCommand
@@ -128,16 +131,16 @@ waitStatement   :   WAIT t=(INT|FLOAT|ID) b=block
 ifStatement :   ifStat (elseIfStat)* elseStat?
 ;
 
-ifStat      :   IF e=exprRight b=block
+ifStat      :   IF e=expr b=block
 ;
 
-elseIfStat  :   ELSEIF e=exprRight b=block
+elseIfStat  :   ELSEIF e=expr b=block
 ;
 
 elseStat    :   ELSE b=block
 ;
 
-whileStatement  :   WHILE e=exprRight b=block
+whileStatement  :   WHILE e=expr b=block
 ;
 
 forStatement    :   FOR i=ID IN (exprList | ID) b=block
