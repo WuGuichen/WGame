@@ -4,23 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="发现到丢失的AI过程实例">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnFight.wl" afterDir="false" />
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="去除左值右值区别，使用lua同款and or">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/WLogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/WLogger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/_Init.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/_Init.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnGameUpdate.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnGameUpdate.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/_Init.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/_Init.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFightCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFightCode.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Method/Method.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Method/Method.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Symbol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Symbol.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangBaseVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangBaseVisitor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangVisitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangVisitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +194,7 @@
       <workItem from="1703789481555" duration="11555000" />
       <workItem from="1703853243493" duration="2461000" />
       <workItem from="1703874075615" duration="3455000" />
-      <workItem from="1703918036021" duration="7397000" />
+      <workItem from="1703918036021" duration="7599000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -371,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703932848964</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="去除左值右值区别，使用lua同款and or">
+      <created>1703935936106</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1703935936106</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +400,8 @@
     <MESSAGE value="AI开启和关闭" />
     <MESSAGE value="行为树returnbug" />
     <MESSAGE value="发现到丢失的AI过程实例" />
-    <option name="LAST_COMMIT_MESSAGE" value="发现到丢失的AI过程实例" />
+    <MESSAGE value="去除左值右值区别，使用lua同款and or" />
+    <option name="LAST_COMMIT_MESSAGE" value="去除左值右值区别，使用lua同款and or" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
