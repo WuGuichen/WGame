@@ -95,8 +95,8 @@ public struct Symbol
 
     public bool IsTrue => (Type != 0 && Value > 0);
     public bool IsFalse => (Type == 0 || Value <= 0);
-    public bool IsNull => Type == 0;
-    public bool IsNotNull => Type != 0;
+    public bool IsNull => Type <= 0;
+    public bool IsNotNull => Type > 0;
     public Symbol Copy() => new Symbol(Value, Type, Text);
 }
 

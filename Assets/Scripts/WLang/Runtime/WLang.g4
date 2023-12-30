@@ -61,19 +61,19 @@ parametersDef  : i=ID (',' ID)*;
         
 expr:
     o='-' expr    #ExprUnary
-    |   o='!' expr    #ExprUnary
+    |   o=('!'|NOT) expr    #ExprUnary
     |   expr o=('*'|'/') expr   #ExprBinary
     |   expr o=('*='|'/=') expr   #ExprBinary
     |   expr o=('+'|'-') expr   #ExprBinary
     |   expr o=('+='|'-=') expr   #ExprBinary
     |   expr o=('=='|'!='|'>'|'>='|'<'|'<=') expr #ExprBinary
+    |   m=exprMethod    #ExprCommand
+    |   exprLambda       #ExprLambdaRef
     |   expr o=(AND|OR) expr #ExprBinary
     |   l=ID point+  #ExprPoint
     |   o=primary #ExprPrimary
-    |   '('expr ')' #ExprGroup
     |   l=exprList        #ExprTable
-    |   exprLambda       #ExprLambdaRef
-    |   m=exprMethod    #ExprCommand
+    |   '('expr ')' #ExprGroup
     ;
     
 //exprRight   :
@@ -163,6 +163,7 @@ CACHE_DEFINE  :   'cDef';
 WAIT    :   'WAIT';
 DO      :   'DO';
 AND     :   'and';
+NOT     :   'not';
 OR      :   'or';
 WAITTIME:   'WAIT_TIME';
 SELECTOR:   'SELECTOR';

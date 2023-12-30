@@ -1,15 +1,21 @@
 ## BaseFightCode
 
-    def FightEnter(){
-        Print("Enter Fight !!!!!")
-    }
+waitTarget = 0
+def WaitEnter()
+{
+    Print("Wait")
+    waitTarget = E_MAX_HATE_ENTITY
+}
 
-    def FightLogic(){
-        TickBTree("BaseOnFight")
-        if E_MAX_HATE_RANK < fightRank{
-        }
-    }
+def FightEnter(){
+}
 
-    def FightEnd(){
-        Print("End Fight...........")
+def FightLogic(){
+    TickBTree("BaseOnFight")
+    if E_MAX_HATE_RANK < fightRank{
     }
+}
+
+def FightEnd(){
+    Print("End Fight...........")
+}

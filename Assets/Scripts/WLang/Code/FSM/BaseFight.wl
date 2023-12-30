@@ -5,7 +5,7 @@ CODE{
 }
 
 STATE{
-    Wait
+    Wait : WaitEnter
     Attack : FightEnter, FightLogic, FightEnd
 }
 

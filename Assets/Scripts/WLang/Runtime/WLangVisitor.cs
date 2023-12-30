@@ -193,19 +193,19 @@ public interface IWLangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitParametersDef([NotNull] WLangParser.ParametersDefContext context);
 	/// <summary>
-	/// Visit a parse tree produced by the <c>ExprPrimary</c>
-	/// labeled alternative in <see cref="WLangParser.expr"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExprPrimary([NotNull] WLangParser.ExprPrimaryContext context);
-	/// <summary>
 	/// Visit a parse tree produced by the <c>ExprCommand</c>
 	/// labeled alternative in <see cref="WLangParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitExprCommand([NotNull] WLangParser.ExprCommandContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ExprPrimary</c>
+	/// labeled alternative in <see cref="WLangParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExprPrimary([NotNull] WLangParser.ExprPrimaryContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>ExprBinary</c>
 	/// labeled alternative in <see cref="WLangParser.expr"/>.

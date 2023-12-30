@@ -587,6 +587,12 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                 if (type == TYPE_BOOLEN)
                     return new Symbol(v.Value > 0 ? 0 : 1, TYPE_BOOLEN);
                 break;
+            case "not":
+                if (v.IsNull || v.IsFalse)
+                    return Symbol.TRUE;
+                return Symbol.FALSE;
+            default:
+                break;
         }
 
         return Symbol.ERROR;
@@ -595,9 +601,21 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     public override Symbol VisitExprBinary(WLangParser.ExprBinaryContext context)
     {
         Symbol res = Symbol.ERROR;
-        Symbol l = context.children[0].Accept(this);
-        Symbol r = context.children[2].Accept(this);
         string op = context.o.Text;
+        Symbol l = context.children[0].Accept(this);
+        switch (op)
+        {
+            case "and":
+                if (l.IsFalse)
+                    return Symbol.NULL;
+                return context.children[2].Accept(this);
+            case "or":
+                if (l.IsFalse)
+                    return context.children[2].Accept(this);
+                return l;
+        }
+
+        Symbol r = context.children[2].Accept(this);
         if (l.IsNull || r.IsNull)
         {
             switch (op)
@@ -605,10 +623,6 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                 case "==":
                     break;
                 case "!=":
-                    break;
-                case "and":
-                    break;
-                case "or":
                     break;
                 default:
                     var builder = new StringBuilder();
@@ -804,18 +818,6 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                     else
                         res = l.Value != _def.GetFloat(r.Value) ? Symbol.TRUE : Symbol.FALSE;
                 }
-                break;
-            case "and":
-                if (l.IsFalse)
-                    res = Symbol.NULL;
-                else
-                    res = r;
-                break;
-            case "or":
-                if (l.IsFalse)
-                    res = r;
-                else
-                    res = l;
                 break;
             default:
                 WLogger.Error("运算失败");
