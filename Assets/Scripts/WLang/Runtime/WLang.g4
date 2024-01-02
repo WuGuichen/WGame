@@ -76,13 +76,6 @@ expr:
     |   '('expr ')' #ExprGroup
     ;
     
-//exprRight   :
-//            expr                #ExprExpr
-//            | l=exprList        #ExprTable
-//            |  exprLambda       #ExprLambdaRef
-//            |   m=exprMethod    #ExprCommand
-//;
-
 exprLambda  : '(' parametersDef? ')' '=>' b=block
 ;
     

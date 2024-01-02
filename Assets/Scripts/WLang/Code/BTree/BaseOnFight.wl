@@ -2,7 +2,6 @@
 
 SELECTOR{
     DO{
-//        print("fightTarget",waitTarget)
         isReach = waitTarget and DoMoveToEntity(waitTarget, 100) or false
         if(isReach)
         {

@@ -1,5 +1,4 @@
 ## BaseFSMCode
-
 rankChase = HRT_DETECT
 
 def PatrolEnter(){
@@ -32,11 +31,8 @@ def ChaseLogic(){
     // 向最高仇恨值目标移动, 30cm内表示到达
     isReach = DoMoveToEntity(E_MAX_HATE_ENTITY, 30)
     if isReach{
-        print("reach")
         // 到达目标后触发到达目标事件
         @E_SELF:TriggerFSM(fsmName, SD_REACH_TARGET)
-        // 到达目标后切换战斗状态
-//        @E_SELF:ChangeFSMState(fsmName, SD_FIGHT)
     }
 
     if E_MAX_HATE_RANK < rankChase{
