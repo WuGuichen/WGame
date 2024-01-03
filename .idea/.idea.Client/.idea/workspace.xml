@@ -4,12 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="vector">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/Vector3Extension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/Vector3Extension.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnFight.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnFight.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnPatrol.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnPatrol.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/BaseFSM.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/BaseFSM.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/Template.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/FSM/Template.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnCharacterInit.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnCharacterInit.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnGameUpdate.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnGameUpdate.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/_Init.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/_Init.wl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFSMCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFSMCode.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit1.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit1.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit_10.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit_10.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit_21.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit_21.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit_31.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit_31.wl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.interp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +85,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/ClosestEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectorDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/Physics/Vector3Extension.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/Physics/Vector3Extension.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/WBVH/WBVHNodeAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Res/WDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests/NativeHeapTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -107,7 +120,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -120,7 +133,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.0f1c1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath E:\UnityProjects\WGame\Client -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="E:\UnityProjects\WGame\Client" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -128,7 +141,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.0f1c1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath E:\UnityProjects\WGame\Client -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="E:\UnityProjects\WGame\Client" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -200,6 +213,10 @@
       <workItem from="1703918036021" duration="16209000" />
       <workItem from="1704057863427" duration="2619000" />
       <workItem from="1704096438879" duration="2323000" />
+      <workItem from="1704213198928" duration="4957000" />
+      <workItem from="1704300001965" duration="1000" />
+      <workItem from="1704303673272" duration="1329000" />
+      <workItem from="1704305503680" duration="92000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -397,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703941881275</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="测试AI">
+      <created>1704213288279</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1704213288279</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,7 +435,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="物理模块和实体id索引" />
     <MESSAGE value="优化获取实体效率" />
     <MESSAGE value="优化BVH旋转部分代码" />
     <MESSAGE value="无gc的BVH" />
@@ -436,7 +459,8 @@
     <MESSAGE value="左右值区分废除" />
     <MESSAGE value="wlang二元运算优化，and or 右值延迟计算" />
     <MESSAGE value="攻击AI" />
-    <option name="LAST_COMMIT_MESSAGE" value="攻击AI" />
+    <MESSAGE value="测试AI" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试AI" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

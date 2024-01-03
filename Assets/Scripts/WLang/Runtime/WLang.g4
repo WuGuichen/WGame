@@ -204,7 +204,7 @@ CHAR :  '\'' . '\'' ;
 STRING: '"' ~( '"' | '\r' | '\n' )* '"'; 
 
 SLCOMMENT
-    :   '//' .*? '\n' -> skip
+    :   '--' .*? '\n' -> skip
     ;
 
 COMMNET

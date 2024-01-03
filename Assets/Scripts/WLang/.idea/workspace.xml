@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f4619b81-a009-41e5-87cd-268c260b8858" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/Code.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/BTree/BaseOnFight.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/BTree/BaseOnFight.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/BTree/BaseOnPatrol.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/BTree/BaseOnPatrol.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/FSM/BaseFSM.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/FSM/BaseFSM.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/FSM/Template.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/FSM/Template.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/GameEvent/OnCharacterInit.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/GameEvent/OnCharacterInit.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/GameEvent/OnGameUpdate.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/GameEvent/OnGameUpdate.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/GameEvent/_Init.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/GameEvent/_Init.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Motion/BaseFSMCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/BaseFSMCode.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Motion/GotHit1.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/GotHit1.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Motion/GotHit_10.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/GotHit_10.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Motion/GotHit_21.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/GotHit_21.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Motion/GotHit_31.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/GotHit_31.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLang.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLang.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLangLexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLangLexer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLangLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLangLexer.interp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2aSRZebLmWM3JmR3Dolr4w1tQ9d" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "E:/UnityProjects/WGame/Client/Assets/Scripts/WLang",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f4619b81-a009-41e5-87cd-268c260b8858" name="Changes" comment="" />
+      <created>1704310050496</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704310050496</updated>
+      <workItem from="1704310051506" duration="8000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
