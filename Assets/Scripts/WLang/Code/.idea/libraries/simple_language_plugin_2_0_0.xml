@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="simple_language_plugin-2.0.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/simple_language_plugin-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
