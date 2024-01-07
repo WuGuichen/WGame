@@ -910,6 +910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoID: 0
   weaponID: 1
+  aiID: 0
   job: 1
   gender: 1
   race: 1
@@ -2134,7 +2135,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6422658921687836686}
-  - component: {fileID: 5365932515139313794}
   m_Layer: 9
   m_Name: FocusPoint
   m_TagString: Untagged
@@ -2157,27 +2157,6 @@ Transform:
   m_Father: {fileID: 7721711741887052087}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5365932515139313794
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6838786976227468653}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6900862746754528338
 GameObject:
   m_ObjectHideFlags: 0

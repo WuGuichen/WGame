@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using WGame.Runtime;
 
 public class DetectMgr : Singleton<DetectMgr>
@@ -7,6 +8,8 @@ public class DetectMgr : Singleton<DetectMgr>
     private readonly Stack<HatePointInfo> _hatePointPool = new();
 
     private Dictionary<int, float> _distanceDict = new();
+
+    private const float MAX_FLOAT = float.MaxValue - 1f;
 
     public HatePointInfo RegisterHatePoint(int instId)
     {
@@ -54,6 +57,50 @@ public class DetectMgr : Singleton<DetectMgr>
             return dist;
         }
 
-        return float.MaxValue;
+        var res = (EntityUtils.GetGameEntity(id1).position.value - EntityUtils.GetGameEntity(id2).position.value)
+            .magnitude;
+        return res;
+    }
+    
+    public float GetAngle(int originId, int targetId, bool is360 = false)
+    {
+        var oriEntity = EntityUtils.GetGameEntity(originId);
+        var dir = EntityUtils.GetGameEntity(targetId).position.value - oriEntity.position.value;
+        float dist = GetDistance(originId, targetId);
+        var normalDir = dir / dist;
+        if (is360)
+            return normalDir.GetAngle360(oriEntity.gameViewService.service.Model.forward, oriEntity.gameViewService.service.Model.up);
+        return normalDir.GetAngle(oriEntity.gameViewService.service.Model.forward);
+    }
+
+    public float GetAngle(int originId, int targetId, out float dist, bool is360 = false)
+    {
+        var oriEntity = EntityUtils.GetGameEntity(originId);
+        var dir = EntityUtils.GetGameEntity(targetId).position.value - oriEntity.position.value;
+        dist = GetDistance(originId, targetId);
+        var normalDir = dir / dist;
+        if (is360)
+            return normalDir.GetAngle360(oriEntity.gameViewService.service.Model.forward, oriEntity.gameViewService.service.Model.up);
+        return normalDir.GetAngle(oriEntity.gameViewService.service.Model.forward);
+    }
+
+    public float GetAngle(int originId, int targetId, Vector3 dir, out float dist, bool is360 = false)
+    {
+        var oriEntity = EntityUtils.GetGameEntity(originId);
+        dist = GetDistance(originId, targetId);
+        var normalDir = dir / dist;
+        if (is360)
+            return normalDir.GetAngle360(oriEntity.gameViewService.service.Model.forward, oriEntity.gameViewService.service.Model.up);
+        return normalDir.GetAngle(oriEntity.gameViewService.service.Model.forward);
+    }
+    
+    public float GetAngle(int originId, int targetId, Vector3 dir, bool is360 = false)
+    {
+        var oriEntity = EntityUtils.GetGameEntity(originId);
+        float dist = GetDistance(originId, targetId);
+        var normalDir = dir / dist;
+        if (is360)
+            return normalDir.GetAngle360(oriEntity.gameViewService.service.Model.forward, oriEntity.gameViewService.service.Model.up);
+        return normalDir.GetAngle(oriEntity.gameViewService.service.Model.forward);
     }
 }

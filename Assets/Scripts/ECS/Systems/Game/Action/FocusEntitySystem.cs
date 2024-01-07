@@ -32,6 +32,7 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
     private void DoFocus(GameEntity entity)
     {
         var camera = Camera.main;
+        int resIndex = -1;
         switch (entity.actionFocus.type)
         {
             case FocusType.Focus:
@@ -39,31 +40,42 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
                 if (hitTargets.Count == 0)
                     entity.isActionLookFwd = true;
 
-                SetTarget(entity);
+                float minSqrDist = float.MaxValue;
+                for (int i = 0; i < hitTargets.Count; i++)
+                {
+                    var checkTarget = hitTargets[i];
+                    if (checkTarget.SqrDist < minSqrDist)
+                    {
+                        minSqrDist = checkTarget.SqrDist;
+                        resIndex = i;
+                    }
+                }
+
+                SetTarget(entity, resIndex);
                 break;
             case FocusType.Switch:
                 hitTargets.Clear();
-                SetTarget(entity);
+                // SetTarget(entity);
                 Detect(entity);
-                SetTarget(entity);
+                // SetTarget(entity);
                 break;
             case FocusType.Cancel:
                 hitTargets.Clear();
-                SetTarget(entity);
+                // SetTarget(entity);
                 break;
             case FocusType.Up:
                 Detect(entity);
-                SetTarget(entity);
+                // SetTarget(entity);
                 break;
             case FocusType.Down:
                 Detect(entity);
-                SetTarget(entity);
+                // SetTarget(entity);
                 break;
             case FocusType.Left:
-                SetTarget(entity);
+                // SetTarget(entity);
                 break;
             case FocusType.Right:
-                SetTarget(entity);
+                // SetTarget(entity);
                 break;
             default:
                 break;
@@ -90,8 +102,72 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
         }
     }
 
-    private void SetTarget(GameEntity entity)
+    private void SetTarget(GameEntity entity, int index)
     {
-        
+        if (hitTargets.Count <= 0)
+            return;
+        var dir = hitTargets[0].Position - entity.position.value;
+        dir = dir.normalized;
+        var model = entity.gameViewService.service.Model;
+        var angle = dir.GetAngle360(model.forward, model.up);
+    }
+
+    private bool GetClosestTarget(out HitInfo info)
+    {
+        info = HitInfo.EMPTY;
+        float minSqrDist = float.MaxValue;
+        for (int i = 0; i < hitTargets.Count; i++)
+        {
+            var checkTarget = hitTargets[i];
+            if (checkTarget.SqrDist < minSqrDist)
+            {
+                minSqrDist = checkTarget.SqrDist;
+                info = checkTarget;
+            }
+        }
+
+        return info.IsNotEmpty;
+    }
+
+    private bool GetLeftTarget(GameEntity entity, ref HitInfo curInfo, out HitInfo info)
+    {
+        info = curInfo;
+        float minAngle = float.MaxValue;
+        var curModel = entity.gameViewService.service.Model;
+        var curFwd = curModel.forward;
+        var curUp = curModel.up;
+        for (int i = 0; i < hitTargets.Count; i++)
+        {
+            var checkTarget = hitTargets[i];
+            var dir = checkTarget.Position - entity.position.value;
+            var angle = dir.GetAngle360(curFwd, curUp);
+            if (angle < minAngle)
+            {
+                minAngle = angle;
+                info = checkTarget;
+            }
+        }
+        return info.EntityId != curInfo.EntityId;
+    }
+    
+    private bool GetRightTarget(GameEntity entity, ref HitInfo curInfo, out HitInfo info)
+    {
+        info = curInfo;
+        float minAngle = float.MaxValue;
+        var curModel = entity.gameViewService.service.Model;
+        var curFwd = curModel.forward;
+        var curUp = curModel.up;
+        for (int i = 0; i < hitTargets.Count; i++)
+        {
+            var checkTarget = hitTargets[i];
+            var dir = checkTarget.Position - entity.position.value;
+            var angle = -dir.GetAngle360(curFwd, curUp);
+            if (angle < minAngle)
+            {
+                minAngle = angle;
+                info = checkTarget;
+            }
+        }
+        return info.EntityId != curInfo.EntityId;
     }
 }
