@@ -1,7 +1,5 @@
 // 数据缓存，数据逻辑操作
 
-using System.Collections.Generic;
-using FairyGUI;
 using UnityEngine;
 using UnityTimer;
 using WGame.Trigger;
@@ -17,6 +15,8 @@ namespace WGame.UI
 		
 		private bool isFocus;
 		public bool isGameStart = false;
+
+		public bool IsBootByBootstrap { get; set; } = false;
 
 		public bool IsFocus
 		{

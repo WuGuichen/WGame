@@ -32,11 +32,8 @@ public class TestSceneSystem : MonoBehaviour
 	private VMSystems _vmSystems;
 	private ITimeService _timeService;
 
-	private Dictionary<int, GameEntity> inittedEntities;
-
     void PreInit()
     {
-	    inittedEntities = new Dictionary<int, GameEntity>();
         Random.InitState((int)System.DateTime.Now.Ticks);
 		PreInitModel();
 	    RegisterEvents();
@@ -225,8 +222,6 @@ public class TestSceneSystem : MonoBehaviour
 	    for (int i = 0; i < characterRoot.childCount; i++)
 	    {
 		    var child = characterRoot.GetChild(i).gameObject;
-		    var entity = _contexts.game.CreateEntity();
-		    inittedEntities[int.Parse(child.name)] = entity;
 		    if (child.activeSelf)
 		    {
 			    _contexts.meta.factoryService.instance.GenCharacter(child.gameObject);

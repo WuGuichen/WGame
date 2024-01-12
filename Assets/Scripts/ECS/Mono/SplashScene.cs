@@ -5,6 +5,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityTimer;
 
 public class SplashScene : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class SplashScene : MonoBehaviour
 
     private void Awake()
     {
-        LogoImage.SetAlpha(0f);
+        LogoImage.SetAlpha(1f);
+        isLoading = false;
     }
 
     private void Start()
@@ -25,7 +27,11 @@ public class SplashScene : MonoBehaviour
         bootstrapGameObject.SetActive(true);
         _stopwatch.Stop();
         var delay = Mathf.Max(0f, Mathf.Min(2f - _stopwatch.ElapsedMilliseconds, 2f));
-        LoadSceneData();
+        Timer.Register(delay, () =>
+        {
+            LogoImage.SetAlpha(0);
+            LoadSceneData();
+        });
     }
 
     void OnLogoImageFadeOut()
@@ -35,10 +41,5 @@ public class SplashScene : MonoBehaviour
 
     void LoadSceneData()
     {
-        if (!isLoading)
-        {
-            isLoading = true;
-            SceneManager.UnloadSceneAsync("Bootstrap");
-        }
     }
 }
