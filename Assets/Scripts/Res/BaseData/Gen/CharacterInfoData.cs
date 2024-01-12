@@ -37,10 +37,13 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         { if(!_json["DEF"].IsNumber) { throw new SerializationException(); }  DEF = _json["DEF"]; }
         { if(!_json["patrolMul"].IsNumber) { throw new SerializationException(); }  PatrolMul = _json["patrolMul"]; }
         { if(!_json["chaseMul"].IsNumber) { throw new SerializationException(); }  ChaseMul = _json["chaseMul"]; }
+        { if(!_json["detectDegree"].IsNumber) { throw new SerializationException(); }  DetectDegree = _json["detectDegree"]; }
+        { if(!_json["detectRadius1"].IsNumber) { throw new SerializationException(); }  DetectRadius1 = _json["detectRadius1"]; }
+        { if(!_json["detectRadius2"].IsNumber) { throw new SerializationException(); }  DetectRadius2 = _json["detectRadius2"]; }
         PostInit();
     }
 
-    public CharacterInfoData(int id, string name, int weapon, int AI, Character.Job job, Character.Gender gender, Character.Race race, Character.Camp camp, int moveSpeed, int rotationSpeed, int runSpeedMul, int maxHP, int curHP, int maxMP, int curMP, int ATK, int DEF, int patrolMul, int chaseMul ) 
+    public CharacterInfoData(int id, string name, int weapon, int AI, Character.Job job, Character.Gender gender, Character.Race race, Character.Camp camp, int moveSpeed, int rotationSpeed, int runSpeedMul, int maxHP, int curHP, int maxMP, int curMP, int ATK, int DEF, int patrolMul, int chaseMul, int detectDegree, float detectRadius1, float detectRadius2 ) 
     {
         this.Id = id;
         this.Name = name;
@@ -61,6 +64,9 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         this.DEF = DEF;
         this.PatrolMul = patrolMul;
         this.ChaseMul = chaseMul;
+        this.DetectDegree = detectDegree;
+        this.DetectRadius1 = detectRadius1;
+        this.DetectRadius2 = detectRadius2;
         PostInit();
     }
 
@@ -127,6 +133,18 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
     /// 追击倍率
     /// </summary>
     public int ChaseMul { get; private set; }
+    /// <summary>
+    /// 探测角度
+    /// </summary>
+    public int DetectDegree { get; private set; }
+    /// <summary>
+    /// 一级半径
+    /// </summary>
+    public float DetectRadius1 { get; private set; }
+    /// <summary>
+    /// 二级半径
+    /// </summary>
+    public float DetectRadius2 { get; private set; }
 
     public const int __ID__ = -1485248607;
     public override int GetTypeId() => __ID__;
@@ -162,6 +180,9 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         + "DEF:" + DEF + ","
         + "PatrolMul:" + PatrolMul + ","
         + "ChaseMul:" + ChaseMul + ","
+        + "DetectDegree:" + DetectDegree + ","
+        + "DetectRadius1:" + DetectRadius1 + ","
+        + "DetectRadius2:" + DetectRadius2 + ","
         + "}";
     }
     

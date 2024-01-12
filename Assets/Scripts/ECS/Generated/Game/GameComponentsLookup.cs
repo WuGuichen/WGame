@@ -48,62 +48,60 @@ public static class GameComponentsLookup {
     public const int Destroyed = 37;
     public const int DetectedCharacter = 38;
     public const int DropItemSensor = 39;
-    public const int DropPosition = 40;
-    public const int EntityID = 41;
-    public const int Focus = 42;
-    public const int FocusEntity = 43;
-    public const int FocusTarget = 44;
-    public const int GameViewService = 45;
-    public const int GroundSensor = 46;
-    public const int InstanceID = 47;
-    public const int JumpForce = 48;
-    public const int KeepTargetDistance = 49;
-    public const int LinkAbility = 50;
-    public const int LinkMotion = 51;
-    public const int LinkSensor = 52;
-    public const int LinkVM = 53;
-    public const int LinkWeapon = 54;
-    public const int LockPlanarVec = 55;
-    public const int Moveable = 56;
-    public const int MoveDirection = 57;
-    public const int MoveDirectionListener = 58;
-    public const int MovementSpeed = 59;
-    public const int Moving = 60;
-    public const int OnGroundState = 61;
-    public const int PlayerInputState = 62;
-    public const int Position = 63;
-    public const int PrepareAttackState = 64;
-    public const int PrepareDefenseState = 65;
-    public const int PrepareHoldAttackState = 66;
-    public const int PrepareJumpAttackState = 67;
-    public const int PrepareJumpState = 68;
-    public const int PrepareLocalMotionState = 69;
-    public const int PrepareStepState = 70;
-    public const int RigidbodyService = 71;
-    public const int RotateInFocus = 72;
-    public const int RotationSpeed = 73;
-    public const int RunningMultiRate = 74;
-    public const int RunState = 75;
-    public const int SignalAttack = 76;
-    public const int SignalDefense = 77;
-    public const int SignalJump = 78;
-    public const int SignalLocalMotion = 79;
-    public const int SignalState = 80;
-    public const int SignalStep = 81;
-    public const int SpawnPoint = 82;
-    public const int StateChanged = 83;
-    public const int StateSwitchState = 84;
-    public const int StateSwitchStateListener = 85;
-    public const int StepEndState = 86;
-    public const int StepState = 87;
-    public const int TargetPlanarSqrDistance = 88;
-    public const int UIHeadPad = 89;
-    public const int Unbalanced = 90;
-    public const int WalkState = 91;
-    public const int WeaponDropService = 92;
-    public const int WeaponService = 93;
+    public const int EntityID = 40;
+    public const int FocusEntity = 41;
+    public const int FocusTarget = 42;
+    public const int GameViewService = 43;
+    public const int GroundSensor = 44;
+    public const int InstanceID = 45;
+    public const int JumpForce = 46;
+    public const int KeepTargetDistance = 47;
+    public const int LinkAbility = 48;
+    public const int LinkMotion = 49;
+    public const int LinkSensor = 50;
+    public const int LinkVM = 51;
+    public const int LinkWeapon = 52;
+    public const int LockPlanarVec = 53;
+    public const int Moveable = 54;
+    public const int MoveDirection = 55;
+    public const int MoveDirectionListener = 56;
+    public const int MovementSpeed = 57;
+    public const int Moving = 58;
+    public const int OnGroundState = 59;
+    public const int PlayerInputState = 60;
+    public const int Position = 61;
+    public const int PrepareAttackState = 62;
+    public const int PrepareDefenseState = 63;
+    public const int PrepareHoldAttackState = 64;
+    public const int PrepareJumpAttackState = 65;
+    public const int PrepareJumpState = 66;
+    public const int PrepareLocalMotionState = 67;
+    public const int PrepareStepState = 68;
+    public const int RigidbodyService = 69;
+    public const int RotateInFocus = 70;
+    public const int RotationSpeed = 71;
+    public const int RunningMultiRate = 72;
+    public const int RunState = 73;
+    public const int SignalAttack = 74;
+    public const int SignalDefense = 75;
+    public const int SignalJump = 76;
+    public const int SignalLocalMotion = 77;
+    public const int SignalState = 78;
+    public const int SignalStep = 79;
+    public const int SpawnPoint = 80;
+    public const int StateChanged = 81;
+    public const int StateSwitchState = 82;
+    public const int StateSwitchStateListener = 83;
+    public const int StepEndState = 84;
+    public const int StepState = 85;
+    public const int TargetPlanarSqrDistance = 86;
+    public const int UIHeadPad = 87;
+    public const int Unbalanced = 88;
+    public const int WalkState = 89;
+    public const int WeaponDropService = 90;
+    public const int WeaponService = 91;
 
-    public const int TotalComponents = 94;
+    public const int TotalComponents = 92;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -146,9 +144,7 @@ public static class GameComponentsLookup {
         "Destroyed",
         "DetectedCharacter",
         "DropItemSensor",
-        "DropPosition",
         "EntityID",
-        "Focus",
         "FocusEntity",
         "FocusTarget",
         "GameViewService",
@@ -243,9 +239,7 @@ public static class GameComponentsLookup {
         typeof(DestroyedComponent),
         typeof(DetectedCharacterComponent),
         typeof(DropItemSensorComponent),
-        typeof(DropPositionComponent),
         typeof(EntityIDComponent),
-        typeof(FocusComponent),
         typeof(FocusEntityComponent),
         typeof(FocusTargetComponent),
         typeof(GameViewServiceComponent),

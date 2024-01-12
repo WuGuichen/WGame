@@ -51,10 +51,10 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
         foreach (var entity in _cameraGroup)
         {
             Vector2 look = _inputContext.lookInput.value;
-            MainModel.Inst.IsFocus = entity.hasFocus;
-            if (entity.hasFocus)
+            MainModel.Inst.IsFocus = entity.hasFocusEntity;
+            if (MainModel.Inst.IsFocus)
             {
-                if (entity.focus.target == null || !entity.focus.target.gameObject.activeInHierarchy)
+                if (entity.focusEntity.entity.isDeadState)
                 {
                     entity.ReplaceActionFocus(FocusType.Switch, 18f);
                     _lookAngle = _cameraTransform.eulerAngles.y;
@@ -63,7 +63,7 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
                 else
                 {
                     // Contexts.sharedInstance.meta.mainCameraService.service.Camera.LookAt(entity.focus.target);
-                    var tarPos = entity.focus.target.position;
+                    var tarPos = entity.focusEntity.entity.gameViewService.service.FocusPoint;
                     var distSqr = (tarPos - _cameraTransform.position).sqrMagnitude;
                     if (distSqr <= 0)
                         distSqr = 0.1f;

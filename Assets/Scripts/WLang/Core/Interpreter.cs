@@ -55,6 +55,8 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     
     public bool DoImportCode { get; set; } = false;
     public WLangImporter CacheCodeImporter { get; set; }
+    
+    public string currentFileName { get; private set; }
     public Interpreter(BaseDefinition def, BaseScope baseScope)
     {
         this._def = def;
@@ -102,10 +104,12 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         return res;
     }
 
-    public Symbol ReVisitFile(WLangParser.FileContext context)
+    public Symbol ReVisitFile(WLangParser.FileContext context, string fileName = null)
     {
         lock (locker)
         {
+            if (fileName != null)
+                currentFileName = fileName;
             isNeedReturn = false;
             isEndCodeByError = false;
             return VisitFile(context);
@@ -369,7 +373,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
                     WLogger.Warning("方法调用者为空:" + text);
             }
 
-            res = method.Call(ParseParameters(context.parameters(), caller), this);
+            res = method.Call(ParseParameters(context.parameters(), caller), this, currentFileName);
             PushScope();
         }
         else
@@ -1050,6 +1054,26 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         return false;
     }
 
+    public bool TryParseInt(in List<Symbol> param, int index, out int res)
+    {
+        if (CheckParamFail(param, index, out var sym))
+        {
+            res = 0;
+            return false;
+        }
+        if (sym.Type == TYPE_INT)
+        {
+            res = sym.Value;
+            return true;
+        }
+        if (sym.Type == TYPE_FLOAT)
+        {
+            res = (int)_def.GetFloat(sym.Value);
+            return true;
+        }
+        isEndCodeByError = true;
+        throw WLogger.ThrowArgumentError("参数类型错误");
+    }
     public int ParseInt(in List<Symbol> param, int index, int defaultValue)
     {
         if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
@@ -1075,6 +1099,18 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     {
         if (CheckParamFail(param, index, out var sym, false)) return defaultValue;
         return sym.ToFloat(_def);
+    }
+    
+    public bool TryParseFloat(in List<Symbol> param, int index, out float res)
+    {
+        if (CheckParamFail(param, index, out var sym))
+        {
+            res = 0;
+            return false;
+        }
+
+        res = sym.ToFloat(_def);
+        return true;
     }
 
     public float ParseFloat(in List<Symbol> param, int index)

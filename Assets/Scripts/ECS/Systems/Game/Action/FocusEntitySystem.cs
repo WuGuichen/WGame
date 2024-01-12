@@ -8,9 +8,10 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
     private Collider[] hitResults = new Collider[8];
     private List<HitInfo> hitTargets = new();
     private readonly int lm = 1 << LayerMask.NameToLayer("FocusSensor");
+    private readonly Camera mainCamera;
     public FocusEntitySystem(Contexts contexts) : base(contexts.game)
     {
-        
+        mainCamera = Camera.main;
     }
 
 
@@ -31,37 +32,20 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
 
     private void DoFocus(GameEntity entity)
     {
-        var camera = Camera.main;
         int resIndex = -1;
         switch (entity.actionFocus.type)
         {
             case FocusType.Focus:
                 Detect(entity);
-                if (hitTargets.Count == 0)
-                    entity.isActionLookFwd = true;
-
-                float minSqrDist = float.MaxValue;
-                for (int i = 0; i < hitTargets.Count; i++)
-                {
-                    var checkTarget = hitTargets[i];
-                    if (checkTarget.SqrDist < minSqrDist)
-                    {
-                        minSqrDist = checkTarget.SqrDist;
-                        resIndex = i;
-                    }
-                }
-
-                SetTarget(entity, resIndex);
+                if (GetClosestTarget(out var info))
+                    SetTarget(entity, info.EntityId);
+                else
+                    SetTarget(entity, null);
                 break;
             case FocusType.Switch:
-                hitTargets.Clear();
-                // SetTarget(entity);
-                Detect(entity);
-                // SetTarget(entity);
                 break;
             case FocusType.Cancel:
-                hitTargets.Clear();
-                // SetTarget(entity);
+                SetTarget(entity, null);
                 break;
             case FocusType.Up:
                 Detect(entity);
@@ -102,14 +86,28 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
         }
     }
 
-    private void SetTarget(GameEntity entity, int index)
+    private void SetTarget(GameEntity entity, int targetId)
     {
-        if (hitTargets.Count <= 0)
-            return;
-        var dir = hitTargets[0].Position - entity.position.value;
-        dir = dir.normalized;
-        var model = entity.gameViewService.service.Model;
-        var angle = dir.GetAngle360(model.forward, model.up);
+        SetTarget(entity, EntityUtils.GetGameEntity(targetId));
+    }
+    private void SetTarget(GameEntity entity, GameEntity target)
+    {
+        if (target != null)
+        {
+            if (entity.hasFocusEntity)
+            {
+                entity.gameViewService.service.BeFocused(false);
+            }
+            target.gameViewService.service.BeFocused(true);
+            entity.ReplaceFocusEntity(target);
+        }
+        else
+        {
+            if (entity.hasFocusEntity)
+            {
+                entity.RemoveFocusEntity();
+            }
+        }
     }
 
     private bool GetClosestTarget(out HitInfo info)

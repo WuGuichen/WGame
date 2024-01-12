@@ -24,13 +24,13 @@ public class UpdateFocusInputSystem : IExecuteSystem
             if (_inputContext.focusInput.value)
             {
 
-                if (entity.hasFocus)
+                if (entity.hasFocusEntity)
                     entity.ReplaceActionFocus(FocusType.Cancel, area);
                 else
                     entity.ReplaceActionFocus(FocusType.Focus, area);
             }
 
-            if (entity.hasFocus)
+            if (entity.hasFocusEntity)
             {
                 var look = _inputContext.lookInput.value;
                 if (look.y > thresholds)

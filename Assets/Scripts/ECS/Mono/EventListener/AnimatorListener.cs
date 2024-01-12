@@ -16,7 +16,7 @@ public class AnimatorListener : MonoBehaviour, IMoveDirectionListener, IEventLis
 
     public void OnMoveDirection(GameEntity entity, Vector3 value)
     {
-        if (entity.hasFocus)
+        if (entity.hasFocusEntity)
         {
             anim.SetFloat(ForwardId, value.z);
             anim.SetFloat(RightId, value.x);

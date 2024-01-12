@@ -29,7 +29,7 @@ public class RotatePlayerSystem : IExecuteSystem
             var move = _inputContext.moveInput.value;
             playerTrans = entity.gameViewService.service.Model;
 
-            if (entity.hasFocus && !entity.isRotateInFocus)
+            if (entity.hasFocusEntity && !entity.isRotateInFocus)
             {
                 var fwd = cameraTrans.forward;
                 fwd.y = 0;

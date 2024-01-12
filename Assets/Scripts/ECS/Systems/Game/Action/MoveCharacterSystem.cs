@@ -42,9 +42,9 @@ public class MoveCharacterSystem : IExecuteSystem
             }
             if(entity.isUnbalanced)
                 continue;
-            if (entity.hasFocus)
+            if (entity.hasFocusEntity)
             {
-                var pos = entity.focus.target.position;
+                var pos = entity.focusEntity.entity.position.value;
                 Vector2 tarPos = new Vector2(pos.x, pos.z);
                 pos = entity.position.value;
                 Vector2 myPos = new Vector2(pos.x, pos.z);
@@ -75,7 +75,7 @@ public class MoveCharacterSystem : IExecuteSystem
             var speedY = entity.rigidbodyService.service.Velocity.y;
             if (entity.isCamera)
             {
-                if (entity.hasFocus)
+                if (entity.hasFocusEntity)
                 {
                     if (motion.hasMotionService)
                     {

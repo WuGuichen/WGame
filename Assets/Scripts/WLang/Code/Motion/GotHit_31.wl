@@ -15,7 +15,7 @@
 --@E_SELF:SetAttr(CUR_HP, curHp - hitHp)
 --
 -- 位移
---@E_SELF:DoMove(HIT_DIR*1.5, 2)
+--@E_SELF:Entt_Move(HIT_DIR*1.5, 2)
 --idBlood = 0
 --@E_SELF:LoadEffect(idBlood, MODEL_BODY, HIT_POS, HIT_DIR, 5)
 

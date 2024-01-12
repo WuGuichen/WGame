@@ -144,7 +144,10 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
     {
         var p = context.numParam().Accept(interpreter);
         if (p.Type == TYPE_METHOD)
-            _builder.WaitTime(interpreter.Definition.GetMethod(p.Value).Call(interpreter).Value);
+        {
+            var fileName = interpreter.currentFileName;
+            _builder.WaitTime(interpreter.Definition.GetMethod(p.Value).Call(interpreter, fileName).Value);
+        }
         else
         {
             _builder.WaitTime(p.ToFloat(interpreter.Definition));

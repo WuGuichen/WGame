@@ -89,11 +89,11 @@ public class Method : IType
     }
 
     private static List<Symbol> emptyParam = new List<Symbol>();
-    public Symbol Call(Interpreter interpreter)
+    public Symbol Call(Interpreter interpreter, string fileName)
     {
-        return Call(emptyParam, interpreter);
+        return Call(emptyParam, interpreter, fileName);
     }
-    public Symbol Call(List<Symbol> param, Interpreter interpreter)
+    public Symbol Call(List<Symbol> param, Interpreter interpreter, string fileName)
     {
         if (callback != null)
         {

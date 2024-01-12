@@ -4,7 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="" />
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/Character_Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/Character_Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacterinfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacterinfo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/Drops/DropPositionComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/Drops/DropPositionComponent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/FocusTargetComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/FocusTargetComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/States/FocusComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/States/FocusComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/CharacterInitInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/CharacterInitInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameDropPositionComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameDropPositionComponent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameFocusComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameFocusComponent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/GameComponentsLookup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/GameComponentsLookup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IGameViewService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IGameViewService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/EventListener/AnimatorListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/EventListener/AnimatorListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.Register.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.Register.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GameViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GameViewServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/CharacterFocusSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/CharacterFocusSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/DeadCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/DeadCharacterSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/FocusEntitySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/FocusEntitySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/MoveCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/MoveCharacterSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/RotatePlayerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/RotatePlayerSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/CameraFollowTargetSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/CameraFollowTargetSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/CameraRotateSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/CameraRotateSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdatePlayerInput/UpdateFocusInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdatePlayerInput/UpdateFocusInputSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdatePlayerInput/UpdateMoveDirectionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdatePlayerInput/UpdateMoveDirectionSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/SensorCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/SensorCharacterSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/MotionHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/MotionHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/WDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/WDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnPatrol.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnPatrol.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFSMCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFSMCode.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFightCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFightCode.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit_31.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit_31.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/BTreeInterpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/BTreeInterpreter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/FSMInterpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/FSMInterpreter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Interpreter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Method/Method.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Core/Method/Method.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/.cache.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/.cache.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/characterInfoData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/characterInfoData.xlsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,11 +76,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/67/051f9cc8/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/67/a986d86b/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/6b/8e1c9bce/KeyCode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/84/2f0c5689/Camera.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/87/994ce2f2/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/8b/e925990d/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/9f/ac071a2e/AtomicSafetyHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7fb6dbaed5894b58b747e385194eed603e00/de/ef8a49d5/DebugSystems.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8a6435c78e7b40e4b723b1cfa9bd1f66355e20/21/78478717/SyntaxErrorException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a14d265efcba4a149998491d1578ef957a00/03/9fa10072/CharacterInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/00/74f9bf9f/IEntity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/07/99383d85/Context`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/09/d94528d1/ReactiveSystem`1.cs" root0="SKIP_HIGHLIGHTING" />
@@ -58,18 +106,19 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ICapsuleSensor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IDetectorService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ISphereSensor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/ECS/Mono/EventListener/AnimatorListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WBVHEntityAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FSMAgent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.Register.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/DetectorCharacterImplementation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdateCharacterDataSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/DrawDetectCharacterSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/SensorCharacterSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/UpdateDetectDataSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/ClosestEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectorDrawer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/Physics/Vector3Extension.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/Physics/Vector3Extension.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/WBVH/WBVHNodeAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Res/WDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests/NativeHeapTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -91,29 +140,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.39714286&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.39714286",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\WuGC\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\WuGC\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Unity.exe" />
@@ -141,10 +190,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21188">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="21188" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -204,6 +253,8 @@
       <workItem from="1704376238674" duration="1421000" />
       <workItem from="1704398975560" duration="85000" />
       <workItem from="1704641130245" duration="5604000" />
+      <workItem from="1704649225152" duration="25000" />
+      <workItem from="1705069786878" duration="12488000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -429,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704648997270</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="update scene">
+      <created>1704649237300</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1704649237300</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,7 +501,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="WLang函数调用待优化" />
     <MESSAGE value="需要处理antlr解析的gc" />
     <MESSAGE value="主要优化代码gc，修复bug" />
     <MESSAGE value="可视化范围探测" />
@@ -468,7 +525,8 @@
     <MESSAGE value="插件资源" />
     <MESSAGE value="语法高亮插件" />
     <MESSAGE value="完善获取目标角度信息的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善获取目标角度信息的方法" />
+    <MESSAGE value="update scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="update scene" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

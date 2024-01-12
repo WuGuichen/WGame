@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using Motion;
 using UnityEngine;
 using WGame.Res;
-using WGame.Runtime;
 using WGame.Trigger;
 using Random = UnityEngine.Random;
 
 
-public class MethodDefine
+public partial class MethodDefine
 {
     private const int TYPE_INT = BaseDefinition.TYPE_INT;
     private const int TYPE_FLOAT = BaseDefinition.TYPE_FLOAT;
@@ -19,9 +18,11 @@ public class MethodDefine
     private const int TYPE_CHAR = BaseDefinition.TYPE_CHAR;
 
     private static object locker = new object();
+    private Action<string, Action<List<Symbol>, Interpreter>> SetMethod;
 
     public void BindAll(Action<string, Action<List<Symbol>, Interpreter>> bind)
     {
+        SetMethod = bind;
         bind("Print", Print);
         bind("print", Print);
         bind("Resolve", Resolve);
@@ -34,22 +35,20 @@ public class MethodDefine
         bind("Random_100", Random_100);
         bind("Random_Range", Random_Range);
         bind("DoMove", DoMove);
-        bind("Dot", Math_Dot);
         bind("GetForward", GetForward);
         bind("GetPosition", GetPosition);
         bind("SwitchMotion", SwitchMotion);
         bind("TransMotionType", TransMotionType);
         bind("CallMotion", CallMotion);
-        bind("TriggerEvent", TriggerEvent);
         bind("LoadEffect", LoadEffectToEntity);
         bind("DisposeEffect", DisposeEffect);
         bind("Signal", Signal);
-        bind("SetFSM", SetFSM);
         bind("RemoveFSM", RemoveFSM);
         bind("TriggerFSM", TriggerFSM);
         bind("ChangeFSMState", ChangeFSMState);
         bind("InitGotHitDict", InitGotHitDict);
-        bind("GetTargetSensorLayer", GetTargetSensorLayer);
+        BindMath();
+        BindEntityMethod();
     }
 
     public void TransMotionType(List<Symbol> param, Interpreter interpreter)
@@ -76,7 +75,7 @@ public class MethodDefine
     }
     public void Print(List<Symbol> param, Interpreter interpreter)
     {
-        Method.PRINT.Call(param, interpreter);
+        Method.PRINT.Call(param, interpreter, interpreter.currentFileName);
     }
     
     public void InputDown(List<Symbol> param, Interpreter interpreter)
@@ -170,35 +169,6 @@ public class MethodDefine
         return 0;
     }
 
-    public void Math_Dot(List<Symbol> param, Interpreter interpreter)
-    {
-        var l = param[0];
-        var r = param[1];
-        if (r.Type == l.Type)
-        {
-            if (r.Type == TYPE_TABLE)
-            {
-                var def = interpreter.Definition;
-                var lR = def.GetTable(r.Value);
-                var lL = def.GetTable(l.Value);
-                if (lR.Count == lL.Count)
-                {
-                    float res = 0;
-                    for (int i = 0; i < lR.Count; i++)
-                    {
-                        res += MultiNumber(lR[i], lL[i], def);
-                    }
-                    interpreter.SetRetrun(res);
-                    return;
-                }
-                else
-                {
-                    WLogger.Error("请确保运算数据一致");
-                }
-            }
-        }
-        WLogger.Error("点乘运算错误");
-    }
     public void DoMove(List<Symbol> param, Interpreter interpreter)
     {
         if (CheckEntity(param[0].Value, out var entity))
@@ -270,7 +240,7 @@ public class MethodDefine
                     {
                         callback = o =>
                         {
-                             param[6].ToMethod(def)?.Call(new List<Symbol>(){}, interpreter);
+                             param[6].ToMethod(def)?.Call(new List<Symbol>(){}, interpreter, interpreter.currentFileName);
                         };
                     }
                 }
@@ -287,15 +257,6 @@ public class MethodDefine
         EffectMgr.DisposeEffect(param[0].Value, param[1].Value, delay);
     }
     
-    private void TriggerEvent(List<Symbol> param, Interpreter interpreter)
-    {
-        lock (locker)
-        {
-            SharedScope.Inst.Define("E_P", SharedDefinition.Inst.Define(param.GetRange(1,param.Count-1)));
-            EventCenter.Trigger(param[0].Value);
-        }
-    }
-
     private void Signal(List<Symbol> param, Interpreter interpreter)
     {
         if (CheckEntity(param[0].Value, out var entity))
@@ -324,14 +285,6 @@ public class MethodDefine
                 WLogger.Error("没有定义的输入" + param[1].Value);
                 break;
         }
-    }
-
-    private void SetFSM(List<Symbol> param, Interpreter interpreter)
-    {
-        if (CheckEntity(param[0].Value, out var entity))
-            return;
-        
-        entity.aiAgent.service.FSMAgent.SetObject(param[1].Text);
     }
 
     private void RemoveFSM(List<Symbol> param, Interpreter interpreter)
@@ -385,13 +338,6 @@ public class MethodDefine
         }
     }
 
-    private void GetTargetSensorLayer(List<Symbol> param, Interpreter interpreter)
-    {
-        if (CheckEntity(param[0].Value, out var entity))
-            return;
-        interpreter.SetRetrun(new Symbol(EntityUtils.GetTargetSensorLayer(entity)));
-    }
-
     public void Resolve(List<Symbol> param, Interpreter interpreter)
     {
         if (CheckEntity(interpreter.ParseInt(param, 0), out var entity))
@@ -400,22 +346,6 @@ public class MethodDefine
         interpreter.SetRetrun(sym);
     }
     
-    public static void MoveEntityToTarget(List<Symbol> param, Interpreter interpreter)
-    {
-        if (CheckEntity(param[0].Value, out var entity))
-            return;
-        var agent = entity.aiAgent.service.MoveAgent;
-        if(param.Count < 2)
-            interpreter.SetRetrun(agent.MoveToTarget());
-        else
-        {
-            if (param[1].Type == BaseDefinition.TYPE_FLOAT)
-                interpreter.SetRetrun(agent.MoveToTarget(param[1].ToFloat(interpreter.Definition)));
-            else
-                interpreter.SetRetrun(agent.MoveToTarget(param[1].Value));
-        }
-    }
-
     private static void SetLogEnable(List<Symbol> param, Interpreter interpreter)
     {
         var value = interpreter.ParseBool(param, 0, true);

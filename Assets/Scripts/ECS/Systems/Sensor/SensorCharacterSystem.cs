@@ -22,7 +22,7 @@ public class SensorCharacterSystem : IExecuteSystem
         foreach (var entity in _whiteGroup)
         {
             var position = entity.position.value;
-            var sphere = new SphereF(position.ToFloat3(), 20f);
+            var sphere = new SphereF(position.ToFloat3(), 50f);
             hitInfos.Clear();
             EntityUtils.BvhRed.TestHitSphereNonAlloc(sphere, ref hitInfos);
             for (int i = 0; i < hitInfos.Count; i++)

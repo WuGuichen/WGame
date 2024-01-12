@@ -95,7 +95,7 @@ public class WDrawer : SingletonMono<WDrawer>
 
     private readonly Color defaulColor = Color.cyan * 0.4f;
     
-    public void RegisterCircle(Vector3 center, Vector3 forward, float radius, float autoReleaseTime = 4f)
+    public void RegisterCircle(Vector3 center, Vector3 forward, float radius, float autoReleaseTime = 2f)
     {
         RegisterCircle(center, forward, radius, defaulColor, autoReleaseTime);
     }

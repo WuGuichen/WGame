@@ -116,17 +116,18 @@ public class FSMInterpreter : WLangBaseVisitor<Symbol>
         {
             var m = _def.GetMethod(sym.Value);
             var inter = interpreter;
+            var fileName = inter.currentFileName;
             if (from >= 0)
             {
                 curFSM.AddTransition(from, to
-                    , transition => { return m.Call(inter).IsTrue; });
+                    , transition => { return m.Call(inter, fileName).IsTrue; });
             }
             else
             {
                 curFSM.AddTransitionFromAny(to
                     , transition =>
                     {
-                        return m.Call(inter).IsTrue;
+                        return m.Call(inter, fileName).IsTrue;
                     }
                 );
             }
@@ -155,7 +156,8 @@ public class FSMInterpreter : WLangBaseVisitor<Symbol>
                             {
                                 var m = _def.GetMethod(sym.Value);
                                 var inter = interpreter;
-                                callbacks[cbIndex] = _ => { m.Call(inter); };
+                                var fileName = inter.currentFileName;
+                                callbacks[cbIndex] = _ => { m.Call(inter, fileName); };
                             }
                             else
                             {
@@ -212,9 +214,10 @@ public class FSMInterpreter : WLangBaseVisitor<Symbol>
         {
             var m = _def.GetMethod(sym.Value);
             var inter = interpreter;
+            var fileName = inter.currentFileName;
             curFSM.AddTriggerTransition(trigger, from, to, transition =>
             {
-                return m.Call(inter).IsTrue;
+                return m.Call(inter, fileName).IsTrue;
             });
         }
         
@@ -255,9 +258,10 @@ public class FSMInterpreter : WLangBaseVisitor<Symbol>
         {
             var m = _def.GetMethod(sym.Value);
             var inter = interpreter;
+            var fileName = inter.currentFileName;
             curFSM.AddTransition(new TransitionAfter<int>(from, to, time, after =>
             {
-                return m.Call(inter).IsTrue;
+                return m.Call(inter, fileName).IsTrue;
             }));}
         return Symbol.NULL;
     }

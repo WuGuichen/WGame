@@ -910,7 +910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoID: 0
   weaponID: 1
-  aiID: 0
+  aiID: 1
   job: 1
   gender: 1
   race: 1
@@ -929,9 +929,13 @@ MonoBehaviour:
   curMP: 90
   ATK: 8
   DEF: 12
-  PatrolMul: 60
+  PatrolMul: 40
   ChaseMul: 100
+  DetectDegree: 120
+  DetectRadius1: 4
+  DetectRadius2: 12
   showPatrolPoint: 1
+  showDetectArea: 0
 --- !u!143 &8753235125618566207
 CharacterController:
   m_ObjectHideFlags: 0

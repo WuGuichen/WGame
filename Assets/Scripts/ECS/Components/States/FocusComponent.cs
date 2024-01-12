@@ -1,11 +1,11 @@
 using Entitas;
 using UnityEngine;
 
-[Game]
-public class FocusComponent : IComponent
-{
-    public Transform target;
-}
+// [Game]
+// public class FocusComponent : IComponent
+// {
+//     public Transform target;
+// }
 
 [Game]
 public class KeepTargetDistanceComponent : IComponent

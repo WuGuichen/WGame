@@ -9,7 +9,7 @@ public interface IGameViewService
     Vector3 GetCameraPos();
     Vector3 LocalizeVectorXY(Vector2 vector, bool isFocus = false);
     Transform Model { get; }
-    Vector3 Center { get; }
+    Vector3 FocusPoint { get; }
     Vector2 PlanarPosition { get; }
     GameEntity GetEntity();
     void Destroy();

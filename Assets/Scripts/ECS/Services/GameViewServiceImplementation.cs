@@ -128,7 +128,7 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
 
     public Transform Model => _model;
     public Vector3 Position => _transform.position;
-    public Vector3 Center { get; }
+    public Vector3 FocusPoint => _focusPoint.Position;
     public Vector2 PlanarPosition => new Vector2(Position.x, Position.z);
 
     private WEntityPoint _focusPoint;

@@ -38,7 +38,7 @@ public class CameraFollowTargetSystem : IExecuteSystem, IInitializeSystem
         {
             _target = entity.gameViewService.service;
             pos = _target.GetCameraPos();
-            if (entity.hasFocus)
+            if (entity.hasFocusEntity)
             {
                 // pos = (pos + entity.focus.target.position) / 2;
                 // var param = (entity.focus.target.position - _target.Position);

@@ -45,7 +45,7 @@ public class FightAgent
         if (_entity.hasDetectedCharacter)
         {
             _entity.ReplaceFocusEntity(_entity.detectedCharacter.entity);
-            _entity.ReplaceFocus(_entity.detectedCharacter.entity.gameViewService.service.Model);
+            // _entity.ReplaceFocus(_entity.detectedCharacter.entity.gameViewService.service.Model);
             _service.MoveAgent.RefreshTarget();
         }
         else

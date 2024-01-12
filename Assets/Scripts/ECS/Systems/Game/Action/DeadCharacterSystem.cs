@@ -53,7 +53,7 @@ public class DeadCharacterSystem : IExecuteSystem
         }
         for(int i= 0 ; i < listFocus.Count; i++)
         {
-            listFocus[i].RemoveFocus();
+            // listFocus[i].RemoveFocus();
             listFocus[i].RemoveFocusEntity();
         }
     }

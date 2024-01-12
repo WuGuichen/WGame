@@ -48,7 +48,7 @@ public class UpdateMoveDirectionSystem : IExecuteSystem
             // var vecMulti = UnityEngine.Mathf.Clamp01(Vector3.Dot(entity.gameViewService.service.Model.forward, vec));
             // var moveDirection = vec * vecMulti;
             // moveDirection *= entity.movementSpeed.value;
-            var moveDirection = entity.gameViewService.service.LocalizeVectorXY(move, entity.hasFocus);
+            var moveDirection = entity.gameViewService.service.LocalizeVectorXY(move, entity.hasFocusEntity);
             entity.ReplaceMoveDirection(moveDirection);
             entity.isMoving = moveDirection != Vector3.zero;
             if(entity.isMoving)

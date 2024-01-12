@@ -3,10 +3,10 @@
 SELECTOR{
     DO{
         -- 移动到选中巡逻点
-        isReached = DoMoveToPatrolPoint()
+        isReached = @E_SELF:DoMoveToPatrolPoint()
         if isReached {
             -- 巡逻点已到达，选中另一个巡逻点, 并触发下一逻辑
-            SetNewPatrolIndex()
+            @E_SELF:SetNewPatrolIndex()
             return FAIL
         }
         -- 巡逻中

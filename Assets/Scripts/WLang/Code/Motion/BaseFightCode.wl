@@ -12,7 +12,7 @@ def FightEnter(){
 }
 
 def FightLogic(){
-    TickBTree("BaseOnFight")
+    S_TickBTree("BaseOnFight")
     if E_MAX_HATE_RANK < 2{
         @E_SELF:TriggerFSM(fsmName, SD_LOSE_TARGET)
     }

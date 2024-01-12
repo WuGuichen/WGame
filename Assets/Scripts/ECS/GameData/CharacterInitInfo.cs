@@ -21,6 +21,9 @@ public struct CharacterInitInfo
     public int Weapon { get; set; }
     public float ChaseMul { get; set; }
     public float PatrolMul { get; set; }
+    public int DetectDegree { get; set; }
+    public float DetectRadius1 { get; set; }
+    public float DetectRadius2 { get; set; }
     public CharAI AICfg { get; set; }
 
     public static CharacterInitInfo Empty = new CharacterInitInfo();

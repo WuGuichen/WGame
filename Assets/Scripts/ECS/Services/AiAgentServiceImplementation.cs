@@ -119,8 +119,8 @@ public partial class AiAgentServiceImplementation : IAiAgentService
     {
         _entity.ReplaceMovementSpeed(_initInfo.moveSpeed);
         moveAgent.OnChaseExit();
-        if(_entity.hasFocus)
-            _entity.RemoveFocus();
+        // if(_entity.hasFocus)
+        //     _entity.RemoveFocus();
         if(_entity.hasFocusEntity)
             _entity.RemoveFocusEntity();
     }

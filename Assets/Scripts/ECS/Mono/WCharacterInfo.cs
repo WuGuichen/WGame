@@ -30,7 +30,11 @@ public class WCharacterInfo : MonoBehaviour
     [SerializeField] private int DEF;
     [SerializeField] private int PatrolMul;
     [SerializeField] private int ChaseMul;
+    [SerializeField] private int DetectDegree;
+    [SerializeField] private float DetectRadius1;
+    [SerializeField] private float DetectRadius2;
     [SerializeField] private bool showPatrolPoint = false;
+    [SerializeField] private bool showDetectArea = false;
 
     private static Vector3[] defaultPatrolPoints = new Vector3[]
     {
@@ -68,6 +72,9 @@ public class WCharacterInfo : MonoBehaviour
             Weapon = data.Weapon,
             PatrolMul = data.PatrolMul*0.01f,
             ChaseMul =data.ChaseMul*0.01f,
+            DetectDegree = data.DetectDegree,
+            DetectRadius1 = data.DetectRadius1,
+            DetectRadius2 = data.DetectRadius2,
             AICfg = GameData.Tables.TbCharAI.Get(data.AI)
         };
         return info;
@@ -92,6 +99,9 @@ public class WCharacterInfo : MonoBehaviour
         Weapon = 0,
         PatrolMul = 60*0.01f,
         ChaseMul = 100*0.01f,
+        DetectDegree = 120,
+        DetectRadius1 = 4,
+        DetectRadius2 = 12,
         AICfg = new CharAI(1, "DefaultAI", "BaseFSM", "OnAttack"),
     };
     public CharacterInitInfo GetCharacterInfo()
@@ -125,6 +135,9 @@ public class WCharacterInfo : MonoBehaviour
             Weapon = weaponID,
             PatrolMul = PatrolMul*0.01f,
             ChaseMul = ChaseMul*0.01f,
+            DetectDegree = DetectDegree,
+            DetectRadius1 = DetectRadius1,
+            DetectRadius2 = DetectRadius2,
             AICfg = GameData.Tables.TbCharAI.Get(aiID),
         };
         return info;
@@ -141,6 +154,17 @@ public class WCharacterInfo : MonoBehaviour
                 Gizmos.color = new Color(0, i * 0.3f, 1f);
                 Gizmos.DrawSphere(pos, 0.12f);
             }
+        }
+
+        if (showDetectArea)
+        {
+            var pos = transform.position;
+            var pos1 = pos + transform.forward * DetectRadius1;
+            var pos2 = pos + transform.forward * DetectRadius2;
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(pos, pos1);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(pos1, pos2);
         }
     }
     #endif

@@ -1,13 +1,16 @@
 // 要按规范添加方法
 public partial class AiAgentServiceImplementation
 {
+    /// <summary>
+    /// 这里写作用于自身的方法，用S_开头
+    /// </summary>
     private void InitMethod()
     {
     #region 设置属性(Set)
         // 设置当前移动速度为初始值*rate%, nil则设置为初始速度
         // rate->int|nil=0, 百分比值，可以小于0
         // reset->bool|nil=true, 是否先重置
-        SetMethod("SetMoveSpeedRate", (list, interpreter) =>
+        SetMethod("S_SetMoveSpeedRate", (list, interpreter) =>
         {
             var rate = interpreter.ParseInt(list, 0, 100) * 0.01f;
             var reset = interpreter.ParseBool(list, 1, true);
@@ -15,14 +18,14 @@ public partial class AiAgentServiceImplementation
             _entity.ReplaceMovementSpeed(real);
         });
         // 重置角色移动速度
-        SetMethod("ResetMoveSpeed", (list, interpreter) =>
+        SetMethod("S_ResetMoveSpeed", (list, interpreter) =>
         {
             _entity.ReplaceMovementSpeed(_initInfo.moveSpeed);
         });
         // 设置当前移动速度为初始+value%, nil则设置为初始速度
         // value->int|nil, 百分比值，可以小于0
         // reset->bool|nil=true, 是否先重置
-        SetMethod("SetMoveSpeedAddValue", (list, interpreter) =>
+        SetMethod("S_SetMoveSpeedAddValue", (list, interpreter) =>
         {
             var value = interpreter.ParseInt(list, 0, 0);
             var reset = interpreter.ParseBool(list, 1, true);
@@ -32,7 +35,7 @@ public partial class AiAgentServiceImplementation
         
         // 设置当前巡逻点为index或者除当前巡逻点外其他随机点
         // index->int|nil
-        SetMethod("SetNewPatrolIndex", (list, interpreter) =>
+        SetMethod("S_SetNewPatrolIndex", (list, interpreter) =>
         {
             moveAgent.SetNewPatrolPointIndex(interpreter.ParseInt(list, 0, -1));
         });
@@ -43,7 +46,7 @@ public partial class AiAgentServiceImplementation
         // 获取除了curIndex所在巡逻点的其他巡逻点位置, nil则获取除当前位置外的其他随机位置
         // curIndex->int|nil, 巡逻点索引
         // return->vector3, 坐标
-        SetMethod("GetRandomPatrolPos", (list, interpreter) =>
+        SetMethod("S_GetRandomPatrolPos", (list, interpreter) =>
         {
             int index = interpreter.ParseInt(list, 0, moveAgent.CurPatrolIndex);
             var pos = moveAgent.GetOtherPatrolPoint(index);
@@ -56,7 +59,7 @@ public partial class AiAgentServiceImplementation
         // index->int|nil, 巡逻点索引
         // reachDist->int|nil, 完成移动距离限制
         // return->bool, 是否完成移动
-        SetMethod("DoMoveToPatrolPoint", (list, interpreter) =>
+        SetMethod("S_DoMoveToPatrolPoint", (list, interpreter) =>
         {
             int index = interpreter.ParseInt(list, 0, moveAgent.CurPatrolIndex);
             int reachDist = interpreter.ParseInt(list, 1, 20);
@@ -68,7 +71,7 @@ public partial class AiAgentServiceImplementation
         // point->vector3, 目标坐标
         // reachDist->int|nil, 完成移动距离限制
         // return->bool, 是否完成移动
-        SetMethod("DoMoveToPoint", (list, interpreter) =>
+        SetMethod("S_DoMoveToPoint", (list, interpreter) =>
         {
             var point = interpreter.ParseVector3(list, 0);
             int reachDist = interpreter.ParseInt(list, 1, 20);
@@ -79,7 +82,7 @@ public partial class AiAgentServiceImplementation
         // point->vector3, 目标坐标
         // reachDist->int|nil, 完成移动距离限制
         // return->bool, 是否完成移动
-        SetMethod("DoMoveToEntity", (list, interpreter) =>
+        SetMethod("S_DoMoveToEntity", (list, interpreter) =>
         {
             var id = interpreter.ParseInt(list, 0);
             int reachDist = interpreter.ParseInt(list, 1, 20);
@@ -92,17 +95,17 @@ public partial class AiAgentServiceImplementation
     #region 其他方法
         // 运行行为树
         // treeName->string, 行为树名字
-        SetMethod("TickBTree", ((list, interpreter) => {
+        SetMethod("S_TickBTree", ((list, interpreter) => {
             bTreeAgent.TickTree(interpreter.ParseString(list, 0));
         }));
     #endregion
     
     #region 旧方法
-        SetMethod("MoveToTarget", MoveToTarget);
-        SetMethod("OnTestWaitEnter", OnTestWaitEnter);
-        SetMethod("OnTestAttackEnter", OnTestAttackEnter);
-        SetMethod("SetPatrolPointTarget", SetPatrolPointTarget);
-        SetMethod("NoDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(!_entity.hasDetectedCharacter);}); SetMethod("HasDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(_entity.hasDetectedCharacter);});
+        SetMethod("S_MoveToTarget", MoveToTarget);
+        SetMethod("S_OnTestWaitEnter", OnTestWaitEnter);
+        SetMethod("S_OnTestAttackEnter", OnTestAttackEnter);
+        SetMethod("S_SetPatrolPointTarget", SetPatrolPointTarget);
+        SetMethod("S_NoDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(!_entity.hasDetectedCharacter);}); SetMethod("HasDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(_entity.hasDetectedCharacter);});
     #endregion
     }
     

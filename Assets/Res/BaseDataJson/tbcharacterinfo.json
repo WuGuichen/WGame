@@ -18,7 +18,10 @@
     "ATK": 100,
     "DEF": 100,
     "patrolMul": 60,
-    "chaseMul": 100
+    "chaseMul": 100,
+    "detectDegree": 120,
+    "detectRadius1": 4,
+    "detectRadius2": 12
   },
   {
     "id": 2,
@@ -39,6 +42,9 @@
     "ATK": 100,
     "DEF": 100,
     "patrolMul": 60,
-    "chaseMul": 100
+    "chaseMul": 100,
+    "detectDegree": 120,
+    "detectRadius1": 4,
+    "detectRadius2": 12
   }
 ]

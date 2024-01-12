@@ -190,9 +190,9 @@ namespace Motion
                     codeStack[++cp] = senderEntity.entityID.id;
                     break;
                 case ByteCodeType.GetTarget:
-                    if (senderEntity.hasFocus)
+                    if (senderEntity.hasFocusEntity)
                     {
-                        codeStack[++cp] = senderEntity.focus.target.GetComponentInParent<IGameViewService>().GetEntity().entityID.id;
+                        codeStack[++cp] = senderEntity.focusEntity.entity.instanceID.ID;
                     }
                     else
                     {
