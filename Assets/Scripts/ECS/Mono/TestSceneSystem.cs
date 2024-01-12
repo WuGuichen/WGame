@@ -150,7 +150,11 @@ public class TestSceneSystem : MonoBehaviour
 	    {
 			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(Cursor.visible ? 0 : 1));
 	    }
-	    
+
+	    if (Input.GetKeyDown(KeyCode.B))
+	    {
+		    WLogger.Print("CC");
+	    }
     }
 
     private void FixedUpdate()
