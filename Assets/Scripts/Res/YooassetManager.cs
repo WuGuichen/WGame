@@ -24,6 +24,7 @@ namespace WGame.Res
         private ResourcePackage rawFilePackage;
 
         #if UNITY_EDITOR
+        [SerializeField]
         private EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
         #else
         private EPlayMode PlayMode = EPlayMode.OfflinePlayMode;
@@ -35,13 +36,27 @@ namespace WGame.Res
         {
             _inst = this;
             YooAssets.Initialize();
-            package = YooAssets.CreatePackage("DefaultPackage");
-            rawFilePackage = YooAssets.CreatePackage("RawFilePackage");
-            StartCoroutine(InitYooasset());
+            StartCoroutine(LoadPackages());
+        }
+
+        IEnumerator LoadPackages()
+        {
+            var defaultOperation = new PatchOperation("DefaultPackage", EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), PlayMode);
+            var rawFileOperation = new PatchOperation("RawFilePackage", EDefaultBuildPipeline.RawFileBuildPipeline.ToString(), PlayMode);
+            YooAssets.StartOperation(rawFileOperation);
+            yield return rawFileOperation;
+            rawFilePackage = YooAssets.GetPackage("RawFilePackage");
+            YooAssets.StartOperation(defaultOperation);
+            yield return defaultOperation;
+            package = YooAssets.GetPackage("DefaultPackage");
+            YooAssets.SetDefaultPackage(package);
+            EventCenter.Trigger(EventDefine.OnGameAssetsManagerInitted);
         }
 
         IEnumerator InitYooasset()
         {
+            package = YooAssets.CreatePackage("DefaultPackage");
+            rawFilePackage = YooAssets.CreatePackage("RawFilePackage");
             IsInitted = false;
             InitializeParameters initParameters;
             InitializeParameters initRawFileParameters;
@@ -52,7 +67,6 @@ namespace WGame.Res
                     {
                         SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(),"DefaultPackage")
                     };
-                    yield return package.InitializeAsync(initParameters);
                     initRawFileParameters = new EditorSimulateModeParameters()
                     {
                         SimulateManifestFilePath =
@@ -60,12 +74,13 @@ namespace WGame.Res
                                 EDefaultBuildPipeline.RawFileBuildPipeline.ToString(), "RawFilePackage")
                     };
                     yield return rawFilePackage.InitializeAsync(initRawFileParameters);
+                    yield return package.InitializeAsync(initParameters);
                     break;
                 case EPlayMode.OfflinePlayMode:
                     initParameters = new OfflinePlayModeParameters();
                     initRawFileParameters = new OfflinePlayModeParameters();
-                    yield return package.InitializeAsync(initParameters);
                     yield return rawFilePackage.InitializeAsync(initRawFileParameters);
+                    yield return package.InitializeAsync(initParameters);
                     break;
             }
 
