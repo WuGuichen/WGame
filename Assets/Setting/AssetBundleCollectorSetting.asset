@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
-  ShowPackageView: 0
-  EnableAddressable: 1
-  LocationToLower: 0
-  IncludeAssetGUID: 0
-  UniqueBundleName: 0
-  ShowEditorAlias: 0
+  ShowPackageView: 1
+  ShowEditorAlias: 1
+  UniqueBundleName: 1
   Packages:
   - PackageName: DefaultPackage
     PackageDesc: 
+    EnableAddressable: 1
+    LocationToLower: 0
+    IncludeAssetGUID: 0
+    IgnoreDefaultType: 0
+    AutoCollectShaders: 1
     Groups:
     - GroupName: UI
       GroupDesc: "UI\u8D44\u6E90"
@@ -59,13 +61,13 @@ MonoBehaviour:
     - GroupName: Motion
       GroupDesc: 
       AssetTags: 
-      ActiveRuleName: EnableGroup
+      ActiveRuleName: DisableGroup
       Collectors:
       - CollectPath: Assets/Res/MotionData
         CollectorGUID: eb6fbe30c8ea81743ad818df737c8249
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: PackRawFile
+        PackRuleName: PackSeparately
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
@@ -124,8 +126,69 @@ MonoBehaviour:
     - GroupName: CodeGameEvent
       GroupDesc: 
       AssetTags: 
+      ActiveRuleName: DisableGroup
+      Collectors:
+      - CollectPath: Assets/Scripts/WLang/Code/GameEvent
+        CollectorGUID: fd969dfb8dd719547adc8e577670e828
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectWLang
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Scripts/WLang/Code/Motion
+        CollectorGUID: 10ef5f20ba2e4cca8ff0dd9113ffcdd9
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectWLang
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Scripts/WLang/Code/BTree
+        CollectorGUID: a126fb87bda943d787b3eeac758c9252
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectWLang
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Scripts/WLang/Code/FSM
+        CollectorGUID: 332815600e8145ed98e1a2d039e622b9
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectWLang
+        AssetTags: 
+        UserData: 
+  - PackageName: RawFilePackage
+    PackageDesc: 
+    EnableAddressable: 1
+    LocationToLower: 0
+    IncludeAssetGUID: 0
+    IgnoreDefaultType: 0
+    AutoCollectShaders: 1
+    Groups:
+    - GroupName: WLang
+      GroupDesc: 
+      AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
+      - CollectPath: Assets/Scripts/WLang/Code/BTree
+        CollectorGUID: a126fb87bda943d787b3eeac758c9252
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackRawFile
+        FilterRuleName: CollectWLang
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Scripts/WLang/Code/FSM
+        CollectorGUID: 332815600e8145ed98e1a2d039e622b9
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackRawFile
+        FilterRuleName: CollectWLang
+        AssetTags: 
+        UserData: 
       - CollectPath: Assets/Scripts/WLang/Code/GameEvent
         CollectorGUID: fd969dfb8dd719547adc8e577670e828
         CollectorType: 0
@@ -142,19 +205,16 @@ MonoBehaviour:
         FilterRuleName: CollectWLang
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/Scripts/WLang/Code/BTree
-        CollectorGUID: a126fb87bda943d787b3eeac758c9252
+    - GroupName: Motion
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Res/MotionData
+        CollectorGUID: eb6fbe30c8ea81743ad818df737c8249
         CollectorType: 0
-        AddressRuleName: AddressByFolderAndFileName
+        AddressRuleName: AddressByFileName
         PackRuleName: PackRawFile
-        FilterRuleName: CollectWLang
-        AssetTags: 
-        UserData: 
-      - CollectPath: Assets/Scripts/WLang/Code/FSM
-        CollectorGUID: 332815600e8145ed98e1a2d039e622b9
-        CollectorType: 0
-        AddressRuleName: AddressByFolderAndFileName
-        PackRuleName: PackRawFile
-        FilterRuleName: CollectWLang
+        FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

@@ -9,6 +9,7 @@ using YooAsset;
 using Object = UnityEngine.Object;
 using WGame.Runtime;
 
+
 namespace WGame.Res
 {
     public class YooassetManager : MonoBehaviour, IAssetService
@@ -16,10 +17,11 @@ namespace WGame.Res
         private static YooassetManager _inst;
         public static YooassetManager Inst => _inst;
 
-        private Dictionary<string, AssetOperationHandle> handles = new Dictionary<string, AssetOperationHandle>();
+        private Dictionary<string, AssetHandle> handles = new Dictionary<string, AssetHandle>();
         private Dictionary<int, string> locations = new Dictionary<int, string>();
 
         private ResourcePackage package;
+        private ResourcePackage rawFilePackage;
 
         #if UNITY_EDITOR
         private EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
@@ -34,6 +36,7 @@ namespace WGame.Res
             _inst = this;
             YooAssets.Initialize();
             package = YooAssets.CreatePackage("DefaultPackage");
+            rawFilePackage = YooAssets.CreatePackage("RawFilePackage");
             StartCoroutine(InitYooasset());
         }
 
@@ -41,18 +44,28 @@ namespace WGame.Res
         {
             IsInitted = false;
             InitializeParameters initParameters;
+            InitializeParameters initRawFileParameters;
             switch (PlayMode)
             {
                 case EPlayMode.EditorSimulateMode:
                     initParameters = new EditorSimulateModeParameters
                     {
-                        SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild("DefaultPackage")
+                        SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(),"DefaultPackage")
                     };
                     yield return package.InitializeAsync(initParameters);
+                    initRawFileParameters = new EditorSimulateModeParameters()
+                    {
+                        SimulateManifestFilePath =
+                            EditorSimulateModeHelper.SimulateBuild(
+                                EDefaultBuildPipeline.RawFileBuildPipeline.ToString(), "RawFilePackage")
+                    };
+                    yield return rawFilePackage.InitializeAsync(initRawFileParameters);
                     break;
                 case EPlayMode.OfflinePlayMode:
                     initParameters = new OfflinePlayModeParameters();
+                    initRawFileParameters = new OfflinePlayModeParameters();
                     yield return package.InitializeAsync(initParameters);
+                    yield return rawFilePackage.InitializeAsync(initRawFileParameters);
                     break;
             }
 
@@ -211,7 +224,7 @@ namespace WGame.Res
 
         IEnumerator ProcessLoadGameObject(string path, Action<GameObject> callback)
         {
-            AssetOperationHandle handle = package.LoadAssetAsync<GameObject>(path);
+            AssetHandle handle = package.LoadAssetAsync<GameObject>(path);
             yield return handle;
             GameObject go = handle.InstantiateSync();
             callback.Invoke(go);
@@ -230,7 +243,7 @@ namespace WGame.Res
 
         public void LoadRawFileSync(string path, Action<string> callback)
         {
-            var handle = package.LoadRawFileSync(path);
+            var handle = rawFilePackage.LoadRawFileSync(path);
             handle.Completed += operationHandle =>
             {
                 callback.Invoke(operationHandle.GetRawFileText());
@@ -240,7 +253,7 @@ namespace WGame.Res
 
         public void LoadRawFileASync(string path, Action<string> callback)
         {
-            var handle = package.LoadRawFileAsync(path);
+            var handle = rawFilePackage.LoadRawFileAsync(path);
             handle.Completed += operationHandle =>
             {
                 callback.Invoke(operationHandle.GetRawFileText());
@@ -250,7 +263,7 @@ namespace WGame.Res
 
         public void LoadMotionScriptSync(string path, Action<EventNodeScriptableObject> callback)
         {
-            var handle = package.LoadRawFileSync(path);
+            var handle = rawFilePackage.LoadRawFileSync(path);
             handle.Completed += node =>
             {
                 SerializationHelper.DeserializeValue<EventNodeScriptableObject>(node.GetRawFileData(), out var scriptable);
@@ -261,7 +274,7 @@ namespace WGame.Res
 
         public void LoadMotionScriptAsync(string path, Action<EventNodeScriptableObject> callback)
         {
-            var handle = package.LoadRawFileAsync(path);
+            var handle = rawFilePackage.LoadRawFileAsync(path);
             handle.Completed += node =>
             {
                 SerializationHelper.DeserializeValue<EventNodeScriptableObject>(node.GetRawFileData(), out var scriptable);
@@ -272,7 +285,7 @@ namespace WGame.Res
 
         IEnumerator LoadAllObjectsInternal(string location, Action<object> callback, Action onComplete)
         {
-            AllAssetsOperationHandle handle = package.LoadAllAssetsAsync<ScriptableObject>(location);
+            AllAssetsHandle handle = package.LoadAllAssetsAsync<ScriptableObject>(location);
             yield return handle;
             foreach (var assetObj in handle.AllAssetObjects)
             {

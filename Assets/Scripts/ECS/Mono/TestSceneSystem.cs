@@ -17,7 +17,6 @@ public class TestSceneSystem : MonoBehaviour
     private ServiceRegistrationSystems _registrationSystems;
     private GameSystems _gameSystems;
     
-	[SerializeField] private List<Transform> SpawnPoints;
 	[SerializeField] private Transform sceneRoot;
 	[SerializeField] private UnityEngine.Rendering.Volume volume;
 
@@ -54,7 +53,8 @@ public class TestSceneSystem : MonoBehaviour
         _gameSystems.Initialize();
 
         _timeService = _contexts.meta.timeService.instance;
-        gameObject.AddComponent<YooassetManager>();
+        if (YooassetManager.Inst == null)
+			gameObject.AddComponent<YooassetManager>();
     }
     
     private void Awake()

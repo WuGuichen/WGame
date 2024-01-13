@@ -6,6 +6,7 @@ Logs/
 obj/
 Assets/Wwise/
 Assets/StreamAssets/yoo/
+Assets/StreamingAssets/yoo/DefaultPackage/
 HybridCLRData/
 WwiseUnityIntegration_Mac_Src.zip
 WwiseUnityIntegration_Android_Src.zip

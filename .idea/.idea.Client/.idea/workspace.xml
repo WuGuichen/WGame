@@ -4,17 +4,613 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="神秘的热重载插件">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Res/Patch/PatchOperation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Res/SplashScene.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/0c6822317a6858d195d50d4f8b6a1d48.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/1491b97ff79c66826ec6392e9b723c4a.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/1afa459a901c647272871a6eeca5c134.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/1afa459a901c647272871a6eeca5c134.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/2865b75b8adbd787c364f0d63ff2095d.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/2865b75b8adbd787c364f0d63ff2095d.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/4a3449f7abd9fa02d2f30f0a58875e6f.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/4a3449f7abd9fa02d2f30f0a58875e6f.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/50f0e119f7b262945794a7f0ffb543d2.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/50f0e119f7b262945794a7f0ffb543d2.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/72421b498b4c54e7c81e78057ca57ae2.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/72421b498b4c54e7c81e78057ca57ae2.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/7307007d29520d67056e11a78887c2b9.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/7307007d29520d67056e11a78887c2b9.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/823b38b511e753e094fe2945646ef1f6.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/823b38b511e753e094fe2945646ef1f6.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage.version" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage.version.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_2024-01-13-1378.bytes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_2024-01-13-1378.bytes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_2024-01-13-1378.hash" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_2024-01-13-1378.hash.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/e14437ee80eee874462550e8f41fab28.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/e14437ee80eee874462550e8f41fab28.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/e8befcae95176345d1380dc9418eeb49.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/e8befcae95176345d1380dc9418eeb49.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/f6297ce956bba0341f2bc2b1dd45c4d5.bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/f6297ce956bba0341f2bc2b1dd45c4d5.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/0ebba6eeb9e227468c6a241f2230bea3.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/0ebba6eeb9e227468c6a241f2230bea3.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/1473a6f0bd8b8e8d181012df6a063669.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/1473a6f0bd8b8e8d181012df6a063669.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/1886ba370424d4750dd58f7eac4fa714.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/1886ba370424d4750dd58f7eac4fa714.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/18ca0d1bf5dbf9d3a372faf511869432.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/18ca0d1bf5dbf9d3a372faf511869432.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/1f407884c9365bf02af9600211ba5d58.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/1f407884c9365bf02af9600211ba5d58.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/264b16bf476c780e14821052df17fd0e.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/264b16bf476c780e14821052df17fd0e.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/35211a26d9b9f23f2b3491de60b8ec83.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/35211a26d9b9f23f2b3491de60b8ec83.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/44d31912073bcc01d9e447f11dce839a.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/44d31912073bcc01d9e447f11dce839a.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/475a3668da858656b1cbc317a3523259.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/475a3668da858656b1cbc317a3523259.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/50c888f1ea1122b6e3900f234979a384.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/50c888f1ea1122b6e3900f234979a384.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/51fea8aa98129664ff2c7db94e32389e.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/51fea8aa98129664ff2c7db94e32389e.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/54bc3c5b39c4ab71ea22a6e95fb70a87.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/54bc3c5b39c4ab71ea22a6e95fb70a87.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/58ede7e12c8d7988a2b8bd1bbea32ae0.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/58ede7e12c8d7988a2b8bd1bbea32ae0.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/5cfd93e6cf843e00f4f3d7ebe67956c7.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/5cfd93e6cf843e00f4f3d7ebe67956c7.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/614c4e332e57db40a0d9988403e9567d.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/614c4e332e57db40a0d9988403e9567d.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/63ab1589efea5f9039166a32d77f8200.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/63ab1589efea5f9039166a32d77f8200.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/6c45af08597c5b0336b60e456bfc2367.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/6c45af08597c5b0336b60e456bfc2367.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/730fc0553c6f4afdf177369c6caadcf1.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/730fc0553c6f4afdf177369c6caadcf1.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/7f859a62e2eedc11cc3a26aa456ce127.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/7f859a62e2eedc11cc3a26aa456ce127.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/819874d0f00ed11e39707267ce705beb.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/819874d0f00ed11e39707267ce705beb.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/896839e9bd7fa99492b581c4cfebe9f1.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/896839e9bd7fa99492b581c4cfebe9f1.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/8ac2546a4bfa72a6d6d7835a96e85d10.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/8ac2546a4bfa72a6d6d7835a96e85d10.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/PackageManifest_RawFilePackage.version" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/PackageManifest_RawFilePackage.version.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/PackageManifest_RawFilePackage_2024-01-13-1378.bytes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/PackageManifest_RawFilePackage_2024-01-13-1378.bytes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/PackageManifest_RawFilePackage_2024-01-13-1378.hash" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/PackageManifest_RawFilePackage_2024-01-13-1378.hash.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/b43b7feb24484b56462ae02a8503929c.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/b43b7feb24484b56462ae02a8503929c.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/bc3d326597182fb8a23a75f7b42aa573.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/bc3d326597182fb8a23a75f7b42aa573.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/c59345003259c7bb4b0fa371b267b606.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/c59345003259c7bb4b0fa371b267b606.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/c80851a9573d7e5fd516b89e29855485.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/c80851a9573d7e5fd516b89e29855485.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/c89cb66da5b2f953327f77ac38ba827c.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/c89cb66da5b2f953327f77ac38ba827c.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/cfb492b56c62ff5d23ab9fd8a3866e88.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/cfb492b56c62ff5d23ab9fd8a3866e88.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/d7e23564fd73821342aa80295d7ccb6d.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/d7e23564fd73821342aa80295d7ccb6d.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/d9b582c9f16517d709643ba47e89b81a.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/d9b582c9f16517d709643ba47e89b81a.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/e3dbc36021bd891c7749a4aebd73443f.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/e3dbc36021bd891c7749a4aebd73443f.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/e81b2ff29c55ef8bc0104e1e31284835.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/e81b2ff29c55ef8bc0104e1e31284835.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/eb0fbc5a1cf48ae23881c41e4232c824.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/eb0fbc5a1cf48ae23881c41e4232c824.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/ed68220ec8509b23c5d980e3d2f3a9b5.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/ed68220ec8509b23c5d980e3d2f3a9b5.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/f148ee63480bdc38744dda71b31738fb.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/f148ee63480bdc38744dda71b31738fb.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/f422077c9a07a2e5b37dcd7648ec46f9.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/f422077c9a07a2e5b37dcd7648ec46f9.rawfile.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/feca7a17990f9f6b09c79355a362c706.rawfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage/feca7a17990f9f6b09c79355a362c706.rawfile.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/MainModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/MainModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/Bootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/PreBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/PreBootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SplashScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SplashScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/Patch.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/CHANGELOG.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/DefaultPackage/1491b97ff79c66826ec6392e9b723c4a.bundle.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Space Shooter.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/Patch/PatchOperation.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderSettingData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderSettingData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderTools.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderTools.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderWindow.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleBuilderWindow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleSimulateBuilder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/AssetBundleSimulateBuilder.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildAssetInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildAssetInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildBundleInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildBundleInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildMapContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildMapContext.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildParameters.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildParameters.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildParametersContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildParametersContext.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/yoo/RawFilePackage.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/BuildReport.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/BuildReport.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/ReportAssetInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/ReportAssetInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/ReportBundleInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/ReportBundleInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/ReportRedundancyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/ReportRedundancyInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/ReportSummary.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildReport/ReportSummary.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/BuildContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/BuildContext.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/BuildLogger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/BuildLogger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/BuildResult.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/BuildResult.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/BuildRunner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/BuildRunner.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/IBuildTask.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/IBuildTask.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/IContextObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/IContextObject.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/TaskAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildSystem/TaskAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/SBPBuildTasks.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/SBPBuildTasks.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskBuilding.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskBuilding.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskBuilding_SBP.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskBuilding_SBP.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCopyBuildinFiles.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCopyBuildinFiles.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCopyRawFile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCopyRawFile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCreateManifest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCreateManifest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCreatePackage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCreatePackage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCreateReport.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskCreateReport.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskEncryption.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskEncryption.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskGetBuildMap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskGetBuildMap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskPrepare.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskPrepare.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskUpdateBundleInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskUpdateBundleInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskVerifyBuildResult.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskVerifyBuildResult.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskVerifyBuildResult_SBP.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/BuildTasks/TaskVerifyBuildResult_SBP.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/DefaultEncryption.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/DefaultEncryption.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/EBuildMode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/EBuildMode.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/EBuildPipeline.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/EBuildPipeline.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/ECompressOption.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/ECompressOption.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/ECopyBuildinFileOption.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/ECopyBuildinFileOption.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/EOutputNameStyle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleBuilder/EOutputNameStyle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorConfig.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorConfig.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorGroup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorGroup.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorPackage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorPackage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorSettingData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorSettingData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorWindow.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/AssetBundleCollectorWindow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectAssetInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectAssetInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectCommand.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectResult.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectResult.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/IActiveRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/IActiveRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/IAddressRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/IAddressRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/IFilterRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/IFilterRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/IPackRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/IPackRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/ISharedPackRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/CollectRules/ISharedPackRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultActiveRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultActiveRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultAddressRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultAddressRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultFilterRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultFilterRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultPackRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultPackRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultSharedPackRule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DefaultRules/DefaultSharedPackRule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DisplayNameAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/DisplayNameAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/ECollectorType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/ECollectorType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/RuleDisplayName.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleCollector/RuleDisplayName.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/AssetBundleDebuggerWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/AssetBundleDebuggerWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/AssetBundleDebuggerWindow.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/AssetBundleDebuggerWindow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/RemotePlayerSession.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/RemotePlayerSession.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers/DebuggerAssetListViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers/DebuggerAssetListViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers/DebuggerAssetListViewer.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers/DebuggerAssetListViewer.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers/DebuggerBundleListViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers/DebuggerBundleListViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers/DebuggerBundleListViewer.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleDebugger/VisualViewers/DebuggerBundleListViewer.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/AssetBundleInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/AssetBundleInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/AssetBundleRecorder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/AssetBundleRecorder.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/AssetBundleReporterWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/AssetBundleReporterWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/AssetBundleReporterWindow.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/AssetBundleReporterWindow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterAssetListViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterAssetListViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterAssetListViewer.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterAssetListViewer.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterBundleListViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterBundleListViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterBundleListViewer.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterBundleListViewer.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterRedundancyListViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterRedundancyListViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterRedundancyListViewer.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterRedundancyListViewer.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterSummaryViewer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterSummaryViewer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterSummaryViewer.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/AssetBundleReporter/VisualViewers/ReporterSummaryViewer.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/EditorDefine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/EditorDefine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/EditorTools.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/EditorTools.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/HomePage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/HomePage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/SettingLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/SettingLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectionHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectionHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectionManifest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectionManifest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectorSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectorSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectorSettingData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectorSettingData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectorWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectorWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectorWindow.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/ShaderVariantCollector/ShaderVariantCollectorWindow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/UxmlDefine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/UxmlDefine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/UxmlExtension.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/UxmlExtension.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/UxmlLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/UxmlLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/YooAsset.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Editor/YooAsset.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/LICENSE.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/README.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/AssetSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/AssetSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/AllAssetsOperationHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/AllAssetsOperationHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/AssetOperationHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/AssetOperationHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/OperationHandleBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/OperationHandleBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/RawFileOperationHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/RawFileOperationHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/SceneOperationHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/SceneOperationHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/SubAssetsOperationHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Handles/SubAssetsOperationHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/AssetBundleFileLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/AssetBundleFileLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/AssetBundleWebLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/AssetBundleWebLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/BundleLoaderBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/BundleLoaderBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/DependAssetBundles.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/DependAssetBundles.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/EBundleLoadMethod.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/EBundleLoadMethod.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/RawBundleFileLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/RawBundleFileLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/RawBundleWebLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/RawBundleWebLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/VirtualBundleFileLoader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Loader/VirtualBundleFileLoader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Operations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Operations/InstantiateOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Operations/InstantiateOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Operations/UnloadSceneOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Operations/UnloadSceneOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledAllAssetsProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledAllAssetsProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledAssetProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledAssetProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledRawFileProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledRawFileProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledSceneProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledSceneProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledSubAssetsProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/BundledSubAssetsProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/CompletedProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/CompletedProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseAllAssetsProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseAllAssetsProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseAssetProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseAssetProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseRawFileProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseRawFileProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseSceneProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseSceneProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseSubAssetsProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/DatabaseSubAssetsProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/ProviderBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/AssetSystem/Provider/ProviderBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/CacheFileInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/CacheFileInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/CacheSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/CacheSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/EVerifyLevel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/EVerifyLevel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/EVerifyResult.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/EVerifyResult.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/ClearAllCacheFilesOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/ClearAllCacheFilesOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/ClearUnusedCacheFilesOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/ClearUnusedCacheFilesOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/Internal.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/Internal/FindCacheFilesOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/Internal/FindCacheFilesOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/Internal/VerifyCacheFilesOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/Internal/VerifyCacheFilesOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/Internal/VerifyTempFileOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/Internal/VerifyTempFileOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/PackageCachingOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Operations/PackageCachingOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/PackageCache.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/PackageCache.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Persistent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/Persistent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/PersistentTools.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/PersistentTools.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/VerifyElement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/CacheSystem/VerifyElement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/DebugBundleInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/DebugBundleInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/DebugPackageData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/DebugPackageData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/DebugProviderInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/DebugProviderInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/DebugReport.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/DebugReport.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/RemoteCommand.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/RemoteCommand.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/RemoteDebuggerDefine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/RemoteDebuggerDefine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/RemoteDebuggerInRuntime.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DiagnosticSystem/RemoteDebuggerInRuntime.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/DownloadReport.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/DownloadReport.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/DownloadSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/DownloadSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader/DownloadHandlerFileRange.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader/DownloadHandlerFileRange.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader/DownloaderBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader/DownloaderBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader/FileDownloader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader/FileDownloader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader/TempDownloader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/Downloader/TempDownloader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/ThreadSyncContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/ThreadSyncContext.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/UnityWebDataRequester.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/UnityWebDataRequester.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/UnityWebFileRequester.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/DownloadSystem/UnityWebFileRequester.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/InitializeParameters.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/InitializeParameters.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem/AsyncOperationBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem/AsyncOperationBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem/EOperationStatus.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem/EOperationStatus.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem/GameAsyncOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem/GameAsyncOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem/OperationSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/OperationSystem/OperationSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/AssetInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/AssetInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/BundleInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/BundleInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/ManifestTools.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/ManifestTools.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/DownloaderOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/DownloaderOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/InitializationOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/InitializationOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/DeserializeManifestOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/DeserializeManifestOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/DownloadManifestOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/DownloadManifestOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/LoadBuildinManifestOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/LoadBuildinManifestOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/LoadCacheManifestOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/LoadCacheManifestOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/LoadEditorManifestOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/LoadEditorManifestOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/QueryBuildinPackageVersionOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/QueryBuildinPackageVersionOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/QueryCachePackageHashOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/QueryCachePackageHashOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/QueryCachePackageVersionOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/QueryCachePackageVersionOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/QueryRemotePackageVersionOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/QueryRemotePackageVersionOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/UnpackBuildinManifestOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/Internal/UnpackBuildinManifestOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/PreDownloadContentOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/PreDownloadContentOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/UpdatePackageManifestOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/UpdatePackageManifestOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/UpdatePackageVersionOperation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/Operations/UpdatePackageVersionOperation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PackageAsset.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PackageAsset.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PackageBundle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PackageBundle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PackageManifest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PackageManifest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode/EditorSimulateModeHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode/EditorSimulateModeHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode/EditorSimulateModeImpl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode/EditorSimulateModeImpl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode/HostPlayModeImpl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode/HostPlayModeImpl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode/OfflinePlayModeImpl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/PlayMode/OfflinePlayModeImpl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/ResourcePackage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/PackageSystem/ResourcePackage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Properties.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Properties/AssemblyInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/IDecryptionServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/IDecryptionServices.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/IEncryptionServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/IEncryptionServices.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/IQueryServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/IQueryServices.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/Internal.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/Internal/IBundleServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/Internal/IBundleServices.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/Internal/IPlayModeServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/Internal/IPlayModeServices.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/Internal/IRemoteServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Services/Internal/IRemoteServices.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Settings.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Settings/YooAssetSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Settings/YooAssetSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Settings/YooAssetSettingsData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Settings/YooAssetSettingsData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/BufferReader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/BufferReader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/BufferWriter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/BufferWriter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/CRC32Algorithm.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/CRC32Algorithm.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/YooLogger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/YooLogger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/YooUtility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/Utility/YooUtility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/YooAsset.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/YooAsset.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/YooAssets.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/YooAssets.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/YooAssetsDriver.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/YooAssetsDriver.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/YooAssetsExtension.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/Runtime/YooAssetsExtension.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/YooAsset/package.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/Bootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/Bootstrap.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/Bootstrap.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/PreBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/PreBootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/PreBootstrap.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/PreBootstrap.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SplashScene.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SplashScene.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/SplashScene.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/WGame.Res.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/WGame.Res.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Max.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Max.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Min.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Min.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/NativeHeap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/NativeHeap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests/NativeHeapTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests/NativeHeapTests.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests/collections.nativeheap.tests.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests/collections.nativeheap.tests.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +621,7 @@
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2022.3.0f1/Editor/Data/CGIncludes/UnityInstancing.cginc" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2e5fd3a83e4c48e6b136968d0a8de9a81fe00/91/7f249009/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/76/7147575b/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4911eca47f294e18a7b3306f02701303946200/36/42abdad6/AssetDatabase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/673908c2ea674418a53dc8058a28ff3810fc00/66/17d7d8ce/HashSet`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/673908c2ea674418a53dc8058a28ff3810fc00/70/1d19218c/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/05/f8ad814b/Interlocked.cs" root0="SKIP_HIGHLIGHTING" />
@@ -32,6 +629,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/50/e276bcaf/Int16.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/60/06cb223b/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/76/d3ebac2a/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/9a/60e533e3/Path.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/c9/04a4095d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/fa/8f6bf596/Buffer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/04/4a041135/Time.cs" root0="SKIP_HIGHLIGHTING" />
@@ -73,11 +671,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ICapsuleSensor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IDetectorService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ISphereSensor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/ECS/Mono/EventListener/AnimatorListener.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/ECS/Mono/EventListener/AnimatorListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WBVHEntityAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FSMAgent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.Register.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/DetectorCharacterImplementation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdateCharacterDataSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/DrawDetectCharacterSystem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -88,17 +683,19 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectorDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/WBVH/WBVHNodeAdapter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Res/Bootstrap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Res/Patch/PatchOperation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Res/WDrawer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/NativeHeap/Tests/NativeHeapTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Tests/BinaryHeap.Tests/Tests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Tests/Editor/BinaryHeapTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Utils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/WLang/Core/Context/WLangParser.Parameters.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/WLang/Core/WLangImporter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/StreamingAssets/Audio/GeneratedSoundBanks/Wwise_IDs.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.tuyoogame.yooasset@2.1.0/Editor/AssetBundleBuilder/BuildPipeline/BuiltinBuildPipeline/BuildTasks/TaskCreateManifest_BBP.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.tuyoogame.yooasset@2.1.0/Runtime/OperationSystem/GameAsyncOperation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.21.19/Tests/Editor/AnalyzeRules/CheckSceneDupeDependenciesTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/UnityProjects/WGame/Client/Luban/.cache.meta" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -109,29 +706,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.39714286",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.22408536&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\WuGC\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\WuGC\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Unity.exe" />
@@ -159,10 +756,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21188">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="21188" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -223,7 +820,10 @@
       <workItem from="1704398975560" duration="85000" />
       <workItem from="1704641130245" duration="5604000" />
       <workItem from="1704649225152" duration="25000" />
-      <workItem from="1705069786878" duration="16043000" />
+      <workItem from="1705069786878" duration="19241000" />
+      <workItem from="1705152817202" duration="5225000" />
+      <workItem from="1705158081103" duration="254000" />
+      <workItem from="1705158352970" duration="317000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -470,7 +1070,21 @@
       <option name="project" value="LOCAL" />
       <updated>1705084999404</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="从bootStrap打开游戏">
+      <created>1705087099995</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1705087099995</updated>
+    </task>
+    <task id="LOCAL-00037" summary="bootstrap">
+      <created>1705087344812</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1705087344812</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,10 +1096,19 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.wl" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="可视化范围探测" />
-    <MESSAGE value="可视化仇恨值，和区域索敌" />
     <MESSAGE value="BVH优化" />
     <MESSAGE value="准备用堆结构来管理仇恨值信息" />
     <MESSAGE value="探测类型分类和探测等级分级" />
@@ -509,7 +1132,9 @@
     <MESSAGE value="update scene" />
     <MESSAGE value="锁定逻辑优化等" />
     <MESSAGE value="神秘的热重载插件" />
-    <option name="LAST_COMMIT_MESSAGE" value="神秘的热重载插件" />
+    <MESSAGE value="从bootStrap打开游戏" />
+    <MESSAGE value="bootstrap" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
