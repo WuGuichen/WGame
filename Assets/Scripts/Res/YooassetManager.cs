@@ -41,8 +41,8 @@ namespace WGame.Res
 
         IEnumerator LoadPackages()
         {
-            var defaultOperation = new PatchOperation("DefaultPackage", EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), PlayMode);
-            var rawFileOperation = new PatchOperation("RawFilePackage", EDefaultBuildPipeline.RawFileBuildPipeline.ToString(), PlayMode);
+            var defaultOperation = new PatchOperation("DefaultPackage", EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), PlayMode, PatchOperation.PackageType.Default);
+            var rawFileOperation = new PatchOperation("RawFilePackage", EDefaultBuildPipeline.RawFileBuildPipeline.ToString(), PlayMode, PatchOperation.PackageType.RawFile);
             YooAssets.StartOperation(rawFileOperation);
             yield return rawFileOperation;
             rawFilePackage = YooAssets.GetPackage("RawFilePackage");

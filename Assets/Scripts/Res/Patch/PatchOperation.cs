@@ -16,6 +16,12 @@ public class PatchOperation : GameAsyncOperation
         Done,
     }
 
+    public enum PackageType
+    {
+        Default,
+        RawFile,
+    }
+
     private const int INITIALIZE_PACKAGE = 0;
     private const int UPDATE_PACKAGE_VERSION = 1;
     private const int UPDATE_PACKAGE_MANIFEST = 2;
@@ -94,6 +100,7 @@ public class PatchOperation : GameAsyncOperation
     #endregion
     
     private ESteps _steps = ESteps.None;
+    private readonly string fileTypePrifix;
 
     private readonly string _packageName;
     private readonly string _buildPipeline;
@@ -103,11 +110,20 @@ public class PatchOperation : GameAsyncOperation
     private StateMachine<int, int, int> fsm;
     private readonly EventGroup _eventGroup = new EventGroup();
 
-    public PatchOperation(string packageName, string buildPipeline, EPlayMode playMode)
+    public PatchOperation(string packageName, string buildPipeline, EPlayMode playMode, PackageType packageType)
     {
         _packageName = packageName;
         _buildPipeline = buildPipeline;
         _playMode = playMode;
+        switch (packageType)
+        {
+            case PackageType.Default:
+                fileTypePrifix = "Default";
+                break;
+            case PackageType.RawFile:
+                fileTypePrifix = "RawFile";
+                break;
+        }
     }
     protected override void OnStart()
     {
@@ -175,12 +191,14 @@ public class PatchOperation : GameAsyncOperation
                 var simulateModeParameters = new EditorSimulateModeParameters();
                 simulateModeParameters.SimulateManifestFilePath =
                     EditorSimulateModeHelper.SimulateBuild(_buildPipeline, _packageName);
-                initializationOperation = package.InitializeAsync(simulateModeParameters);
+                if (package.InitializeStatus != EOperationStatus.Succeed)
+                    initializationOperation = package.InitializeAsync(simulateModeParameters);
                 break;
             case EPlayMode.OfflinePlayMode:
                 var offlineModeParameters = new OfflinePlayModeParameters();
                 offlineModeParameters.DecryptionServices = new FileStreamDecryption();
-                initializationOperation = package.InitializeAsync(offlineModeParameters);
+                if (package.InitializeStatus != EOperationStatus.Succeed)
+                    initializationOperation = package.InitializeAsync(offlineModeParameters);
                 break;
             case EPlayMode.HostPlayMode:
                 var defaultHostServer = GetHostServerURL();
@@ -189,7 +207,8 @@ public class PatchOperation : GameAsyncOperation
                 hostModeParameters.DecryptionServices = new FileStreamDecryption();
                 hostModeParameters.BuildinQueryServices = new GameQueryServices();
                 hostModeParameters.RemoteServices = new RemoteServices(defaultHostServer, fallbackHostServer);
-                initializationOperation = package.InitializeAsync(hostModeParameters);
+                if (package.InitializeStatus != EOperationStatus.Succeed)
+                    initializationOperation = package.InitializeAsync(hostModeParameters);
                 break;
             case EPlayMode.WebPlayMode:
                 var defaultWebServer = GetHostServerURL();
@@ -198,7 +217,8 @@ public class PatchOperation : GameAsyncOperation
                 webModeParameters.DecryptionServices = new FileStreamDecryption();
                 webModeParameters.BuildinQueryServices = new GameQueryServices();
                 webModeParameters.RemoteServices = new RemoteServices(defaultWebServer, fallbackWebServer);
-                initializationOperation = package.InitializeAsync(webModeParameters);
+                if (package.InitializeStatus != EOperationStatus.Succeed)
+                    initializationOperation = package.InitializeAsync(webModeParameters);
                 break;
         }
 
@@ -225,18 +245,18 @@ public class PatchOperation : GameAsyncOperation
     private string GetHostServerURL()
     {
         //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
-        string hostServerIP = "https://a.unity.cn/client_api/v1/buckets/557bcfe9-a674-40ab-bcbf-cdf3aa22a905/entry_by_path/content/?path=";
+        string hostServerIP = "https://a.unity.cn/client_api/v1/buckets/1f7d7f39-2adc-4b09-bb59-6c1966e6b4c4/entry_by_path/content/?path=";
         string appVersion = "v1.0";
 
 #if UNITY_EDITOR
         if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-            return $"{hostServerIP}/UOS CDN/Android/{appVersion}";
+            return $"{hostServerIP}/UOS CDN/Android/{fileTypePrifix}/{appVersion}";
         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-            return $"{hostServerIP}/UOS CDN/IPhone/{appVersion}";
+            return $"{hostServerIP}/UOS CDN/IPhone/{fileTypePrifix}/{appVersion}";
         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-            return $"{hostServerIP}/UOS CDN/WebGL/{appVersion}";
+            return $"{hostServerIP}/UOS CDN/WebGL/{fileTypePrifix}/{appVersion}";
         else
-            return $"{hostServerIP}/UOS CDN/PC/{appVersion}";
+            return $"{hostServerIP}/UOS CDN/PC/{fileTypePrifix}/{appVersion}";
 #else
         if (Application.platform == RuntimePlatform.Android)
             return $"{hostServerIP}/CDN/Android/{appVersion}";
@@ -281,7 +301,7 @@ public class PatchOperation : GameAsyncOperation
     {
         PatchEventDefine.PatchStatesChange.SendEventMessage("获取最新的资源版本 !");
         // WLogger.Info("获取最新的资源版本 !");
-        yield return new WaitForSecondsRealtime(0.5f);
+        // yield return new WaitForSecondsRealtime(0.5f);
         var package = YooAssets.GetPackage(_packageName);
         var operation = package.UpdatePackageVersionAsync(false);
         yield return operation;
@@ -307,7 +327,7 @@ public class PatchOperation : GameAsyncOperation
     {
         PatchEventDefine.PatchStatesChange.SendEventMessage("更新资源清单！");
         // WLogger.Info("更新资源清单! ");
-        yield return new WaitForSecondsRealtime(0.5f);
+        // yield return new WaitForSecondsRealtime(0.5f);
 
         var package = YooAssets.GetPackage(_packageName);
         bool savePackageVersion = true;
@@ -335,7 +355,8 @@ public class PatchOperation : GameAsyncOperation
     {
         PatchEventDefine.PatchStatesChange.SendEventMessage("创建补丁下载器！");
         // WLogger.Info("创建补丁下载器! ");
-        yield return new WaitForSecondsRealtime(0.5f);
+        // yield return new WaitForSecondsRealtime(0.5f);
+        yield return null;
 
         var package = YooAssets.GetPackage(_packageName);
         var downloadingMaxNum = 10;

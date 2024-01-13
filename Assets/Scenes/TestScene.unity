@@ -684,8 +684,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSetting: {fileID: 11400000, guid: ac6aa0fe7dcabdb4cb49313a7713bab3, type: 2}
-  SpawnPoints:
-  - {fileID: 346288657}
   sceneRoot: {fileID: 1436049058}
   volume: {fileID: 1887403619}
 --- !u!114 &422843922

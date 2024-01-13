@@ -1,0 +1,15 @@
+{
+	"name": "cn.unity.uos.cdn",
+	"displayName":"UOS CDN",
+	"version": "1.0.6",
+	"unity": "2018.3",
+	"description": "uos cdn sdk for helping manage your online resource",
+    "keywords": [
+        "asset",
+        "resources",
+        "bundle",
+        "bundles",
+        "assetbundles",
+        "TencentCloud"
+    ]
+}

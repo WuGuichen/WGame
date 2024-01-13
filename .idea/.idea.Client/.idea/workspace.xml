@@ -4,12 +4,591 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="更新yooasset并整理目录修复bug">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="完整的资源加载流程，（未测试远端更新）">
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/UnityOnlineServicesData.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/UnityOnlineServicesData/UOSSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/UnityOnlineServicesData/UOSSettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/CHANGELOG.md.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/AddressableConfigController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/AddressableConfigController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/BadgeController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/BadgeController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/BucketController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/BucketController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/ContentController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/ContentController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/EntryController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/EntryController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/ReleaseController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Controller/ReleaseController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/Parameters.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/Parameters.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersAddressableConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersAddressableConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersBadge.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersBadge.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersBucket.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersBucket.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersEntry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersRelease.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersRelease.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersUpload.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/ParametersUpload.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/TemporaryAuth.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/TemporaryAuth.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/UOSAppInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/UOSAppInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/UosCdnSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Data/UosCdnSettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/Badge.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/Badge.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/Bucket.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/Bucket.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/Entry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/Entry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/EntryInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/EntryInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/EntryParams.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/EntryParams.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/HttpResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/HttpResponse.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/PromoteReleaseParams.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/PromoteReleaseParams.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/Release.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/Release.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/RootObjects.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/RootObjects.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/TemporaryAuthResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/TemporaryAuthResponse.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/UpdateBadgeParams.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/UpdateBadgeParams.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/UploadConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/UploadConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/UploadInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/UploadInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/WangsuResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Model/WangsuResponse.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Auth.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Auth/QCloudCredentialProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Auth/QCloudCredentialProvider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Auth/QCloudCredentials.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Auth/QCloudCredentials.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Auth/QCloudSigner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Auth/QCloudSigner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/COSXML.csproj.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosACL.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosACL.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosClientError.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosClientError.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosGrantPermission.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosGrantPermission.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosMetaDataDirective.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosMetaDataDirective.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosRegion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosRegion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosRequestHeaderKey.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosRequestHeaderKey.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosRequestMethod.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosRequestMethod.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosStorageClass.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosStorageClass.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosVersion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Common/CosVersion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosException.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosException/CosClientException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosException/CosClientException.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosException/CosServerException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosException/CosServerException.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosXml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosXml.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosXmlConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosXmlConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosXmlServer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/CosXmlServer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Listener.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Listener/CosCallback.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Listener/CosCallback.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log/FileLogImpl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log/FileLogImpl.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log/Log.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log/Log.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log/LogImpl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log/LogImpl.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log/QLog.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Log/QLog.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/BucketRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/BucketRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketCORSRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketCORSRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketCORSResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketCORSResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketInventoryRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketInventoryRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketInventoryResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketInventoryResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketLifecycleRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketLifecycleRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketLifecycleResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketLifecycleResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketPolicyRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketPolicyRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketPolicyResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketPolicyResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketReplicationRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketReplicationRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketReplicationResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketReplicationResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketTaggingRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketTaggingRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketTaggingResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketTaggingResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketWebsiteRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketWebsiteRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketWebsiteResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/DeleteBucketWebsiteResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketACLRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketACLRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketACLResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketACLResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketCORSRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketCORSRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketCORSResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketCORSResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketDomainRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketDomainRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketDomainResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketDomainResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketInventoryRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketInventoryRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketInventoryResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketInventoryResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLifecycleRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLifecycleRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLifecycleResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLifecycleResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLocationRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLocationRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLocationResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLocationResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLoggingRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLoggingRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLoggingResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketLoggingResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketPolicyRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketPolicyRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketPolicyResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketPolicyResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketReplicationRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketReplicationRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketReplicationResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketReplicationResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketTaggingRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketTaggingRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketTaggingResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketTaggingResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketVersioningRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketVersioningRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketVersioningResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketVersioningResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketWebsiteRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketWebsiteRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketWebsiteResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/GetBucketWebsiteResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/HeadBucketRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/HeadBucketRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/HeadBucketResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/HeadBucketResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListBucketInventoryRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListBucketInventoryRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListBucketInventoryResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListBucketInventoryResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListBucketVersionsRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListBucketVersionsRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListBucketVersionsResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListBucketVersionsResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListMultiUploadsRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListMultiUploadsRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListMultiUploadsResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/ListMultiUploadsResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketACLRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketACLRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketACLResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketACLResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketCORSRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketCORSRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketCORSResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketCORSResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketDomainRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketDomainRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketDomainResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketDomainResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketInventoryRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketInventoryRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketInventoryResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketInventoryResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketLifecycleRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketLifecycleRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketLifecycleResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketLifecycleResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketLoggingRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketLoggingRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketLoggingResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketLoggingResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketPolicyRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketPolicyRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketPolicyResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketPolicyResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketReplicationRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketReplicationRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketReplicationResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketReplicationResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketTaggingRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketTaggingRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketTaggingResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketTaggingResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketVersioningRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketVersioningRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketVersioningResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketVersioningResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketWebsiteRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketWebsiteRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketWebsiteResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Bucket/PutBucketWebsiteResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/CosRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/CosRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/CosResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/CosResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/AbortMultipartUploadRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/AbortMultipartUploadRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/AbortMultipartUploadResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/AbortMultipartUploadResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/CompleteMultipartUploadRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/CompleteMultipartUploadRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/CompleteMultipartUploadResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/CompleteMultipartUploadResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/CopyObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/CopyObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/CopyObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/CopyObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/DeleteMultiObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/DeleteMultiObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/DeleteMultiObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/DeleteMultiObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/DeleteObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/DeleteObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/DeleteObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/DeleteObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectACLRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectACLRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectACLResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectACLResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectBytesRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectBytesRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectBytesResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectBytesResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/GetObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/HeadObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/HeadObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/HeadObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/HeadObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/InitMultipartUploadRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/InitMultipartUploadRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/InitMultipartUploadResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/InitMultipartUploadResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/ListPartsRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/ListPartsRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/ListPartsResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/ListPartsResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/ObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/ObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/OptionObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/OptionObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/OptionObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/OptionObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PostObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PostObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PostObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PostObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PutObjectACLRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PutObjectACLRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PutObjectACLResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PutObjectACLResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PutObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PutObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PutObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/PutObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/RestoreObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/RestoreObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/RestoreObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/RestoreObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/SelectObjectRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/SelectObjectRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/SelectObjectResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/SelectObjectResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/UploadPartCopyRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/UploadPartCopyRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/UploadPartCopyResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/UploadPartCopyResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/UploadPartRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/UploadPartRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/UploadPartResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Object/UploadPartResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Service.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Service/GetServiceRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Service/GetServiceRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Service/GetServiceResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Service/GetServiceResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/AccessControlPolicy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/AccessControlPolicy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/BucketLoggingStatus.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/BucketLoggingStatus.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CORSConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CORSConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CompleteMultipartUpload.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CompleteMultipartUpload.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CompleteResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CompleteResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CopyObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CopyObject.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CopySourceStruct.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CopySourceStruct.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CosServerError.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/CosServerError.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/Delete.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/Delete.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/DeleteResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/DeleteResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/DomainConfigurartion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/DomainConfigurartion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/GrantAccount.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/GrantAccount.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/InitiateMultipartUpload.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/InitiateMultipartUpload.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/InventoryConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/InventoryConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/LifecycleConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/LifecycleConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListAllMyBuckets.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListAllMyBuckets.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListBucket.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListBucket.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListBucketVersions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListBucketVersions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListInventoryConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListInventoryConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListMultipartUploads.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListMultipartUploads.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListParts.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ListParts.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/LocationConstraint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/LocationConstraint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ObjectSelectionFormat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ObjectSelectionFormat.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/PostResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/PostResponse.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/PreSignatureStruct.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/PreSignatureStruct.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ReplicationConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/ReplicationConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/RestoreConfigure.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/RestoreConfigure.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/Tagging.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/Tagging.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/VersioningConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/VersioningConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/WebsiteConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Model/Tag/WebsiteConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/CommandTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/CommandTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpClient.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpClient.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpClientConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpClientConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpMethod.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpMethod.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpUrl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/HttpUrl.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/Request.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/Request.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/RequestBody.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/RequestBody.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/Response.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/Response.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/ResponseBody.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/ResponseBody.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/RetryStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/RetryStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/TaskManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Network/TaskManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/COSXMLCopyTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/COSXMLCopyTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/COSXMLDownloadTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/COSXMLDownloadTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/COSXMLTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/COSXMLTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/COSXMLUploadTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/COSXMLUploadTask.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/TransferManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/TransferManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/XmlBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/XmlBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/XmlParse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Transfer/XmlParse.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/CosValueAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/CosValueAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/DigestUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/DigestUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/EnumUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/EnumUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/HttpDateTimeUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/HttpDateTimeUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/StringUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/StringUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/TimeUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/TimeUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/URLEncodeUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/Utils/URLEncodeUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/LICENSE.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/README.md.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib.sln.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/BucketManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/BucketManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/Config.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/Config.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/PutExtra.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/PutExtra.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/SimpleUpload.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/SimpleUpload.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/SliceUpload.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/SliceUpload.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/UploadController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/UploadController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/UploadProgressHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Core/UploadProgressHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/HTTP.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/HTTP/HttpManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/HTTP/HttpManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/HTTP/HttpResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/HTTP/HttpResult.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Properties.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Properties/AssemblyInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/AssemblyInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Auth.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Auth.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Base64.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Base64.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/CRC32.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/CRC32.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/ETag.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/ETag.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Hash.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Hash.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Mac.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Mac.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Signature.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/Signature.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/UnixTimestamp.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/UnixTimestamp.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/UrlUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/Utility/UrlUtility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/WcsLib.csproj.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Unity.UosCdn.Editor.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Unity.UosCdn.Editor.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/AddressableUtil.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/AddressableUtil.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/CosUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/CosUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/HttpUtil.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/HttpUtil.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/Util.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/Util.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/WangsuUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/WangsuUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/mimeMapping.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Utils/mimeMapping.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/CreateBadgePopupWindow .cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/CreateBadgePopupWindow .cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/CreateBucketPopupWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/CreateBucketPopupWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/PreivewRemoteLoadPathPopupWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/PreivewRemoteLoadPathPopupWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/PromoteReleasePopupWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/PromoteReleasePopupWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/UosCdnManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/UosCdnManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/UosCdnSettingsInspector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/UosCdnSettingsInspector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/UosCdnWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/UosCdnWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/UploadWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/View/UploadWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/LICENSE.md.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/README.md.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/package.json.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/DefaultPackage/ApplicationFootPrint.bytes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/DefaultPackage/ManifestFiles/PackageManifest_DefaultPackage_v1.0.bytes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/DefaultPackage/ManifestFiles/PackageManifest_DefaultPackage_v1.0.hash" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/RawFilePackage/ApplicationFootPrint.bytes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/RawFilePackage/ManifestFiles/PackageManifest_RawFilePackage_v1.0.bytes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/RawFilePackage/ManifestFiles/PackageManifest_RawFilePackage_v1.0.hash" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/Patch/PatchOperation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/Patch/PatchOperation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/WGame.Res.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/WGame.Res.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/Patch/StreamingAssetHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/Patch/StreamingAssetHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +679,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.tuyoogame.yooasset@2.1.0/Runtime/OperationSystem/GameAsyncOperation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.21.19/Tests/Editor/AnalyzeRules/CheckSceneDupeDependenciesTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/UnityProjects/WGame/Client/UserSettings/EditorUserSettings.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -160,10 +740,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="24552">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="24552" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -227,7 +807,7 @@
       <workItem from="1705069786878" duration="19241000" />
       <workItem from="1705152817202" duration="5225000" />
       <workItem from="1705158081103" duration="254000" />
-      <workItem from="1705158352970" duration="6561000" />
+      <workItem from="1705158352970" duration="8584000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -495,7 +1075,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705158823692</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="完整的资源加载流程，（未测试远端更新）">
+      <created>1705165107622</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1705165107622</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,7 +1107,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="准备用堆结构来管理仇恨值信息" />
     <MESSAGE value="探测类型分类和探测等级分级" />
     <MESSAGE value="删除无用代码" />
     <MESSAGE value="比较完整的状态机和行为树组合" />
@@ -545,7 +1131,8 @@
     <MESSAGE value="从bootStrap打开游戏" />
     <MESSAGE value="bootstrap" />
     <MESSAGE value="更新yooasset并整理目录修复bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新yooasset并整理目录修复bug" />
+    <MESSAGE value="完整的资源加载流程，（未测试远端更新）" />
+    <option name="LAST_COMMIT_MESSAGE" value="完整的资源加载流程，（未测试远端更新）" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
