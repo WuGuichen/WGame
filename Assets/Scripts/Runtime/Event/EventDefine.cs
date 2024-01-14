@@ -23,4 +23,7 @@ public class EventDefine
     public const int OnFSMHotUpdate = 42;
     
     public const int SetCursorState = 52;
+
+    // 界面加载完成
+    public const int OnSceneLoaded = 60;
 }

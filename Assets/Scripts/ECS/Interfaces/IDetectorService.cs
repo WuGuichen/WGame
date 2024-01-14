@@ -6,4 +6,5 @@ public interface IDetectorService
     void Dispose();
     GameEntity Entity { get; }
     SensorEntity Sensor { get; }
+    HatePointInfo HatePointInfo { get; }
 }

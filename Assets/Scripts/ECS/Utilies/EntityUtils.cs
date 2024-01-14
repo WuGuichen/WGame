@@ -218,4 +218,28 @@ public class EntityUtils
     //     redService.RefreshDist(white.instanceID.ID, dist);
     //     return dist;
     // }
+    
+    public static void SetFocusTarget(GameEntity entity, int targetId)
+    {
+        SetFocusTarget(entity, EntityUtils.GetGameEntity(targetId));
+    }
+    public static void SetFocusTarget(GameEntity entity, GameEntity target)
+    {
+        if (target != null)
+        {
+            if (entity.hasFocusEntity)
+            {
+                entity.gameViewService.service.BeFocused(false);
+            }
+            target.gameViewService.service.BeFocused(true);
+            entity.ReplaceFocusEntity(target);
+        }
+        else
+        {
+            if (entity.hasFocusEntity)
+            {
+                entity.RemoveFocusEntity();
+            }
+        }
+    }
 }

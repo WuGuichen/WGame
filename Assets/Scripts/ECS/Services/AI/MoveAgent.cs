@@ -84,12 +84,15 @@ public class MoveAgent
         return false;
     }
 
-    public bool MoveToEntity(int id, float reachDist = 0.2f)
+    public bool MoveToEntity(int id, float reachDist = 0.2f, float threshold = 1f)
     {
         var tarEntity = EntityUtils.GetGameEntity(id);
         if (tarEntity == null)
             return false;
         _tarPos = tarEntity.position.value;
+        var dist = DetectMgr.Inst.GetDistance(id, _entity.instanceID.ID);
+        bool reverse = reachDist > dist;
+        reachDist += (reverse ? -threshold : threshold);
         
         // UpdateRotateDir
         var tar = _tarPos - _entity.position.value;
@@ -100,11 +103,12 @@ public class MoveAgent
             _targetDirRotation = tar.normalized;
         
         _targetDirQuaternion = Quaternion.LookRotation(_targetDirRotation);
+        if (reverse)
+            _targetDirRotation *= -1;
         
-        var dist = DetectMgr.Inst.GetDistance(id, _entity.instanceID.ID);
         var fwd = _transform.forward;
         fwd.y = 0;
-        var angle = _targetDirRotation.GetAngle(fwd);
+        var angle = _targetDirRotation.GetAngle(_entity.hasFocusEntity ? -fwd : fwd);
 
         // RotateToTarget
         if (needRotate)
@@ -134,15 +138,22 @@ public class MoveAgent
             StopMove();
         }
 
-        if (dist < reachDist)
+        if (reverse)
         {
-            return true;
+            if (dist > reachDist)
+            {
+                return true;
+            }
         }
         else
         {
-            if(!isMoving)
-                StartMove(_targetDirRotation);
+            if (dist < reachDist)
+            {
+                return true;
+            }
         }
+        if(!isMoving)
+            StartMove(_targetDirRotation);
 
         return false;
     }
@@ -185,7 +196,15 @@ public class MoveAgent
 
         var fwd = _transform.forward;
         fwd.y = 0;
-        var angle = Vector3.Angle(fwd, _targetDirRotation);
+        float angle = 0;
+        if (_entity.hasFocusEntity)
+        {
+            angle = Vector3.Angle(fwd, _tarPos - _entity.position.value);
+        }
+        else
+        {
+            angle = Vector3.Angle(fwd, _targetDirRotation);
+        }
         if (angle < 0.1f)
         {
             // 旋转到位了
@@ -289,31 +308,6 @@ public class MoveAgent
     {
         StopMove();
         _tarPos = GetOtherPatrolPoint(_curPatrolIndex);
-    }
-
-    public void OnPatrolEnter()
-    {
-        UpdateRotateDir();
-        needRotate = true;
-    }
-
-    public void OnPatrolLogic()
-    {
-        // if(MoveToTarget())
-        //     OnReachPatrolPoint();
-        if (_entity.hasDetectedCharacter)
-        {
-            // 发现目标
-            _service.TriggerFSM(StateDefine.SpottedTarget);
-        }
-        UnityEngine.Profiling.Profiler.BeginSample("FSM_BTreeTick");
-        _onPatrolTree.Tick();
-        UnityEngine.Profiling.Profiler.EndSample();
-    }
-    
-    public void OnPatrolExit()
-    {
-        
     }
 
     public void OnChaseEnter()

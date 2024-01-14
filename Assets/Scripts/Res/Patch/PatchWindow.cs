@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UniFramework.Event;
+using WGame.Runtime;
 
 public class PatchWindow : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PatchWindow : MonoBehaviour
             _btnOK = cloneObject.transform.Find("btn_ok").GetComponent<Button>();
             _btnOK.onClick.AddListener(OnClickYes);
         }
+
         public void Show(string content, System.Action clickOK)
         {
             _content.text = content;
@@ -77,11 +79,23 @@ public class PatchWindow : MonoBehaviour
         _eventGroup.AddListener<PatchEventDefine.PackageVersionUpdateFailed>(OnHandleEventMessage);
         _eventGroup.AddListener<PatchEventDefine.PatchManifestUpdateFailed>(OnHandleEventMessage);
         _eventGroup.AddListener<PatchEventDefine.WebFileDownloadFailed>(OnHandleEventMessage);
+        
+        EventCenter.AddListener(EventDefine.OnSceneLoaded, OnSceneLoaded);
     }
     void OnDestroy()
     {
         _eventGroup.RemoveAllListener();
+        EventCenter.RemoveListener(EventDefine.OnSceneLoaded, OnSceneLoaded);
     }
+
+    private void OnSceneLoaded(WEventContext context)
+    {
+        if (context.pString == "TestScene")
+        {
+            GameSceneMgr.Inst.UnloadScene("BootStrap");
+        }
+    }
+
 
     /// <summary>
     /// 接收事件

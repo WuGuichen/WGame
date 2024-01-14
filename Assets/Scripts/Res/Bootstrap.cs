@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityTimer;
 
 public class Bootstrap : MonoBehaviour
 {
@@ -21,9 +19,10 @@ public class Bootstrap : MonoBehaviour
 
     private void Start()
     {
-        var handle = SceneManager.LoadSceneAsync(firstSceneName, LoadSceneMode.Additive);
-        handle.completed += operation =>
-        {
-        };
+        GameSceneMgr.Inst.LoadNewScene(firstSceneName);
+        // 加载更新页面
+        var go = Resources.Load<GameObject>("PatchWindow");
+        GameObject.Instantiate(go);
     }
+
 }

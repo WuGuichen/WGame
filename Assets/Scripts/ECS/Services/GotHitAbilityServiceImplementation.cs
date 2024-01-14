@@ -41,6 +41,7 @@ public class GotHitAbilityServiceImplementation : IGotHitService
         vm.Set("HIT_DIR", new Vector3(hitDir.x, 0, hitDir.y), false);
         vm.Set("HIT_IS_FWD", isFwd);
         vm.Set("HIT_POS", hitInfo.pos, false);
+        
         if (MotionIDs.onHitDict.TryGetValue(entity.linkMotion.Motion.motionStart.UID, out var motionName))
         {
             vm.Call(motionName);
@@ -49,6 +50,8 @@ public class GotHitAbilityServiceImplementation : IGotHitService
         {
             vm.Call("GotHit1");
         }
+        
+        MethodDefine.AddHatePointTo(hitInfo.entity.instanceID.ID, entity, 360*3, HatePointType.BeHitted);
     }
 
     public void OnHitTarget(GameEntity entity, ContactInfo hitInfo)

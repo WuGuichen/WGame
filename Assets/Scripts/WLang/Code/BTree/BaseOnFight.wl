@@ -2,13 +2,21 @@
 
 SELECTOR{
     DO{
-        isReach = waitTarget and DoMoveToEntity(waitTarget, 100) or false
-        if(isReach)
-        {
-            -- 到达攻击范围内
-            print("Attack")
-            Signal(E_SELF, SIG_ATTACK, 0.2)
-            return FAIL
+        if waitTarget {
+            distMin = 200
+            distMax = 300
+            isReach = S_DoMoveToEntity(waitTarget, distMin)
+            if(isReach)
+            {
+                -- 到达攻击范围内
+                print("Attack")
+                @E_SELF:Signal(SIG_ATTACK)
+                return FAIL
+            }
+        }
+        else{
+            @E_SELF:TriggerFSM(fsmName, SD_LOSE_TARGET)
+            print("no WaitTarget")
         }
         return SUCCESS
     }

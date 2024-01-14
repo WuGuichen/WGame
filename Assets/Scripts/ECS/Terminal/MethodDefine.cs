@@ -262,7 +262,7 @@ public partial class MethodDefine
         if (CheckEntity(param[0].Value, out var entity))
             return;
 
-        float val = param[2].ToFloat(interpreter.Definition);
+        float val = interpreter.ParseInt(param, 2, 20) * 0.01f;
         switch (param[1].Value)
         {
             case InputSignalSubType.Attack:

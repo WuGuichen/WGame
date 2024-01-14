@@ -81,12 +81,16 @@ public partial class AiAgentServiceImplementation
         // 移动到实体位置
         // point->vector3, 目标坐标
         // reachDist->int|nil, 完成移动距离限制
+        // threshold->int|nil=false, 距离容差
         // return->bool, 是否完成移动
         SetMethod("S_DoMoveToEntity", (list, interpreter) =>
         {
             var id = interpreter.ParseInt(list, 0);
             int reachDist = interpreter.ParseInt(list, 1, 20);
-            interpreter.SetRetrun(moveAgent.MoveToEntity(id, reachDist*0.01f));
+            if (interpreter.TryParseInt(list, 2, out int threshold))
+                interpreter.SetRetrun(moveAgent.MoveToEntity(id, reachDist*0.01f, threshold*0.01f));
+            else
+                interpreter.SetRetrun(moveAgent.MoveToEntity(id, reachDist*0.01f));
         });
         
     #endregion

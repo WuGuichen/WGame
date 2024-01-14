@@ -221,4 +221,5 @@ public class DetectorCharacterImplementation : IDetectorService
 
     public GameEntity Entity => _character;
     public SensorEntity Sensor => _sensor;
+    public HatePointInfo HatePointInfo => hateInfo;
 }

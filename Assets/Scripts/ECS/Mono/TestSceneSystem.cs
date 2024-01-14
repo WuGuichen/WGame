@@ -34,6 +34,7 @@ public class TestSceneSystem : MonoBehaviour
     void PreInit()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
+        GameSceneMgr.Inst.InitEnvironment();
 		PreInitModel();
 	    RegisterEvents();
         _contexts = Contexts.sharedInstance;
@@ -215,7 +216,7 @@ public class TestSceneSystem : MonoBehaviour
 		    Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
 	    });
     }
-
+    
     void OnGameStart()
     {
 	    var characterRoot = GameSceneMgr.Inst.editCharacterRoot;
@@ -232,26 +233,6 @@ public class TestSceneSystem : MonoBehaviour
     void OnGameAssetsManagerInited()
     {
 	    WLangMgr.Inst.LordInitCode(TerminalModel.Inst.Interp);
-	    // Debug.Log("Init AssetsManager Success!");
 		_contexts.meta.factoryService.instance.InitSceneObjectRoot(sceneRoot);
-		// gameObject.GetComponent<UIManager>().OpenView(ViewDB.MainView);
-		// gameObject.GetComponent<UIManager>().OpenView("MainView");
-		// UIManager.OpenView(ViewDB.GameMainView);
-		// Timer.Register(2f, () =>
-		// {
-		// 	UIManager.CloseView(ViewDB.GameMainView, true);
-		// });
-		// Timer.Register(4f, () =>
-		// {
-		// 	UIManager.OpenView(ViewDB.MainView);
-		// });
-		// Timer.Register(6f, () =>
-		// {
-		// 	UIManager.CloseView(ViewDB.MainView, true);
-		// });
-		// Timer.Register(8f, () =>
-		// {
-		// 	UIManager.OpenView(ViewDB.MainView);
-		// });
     }
 }

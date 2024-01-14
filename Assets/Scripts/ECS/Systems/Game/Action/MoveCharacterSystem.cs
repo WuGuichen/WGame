@@ -112,14 +112,26 @@ public class MoveCharacterSystem : IExecuteSystem
             }
             else
             {
-                var vecMulti = Mathf.Clamp01(Vector3.Dot(
-                    entity.gameViewService.service.Model.forward,
-                    entity.moveDirection.value));
-                speed *= vecMulti;
-                if (motion.hasMotionService)
+                var moveDir = entity.moveDirection.value;
+                moveDir = entity.gameViewService.service.Model.InverseTransformVector(moveDir);
+                if (entity.hasFocusEntity)
                 {
-                    motion.motionService.service.AnimProcessor.UpdateMoveSpeed(vecMulti*totalMulti, 0);
+                    motion.motionService.service.AnimProcessor.UpdateMoveSpeed(
+                        moveDir.z,
+                        moveDir.x);
                     motion.motionService.service.AnimProcessor.UpdateRootMotion();
+                }
+                else
+                {
+                    var vecMulti = Mathf.Clamp01(Vector3.Dot(
+                        entity.gameViewService.service.Model.forward,
+                        entity.moveDirection.value));
+                    speed *= vecMulti;
+                    if (motion.hasMotionService)
+                    {
+                        motion.motionService.service.AnimProcessor.UpdateMoveSpeed(vecMulti * totalMulti, 0);
+                        motion.motionService.service.AnimProcessor.UpdateRootMotion();
+                    }
                 }
             }
 

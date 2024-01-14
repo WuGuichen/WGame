@@ -36,6 +36,32 @@ public partial class MethodDefine
         var moveAgent = entity.aiAgent.service.MoveAgent;
         moveAgent.SetNewPatrolPointIndex(index);
     }
+
+    /// <summary>
+    /// 给target增加对entityId的仇恨值
+    /// </summary>
+    /// <param name="entityId"></param>
+    /// <param name="target"></param>
+    /// <param name="value">增加的值</param>
+    /// <param name="hatePointType">增加类型</param>
+    public static void AddHatePointTo(int entityId, in GameEntity target, float value, int hatePointType)
+    {
+        var hateInfo = target.linkSensor.Sensor.detectorCharacterService.service.HatePointInfo;
+        hateInfo.Add(entityId, value, hatePointType);
+    }
+    
+    /// <summary>
+    /// 设置target对entity的仇恨值
+    /// </summary>
+    /// <param name="entityId"></param>
+    /// <param name="target"></param>
+    /// <param name="value"></param>
+    /// <param name="hateRank"></param>
+    private static void SetHatePoint(int entityId, in GameEntity target, float value, int hateRank)
+    {
+        var hateInfo = target.linkSensor.Sensor.detectorCharacterService.service.HatePointInfo;
+        hateInfo.Set(entityId, value, hateRank);
+    }
     
     private void BindEntityMethod()
     {
@@ -92,6 +118,28 @@ public partial class MethodDefine
             sensor.ReplaceDetectWarningRadius(info.DetectRadius1);
             sensor.ReplaceDetectSpottedRadius(info.DetectRadius2);
         });
+
+        // 增加仇恨值
+        SetMethod("E_AddHateInfo", (list, interpreter) =>
+        {
+            if (CheckEntity(interpreter.ParseInt(list, 1), out var target))
+                return;
+            var entityId = interpreter.ParseInt(list, 0);
+            var value = interpreter.ParseFloat(list, 2);
+            var type = interpreter.ParseInt(list, 3);
+            AddHatePointTo(entityId, target, value, type);
+        });
+        
+        // 设置仇恨值
+        SetMethod("E_SetHateInfo", (list, interpreter) =>
+        {
+            if (CheckEntity(interpreter.ParseInt(list, 1), out var target))
+                return;
+            var entityId = interpreter.ParseInt(list, 0);
+            var value = interpreter.ParseFloat(list, 2);
+            var rank = interpreter.ParseInt(list, 3);
+            SetHatePoint(entityId, target, value, rank);
+        });
         
     #endregion
         
@@ -107,6 +155,17 @@ public partial class MethodDefine
             var index = interpreter.ParseInt(list, 1, moveAgent.CurPatrolIndex);
             var pos = moveAgent.GetOtherPatrolPoint(index);
             interpreter.SetRetrun(pos); 
+        });
+
+        // 获取和targetEntity之间的距离
+        // targetEntity->int, 目标实体id
+        SetMethod("E_GetTargetDist", (list, interpreter) =>
+        {
+            if (CheckEntity(interpreter.ParseInt(list, 0), out var entity))
+                return;
+            var targetEntity = interpreter.ParseInt(list, 1);
+            var dist = DetectMgr.Inst.GetDistance(entity, EntityUtils.GetGameEntity(targetEntity));
+            interpreter.SetRetrun(dist*100);
         });
     #endregion
     
@@ -143,6 +202,7 @@ public partial class MethodDefine
         // 移动到实体位置
         // point->vector3, 目标坐标
         // reachDist->int|nil, 完成移动距离限制
+        // threshold->int|nil, 完成移动距离容差
         // return->bool, 是否完成移动
         SetMethod("E_DoMoveToEntity", (list, interpreter) =>
         {
@@ -151,9 +211,24 @@ public partial class MethodDefine
             var moveAgent = _entity.aiAgent.service.MoveAgent;
             var id = interpreter.ParseInt(list, 0);
             int reachDist = interpreter.ParseInt(list, 1, 20);
-            interpreter.SetRetrun(moveAgent.MoveToEntity(id, reachDist*0.01f));
+            if (interpreter.TryParseInt(list, 2, out int threshold))
+                interpreter.SetRetrun(moveAgent.MoveToEntity(id, reachDist*0.01f, threshold*0.01f));
+            else
+                interpreter.SetRetrun(moveAgent.MoveToEntity(id, reachDist*0.01f));
         });
-        
-    #endregion
+
+        // 设置entity 的锁定目标
+        SetMethod("E_DoFocusTarget", (list, interpreter) =>
+        {
+            if (CheckEntity(interpreter.ParseInt(list, 0), out var entity))
+                return;
+            int targetId = interpreter.ParseInt(list, 1, -1);
+            if (targetId >= 0)
+                EntityUtils.SetFocusTarget(entity, targetId);
+            else
+                EntityUtils.SetFocusTarget(entity, null);
+        });
+
+        #endregion
     }
 }

@@ -5,6 +5,9 @@ def PatrolEnter(){
     Print("Enter Patrol")
     -- 设置巡逻移速
     S_SetMoveSpeedRate(5)
+    @E_SELF:E_ResetDetectParam()
+    -- 取消锁定
+--    @E_SELF:E_DoFocusTarget()
 }
 
 def PatrolLogic(){
@@ -26,10 +29,11 @@ def ChaseEnter(){
     Print("Enter Chase")
     -- 设置追击移速
     S_SetMoveSpeedRate(50)
+    @E_SELF:E_DoFocusTarget(E_MAX_HATE_ENTITY)
 }
 def ChaseLogic(){
     -- 向最高仇恨值目标移动, 30cm内表示到达
-    isReach = DoMoveToEntity(E_MAX_HATE_ENTITY, 30)
+    isReach = S_DoMoveToEntity(E_MAX_HATE_ENTITY, 30)
     if isReach{
         -- 到达目标后触发到达目标事件
         @E_SELF:TriggerFSM(fsmName, SD_REACH_TARGET)

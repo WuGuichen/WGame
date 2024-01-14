@@ -38,14 +38,14 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
             case FocusType.Focus:
                 Detect(entity);
                 if (GetClosestTarget(out var info))
-                    SetTarget(entity, info.EntityId);
+                    EntityUtils.SetFocusTarget(entity, info.EntityId);
                 else
-                    SetTarget(entity, null);
+                    EntityUtils.SetFocusTarget(entity, null);
                 break;
             case FocusType.Switch:
                 break;
             case FocusType.Cancel:
-                SetTarget(entity, null);
+                EntityUtils.SetFocusTarget(entity, null);
                 break;
             case FocusType.Up:
                 Detect(entity);
@@ -83,30 +83,6 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
         {
             EntityUtils.BvhRed.TestHitSphereNonAlloc(sphere, ref hitTargets);
             WLogger.Info(hitTargets.Count);
-        }
-    }
-
-    private void SetTarget(GameEntity entity, int targetId)
-    {
-        SetTarget(entity, EntityUtils.GetGameEntity(targetId));
-    }
-    private void SetTarget(GameEntity entity, GameEntity target)
-    {
-        if (target != null)
-        {
-            if (entity.hasFocusEntity)
-            {
-                entity.gameViewService.service.BeFocused(false);
-            }
-            target.gameViewService.service.BeFocused(true);
-            entity.ReplaceFocusEntity(target);
-        }
-        else
-        {
-            if (entity.hasFocusEntity)
-            {
-                entity.RemoveFocusEntity();
-            }
         }
     }
 

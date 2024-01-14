@@ -1056,7 +1056,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     public bool TryParseInt(in List<Symbol> param, int index, out int res)
     {
-        if (CheckParamFail(param, index, out var sym))
+        if (CheckParamFail(param, index, out var sym, false))
         {
             res = 0;
             return false;

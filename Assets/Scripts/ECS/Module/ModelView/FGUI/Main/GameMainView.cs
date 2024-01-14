@@ -70,7 +70,7 @@ namespace WGame.UI
 		private void RefreshFPS()
 		{
 			if (MainModel.Inst.frames > 0)
-				ui.FPS.text = MainModel.Inst.frames.ToString();
+				ui.FPS.text = MainModel.Inst.frames.ToString("f1");
 			else
 				ui.FPS.text = "";
 		}

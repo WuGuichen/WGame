@@ -12,6 +12,9 @@ public class PreBootstrap : MonoBehaviour
     void BootstrapStart()
     {
         // splashScene.SetActive(true);
+        // 加载更新页面
+        var go = Resources.Load<GameObject>("PatchWindow");
+        GameObject.Instantiate(go);
         gameObject.SetActive(false);
     }
 }
