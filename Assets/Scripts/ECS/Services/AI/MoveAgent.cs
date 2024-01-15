@@ -108,15 +108,23 @@ public class MoveAgent
         
         var fwd = _transform.forward;
         fwd.y = 0;
-        var angle = _targetDirRotation.GetAngle(_entity.hasFocusEntity ? -fwd : fwd);
+        var angle = _targetDirRotation.GetAngle(reverse ? -fwd : fwd);
+
+        bool reachAngle = true;
+        bool moving = true;
+        if (angle > 0.1f)
+        {
+            reachAngle = false;
+            StopMove();
+        }
 
         // RotateToTarget
-        if (needRotate)
+        if (!reachAngle)
         {
             if (angle < 0.1f)
             {
                 // 旋转到位了
-                needRotate = false;
+                reachAngle = true;
                 // 开始移动
                 StartMove(_targetDirRotation);
             }
@@ -131,28 +139,22 @@ public class MoveAgent
         }
         
         // 
-        
-        if (angle > 0.1f)
-        {
-            needRotate = true;
-            StopMove();
-        }
 
         if (reverse)
         {
             if (dist > reachDist)
             {
-                return true;
+                return reachAngle;
             }
         }
         else
         {
             if (dist < reachDist)
             {
-                return true;
+                return reachAngle;
             }
         }
-        if(!isMoving)
+        if(!isMoving && reachAngle)
             StartMove(_targetDirRotation);
 
         return false;
