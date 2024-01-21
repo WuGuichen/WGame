@@ -217,6 +217,7 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
 
     private int CheckMotionIDByMotionType(int checkID)
     {
+        // WLogger.Print(checkID +"c:" + character.instanceID.ID + "a:" + character.hasSignalDefense);
         return checkID switch
         {
             MotionType.LocalMotion when (character.isPrepareLocalMotionState && entity.hasMotionLocalMotion) => entity.motionLocalMotion.UID,

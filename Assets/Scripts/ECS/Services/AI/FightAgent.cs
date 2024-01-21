@@ -59,16 +59,6 @@ public class FightAgent
         _onAttackTree.Tick();
     }
 
-    private void DoAttack()
-    {
-        int num = Random.Range(0, 2);
-        if(num == 0)
-            _entity.ReplaceSignalAttack(0.3f);
-        else
-        {
-            _entity.ReplaceSignalStep(0.3f);
-        }
-    }
     public void OnAttackExit()
     {
         _service.MoveAgent.RefreshTarget();

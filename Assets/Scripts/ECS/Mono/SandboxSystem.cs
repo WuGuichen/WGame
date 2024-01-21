@@ -32,9 +32,9 @@ public class SandboxSystem : MonoBehaviour
 		_systems.Add(new AnimSpeedSystem(_contexts));
 		
 		_systems.Add(new CharacterOnGroundSystem(_contexts));
-		_systems.Add(new UpdateInputSignalSystem(_contexts));
-		_systems.Add(new UpdateAttackInputSystem(_contexts));
-		_systems.Add(new UpdateStepInputSystem(_contexts));
+		_systems.Add(new UpdateDeviceInputSignalSystem(_contexts));
+		// _systems.Add(new UpdateAttackInputSystem(_contexts));
+		// _systems.Add(new UpdateStepInputSystem(_contexts));
 		// _systems.Add(new CharacterFocusSystem(_contexts));
 		_systems.Add(new FocusEntitySystem(_contexts));
 		

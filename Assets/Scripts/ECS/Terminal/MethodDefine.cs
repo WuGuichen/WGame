@@ -276,7 +276,7 @@ public partial class MethodDefine
                 break;
             // case InputSignalSubType.Block:
             //     // 这是什么来着
-            //     // entity.ReplaceSignalBlock(val);
+            //     entity.ReplaceSignalDefense(val);
             //     break;
             case InputSignalSubType.Jump:
                 entity.ReplaceSignalJump(val);

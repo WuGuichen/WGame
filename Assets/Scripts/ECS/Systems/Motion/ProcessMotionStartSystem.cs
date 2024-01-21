@@ -37,6 +37,7 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
         character.isPrepareDefenseState = false;
         character.isPrepareJumpAttackState = false;
         character.isLockPlanarVec = false;
+        // 清除输入指令
         if (character.hasSignalAttack)
             character.RemoveSignalAttack();
         if (character.hasSignalJump)

@@ -1,60 +1,120 @@
 using Entitas;
+using WGame.Trigger;
 
-public class ProcessMotionSignalUpdateSystem : IExecuteSystem
+public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
 {
     private readonly IGroup<MotionEntity> _motionGroup;
+    private readonly ITimeService _timeService;
     
     public ProcessMotionSignalUpdateSystem(Contexts contexts)
     {
         _motionGroup = contexts.motion.GetGroup(MotionMatcher.MotionService);
+        _timeService = contexts.meta.timeService.instance;
     }
 
 
     public void Execute()
     {
-        foreach (var entity in _motionGroup)
+        foreach (var motion in _motionGroup)
         {
-            if (!entity.hasLinkCharacter)
+            if (!motion.hasLinkCharacter)
                 continue;
-            var character = entity.linkCharacter.Character;
+            var entity = motion.linkCharacter.Character;
 
-            // bool isSignal = false;
-            if (character.hasSignalAttack)
+            if (entity.hasSignalAttack)
             {
-                if (entity.hasMotionJump && entity.motionStart.UID == entity.motionJump.UID)
-                    character.isPrepareJumpAttackState = true;
+                if (motion.hasMotionJump && motion.motionStart.UID == motion.motionJump.UID)
+                    entity.isPrepareJumpAttackState = true;
                 else
-                    character.isPrepareAttackState = true;
-                // isSignal = true;
+                    entity.isPrepareAttackState = true;
             }
 
-            if (character.hasSignalJump)
+            if (entity.hasSignalJump)
             {
-                character.isPrepareJumpState = true;
-                // isSignal = true;
+                entity.isPrepareJumpState = true;
             }
 
-            if (character.hasSignalStep)
+            if (entity.hasSignalStep)
             {
-                character.isPrepareStepState = true;
-                // isSignal = true;
+                entity.isPrepareStepState = true;
             }
 
-            if (character.hasSignalLocalMotion)
+            if (entity.hasSignalLocalMotion)
             {
-                character.isPrepareLocalMotionState = true;
-                // isSignal = true;
+                entity.isPrepareLocalMotionState = true;
             }
 
-            // character.isStateChanged = false;
+            if (entity.hasSignalDefense)
+            {
+                entity.isPrepareDefenseState = true;
+            }
+            else
+            {
+                if (entity.isPrepareDefenseState)
+                {
+                    WTriggerMgr.Inst.TriggerEvent(MainTypeDefine.InputSignal, InputSignalSubType.Defense,
+                        InputSignalEvent.WasReleased, new WTrigger.Context(entity.entityID.id));
+                }
 
-            // if (isSignal)
-            // {
-            //     // character.animatorService.service.SwitchAnimState();
-            //     // character.isStateSwitchState = true;
-            //     entity.motionService.service.StartMotion();
-            // }
+                entity.isPrepareDefenseState = false;
+            }
+        }
+    }
 
+    public void Cleanup()
+    {
+        foreach (var motion in _motionGroup)
+        {
+            if (!motion.hasLinkCharacter)
+                continue;
+            var entity = motion.linkCharacter.Character;
+            float leftSignalTime = 0;
+            float deltaTime = _timeService.DeltaTime;
+
+            if (entity.hasSignalAttack)
+            {
+                leftSignalTime = entity.signalAttack.duration - deltaTime;
+                if (leftSignalTime < 0)
+                    entity.RemoveSignalAttack();
+                else
+                    entity.ReplaceSignalAttack(leftSignalTime);
+            }
+
+            if (entity.hasSignalJump)
+            {
+                leftSignalTime = entity.signalJump.duration - deltaTime;
+                if (leftSignalTime < 0)
+                    entity.RemoveSignalJump();
+                else
+                    entity.ReplaceSignalJump(leftSignalTime);
+            }
+
+            if (entity.hasSignalStep)
+            {
+                leftSignalTime = entity.signalStep.duration - deltaTime;
+                if (leftSignalTime < 0)
+                    entity.RemoveSignalStep();
+                else
+                    entity.ReplaceSignalStep(leftSignalTime);
+            }
+
+            if (entity.hasSignalLocalMotion)
+            {
+                leftSignalTime = entity.signalLocalMotion.duration - deltaTime;
+                if (leftSignalTime < 0)
+                    entity.RemoveSignalLocalMotion();
+                else
+                    entity.ReplaceSignalLocalMotion(leftSignalTime);
+            }
+
+            if (entity.hasSignalDefense)
+            {
+                leftSignalTime = entity.signalDefense.time - deltaTime;
+                if (leftSignalTime < 0)
+                    entity.RemoveSignalDefense();
+                else
+                    entity.ReplaceSignalDefense(leftSignalTime);
+            }
         }
     }
 }

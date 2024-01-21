@@ -44,10 +44,6 @@ public class UpdateMoveDirectionSystem : IExecuteSystem
             move.y = Mathf.SmoothDamp(move.y, tarDup, ref curDup, 0.1f);
             move.x = Mathf.SmoothDamp(move.x, tarDright, ref curDright, 0.1f);
 
-            // var vec = entity.gameViewService.service.LocalizeVectorXY(move);
-            // var vecMulti = UnityEngine.Mathf.Clamp01(Vector3.Dot(entity.gameViewService.service.Model.forward, vec));
-            // var moveDirection = vec * vecMulti;
-            // moveDirection *= entity.movementSpeed.value;
             var moveDirection = entity.gameViewService.service.LocalizeVectorXY(move, entity.hasFocusEntity);
             entity.ReplaceMoveDirection(moveDirection);
             entity.isMoving = moveDirection != Vector3.zero;

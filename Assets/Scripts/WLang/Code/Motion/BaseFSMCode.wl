@@ -29,6 +29,7 @@ def ChaseEnter(){
     Print("Enter Chase")
     -- 设置追击移速
     S_SetMoveSpeedRate(50)
+    S_SetRotateSpeedRate(200)
     @E_SELF:E_DoFocusTarget(E_MAX_HATE_ENTITY)
 }
 def ChaseLogic(){

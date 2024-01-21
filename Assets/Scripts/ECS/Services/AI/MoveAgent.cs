@@ -111,7 +111,6 @@ public class MoveAgent
         var angle = _targetDirRotation.GetAngle(reverse ? -fwd : fwd);
 
         bool reachAngle = true;
-        bool moving = true;
         if (angle > 0.1f)
         {
             reachAngle = false;
