@@ -182,4 +182,10 @@ public class WDrawer : SingletonMono<WDrawer>
                 Circle.Draw(drawerInfoList[i].Info);
         }
     }
+
+    public void DrawSphere(float radius, Color color, float lifeTime = 2f)
+    {
+        var ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        ball.transform.localScale = new Vector3(radius, radius, radius);
+    }
 }

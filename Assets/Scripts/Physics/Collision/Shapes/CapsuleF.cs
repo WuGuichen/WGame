@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TWY.Physics
 {
-    public struct CapsuleF : WCollider
+    public struct CapsuleF : WShape
     {
         private float3 pointA;
         private float3 pointB;
@@ -187,8 +187,30 @@ namespace TWY.Physics
             var res = localDirection * radius;
             res.y += (localDirection.y > 0) ? (halfLength - radius) : (radius - halfLength);
             return (rotation * res + center.ToVector3()).ToFloat3();
+            // float Dy = math.dot(direction, new float3(0, 1, 0));
+            // var absY = math.abs(Dy);
+            // if (absY > 0.9999f)
+            // {
+            //     // 平行的
+            //     return (Dy > 0.0f ? pointB : pointA);
+            // }
+            // else if (absY < 0.0001f)
+            // {
+            //     return (Center - Radius * direction);
+            // }
+            // else
+            // {
+            //     if (Dy < 0.0f)
+            //     {
+            //         return pointB + Radius * direction;
+            //     }
+            //     else
+            //     {
+            //         return pointA + Radius * direction;
+            //     }
+            // }
         }
-        
+
         private void DrawCapsule(Vector3 point1, Vector3 point2, float radius)
         {
             Vector3 centerTop = point2;

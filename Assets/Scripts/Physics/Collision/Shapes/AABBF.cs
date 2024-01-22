@@ -2,12 +2,11 @@ using Unity.Mathematics;
 
 namespace TWY.Physics
 {
-    public interface WCollider
+    public interface WShape
     {
-        float3 Center { get; set; }
         float3 Support(float3 direction);
     }
-    public struct AABBF
+    public struct AABBF : WShape
     {
         public float3 c;
         public float3 r;

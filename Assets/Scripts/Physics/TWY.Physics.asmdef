@@ -4,7 +4,9 @@
     "references": [
         "Unity.Mathematics",
         "UnityEditor.TestRunner",
-        "UnityEngine.TestRunner"
+        "UnityEngine.TestRunner",
+        "WGame.Res",
+        "WGame.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

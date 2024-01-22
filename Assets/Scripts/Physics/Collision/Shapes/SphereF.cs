@@ -2,7 +2,7 @@ using Unity.Mathematics;
 
 namespace TWY.Physics
 {
-    public struct SphereF : WCollider
+    public struct SphereF : WShape
     {
         public SphereF(float3 center, float radius)
         {
