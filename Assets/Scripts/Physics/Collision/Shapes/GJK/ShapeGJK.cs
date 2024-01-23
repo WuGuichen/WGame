@@ -5,6 +5,43 @@ using UnityEngine;
 
 namespace TWY.Physics
 {
+    public struct Simplex
+    {
+        private float3 x;
+        private float3 y;
+        private float3 z;
+        public int Count;
+
+        public Simplex(float3 x)
+        {
+            this.x = x;
+            this.y = x;
+            this.z = x;
+            Count = 1;
+        }
+
+        public Simplex(float3 x, float3 y)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = x;
+            Count = 2;
+        }
+        public Simplex(float3 x, float3 y, float3 z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            Count = 3;
+        }
+        public float3 this[int i] => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => float3.zero
+        };
+    }
     public class ShapeGJK
     {
         private const int MAX_ITERATIONS = 32;
@@ -14,17 +51,15 @@ namespace TWY.Physics
         public static bool GJK(in AABBF shapeA, in CapsuleF shapeB, int step = 100)
         {
             DbgDraw.Sphere(Vector3.zero, quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.black);
-            var dir = shapeA.Center - shapeB.Center;
-            dir = math.normalize(dir);
+            var dir = math.normalize(shapeA.Center - shapeB.Center);
             // 随便用一个方向算初始支撑点
             var c = MinkowskiDiffSupport(shapeA, shapeB, dir);
-            DbgDraw.Sphere(c.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.red/step);
-            DbgDraw.Sphere(shapeA.Support(dir).ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.green/step);
-            DbgDraw.Sphere(shapeB.Support(-dir).ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.blue/step);
-            
-            step--;
-            if (step <= 0)
-                return false;
+            // DbgDraw.Sphere(c.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.red/step);
+            // DbgDraw.Sphere(shapeA.Support(dir).ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.green/step);
+            // DbgDraw.Sphere(shapeB.Support(-dir).ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.blue/step);
+            // step--;
+            // if (step <= 0)
+            //     return false;
             
             // 如果和原点方向相反，返回false
             if (math.dot(c, dir) < 0)
@@ -32,15 +67,15 @@ namespace TWY.Physics
 
             dir = -dir;
             var b = MinkowskiDiffSupport(shapeA, shapeB, dir);
-            DbgDraw.Sphere(b.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.red/step);
-            DbgDraw.Sphere(shapeA.Support(dir).ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.green/step);
-            DbgDraw.Sphere(shapeB.Support(-dir).ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.blue/step);
-            step--;
-            if (step <= 0)
-                return false;
+            // DbgDraw.Sphere(b.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.red/step);
+            // DbgDraw.Sphere(shapeA.Support(dir).ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.green/step);
+            // DbgDraw.Sphere(shapeB.Support(-dir).ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.blue/step);
+            // step--;
+            // if (step <= 0)
+            //     return false;
             
             // 如果和原点方向相反，返回false
-            if (math.dot(b, dir) < epsilon)
+            if (math.dot(b, dir) < 0.0f)
                 return false;
             
             step--;
@@ -49,22 +84,21 @@ namespace TWY.Physics
             
             // 方向调整为垂直该线
             dir = AxBxA(c - b, -b);
-            var simplex = new List<float3>()
-            {
-                b, c
-            };
+            // b,c
+            var simplex = new Simplex(b,c);
 
             float3 newPoint;
             for (int i = 0; i < MAX_ITERATIONS; i++)
             {
+                dir = math.normalize(dir);
                 newPoint = MinkowskiDiffSupport(shapeA, shapeB, dir);
-                DbgDraw.Sphere(newPoint.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.cyan);
-                step--;
-                if (step <= 0)
-                    return false;
+                // DbgDraw.Sphere(newPoint.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.cyan);
+                // step--;
+                // if (step <= 0)
+                //     return false;
                 // 如果和原点方向相反，返回false
                 var p = math.dot(newPoint, dir);
-                if (math.dot(newPoint, dir) < epsilon)
+                if (math.dot(newPoint, dir) < 0.0f)
                     return false;
                 
                 // 如果单形体是包含原点的四面体，返回true
@@ -77,7 +111,7 @@ namespace TWY.Physics
             return false;
         }
 
-        private static bool DoSimplex(float3 newPoint, ref List<float3> simplex, ref float3 dir)
+        private static bool DoSimplex(float3 newPoint, ref Simplex simplex, ref float3 dir)
         {
             switch (simplex.Count)
             {
@@ -96,7 +130,7 @@ namespace TWY.Physics
             }
         }
 
-        private static bool DoSimplexLine(float3 a, ref List<float3> simplex, ref float3 dir)
+        private static bool DoSimplexLine(float3 a, ref Simplex simplex, ref float3 dir)
         {
             var b = simplex[0];
 
@@ -106,22 +140,19 @@ namespace TWY.Physics
             if (math.dot(ab, ao) > 0)
             {
                 // 原点在A,B之间
-                simplex = new List<float3>()
-                {
-                    a, b
-                };
+                simplex = new Simplex(a, b);
                 dir = math.cross(ab, ao);
             }
             else
             {
                 // 原点在ao以上。移除b点
-                simplex = new List<float3>() { a };
+                simplex = new Simplex(a);
                 dir = ao;
             }
 
             return false;
         }
-        private static bool DoSimplexTri(float3 a, ref List<float3> simplex, ref float3 dir)
+        private static bool DoSimplexTri(float3 a, ref Simplex simplex, ref float3 dir)
         {
             var b = simplex[0];
             var c = simplex[1];
@@ -140,7 +171,7 @@ namespace TWY.Physics
             // 垂线和ao不同向，移除c点
             if (math.dot(pAB, ao) > epsilon)
             {
-                simplex = new List<float3>() {a,b };
+                simplex = new Simplex(a, b);
                 dir = AxBxA(ab, ao);
                 return false;
             }
@@ -149,10 +180,7 @@ namespace TWY.Physics
             var pAC = math.cross(nABC, ac);
             if (math.dot(pAC, ao) > 0)
             {
-                simplex = new List<float3>()
-                {
-                    a, c
-                };
+                simplex = new Simplex(a, c);
 
                 dir = AxBxA(ac, ao);
                 return false;
@@ -160,18 +188,18 @@ namespace TWY.Physics
 
             if (math.dot(nABC, ao) > epsilon)
             {
-                simplex = new List<float3>() { a, b, c };
+                simplex = new Simplex( a, b, c );
                 dir = nABC;
             }
             else
             {
-                simplex = new List<float3>() { a, c, b };
+                simplex = new Simplex( a, c, b );
                 dir = -nABC;
             }
 
             return false;
         }
-        private static bool DoSimplexTetra(float3 a, ref List<float3> simplex, ref float3 dir)
+        private static bool DoSimplexTetra(float3 a, ref Simplex simplex, ref float3 dir)
         {
             var b = simplex[0];
             var c = simplex[1];
@@ -210,10 +238,10 @@ namespace TWY.Physics
             {
                 //原点在三个面内部，所以原点在闵科夫斯基差之内
                 //所以碰撞返回true
-                DbgDraw.Sphere(a.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.red);
-                DbgDraw.Sphere(b.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.yellow);
-                DbgDraw.Sphere(c.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.blue);
-                DbgDraw.Sphere(d.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.green);
+                // DbgDraw.Sphere(a.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.red);
+                // DbgDraw.Sphere(b.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.yellow);
+                // DbgDraw.Sphere(c.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.blue);
+                // DbgDraw.Sphere(d.ToVector3(), quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.green);
                 return true;
             }
             else if (over_ABC && !over_ACD && !over_ADB)
@@ -314,10 +342,7 @@ namespace TWY.Physics
 
             if (math.dot(math.cross(rotABC, rotAC), ao) > 0)
             {
-                simplex = new List<float3>
-            {
-                rotA, rotC
-            };
+                simplex = new Simplex(rotA, rotC);
 
                 //新搜索方向 AC x AO x AC
                 dir = AxBxA(rotAC, ao);
@@ -329,10 +354,7 @@ namespace TWY.Physics
 
             if (math.dot(math.cross(rotAB, rotABC), ao) > 0)
             {
-                simplex = new List<float3>
-            {
-                rotA, rotB
-            };
+                simplex = new Simplex(rotA, rotB);
 
                 //新搜索方向 AB x AO x AB
                 dir = AxBxA(rotAB, ao);
@@ -340,10 +362,7 @@ namespace TWY.Physics
                 return false;
             }
 
-            simplex = new List<float3>
-        {
-            rotA, rotB, rotC
-        };
+            simplex = new Simplex(rotA, rotB, rotC);
 
             dir = rotABC;
 
