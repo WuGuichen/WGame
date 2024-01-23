@@ -23,9 +23,9 @@ public class ContactTest : MonoBehaviour
             step--;
         if (step < 1)
             step = 1;
-        if (ShapeGJK.GJK(aabb.shape, capsule.shape, step))
+        if (ShapeGJK.GJK(aabb.shape, capsule.shape, out var normal, out var depth, out var point))
         {
-            Debug.Log("Yes");
+            capsule.transform.position += (normal * depth).ToVector3();
         }
     }
 }

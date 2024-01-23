@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="修复GJKbug">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/Collision/ShapeTest/ContactTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/Collision/ShapeTest/ContactTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/Collision/Shapes/GJK/ShapeGJK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/Collision/Shapes/GJK/ShapeGJK.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +29,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/60/06cb223b/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/76/d3ebac2a/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/9a/60e533e3/Path.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/a2/1b3d4606/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/c9/04a4095d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/fa/8f6bf596/Buffer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/04/4a041135/Time.cs" root0="SKIP_HIGHLIGHTING" />
@@ -166,10 +168,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3900">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="3900" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -241,7 +243,7 @@
       <workItem from="1705868571596" duration="62000" />
       <workItem from="1705935393650" duration="13553000" />
       <workItem from="1706015980378" duration="803000" />
-      <workItem from="1706016830108" duration="425000" />
+      <workItem from="1706016830108" duration="6793000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -544,7 +546,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705868610674</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="修复GJKbug">
+      <created>1706017325954</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1706017325954</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +578,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="import中的热重载" />
     <MESSAGE value="方法定义规范" />
     <MESSAGE value="AI开启和关闭" />
     <MESSAGE value="行为树returnbug" />
@@ -594,9 +602,27 @@
     <MESSAGE value="资源载入界面，AI和仇恨值优化" />
     <MESSAGE value="AI优化" />
     <MESSAGE value="Input" />
-    <option name="LAST_COMMIT_MESSAGE" value="Input" />
+    <MESSAGE value="修复GJKbug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复GJKbug" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Physics/Collision/Shapes/GJK/ShapeGJK.cs</url>
+          <line>117</line>
+          <properties documentPath="E:\UnityProjects\WGame\Client\Assets\Scripts\Physics\Collision\Shapes\GJK\ShapeGJK.cs" initialLine="117" containingFunctionPresentation="Method 'EPA'">
+            <startOffsets>
+              <option value="4078" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4099" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Antlr4.Runtime.ParserRuleContext" memberName="children" />
