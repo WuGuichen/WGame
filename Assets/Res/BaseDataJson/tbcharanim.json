@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "默认",
+    "idle": "Idle",
+    "walk_F": "Walk_F",
+    "run_F": "Run_F"
+  },
+  {
+    "id": 2,
+    "name": "长剑动画",
+    "idle": "Longs_Idle1",
+    "walk_F": "Longs_WalkFwd",
+    "run_F": "Longs_RunFwd"
+  }
+]
