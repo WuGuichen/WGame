@@ -21,6 +21,7 @@ public sealed partial class Tables
     public TbCharacter TbCharacter {get; }
     public TbCharacterInfo TbCharacterInfo {get; }
     public TbCharAI TbCharAI {get; }
+    public TbCharAnim TbCharAnim {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
@@ -39,6 +40,8 @@ public sealed partial class Tables
         tables.Add("TbCharacterInfo", TbCharacterInfo);
         TbCharAI = new TbCharAI(loader("tbcharai")); 
         tables.Add("TbCharAI", TbCharAI);
+        TbCharAnim = new TbCharAnim(loader("tbcharanim")); 
+        tables.Add("TbCharAnim", TbCharAnim);
         PostInit();
 
         TbItem.Resolve(tables); 
@@ -48,6 +51,7 @@ public sealed partial class Tables
         TbCharacter.Resolve(tables); 
         TbCharacterInfo.Resolve(tables); 
         TbCharAI.Resolve(tables); 
+        TbCharAnim.Resolve(tables); 
         PostResolve();
     }
 
@@ -60,6 +64,7 @@ public sealed partial class Tables
         TbCharacter.TranslateText(translator); 
         TbCharacterInfo.TranslateText(translator); 
         TbCharAI.TranslateText(translator); 
+        TbCharAnim.TranslateText(translator); 
     }
     
     partial void PostInit();

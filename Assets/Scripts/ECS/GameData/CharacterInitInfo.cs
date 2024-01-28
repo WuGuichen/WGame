@@ -25,6 +25,7 @@ public struct CharacterInitInfo
     public float DetectRadius1 { get; set; }
     public float DetectRadius2 { get; set; }
     public CharAI AICfg { get; set; }
+    public CharAnim AnimCfg { get; set; }
 
     public static CharacterInitInfo Empty = new CharacterInitInfo();
 

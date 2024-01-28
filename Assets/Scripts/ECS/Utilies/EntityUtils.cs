@@ -129,8 +129,7 @@ public class EntityUtils
         int num = Random.Range(1, 3);
         num = 2;
         int charId = num;
-        int infoId = num;
-        FactoryService.GenCharacter(charId, infoId, GetRandomPositionAroundCharacter(), Quaternion.identity, out var entity);
+        FactoryService.GenCharacter(charId, GetRandomPositionAroundCharacter(), Quaternion.identity, out var entity);
     }
 
     public static void GenRandomWeapon()

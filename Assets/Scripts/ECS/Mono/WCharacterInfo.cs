@@ -9,6 +9,7 @@ public class WCharacterInfo : MonoBehaviour
     [SerializeField] private int infoID;
     [Header("初始武器")] [SerializeField] private int weaponID;
     [Header("AI配置ID")] [SerializeField] private int aiID;
+    [Header("基本动画组配置ID")] [SerializeField] private int animID;
     [SerializeField] private Job job;
     [SerializeField] private Gender gender;
     [SerializeField] private Race race;
@@ -50,7 +51,7 @@ public class WCharacterInfo : MonoBehaviour
         if (data == null)
         {
             WLogger.Error("CharacterInfoData表没有对应角色信息id：" + id);
-            return DefaultValue;
+            return new CharacterInitInfo();
         }
 
         var info = new CharacterInitInfo()
@@ -75,35 +76,12 @@ public class WCharacterInfo : MonoBehaviour
             DetectDegree = data.DetectDegree,
             DetectRadius1 = data.DetectRadius1,
             DetectRadius2 = data.DetectRadius2,
-            AICfg = GameData.Tables.TbCharAI.Get(data.AI)
+            AICfg = GameData.Tables.TbCharAI.Get(data.AI),
+            AnimCfg = GameData.Tables.TbCharAnim.Get(data.AnimGroup)
         };
         return info;
     }
     
-    private static CharacterInitInfo DefaultValue = new CharacterInitInfo()
-    {
-        job = Job.Swordman,
-        camp = Camp.Red,
-        gender = Gender.Male,
-        race = Race.Skeleton,
-        patrolPoints = defaultPatrolPoints,
-        moveSpeed = 400*0.01f,
-        rotateSpeed = 800 * 0.01f,
-        runMultiRate = 200,
-        MaxHP = 100,
-        CurHP = 100,
-        MaxMP = 100,
-        CurMP = 100,
-        ATK = 2,
-        DEF = 2,
-        Weapon = 0,
-        PatrolMul = 60*0.01f,
-        ChaseMul = 100*0.01f,
-        DetectDegree = 120,
-        DetectRadius1 = 4,
-        DetectRadius2 = 12,
-        AICfg = new CharAI(1, "DefaultAI", "BaseFSM", "OnAttack"),
-    };
     public CharacterInitInfo GetCharacterInfo()
     {
         if (infoID > 0)
@@ -111,8 +89,10 @@ public class WCharacterInfo : MonoBehaviour
             return GetCharacterInfo(infoID);
         }
 
-        if (aiID < 0)
+        if (aiID <= 0)
             aiID = 1;
+        if (animID <= 0)
+            animID = 1;
         var points = new Vector3[patrolPoints.Length];
         for (int i = 0; i < patrolPoints.Length; i++)
             points[i] = patrolPoints[i] + transform.position;
@@ -139,6 +119,7 @@ public class WCharacterInfo : MonoBehaviour
             DetectRadius1 = DetectRadius1,
             DetectRadius2 = DetectRadius2,
             AICfg = GameData.Tables.TbCharAI.Get(aiID),
+            AnimCfg = GameData.Tables.TbCharAnim.Get(animID),
         };
         return info;
     }

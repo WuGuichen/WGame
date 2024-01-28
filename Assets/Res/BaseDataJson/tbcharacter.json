@@ -4,15 +4,13 @@
     "name": "骷髅_白",
     "desc": "白色普通骷髅",
     "objectId": 1,
-    "moveSpeed": 400,
-    "rotationSpeed": 800
+    "infoId": 1
   },
   {
     "id": 2,
     "name": "骷髅_红",
     "desc": "红色普通骷髅",
     "objectId": 2,
-    "moveSpeed": 400,
-    "rotationSpeed": 800
+    "infoId": 2
   }
 ]

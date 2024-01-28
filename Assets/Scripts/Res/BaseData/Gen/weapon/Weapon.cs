@@ -35,13 +35,11 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         { if(!_json["jumpLand1"].IsNumber) { throw new SerializationException(); }  JumpLand1 = _json["jumpLand1"]; }
         { if(!_json["Spare1"].IsNumber) { throw new SerializationException(); }  Spare1 = _json["Spare1"]; }
         { if(!_json["Step1"].IsNumber) { throw new SerializationException(); }  Step1 = _json["Step1"]; }
-        { if(!_json["Walk_F"].IsString) { throw new SerializationException(); }  WalkF = _json["Walk_F"]; }
-        { if(!_json["Run_F"].IsString) { throw new SerializationException(); }  RunF = _json["Run_F"]; }
-        { if(!_json["Idle"].IsString) { throw new SerializationException(); }  Idle = _json["Idle"]; }
+        { if(!_json["animGroupId"].IsNumber) { throw new SerializationException(); }  AnimGroupId = _json["animGroupId"]; }
         PostInit();
     }
 
-    public Weapon(int id, string name, string desc, int objectId, int dropId, int localMotion, int attack1, int attack2, int attack3, int block1, int deadR1, int hitFwd1, int hitBwd1, int jump1, int jumpLand1, int Spare1, int Step1, string Walk_F, string Run_F, string Idle ) 
+    public Weapon(int id, string name, string desc, int objectId, int dropId, int localMotion, int attack1, int attack2, int attack3, int block1, int deadR1, int hitFwd1, int hitBwd1, int jump1, int jumpLand1, int Spare1, int Step1, int animGroupId ) 
     {
         this.Id = id;
         this.Name = name;
@@ -60,9 +58,7 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         this.JumpLand1 = jumpLand1;
         this.Spare1 = Spare1;
         this.Step1 = Step1;
-        this.WalkF = Walk_F;
-        this.RunF = Run_F;
-        this.Idle = Idle;
+        this.AnimGroupId = animGroupId;
         PostInit();
     }
 
@@ -103,9 +99,10 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
     public int JumpLand1 { get; private set; }
     public int Spare1 { get; private set; }
     public int Step1 { get; private set; }
-    public string WalkF { get; private set; }
-    public string RunF { get; private set; }
-    public string Idle { get; private set; }
+    /// <summary>
+    /// 基础动画组
+    /// </summary>
+    public int AnimGroupId { get; private set; }
 
     public const int __ID__ = 986069582;
     public override int GetTypeId() => __ID__;
@@ -139,9 +136,7 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         + "JumpLand1:" + JumpLand1 + ","
         + "Spare1:" + Spare1 + ","
         + "Step1:" + Step1 + ","
-        + "WalkF:" + WalkF + ","
-        + "RunF:" + RunF + ","
-        + "Idle:" + Idle + ","
+        + "AnimGroupId:" + AnimGroupId + ","
         + "}";
     }
     

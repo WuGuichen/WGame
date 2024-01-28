@@ -22,19 +22,17 @@ public sealed partial class CharacterData :  Bright.Config.BeanBase
         { if(!_json["name"].IsString) { throw new SerializationException(); }  Name = _json["name"]; }
         { if(!_json["desc"].IsString) { throw new SerializationException(); }  Desc = _json["desc"]; }
         { if(!_json["objectId"].IsNumber) { throw new SerializationException(); }  ObjectId = _json["objectId"]; }
-        { if(!_json["moveSpeed"].IsNumber) { throw new SerializationException(); }  MoveSpeed = _json["moveSpeed"]; }
-        { if(!_json["rotationSpeed"].IsNumber) { throw new SerializationException(); }  RotationSpeed = _json["rotationSpeed"]; }
+        { if(!_json["infoId"].IsNumber) { throw new SerializationException(); }  InfoId = _json["infoId"]; }
         PostInit();
     }
 
-    public CharacterData(int id, string name, string desc, int objectId, int moveSpeed, int rotationSpeed ) 
+    public CharacterData(int id, string name, string desc, int objectId, int infoId ) 
     {
         this.Id = id;
         this.Name = name;
         this.Desc = desc;
         this.ObjectId = objectId;
-        this.MoveSpeed = moveSpeed;
-        this.RotationSpeed = rotationSpeed;
+        this.InfoId = infoId;
         PostInit();
     }
 
@@ -60,13 +58,9 @@ public sealed partial class CharacterData :  Bright.Config.BeanBase
     /// </summary>
     public int ObjectId { get; private set; }
     /// <summary>
-    /// 移速(cm/s)
+    /// 角色属性数据Id
     /// </summary>
-    public int MoveSpeed { get; private set; }
-    /// <summary>
-    /// 转向速度(度/s)
-    /// </summary>
-    public int RotationSpeed { get; private set; }
+    public int InfoId { get; private set; }
 
     public const int __ID__ = -991456685;
     public override int GetTypeId() => __ID__;
@@ -87,8 +81,7 @@ public sealed partial class CharacterData :  Bright.Config.BeanBase
         + "Name:" + Name + ","
         + "Desc:" + Desc + ","
         + "ObjectId:" + ObjectId + ","
-        + "MoveSpeed:" + MoveSpeed + ","
-        + "RotationSpeed:" + RotationSpeed + ","
+        + "InfoId:" + InfoId + ","
         + "}";
     }
     

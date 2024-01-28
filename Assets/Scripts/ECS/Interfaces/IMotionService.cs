@@ -3,7 +3,7 @@ public interface IMotionService
     void StartMotion(int motionID);
     void UpdateMotion();
     void SwitchMotion(int UID);
-    void SetLocalMotion(string key, string clipName);
+    void SetLocalMotion(int animGroup);
     void ResetMotion();
     GameEntity LinkEntity { get; }
     MotionAnimationProcessor AnimProcessor { get; }

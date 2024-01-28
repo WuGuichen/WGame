@@ -17,8 +17,6 @@
     "jumpLand1": 20008,
     "Spare1": 20006,
     "Step1": 20004,
-    "Walk_F": "Longs_WalkFwd",
-    "Run_F": "Longs_RunFwd",
-    "Idle": "Longs_Idle1"
+    "animGroupId": 2
   }
 ]

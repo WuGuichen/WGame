@@ -21,7 +21,8 @@
     "chaseMul": 100,
     "detectDegree": 120,
     "detectRadius1": 4,
-    "detectRadius2": 12
+    "detectRadius2": 12,
+    "animGroup": 1
   },
   {
     "id": 2,
@@ -45,6 +46,7 @@
     "chaseMul": 100,
     "detectDegree": 120,
     "detectRadius1": 4,
-    "detectRadius2": 12
+    "detectRadius2": 12,
+    "animGroup": 1
   }
 ]

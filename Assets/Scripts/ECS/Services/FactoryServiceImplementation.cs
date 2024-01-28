@@ -155,7 +155,7 @@ public class FactoryServiceImplementation : IFactoryService
         _gameEntityDB.Cancel(instanceID);
     }
 
-    public void GenCharacter(int charID, int infoID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback = null)
+    public void GenCharacter(int charID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback = null)
     {
         var data = GameData.Tables.TbCharacter[charID];
         if (data == null)
@@ -165,6 +165,7 @@ public class FactoryServiceImplementation : IFactoryService
             return;
         }
 
+        int infoID = data.InfoId;
         int id = characterBaseID + genCharacterNum;
         genCharacterNum++;
         entity = _gameContext.CreateEntity();
@@ -431,9 +432,7 @@ public class FactoryServiceImplementation : IFactoryService
         }
 
         var motion = entity.linkMotion.Motion.motionService.service;
-        motion.SetLocalMotion("Walk_F", data.WalkF);
-        motion.SetLocalMotion("Run_F", data.RunF);
-        motion.SetLocalMotion("Idle", data.Idle);
+        motion.SetLocalMotion(data.AnimGroupId);
         var motionEntt = entity.linkMotion.Motion;
         motionEntt.ReplaceMotionAttack1(data.Attack1);
         motionEntt.ReplaceMotionAttack2(data.Attack2);

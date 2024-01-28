@@ -9,7 +9,7 @@ public interface IFactoryService
     public void LoadAnimationClip(string clipName, Action<AnimationClip> callback);
     public EventNodeScriptableObject GetMotion(int motionID);
     public void Dispose();
-    public void GenCharacter(int charID, int infoID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback =null);
+    public void GenCharacter(int charID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback =null);
     public void GenCharacter(GameObject obj);
 
     public void GenWeaponEntity(int weaponID, out WeaponEntity weapon);

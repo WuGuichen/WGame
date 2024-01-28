@@ -40,10 +40,11 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         { if(!_json["detectDegree"].IsNumber) { throw new SerializationException(); }  DetectDegree = _json["detectDegree"]; }
         { if(!_json["detectRadius1"].IsNumber) { throw new SerializationException(); }  DetectRadius1 = _json["detectRadius1"]; }
         { if(!_json["detectRadius2"].IsNumber) { throw new SerializationException(); }  DetectRadius2 = _json["detectRadius2"]; }
+        { if(!_json["animGroup"].IsNumber) { throw new SerializationException(); }  AnimGroup = _json["animGroup"]; }
         PostInit();
     }
 
-    public CharacterInfoData(int id, string name, int weapon, int AI, Character.Job job, Character.Gender gender, Character.Race race, Character.Camp camp, int moveSpeed, int rotationSpeed, int runSpeedMul, int maxHP, int curHP, int maxMP, int curMP, int ATK, int DEF, int patrolMul, int chaseMul, int detectDegree, float detectRadius1, float detectRadius2 ) 
+    public CharacterInfoData(int id, string name, int weapon, int AI, Character.Job job, Character.Gender gender, Character.Race race, Character.Camp camp, int moveSpeed, int rotationSpeed, int runSpeedMul, int maxHP, int curHP, int maxMP, int curMP, int ATK, int DEF, int patrolMul, int chaseMul, int detectDegree, float detectRadius1, float detectRadius2, int animGroup ) 
     {
         this.Id = id;
         this.Name = name;
@@ -67,6 +68,7 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         this.DetectDegree = detectDegree;
         this.DetectRadius1 = detectRadius1;
         this.DetectRadius2 = detectRadius2;
+        this.AnimGroup = animGroup;
         PostInit();
     }
 
@@ -145,6 +147,10 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
     /// 二级半径
     /// </summary>
     public float DetectRadius2 { get; private set; }
+    /// <summary>
+    /// 动画配置
+    /// </summary>
+    public int AnimGroup { get; private set; }
 
     public const int __ID__ = -1485248607;
     public override int GetTypeId() => __ID__;
@@ -183,6 +189,7 @@ public sealed partial class CharacterInfoData :  Bright.Config.BeanBase
         + "DetectDegree:" + DetectDegree + ","
         + "DetectRadius1:" + DetectRadius1 + ","
         + "DetectRadius2:" + DetectRadius2 + ","
+        + "AnimGroup:" + AnimGroup + ","
         + "}";
     }
     

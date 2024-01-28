@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Animancer;
+using BaseData;
 using CleverCrow.Fluid.BTs.Trees;
 using Entitas.Unity;
 using UnityEngine;
@@ -32,8 +34,6 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
     private float hasCheckCodeTime = 0f;
     #endregion
 
-    // private List<WtEventData> triggerEventList;
-
     private MotionAnimationProcessor animationProcessor;
     public MotionAnimationProcessor AnimProcessor => animationProcessor;
 
@@ -43,21 +43,24 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
 
     public BehaviorTree CurShowBehaviorTree;
     public int curFSMState;
+
+    private CharacterData _characterData;
     
     public IMotionService OnInit(MotionEntity entity)
     {
         this.entity = entity;
         this.gameObject.Link(entity);
         this.character = this.entity.linkCharacter.Character;
+        // _characterData = GameData.Tables.TbCharacter.Get(character.characterInfo.value.);
         if (animationProcessor != null)
             return this;
-        var anim = GetComponent<Animator>();
-        var _controller = anim.runtimeAnimatorController as AnimatorOverrideController;
-        var newController = new AnimatorOverrideController(_controller);
-        anim.runtimeAnimatorController = newController;
+        // var anim = GetComponent<Animator>();
+        // var _controller = anim.runtimeAnimatorController as AnimatorOverrideController;
+        // var newController = new AnimatorOverrideController(_controller);
+        // anim.runtimeAnimatorController = newController;
 
         _factoryService = Contexts.sharedInstance.meta.factoryService.instance;
-        animationProcessor = new MotionAnimationProcessor(anim, _factoryService);
+        animationProcessor = new MotionAnimationProcessor(GetComponent<AnimancerComponent>(), _factoryService);
         animTriggerProcessor = new MotionAnimTriggerProcessor(this);
         eventTriggerProcessor = new MotionEventTriggerProcessor(this, character);
         
@@ -106,19 +109,20 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
         // }
     }
 
-    public void SetLocalMotion(string key, string clipName)
+    public void SetLocalMotion(int animGroup)
     {
-        _factoryService.LoadAnimationClip(clipName, clip =>
-        {
-            animationProcessor.SetControllerClip(key, clip);
-        });
+        var cfg = GameData.Tables.TbCharAnim.Get(animGroup);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Idle, cfg.Idle);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Walk_F, cfg.WalkF);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Run_F, cfg.RunF);
     }
 
     public void ResetMotion()
     {
-        animationProcessor.SetControllerClip("Walk_F", null);
-        animationProcessor.SetControllerClip("Run_F", null);
-        animationProcessor.SetControllerClip("Idle", null);
+        // animationProcessor.SetControllerClip("Walk_F", null);
+        // animationProcessor.SetControllerClip("Run_F", null);
+        // animationProcessor.SetControllerClip("Idle", null);
+        // animationProcessor.RefreshAnimClip();
         entity.ReplaceMotionAttack1(MotionIDs.Attack1_0);
         if(entity.hasMotionAttack2)
             entity.RemoveMotionAttack2();

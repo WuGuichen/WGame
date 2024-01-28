@@ -75,7 +75,7 @@ namespace TWY.Physics
             // 检查hitPoint是否在box中
             if (curNode.box.IntersectSphere(sphere, out float sqrDist))
             {
-                if (curNode.IsLeaf)
+                if (curNode.IsLeaf && curNode.Objects.Count > 0)
                 {
                     hitList.Add(adapter.GetHitInfo(curNode.Objects[0], sqrDist));
                 }

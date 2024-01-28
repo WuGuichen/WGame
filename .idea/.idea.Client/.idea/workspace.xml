@@ -4,10 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="修复GJKbug">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/Collision/ShapeTest/ContactTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/Collision/ShapeTest/ContactTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/Collision/Shapes/GJK/ShapeGJK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/Collision/Shapes/GJK/ShapeGJK.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacter.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacterinfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacterinfo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/weapon_tbweapon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/weapon_tbweapon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/CharacterInitInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/CharacterInitInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IFactoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IFactoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IMotionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IMotionService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Motion/MotionAnimationProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Motion/MotionAnimationProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/MotionServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/MotionServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/WBVH/WBVH.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/WBVH/WBVH.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/Tables.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/Tables.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/weapon/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/weapon/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/.cache.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/.cache.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/__tables__.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/__tables__.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/animationClips.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/animationClips.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/characterInfoData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/characterInfoData.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/characters.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/characters.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/objectPool.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/objectPool.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/weapons.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/weapons.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,10 +193,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3900">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12628">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3900" />
+      <option name="pid" value="12628" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -243,7 +268,8 @@
       <workItem from="1705868571596" duration="62000" />
       <workItem from="1705935393650" duration="13553000" />
       <workItem from="1706015980378" duration="803000" />
-      <workItem from="1706016830108" duration="6793000" />
+      <workItem from="1706016830108" duration="7056000" />
+      <workItem from="1706350556951" duration="8294000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -553,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706017325954</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="EPA，有bug">
+      <created>1706024122747</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1706024122747</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="方法定义规范" />
     <MESSAGE value="AI开启和关闭" />
     <MESSAGE value="行为树returnbug" />
     <MESSAGE value="发现到丢失的AI过程实例" />
@@ -603,7 +635,8 @@
     <MESSAGE value="AI优化" />
     <MESSAGE value="Input" />
     <MESSAGE value="修复GJKbug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复GJKbug" />
+    <MESSAGE value="EPA，有bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="EPA，有bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
