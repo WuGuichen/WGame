@@ -1516,13 +1516,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoID: 0
   weaponID: 1
-  aiID: 0
-  animID: 0
+  aiID: 1
+  animID: 1
   job: 1
   gender: 1
   race: 1
   camp: 1
-  moveSpeed: 400
+  moveSpeed: 800
   rotationSpeed: 800
   runSpeedRate: 200
   patrolPoints:
@@ -1538,9 +1538,9 @@ MonoBehaviour:
   DEF: 9
   PatrolMul: 60
   ChaseMul: 100
-  DetectDegree: 0
-  DetectRadius1: 0
-  DetectRadius2: 0
+  DetectDegree: 120
+  DetectRadius1: 4
+  DetectRadius2: 12
   showPatrolPoint: 0
   showDetectArea: 0
 --- !u!114 &8779089287030269880
@@ -2093,7 +2093,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6834575256083877888}
-  - component: {fileID: 2586692009536664482}
   m_Layer: 9
   m_Name: FocusPoint
   m_TagString: Untagged
@@ -2116,27 +2115,6 @@ Transform:
   m_Father: {fileID: 9029087133655704347}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2586692009536664482
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7116656893139414731}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7157238090852925320
 GameObject:
   m_ObjectHideFlags: 0

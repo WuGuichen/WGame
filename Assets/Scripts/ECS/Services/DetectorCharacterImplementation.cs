@@ -135,7 +135,7 @@ public class DetectorCharacterImplementation : IDetectorService
 
     public void UpdateSensorDrawer()
     {
-        if (_character.isCampRed)
+        if (_character.isCampRed && hateInfo.MaxHateEntityRank >= 0)
         {
             var tmp = new CircleInfo()
             {

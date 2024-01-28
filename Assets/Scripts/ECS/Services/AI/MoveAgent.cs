@@ -67,7 +67,7 @@ public class MoveAgent
         if (Vector3.Angle(fwd, _targetDirRotation) > 0.1f)
         {
             needRotate = true;
-            StopMove();
+            // StopMove();
         }
 
         var pos = _transform.position;
@@ -114,7 +114,7 @@ public class MoveAgent
         if (angle > 0.1f)
         {
             reachAngle = false;
-            StopMove();
+            // StopMove();
         }
 
         // RotateToTarget
@@ -173,7 +173,7 @@ public class MoveAgent
         if (Vector3.Angle(fwd, _targetDirRotation) > 0.1f)
         {
             needRotate = true;
-            StopMove();
+            // StopMove();
         }
 
         var pos = _transform.position;
@@ -307,7 +307,7 @@ public class MoveAgent
     }
     public void SetPatrolPointTarget()
     {
-        StopMove();
+        // StopMove();
         _tarPos = GetOtherPatrolPoint(_curPatrolIndex);
     }
 
@@ -328,7 +328,7 @@ public class MoveAgent
     {
         if (MoveToTarget())
         {
-            StopMove();
+            // StopMove();
             _service.TriggerFSM(StateDefine.ReachTarget);
         }
     }

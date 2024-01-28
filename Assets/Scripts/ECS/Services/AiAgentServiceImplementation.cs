@@ -171,6 +171,10 @@ public partial class AiAgentServiceImplementation : IAiAgentService
 
     public void UpdateFSM()
     {
+        if (IsActing)
+        {
+            MoveAgent.StopMove();
+        }
         if (!_entity.isDeadState && !_entity.isCamera)
         {
             fsmAgent.SetFSMState(true);

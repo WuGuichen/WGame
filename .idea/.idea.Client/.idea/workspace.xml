@@ -4,35 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="新的动画系统">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacter.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacterinfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharacterinfo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/weapon_tbweapon.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/weapon_tbweapon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/Character_Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/Character_Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/CharacterInitInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/CharacterInitInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IFactoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IFactoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IMotionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IMotionService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/MainModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/MainModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Motion/MotionAnimationProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Motion/MotionAnimationProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/MotionServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/MotionServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Physics/WBVH/WBVH.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Physics/WBVH/WBVH.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/Tables.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/Tables.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/weapon/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/weapon/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/.cache.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/.cache.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/__tables__.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/__tables__.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/animationClips.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/animationClips.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/characterInfoData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/characterInfoData.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/characters.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/characters.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/objectPool.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/objectPool.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/weapons.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/weapons.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/MoveAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/MoveAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/DetectorCharacterImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/DetectorCharacterImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/MoveCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/MoveCharacterSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdatePlayerInput/UpdateMoveDirectionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdatePlayerInput/UpdateMoveDirectionSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Motion/ProcessMotionSignalUpdateSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Motion/ProcessMotionSignalUpdateSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Motion/ProcessMotionStartSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Motion/ProcessMotionStartSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnFight.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnFight.wl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +119,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.tuyoogame.yooasset@2.1.0/Runtime/OperationSystem/GameAsyncOperation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.21.19/Tests/Editor/AnalyzeRules/CheckSceneDupeDependenciesTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/UnityProjects/WGame/Client/Luban/.cache.meta" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -269,7 +256,7 @@
       <workItem from="1705935393650" duration="13553000" />
       <workItem from="1706015980378" duration="803000" />
       <workItem from="1706016830108" duration="7056000" />
-      <workItem from="1706350556951" duration="8294000" />
+      <workItem from="1706350556951" duration="12066000" />
     </task>
     <task id="LOCAL-00001" summary="索敌相关数据和区域显示">
       <created>1701521524769</created>
@@ -586,7 +573,21 @@
       <option name="project" value="LOCAL" />
       <updated>1706024122747</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="新的动画系统">
+      <created>1706436364111</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1706436364111</updated>
+    </task>
+    <task id="LOCAL-00047" summary="新的动画系统">
+      <created>1706436383994</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1706436383994</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +612,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="AI开启和关闭" />
     <MESSAGE value="行为树returnbug" />
     <MESSAGE value="发现到丢失的AI过程实例" />
     <MESSAGE value="去除左值右值区别，使用lua同款and or" />
@@ -636,7 +636,8 @@
     <MESSAGE value="Input" />
     <MESSAGE value="修复GJKbug" />
     <MESSAGE value="EPA，有bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="EPA，有bug" />
+    <MESSAGE value="新的动画系统" />
+    <option name="LAST_COMMIT_MESSAGE" value="新的动画系统" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

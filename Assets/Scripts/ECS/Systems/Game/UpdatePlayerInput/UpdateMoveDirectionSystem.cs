@@ -9,17 +9,17 @@ public class UpdateMoveDirectionSystem : IExecuteSystem
     private InputContext _inputContext;
     private float curDup;
     private float curDright;
-    private readonly IGroup<GameEntity> _cameraGroup;
+    private readonly IGroup<GameEntity> _movingGroup;
     
     public UpdateMoveDirectionSystem(Contexts contexts)
     {
         _inputContext = contexts.input;
-        _cameraGroup = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Camera, GameMatcher.GameViewService));
+        _movingGroup = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Moveable));
     }
 
     public void Execute()
     {
-        foreach (var entity in _cameraGroup)
+        foreach (var entity in _movingGroup)
         {
             UpdateDirection(entity);
         }
@@ -31,6 +31,7 @@ public class UpdateMoveDirectionSystem : IExecuteSystem
         {
             if (entity.aiAgent.service.IsActing)
             {
+                entity.isMoving = entity.moveDirection.value != Vector3.zero;
                 return;
             }
         }

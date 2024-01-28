@@ -301,10 +301,7 @@ namespace WGame.UI
 					if (isGameStart)
 						break;
 					EventCenter.Trigger(EventDefine.OnGameStart);
-					Timer.Register(0.1f, () =>
-					{
 						ActionHelper.DoSetCharacterCameraByID(10000001);
-					});
 					break;
 				case 1:
 					// UIManager.OpenView(VDB.CommandView);

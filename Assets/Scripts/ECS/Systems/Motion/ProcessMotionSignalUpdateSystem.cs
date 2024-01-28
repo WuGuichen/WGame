@@ -48,16 +48,6 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
             {
                 entity.isPrepareDefenseState = true;
             }
-            else
-            {
-                if (entity.isPrepareDefenseState)
-                {
-                    WTriggerMgr.Inst.TriggerEvent(MainTypeDefine.InputSignal, InputSignalSubType.Defense,
-                        InputSignalEvent.WasReleased, new WTrigger.Context(entity.entityID.id));
-                }
-
-                entity.isPrepareDefenseState = false;
-            }
         }
     }
 
@@ -111,10 +101,15 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
             {
                 leftSignalTime = entity.signalDefense.time - deltaTime;
                 if (leftSignalTime < 0)
+                {
                     entity.RemoveSignalDefense();
+                    WTriggerMgr.Inst.TriggerEvent(MainTypeDefine.InputSignal, InputSignalSubType.Defense,
+                        InputSignalEvent.WasReleased, new WTrigger.Context(entity.entityID.id));
+                }
                 else
                     entity.ReplaceSignalDefense(leftSignalTime);
             }
+            
         }
     }
 }

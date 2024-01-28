@@ -71,6 +71,7 @@ public class MotionAnimationProcessor
         this.transform = anim.transform;
         parentTrans = transform.parent;
         this.animancer = anim;
+        animancer.UpdateMode = AnimatorUpdateMode.AnimatePhysics;
         key1 = Animator.StringToHash("Base Layer.Motion1");
         key2 = Animator.StringToHash("Base Layer.Motion2");
         key3 = Animator.StringToHash("Base Layer.Motion3");
@@ -308,7 +309,7 @@ public class MotionAnimationProcessor
     {
         if (value < 0)
             value = 0;
-        // anim.speed = value;
+        animancer.Playable.Speed = value;
     }
     
     public void UpdateRootMotion(bool clear = false)

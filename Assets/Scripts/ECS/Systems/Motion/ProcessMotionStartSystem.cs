@@ -46,7 +46,7 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
             character.RemoveSignalStep();
         if (character.hasSignalLocalMotion)
             character.RemoveSignalLocalMotion();
-        if (character.hasSignalDefense)
+        if (character.hasSignalDefense && entity.motionStart.UID != entity.motionDefense.UID)
             character.RemoveSignalDefense();
         
         character.ReplaceAnimMoveMulti(100);
