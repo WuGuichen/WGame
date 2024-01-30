@@ -44,6 +44,10 @@ public partial class ActionHelper
                 entity.isCamera = false;
                 if (entity.hasUIHeadPad)
                     entity.uIHeadPad.service.IsActive = true;
+                if (entity.hasFocusEntity)
+                {
+                    entity.gameViewService.service.BeFocused(false);
+                }
             }
         }
         var entt = Contexts.sharedInstance.game.GetEntityWithEntityID(uid);

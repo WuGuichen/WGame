@@ -5,9 +5,6 @@ using UnityEngine;
 public class DetectorCharacterImplementation : IDetectorService
 {
     private readonly Transform _model;
-    private Color _colorFocus = Color.red*0.8f;
-    private Color _colorAlert = Color.blue *0.8f;
-    private Color _colorDetect = Color.yellow*0.8f;
     private Color[] _colorList;
     private readonly DetectorDrawer detectorDrawer;
     private readonly HatePointInfo hateInfo;
@@ -128,16 +125,24 @@ public class DetectorCharacterImplementation : IDetectorService
 
         _colorList = new Color[]
         {
-            Color.white*0.8f,
-            Color.yellow*0.8f,
-            Color.magenta*0.8f,
-            Color.red*0.8f,
+            Color.white*0.4f,
+            Color.yellow*0.4f,
+            Color.magenta*0.4f,
+            Color.red*0.4f,
         };
     }
 
     public void UpdateSensorDrawer()
     {
-        if (_character.isCampRed && hateInfo.MaxHateEntityRank >= 0)
+        if (_character.isDeadState)
+        {
+            detectorDrawer.EndDraw(DetectorDrawer.Detect);
+            detectorDrawer.EndDraw(DetectorDrawer.Spotted);
+            detectorDrawer.EndDraw(DetectorDrawer.Warning);
+            detectorDrawer.EndDraw(DetectorDrawer.Sensor);
+            return;
+        }
+        if (hateInfo.MaxHateEntityRank >= 0)
         {
             var tmp = new CircleInfo()
             {
@@ -174,22 +179,60 @@ public class DetectorCharacterImplementation : IDetectorService
             detectorDrawer.EndDraw(DetectorDrawer.Warning);
         }
     }
+    
+    private void RefreshMaxHateTarget(float deltaTime)
+    {
+        if (hateInfo.HasHateTarget)
+        {
+            var hateEntity = EntityUtils.GetGameEntity(hateInfo.MaxHateEntityId);
+            if (CheckTargetIsAlive(hateEntity))
+            {
+                var dist = DetectMgr.Inst.GetDistance(hateEntity, _character);
+                var dir = hateEntity.position.value - _model.position;
+                var normalDir = dir / dist;
+                var angle = normalDir.GetAngle(_model.forward);
+                // 距离仇恨值增加
+                AddDistanceHatePoint(hateInfo.MaxHateEntityId, dist * dist, angle, deltaTime);
+            }
+        }
+    }
 
     public void UpdateDetect(float deltaTime)
     {
+        RefreshMaxHateTarget(deltaTime);
         if (detectList.Count > 0)
         {
             for (int i = 0; i < detectList.Count; i++)
             {
                 var point = detectList[i];
-                var dir = point.Position - _model.position;
-                var normalDir = dir / point.Dist;
-                var angle = normalDir.GetAngle(_model.forward);
-                // 距离仇恨值增加
-                AddDistanceHatePoint(point.EntityId, point.SqrDist, angle, deltaTime);
+                var target = EntityUtils.GetGameEntity(point.EntityId);
+                if(point.EntityId == hateInfo.MaxHateEntityId)
+                    continue;
+                if (CheckTargetIsAlive(target))
+                {
+                    var dir = point.Position - _model.position;
+                    var normalDir = dir / point.Dist;
+                    var angle = normalDir.GetAngle(_model.forward);
+                    // 距离仇恨值增加
+                    AddDistanceHatePoint(point.EntityId, point.SqrDist, angle, deltaTime);
+                }
             }
             detectList.Clear();
         }
+
+        hateInfo.CheckIsHasHateTarget();
+    }
+
+    private bool CheckTargetIsAlive(GameEntity target, bool clearHate = true)
+    {
+        if (target.isDeadState)
+        {
+            if(clearHate)
+                hateInfo.Set(target.instanceID.ID, 0, 0);
+            return false;
+        }
+
+        return true;
     }
 
     public void AddDetectTarget(HitInfo hitInfo)

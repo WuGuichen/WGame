@@ -15,12 +15,6 @@ public class HatePointInfo
             Rank = rank;
             Value = value;
         }
-        // public HateInfo(int id, int rank, float value, NativeHeapIndex index)
-        // {
-        //     ID = id;
-        //     Rank = rank;
-        //     Value = value;
-        // }
 
         public static HateInfo NULL = new HateInfo(-1, -1, 0);
     }
@@ -31,14 +25,13 @@ public class HatePointInfo
     private readonly Dictionary<int, HateInfo> _hatePointDict = new();
     
     private HateInfo maxHateInfo = HateInfo.NULL;
+    public bool HasHateTarget => maxHateInfo.ID != HateInfo.NULL.ID;
     public int MaxHateEntityId => maxHateInfo.ID;
     public float MaxHateEntityPoint => maxHateInfo.Value;
     public int MaxHateEntityRank => maxHateInfo.Rank;
 
     private Action OnHateRankUpdate;
     private Action OnHatePointUpdate;
-
-    // private NativeHeap<HateInfo, MaxHate> _hateHeap = new NativeHeap<HateInfo, MaxHate>(Allocator.Persistent);
 
     private void RefreshMaxHate(int id, int rank, float value)
     {
@@ -204,10 +197,24 @@ public class HatePointInfo
         OnHatePointUpdate += onPointUpdate;
     }
 
+    public void CheckIsHasHateTarget()
+    {
+        if (HasHateTarget)
+        {
+            if (maxHateInfo.Rank == HateRankType.Null)
+            {
+                maxHateInfo = HateInfo.NULL;
+                OnHateRankUpdate.Invoke();
+                OnHatePointUpdate.Invoke();
+            }
+        }
+    }
+
     public void Dispose()
     {
         // _hateHeap.Dispose();
         OnHateRankUpdate = null;
         OnHatePointUpdate = null;
     }
+    
 }

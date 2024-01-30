@@ -228,16 +228,19 @@ public class EntityUtils
         {
             if (entity.hasFocusEntity)
             {
-                entity.focusEntity.entity.gameViewService.service.BeFocused(false);
+                if(entity.isCamera)
+                    entity.focusEntity.entity.gameViewService.service.BeFocused(false);
             }
-            target.gameViewService.service.BeFocused(true);
+            if(entity.isCamera)
+                target.gameViewService.service.BeFocused(true);
             entity.ReplaceFocusEntity(target);
         }
         else
         {
             if (entity.hasFocusEntity)
             {
-                entity.focusEntity.entity.gameViewService.service.BeFocused(false);
+                if(entity.isCamera)
+                    entity.focusEntity.entity.gameViewService.service.BeFocused(false);
                 entity.RemoveFocusEntity();
             }
         }

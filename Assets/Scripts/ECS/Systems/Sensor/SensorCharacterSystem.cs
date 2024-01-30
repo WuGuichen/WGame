@@ -32,6 +32,8 @@ public class SensorCharacterSystem : IExecuteSystem
                 DetectMgr.Inst.UpdateDistance(tar.instanceID.ID, entity.instanceID.ID, dist);
                 tar.linkSensor.Sensor.detectorCharacterService.service.AddDetectTarget(new HitInfo(entity.instanceID.ID,
                     position, dist, hitInfos[i].SqrDist));
+                entity.linkSensor.Sensor.detectorCharacterService.service.AddDetectTarget(new HitInfo(tar.instanceID.ID,
+                    tar.position.value, dist, hitInfos[i].SqrDist));
             }
         }
         
