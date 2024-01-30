@@ -2,14 +2,15 @@
 
 SELECTOR{
     DO{
-        if waitTarget {
-            distMin = 200
-            isReach = S_DoMoveToEntity(waitTarget, distMin)
+        if E_MAX_HATE_ENTITY {
+            distMin = 100
+            isReach = S_DoMoveToEntity(E_MAX_HATE_ENTITY, distMin)
             if(isReach)
             {
                 -- 到达攻击范围内
                 print("Attack")
-                @E_SELF:Signal(SIG_DEFENSE, 100)
+--                @E_SELF:Signal(SIG_DEFENSE, 100)
+                @E_SELF:Signal(SIG_ATTACK, 10)
                 return FAIL
             }
         }

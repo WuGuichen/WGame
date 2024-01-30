@@ -124,10 +124,10 @@ public class EntityUtils
         }
     }
 
-    public static void GenRandomCharacter()
+    public static void GenCharacter(int type = 2)
     {
         int num = Random.Range(1, 3);
-        num = 2;
+        num = type;
         int charId = num;
         FactoryService.GenCharacter(charId, GetRandomPositionAroundCharacter(), Quaternion.identity, out var entity);
     }

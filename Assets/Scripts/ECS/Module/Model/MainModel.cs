@@ -280,12 +280,15 @@ namespace WGame.UI
 					EntityUtils.SelectRandomCharacter();
 					break;
 				case 1:
-					EntityUtils.GenRandomCharacter();
+					EntityUtils.GenCharacter(2);
 					break;
 				case 2:
-					EntityUtils.GenRandomWeapon();
+					EntityUtils.GenCharacter(1);
 					break;
 				case 3:
+					EntityUtils.GenRandomWeapon();
+					break;
+				case 4:
 					var entity = EntityUtils.GetCameraEntity();
 					EntityUtils.DropEntityWeapon(entity);
 					break;

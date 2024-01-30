@@ -45,6 +45,13 @@ public class CachedDefinition : ISharedDefinition
         idxFloat++;
         return new Symbol(cachedId, BaseDefinition.TYPE_FLOAT, value.ToString());
     }
+    
+    public Symbol Define(float value, int cacheId)
+    {
+        var index = cacheId - FloatNum;
+        listFloat[index] = value;
+        return new Symbol(cacheId, BaseDefinition.TYPE_FLOAT, value.ToString());
+    }
 
     public Symbol Define(Method value)
     {
@@ -60,6 +67,13 @@ public class CachedDefinition : ISharedDefinition
         idxMethod++;
         return new Symbol(cachedId, BaseDefinition.TYPE_METHOD, value.Name);
     }
+    
+    public Symbol Define(Method value, int cacheId)
+    {
+        var index = cacheId - MethodNum;
+        listMethod[index] = value;
+        return new Symbol(cacheId, BaseDefinition.TYPE_METHOD, value.Name);
+    }
 
     public Symbol Define(List<Symbol> value)
     {
@@ -74,6 +88,13 @@ public class CachedDefinition : ISharedDefinition
         int cachedId = idxTable + TableNum;
         idxTable++;
         return new Symbol(cachedId, BaseDefinition.TYPE_TABLE, "table");
+    }
+    
+    public Symbol Define(List<Symbol> value, int cacheId)
+    {
+        var index = cacheId - TableNum;
+        listTable[index] = value;
+        return new Symbol(cacheId, BaseDefinition.TYPE_TABLE, "table");
     }
 
     public float GetFloat(int key)

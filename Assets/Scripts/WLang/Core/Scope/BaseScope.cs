@@ -30,4 +30,9 @@ public class BaseScope : Scope
 
         return Symbol.NULL;
     }
+
+    public bool TryResolveSelf(string name, out Symbol symbol)
+    {
+        return symbols.TryGetValue(name, out symbol);
+    }
 }

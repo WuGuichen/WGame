@@ -4,4 +4,5 @@ public interface Scope
     Scope EnclosingScope { get; }
     void Define(string name, Symbol sym);
     Symbol Resolve(string name);
+    bool TryResolveSelf(string name, out Symbol symbol);
 }

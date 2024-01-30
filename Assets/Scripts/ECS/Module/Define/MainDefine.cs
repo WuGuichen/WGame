@@ -14,7 +14,7 @@ namespace WGame.UI
 		
 		public string[] mainTopBtnListNames = new string[]
 		{
-			"选中随机角色", "生成随机角色", "生成武器", "丢弃武器"
+			"选中随机角色","生成红色", "生成白色", "生成武器", "丢弃武器"
 		};
 
 		public float joystickDeadRadiusRate = 0.2f;

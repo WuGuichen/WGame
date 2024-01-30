@@ -120,9 +120,11 @@ public class DetectorCharacterImplementation : IDetectorService
         hateInfo.RegisterOnHateRankChanged((() =>
         {
             vm.Set("E_MAX_HATE_RANK", info.MaxHateEntityRank);
-            vm.Set("E_MAX_HATE_POINT", info.MaxHateEntityPoint);
             vm.Set("E_MAX_HATE_ENTITY", info.MaxHateEntityId);
-        }));
+        }), () =>
+        {
+            vm.Set("E_MAX_HATE_POINT", info.MaxHateEntityPoint);
+        });
 
         _colorList = new Color[]
         {

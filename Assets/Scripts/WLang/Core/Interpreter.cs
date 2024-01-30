@@ -204,6 +204,21 @@ public class Interpreter : WLangBaseVisitor<Symbol>
     public void Define(string name, List<Symbol> value, bool cache = false)
     {
         currentScope.Define(name, _def.Define(value, cache));
+        if (cache)
+        {
+            if (currentScope.TryResolveSelf(name, out var sym))
+            {
+                currentScope.Define(name, _def.Cached.Define(value, sym.Value));
+            }
+            else
+            {
+                currentScope.Define(name, _def.Define(value, cache));
+            }
+        }
+        else
+        {
+            currentScope.Define(name, _def.Define(value, cache));
+        }
     }
     
     public void Define(string name, float[] value, bool cache = false)
@@ -211,7 +226,26 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         var list = new List<Symbol>();
         for(int i = 0; i < value.Length; i++)
             list.Add(_def.Define(value[i], cache));
-        currentScope.Define(name, _def.Define(list, cache));
+        if (cache)
+        {
+            if (currentScope.TryResolveSelf(name, out var sym))
+            {
+                var symList = _def.GetTable(sym.Value);
+                for (int i = 0; i < symList.Count; i++)
+                {
+                    _def.Cached.ReleaseFloat(symList[i].Value);
+                }
+                currentScope.Define(name, _def.Cached.Define(list, sym.Value));
+            }
+            else
+            {
+                currentScope.Define(name, _def.Define(list, cache));
+            }
+        }
+        else
+        {
+            currentScope.Define(name, _def.Define(list, cache));
+        }
     }
     
     public void Define(string name, int[] value, bool cache = false)
@@ -219,12 +253,40 @@ public class Interpreter : WLangBaseVisitor<Symbol>
         var list = new List<Symbol>();
         for(int i = 0; i < value.Length; i++)
             list.Add(new Symbol(value[i]));
-        currentScope.Define(name, _def.Define(list, cache));
+        if (cache)
+        {
+            if (currentScope.TryResolveSelf(name, out var sym))
+            {
+                currentScope.Define(name, _def.Cached.Define(list, sym.Value));
+            }
+            else
+            {
+                currentScope.Define(name, _def.Define(list, cache));
+            }
+        }
+        else
+        {
+            currentScope.Define(name, _def.Define(list, cache));
+        }
     }
     
     public void Define(string name, float value, bool cache = false)
     {
-        currentScope.Define(name, _def.Define(value, cache));
+        if (cache)
+        {
+            if (currentScope.TryResolveSelf(name, out var sym))
+            {
+                currentScope.Define(name, _def.Cached.Define(value, sym.Value));
+            }
+            else
+            {
+                currentScope.Define(name, _def.Define(value, cache));
+            }
+        }
+        else
+        {
+            currentScope.Define(name, _def.Define(value, cache));
+        }
     }
     
     public void Define(string name, int value)
