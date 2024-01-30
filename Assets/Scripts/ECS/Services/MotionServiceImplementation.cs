@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using Animancer;
 using BaseData;
 using CleverCrow.Fluid.BTs.Trees;
 using Entitas.Unity;
 using UnityEngine;
 using Motion;
 
+[RequireComponent(typeof(MotionAnimationProcessor))]
+[RequireComponent(typeof(Animator))]
 public class MotionServiceImplementation : MonoBehaviour, IMotionService
 {
     private IFactoryService _factoryService;
@@ -52,15 +52,12 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
         this.gameObject.Link(entity);
         this.character = this.entity.linkCharacter.Character;
         // _characterData = GameData.Tables.TbCharacter.Get(character.characterInfo.value.);
-        if (animationProcessor != null)
+        if (animTriggerProcessor != null)
             return this;
-        // var anim = GetComponent<Animator>();
-        // var _controller = anim.runtimeAnimatorController as AnimatorOverrideController;
-        // var newController = new AnimatorOverrideController(_controller);
-        // anim.runtimeAnimatorController = newController;
 
         _factoryService = Contexts.sharedInstance.meta.factoryService.instance;
-        animationProcessor = new MotionAnimationProcessor(GetComponent<AnimancerComponent>(), _factoryService);
+        animationProcessor = GetComponent<MotionAnimationProcessor>();
+        animationProcessor.OnInit();
         animTriggerProcessor = new MotionAnimTriggerProcessor(this);
         eventTriggerProcessor = new MotionEventTriggerProcessor(this, character);
         

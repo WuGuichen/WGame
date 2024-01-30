@@ -228,7 +228,7 @@ public class EntityUtils
         {
             if (entity.hasFocusEntity)
             {
-                entity.gameViewService.service.BeFocused(false);
+                entity.focusEntity.entity.gameViewService.service.BeFocused(false);
             }
             target.gameViewService.service.BeFocused(true);
             entity.ReplaceFocusEntity(target);
@@ -237,6 +237,7 @@ public class EntityUtils
         {
             if (entity.hasFocusEntity)
             {
+                entity.focusEntity.entity.gameViewService.service.BeFocused(false);
                 entity.RemoveFocusEntity();
             }
         }

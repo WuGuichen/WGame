@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 5148306610167545768}
   - component: {fileID: 6693832545878326192}
   - component: {fileID: 9190929400588608638}
-  - component: {fileID: 8621000872477419428}
+  - component: {fileID: 5181684039753570989}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -1342,7 +1342,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 6a5cb0be6a28b8b43bd35e16cc5bd06e, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1387,7 +1387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curFSMState: 0
---- !u!114 &8621000872477419428
+--- !u!114 &5181684039753570989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4079961716787715813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2619550329440f14bbc93f5f4372a8b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Animator: {fileID: 5148306610167545768}

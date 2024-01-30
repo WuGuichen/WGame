@@ -58,6 +58,14 @@ MonoBehaviour:
         FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/Res/AvatarMask
+        CollectorGUID: 0aceefe527329a244928fc7801cab2f2
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
     - GroupName: Motion
       GroupDesc: 
       AssetTags: 

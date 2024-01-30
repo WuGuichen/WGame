@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Motion;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 using YooAsset;
 using Object = UnityEngine.Object;
 using WGame.Runtime;
@@ -51,44 +50,6 @@ namespace WGame.Res
             package = YooAssets.GetPackage("DefaultPackage");
             YooAssets.SetDefaultPackage(package);
             EventCenter.Trigger(EventDefine.OnGameAssetsManagerInitted);
-        }
-
-        IEnumerator InitYooasset()
-        {
-            package = YooAssets.CreatePackage("DefaultPackage");
-            rawFilePackage = YooAssets.CreatePackage("RawFilePackage");
-            IsInitted = false;
-            InitializeParameters initParameters;
-            InitializeParameters initRawFileParameters;
-            switch (PlayMode)
-            {
-                case EPlayMode.EditorSimulateMode:
-                    initParameters = new EditorSimulateModeParameters
-                    {
-                        SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(),"DefaultPackage")
-                    };
-                    initRawFileParameters = new EditorSimulateModeParameters()
-                    {
-                        SimulateManifestFilePath =
-                            EditorSimulateModeHelper.SimulateBuild(
-                                EDefaultBuildPipeline.RawFileBuildPipeline.ToString(), "RawFilePackage")
-                    };
-                    yield return rawFilePackage.InitializeAsync(initRawFileParameters);
-                    yield return package.InitializeAsync(initParameters);
-                    break;
-                case EPlayMode.OfflinePlayMode:
-                    initParameters = new OfflinePlayModeParameters();
-                    initRawFileParameters = new OfflinePlayModeParameters();
-                    yield return rawFilePackage.InitializeAsync(initRawFileParameters);
-                    yield return package.InitializeAsync(initParameters);
-                    break;
-            }
-
-            if (package.InitializeStatus == EOperationStatus.Succeed)
-            {
-                IsInitted = true;
-                EventCenter.Trigger(EventDefine.OnGameAssetsManagerInitted);
-            }
         }
 
         public void LoadGameObject(string path, Action<GameObject> callback)
@@ -254,6 +215,16 @@ namespace WGame.Res
         public void LoadAllObjects(string location, Action<object> callback, Action onComplete)
         {
             StartCoroutine(LoadAllObjectsInternal(location, callback, onComplete));
+        }
+
+        public void LoadAvatarMask(string location, Action<AvatarMask> callback)
+        {
+            var handle = package.LoadAssetAsync(location);
+            handle.Completed += operationHandle =>
+            {
+                callback.Invoke(operationHandle.AssetObject as AvatarMask);
+                handle.Release();
+            };
         }
 
         public void LoadRawFileSync(string path, Action<string> callback)

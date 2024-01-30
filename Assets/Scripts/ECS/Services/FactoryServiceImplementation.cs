@@ -20,6 +20,7 @@ public class FactoryServiceImplementation : IFactoryService
     private Transform sceneRoot;
     
     private Dictionary<int, AnimationClip> _clips = new();
+    private AvatarMask[] _avatarMasks;
     private Dictionary<int, EventNodeScriptableObject> _motions = new Dictionary<int, EventNodeScriptableObject>();
 
     private readonly InstaceDB<GameEntity> _gameEntityDB;
@@ -78,6 +79,22 @@ public class FactoryServiceImplementation : IFactoryService
             });
         });
     }
+
+    private void InitAvatarMask()
+    {
+        var type = typeof(AnimLayerType);
+        var infos = type.GetFields();
+        _avatarMasks = new AvatarMask[infos.Length];
+        for (int i = 0; i < infos.Length; i++)
+        {
+            int val = (int)infos[i].GetRawConstantValue();
+            if (val > 0)
+            {
+                YooassetManager.Inst.LoadAvatarMask(infos[i].Name, mask => { _avatarMasks[val] = mask; });
+            }
+        }
+    }
+    
     public void InitSceneObjectRoot(Transform sceneRoot)
     {
         this.sceneRoot = sceneRoot;
@@ -89,11 +106,17 @@ public class FactoryServiceImplementation : IFactoryService
         }
         dropItemRoot.SetParent(this.sceneRoot);
         InitClips();
+        InitAvatarMask();
     }
 
     public AnimationClip GetAnimationClip(int clipID)
     {
         return _clips[clipID];
+    }
+
+    public AvatarMask GetAvatarMask(int layerType)
+    {
+        return _avatarMasks[layerType];
     }
 
     public void LoadAnimationClip(string clipName, Action<AnimationClip> callback)

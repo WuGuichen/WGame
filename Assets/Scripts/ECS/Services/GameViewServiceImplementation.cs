@@ -4,6 +4,10 @@ using TWY.Physics;
 using Unity.Mathematics;
 using UnityEngine;
 
+[RequireComponent(typeof(IRigidbodyService))]
+[RequireComponent(typeof(Pathfinding.Seeker))]
+[RequireComponent(typeof(Pathfinding.RaycastModifier))]
+[RequireComponent(typeof(WCharacterInfo))]
 public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEventListener, IActionCameraRotateListener, IActionModelRotateListener
 {
     private Transform _cameraTransform;

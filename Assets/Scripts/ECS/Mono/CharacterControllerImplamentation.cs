@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class CharacterControllerImplamentation : MonoBehaviour, IRigidbodyService
 {
     private CharacterController _controller;

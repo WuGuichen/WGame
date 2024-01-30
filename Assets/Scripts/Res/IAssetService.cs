@@ -18,6 +18,7 @@ namespace WGame.Res
         public byte[] LoadBytesSync(string path);
         public void LoadAnimationClipAsync(string path, Action<AnimationClip> callback);
         public void LoadAllObjects(string location ,Action<object> callback, Action onComplete);
+        public void LoadAvatarMask(string location, Action<AvatarMask> callback);
         public void LoadRawFileSync(string path, Action<string> callback);
         public void LoadRawFileASync(string path, Action<string> callback);
         public void LoadMotionScriptSync(string path, Action<EventNodeScriptableObject> callback);

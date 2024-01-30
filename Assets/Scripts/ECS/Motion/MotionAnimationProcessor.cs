@@ -1,42 +1,11 @@
-using System;
 using Animancer;
-using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
 using Motion;
 using UnityEngine;
 
-public class MotionAnimationProcessor
+public class MotionAnimationProcessor : AnimancerComponent
 {
-    #region 必要参数
-    private AnimatorOverrideController _controller;
-    private Animator anim;
-    private int key1;
-    private int key2;
-    private int key3;
-    private int keyUp1;
-    private int keyUp2;
-    private int keyLow1;
-    private int keyLow2;
-    private const string key1Str = "Motion1";
-    private const string key2Str = "Motion2";
-    private const string key3Str = "Motion3";
-    private static readonly int ForwardId = Animator.StringToHash("Forward");
-    private static readonly int RightId = Animator.StringToHash("Right");
-    private const string keyUpper1Str = "MotionUp1";
-    private const string keyUpper2Str = "MotionUp2";
-    private const string keyLower1Str = "MotionLow1";
-    private const string keyLower2Str = "MotionLow2";
-    private TweenerCore<float, float, FloatOptions> layerWeightTweenUpper;
-    private TweenerCore<float, float, FloatOptions> layerWeightTweenLower;
-    
-    private int nextClipKey;
-    private int nextUpperClipKey;
-    private int nextLowerClipKey;
-    #endregion 
-    
     #region 状态参数
-    public float AnimSpeed => animancer.Playable.Speed;
+    public float AnimSpeed => Playable.Speed;
 
     private float checkTime = 0f;
 
@@ -53,33 +22,46 @@ public class MotionAnimationProcessor
     private IFactoryService _factoryService;
     
     private Transform parentTrans;
-    private Transform transform;
+    private Transform _transform;
     private Vector3 deltaPosition = Vector3.zero;
 
-    private readonly AnimancerComponent animancer;
     private ClipState[] localMotionStates;
     private MixerState<Vector2> _focusMove;
     private LinearMixerState _regularMove;
 
-    public MotionAnimationProcessor(AnimancerComponent anim, IFactoryService factoryService)
+    private AnimancerLayer[] _animancerLayers;
+    private const int layerCount = 3;
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    public void OnInit()
     {
+        _factoryService = Contexts.sharedInstance.meta.factoryService.instance;
+        InitAnimLayer(AnimLayerType.Base);
+        InitAnimLayer(AnimLayerType.UpperBody);
+        InitAnimLayer(AnimLayerType.LowerBody);
         rootMotionRate = 0f;
         UpdateRootMotion(true);
-        _factoryService = factoryService;
         localMotionStates = new ClipState[LocalMotionType.Count];
         _focusMove = new CartesianMixerState();
-        this.transform = anim.transform;
-        parentTrans = transform.parent;
-        this.animancer = anim;
-        animancer.UpdateMode = AnimatorUpdateMode.AnimatePhysics;
-        key1 = Animator.StringToHash("Base Layer.Motion1");
-        key2 = Animator.StringToHash("Base Layer.Motion2");
-        key3 = Animator.StringToHash("Base Layer.Motion3");
-        keyUp1 = Animator.StringToHash("UpperBody.MotionUp1");
-        keyUp2 = Animator.StringToHash("UpperBody.MotionUp2");
-        nextClipKey = key1;
-        nextUpperClipKey = keyUp1;
-        // _controller = anim.runtimeAnimatorController as AnimatorOverrideController;
+        this._transform = transform;
+        parentTrans = _transform.parent;
+        // UpdateMode = AnimatorUpdateMode.AnimatePhysics;
+    }
+
+    private void InitAnimLayer(int layerType)
+    {
+        if (layerType == AnimLayerType.Base)
+        {
+            
+        }
+        else
+        {
+            Layers[layerType].SetMask(_factoryService.GetAvatarMask(layerType));
+        }
+    }
+
+    public MotionAnimationProcessor(AnimancerComponent anim, IFactoryService factoryService)
+    {
     }
 
     public void RefreshAnimClip(int type, string clipName)
@@ -147,6 +129,7 @@ public class MotionAnimationProcessor
         this.checkTime = checkTime;
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void ResetState(bool setLocalMotion)
     {
         if (_focusMove.ChildCount > 0)
@@ -157,9 +140,28 @@ public class MotionAnimationProcessor
             {
                 SetAnimLayerWeight(AnimLayerType.UpperBody, 0);
                 SetAnimLayerWeight(AnimLayerType.LowerBody, 0);
-                animancer.Play(_focusMove, 0.25f, FadeMode.FromStart);
+                Play(AnimLayerType.Base, _focusMove, 0.25f, FadeMode.FixedDuration);
             }
         }
+    }
+
+    private AnimancerState Play(int layer, AnimancerState state, float fadeDuration = 0.25f,
+        FadeMode mode = FadeMode.FromStart)
+    {
+        return Layers[layer].Play(state, fadeDuration, mode);
+    }
+    
+    private AnimancerState Play(int layer, AnimationClip clip, float fadeDuration = 0.25f,
+        FadeMode mode = FadeMode.FromStart, float startTime = 0f)
+    {
+        if (startTime > 0)
+        {
+            var state = Layers[layer].Play(clip, fadeDuration, mode);
+            state.Time = startTime;
+            return state;
+        }
+        else
+            return Layers[layer].Play(clip, fadeDuration, mode);
     }
     
     public void ProcessAnimationNode(PlayAnimationNode node)
@@ -182,118 +184,20 @@ public class MotionAnimationProcessor
     private void InternalPlayAnimationClip(int clipID, float transTime = 0.1f, float offsetTime = 0f, int layer = AnimLayerType.Base, bool resetBaseLayer = false)
     {
         var clip = _factoryService.GetAnimationClip(clipID);
-        if (offsetTime > 0)
-            animancer.Play(clip, transTime, FadeMode.FromStart).Time = offsetTime;
-        else
-            animancer.Play(clip, transTime, FadeMode.FromStart);
-        // if (resetBaseLayer && anim.GetCurrentAnimatorStateInfo(AnimLayerType.Base).fullPathHash != LocalMotion)
-        //     anim.CrossFadeInFixedTime(LocalMotion, 0f, 0, 0);
-        // if (anim.IsInTransition(AnimLayerType.UpperBody))
-        // {
-        //     anim.Play(anim.GetNextAnimatorStateInfo(AnimLayerType.UpperBody).fullPathHash);
-        //     anim.Update(0);
-        // }
-        //
-        // if (anim.IsInTransition(AnimLayerType.LowerBody))
-        // {
-        //     anim.Play(anim.GetNextAnimatorStateInfo(AnimLayerType.LowerBody).fullPathHash);
-        //     anim.Update(0);
-        // }
-        // if (anim.IsInTransition(AnimLayerType.Base))
-        // {
-        //     anim.Play(anim.GetNextAnimatorStateInfo(AnimLayerType.Base).fullPathHash);
-        //     anim.Update(0);
-        // }
-        //
-        // int playKey = 0;
-        // var nextClip = _factoryService.GetAnimationClip(clipID);
-        // if (layer == AnimLayerType.Base)
-        // {
-        //     SetAnimLayerWeight(AnimLayerType.UpperBody, 0);
-        //     SetAnimLayerWeight(AnimLayerType.LowerBody, 0);
-        //     if (nextClipKey == key1)
-        //     {
-        //         _controller[key2Str] = nextClip;
-        //         playKey = key2;
-        //         nextClipKey = key2;
-        //     }
-        //     else if (nextClipKey == key2)
-        //     {
-        //         _controller[key3Str] = nextClip;
-        //         playKey = key3;
-        //         nextClipKey = key3;
-        //     }
-        //     else
-        //     {
-        //         _controller[key1Str] = nextClip;
-        //         playKey = key1;
-        //         nextClipKey = key1;
-        //     }
-        // }
-        // else if (layer == AnimLayerType.UpperBody)
-        // {
-        //     SetAnimLayerWeight(AnimLayerType.UpperBody, 1);
-        //     // SetAnimLayerWeight(AnimLayerType.LowerBody, 0);
-        //     if (nextUpperClipKey == keyUp1)
-        //     {
-        //         _controller[keyUpper2Str] = nextClip;
-        //         playKey = keyUp2;
-        //         nextUpperClipKey = keyUp2;
-        //     }
-        //     else
-        //     {
-        //         _controller[keyUpper1Str] = nextClip;
-        //         playKey = keyUp1;
-        //         nextUpperClipKey = keyUp1;
-        //     }
-        // }
-        // else if (layer == AnimLayerType.LowerBody)
-        // {
-        //     SetAnimLayerWeight(AnimLayerType.LowerBody, 1);
-        //     // SetAnimLayerWeight(AnimLayerType.UpperBody, 0);
-        //     if (nextLowerClipKey == keyLow1)
-        //     {
-        //         _controller[keyLower1Str] = nextClip;
-        //         playKey = keyLow2;
-        //         nextLowerClipKey = keyLow2;
-        //     }
-        //     else
-        //     {
-        //         _controller[keyLower1Str] = nextClip;
-        //         playKey = keyLow1;
-        //         nextUpperClipKey = keyLow1;
-        //     }
-        // }
-        //
-        // anim.CrossFadeInFixedTime(playKey, transTime, layer, offsetTime);
+        if (layer != AnimLayerType.Base && resetBaseLayer)
+        {
+            Play(AnimLayerType.Base, _focusMove, 0.25f, FadeMode.FixedDuration);
+        }
+        Play(layer, clip, transTime, FadeMode.FromStart, offsetTime);
     }
     
     private void SetAnimLayerWeight(int layer, float weight, float duration = 0.2f)
     {
-        if (layer == AnimLayerType.UpperBody)
-        {
-            // layerWeightTweenUpper?.Kill();
-            // layerWeightTweenUpper = DOTween.To(() => anim.GetLayerWeight(layer)
-            //         , value => anim.SetLayerWeight(layer, value), weight, duration)
-            //     .SetAutoKill(true)
-            //     .SetEase(Ease.Linear)
-            //     .SetTarget(this);
-        }
-        else if (layer == AnimLayerType.LowerBody)
-        {
-            // layerWeightTweenLower?.Kill();
-            // layerWeightTweenLower = DOTween.To(() => anim.GetLayerWeight(layer)
-            //         , value => anim.SetLayerWeight(layer, value), weight, duration)
-            //     .SetAutoKill(true)
-            //     .SetEase(Ease.Linear)
-            //     .SetTarget(this);
-        }
+        Layers[layer].StartFade(weight, duration);
     }
     
     public void UpdateMoveSpeed(float forward, float right)
     {
-        // anim.SetFloat(ForwardId, forward);
-        // anim.SetFloat(RightId, right);
         _focusMove.Parameter = new Vector2(right, forward);
     }
 
@@ -301,7 +205,7 @@ public class MotionAnimationProcessor
     {
         if (rootMotionRate > 0)
         {
-            deltaPosition += (((100f - rootMotionRate)*transform.parent.transform.position + rootMotionRate * animancer.Animator.deltaPosition) * 0.01f);
+            deltaPosition += (((100f - rootMotionRate)*_transform.parent.transform.position + rootMotionRate * Animator.deltaPosition) * 0.01f);
         }
     }
     
@@ -309,7 +213,7 @@ public class MotionAnimationProcessor
     {
         if (value < 0)
             value = 0;
-        animancer.Playable.Speed = value;
+        Playable.Speed = value;
     }
     
     public void UpdateRootMotion(bool clear = false)

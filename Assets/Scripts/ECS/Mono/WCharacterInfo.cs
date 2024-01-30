@@ -1,10 +1,11 @@
-using BaseData;
+using System;
 using BaseData.Character;
 using UnityEngine;
 
 [DisallowMultipleComponent]
 public class WCharacterInfo : MonoBehaviour
 {
+    private MonoBehaviour rigidbodyService;
     [Header("属性ID")]
     [SerializeField] private int infoID;
     [Header("初始武器")] [SerializeField] private int weaponID;
@@ -149,4 +150,8 @@ public class WCharacterInfo : MonoBehaviour
         }
     }
     #endif
+
+    private void Awake()
+    {
+    }
 }
