@@ -117,6 +117,26 @@ public class TestSceneSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+	    UpdateBeforeSystems();
+	    _vmSystems.Execute();
+	    _gameSystems.Execute();
+	    _detectSystems.Execute();
+	    _gameEventSystems.Execute();
+	    _systems.Execute();
+	    _processMotionSystems.Execute();
+	    _systems.Cleanup();
+	    _processMotionSystems.Cleanup();
+	    _gameEventSystems.Cleanup();
+
+	    if (Input.GetKeyDown(KeyCode.LeftAlt))
+	    {
+			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(Cursor.visible ? 0 : 1));
+	    }
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void UpdateBeforeSystems()
+    {
 	    _timeService.UpdateDeltaTime(Time.deltaTime);
 	    _timeService.UpdateRealTimeSinceStart(Time.realtimeSinceStartup);
 	    if (MainModel.Inst.frames >= 0)
@@ -134,25 +154,6 @@ public class TestSceneSystem : MonoBehaviour
 	    EventCenter.Trigger(EventDefine.OnGameUpdate);
 
 	    TickManager.Inst.UpdateTick(_contexts.meta.timeService.instance.DeltaTime);
-	    _vmSystems.Execute();
-	    _gameSystems.Execute();
-	    _detectSystems.Execute();
-	    _gameEventSystems.Execute();
-	    _systems.Execute();
-	    _processMotionSystems.Execute();
-	    _systems.Cleanup();
-	    _processMotionSystems.Cleanup();
-	    _gameEventSystems.Cleanup();
-
-	    if (Input.GetKeyDown(KeyCode.LeftAlt))
-	    {
-			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(Cursor.visible ? 0 : 1));
-	    }
-
-	    if (Input.GetKeyDown(KeyCode.B))
-	    {
-		    WLogger.Print("CC");
-	    }
     }
 
     private void FixedUpdate()
@@ -188,15 +189,6 @@ public class TestSceneSystem : MonoBehaviour
     private void OnDrawGizmos()
     {
 		EntityUtils.BvhRed.DrawAllBounds();
-    }
-
-    private void OnGUI()
-    {
-	    // if (GUILayout.Button("添加敌人 press P"))
-	    // {
-		   //  _contexts.meta.factoryService.instance.CreateEnemy(_contexts.game.CreateEntity(), new Vector3(1,1,2), 2);
-	    // }
-	    // GUILayout.Label("添加武器 press E");
     }
 
     void PreInitModel()

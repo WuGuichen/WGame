@@ -111,7 +111,6 @@ public class DetectorCharacterImplementation : IDetectorService
         detectorDrawer = new DetectorDrawer();
         hateInfo = DetectMgr.Inst.RegisterHatePoint(_character.instanceID.ID);
         _vmService = _character.linkVM.VM.vMService.service;
-        _vmService.Set("E_MAX_HATE_RANK", hateInfo.MaxHateEntityRank);
         var vm = _vmService;
         var info = hateInfo;
         hateInfo.RegisterOnHateRankChanged((() =>
@@ -134,7 +133,7 @@ public class DetectorCharacterImplementation : IDetectorService
 
     public void UpdateSensorDrawer()
     {
-        if (_character.isDeadState)
+        if (_character.isDeadState || _character.isCamera)
         {
             detectorDrawer.EndDraw(DetectorDrawer.Detect);
             detectorDrawer.EndDraw(DetectorDrawer.Spotted);
@@ -142,8 +141,8 @@ public class DetectorCharacterImplementation : IDetectorService
             detectorDrawer.EndDraw(DetectorDrawer.Sensor);
             return;
         }
-        if (hateInfo.MaxHateEntityRank >= 0)
-        {
+        // if (hateInfo.MaxHateEntityRank >= 0)
+        // {
             var tmp = new CircleInfo()
             {
                 center = _model.position + new Vector3(0, 0.2f, 0),
@@ -153,7 +152,8 @@ public class DetectorCharacterImplementation : IDetectorService
             };
 
             tmp.radius = 1f;
-            tmp.fillColor = _colorList[hateInfo.MaxHateEntityRank];
+            if(hateInfo.MaxHateEntityRank >= 0)
+                tmp.fillColor = _colorList[hateInfo.MaxHateEntityRank];
             if (hateInfo.MaxHateEntityPoint <= 360)
             {
                 tmp.sectorArcLengthInDegrees = hateInfo.MaxHateEntityPoint;
@@ -170,14 +170,15 @@ public class DetectorCharacterImplementation : IDetectorService
                 detectorDrawer.Draw(DetectorDrawer.Detect, _model, tmp);
             else
                 detectorDrawer.EndDraw(DetectorDrawer.Detect);
-        }
-        else
-        {
-            detectorDrawer.Draw(DetectorDrawer.Sensor, _model, 2);
-            detectorDrawer.EndDraw(DetectorDrawer.Detect);
-            detectorDrawer.EndDraw(DetectorDrawer.Spotted);
-            detectorDrawer.EndDraw(DetectorDrawer.Warning);
-        }
+        // }
+        // else
+        // {
+        //     // detectorDrawer.Draw(DetectorDrawer.Sensor, _model, 2);
+        //     detectorDrawer.EndDraw(DetectorDrawer.Sensor);
+        //     detectorDrawer.EndDraw(DetectorDrawer.Detect);
+        //     detectorDrawer.EndDraw(DetectorDrawer.Spotted);
+        //     detectorDrawer.EndDraw(DetectorDrawer.Warning);
+        // }
     }
     
     private void RefreshMaxHateTarget(float deltaTime)

@@ -11,7 +11,6 @@ public class CharacterControllerImplamentation : MonoBehaviour, IRigidbodyServic
     {
         if (_controller != null)
             return this;
-        Physics.autoSyncTransforms = true;
         _controller = GetComponent<CharacterController>();
         return this;
     }

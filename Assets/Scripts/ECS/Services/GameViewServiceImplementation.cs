@@ -89,8 +89,6 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
         }
     }
 
-    public Transform RightHand => null;
-
     private void NextThrust()
     {
         curThrustIndex++;
@@ -116,6 +114,11 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     public Vector3 GetCameraPos()
     {
         return _cameraTransform.position;
+    }
+
+    public void Translate(Vector3 dir)
+    {
+        _transform.Translate(dir);
     }
 
     public Vector3 LocalizeVectorXY(Vector2 vector, bool isFocus)

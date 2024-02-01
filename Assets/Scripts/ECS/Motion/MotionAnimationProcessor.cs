@@ -40,7 +40,7 @@ public class MotionAnimationProcessor : AnimancerComponent
         InitAnimLayer(AnimLayerType.UpperBody);
         InitAnimLayer(AnimLayerType.LowerBody);
         rootMotionRate = 0f;
-        UpdateRootMotion(true);
+        ClearRootMotion();
         localMotionStates = new ClipState[LocalMotionType.Count];
         _focusMove = new CartesianMixerState();
         this._transform = transform;
@@ -215,7 +215,13 @@ public class MotionAnimationProcessor : AnimancerComponent
             value = 0;
         Playable.Speed = value;
     }
-    
+
+    public Vector3 DeltaRootMotionPos => deltaPosition;
+
+    public void ClearRootMotion()
+    {
+        deltaPosition = Vector3.zero;
+    }
     public void UpdateRootMotion(bool clear = false)
     {
         if (clear)

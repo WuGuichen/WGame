@@ -1,5 +1,4 @@
 using Entitas;
-using UnityEngine;
 
 public class AIAgentUpdateSystem : IExecuteSystem, ICleanupSystem
 {
@@ -16,17 +15,7 @@ public class AIAgentUpdateSystem : IExecuteSystem, ICleanupSystem
         {
             if (entity.isMoveable == false) continue;
 
-            // entity.aiAgent.service.RotateCharacter(entity.gameViewService.service.Model, 0.2f);
-            // entity.aiAgent.service.MoveCharacter(entity.gameViewService.service.Position);
             entity.aiAgent.service.UpdateFSM();
-
-            // if (Input.GetKeyDown(KeyCode.N))
-            // {
-            //     ActionHelper.DoReachPoint(entity, Vector3.zero);
-            // }
-            //
-            // if(Input.GetKeyDown(KeyCode.M))
-            //     ActionHelper.DoStopAIPathFinding(entity);
         }
     }
 

@@ -128,14 +128,6 @@ public partial class AiAgentServiceImplementation
             bTreeAgent.TickTree(interpreter.ParseString(list, 0));
         }));
     #endregion
-    
-    #region 旧方法
-        SetMethod("S_MoveToTarget", MoveToTarget);
-        SetMethod("S_OnTestWaitEnter", OnTestWaitEnter);
-        SetMethod("S_OnTestAttackEnter", OnTestAttackEnter);
-        SetMethod("S_SetPatrolPointTarget", SetPatrolPointTarget);
-        SetMethod("S_NoDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(!_entity.hasDetectedCharacter);}); SetMethod("HasDetectedCharacter", (list, interpreter) => { interpreter.SetRetrun(_entity.hasDetectedCharacter);});
-    #endregion
     }
     
 

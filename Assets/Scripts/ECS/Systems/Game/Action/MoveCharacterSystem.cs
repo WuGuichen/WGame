@@ -27,16 +27,17 @@ public class MoveCharacterSystem : IExecuteSystem
             curSpeed = entity.charCurSpeed.value;
             speedMulti = entity.charSpeedMulti.value;
             var motion = entity.linkMotion.Motion;
+            var deltaRootMotion = motion.motionService.service.AnimProcessor.DeltaRootMotionPos;
             if (entity.hasActionThrust)
             {
-                motion.motionService.service.AnimProcessor.UpdateRootMotion(true);
+                motion.motionService.service.AnimProcessor.ClearRootMotion();
                 DoThrust(entity);
                 continue;
             }
 
             if (motion.hasDoMove)
             {
-                motion.motionService.service.AnimProcessor.UpdateRootMotion(true);
+                motion.motionService.service.AnimProcessor.ClearRootMotion();
                 DoMove(motion);
                 continue;
             }
@@ -52,7 +53,7 @@ public class MoveCharacterSystem : IExecuteSystem
                 entity.ReplaceTargetPlanarSqrDistance(sqrDist);
                 if (entity.hasKeepTargetDistance && sqrDist <= entity.keepTargetDistance.value * entity.keepTargetDistance.value)
                 {
-                    motion.motionService.service.AnimProcessor.UpdateRootMotion(true);
+                    motion.motionService.service.AnimProcessor.ClearRootMotion();
                     continue;
                 }
             }
@@ -92,8 +93,6 @@ public class MoveCharacterSystem : IExecuteSystem
                                 _inputService.Move.y * totalMulti,
                                 _inputService.Move.x * totalMulti);
                         }
-
-                        motion.motionService.service.AnimProcessor.UpdateRootMotion();
                     }
                 }
                 else
@@ -105,7 +104,6 @@ public class MoveCharacterSystem : IExecuteSystem
                     if (motion.hasMotionService)
                     {
                         motion.motionService.service.AnimProcessor.UpdateMoveSpeed(vecMulti*totalMulti, 0);
-                        motion.motionService.service.AnimProcessor.UpdateRootMotion();
                     }
                 }
 
@@ -119,7 +117,6 @@ public class MoveCharacterSystem : IExecuteSystem
                     motion.motionService.service.AnimProcessor.UpdateMoveSpeed(
                         moveDir.z,
                         moveDir.x);
-                    motion.motionService.service.AnimProcessor.UpdateRootMotion();
                 }
                 else
                 {
@@ -127,11 +124,7 @@ public class MoveCharacterSystem : IExecuteSystem
                         entity.gameViewService.service.Model.forward,
                         entity.moveDirection.value));
                     speed *= vecMulti;
-                    if (motion.hasMotionService)
-                    {
-                        motion.motionService.service.AnimProcessor.UpdateMoveSpeed(vecMulti * totalMulti, 0);
-                        motion.motionService.service.AnimProcessor.UpdateRootMotion();
-                    }
+                    motion.motionService.service.AnimProcessor.UpdateMoveSpeed(vecMulti * totalMulti, 0);
                 }
             }
 
@@ -142,7 +135,9 @@ public class MoveCharacterSystem : IExecuteSystem
                 curSpeed = Mathf.Lerp(curSpeed, speed, 0.1f);
             }
             var move = entity.moveDirection.value * curSpeed;
-            entity.rigidbodyService.service.Velocity = new Vector3(move.x, speedY, move.z);
+            entity.rigidbodyService.service.Velocity = new Vector3(move.x, speedY, move.z) + deltaRootMotion;
+            entity.gameViewService.service.Translate(deltaRootMotion);
+            motion.motionService.service.AnimProcessor.ClearRootMotion();
             entity.rigidbodyService.service.OnFixedUpdate(_timeService.FixedDeltaTime);
             entity.ReplaceCharCurSpeed(curSpeed);
             entity.ReplaceCharSpeedMulti(speedMulti);

@@ -2,7 +2,7 @@
 
 SELECTOR{
     DO{
-        if E_MAX_HATE_ENTITY {
+        if E_MAX_HATE_ENTITY >= 0 {
             distMin = 100
             isReach = S_DoMoveToEntity(E_MAX_HATE_ENTITY, distMin)
             if(isReach)

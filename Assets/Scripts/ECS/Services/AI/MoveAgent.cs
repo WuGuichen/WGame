@@ -86,6 +86,12 @@ public class MoveAgent
 
     public bool MoveToEntity(int id, float reachDist = 0.2f, float threshold = 1f)
     {
+        // 不存在目标
+        if (id < 0)
+        {
+            WLogger.Info("空目标："+id);
+            return false;
+        }
         var tarEntity = EntityUtils.GetGameEntity(id);
         if (tarEntity == null)
             return false;

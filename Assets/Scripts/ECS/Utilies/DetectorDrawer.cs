@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Shapes;
 using UnityEngine;
 
@@ -16,11 +14,11 @@ public class DetectorDrawer
     public const int Detect = 3;
     private readonly WDrawer.CircleDrawInfo[] drawInfos = new WDrawer.CircleDrawInfo[4];
 
-    private static readonly Color _colorWarning = Color.cyan*0.6f;
-    private static Color _colorSpotted = Color.blue*0.6f;
-    private static Color _colorDetectted = Color.red*0.8f;
-    private static Color _colorDetecting = Color.yellow*0.8f;
-    private static Color _colorSensor = Color.white*0.6f;
+    private static readonly Color _colorWarning = Color.cyan*0.2f;
+    private static Color _colorSpotted = Color.blue*0.2f;
+    private static Color _colorDetectted = Color.red*0.2f;
+    private static Color _colorDetecting = Color.yellow*0.2f;
+    private static Color _colorSensor = Color.white*0.2f;
     
     private static Quaternion _rotation = Quaternion.Euler(90, 0, 0);
 
