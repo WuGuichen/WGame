@@ -9,17 +9,17 @@ public class UpdateMoveDirectionSystem : IExecuteSystem
     private InputContext _inputContext;
     private float curDup;
     private float curDright;
-    private readonly IGroup<GameEntity> _movingGroup;
+    private readonly IGroup<GameEntity> _cameraGroup;
     
     public UpdateMoveDirectionSystem(Contexts contexts)
     {
         _inputContext = contexts.input;
-        _movingGroup = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Moveable));
+        _cameraGroup = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Camera));
     }
 
     public void Execute()
     {
-        foreach (var entity in _movingGroup)
+        foreach (var entity in _cameraGroup)
         {
             UpdateDirection(entity);
         }

@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using BaseData;
 using CleverCrow.Fluid.BTs.Trees;
+using CrashKonijn.Goap.Behaviours;
 using Pathfinding;
 using UnityEngine;
+using WGame.GOAP;
 
 public partial class AiAgentServiceImplementation : IAiAgentService
 {
@@ -21,13 +23,16 @@ public partial class AiAgentServiceImplementation : IAiAgentService
     private readonly FightAgent fightAgent;
     private readonly FSMAgent fsmAgent;
     private readonly BTreeAgent bTreeAgent;
+    private WAgentBrainBase goapBrain;
 
     private readonly CharacterInitInfo _initInfo;
 
     private readonly CharAI _aiCfg = null;
+    private readonly IFactoryService _factory;
 
     public AiAgentServiceImplementation(GameEntity entity, Seeker seeker, Vector3[] patrolPoints)
     {
+        _factory = Contexts.sharedInstance.meta.factoryService.instance;
         _seeker = seeker;
         _entity = entity;
         _aiCfg = entity.characterInfo.value.AICfg;
@@ -39,6 +44,18 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         fsmAgent = FSMAgent.Get(_vmService);
         fsmAgent.SetFSMConfig(_aiCfg);
         bTreeAgent = BTreeAgent.Get(_vmService);
+        goapBrain = new BaseAgentBrain(_entity.gameViewService.service.Model
+            .GetOrAddComponent<AgentBehaviour>());
+        goapBrain.Agent.GoapSet = _factory.GOAPRunner.GetGoapSet("Base");
+        goapBrain.Agent.DistanceObserver = new WDistanceObserver();
+        if (_entity.isCampRed)
+        {
+            goapBrain.SetEnable(true);
+        }
+        else
+        {
+            goapBrain.SetEnable(false);
+        }
 
         InitMethod();
     }
@@ -74,17 +91,17 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         }
         if (!_entity.isDeadState && !_entity.isCamera)
         {
-            fsmAgent.SetFSMState(true);
-            UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
-            fsmAgent.OnUpdate();
-            IsActing = true;
-            UnityEngine.Profiling.Profiler.EndSample();
+            // fsmAgent.SetFSMState(true);
+            // // UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
+            // fsmAgent.OnUpdate();
+            // IsActing = true;
+            // // UnityEngine.Profiling.Profiler.EndSample();
         }
         else
         {
-            fsmAgent.SetFSMState(false);
-            _uiService.SetMessage(null);
-            IsActing = false;
+            // fsmAgent.SetFSMState(false);
+            // _uiService.SetMessage(null);
+            // IsActing = false;
         }
     }
 

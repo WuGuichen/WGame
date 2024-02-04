@@ -6,6 +6,7 @@ public class SandboxSystem : MonoBehaviour
 {
 	[SerializeField] private List<Transform> SpawnPoints;
 	[SerializeField] private Transform sceneRoot;
+	[SerializeField] private Transform goapTrans;
 
 	private Systems _systems;
 	private Contexts _contexts;
@@ -46,6 +47,7 @@ public class SandboxSystem : MonoBehaviour
 		_lateFixedUpdateSystems.Add(new CameraRotateSystem(_contexts));
 		
 		_contexts.meta.factoryService.instance.InitSceneObjectRoot(sceneRoot);
+		_contexts.meta.factoryService.instance.InitGOAPRoot(goapTrans);
 	}
 
 	private void Start()

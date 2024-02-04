@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202651a6d0e31824c830a8bac571e709, type: 3}
   m_Name: WanderGoalConfig
   m_EditorClassIdentifier: 
-  classType: Demos.Shared.Goals.WanderGoal, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
+  classType: 
   baseCost: 100
   conditions:
   - worldKey: {fileID: 11400000, guid: 413a272d7eab992448568e528f7839c6, type: 2}

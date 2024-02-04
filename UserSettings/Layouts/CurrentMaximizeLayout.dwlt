@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 3}
   - {fileID: 11}
-  - {fileID: 20}
+  - {fileID: 19}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 213
+  controlID: 21
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -34,22 +34,22 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7cb9d5c85884f04b9bd93e5fb519d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 200, y: 200}
+  m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Game
-    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
+    m_Text: Node Viewer (GOAP)
+    m_Image: {fileID: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 619.5
-    width: 1120
-    height: 371.5
+    y: 427.5
+    width: 979
+    height: 563.5
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -60,72 +60,6 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
-  m_SerializedViewNames:
-  - UnityEditor.DeviceSimulation.SimulatorWindow
-  m_SerializedViewValues:
-  - C:\2023UnityFile\ARPG_2023\Library\PlayModeViewStates\54a572b24aea5fa4abd6f57a164e1b10
-  m_PlayModeViewName: GameView
-  m_ShowGizmos: 0
-  m_TargetDisplay: 0
-  m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 3840, y: 2160}
-  m_TextureFilterMode: 0
-  m_TextureHideFlags: 61
-  m_RenderIMGUI: 1
-  m_EnterPlayModeBehavior: 1
-  m_UseMipMap: 0
-  m_VSyncEnabled: 0
-  m_Gizmos: 0
-  m_Stats: 0
-  m_SelectedSizes: 06000000000000000000000008000000000000000000000000000000000000000000000000000000
-  m_ZoomArea:
-    m_HRangeLocked: 0
-    m_VRangeLocked: 0
-    hZoomLockedByDefault: 0
-    vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -960
-    m_HBaseRangeMax: 960
-    m_VBaseRangeMin: -540
-    m_VBaseRangeMax: 540
-    m_HAllowExceedBaseRangeMin: 1
-    m_HAllowExceedBaseRangeMax: 1
-    m_VAllowExceedBaseRangeMin: 1
-    m_VAllowExceedBaseRangeMax: 1
-    m_ScaleWithWindow: 0
-    m_HSlider: 0
-    m_VSlider: 0
-    m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
-    m_EnableSliderZoomHorizontal: 0
-    m_EnableSliderZoomVertical: 0
-    m_UniformScale: 1
-    m_UpDirection: 1
-    m_DrawArea:
-      serializedVersion: 2
-      x: 0
-      y: 21
-      width: 1120
-      height: 350.5
-    m_Scale: {x: 0.32453704, y: 0.32453704}
-    m_Translation: {x: 560, y: 175.25}
-    m_MarginLeft: 0
-    m_MarginRight: 0
-    m_MarginTop: 0
-    m_MarginBottom: 0
-    m_LastShownAreaInsideMargins:
-      serializedVersion: 2
-      x: -1725.5349
-      y: -540
-      width: 3451.0698
-      height: 1080
-    m_MinimalGUI: 1
-  m_defaultScale: 0.32453704
-  m_LastWindowPixelSize: {x: 2240, y: 743}
-  m_ClearInEditMode: 1
-  m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000000000000
-  m_XRRenderMode: 0
-  m_RenderTexture: {fileID: 0}
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,17 +74,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 4}
-  - {fileID: 10}
+  - {fileID: 9}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1121
+    width: 980
     height: 940
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 84
+  controlID: 22
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,19 +102,18 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1121
-    height: 547.5
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 980
+    height: 355.5
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
   - {fileID: 6}
   - {fileID: 7}
   - {fileID: 8}
-  - {fileID: 9}
   m_Selected: 0
-  m_LastSelected: 4
+  m_LastSelected: 0
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -203,8 +136,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 72
-    width: 1120
-    height: 526.5
+    width: 979
+    height: 334.5
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -245,7 +178,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 18.5}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -271,7 +204,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -159, y: -193.6}
+      snapOffset: {x: -159, y: -195.5}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: unity-transform-toolbar
@@ -297,8 +230,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -112, y: -44.5}
-      snapOffsetDelta: {x: 0, y: -78.5}
+      snapOffset: {x: -112, y: -123}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Orientation
       index: 0
@@ -544,11 +477,11 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 519.2, y: 10}
+      snapOffset: {x: 460.5, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: UnityEditor.SceneViewCameraOverlay
-      index: 12
+      index: 13
       layout: 4
       size: {x: 0, y: 0}
       sizeOverriden: 0
@@ -587,7 +520,7 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Visual Effect Event Tester
-      index: 10
+      index: 11
       layout: 4
       size: {x: 0, y: 0}
       sizeOverriden: 0
@@ -600,7 +533,20 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Visual Effect Model
-      index: 11
+      index: 12
+      layout: 4
+      size: {x: 0, y: 0}
+      sizeOverriden: 0
+    - dockPosition: 0
+      containerId: overlay-toolbar__top
+      floating: 0
+      collapsed: 0
+      displayed: 1
+      snapOffset: {x: -200, y: -55}
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 3
+      id: Hot Reload
+      index: 2
       layout: 4
       size: {x: 0, y: 0}
       sizeOverriden: 0
@@ -615,9 +561,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 4.859678, y: -35.70961, z: 5.3392987}
+    m_Target: {x: 0, y: 0, z: 0}
     speed: 2
-    m_Value: {x: 4.859678, y: -35.70961, z: 5.3392987}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -663,13 +609,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.30733, y: -0.69194555, z: 0.48026252, w: -0.4430261}
+    m_Target: {x: -0.12514357, y: 0.76074445, z: -0.15405999, w: -0.61795694}
     speed: 2
-    m_Value: {x: -0.30730474, y: -0.69188863, z: 0.48022303, w: -0.44298965}
+    m_Value: {x: -0.12514368, y: 0.7607451, z: -0.15406013, w: -0.6179575}
   m_Size:
-    m_Target: 20.025286
+    m_Target: 10
     speed: 2
-    m_Value: 20.025286
+    m_Value: 10
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -687,7 +633,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0.34243983, y: 0.22241455, z: -0.08384573, w: 0.90895}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -715,9 +661,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 73.6
-    width: 903
-    height: 439.8
+    y: 72
+    width: 979
+    height: 326.5
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -739,11 +685,11 @@ MonoBehaviour:
     - e00: 0.85617256
       e01: 0
       e02: 0
-      e03: -158.19812
+      e03: -185.7528
       e10: 0
       e11: 0.85617256
       e12: 0
-      e13: 49.280945
+      e13: 49.28096
       e20: 0
       e21: 0
       e22: 1
@@ -752,14 +698,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.31519943
+    - e00: 0.9005719
       e01: 0
       e02: 0
-      e03: 23.38562
+      e03: -22.687317
       e10: 0
-      e11: 0.31519943
+      e11: 0.9005719
       e12: 0
-      e13: 5.050415
+      e13: -370.5359
       e20: 0
       e21: 0
       e22: 1
@@ -821,6 +767,8 @@ MonoBehaviour:
   m_BreadCrumbs:
   - m_Target: {fileID: -1512866361865199282, guid: 81916b05ff5a5ad4980627dd376362b1, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
+  - m_Target: {fileID: 7140421253953393111, guid: 81916b05ff5a5ad4980627dd376362b1, type: 2}
+    m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
   blendTreeGraph: {fileID: 0}
@@ -829,7 +777,7 @@ MonoBehaviour:
   m_MiniTool: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_CurrentEditor: 0
+  m_CurrentEditor: 1
   m_LayerEditor:
     m_SelectedLayerIndex: 0
 --- !u!114 &7
@@ -854,8 +802,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 72
-    width: 885.5
-    height: 407.5
+    width: 979
+    height: 326.5
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -867,43 +815,6 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
 --- !u!114 &8
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12071, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Animation
-    m_Image: {fileID: -3237396543322336831, guid: 0000000000000000d000000000000000, type: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 0
-    y: 73.6
-    width: 903
-    height: 439.8
-  m_SerializedDataModeController:
-    m_DataMode: 0
-    m_PreferredDataMode: 0
-    m_SupportedDataModes: 
-    isAutomatic: 1
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
-    m_OverlaysVisible: 1
-  m_LockTracker:
-    m_IsLocked: 0
-  m_LastSelectedObjectID: -1252
---- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -925,8 +836,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 72
-    width: 1120
-    height: 526.5
+    width: 781.5
+    height: 594.5
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -973,10 +884,10 @@ MonoBehaviour:
         m_FrameDataHierarchyView:
           m_Serialized: 1
           m_TreeViewState:
-            scrollPos: {x: 0, y: 0}
-            m_SelectedIDs: 52000000
+            scrollPos: {x: 0, y: 144}
+            m_SelectedIDs: 
             m_LastClickedID: 0
-            m_ExpandedIDs: 
+            m_ExpandedIDs: 040000004b0000004d00000085000000f800000008010000090100000a0100000c010000420100004301000044010000450100004601000047010000490100006a0100008202000083020000840200008702000088020000890200008a0200008b0200008e0200008f020000900200009102000096020000980200009a0200009c0200009e020000a0020000a3020000a4020000a5020000aa020000ab020000ad020000c5020000e6020000
             m_RenameOverlay:
               m_UserAcceptedRename: 0
               m_Name: 
@@ -993,7 +904,7 @@ MonoBehaviour:
               m_OriginalEventType: 11
               m_IsRenamingFilename: 0
               m_ClientGUIView: {fileID: 0}
-            m_SearchString: Sensor
+            m_SearchString: 
           m_MultiColumnHeaderState:
             m_Columns:
             - width: 335.2
@@ -1117,26 +1028,26 @@ MonoBehaviour:
               canSort: 1
               userData: 0
             m_VisibleColumns: 0000000001000000020000000300000004000000050000000600000007000000
-            m_SortedColumns: 050000000400000001000000
+            m_SortedColumns: 040000000500000001000000
           m_ThreadIndexInThreadNames: 0
           m_DetailedViewType: 1
           m_DetailedViewSpliterState:
-            ID: 23371
-            splitterInitialOffset: 798
+            ID: 12658
+            splitterInitialOffset: 617
             currentActiveSplitter: -1
             realSizes:
-            - 1322.5
-            - 205.5
+            - 617
+            - 164.5
             relativeSizes:
-            - 0.8656555
-            - 0.13434452
+            - 0.7895073
+            - 0.21049267
             minSizes:
             - 450
             - 50
             maxSizes:
             - 0
             - 0
-            lastTotalSize: 1528
+            lastTotalSize: 781.5
             splitSize: 6
             xOffset: 0
             m_Version: 1
@@ -1145,7 +1056,7 @@ MonoBehaviour:
             oldMaxSizes: 
             oldSplitSize: 0
           m_DetailedObjectsView:
-            m_SelectedID: 82
+            m_SelectedID: 374
             m_TreeViewState:
               scrollPos: {x: 0, y: 0}
               m_SelectedIDs: 00000000
@@ -1233,12 +1144,12 @@ MonoBehaviour:
               m_VisibleColumns: 00000000010000000200000003000000
               m_SortedColumns: 03000000
             m_VertSplit:
-              ID: 23596
+              ID: 12737
               splitterInitialOffset: 0
               currentActiveSplitter: -1
               realSizes:
-              - 152
-              - 65
+              - 160.5
+              - 68.5
               relativeSizes:
               - 0.7
               - 0.3
@@ -1248,7 +1159,7 @@ MonoBehaviour:
               maxSizes:
               - 0
               - 0
-              lastTotalSize: 217
+              lastTotalSize: 229
               splitSize: 6
               xOffset: 0
               m_Version: 1
@@ -1490,7 +1401,7 @@ MonoBehaviour:
                 m_SortedColumns: 03000000
           m_FullThreadName: Main Thread
           m_ThreadName: Main Thread
-          <threadId>k__BackingField: 7668
+          <threadId>k__BackingField: 15896
           <threadIndex>k__BackingField: 0
           m_GroupName: 
     - rid: 1899467047422918657
@@ -1938,7 +1849,7 @@ MonoBehaviour:
       data:
         m_SortAscending: 0
         m_SortedColumn: -1
---- !u!114 &10
+--- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1948,22 +1859,123 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: NodeViewerEditorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 547.5
-    width: 1121
-    height: 392.5
-  m_MinSize: {x: 201, y: 221}
+    y: 355.5
+    width: 980
+    height: 584.5
+  m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
+  - {fileID: 10}
   - {fileID: 2}
-  m_Selected: 0
+  m_Selected: 1
   m_LastSelected: 0
+--- !u!114 &10
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Game
+    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 427.5
+    width: 979
+    height: 563.5
+  m_SerializedDataModeController:
+    m_DataMode: 0
+    m_PreferredDataMode: 0
+    m_SupportedDataModes: 
+    isAutomatic: 1
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+    m_OverlaysVisible: 1
+  m_SerializedViewNames:
+  - UnityEditor.DeviceSimulation.SimulatorWindow
+  m_SerializedViewValues:
+  - C:\2023UnityFile\ARPG_2023\Library\PlayModeViewStates\54a572b24aea5fa4abd6f57a164e1b10
+  m_PlayModeViewName: GameView
+  m_ShowGizmos: 0
+  m_TargetDisplay: 0
+  m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
+  m_TargetSize: {x: 3840, y: 2160}
+  m_TextureFilterMode: 0
+  m_TextureHideFlags: 61
+  m_RenderIMGUI: 1
+  m_EnterPlayModeBehavior: 0
+  m_UseMipMap: 0
+  m_VSyncEnabled: 0
+  m_Gizmos: 0
+  m_Stats: 0
+  m_SelectedSizes: 06000000000000000000000008000000000000000000000000000000000000000000000000000000
+  m_ZoomArea:
+    m_HRangeLocked: 0
+    m_VRangeLocked: 0
+    hZoomLockedByDefault: 0
+    vZoomLockedByDefault: 0
+    m_HBaseRangeMin: -960
+    m_HBaseRangeMax: 960
+    m_VBaseRangeMin: -540
+    m_VBaseRangeMax: 540
+    m_HAllowExceedBaseRangeMin: 1
+    m_HAllowExceedBaseRangeMax: 1
+    m_VAllowExceedBaseRangeMin: 1
+    m_VAllowExceedBaseRangeMax: 1
+    m_ScaleWithWindow: 0
+    m_HSlider: 0
+    m_VSlider: 0
+    m_IgnoreScrollWheelUntilClicked: 0
+    m_EnableMouseInput: 0
+    m_EnableSliderZoomHorizontal: 0
+    m_EnableSliderZoomVertical: 0
+    m_UniformScale: 1
+    m_UpDirection: 1
+    m_DrawArea:
+      serializedVersion: 2
+      x: 0
+      y: 21
+      width: 979
+      height: 542.5
+    m_Scale: {x: 0.5023148, y: 0.5023148}
+    m_Translation: {x: 489.5, y: 271.25}
+    m_MarginLeft: 0
+    m_MarginRight: 0
+    m_MarginTop: 0
+    m_MarginBottom: 0
+    m_LastShownAreaInsideMargins:
+      serializedVersion: 2
+      x: -974.4885
+      y: -540
+      width: 1948.977
+      height: 1080
+    m_MinimalGUI: 1
+  m_defaultScale: 0.5023148
+  m_LastWindowPixelSize: {x: 1958, y: 1127}
+  m_ClearInEditMode: 1
+  m_NoCameraWarning: 1
+  m_LowResolutionForAspectRatios: 01000000000000000000
+  m_XRRenderMode: 0
+  m_RenderTexture: {fileID: 0}
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1981,14 +1993,14 @@ MonoBehaviour:
   - {fileID: 14}
   m_Position:
     serializedVersion: 2
-    x: 1121
+    x: 980
     y: 0
-    width: 624
+    width: 597
     height: 940
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 180
+  controlID: 109
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2006,8 +2018,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 624
-    height: 446.5
+    width: 597
+    height: 587
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 13}
@@ -2035,10 +2047,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1121
+    x: 980
     y: 72
-    width: 622
-    height: 425.5
+    width: 595
+    height: 566
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -2062,7 +2074,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/ECS
+    - Assets/Scripts/ECS/GOAP/Demos/Complex/Scenes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -2070,16 +2082,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/ECS
+  - Assets/Scripts/ECS/GOAP/Demos/Complex/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\UnityProjects\WGame\Client
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 703}
-    m_SelectedIDs: c2800000
-    m_LastClickedID: 32962
-    m_ExpandedIDs: 00000000b4800000b6800000b8800000ba800000bc800000be800000c0800000c2800000c4800000c6800000c8800000ca800000cc800000ce800000d0800000d2800000d4800000a481000000ca9a3b
+    scrollPos: {x: 0, y: 991}
+    m_SelectedIDs: 2a8f0000
+    m_LastClickedID: 36650
+    m_ExpandedIDs: 000000005e8e0000608e0000628e0000648e0000668e0000688e00006a8e00006c8e00006e8e0000708e0000728e0000748e0000768e0000788e00007a8e00007c8e00007e8e0000808e0000828e0000848e0000868e0000888e00008a8e00008c8e00008e8e0000908e0000928e0000948e0000968e0000988e00009a8e00009c8e00009e8e0000a08e0000a28e0000a48e0000a68e0000a88e0000b28e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2107,7 +2119,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b4800000b6800000b8800000ba800000bc800000be800000c0800000c2800000c4800000c6800000c8800000ca800000cc800000ce800000d0800000d2800000d4800000
+    m_ExpandedIDs: 000000005e8e0000608e0000628e0000648e0000668e0000688e00006a8e00006c8e00006e8e0000708e0000728e0000748e0000768e0000788e00007a8e00007c8e00007e8e0000808e0000828e0000848e0000868e0000888e00008a8e00008c8e00008e8e0000908e0000928e0000948e0000968e0000988e00009a8e00009c8e00009e8e0000a08e0000a28e0000a48e0000a68e0000a88e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2132,24 +2144,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c62300009c6f00005a7000008c930000a4940000366b0100aa9400009e9400003eb900007a96000028760000cc910000e4910000fc910000149200002e9200001c710000e07100003472000000000000ec030100d48f0000dedc0000c2da000068e1000002070100680a01005ce50000ccc6000008d30000
+    m_SelectedInstanceIDs: 3e900000
+    m_LastClickedInstanceID: 36926
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c62300009c6f00005a7000008c930000a4940000366b0100aa9400009e9400003eb900007a96000028760000cc910000e4910000fc910000149200002e9200001c710000e071000034720000ec030100d48f0000dedc0000c2da000068e1000002070100680a01005ce50000ccc6000008d3000000000000ee880000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: WGoapDebuger
+      m_OriginalName: WGoapDebuger
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 51520
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:
@@ -2181,13 +2193,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 446.5
-    width: 624
-    height: 493.5
+    y: 587
+    width: 597
+    height: 353
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 181
+  controlID: 110
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2205,10 +2217,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 312
-    height: 493.5
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 259.5
+    height: 353
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -2234,10 +2246,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1121
-    y: 518.5
-    width: 310
-    height: 472.5
+    x: 980
+    y: 659
+    width: 257.5
+    height: 332
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -2251,9 +2263,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 3e900000
       m_LastClickedID: 0
-      m_ExpandedIDs: d6faffff
+      m_ExpandedIDs: d4f6efff3202f1ffcaeff9ff6639faffa221fbfff222fbfff026fbff164afeff5a4efeffdad4feffe2f8feffd212ffffbe17ffff181dffffb230ffffc45dffff78a4ffffdac9ffff34edffff1efbffff28ab00002cab000056ba00005aba0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2269,7 +2281,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 15}
+        m_ClientGUIView: {fileID: 4}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -2292,18 +2304,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 312
+    x: 259.5
     y: 0
-    width: 312
-    height: 493.5
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 337.5
+    height: 353
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
-  - {fileID: 19}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 0
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2324,10 +2335,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1433
-    y: 518.5
-    width: 310
-    height: 472.5
+    x: 1239.5
+    y: 659
+    width: 335.5
+    height: 332
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -2346,62 +2357,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5a1bf24da2ef2478e7082e2b698c0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Wwise Picker
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 1173.6
-    y: 553.60004
-    width: 433.20007
-    height: 509.80005
-  m_SerializedDataModeController:
-    m_DataMode: 0
-    m_PreferredDataMode: 0
-    m_SupportedDataModes: 
-    isAutomatic: 1
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
-    m_OverlaysVisible: 1
-  m_treeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 17000000
-    m_LastClickedID: 23
-    m_ExpandedIDs: 0600000007000000
-    m_RenameOverlay:
-      m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
-      m_EditFieldRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      m_UserData: 0
-      m_IsWaitingForDelay: 0
-      m_IsRenaming: 0
-      m_OriginalEventType: 11
-      m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 17}
-    m_SearchString: 
---- !u!114 &20
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: InspectorWindow
@@ -2409,20 +2364,20 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1745
+    x: 1577
     y: 0
-    width: 175
+    width: 343
     height: 940
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 21}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 20}
   m_Panes:
+  - {fileID: 20}
   - {fileID: 21}
   - {fileID: 22}
-  - {fileID: 23}
   m_Selected: 0
   m_LastSelected: 1
---- !u!114 &21
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2442,9 +2397,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1745
+    x: 1577
     y: 72
-    width: 174
+    width: 342
     height: 919
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -2459,7 +2414,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 390
+    m_CachedPref: 151
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
@@ -2469,7 +2424,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &22
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2489,9 +2444,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1535.5
+    x: 1577
     y: 72
-    width: 383.5
+    width: 342
     height: 919
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -2504,7 +2459,7 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   m_Spl:
-    ID: 1479
+    ID: 3947
     splitterInitialOffset: 617
     currentActiveSplitter: -1
     realSizes:
@@ -2529,7 +2484,7 @@ MonoBehaviour:
     oldSplitSize: 0
   m_TestTypeToolbarIndex: 0
   m_PlayModeTestListGUI:
-    m_Window: {fileID: 22}
+    m_Window: {fileID: 21}
     m_NewResultList:
     - id: 1000
       uniqueId: '[WGame_2023][suite]'
@@ -2613,214 +2568,13 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: TWY.Physics.dll/[TWY.Physics][ShapeTest][suite]
-    - id: 1015
-      uniqueId: TWY.Physics.dll/[TWY][suite]
-      name: TWY
-      fullName: TWY
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1014
-      parentUniqueId: '[TWY.Physics][E:/UnityProjects/WGame/Client/Library/ScriptAssemblies/TWY.Physics.dll][suite]'
-    - id: 1016
-      uniqueId: TWY.Physics.dll/TWY/[TWY.Physics][TWY.Tests][suite]
-      name: Tests
-      fullName: TWY.Tests
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1015
-      parentUniqueId: TWY.Physics.dll/[TWY][suite]
-    - id: 1004
-      uniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-      name: WBVHTest
-      fullName: TWY.Tests.WBVHTest
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1016
-      parentUniqueId: TWY.Physics.dll/TWY/[TWY.Physics][TWY.Tests][suite]
-    - id: 1005
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test1CreateThroughConstruct]
-      name: Test1CreateThroughConstruct
-      fullName: TWY.Tests.WBVHTest.Test1CreateThroughConstruct
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-    - id: 1006
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test2Addition]
-      name: Test2Addition
-      fullName: TWY.Tests.WBVHTest.Test2Addition
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-    - id: 1007
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test3SingleItemPositionUpdate]
-      name: Test3SingleItemPositionUpdate
-      fullName: TWY.Tests.WBVHTest.Test3SingleItemPositionUpdate
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-    - id: 1008
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test4MultipleItemPositionUpdate]
-      name: Test4MultipleItemPositionUpdate
-      fullName: TWY.Tests.WBVHTest.Test4MultipleItemPositionUpdate
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-    - id: 1009
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test5AdditionAndUpdate]
-      name: Test5AdditionAndUpdate
-      fullName: TWY.Tests.WBVHTest.Test5AdditionAndUpdate
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-    - id: 1010
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test6Destroy]
-      name: Test6Destroy
-      fullName: TWY.Tests.WBVHTest.Test6Destroy
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-    - id: 1011
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test7DestroyAndUpdate]
-      name: Test7DestroyAndUpdate
-      fullName: TWY.Tests.WBVHTest.Test7DestroyAndUpdate
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-    - id: 1012
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test8AddDestroyAndUpdate]
-      name: Test8AddDestroyAndUpdate
-      fullName: TWY.Tests.WBVHTest.Test8AddDestroyAndUpdate
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
-    - id: 1013
-      uniqueId: TWY.Physics.dll/TWY/Tests/WBVHTest/[TWY.Physics][TWY.Tests.WBVHTest.Test9RadialRetrival]
-      name: Test9RadialRetrival
-      fullName: TWY.Tests.WBVHTest.Test9RadialRetrival
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1004
-      parentUniqueId: TWY.Physics.dll/TWY/Tests/[TWY.Physics][TWY.Tests.WBVHTest][suite]
     m_ResultText: 
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 55f45afb
-      m_LastClickedID: -77925291
-      m_ExpandedIDs: 4d4a74880cd3d7bd1d7f1abf40c378dad354e4f61c6151f7b51a0814e4619b171b8c363058e0c03e40d1614353b346578a6a276234ed526effffff7f
+      m_SelectedIDs: 0a83c0f0
+      m_LastClickedID: -255818998
+      m_ExpandedIDs: 4d4a74881097b6910cd3d7bd1d7f1abffc050fd540c378da0a83c0f0d354e4f61c6151f7b51a0814e4619b171b8c363058e0c03e40d1614353b346578a6a276234ed526effffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2848,14 +2602,14 @@ MonoBehaviour:
       - Uncategorized
     m_SelectedOption: 0
   m_EditModeTestListGUI:
-    m_Window: {fileID: 22}
+    m_Window: {fileID: 21}
     m_NewResultList:
-    - id: 1000
-      uniqueId: '[TWY_Game_2023][suite]'
-      name: TWY_Game_2023
-      fullName: TWY_Game_2023
-      resultStatus: 1
-      duration: 0.042981
+    - id: 1008
+      uniqueId: '[WGame_2023][suite]'
+      name: WGame_2023
+      fullName: WGame_2023
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -7530,12 +7284,12 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1015
       parentUniqueId: Fluid.BehaviorTree.EditorTests.dll/FluidBehaviorTree/Tests/Editor/BehaviorTrees/[Fluid.BehaviorTree.EditorTests][FluidBehaviorTree.Tests.Editor.BehaviorTrees.VisualTaskTest+SetupMethod][suite]
-    - id: 1021
-      uniqueId: '[WGame.Lang.Test][C:/2023UnityFile/ARPG_2023/Library/ScriptAssemblies/WGame.Lang.Test.dll][suite]'
+    - id: 1296
+      uniqueId: '[WGame.Lang.Test][E:/UnityProjects/WGame/Client/Library/ScriptAssemblies/WGame.Lang.Test.dll][suite]'
       name: WGame.Lang.Test.dll
-      fullName: C:/2023UnityFile/ARPG_2023/Library/ScriptAssemblies/WGame.Lang.Test.dll
-      resultStatus: 1
-      duration: 0.0085764
+      fullName: E:/UnityProjects/WGame/Client/Library/ScriptAssemblies/WGame.Lang.Test.dll
+      resultStatus: 0
+      duration: 0
       messages: 
       output: 
       stacktrace: 
@@ -7544,8 +7298,8 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1000
-      parentUniqueId: '[TWY_Game_2023][suite]'
+      parentId: 1008
+      parentUniqueId: '[WGame_2023][suite]'
     - id: 1018
       uniqueId: WGame.Lang.Test.dll/[WGame.Lang.Test][WLTest][suite]
       name: WLTest
@@ -7598,17 +7352,13 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1018
       parentUniqueId: WGame.Lang.Test.dll/[WGame.Lang.Test][WLTest][suite]
-    m_ResultText: 'WLTestSimplePasses (0.001s)
-
-      ---
-
-      <color=#00ff00>1001</color>'
+    m_ResultText: 
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4e1af0ed
-      m_LastClickedID: -303031730
-      m_ExpandedIDs: 4d4a7488bc8af38ee4c7ead71c2d2edb485e79e1d354e4f690f7641035d59f21b7a8342f22524b3affffff7f
+      m_SelectedIDs: 1c6bc333
+      m_LastClickedID: 868444956
+      m_ExpandedIDs: 4d4a7488bc8af38ee4c7ead71c2d2edb485e79e1d354e4f690f7641035d59f21b7a8342f22524b3a53b34657ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -7634,7 +7384,7 @@ MonoBehaviour:
       selectedCategoryMask: 0
       availableCategories:
       - Uncategorized
---- !u!114 &23
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7654,9 +7404,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1328.5
+    x: 1577
     y: 72
-    width: 590.5
+    width: 342
     height: 919
   m_SerializedDataModeController:
     m_DataMode: 0

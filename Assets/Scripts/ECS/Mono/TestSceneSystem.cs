@@ -19,6 +19,7 @@ public class TestSceneSystem : MonoBehaviour
     
 	[SerializeField] private Transform sceneRoot;
 	[SerializeField] private UnityEngine.Rendering.Volume volume;
+	[SerializeField] private Transform goapTrans;
 
 	private Systems _systems;
     
@@ -226,5 +227,6 @@ public class TestSceneSystem : MonoBehaviour
     {
 	    WLangMgr.Inst.LordInitCode(TerminalModel.Inst.Interp);
 		_contexts.meta.factoryService.instance.InitSceneObjectRoot(sceneRoot);
+		_contexts.meta.factoryService.instance.InitGOAPRoot(goapTrans);
     }
 }

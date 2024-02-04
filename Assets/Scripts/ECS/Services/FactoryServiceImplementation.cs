@@ -1,6 +1,16 @@
 using System;
 using System.Collections.Generic;
 using BaseData.Character;
+using CrashKonijn.Goap.Behaviours;
+using CrashKonijn.Goap.Classes.Builders;
+using CrashKonijn.Goap.Configs;
+using CrashKonijn.Goap.Enums;
+using CrashKonijn.Goap.Resolver;
+using Demos.Complex.Classes;
+using Demos.Complex.Classes.Items;
+using Demos.Complex.Factories.Extensions;
+using Demos.Complex.Interfaces;
+using Demos.Shared;
 using Entitas.Unity;
 #if UNITY_EDITOR
 using System.IO;
@@ -10,6 +20,7 @@ using Motion;
 using Pathfinding;
 using Weapon;
 using WGame.Attribute;
+using WGame.GOAP;
 using WGame.Res;
 using WGame.Runtime;
 using Random = UnityEngine.Random;
@@ -18,6 +29,7 @@ public class FactoryServiceImplementation : IFactoryService
 {
     private Transform dropItemRoot;
     private Transform sceneRoot;
+    private GoapRunnerBehaviour goapRunnerBehaviour;
     
     private Dictionary<int, AnimationClip> _clips = new();
     private AvatarMask[] _avatarMasks;
@@ -108,6 +120,39 @@ public class FactoryServiceImplementation : IFactoryService
         InitClips();
         InitAvatarMask();
     }
+
+    private GoapSetConfig CreateBaseGoapConfig()
+    {
+        var builder = new GoapSetBuilder("Base");
+
+        // Debugger
+        builder.SetAgentDebugger<WGoapDebugger>();
+
+        // Goals
+        builder.AddGoal<PatrolGoal>()
+            .AddCondition<IsPatroling>(Comparison.GreaterThanOrEqual, 1);
+
+        // Actions
+        builder.AddAction<PatrolAction>()
+            .SetTarget<PatrolTarget>()
+            .SetInRange(10f)
+            .SetBaseCost(1)
+            .AddEffect<IsPatroling>(EffectType.Increase);
+        
+        // TargetSensors
+        builder.AddTargetSensor<PatrolTargetSensor>()
+            .SetTarget<PatrolTarget>();
+
+        return builder.Build();
+    }
+    
+    public void InitGOAPRoot(Transform goapRoot)
+    {
+        goapRunnerBehaviour = goapRoot.GetComponent<GoapRunnerBehaviour>();
+        goapRunnerBehaviour.Register(CreateBaseGoapConfig());
+    }
+
+    public GoapRunnerBehaviour GOAPRunner => goapRunnerBehaviour;
 
     public AnimationClip GetAnimationClip(int clipID)
     {

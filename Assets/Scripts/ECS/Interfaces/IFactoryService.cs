@@ -5,6 +5,8 @@ using UnityEngine;
 public interface IFactoryService
 {
     public void InitSceneObjectRoot(Transform sceneRoot);
+    public void InitGOAPRoot(Transform sceneRoot);
+    public CrashKonijn.Goap.Behaviours.GoapRunnerBehaviour GOAPRunner { get; }
     public AnimationClip GetAnimationClip(int clipID);
     public AvatarMask GetAvatarMask(int layerType);
     public void LoadAnimationClip(string clipName, Action<AnimationClip> callback);
