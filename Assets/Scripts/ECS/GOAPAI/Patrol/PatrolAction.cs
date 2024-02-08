@@ -32,7 +32,7 @@ namespace WGame.GOAP
                 return ActionRunState.Continue;
             }
 
-            WLogger.Print(data.Timer);
+            // WLogger.Print(data.Timer);
             return ActionRunState.Stop;
         }
 

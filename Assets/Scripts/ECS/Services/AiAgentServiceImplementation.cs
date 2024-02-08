@@ -46,6 +46,7 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         bTreeAgent = BTreeAgent.Get(_vmService);
         goapBrain = new BaseAgentBrain(_entity.gameViewService.service.Model
             .GetOrAddComponent<AgentBehaviour>());
+        goapBrain.Agent.EntityID = _entity.instanceID.ID;
         goapBrain.Agent.GoapSet = _factory.GOAPRunner.GetGoapSet("Base");
         goapBrain.Agent.DistanceObserver = new WDistanceObserver();
         if (_entity.isCampRed)

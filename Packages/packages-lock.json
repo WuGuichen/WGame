@@ -8,13 +8,12 @@
       "hash": "51da1d4c433504f3171fff66217035b89c45d823"
     },
     "com.crashkonijn.goap": {
-      "version": "https://github.com/crashkonijn/GOAP.git?path=/Package#2.1.17",
+      "version": "file:com.crashkonijn.goap@7098c059f1",
       "depth": 0,
-      "source": "git",
+      "source": "embedded",
       "dependencies": {
         "com.unity.collections": "1.2.4"
-      },
-      "hash": "7098c059f158a9ddbde8f02bc33c70da9ddb8fdd"
+      }
     },
     "com.singularitygroup.hotreload": {
       "version": "file:com.singularitygroup.hotreload",

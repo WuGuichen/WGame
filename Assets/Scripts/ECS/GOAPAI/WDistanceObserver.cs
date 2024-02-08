@@ -16,8 +16,9 @@ namespace WGame.GOAP
             {
                 return 0f;
             }
-            var motionService = reference.GetCachedComponent<MotionServiceImplementation>();
-            return DetectMgr.Inst.GetDistance(motionService.LinkEntity, entity.Entity);
+
+            var targetEntity = EntityUtils.GetGameEntity(agent.EntityID);
+            return DetectMgr.Inst.GetDistance(targetEntity, entity.Entity);
         }
     }
 }

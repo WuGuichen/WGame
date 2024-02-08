@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9698f82633d22480cab599ec9a415dc7, type: 3}
   m_Name: UOSSettings
   m_EditorClassIdentifier: 
-  UOSAppId: 18998c55-3c0a-4ef3-b52b-74eb8afd3250
-  UOSAppServiceSecret: cfa5b2db5fd7417585fb61cecb4eac93
+  UOSAppId: 
+  UOSAppServiceSecret: 
