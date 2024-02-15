@@ -83,7 +83,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c050796b0e17619449e1da81c2de3d79, type: 2}
+  - {fileID: 2100000, guid: f514557113f028a4bbb638aeadc02a1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -656,7 +656,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c050796b0e17619449e1da81c2de3d79, type: 2}
+  - {fileID: 2100000, guid: f514557113f028a4bbb638aeadc02a1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
   race: 1
   camp: 2
   moveSpeed: 400
-  rotationSpeed: 800
+  rotationSpeed: 200
   runSpeedRate: 200
   patrolPoints:
   - {x: 4.34, y: 0, z: 0}
@@ -1158,7 +1158,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c050796b0e17619449e1da81c2de3d79, type: 2}
+  - {fileID: 2100000, guid: f514557113f028a4bbb638aeadc02a1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2357,7 +2357,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c050796b0e17619449e1da81c2de3d79, type: 2}
+  - {fileID: 2100000, guid: f514557113f028a4bbb638aeadc02a1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2489,7 +2489,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c050796b0e17619449e1da81c2de3d79, type: 2}
+  - {fileID: 2100000, guid: f514557113f028a4bbb638aeadc02a1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

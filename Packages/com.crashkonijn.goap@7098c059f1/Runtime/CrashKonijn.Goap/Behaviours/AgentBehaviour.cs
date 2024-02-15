@@ -5,6 +5,7 @@ using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Exceptions;
 using CrashKonijn.Goap.Interfaces;
 using CrashKonijn.Goap.Observers;
+using Entitas;
 using UnityEngine;
 
 namespace CrashKonijn.Goap.Behaviours
@@ -12,7 +13,6 @@ namespace CrashKonijn.Goap.Behaviours
     public class AgentBehaviour : MonoBehaviour, IMonoAgent
     {
         public GoapSetBehaviour goapSetBehaviour;
-        public int EntityID { get; set; } = 0;
 
         [field: SerializeField]
         public float DistanceMultiplier { get; set; } = 1f;
@@ -241,5 +241,7 @@ namespace CrashKonijn.Goap.Behaviours
         {
             this.DistanceMultiplier = 1f / speed;
         }
+
+        public Entity Entity { get; set; }
     }
 }

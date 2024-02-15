@@ -6,11 +6,6 @@ using CrashKonijn.Goap.Classes.Builders;
 using CrashKonijn.Goap.Configs;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Resolver;
-using Demos.Complex.Classes;
-using Demos.Complex.Classes.Items;
-using Demos.Complex.Factories.Extensions;
-using Demos.Complex.Interfaces;
-using Demos.Shared;
 using Entitas.Unity;
 #if UNITY_EDITOR
 using System.IO;
@@ -241,12 +236,14 @@ public class FactoryServiceImplementation : IFactoryService
         entity.AddCharacterInfo(WCharacterInfo.GetCharacterInfo(infoID));
         entity.AddPosition(pos);
         var gameEntity = entity;
+        WLogger.Print(pos);
         ObjectPool.Inst.GetObject(data.ObjectId, pos, rot, GameSceneMgr.Inst.genCharacterRoot, obj =>
         {
             obj.name = id.ToString();
 
             InitCharacter(ref gameEntity, obj);
             
+            // gameEntity.linkMotion.Motion.motionService.service.AnimProcessor.ClearRootMotion();
             // 真正完成角色生成
             callback?.Invoke(gameEntity);
         });
@@ -259,7 +256,6 @@ public class FactoryServiceImplementation : IFactoryService
         var entity = _gameContext.CreateEntity();
         entity.AddEntityID(id);
         entity.AddCharacterInfo(info);
-        entity.AddPosition(obj.transform.position);
         InitCharacter(ref entity, obj);
     }
 
@@ -274,6 +270,11 @@ public class FactoryServiceImplementation : IFactoryService
         // 刚体
         entity.AddRigidbodyService(obj.GetComponent<IRigidbodyService>().OnInit());
         entity.rigidbodyService.service.SetEntity(entity);
+        entity.AddMoveDirection(Vector3.zero);
+        if (entity.hasPosition == false)
+        {
+            entity.AddPosition(obj.transform.position);
+        }
         
         obj.layer = EntityUtils.GetLayer(entity);
         entity.gameViewService.service.Model.gameObject.layer = EntityUtils.GetSensorLayer(entity);
@@ -391,6 +392,9 @@ public class FactoryServiceImplementation : IFactoryService
         {
             EntityUtils.BvhRed.Add(entity.gameViewService.service);
         }
+        
+        // 同步物理位置
+        Physics.SyncTransforms();
     }
 
     public void GenWeaponEntity(int weaponID, out WeaponEntity weapon)

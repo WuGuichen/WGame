@@ -19,7 +19,6 @@ namespace WGame.GOAP
         public override ITarget Sense(IMonoAgent agent, IComponentReference references)
         {
             var random = GetRandomPosition(agent);
-            var motion = references.GetCachedComponent<MotionServiceImplementation>();
 
             return new EntityTarget(EntityUtils.GetCameraEntity());
         }

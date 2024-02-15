@@ -22,7 +22,7 @@ namespace WGame.GOAP
 
         protected override void OnActionStop(IActionBase action)
         {
-            WLogger.Print("Stop");
+            // WLogger.Print("Stop");
         }
 
         protected override void OnNoActionFound(IGoalBase goal)

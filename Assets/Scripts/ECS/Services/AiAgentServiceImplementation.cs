@@ -20,7 +20,6 @@ public partial class AiAgentServiceImplementation : IAiAgentService
     private float preSqrDist;
 
     private readonly MoveAgent moveAgent;
-    private readonly FightAgent fightAgent;
     private readonly FSMAgent fsmAgent;
     private readonly BTreeAgent bTreeAgent;
     private WAgentBrainBase goapBrain;
@@ -38,7 +37,6 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         _aiCfg = entity.characterInfo.value.AICfg;
         _initInfo = entity.characterInfo.value;
         moveAgent = new MoveAgent(this, seeker, entity, patrolPoints);
-        fightAgent = new FightAgent(this, entity);
         _uiService = entity.uIHeadPad.service;
         _vmService = _entity.linkVM.VM.vMService.service;
         fsmAgent = FSMAgent.Get(_vmService);
@@ -46,9 +44,9 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         bTreeAgent = BTreeAgent.Get(_vmService);
         goapBrain = new BaseAgentBrain(_entity.gameViewService.service.Model
             .GetOrAddComponent<AgentBehaviour>());
-        goapBrain.Agent.EntityID = _entity.instanceID.ID;
         goapBrain.Agent.GoapSet = _factory.GOAPRunner.GetGoapSet("Base");
         goapBrain.Agent.DistanceObserver = new WDistanceObserver();
+        goapBrain.Agent.Entity = entity;
         if (_entity.isCampRed)
         {
             goapBrain.SetEnable(true);
@@ -92,17 +90,17 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         }
         if (!_entity.isDeadState && !_entity.isCamera)
         {
-            // fsmAgent.SetFSMState(true);
-            // // UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
-            // fsmAgent.OnUpdate();
-            // IsActing = true;
-            // // UnityEngine.Profiling.Profiler.EndSample();
+            fsmAgent.SetFSMState(true);
+            // UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
+            fsmAgent.OnUpdate();
+            IsActing = true;
+            // UnityEngine.Profiling.Profiler.EndSample();
         }
         else
         {
-            // fsmAgent.SetFSMState(false);
+            fsmAgent.SetFSMState(false);
             // _uiService.SetMessage(null);
-            // IsActing = false;
+            IsActing = false;
         }
     }
 
@@ -117,11 +115,11 @@ public partial class AiAgentServiceImplementation : IAiAgentService
     }
 
     public MoveAgent MoveAgent => moveAgent;
-    public FightAgent FightAgent => fightAgent;
     public FSMAgent FSMAgent => fsmAgent;
 
     public void Destroy()
     {
         FSMAgent.Push(fsmAgent);
+        MoveAgent.Dispose();
     }
 }

@@ -14,8 +14,7 @@ public partial class AiAgentServiceImplementation
         {
             var rate = interpreter.ParseInt(list, 0, 100) * 0.01f;
             var reset = interpreter.ParseBool(list, 1, true);
-            var real = (reset ?  _initInfo.moveSpeed : _entity.movementSpeed.value) * rate;
-            _entity.ReplaceMovementSpeed(real);
+            MoveAgent.SetMoveSpeedRate(rate, reset);
         });
         // 重置角色移动速度
         SetMethod("S_ResetMoveSpeed", (list, interpreter) =>

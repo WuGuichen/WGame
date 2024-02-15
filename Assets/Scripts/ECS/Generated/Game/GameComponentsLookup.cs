@@ -78,30 +78,31 @@ public static class GameComponentsLookup {
     public const int PrepareLocalMotionState = 67;
     public const int PrepareStepState = 68;
     public const int RigidbodyService = 69;
-    public const int RotateInFocus = 70;
-    public const int RotationSpeed = 71;
-    public const int RunningMultiRate = 72;
-    public const int RunState = 73;
-    public const int SignalAttack = 74;
-    public const int SignalDefense = 75;
-    public const int SignalJump = 76;
-    public const int SignalLocalMotion = 77;
-    public const int SignalState = 78;
-    public const int SignalStep = 79;
-    public const int SpawnPoint = 80;
-    public const int StateChanged = 81;
-    public const int StateSwitchState = 82;
-    public const int StateSwitchStateListener = 83;
-    public const int StepEndState = 84;
-    public const int StepState = 85;
-    public const int TargetPlanarSqrDistance = 86;
-    public const int UIHeadPad = 87;
-    public const int Unbalanced = 88;
-    public const int WalkState = 89;
-    public const int WeaponDropService = 90;
-    public const int WeaponService = 91;
+    public const int Rotate = 70;
+    public const int RotateInFocus = 71;
+    public const int RotationSpeed = 72;
+    public const int RunningMultiRate = 73;
+    public const int RunState = 74;
+    public const int SignalAttack = 75;
+    public const int SignalDefense = 76;
+    public const int SignalJump = 77;
+    public const int SignalLocalMotion = 78;
+    public const int SignalState = 79;
+    public const int SignalStep = 80;
+    public const int SpawnPoint = 81;
+    public const int StateChanged = 82;
+    public const int StateSwitchState = 83;
+    public const int StateSwitchStateListener = 84;
+    public const int StepEndState = 85;
+    public const int StepState = 86;
+    public const int TargetPlanarSqrDistance = 87;
+    public const int UIHeadPad = 88;
+    public const int Unbalanced = 89;
+    public const int WalkState = 90;
+    public const int WeaponDropService = 91;
+    public const int WeaponService = 92;
 
-    public const int TotalComponents = 92;
+    public const int TotalComponents = 93;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -174,6 +175,7 @@ public static class GameComponentsLookup {
         "PrepareLocalMotionState",
         "PrepareStepState",
         "RigidbodyService",
+        "Rotate",
         "RotateInFocus",
         "RotationSpeed",
         "RunningMultiRate",
@@ -269,6 +271,7 @@ public static class GameComponentsLookup {
         typeof(PrepareLocalMotionState),
         typeof(PrepareStepState),
         typeof(RigidbodyServiceComponent),
+        typeof(RotateComponent),
         typeof(RotateInFocusComponent),
         typeof(RotationSpeedComponent),
         typeof(RunningMultiRateComponent),

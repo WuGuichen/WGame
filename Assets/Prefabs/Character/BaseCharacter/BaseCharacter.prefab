@@ -1517,31 +1517,31 @@ MonoBehaviour:
   infoID: 0
   weaponID: 1
   aiID: 1
-  animID: 1
+  animID: 0
   job: 1
   gender: 1
   race: 1
   camp: 1
-  moveSpeed: 800
+  moveSpeed: 900
   rotationSpeed: 800
   runSpeedRate: 200
   patrolPoints:
-  - {x: 2.26, y: 0, z: 3.74}
-  - {x: 5.18, y: 0, z: 0}
-  - {x: 0.52, y: 0, z: -4.5}
-  - {x: -3.96, y: 0, z: -0.47}
-  maxHP: 150
-  curHP: 150
-  maxMP: 120
-  curMP: 120
-  ATK: 12
-  DEF: 9
-  PatrolMul: 60
+  - {x: 4.34, y: 0, z: 0}
+  - {x: 0, y: 0, z: 6.5}
+  - {x: -4.85, y: 0, z: -1.99}
+  - {x: -5.83, y: 0, z: 2.22}
+  maxHP: 180
+  curHP: 180
+  maxMP: 90
+  curMP: 90
+  ATK: 8
+  DEF: 12
+  PatrolMul: 40
   ChaseMul: 100
   DetectDegree: 120
   DetectRadius1: 4
   DetectRadius2: 12
-  showPatrolPoint: 0
+  showPatrolPoint: 1
   showDetectArea: 0
 --- !u!114 &8779089287030269880
 MonoBehaviour:

@@ -74,6 +74,8 @@ public class MoveCharacterSystem : IExecuteSystem
             var totalMulti = entity.animMoveMulti.rate * speedMulti * 0.0001f;
             var speed = entity.movementSpeed.value * totalMulti;
             var speedY = entity.rigidbodyService.service.Velocity.y;
+            float vecMulti;
+            var model = entity.gameViewService.service.Model;
             if (entity.isCamera)
             {
                 if (entity.hasFocusEntity)
@@ -97,8 +99,8 @@ public class MoveCharacterSystem : IExecuteSystem
                 }
                 else
                 {
-                    var vecMulti = Mathf.Clamp01(Vector3.Dot(
-                        entity.gameViewService.service.Model.forward,
+                    vecMulti = Mathf.Clamp01(Vector3.Dot(
+                        model.forward,
                         entity.moveDirection.value));
                     speed *= vecMulti;
                     if (motion.hasMotionService)
@@ -111,7 +113,10 @@ public class MoveCharacterSystem : IExecuteSystem
             else
             {
                 var moveDir = entity.moveDirection.value;
-                moveDir = entity.gameViewService.service.Model.InverseTransformVector(moveDir);
+                moveDir = model.InverseTransformVector(moveDir);
+                vecMulti = Mathf.Clamp01(Vector3.Dot(
+                        model.forward,
+                        moveDir));
                 if (entity.hasFocusEntity)
                 {
                     motion.motionService.service.AnimProcessor.UpdateMoveSpeed(
@@ -120,8 +125,8 @@ public class MoveCharacterSystem : IExecuteSystem
                 }
                 else
                 {
-                    var vecMulti = Mathf.Clamp01(Vector3.Dot(
-                        entity.gameViewService.service.Model.forward,
+                    vecMulti = Mathf.Clamp01(Vector3.Dot(
+                        model.forward,
                         entity.moveDirection.value));
                     speed *= vecMulti;
                     motion.motionService.service.AnimProcessor.UpdateMoveSpeed(vecMulti * totalMulti, 0);

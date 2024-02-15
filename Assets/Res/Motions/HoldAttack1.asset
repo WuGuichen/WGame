@@ -46,7 +46,7 @@ MonoBehaviour:
     active: 1
     triggerTime: 8d000000
     triggerType: 80000000
-    triggerParam: 08000000
+    triggerParam: 04000000
     eventType:
       mainType: 0
       subType: 1

@@ -173,7 +173,7 @@
                     "$type": 6,
                     "$plength": 1,
                     "$pcontent": [
-                        8
+                        4
                     ]
                 },
                 "eventType": {

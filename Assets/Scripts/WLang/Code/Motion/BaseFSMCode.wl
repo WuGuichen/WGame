@@ -2,7 +2,6 @@
 rankChase = HRT_DETECT
 
 def PatrolEnter(){
-    Print("Enter Patrol")
     -- 设置巡逻移速
     S_SetMoveSpeedRate(5)
     @E_SELF:E_ResetDetectParam()
@@ -20,13 +19,11 @@ def PatrolLogic(){
     }
 }
 def PatrolEnd(){
-    Print("End Patrol")
     -- 重置移速
     S_SetMoveSpeedRate()
 }
 
 def ChaseEnter(){
-    Print("Enter Chase")
     -- 设置追击移速
     S_SetMoveSpeedRate(50)
     S_SetRotateSpeedRate(200)

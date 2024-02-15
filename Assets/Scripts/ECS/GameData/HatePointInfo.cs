@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 public class HatePointInfo
 {
+    private GameEntity _entity;
+    public HatePointInfo(GameEntity entity)
+    {
+        _entity = entity;
+    }
     public struct HateInfo
     {
         public int ID { get; private set; }
@@ -130,8 +135,25 @@ public class HatePointInfo
             LimitUpValue(ref rank, ref value, type, id);
         }
         info = new HateInfo(id, rank, value);
-        _hatePointDict[id] = info;
+        RefreshHateInfo(id, ref info);
         RefreshMaxHate(id, rank, value);
+    }
+
+    private void RefreshHateInfo(int id, ref HateInfo info)
+    {
+        _hatePointDict[id] = info;
+        if (info.Rank < HateRankType.Alert)
+        {
+            if (!_entity.isCamera && _entity.hasFocusEntity)
+            {
+                var tarEntity = _entity.focusEntity.entity;
+                if (tarEntity.instanceID.ID == info.ID)
+                {
+                    tarEntity.gameViewService.service.BeFocused(false);
+                    _entity.RemoveFocusEntity();
+                }
+            }
+        }
     }
     
     private bool CanEnterFocus(int type) => (type & CAN_FOCUS_TYPES) > 0;
@@ -170,7 +192,7 @@ public class HatePointInfo
     public void Set(int id, float value, int rank)
     {
         var info = new HateInfo(id, rank, value);
-        _hatePointDict[id] = info;
+        RefreshHateInfo(id, ref info);
         RefreshMaxHate(id, rank, value);
     }
 

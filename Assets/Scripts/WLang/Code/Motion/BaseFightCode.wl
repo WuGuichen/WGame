@@ -20,5 +20,4 @@ def FightLogic(){
 }
 
 def FightEnd(){
-    Print("End Fight...........")
 }

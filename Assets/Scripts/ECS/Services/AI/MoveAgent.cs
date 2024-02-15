@@ -1,7 +1,6 @@
 using CleverCrow.Fluid.BTs.Trees;
 using Pathfinding;
 using UnityEngine;
-using WGame.Runtime;
 
 public class MoveAgent
 {
@@ -9,6 +8,7 @@ public class MoveAgent
     private GameEntity _entity;
     private Vector3[] _patrolPoints;
     private int _curPatrolIndex = 0;
+    private CharacterInitInfo _initInfo;
     public int CurPatrolIndex
     {
         get => _curPatrolIndex;
@@ -24,7 +24,6 @@ public class MoveAgent
     private Vector3 _tarPos;
     private Vector3 _targetDirRotation;
     private Quaternion _targetDirQuaternion;
-    private IAiAgentService _service;
     private IVMService _vmService;
     private Transform _transform;
     private readonly ITimeService _time;
@@ -37,53 +36,35 @@ public class MoveAgent
 
     public MoveAgent(IAiAgentService service ,Seeker seeker, GameEntity entity, Vector3[] patrolPoints)
     {
-        _service = service;
+        _initInfo = entity.characterInfo.value;
         _seeker = seeker;
         _entity = entity;
         if(entity.hasLinkVM)
             _vmService = entity.linkVM.VM.vMService.service;
         _transform = _entity.gameViewService.service.Model;
-        _patrolPoints = patrolPoints;
+        _patrolPoints = new Vector3[patrolPoints.Length];
+        var pos = entity.position.value;
+        for (int i = 0; i < patrolPoints.Length; i++)
+        {
+            _patrolPoints[i] = patrolPoints[i] + pos;
+        }
         CurPatrolIndex = Random.Range(0, _patrolPoints.Length);
         _tarPos = _patrolPoints[CurPatrolIndex];
         _time = Contexts.sharedInstance.meta.timeService.instance;
-        EventCenter.AddListener(EventDefine.OnBTreeHotUpdate, UpdateTree);
-    }
-
-    private void UpdateTree(WEventContext ctx)
-    {
-        if (ctx.pString == "OnPatrol")
-        {
-        }
     }
 
     public bool MoveToPoint(Vector3 point, float reachDist = 0.2f)
     {
-        UpdateRotateDir();
-        RotateToTarget();
-        _tarPos = point;
-        var fwd = _transform.forward;
-        fwd.y = 0;
-        if (Vector3.Angle(fwd, _targetDirRotation) > 0.1f)
-        {
-            needRotate = true;
-            // StopMove();
-        }
-
-        var pos = _transform.position;
-        if (new Vector2(pos.x - _tarPos.x, pos.z - _tarPos.z).sqrMagnitude < (reachDist*reachDist))
-        {
-            return true;
-        }
-        else
-        {
-            if(!isMoving)
-                StartMove(_targetDirRotation);
-        }
-
-        return false;
+        return MoveToTargetPos(point, reachDist);
     }
 
+    /// <summary>
+    /// 移动到实体的目标半径
+    /// </summary>
+    /// <param name="id">实体id</param>
+    /// <param name="reachDist">目标半径</param>
+    /// <param name="threshold">目标半径容差</param>
+    /// <returns>是否到达</returns>
     public bool MoveToEntity(int id, float reachDist = 0.2f, float threshold = 1f)
     {
         // 不存在目标
@@ -97,100 +78,39 @@ public class MoveAgent
             return false;
         _tarPos = tarEntity.position.value;
         var dist = DetectMgr.Inst.GetDistance(id, _entity.instanceID.ID);
+        return MoveToTargetPos(_tarPos, dist, reachDist, threshold);
+    }
+
+    private bool MoveToTargetPos(Vector3 pos, float reachDist, float threshold = 0.5f)
+    {
+        return MoveToTargetPos(pos, (_entity.position.value - pos).magnitude, reachDist, threshold);
+    }
+    private bool MoveToTargetPos(Vector3 pos, float dist, float reachDist, float threshold = 0.5f)
+    {
         bool reverse = reachDist > dist;
         reachDist += (reverse ? -threshold : threshold);
         
         // UpdateRotateDir
-        var tar = _tarPos - _entity.position.value;
+        var tar = pos - _entity.position.value;
         tar.y = 0;
-        if (tar == Vector3.zero)
-            _targetDirRotation = _transform.forward;
-        else
-            _targetDirRotation = tar.normalized;
-        
-        _targetDirQuaternion = Quaternion.LookRotation(_targetDirRotation);
-        if (reverse)
-            _targetDirRotation *= -1;
         
         var fwd = _transform.forward;
-        fwd.y = 0;
-        var angle = _targetDirRotation.GetAngle(reverse ? -fwd : fwd);
-
-        bool reachAngle = true;
-        if (angle > 0.1f)
-        {
-            reachAngle = false;
-            // StopMove();
-        }
-
-        // RotateToTarget
-        if (!reachAngle)
-        {
-            if (angle < 0.1f)
-            {
-                // 旋转到位了
-                reachAngle = true;
-                // 开始移动
-                StartMove(_targetDirRotation);
-            }
-            else
-            {
-                // 旋转目标
-                var rot = Quaternion.RotateTowards(_transform.rotation, _targetDirQuaternion
-                    , _entity.rotationSpeed.value * _entity.animRotateMulti.rate * _time.DeltaTime);
-
-                _transform.rotation = rot;
-            }
-        }
         
-        // 
-
+        fwd.y = 0;
+        StartMove(tar.normalized);
         if (reverse)
         {
             if (dist > reachDist)
             {
-                return reachAngle;
+                return true;
             }
         }
         else
         {
             if (dist < reachDist)
             {
-                return reachAngle;
+                return true;
             }
-        }
-        if(!isMoving && reachAngle)
-            StartMove(_targetDirRotation);
-
-        return false;
-    }
-    
-
-    public bool MoveToTarget(float sqrReachDist = 0.2f)
-    {
-        UpdateRotateDir();
-        RotateToTarget();
-        if (_target != null)
-        {
-            _tarPos = _target.position;
-        }
-        var fwd = _transform.forward;
-        fwd.y = 0;
-        if (Vector3.Angle(fwd, _targetDirRotation) > 0.1f)
-        {
-            needRotate = true;
-            // StopMove();
-        }
-
-        var pos = _transform.position;
-        if (new Vector2(pos.x - _tarPos.x, pos.z - _tarPos.z).sqrMagnitude < sqrReachDist)
-        {
-            return true;
-        }
-        else
-        {
-            if(!isMoving)
-                StartMove(_targetDirRotation);
         }
 
         return false;
@@ -252,12 +172,22 @@ public class MoveAgent
         }
     }
 
+    private void StartRotate(Quaternion quaternion)
+    {
+        // _entity.ReplaceRotate
+    }
     private void StartMove(Vector3 dir)
     {
         isMoving = true;
         _entity.ReplaceMoveDirection(dir);
     }
 
+    /// <summary>
+    /// 移动到指定巡逻点
+    /// </summary>
+    /// <param name="index">巡逻点下标</param>
+    /// <param name="reachDist">判定为到达的距离</param>
+    /// <returns></returns>
     public bool MoveToPatrolPoint(int index, float reachDist = 0.2f)
     {
         if (index > _patrolPoints.Length)
@@ -270,6 +200,11 @@ public class MoveAgent
         return MoveToPoint(_patrolPoints[index], reachDist);
     }
     
+    /// <summary>
+    /// 获取除当前巡逻点外的巡逻点
+    /// </summary>
+    /// <param name="curIndex"></param>
+    /// <returns></returns>
     public Vector3 GetOtherPatrolPoint(int curIndex)
     {
         int len = _patrolPoints.Length;
@@ -287,6 +222,10 @@ public class MoveAgent
         return res;
     }
 
+    /// <summary>
+    /// 随机设置新的巡逻点
+    /// </summary>
+    /// <param name="index"></param>
     public void SetNewPatrolPointIndex(int index = -1)
     {
         int curIndex = index;
@@ -311,40 +250,19 @@ public class MoveAgent
             curIndex -= len;
         CurPatrolIndex = curIndex;
     }
-    public void SetPatrolPointTarget()
+
+    /// <summary>
+    /// 设置移速倍率
+    /// </summary>
+    /// <param name="rate"></param>
+    /// <param name="reset"></param>
+    public void SetMoveSpeedRate(float rate = 1f, bool reset = true)
     {
-        // StopMove();
-        _tarPos = GetOtherPatrolPoint(_curPatrolIndex);
+        var real = (reset ? _initInfo.moveSpeed : _entity.movementSpeed.value) * rate;
+        _entity.ReplaceMovementSpeed(real);
     }
 
-    public void OnChaseEnter()
-    {
-        RefreshTarget();
-    }
-
-    public void RefreshTarget()
-    {
-        if (_entity.hasDetectedCharacter)
-            _target = _entity.detectedCharacter.entity.gameViewService.service.Model;
-        else 
-            _target = null;
-    }
-    
-    public void OnChaseLogic()
-    {
-        if (MoveToTarget())
-        {
-            // StopMove();
-            _service.TriggerFSM(StateDefine.ReachTarget);
-        }
-    }
-    public void OnChaseExit()
-    {
-        
-    }
-    
     public void Dispose()
     {
-        EventCenter.AddListener(EventDefine.OnBTreeHotUpdate, UpdateTree);
     }
 }

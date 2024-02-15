@@ -17,7 +17,7 @@ public class DetectMgr : Singleton<DetectMgr>
         if (_hatePointPool.Count > 0)
             hate = _hatePointPool.Pop();
         else
-            hate = new HatePointInfo();
+            hate = new HatePointInfo(EntityUtils.GetGameEntity(instId));
         _hatePointInfoDict.Add(instId, hate);
         return hate;
     }

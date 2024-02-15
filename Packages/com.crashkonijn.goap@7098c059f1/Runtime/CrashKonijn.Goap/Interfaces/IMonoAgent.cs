@@ -2,6 +2,6 @@
 {
     public interface IMonoAgent : IAgent, IMonoBehaviour
     {
-        public int EntityID { get; set; }
+        public Entitas.Entity Entity { get; set; }
     }
 }

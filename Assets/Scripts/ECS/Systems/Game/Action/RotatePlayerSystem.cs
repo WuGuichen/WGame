@@ -7,7 +7,7 @@ public class RotatePlayerSystem : IExecuteSystem
     private readonly InputContext _inputContext;
     private Transform cameraTrans;
     private Transform playerTrans;
-    private readonly IGroup<GameEntity> _cameraGroup;
+    private readonly IGroup<GameEntity> _moveGroup;
     private readonly ITimeService _time;
 
     public RotatePlayerSystem(Contexts contexts)
@@ -15,24 +15,44 @@ public class RotatePlayerSystem : IExecuteSystem
         _gameContext = contexts.game;
         _inputContext = contexts.input;
         this.cameraTrans = contexts.meta.mainCameraService.service.Camera;
-        _cameraGroup = contexts.game.GetGroup(GameMatcher.Camera);
+        _moveGroup = contexts.game.GetGroup(GameMatcher.Moveable);
         _time = contexts.meta.timeService.instance;
     }
 
     public void Execute()
     {
-        foreach (var entity in _cameraGroup)
+        foreach (var entity in _moveGroup)
         {
-            if (entity.isMoveable == false) continue;
-            if(entity.hasAiAgent && entity.aiAgent.service.IsActing) continue;
-
-            var move = _inputContext.moveInput.value;
+            Vector2 moveDir;
+            Vector3 tarDir;
+            Vector3 fwd;
+            bool isCamera = entity.isCamera;
             playerTrans = entity.gameViewService.service.Model;
+            if (isCamera)
+            {
+                moveDir = _inputContext.moveInput.value;
+            }
+            else
+            {
+                var tmp = entity.moveDirection.value;
+                moveDir = new Vector2(tmp.x, tmp.z);
+            }
 
             if (entity.hasFocusEntity && !entity.isRotateInFocus)
             {
-                var fwd = cameraTrans.forward;
+                if (isCamera)
+                {
+                    fwd = cameraTrans.forward;
+                }
+                else
+                {
+                    fwd = entity.moveDirection.value;
+                }
                 fwd.y = 0;
+                if (fwd.Equals(Vector3.zero))
+                {
+                    fwd = playerTrans.forward;
+                }
                 var tarRot = Quaternion.LookRotation(fwd);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
                 var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
@@ -40,9 +60,19 @@ public class RotatePlayerSystem : IExecuteSystem
             }
             else
             {
-                var tarDir = cameraTrans.forward * move.y;
-                tarDir += cameraTrans.right * move.x;
-                tarDir.Normalize();
+                if (entity.isCamera)
+                {
+                    // 相机控制角色的目标方向计算
+                    tarDir = cameraTrans.forward * moveDir.y;
+                    tarDir += cameraTrans.right * moveDir.x;
+                    tarDir.Normalize();
+                }
+                else
+                {
+                    var parentTrans = playerTrans.parent;
+                    tarDir = parentTrans.forward * moveDir.y + parentTrans.right * moveDir.x;
+                    tarDir.Normalize();
+                }
                 tarDir.y = 0;
 
                 if (tarDir == Vector3.zero)

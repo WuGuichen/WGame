@@ -11,7 +11,7 @@ else{
 -- 扣血
 atk = @E_ATTACKER:GetAttr(ATK)
 curHp = @E_SELF:GetAttr(CUR_HP)
-hitHp = atk * Random_Range(0.5,1.5)*2
+hitHp = atk * Random_Range(0.5,1.5)*0.2
 @E_SELF:SetAttr(CUR_HP, curHp - hitHp)
 
 -- 位移

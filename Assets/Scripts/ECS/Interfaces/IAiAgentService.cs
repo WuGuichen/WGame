@@ -9,6 +9,5 @@ public interface IAiAgentService
     public void TriggerFSM(int type);
     public void TriggerFSM(string name,int type);
     public MoveAgent MoveAgent { get; }
-    public FightAgent FightAgent { get; }
     public FSMAgent FSMAgent { get; }
 }
