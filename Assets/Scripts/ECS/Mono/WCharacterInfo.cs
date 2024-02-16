@@ -38,6 +38,8 @@ public class WCharacterInfo : MonoBehaviour
     [SerializeField] private bool showPatrolPoint = false;
     [SerializeField] private bool showDetectArea = false;
 
+    private Vector3 originPos = Vector3.zero;
+    private GameEntity entity = null;
     private static Vector3[] defaultPatrolPoints = new Vector3[]
     {
         new Vector3(5,0,-2),
@@ -125,14 +127,31 @@ public class WCharacterInfo : MonoBehaviour
         return info;
     }
 
+    public void InitOriginPos(Vector3 pos, GameEntity entity)
+    {
+        originPos = pos;
+        this.entity = entity;
+    }
+
     #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        if (Application.isPlaying == false)
+        {
+            originPos = transform.position;
+        }
+        else
+        {
+            if (entity != null && entity.isCamera)
+            {
+                return;
+            }
+        }
         if (showPatrolPoint)
         {
             for (int i = 0; i < patrolPoints.Length; i++)
             {
-                var pos = transform.position + patrolPoints[i];
+                var pos = originPos + patrolPoints[i];
                 Gizmos.color = new Color(0, i * 0.3f, 1f);
                 Gizmos.DrawSphere(pos, 0.12f);
             }

@@ -1,4 +1,5 @@
 using CleverCrow.Fluid.BTs.Trees;
+using Oddworm.Framework;
 using Pathfinding;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ public class MoveAgent
     private IVMService _vmService;
     private Transform _transform;
     private readonly ITimeService _time;
+    private Vector3 _originPos;
 
     // state
     private bool isMoving = false;
@@ -34,7 +36,7 @@ public class MoveAgent
 
     private BehaviorTree _onPatrolTree;
 
-    public MoveAgent(IAiAgentService service ,Seeker seeker, GameEntity entity, Vector3[] patrolPoints)
+    public MoveAgent(IAiAgentService service ,Seeker seeker, GameEntity entity, Vector3[] patrolPoints, bool isDynamic)
     {
         _initInfo = entity.characterInfo.value;
         _seeker = seeker;
@@ -43,10 +45,18 @@ public class MoveAgent
             _vmService = entity.linkVM.VM.vMService.service;
         _transform = _entity.gameViewService.service.Model;
         _patrolPoints = new Vector3[patrolPoints.Length];
-        var pos = entity.position.value;
-        for (int i = 0; i < patrolPoints.Length; i++)
+        // 不考虑y轴
+        _originPos = entity.position.value;
+        if (isDynamic)
         {
-            _patrolPoints[i] = patrolPoints[i] + pos;
+            for (int i = 0; i < patrolPoints.Length; i++)
+            {
+                _patrolPoints[i] = patrolPoints[i] + _originPos;
+            }
+        }
+        else
+        {
+            _patrolPoints = patrolPoints;
         }
         CurPatrolIndex = Random.Range(0, _patrolPoints.Length);
         _tarPos = _patrolPoints[CurPatrolIndex];
@@ -83,10 +93,13 @@ public class MoveAgent
 
     private bool MoveToTargetPos(Vector3 pos, float reachDist, float threshold = 0.5f)
     {
-        return MoveToTargetPos(pos, (_entity.position.value - pos).magnitude, reachDist, threshold);
+        var tmp = _entity.position.value - pos;
+        tmp.y = 0;
+        return MoveToTargetPos(pos, tmp.magnitude, reachDist, threshold);
     }
     private bool MoveToTargetPos(Vector3 pos, float dist, float reachDist, float threshold = 0.5f)
     {
+        DbgDraw.Cube(pos, Quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.white);
         bool reverse = reachDist > dist;
         reachDist += (reverse ? -threshold : threshold);
         

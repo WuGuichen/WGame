@@ -3,7 +3,7 @@ rankChase = HRT_DETECT
 
 def PatrolEnter(){
     -- 设置巡逻移速
-    S_SetMoveSpeedRate(5)
+    S_SetMoveSpeedRate(50)
     @E_SELF:E_ResetDetectParam()
     -- 取消锁定
 --    @E_SELF:E_DoFocusTarget()

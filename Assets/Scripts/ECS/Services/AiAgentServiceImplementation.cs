@@ -29,32 +29,32 @@ public partial class AiAgentServiceImplementation : IAiAgentService
     private readonly CharAI _aiCfg = null;
     private readonly IFactoryService _factory;
 
-    public AiAgentServiceImplementation(GameEntity entity, Seeker seeker, Vector3[] patrolPoints)
+    public AiAgentServiceImplementation(GameEntity entity, Seeker seeker, Vector3[] patrolPoints, bool isDynamicLoad)
     {
         _factory = Contexts.sharedInstance.meta.factoryService.instance;
         _seeker = seeker;
         _entity = entity;
         _aiCfg = entity.characterInfo.value.AICfg;
         _initInfo = entity.characterInfo.value;
-        moveAgent = new MoveAgent(this, seeker, entity, patrolPoints);
+        moveAgent = new MoveAgent(this, seeker, entity, patrolPoints, isDynamicLoad);
         _uiService = entity.uIHeadPad.service;
         _vmService = _entity.linkVM.VM.vMService.service;
         fsmAgent = FSMAgent.Get(_vmService);
         fsmAgent.SetFSMConfig(_aiCfg);
         bTreeAgent = BTreeAgent.Get(_vmService);
-        goapBrain = new BaseAgentBrain(_entity.gameViewService.service.Model
-            .GetOrAddComponent<AgentBehaviour>());
-        goapBrain.Agent.GoapSet = _factory.GOAPRunner.GetGoapSet("Base");
-        goapBrain.Agent.DistanceObserver = new WDistanceObserver();
-        goapBrain.Agent.Entity = entity;
-        if (_entity.isCampRed)
-        {
-            goapBrain.SetEnable(true);
-        }
-        else
-        {
-            goapBrain.SetEnable(false);
-        }
+        // goapBrain = new BaseAgentBrain(_entity.gameViewService.service.Model
+        //     .GetOrAddComponent<AgentBehaviour>());
+        // goapBrain.Agent.GoapSet = _factory.GOAPRunner.GetGoapSet("Base");
+        // goapBrain.Agent.DistanceObserver = new WDistanceObserver();
+        // goapBrain.Agent.Entity = entity;
+        // if (_entity.isCampRed)
+        // {
+        //     goapBrain.SetEnable(true);
+        // }
+        // else
+        // {
+        //     goapBrain.SetEnable(false);
+        // }
 
         InitMethod();
     }

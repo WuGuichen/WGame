@@ -70,7 +70,7 @@ public class RotatePlayerSystem : IExecuteSystem
                 else
                 {
                     var parentTrans = playerTrans.parent;
-                    tarDir = parentTrans.forward * moveDir.y + parentTrans.right * moveDir.x;
+                    tarDir = parentTrans.forward * moveDir.y +parentTrans.right * moveDir.x;
                     tarDir.Normalize();
                 }
                 tarDir.y = 0;
@@ -81,6 +81,8 @@ public class RotatePlayerSystem : IExecuteSystem
                 }
 
                 var tarRot = Quaternion.LookRotation(tarDir);
+                // var angle = Vector3.Angle(tarDir, moveDir);
+                // entity.ReplaceRotateLeftAngle(angle);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
                 var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
 

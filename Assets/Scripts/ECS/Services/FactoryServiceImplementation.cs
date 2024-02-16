@@ -240,8 +240,9 @@ public class FactoryServiceImplementation : IFactoryService
         ObjectPool.Inst.GetObject(data.ObjectId, pos, rot, GameSceneMgr.Inst.genCharacterRoot, obj =>
         {
             obj.name = id.ToString();
+            var infoMono = obj.GetComponent<WCharacterInfo>();
 
-            InitCharacter(ref gameEntity, obj);
+            InitCharacter(ref gameEntity, obj, ref infoMono);
             
             // gameEntity.linkMotion.Motion.motionService.service.AnimProcessor.ClearRootMotion();
             // 真正完成角色生成
@@ -251,15 +252,16 @@ public class FactoryServiceImplementation : IFactoryService
 
     public void GenCharacter(GameObject obj)
     {
-        var info = obj.GetComponent<WCharacterInfo>().GetCharacterInfo();
+        var infoMono = obj.GetComponent<WCharacterInfo>();
+        var info = infoMono.GetCharacterInfo();
         int id = int.Parse(obj.name);
         var entity = _gameContext.CreateEntity();
         entity.AddEntityID(id);
         entity.AddCharacterInfo(info);
-        InitCharacter(ref entity, obj);
+        InitCharacter(ref entity, obj, ref infoMono);
     }
 
-    private void InitCharacter(ref GameEntity entity, GameObject obj)
+    private void InitCharacter(ref GameEntity entity, GameObject obj, ref WCharacterInfo infoMono)
     {
         int instanceID = _gameEntityDB.Register(entity);
         entity.AddInstanceID(instanceID);
@@ -271,10 +273,13 @@ public class FactoryServiceImplementation : IFactoryService
         entity.AddRigidbodyService(obj.GetComponent<IRigidbodyService>().OnInit());
         entity.rigidbodyService.service.SetEntity(entity);
         entity.AddMoveDirection(Vector3.zero);
-        if (entity.hasPosition == false)
+        // 是否是动态加载的角色
+        var isDynamicLoad = entity.hasPosition;
+        if (!isDynamicLoad)
         {
             entity.AddPosition(obj.transform.position);
         }
+        infoMono.InitOriginPos(entity.position.value, entity);
         
         obj.layer = EntityUtils.GetLayer(entity);
         entity.gameViewService.service.Model.gameObject.layer = EntityUtils.GetSensorLayer(entity);
@@ -350,7 +355,7 @@ public class FactoryServiceImplementation : IFactoryService
         
         // AI代理控制
         entity.AddAiAgent(new AiAgentServiceImplementation(entity, obj.GetComponent<Seeker>(),
-            info.patrolPoints));
+            info.patrolPoints, isDynamicLoad));
 
         obj.Link(entity);
         

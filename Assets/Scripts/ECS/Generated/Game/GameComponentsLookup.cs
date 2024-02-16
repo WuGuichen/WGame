@@ -67,42 +67,43 @@ public static class GameComponentsLookup {
     public const int MoveDirectionListener = 56;
     public const int MovementSpeed = 57;
     public const int Moving = 58;
-    public const int OnGroundState = 59;
-    public const int PlayerInputState = 60;
-    public const int Position = 61;
-    public const int PrepareAttackState = 62;
-    public const int PrepareDefenseState = 63;
-    public const int PrepareHoldAttackState = 64;
-    public const int PrepareJumpAttackState = 65;
-    public const int PrepareJumpState = 66;
-    public const int PrepareLocalMotionState = 67;
-    public const int PrepareStepState = 68;
-    public const int RigidbodyService = 69;
-    public const int Rotate = 70;
+    public const int NotMove = 59;
+    public const int OnGroundState = 60;
+    public const int PlayerInputState = 61;
+    public const int Position = 62;
+    public const int PrepareAttackState = 63;
+    public const int PrepareDefenseState = 64;
+    public const int PrepareHoldAttackState = 65;
+    public const int PrepareJumpAttackState = 66;
+    public const int PrepareJumpState = 67;
+    public const int PrepareLocalMotionState = 68;
+    public const int PrepareStepState = 69;
+    public const int RigidbodyService = 70;
     public const int RotateInFocus = 71;
-    public const int RotationSpeed = 72;
-    public const int RunningMultiRate = 73;
-    public const int RunState = 74;
-    public const int SignalAttack = 75;
-    public const int SignalDefense = 76;
-    public const int SignalJump = 77;
-    public const int SignalLocalMotion = 78;
-    public const int SignalState = 79;
-    public const int SignalStep = 80;
-    public const int SpawnPoint = 81;
-    public const int StateChanged = 82;
-    public const int StateSwitchState = 83;
-    public const int StateSwitchStateListener = 84;
-    public const int StepEndState = 85;
-    public const int StepState = 86;
-    public const int TargetPlanarSqrDistance = 87;
-    public const int UIHeadPad = 88;
-    public const int Unbalanced = 89;
-    public const int WalkState = 90;
-    public const int WeaponDropService = 91;
-    public const int WeaponService = 92;
+    public const int RotateLeftAngle = 72;
+    public const int RotationSpeed = 73;
+    public const int RunningMultiRate = 74;
+    public const int RunState = 75;
+    public const int SignalAttack = 76;
+    public const int SignalDefense = 77;
+    public const int SignalJump = 78;
+    public const int SignalLocalMotion = 79;
+    public const int SignalState = 80;
+    public const int SignalStep = 81;
+    public const int SpawnPoint = 82;
+    public const int StateChanged = 83;
+    public const int StateSwitchState = 84;
+    public const int StateSwitchStateListener = 85;
+    public const int StepEndState = 86;
+    public const int StepState = 87;
+    public const int TargetPlanarSqrDistance = 88;
+    public const int UIHeadPad = 89;
+    public const int Unbalanced = 90;
+    public const int WalkState = 91;
+    public const int WeaponDropService = 92;
+    public const int WeaponService = 93;
 
-    public const int TotalComponents = 93;
+    public const int TotalComponents = 94;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -164,6 +165,7 @@ public static class GameComponentsLookup {
         "MoveDirectionListener",
         "MovementSpeed",
         "Moving",
+        "NotMove",
         "OnGroundState",
         "PlayerInputState",
         "Position",
@@ -175,8 +177,8 @@ public static class GameComponentsLookup {
         "PrepareLocalMotionState",
         "PrepareStepState",
         "RigidbodyService",
-        "Rotate",
         "RotateInFocus",
+        "RotateLeftAngle",
         "RotationSpeed",
         "RunningMultiRate",
         "RunState",
@@ -260,6 +262,7 @@ public static class GameComponentsLookup {
         typeof(MoveDirectionListenerComponent),
         typeof(MovementSpeedComponent),
         typeof(MovingComponent),
+        typeof(NotMoveComponent),
         typeof(OnGroundStateComponent),
         typeof(PlayerInputStateComponent),
         typeof(PositionComponent),
@@ -271,8 +274,8 @@ public static class GameComponentsLookup {
         typeof(PrepareLocalMotionState),
         typeof(PrepareStepState),
         typeof(RigidbodyServiceComponent),
-        typeof(RotateComponent),
         typeof(RotateInFocusComponent),
+        typeof(RotateLeftAngleComponent),
         typeof(RotationSpeedComponent),
         typeof(RunningMultiRateComponent),
         typeof(RunStateComponent),
