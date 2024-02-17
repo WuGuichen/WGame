@@ -38,16 +38,16 @@ namespace WGame.GOAP
         {
             if (data.Agent != null)
             {
-                // var reached = data.Agent.MoveToPatrolPoint(data.Agent.CurPatrolIndex);
-                // if (reached)
-                // {
-                //     WLogger.Print("Stop");
-                //     return ActionRunState.Stop;
-                // }
-                // else
-                // {
+                var reached = data.Agent.MoveToPatrolPoint(data.Agent.CurPatrolIndex);
+                if (reached)
+                {
+                    WLogger.Print("Stop");
+                    return ActionRunState.Stop;
+                }
+                else
+                {
                     return ActionRunState.Continue;
-                // }
+                }
             }
             
             return ActionRunState.Stop;

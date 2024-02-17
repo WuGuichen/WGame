@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 using WGame.Res;
@@ -8,6 +6,7 @@ using WGame.UI;
 using WGame.Runtime;
 using WGame.Trigger;
 
+// [DefaultExecutionOrder(-120)]
 public class TestSceneSystem : MonoBehaviour
 {
     public GameSetting gameSetting;
@@ -124,6 +123,7 @@ public class TestSceneSystem : MonoBehaviour
 	    _detectSystems.Execute();
 	    _gameEventSystems.Execute();
 	    _systems.Execute();
+		_contexts.meta.factoryService.instance.GOAPRunner?.OnUpdate();
 	    _processMotionSystems.Execute();
 	    _systems.Cleanup();
 	    _processMotionSystems.Cleanup();
@@ -181,6 +181,7 @@ public class TestSceneSystem : MonoBehaviour
     private void LateUpdate()
     {
 		_lateUpdateSystems.Execute();	
+		_contexts.meta.factoryService.instance.GOAPRunner?.OnLateUpdate();
 		_lateUpdateSystems.Cleanup();
 		
 		WTriggerMgr.Inst.OnEndUpdate();

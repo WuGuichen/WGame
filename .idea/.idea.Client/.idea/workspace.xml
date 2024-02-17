@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameNotMoveComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/MotionData/Step1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/MotionData/Step1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Motions/Step1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/Motions/Step1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sandbox.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/RotateComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/RotateLeftAngleComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameRotateComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/GameComponentsLookup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/GameComponentsLookup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/WCharacterInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/MoveAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/MoveAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/PatrolAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/PatrolAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/RotatePlayerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/RotatePlayerSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFSMCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFSMCode.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/GoapRunnerBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/GoapRunnerBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +28,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2022.3.0f1/Editor/Data/CGIncludes/UnityInstancing.cginc" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4911eca47f294e18a7b3306f02701303946200/2d/ed43d82f/Editor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7fb6dbaed5894b58b747e385194eed603e00/c7/ee0ce7eb/DebugSystems.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/eb/3b0c9542/Entity.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/f4/951eb165/Context`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioCtrl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/WAudioType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Components/CampComponents.cs" root0="FORCE_HIGHLIGHTING" />
@@ -175,10 +176,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15204">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="15204" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -262,7 +263,10 @@
       <workItem from="1707981725121" duration="869000" />
       <workItem from="1707999436206" duration="13515000" />
       <workItem from="1708061546005" duration="312000" />
-      <workItem from="1708061886593" duration="3378000" />
+      <workItem from="1708061886593" duration="3462000" />
+      <workItem from="1708087330057" duration="385000" />
+      <workItem from="1708093425115" duration="3500000" />
+      <workItem from="1708162364135" duration="1600000" />
     </task>
     <task id="LOCAL-00004" summary="优化获取实体效率">
       <created>1702192420510</created>
@@ -607,7 +611,7 @@
       <option name="project" value="LOCAL" />
       <updated>1706809186438</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +637,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="攻击AI" />
     <MESSAGE value="测试AI" />
     <MESSAGE value="插件资源" />
     <MESSAGE value="语法高亮插件" />
@@ -658,7 +661,8 @@
     <MESSAGE value="加入白色阵容的索敌，优化血条显示" />
     <MESSAGE value="代码整理，GOAPDemo" />
     <MESSAGE value="角色旋转优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="角色旋转优化" />
+    <MESSAGE value="巡逻点优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="巡逻点优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

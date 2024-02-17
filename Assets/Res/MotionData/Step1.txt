@@ -1,23 +1,23 @@
 {
     "$id": 0,
-    "$type": "0|Motion.EventNodeScriptableObject, TWY.ECS",
+    "$type": "0|Motion.EventNodeScriptableObject, WGame.Motion",
     "UID": 20004,
     "maxTime": 1.7,
     "eventNodes": {
         "$id": 1,
-        "$type": "1|System.Collections.Generic.List`1[[Motion.EventNode, TWY.ECS]], mscorlib",
+        "$type": "1|System.Collections.Generic.List`1[[Motion.EventNode, WGame.Motion]], mscorlib",
         "$rlength": 0,
         "$rcontent": [
         ]
     },
     "animationNodes": {
         "$id": 2,
-        "$type": "2|System.Collections.Generic.List`1[[Motion.PlayAnimationNode, TWY.ECS]], mscorlib",
+        "$type": "2|System.Collections.Generic.List`1[[Motion.PlayAnimationNode, WGame.Motion]], mscorlib",
         "$rlength": 1,
         "$rcontent": [
             {
                 "$id": 3,
-                "$type": "3|Motion.PlayAnimationNode, TWY.ECS",
+                "$type": "3|Motion.PlayAnimationNode, WGame.Motion",
                 "time": 0,
                 "active": true,
                 "AnimClipID": 30006,
@@ -31,12 +31,12 @@
     },
     "triggerAnimationNodes": {
         "$id": 4,
-        "$type": "4|System.Collections.Generic.List`1[[Motion.TriggerAnimationNode, TWY.ECS]], mscorlib",
+        "$type": "4|System.Collections.Generic.List`1[[Motion.TriggerAnimationNode, WGame.Motion]], mscorlib",
         "$rlength": 3,
         "$rcontent": [
             {
                 "$id": 5,
-                "$type": "5|Motion.TriggerAnimationNode, TWY.ECS",
+                "$type": "5|Motion.TriggerAnimationNode, WGame.Motion",
                 "time": 1.15105021,
                 "active": true,
                 "triggerTime": {
@@ -134,21 +134,21 @@
     },
     "conditionTriggerNodes": {
         "$id": 17,
-        "$type": "7|System.Collections.Generic.List`1[[Motion.ConditionTriggerNode, TWY.ECS]], mscorlib",
+        "$type": "7|System.Collections.Generic.List`1[[Motion.ConditionTriggerNode, WGame.Motion]], mscorlib",
         "$rlength": 0,
         "$rcontent": [
         ]
     },
     "eventTriggerNodes": {
         "$id": 18,
-        "$type": "8|System.Collections.Generic.List`1[[Motion.EventTriggerNode, TWY.ECS]], mscorlib",
+        "$type": "8|System.Collections.Generic.List`1[[Motion.EventTriggerNode, WGame.Motion]], mscorlib",
         "$rlength": 0,
         "$rcontent": [
         ]
     },
     "byteCodeCommandNodes": {
         "$id": 19,
-        "$type": "9|System.Collections.Generic.List`1[[Motion.ByteCodeCommandNode, TWY.ECS]], mscorlib",
+        "$type": "9|System.Collections.Generic.List`1[[Motion.ByteCodeCommandNode, WGame.Motion]], mscorlib",
         "$rlength": 0,
         "$rcontent": [
         ]
@@ -156,27 +156,31 @@
     "nextReaction": {
         "$id": 20,
         "$type": 6,
-        "$plength": 6,
+        "$plength": 8,
         "$pcontent": [
             32,
             8,
             16,
             1,
             -2,
-            -4
+            -4,
+            -64,
+            -128
         ]
     },
     "transTime": {
         "$id": 21,
         "$type": 6,
-        "$plength": 6,
+        "$plength": 8,
         "$pcontent": [
             1357,
-            1134,
+            627,
             1358,
             1357,
             2,
-            2
+            2,
+            0,
+            0
         ]
     },
     "nextBreaking": {
@@ -184,14 +188,14 @@
         "$type": 6,
         "$plength": 8,
         "$pcontent": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            -1,
+            -2,
+            -4,
+            -8,
+            -16,
+            -32,
+            -64,
+            -128
         ]
     },
     "breakTime": {
