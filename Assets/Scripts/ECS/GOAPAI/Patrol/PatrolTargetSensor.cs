@@ -1,4 +1,3 @@
-using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Interfaces;
 using CrashKonijn.Goap.Sensors;
 using UnityEngine;

@@ -2,7 +2,11 @@ using CrashKonijn.Goap.Interfaces;
 
 namespace WGame.GOAP
 {
-    public class WDistanceObserver : IAgentDistanceObserver
+    public class WDistanceObserver
+    {
+        public static EntityDistanceObserver entity = new EntityDistanceObserver();
+    }
+    public class EntityDistanceObserver : IAgentDistanceObserver
     {
         public float GetDistance(IMonoAgent agent, ITarget target, IComponentReference reference)
         {

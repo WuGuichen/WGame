@@ -18,8 +18,14 @@ namespace WGame.GOAP
 
         public override SenseValue Sense(IMonoAgent agent, IComponentReference references)
         {
-            var target = agent;
-            return new SenseValue(0);
+            var target = agent.Entity as GameEntity;
+            if (target != null)
+            {
+                var info = target.linkSensor.Sensor.detectorCharacterService.service.HatePointInfo;
+                return new SenseValue(info.MaxHateEntityRank >= HateRankType.Alert);
+            }
+
+            return false;
         }
     }
 }

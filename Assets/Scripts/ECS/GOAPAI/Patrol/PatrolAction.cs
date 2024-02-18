@@ -2,7 +2,6 @@ using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Interfaces;
-using UnityEngine;
 
 namespace WGame.GOAP
 {
@@ -57,6 +56,21 @@ namespace WGame.GOAP
         {
             data.Agent.SetNewPatrolPointIndex();
             WLogger.Print("End");
+        }
+
+        public override float GetCost(IMonoAgent agent, IComponentReference references)
+        {
+            return this.Config.BaseCost;
+        }
+
+        public override bool IsInRange(IMonoAgent agent, float distance, IActionData data, IComponentReference references)
+        {
+            return distance <= GetInRange(agent, data);
+        }
+
+        public override float GetInRange(IMonoAgent agent, IActionData data)
+        {
+            return this.Config.InRange;
         }
     }
 }
