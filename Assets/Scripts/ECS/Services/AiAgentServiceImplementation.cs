@@ -42,20 +42,6 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         fsmAgent = FSMAgent.Get(_vmService);
         fsmAgent.SetFSMConfig(_aiCfg);
         bTreeAgent = BTreeAgent.Get(_vmService);
-        goapBrain = new BaseAgentBrain(_entity.gameViewService.service.Model
-            .GetOrAddComponent<AgentBehaviour>());
-        goapBrain.Agent.GoapSet = _factory.GOAPRunner.GetGoapSet("Base");
-        goapBrain.Agent.DistanceObserver = WDistanceObserver.entity;
-        goapBrain.Agent.Entity = entity;
-        if (_entity.isCampRed)
-        {
-            goapBrain.SetEnable(true);
-        }
-        else
-        {
-            goapBrain.SetEnable(false);
-        }
-
         InitMethod();
     }
 
@@ -94,6 +80,7 @@ public partial class AiAgentServiceImplementation : IAiAgentService
             // UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
             // fsmAgent.OnUpdate();
             IsActing = true;
+            UpdateGOAPBrain();
             // UnityEngine.Profiling.Profiler.EndSample();
         }
         else
@@ -102,6 +89,11 @@ public partial class AiAgentServiceImplementation : IAiAgentService
             // _uiService.SetMessage(null);
             IsActing = false;
         }
+    }
+
+    private void UpdateGOAPBrain()
+    {
+        goapBrain.OnUpdate();
     }
 
     public void TriggerFSM(int type)
@@ -116,6 +108,22 @@ public partial class AiAgentServiceImplementation : IAiAgentService
 
     public MoveAgent MoveAgent => moveAgent;
     public FSMAgent FSMAgent => fsmAgent;
+
+    public void Initialize()
+    {
+        var agent = _entity.gameViewService.service.Model
+            .GetOrAddComponent<AgentBehaviour>();
+        goapBrain = new BaseAgentBrain(agent, _entity, _factory.GOAPRunner.GetGoapSet("Base"), WDistanceObserver.entity);
+        if (_entity.isCampRed)
+        {
+            goapBrain.SetEnable(true);
+        }
+        else
+        {
+            goapBrain.SetEnable(false);
+        }
+
+    }
 
     public void Destroy()
     {

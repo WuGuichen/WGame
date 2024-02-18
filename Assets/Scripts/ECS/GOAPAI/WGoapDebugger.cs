@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Text;
 using CrashKonijn.Goap.Interfaces;
-using UnityEngine;
+using Sirenix.Utilities.Editor;
 
 namespace WGame.GOAP
 {
@@ -9,7 +8,25 @@ namespace WGame.GOAP
     {
         public string GetInfo(IMonoAgent agent, IComponentReference references)
         {
-            return "Test";
+            var entity = agent.Entity as GameEntity;
+            var buf = new StringBuilder();
+            if (entity != null)
+            {
+                buf.Append("id：");
+                buf.Append(entity.entityID.id);
+                if (entity.hasLinkSensor)
+                {
+                    var info = entity.linkSensor.Sensor.detectorCharacterService.service.HatePointInfo;
+                    buf.Append("\n仇恨等级：");
+                    buf.Append(info.MaxHateEntityRank);
+                    buf.Append("\n仇恨值：");
+                    buf.Append(info.MaxHateEntityPoint);
+                }
+
+                return buf.ToString();
+            }
+
+            return "null";
         }
     }
 }

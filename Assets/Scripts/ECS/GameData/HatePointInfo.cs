@@ -220,7 +220,7 @@ public class HatePointInfo
     {
         if (HasHateTarget)
         {
-            if (maxHateInfo.Rank == HateRankType.Null)
+            if (maxHateInfo.Rank == HateRankType.Null && maxHateInfo.Value < 0.1f)
             {
                 maxHateInfo = HateInfo.NULL;
                 OnHateRankUpdate.Invoke();

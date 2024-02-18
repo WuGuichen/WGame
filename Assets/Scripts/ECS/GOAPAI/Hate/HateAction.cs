@@ -5,13 +5,12 @@ using CrashKonijn.Goap.Interfaces;
 
 namespace WGame.GOAP
 {
-    public class PatrolAction : ActionBase<PatrolAction.Data>
+    public class HateAction : ActionBase<HateAction.Data>
     {
         public class Data : IActionData
         {
+            public HatePointInfo Info { get; set; }
             public ITarget Target { get; set; }
-            public MoveAgent Agent { get; set; }
-            public float Timer { get; set; }
         }
 
         public override void Created()
@@ -24,26 +23,26 @@ namespace WGame.GOAP
             if (agent.Entity is GameEntity entity)
             {
                 // 设置目标
-                data.Agent = entity.aiAgent.service.MoveAgent;
-                data.Agent.SetMoveSpeedRate(2f);
+                data.Info = entity.linkSensor.Sensor.detectorCharacterService.service.HatePointInfo;
             }
             else
             {
-                data.Agent = null;
+                data.Info = null;
             }
         }
 
         public override ActionRunState Perform(IMonoAgent agent, Data data, ActionContext context)
         {
-            if (data.Agent != null)
+            if (data.Info != null)
             {
-                var reached = data.Agent.MoveToPatrolPoint(data.Agent.CurPatrolIndex);
-                if (reached)
+                if (data.Info.MaxHateEntityRank < HateRankType.Alert)
                 {
+                    // 仇恨等级过低
                     return ActionRunState.Stop;
                 }
                 else
                 {
+                    // 依然仇恨
                     return ActionRunState.Continue;
                 }
             }
@@ -53,7 +52,7 @@ namespace WGame.GOAP
 
         public override void End(IMonoAgent agent, Data data)
         {
-            data.Agent.SetNewPatrolPointIndex();
+            WLogger.Print("End");
         }
 
         public override float GetCost(IMonoAgent agent, IComponentReference references)

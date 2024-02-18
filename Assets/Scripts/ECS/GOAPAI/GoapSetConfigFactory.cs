@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Classes.Builders;
 using CrashKonijn.Goap.Configs.Interfaces;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Resolver;
-using Demos.Shared.Actions;
-using UnityEngine;
 
 namespace WGame.GOAP
 {

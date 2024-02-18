@@ -48,5 +48,7 @@ namespace WGame.GOAP
         {
             SetEnable(false);
         }
+
+        public abstract void OnUpdate();
     }
 }

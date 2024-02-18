@@ -38,6 +38,16 @@ namespace CrashKonijn.Goap.Behaviours
         
         public void Register(IGoapSetConfig goapSetConfig) => this.runner.Register(new GoapSetFactory(this.config).Create(goapSetConfig));
 
+        // private void Update()
+        // {
+        //     OnUpdate();
+        // }
+        //
+        // private void LateUpdate()
+        // {
+        //     OnLateUpdate();
+        // }
+
         public void OnUpdate()
         {
             this.RunCount = this.runner.QueueCount;

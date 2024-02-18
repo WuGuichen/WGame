@@ -124,19 +124,31 @@ public class FactoryServiceImplementation : IFactoryService
         builder.SetAgentDebugger<WGoapDebugger>();
 
         // Goals
+        // 进行巡逻
         builder.AddGoal<PatrolGoal>()
             .AddCondition<IsPatroling>(Comparison.GreaterThanOrEqual, 1);
 
+        // 使仇恨等级小于警戒
+        builder.AddGoal<HateGoal>()
+            .AddCondition<IsHateRank>(Comparison.SmallerThan, HateRankType.Alert);
+
         // Actions
+        // 增加巡逻
         builder.AddAction<PatrolAction>()
             .SetTarget<PatrolTarget>()
-            .SetInRange(10f)
-            .SetBaseCost(1)
             .AddEffect<IsPatroling>(EffectType.Increase);
+
+        // 减少仇恨值
+        builder.AddAction<HateAction>()
+            .SetTarget<HateTarget>()
+            .AddEffect<IsHateRank>(EffectType.Decrease);
         
         // TargetSensors
         builder.AddTargetSensor<PatrolTargetSensor>()
             .SetTarget<PatrolTarget>();
+
+        builder.AddTargetSensor<HateTargetSensor>()
+            .SetTarget<HateTarget>();
 
         return builder.Build();
     }
@@ -370,7 +382,6 @@ public class FactoryServiceImplementation : IFactoryService
         sensor.AddSensorCharRadius(2f);
         sensor.isDetectCharOpen = true;
         sensor.isSensorCharOpen = true;
-        
 
         // 事件监听
         var listeners = obj.GetComponentsInChildren<IEventListener>();
@@ -400,6 +411,9 @@ public class FactoryServiceImplementation : IFactoryService
         
         // 同步物理位置
         Physics.SyncTransforms();
+        
+        // 数据初始化
+        entity.aiAgent.service.Initialize();
     }
 
     public void GenWeaponEntity(int weaponID, out WeaponEntity weapon)
