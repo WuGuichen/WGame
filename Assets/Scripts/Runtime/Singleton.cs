@@ -6,7 +6,7 @@
 
         public static T Inst => _lazy.Value;
 
-        public void InitInstance()
+        public virtual void InitInstance()
         {
         }
     }

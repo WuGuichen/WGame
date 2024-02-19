@@ -34,7 +34,6 @@ public class InputServiceImplementation : IInputService
     private bool defensePressing = false;
     public bool DefensePressing => defensePressing;
 
-    public bool GetPriorityInput { get; }
 
     public InputServiceImplementation()
     {

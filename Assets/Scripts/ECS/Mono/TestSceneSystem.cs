@@ -1,5 +1,6 @@
 using Entitas;
 using UnityEngine;
+using WGame.Input;
 using WGame.Res;
 using Random = UnityEngine.Random;
 using WGame.UI;
@@ -197,6 +198,7 @@ public class TestSceneSystem : MonoBehaviour
     {
 	    MainModel.Inst.InitInstance();
 	    SettingModel.Inst.SetVolume(volume);
+	    WInputCenter.Inst.InitInstance();
     }
 
     void RegisterEvents()

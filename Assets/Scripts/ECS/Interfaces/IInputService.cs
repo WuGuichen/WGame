@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public interface IInputService
@@ -15,7 +13,6 @@ public interface IInputService
     bool JumpIsHolding { get; }
     bool JumpWasReleased { get; }
     bool StepWasPressed { get; }
-    bool GetPriorityInput { get; }
     bool FocusWasPressed { get; }
     bool DefensePressing { get; }
     void Dispose();

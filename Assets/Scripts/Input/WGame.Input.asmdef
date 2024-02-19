@@ -1,0 +1,17 @@
+{
+    "name": "WGame.Input",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d274c6a4453e1d04dbd09c5497aae871",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
