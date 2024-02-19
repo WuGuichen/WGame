@@ -10,7 +10,7 @@ SELECTOR{
                 -- 到达攻击范围内
                 print("Attack")
 --                @E_SELF:Signal(SIG_DEFENSE, 100)
-                @E_SELF:Signal(SIG_ATTACK, 10)
+                @E_SELF:Signal(SIG_ATTACK, 20)
                 return FAIL
             }
         }

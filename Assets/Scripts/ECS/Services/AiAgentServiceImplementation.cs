@@ -76,16 +76,16 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         }
         if (!_entity.isDeadState && !_entity.isCamera)
         {
-            // fsmAgent.SetFSMState(true);
+            fsmAgent.SetFSMState(true);
             // UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
-            // fsmAgent.OnUpdate();
+            fsmAgent.OnUpdate();
             IsActing = true;
-            UpdateGOAPBrain();
+            // UpdateGOAPBrain();
             // UnityEngine.Profiling.Profiler.EndSample();
         }
         else
         {
-            // fsmAgent.SetFSMState(false);
+            fsmAgent.SetFSMState(false);
             // _uiService.SetMessage(null);
             IsActing = false;
         }
@@ -111,18 +111,17 @@ public partial class AiAgentServiceImplementation : IAiAgentService
 
     public void Initialize()
     {
-        var agent = _entity.gameViewService.service.Model
-            .GetOrAddComponent<AgentBehaviour>();
-        goapBrain = new BaseAgentBrain(agent, _entity, _factory.GOAPRunner.GetGoapSet("Base"), WDistanceObserver.entity);
-        if (_entity.isCampRed)
-        {
-            goapBrain.SetEnable(true);
-        }
-        else
-        {
-            goapBrain.SetEnable(false);
-        }
-
+        // var agent = _entity.gameViewService.service.Model
+        //     .GetOrAddComponent<AgentBehaviour>();
+        // goapBrain = new BaseAgentBrain(agent, _entity, _factory.GOAPRunner.GetGoapSet("Base"), WDistanceObserver.entity);
+        // if (_entity.isCampRed)
+        // {
+        //     goapBrain.SetEnable(true);
+        // }
+        // else
+        // {
+        //     goapBrain.SetEnable(false);
+        // }
     }
 
     public void Destroy()

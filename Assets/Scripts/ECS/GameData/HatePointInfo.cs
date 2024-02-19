@@ -21,6 +21,8 @@ public class HatePointInfo
             Value = value;
         }
 
+        public HateInfo Copy() => new HateInfo(ID, Rank, Value);
+
         public static HateInfo NULL = new HateInfo(-1, -1, 0);
     }
 
@@ -28,10 +30,13 @@ public class HatePointInfo
     private const int MAX_HATEPOINT = 360;
     private const int MAX_HATE_THREHOLD = 400;
     private const int CAN_FOCUS_TYPES = HatePointType.BeHitted | HatePointType.Spotted | HatePointType.BeHitted;
+    // private const int AT_LEAST_
     private readonly Dictionary<int, HateInfo> _hatePointDict = new();
     
     private HateInfo maxHateInfo = HateInfo.NULL;
+    private HateInfo newMaxHateInfo = HateInfo.NULL;
     public bool HasHateTarget => maxHateInfo.ID != HateInfo.NULL.ID;
+    public bool HasNewHateTarget => newMaxHateInfo.ID != HateInfo.NULL.ID;
     public int MaxHateEntityId => maxHateInfo.ID;
     public float MaxHateEntityPoint => maxHateInfo.Value;
     public int MaxHateEntityRank => maxHateInfo.Rank;
@@ -39,37 +44,66 @@ public class HatePointInfo
     private Action OnHateRankUpdate;
     private Action OnHatePointUpdate;
 
-    private void RefreshMaxHate(int id, int rank, float value)
+    private bool isApplyChange = true;
+
+    public void BeginChangeHate()
     {
-        var oldRank = maxHateInfo.Rank;
-        var oldID = maxHateInfo.ID;
-        var oldPoint = maxHateInfo.Value;
-        if (id == maxHateInfo.ID)
+        if (isApplyChange)
         {
-            maxHateInfo = _hatePointDict[id];
+            newMaxHateInfo = maxHateInfo.Copy();
+            isApplyChange = false;
         }
         else
         {
-            if (rank > maxHateInfo.Rank)
+            WLogger.Error("begin和end要成对出现");
+        }
+    }
+
+    public void EndChangeHate()
+    {
+        if (isApplyChange)
+        {
+            WLogger.Error("begin和end要成对出现");
+            return;
+        }
+        var oldRank = maxHateInfo.Rank;
+        var oldID = maxHateInfo.ID;
+        var oldPoint = maxHateInfo.Value;
+        // 检查是否还有仇恨目标
+        CheckIsHasNewHateTarget();
+        var newRank = newMaxHateInfo.Rank;
+        maxHateInfo = newMaxHateInfo.Copy();
+        if(oldRank != newRank || oldID != newMaxHateInfo.ID)
+            OnHateRankUpdate.Invoke();
+        if(oldPoint != newMaxHateInfo.Value)
+            OnHatePointUpdate.Invoke();
+        newMaxHateInfo = HateInfo.NULL;
+        isApplyChange = true;
+    }
+
+    private void RefreshNewMaxHate(int id, int rank, float value)
+    {
+        if (id == newMaxHateInfo.ID)
+        {
+            newMaxHateInfo = _hatePointDict[id];
+        }
+        else
+        {
+            if (rank > newMaxHateInfo.Rank)
             {
-                maxHateInfo = new HateInfo(id, rank, value);
+                newMaxHateInfo = new HateInfo(id, rank, value);
             }
-            else if (rank == maxHateInfo.Rank)
+            else if (rank == newMaxHateInfo.Rank)
             {
-                if (value > maxHateInfo.Value)
+                if (value > newMaxHateInfo.Value)
                 {
-                    maxHateInfo = new HateInfo(id, rank, value);
+                    newMaxHateInfo = new HateInfo(id, rank, value);
                 }
             }
         }
-        var newRank = maxHateInfo.Rank;
-        if(oldRank != newRank || oldID != maxHateInfo.ID)
-            OnHateRankUpdate.Invoke();
-        if(oldPoint != maxHateInfo.Value)
-            OnHatePointUpdate.Invoke();
     }
 
-    private void LimitLowValue(ref int rank, ref float value)
+    private void LimitLowValue(ref int rank, ref float value, int changeType)
     {
         if (value >= 0)
             return;
@@ -116,7 +150,17 @@ public class HatePointInfo
         }
     }
 
-    public void Add(int id, float value, int type)
+    public bool TryGet(int id, out HateInfo info)
+    {
+        if (_hatePointDict.TryGetValue(id, out info))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Change(int id, float value, int type)
     {
         int rank = 0;
         if (_hatePointDict.TryGetValue(id, out var info))
@@ -128,17 +172,19 @@ public class HatePointInfo
         if (value < 0)
         {
             // 仇恨值小于0了
-            LimitLowValue(ref rank, ref value);
+            LimitLowValue(ref rank, ref value, type);
         }
         else if (value > MAX_HATEPOINT)
         {
+            // 仇恨值超过最大值了
             LimitUpValue(ref rank, ref value, type, id);
         }
         info = new HateInfo(id, rank, value);
         RefreshHateInfo(id, ref info);
-        RefreshMaxHate(id, rank, value);
+        RefreshNewMaxHate(id, rank, value);
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void RefreshHateInfo(int id, ref HateInfo info)
     {
         _hatePointDict[id] = info;
@@ -146,6 +192,7 @@ public class HatePointInfo
         {
             if (!_entity.isCamera && _entity.hasFocusEntity)
             {
+                // 仇恨值过低，解除目标锁定
                 var tarEntity = _entity.focusEntity.entity;
                 if (tarEntity.instanceID.ID == info.ID)
                 {
@@ -189,11 +236,14 @@ public class HatePointInfo
 
     private bool IsMaxInfo(int id) => maxHateInfo.ID == id;
 
+    /// <summary>
+    /// 一般不用做外部调用, 请使用缓存队列
+    /// </summary>
     public void Set(int id, float value, int rank)
     {
         var info = new HateInfo(id, rank, value);
         RefreshHateInfo(id, ref info);
-        RefreshMaxHate(id, rank, value);
+        RefreshNewMaxHate(id, rank, value);
     }
 
     public void Remove(int id)
@@ -216,15 +266,13 @@ public class HatePointInfo
         OnHatePointUpdate += onPointUpdate;
     }
 
-    public void CheckIsHasHateTarget()
+    private void CheckIsHasNewHateTarget()
     {
-        if (HasHateTarget)
+        if (HasNewHateTarget)
         {
-            if (maxHateInfo.Rank == HateRankType.Null && maxHateInfo.Value < 0.1f)
+            if (newMaxHateInfo.Rank == HateRankType.Null && newMaxHateInfo.Value < 0.1f)
             {
-                maxHateInfo = HateInfo.NULL;
-                OnHateRankUpdate.Invoke();
-                OnHatePointUpdate.Invoke();
+                newMaxHateInfo = HateInfo.NULL;
             }
         }
     }

@@ -7,7 +7,17 @@ public class DetectorCharacterImplementation : IDetectorService
     private readonly Transform _model;
     private Color[] _colorList;
     private readonly DetectorDrawer detectorDrawer;
+
+    #region 仇恨信息
+
     private readonly HatePointInfo hateInfo;
+    private const int SPOTTED_ADD = 200;
+    private const int WARNING_ADD = 50;
+    private const int OUTSIGN_ADD = -150;
+    private Queue<HatePointInfo.HateInfo> _hateInfoChangeBuffer = new();
+    private Queue<HatePointInfo.HateInfo> _hateInfoSetBuffer = new();
+
+    #endregion
 
     private readonly SensorEntity _sensor;
     private readonly GameEntity _character;
@@ -112,22 +122,25 @@ public class DetectorCharacterImplementation : IDetectorService
         hateInfo = DetectMgr.Inst.RegisterHatePoint(_character.instanceID.ID);
         _vmService = _character.linkVM.VM.vMService.service;
         var vm = _vmService;
+        // 设置虚拟机数据
+        var nullInfo = HatePointInfo.HateInfo.NULL;
         var info = hateInfo;
-        hateInfo.RegisterOnHateRankChanged((() =>
+        vm.Set("E_MAX_HATE_RANK", nullInfo.Rank);
+        vm.Set("E_MAX_HATE_ENTITY", nullInfo.ID);
+        vm.Set("E_MAX_HATE_POINT", nullInfo.Value);
+        hateInfo.RegisterOnHateRankChanged(() =>
         {
+            WLogger.Print(info.MaxHateEntityRank + "Rank");
             vm.Set("E_MAX_HATE_RANK", info.MaxHateEntityRank);
             vm.Set("E_MAX_HATE_ENTITY", info.MaxHateEntityId);
-        }), () =>
-        {
-            vm.Set("E_MAX_HATE_POINT", info.MaxHateEntityPoint);
-        });
+        }, () => { vm.Set("E_MAX_HATE_POINT", info.MaxHateEntityPoint); });
 
         _colorList = new Color[]
         {
-            Color.white*0.4f,
-            Color.yellow*0.4f,
-            Color.magenta*0.4f,
-            Color.red*0.4f,
+            Color.white * 0.4f,
+            Color.yellow * 0.4f,
+            Color.magenta * 0.4f,
+            Color.red * 0.4f,
         };
     }
 
@@ -200,15 +213,16 @@ public class DetectorCharacterImplementation : IDetectorService
 
     public void UpdateDetect(float deltaTime)
     {
+        hateInfo.BeginChangeHate();
         RefreshMaxHateTarget(deltaTime);
         if (detectList.Count > 0)
         {
             for (int i = 0; i < detectList.Count; i++)
             {
                 var point = detectList[i];
-                var target = EntityUtils.GetGameEntity(point.EntityId);
                 if(point.EntityId == hateInfo.MaxHateEntityId)
                     continue;
+                var target = EntityUtils.GetGameEntity(point.EntityId);
                 if (CheckTargetIsAlive(target))
                 {
                     var dir = point.Position - _model.position;
@@ -220,8 +234,8 @@ public class DetectorCharacterImplementation : IDetectorService
             }
             detectList.Clear();
         }
-
-        hateInfo.CheckIsHasHateTarget();
+        RefreshBufferHatePoint();
+        hateInfo.EndChangeHate();
     }
 
     private bool CheckTargetIsAlive(GameEntity target, bool clearHate = true)
@@ -229,7 +243,7 @@ public class DetectorCharacterImplementation : IDetectorService
         if (target.isDeadState)
         {
             if(clearHate)
-                hateInfo.Set(target.instanceID.ID, 0, 0);
+                SetHateInfoBuffer(target.instanceID.ID, 0, 0);
             return false;
         }
 
@@ -247,25 +261,56 @@ public class DetectorCharacterImplementation : IDetectorService
         {
             if (sqrDist <= RadiusSpottedSqr)
             {
-                hateInfo.Add(id, 200 * deltaTime, HatePointType.Spotted);
+                // 一级探测范围内
+                hateInfo.Change(id, SPOTTED_ADD * deltaTime, HatePointType.Spotted);
                 return;
             }
             if (sqrDist <= RadiusWarningSqr)
             {
-                hateInfo.Add(id, 50 * deltaTime, HatePointType.Warning);
+                // 二级探测范围内
+                hateInfo.Change(id, WARNING_ADD * deltaTime, HatePointType.Warning);
                 return;
             }
         }
-        hateInfo.Add(id, -150 * deltaTime, HatePointType.OutSign);
-    }
-
-    public void Dispose()
-    {
-        detectorDrawer.Dispose();
-        DetectMgr.Inst.CancelHatePoint(_character.instanceID.ID);
+        hateInfo.Change(id, OUTSIGN_ADD * deltaTime, HatePointType.OutSign);
     }
 
     public GameEntity Entity => _character;
     public SensorEntity Sensor => _sensor;
     public HatePointInfo HatePointInfo => hateInfo;
+    public void ChangeHateInfoBuffer(int entityId, float value, int type)
+    {
+        // 此处rank代表type
+        _hateInfoChangeBuffer.Enqueue(new HatePointInfo.HateInfo(entityId, type, value));
+    }
+    public void SetHateInfoBuffer(int entityId, float value, int type)
+    {
+        // 此处rank代表type
+        _hateInfoSetBuffer.Enqueue(new HatePointInfo.HateInfo(entityId, type, value));
+    }
+    
+    private void RefreshBufferHatePoint()
+    {
+        while (_hateInfoSetBuffer.Count > 0)
+        {
+            var info = _hateInfoSetBuffer.Dequeue();
+            hateInfo.Set(info.ID, info.Value, info.Rank);
+        }
+        while (_hateInfoChangeBuffer.Count > 0)
+        {
+            var info = _hateInfoChangeBuffer.Dequeue();
+            hateInfo.Change(info.ID, info.Value, info.Rank);
+        }
+    }
+
+    public void Initialize()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Destroy()
+    {
+        detectorDrawer.Dispose();
+        DetectMgr.Inst.CancelHatePoint(_character.instanceID.ID);
+    }
 }

@@ -315,7 +315,6 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
     public void Destroy()
     {
         this.gameObject.Unlink();
-        entity.Destroy();
         this.character = null;
     }
 }

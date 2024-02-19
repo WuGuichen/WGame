@@ -11,7 +11,7 @@ namespace Weapon
         void EndHitTargets();
 
         void OnUpdateAttackSensor();
-        void DoDestroy(bool onlyThis = false);
+        void Destroy(bool onlyThis = false);
         void UnLinkCharacter(GameEntity entity, bool resetLocalMotion = false);
         void LinkToCharacter(GameEntity entity);
     }

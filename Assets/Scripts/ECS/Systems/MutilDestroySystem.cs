@@ -39,11 +39,25 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
                 if (entity.hasLinkMotion)
                 {
                     entity.linkMotion.Motion.motionService.service.Destroy();
+                    entity.linkMotion.Motion.Destroy();
                 }
 
                 if (entity.hasLinkWeapon)
                 {
-                    entity.linkWeapon.Weapon.weaponWeaponView.service.DoDestroy();
+                    entity.linkWeapon.Weapon.weaponWeaponView.service.Destroy();
+                    entity.linkWeapon.Weapon.Destroy();
+                }
+
+                if (entity.hasLinkSensor)
+                {
+                    entity.linkSensor.Sensor.detectorCharacterService.service.Destroy();
+                    entity.linkSensor.Sensor.Destroy();
+                }
+
+                if (entity.hasLinkVM)
+                {
+                    entity.linkVM.VM.vMService.service.Destroy();
+                    entity.linkVM.VM.Destroy();
                 }
 
                 if (entity.hasGameViewService)
@@ -66,7 +80,7 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
             }
             else if (e is WeaponEntity weaponEntity)
             {
-                weaponEntity.weaponWeaponView.service.DoDestroy(true);
+                weaponEntity.weaponWeaponView.service.Destroy(true);
             }
             // else if (e is TriggerEntity triggerEntity)
             // {

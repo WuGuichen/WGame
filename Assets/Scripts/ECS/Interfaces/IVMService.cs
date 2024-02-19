@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IVMService
+public interface IVMService : IBaseService
 {
     public void DoString(string str);
     public void Call(string name);

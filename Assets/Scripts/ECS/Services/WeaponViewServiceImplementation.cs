@@ -116,19 +116,19 @@ namespace Weapon
             _trail.enabled = false;
         }
 
-        public void DoDestroy(bool onlyThis = false)
+        /// <param name="onlyThis">是否只有武器销毁，否则是因为武器持有者entity销毁</param>
+        public void Destroy(bool onlyThis = false)
         {
             this.gameObject.Unlink();
             if (onlyThis)
             {
+                // 只有武器entity Destroy
                 if(_character.hasLinkWeapon)
                     _character.RemoveLinkWeapon();
                 GameObject.Destroy(this.gameObject);
             }
-            else
-            {
-                _entity.Destroy();
-            }
+
+            _entity = null;
         }
 
         private void OnDrawGizmos()

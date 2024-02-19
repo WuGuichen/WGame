@@ -46,8 +46,7 @@ public partial class MethodDefine
     /// <param name="hatePointType">增加类型</param>
     public static void AddHatePointTo(int entityId, in GameEntity target, float value, int hatePointType)
     {
-        var hateInfo = target.linkSensor.Sensor.detectorCharacterService.service.HatePointInfo;
-        hateInfo.Add(entityId, value, hatePointType);
+        target.linkSensor.Sensor.detectorCharacterService.service.ChangeHateInfoBuffer(entityId, value, hatePointType);
     }
     
     /// <summary>
@@ -59,8 +58,7 @@ public partial class MethodDefine
     /// <param name="hateRank"></param>
     private static void SetHatePoint(int entityId, in GameEntity target, float value, int hateRank)
     {
-        var hateInfo = target.linkSensor.Sensor.detectorCharacterService.service.HatePointInfo;
-        hateInfo.Set(entityId, value, hateRank);
+        target.linkSensor.Sensor.detectorCharacterService.service.SetHateInfoBuffer(entityId, value, hateRank);
     }
     
     private void BindEntityMethod()

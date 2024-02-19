@@ -123,4 +123,13 @@ public class VMServiceImplementation : IVMService
     {
         visitor.Definition.ClearLocalCache();
     }
+
+    public void Initialize()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Destroy()
+    {
+    }
 }

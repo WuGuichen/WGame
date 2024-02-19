@@ -5,6 +5,7 @@ def PatrolEnter(){
     -- 设置巡逻移速
     S_SetMoveSpeedRate(50)
     @E_SELF:E_ResetDetectParam()
+    print("Reset")
     -- 取消锁定
 --    @E_SELF:E_DoFocusTarget()
 }
@@ -27,6 +28,7 @@ def ChaseEnter(){
     -- 设置追击移速
     S_SetMoveSpeedRate(50)
     S_SetRotateSpeedRate(200)
+    @E_SELF:E_SetDetectParam(360, 20, 20)
     @E_SELF:E_DoFocusTarget(E_MAX_HATE_ENTITY)
 }
 def ChaseLogic(){
