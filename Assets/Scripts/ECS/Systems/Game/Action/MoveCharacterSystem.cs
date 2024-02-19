@@ -43,6 +43,8 @@ public class MoveCharacterSystem : IExecuteSystem
             }
             if(entity.isUnbalanced)
                 continue;
+            if(entity.isNotMove)
+                continue;
             if (entity.hasFocusEntity)
             {
                 var pos = entity.focusEntity.entity.position.value;

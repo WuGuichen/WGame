@@ -86,7 +86,7 @@ public class TestSceneSystem : MonoBehaviour
 		_systems.Add(new RefreshCharacterUISystem(_contexts));
 		
 		_rigidSystems.Add(new MoveCharacterSystem(_contexts));
-		_rigidSystems.Add(new RotatePlayerSystem(_contexts));
+		_rigidSystems.Add(new RotateCharacterSystem(_contexts));
 		_rigidSystems.Add(new UpdateMoveDirectionSystem(_contexts));
 
 		_lateFixedUpdateSystems.Add(new CameraFollowTargetSystem(_contexts));

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from E:/UnityProjects/WGame/Client/Assets/Scripts/WLang/Runtime/WLang.g4 by ANTLR 4.13.1
+// Generated from D:/UnityProject/WGame/Client/Assets/Scripts/WLang/Runtime/WLang.g4 by ANTLR 4.13.1
 
 // Unreachable code detected
 #pragma warning disable 0162

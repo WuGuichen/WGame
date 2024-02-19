@@ -1,18 +1,16 @@
 using Entitas;
 using UnityEngine;
 
-public class RotatePlayerSystem : IExecuteSystem
+public class RotateCharacterSystem : IExecuteSystem
 {
-    private readonly GameContext _gameContext;
     private readonly InputContext _inputContext;
     private Transform cameraTrans;
     private Transform playerTrans;
     private readonly IGroup<GameEntity> _moveGroup;
     private readonly ITimeService _time;
 
-    public RotatePlayerSystem(Contexts contexts)
+    public RotateCharacterSystem(Contexts contexts)
     {
-        _gameContext = contexts.game;
         _inputContext = contexts.input;
         this.cameraTrans = contexts.meta.mainCameraService.service.Camera;
         _moveGroup = contexts.game.GetGroup(GameMatcher.Moveable);
@@ -38,6 +36,7 @@ public class RotatePlayerSystem : IExecuteSystem
                 moveDir = new Vector2(tmp.x, tmp.z);
             }
 
+            float leftAngle;
             if (entity.hasFocusEntity && !entity.isRotateInFocus)
             {
                 if (isCamera)
@@ -46,7 +45,9 @@ public class RotatePlayerSystem : IExecuteSystem
                 }
                 else
                 {
-                    fwd = entity.moveDirection.value;
+                    var dir = entity.focusEntity.entity.position.value - entity.position.value;
+                    dir.y = 0;
+                    fwd = dir.normalized;
                 }
                 fwd.y = 0;
                 if (fwd.Equals(Vector3.zero))
@@ -56,6 +57,7 @@ public class RotatePlayerSystem : IExecuteSystem
                 var tarRot = Quaternion.LookRotation(fwd);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
                 var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
+                leftAngle = fwd.GetAngle(moveDir);
                 playerTrans.localRotation = playerRot;
             }
             else
@@ -81,8 +83,6 @@ public class RotatePlayerSystem : IExecuteSystem
                 }
 
                 var tarRot = Quaternion.LookRotation(tarDir);
-                // var angle = Vector3.Angle(tarDir, moveDir);
-                // entity.ReplaceRotateLeftAngle(angle);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
                 var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
 

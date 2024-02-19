@@ -142,7 +142,7 @@ public class BTreeInterpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitTreeWaitTime(WLangParser.TreeWaitTimeContext context)
     {
-        var p = context.numParam().Accept(interpreter);
+        var p = context.Accept(interpreter);
         if (p.Type == TYPE_METHOD)
         {
             var fileName = interpreter.currentFileName;

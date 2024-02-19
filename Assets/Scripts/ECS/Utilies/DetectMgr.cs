@@ -8,6 +8,7 @@ public class DetectMgr : Singleton<DetectMgr>
     private readonly Stack<HatePointInfo> _hatePointPool = new();
 
     private Dictionary<int, float> _distanceDict = new();
+    private Dictionary<int, float> _angleDict = new();
 
     private const float MAX_FLOAT = float.MaxValue - 1f;
 
@@ -40,6 +41,11 @@ public class DetectMgr : Singleton<DetectMgr>
         _distanceDict[Utils.PairInt(id1, id2)] = distance;
     }
 
+    public void UpdateAngle(int from, int to, float angle)
+    {
+        _angleDict[Utils.SortPairInt(from, to)] = angle;
+    }
+
     public float GetDistance(GameEntity entity1, GameEntity entity2)
     {
         if (_distanceDict.TryGetValue(Utils.PairInt(entity1.instanceID.ID, entity2.instanceID.ID), out float dist))
@@ -47,6 +53,42 @@ public class DetectMgr : Singleton<DetectMgr>
             return dist;
         }
 
+        return float.MaxValue;
+    }
+
+    public float GetAngle(GameEntity from, GameEntity to)
+    {
+        if (_distanceDict.TryGetValue(Utils.SortPairInt(from.instanceID.ID, to.instanceID.ID), out float angle))
+        {
+            return angle;
+        }
+
+        WLogger.Error("未定义");
+        return float.MaxValue;
+    }
+    public float GetAngle(int from, int to)
+    {
+        if (_angleDict.TryGetValue(Utils.SortPairInt(from, to), out float angle))
+        {
+            if (angle <= 180)
+            {
+                return angle;
+            }
+
+            return 360 - angle;
+        }
+
+        WLogger.Error("未定义" + from + ".." + to);
+        return float.MaxValue;
+    }
+    public float GetAngle360(int from, int to)
+    {
+        if (_angleDict.TryGetValue(Utils.SortPairInt(from, to), out float angle))
+        {
+            return angle;
+        }
+
+        WLogger.Error("未定义");
         return float.MaxValue;
     }
 

@@ -2,6 +2,10 @@ using System;
 
 public class Utils
 {
+    public static int SortPairInt(int from, int to)
+    {
+        return (to << 16) + from;
+    }
     public static int PairInt(int n1, int n2)
     {
         if (n1 > short.MaxValue || n2 > short.MaxValue)

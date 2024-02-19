@@ -15,10 +15,19 @@ public static class Vector3Extension
     /// </summary>
     /// <param name="v"></param>
     /// <param name="origin"></param>
-    /// <returns></returns>
+    /// <returns>0~π</returns>
     public static float GetAngle(this Vector3 v, Vector3 origin)
     {
         var d = Vector3.Dot(v, origin);
+        if (d > 1)
+            d = 1;
+        else if (d < -1)
+            d = -1;
+        return Mathf.Acos(d);
+    }
+    public static float GetAngle(this Vector2 v, Vector2 origin)
+    {
+        var d = Vector2.Dot(v, origin);
         if (d > 1)
             d = 1;
         else if (d < -1)

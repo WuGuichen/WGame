@@ -32,7 +32,6 @@ public class MoveAgent
 
     // state
     private bool isMoving = false;
-    private bool needRotate = false;
 
     private BehaviorTree _onPatrolTree;
 
@@ -88,15 +87,43 @@ public class MoveAgent
             return false;
         _tarPos = tarEntity.position.value;
         var dist = DetectMgr.Inst.GetDistance(id, _entity.instanceID.ID);
-        return MoveToTargetPos(_tarPos, dist, reachDist, threshold);
+        var angle = DetectMgr.Inst.GetAngle(_entity.instanceID.ID, id);   
+        // 角度不满足
+        var needRotate = angle > 5f;
+        // 距离满足
+        var isReached = MoveToTargetPos(_tarPos, dist, reachDist, threshold);
+        if (isReached)
+        {
+            if (needRotate)
+            {
+                _entity.isNotMove = true;
+                return false;
+            }
+            _entity.isNotMove = false;
+            return true;
+        }
+
+        _entity.isNotMove = false;
+        return false;
     }
 
     private bool MoveToTargetPos(Vector3 pos, float reachDist, float threshold = 0.5f)
     {
         var tmp = _entity.position.value - pos;
         tmp.y = 0;
+        _entity.isNotMove = false;
         return MoveToTargetPos(pos, tmp.magnitude, reachDist, threshold);
     }
+
+    // private void MoveToTargetPos(Vector3 pos)
+    // {
+    //     DbgDraw.Cube(pos, Quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.red);
+    //     var tar = pos - _entity.position.value;
+    //     tar.y = 0;
+    //     
+    //     StartMove(tar.normalized);
+    // }
+    // ReSharper disable Unity.PerformanceAnalysis
     private bool MoveToTargetPos(Vector3 pos, float dist, float reachDist, float threshold = 0.5f)
     {
         DbgDraw.Cube(pos, Quaternion.identity, new Vector3(0.2f, 0.2f, 0.2f), Color.white);
@@ -107,9 +134,6 @@ public class MoveAgent
         var tar = pos - _entity.position.value;
         tar.y = 0;
         
-        var fwd = _transform.forward;
-        
-        fwd.y = 0;
         StartMove(tar.normalized);
         if (reverse)
         {
@@ -127,53 +151,6 @@ public class MoveAgent
         }
 
         return false;
-    }
-
-    private void RotateToTarget()
-    {
-        if (!needRotate)
-            return;
-
-        var fwd = _transform.forward;
-        fwd.y = 0;
-        float angle = 0;
-        if (_entity.hasFocusEntity)
-        {
-            angle = Vector3.Angle(fwd, _tarPos - _entity.position.value);
-        }
-        else
-        {
-            angle = Vector3.Angle(fwd, _targetDirRotation);
-        }
-        if (angle < 0.1f)
-        {
-            // 旋转到位了
-            needRotate = false;
-            // 开始移动
-            UpdateRotateDir();
-            StartMove(_targetDirRotation);
-        }
-        else
-        {
-            UpdateRotateDir();
-            // 旋转目标
-            var rot = Quaternion.RotateTowards(_transform.rotation, _targetDirQuaternion
-                , _entity.rotationSpeed.value * _entity.animRotateMulti.rate * _time.DeltaTime);
-
-            _transform.rotation = rot;
-        }
-    }
-
-    private void UpdateRotateDir()
-    {
-        var tar = _tarPos - _transform.position;
-        tar.y = 0;
-        if (tar == Vector3.zero)
-            _targetDirRotation = _transform.forward;
-        else
-            _targetDirRotation = tar.normalized;
-        
-        _targetDirQuaternion = Quaternion.LookRotation(_targetDirRotation);
     }
 
     public void StopMove()

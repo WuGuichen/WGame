@@ -90,7 +90,7 @@ public class DetectorCharacterImplementation : IDetectorService
             if (degreeDetect != _sensor.detectCharacterDegree.value)
             {
                 degreeDetect = _sensor.detectCharacterDegree.value;
-                angleDetectHalf = (degreeDetect >> 1)*Mathf.Deg2Rad;
+                angleDetectHalf = (degreeDetect >> 1);
             }
             return angleDetectHalf;
         }        
@@ -102,7 +102,7 @@ public class DetectorCharacterImplementation : IDetectorService
             if (degreeDetect != _sensor.detectCharacterDegree.value)
             {
                 degreeDetect = _sensor.detectCharacterDegree.value;
-                angleDetectHalf = (degreeDetect >> 1)*Mathf.Deg2Rad;
+                angleDetectHalf = (degreeDetect >> 1);
             }
 
             return degreeDetect;
@@ -202,9 +202,13 @@ public class DetectorCharacterImplementation : IDetectorService
             if (CheckTargetIsAlive(hateEntity))
             {
                 var dist = DetectMgr.Inst.GetDistance(hateEntity, _character);
-                var dir = hateEntity.position.value - _model.position;
-                var normalDir = dir / dist;
-                var angle = normalDir.GetAngle(_model.forward);
+                // var dir = hateEntity.position.value - _character.position.value;
+                // var normalDir = dir / dist;
+                // var angle = normalDir.GetAngle(_model.forward);
+                // var angle = DetectMgr.Inst.GetAngle()
+                var angle = DetectMgr.Inst.GetAngle(_character.instanceID.ID, hateEntity.instanceID.ID);
+                if(_character.isCampWhite)
+                    WLogger.Print(angle+"Dist:"+dist);
                 // 距离仇恨值增加
                 AddDistanceHatePoint(hateInfo.MaxHateEntityId, dist * dist, angle, deltaTime);
             }
@@ -213,7 +217,10 @@ public class DetectorCharacterImplementation : IDetectorService
 
     public void UpdateDetect(float deltaTime)
     {
+        if (_character.isCamera)
+            return;
         hateInfo.BeginChangeHate();
+        RefreshBufferHatePoint();
         RefreshMaxHateTarget(deltaTime);
         if (detectList.Count > 0)
         {
@@ -225,16 +232,16 @@ public class DetectorCharacterImplementation : IDetectorService
                 var target = EntityUtils.GetGameEntity(point.EntityId);
                 if (CheckTargetIsAlive(target))
                 {
-                    var dir = point.Position - _model.position;
-                    var normalDir = dir / point.Dist;
-                    var angle = normalDir.GetAngle(_model.forward);
+                    // var dir = point.Position - _model.position;
+                    // var normalDir = dir / point.Dist;
+                    // var angle = normalDir.GetAngle(_model.forward);
+                    var angle = DetectMgr.Inst.GetAngle(_character.instanceID.ID, point.EntityId);
                     // 距离仇恨值增加
                     AddDistanceHatePoint(point.EntityId, point.SqrDist, angle, deltaTime);
                 }
             }
             detectList.Clear();
         }
-        RefreshBufferHatePoint();
         hateInfo.EndChangeHate();
     }
 

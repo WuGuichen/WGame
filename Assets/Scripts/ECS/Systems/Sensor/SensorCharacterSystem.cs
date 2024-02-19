@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Entitas;
 using TWY.Physics;
 using Unity.Mathematics;
+using UnityEngine;
 
 public class SensorCharacterSystem : IExecuteSystem
 {
@@ -27,13 +28,24 @@ public class SensorCharacterSystem : IExecuteSystem
             EntityUtils.BvhRed.TestHitSphereNonAlloc(sphere, ref hitInfos);
             for (int i = 0; i < hitInfos.Count; i++)
             {
-                var tar = EntityUtils.GetGameEntity(hitInfos[i].EntityId);
-                var dist = math.sqrt(hitInfos[i].SqrDist);
+                var hitInfo = hitInfos[i];
+                var tar = EntityUtils.GetGameEntity(hitInfo.EntityId);
+                var model = entity.gameViewService.service.Model;
+                var modelTarget = tar.gameViewService.service.Model;
+                var dir = tar.position.value - entity.position.value;
+                var sqrDist = dir.sqrMagnitude;
+                // var dist = math.sqrt(hitInfo.SqrDist);
+                var dist = math.sqrt(sqrDist);
+                var normalDir = dir / dist;
+                var angleToTarget = model.forward.GetAngle360(normalDir, model.up);
+                var angleToEntity = modelTarget.forward.GetAngle360(-normalDir, modelTarget.up);
                 DetectMgr.Inst.UpdateDistance(tar.instanceID.ID, entity.instanceID.ID, dist);
+                DetectMgr.Inst.UpdateAngle(entity.instanceID.ID, hitInfo.EntityId, angleToTarget*Mathf.Rad2Deg);
+                DetectMgr.Inst.UpdateAngle(tar.instanceID.ID, entity.instanceID.ID, angleToEntity*Mathf.Rad2Deg);
                 tar.linkSensor.Sensor.detectorCharacterService.service.AddDetectTarget(new HitInfo(entity.instanceID.ID,
-                    position, dist, hitInfos[i].SqrDist));
+                    position, dist, sqrDist));
                 entity.linkSensor.Sensor.detectorCharacterService.service.AddDetectTarget(new HitInfo(tar.instanceID.ID,
-                    tar.position.value, dist, hitInfos[i].SqrDist));
+                    tar.position.value, dist, sqrDist));
             }
         }
         
