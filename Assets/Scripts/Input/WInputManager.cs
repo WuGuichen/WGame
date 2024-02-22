@@ -8,6 +8,7 @@ public class WInputManager : Singleton<WInputManager>
     public bool IsMouse => CurrentDeviceID == MouseID;
     public int KeyboardID { get; private set; }
     public bool IsKeyboard => CurrentDeviceID == KeyboardID;
+    public bool IsKeyboardOrMouse => CurrentDeviceID == KeyboardID || CurrentDeviceID == MouseID;
     public int XInputControllerID { get; private set; }
     public bool IsXInputController => CurrentDeviceID == XInputControllerID;
     public InputDevice CurrentDevice { get; private set; }
@@ -35,7 +36,7 @@ public class WInputManager : Singleton<WInputManager>
             if (CurrentDevice.deviceId != CurrentDeviceID)
             {
                 CurrentDeviceID = CurrentDevice.deviceId;
-                WLogger.Print("Change: " + CurrentDevice.name + ", ID:" + CurrentDeviceID);
+                // WLogger.Print("Change: " + CurrentDevice.name + ", ID:" + CurrentDeviceID);
                 onDeviceChanged?.Invoke();
             }
         };

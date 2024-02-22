@@ -114,6 +114,11 @@ namespace WGame.UI
             Inst.openedViewList.Remove(viewName);
         }
 
+        /// <summary>
+        /// 设置view的可见性
+        /// </summary>
+        /// <param name="viewName"></param>
+        /// <returns></returns>
         public static bool HideView(string viewName)
         {
             if (Inst.hiddedViewList.Contains(viewName))
@@ -121,7 +126,7 @@ namespace WGame.UI
             if (!Inst.openedViewList.ContainsKey(viewName))
                 return false;
             var view = Inst.openedViewList[viewName];
-            view.visible = false;
+            view.IsVisible = false;
             view.touchable = false;
             // var go = view.displayObject.gameObject;
             // if (go.activeInHierarchy
@@ -141,7 +146,7 @@ namespace WGame.UI
             
             var view = Inst.openedViewList[viewName];
             // view.displayObject.gameObject.SetActive(true);
-            view.visible = true;
+            view.IsVisible = true;
             view.touchable = true;
             Inst.hiddedViewList.Remove(viewName);
             return true;

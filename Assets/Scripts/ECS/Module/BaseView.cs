@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using FairyGUI;
@@ -37,7 +36,27 @@ namespace WGame.UI
 		private Dictionary<int,Timer> timerDict = new();
 
 		private List<string> subViewList = new List<string>();
-		
+
+		public bool IsVisible
+		{
+			get { return visible; }
+			set
+			{
+				if (visible != value)
+				{
+					visible = value;
+					if (value)
+					{
+						OnVisible();
+					}
+					else
+					{
+						OnInvisible();
+					}
+				}
+			}
+		}
+
 		protected override void OnInit()
 		{
 			contentPane = uiObj.asCom;
@@ -50,6 +69,15 @@ namespace WGame.UI
 		}
 
 		protected virtual void CustomInit()
+		{
+			
+		}
+
+		protected virtual void OnInvisible()
+		{
+			
+		}
+		protected virtual void OnVisible()
 		{
 			
 		}

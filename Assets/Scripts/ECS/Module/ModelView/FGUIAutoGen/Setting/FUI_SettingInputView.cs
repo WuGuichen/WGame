@@ -11,6 +11,7 @@ namespace WGame.UI.Setting
 		public GList list;
 		public GTextField title;
 		public GList tabList;
+		public GLabel maskCommon;
 		public const string URL = "ui://6p265q2rpmv07";
 
 		public static FUI_SettingInputView CreateInstance()
@@ -26,6 +27,7 @@ namespace WGame.UI.Setting
 			list = (GList)GetChildAt(1);
 			title = (GTextField)GetChildAt(2);
 			tabList = (GList)GetChildAt(3);
+			maskCommon = (GLabel)GetChildAt(4);
 		}
 	}
 }

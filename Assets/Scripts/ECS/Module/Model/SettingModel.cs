@@ -3,6 +3,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using WGame.Input;
 using WGame.Runtime;
 
 namespace WGame.UI
@@ -23,6 +24,23 @@ namespace WGame.UI
 		{
 			this.volume = volume;
 			InitSetting();
+		}
+		
+		public WInputAgent InputAgent { get; set; }
+
+		private bool isRebindingInput = false;
+
+		public bool IsRebindingInput
+		{
+			get => isRebindingInput;
+			set
+			{
+				if (isRebindingInput != value)
+				{
+					isRebindingInput = value;
+					EventCenter.Trigger(EventDefine.OnRebindingInputStateChange);
+				}
+			}
 		}
 
 		public bool IsShowFPS

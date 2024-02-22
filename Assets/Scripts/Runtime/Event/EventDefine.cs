@@ -26,4 +26,6 @@ public class EventDefine
 
     // 界面加载完成
     public const int OnSceneLoaded = 60;
+    // 按键绑定状态变化
+    public const int OnRebindingInputStateChange = 61;
 }

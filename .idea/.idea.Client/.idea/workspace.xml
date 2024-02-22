@@ -4,74 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/InputData/WInputAgentMyController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Data/WInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Data/WInput.inputactions" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" afterDir="false" />
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="按键绑定和设备检测代码">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Common/Common_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Common/Common_fui.bytes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Main/Main_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Main/Main_fui.bytes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Setting/Setting_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Setting/Setting_fui.bytes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/FGUITools/FGUICodeSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/FGUITools/FGUICodeSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/MotionEditor/TriggerEditorWindow.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/InputData/WInputAgentMyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/InputData/WInputAgentMyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/BaseView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/BaseView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/SettingModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/SettingModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingItemInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingItemInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/SettingInputView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/SettingInputView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/CharacterBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/CharacterBinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_AttributeInfoItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_AttributeInfoItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_CharacterInfoView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_CharacterInfoView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_HeadPad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_HeadPad.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_HpBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_HpBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_MessagePad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_MessagePad.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/CommonBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/CommonBinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnNormal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnNormal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnReset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnReset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Slider1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Slider1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Slider1_grip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Slider1_grip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Toggle1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Toggle1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/FUIBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/FUIBinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_CommandView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_CommandView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_GameMainView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_GameMainView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_JoystickView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_JoystickView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_MainListItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_MainListItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_ProgressBar1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_ProgressBar1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/MainBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/MainBinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/PanelId.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/PanelId.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingComboBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingComboBox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingComboBox_popup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingComboBox_popup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingGraphicView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingGraphicView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingInputView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingInputView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingSliderItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingSliderItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingSubTabItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingSubTabItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingTabItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingTabItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingToggleItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingToggleItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/SettingBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/SettingBinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_TerminalMsgItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_TerminalMsgItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_TerminalView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_TerminalView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_btnNormal1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_btnNormal1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/TerminalBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/TerminalBinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/VDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/VDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/UIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/SceneUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/SceneUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WGame.Input.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WGame.Input.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInput.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInput.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInputCenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/WLogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/WLogger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/Tests/BinaryHeap.Tests/Tests.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnGameUpdate.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/GameEvent/OnGameUpdate.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLang.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/WLangParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInputAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Event/EventDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Event/EventDefine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +79,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IDetectorService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ISphereSensor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingItemInput.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/UnityProject/WGame/Client/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/CharacterBinder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Physics/WBVHEntityAdapter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FSMAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Services/DetectorCharacterImplementation.cs" root0="FORCE_HIGHLIGHTING" />
@@ -177,6 +125,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Actions/InputActionReference.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Actions/InputActionTrace.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Actions/InputBinding.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Actions/Interactions/HoldInteraction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Controls/AnyKeyControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Controls/ButtonControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.5.1/InputSystem/Controls/InputControl.cs" root0="SKIP_HIGHLIGHTING" />
@@ -378,7 +327,7 @@
       <workItem from="1708338893015" duration="177000" />
       <workItem from="1708339082651" duration="8140000" />
       <workItem from="1708509410423" duration="19710000" />
-      <workItem from="1708579080280" duration="7512000" />
+      <workItem from="1708579080280" duration="13511000" />
     </task>
     <task id="LOCAL-00004" summary="优化获取实体效率">
       <created>1702192420510</created>
@@ -723,7 +672,7 @@
       <option name="project" value="LOCAL" />
       <updated>1706809186438</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -749,7 +698,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="神秘的热重载插件" />
     <MESSAGE value="从bootStrap打开游戏" />
     <MESSAGE value="bootstrap" />
     <MESSAGE value="更新yooasset并整理目录修复bug" />
@@ -774,7 +722,8 @@
     <MESSAGE value="索敌更新使用总线模式" />
     <MESSAGE value="移动可停止，以及角度数据检测" />
     <MESSAGE value="按键重绑定流程" />
-    <option name="LAST_COMMIT_MESSAGE" value="按键重绑定流程" />
+    <MESSAGE value="按键绑定和设备检测代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="按键绑定和设备检测代码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

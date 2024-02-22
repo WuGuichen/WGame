@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace WGame.Input
         private bool _isEnable;
         private InputActionReference _inputActionReference;
         private InputActionRebindingExtensions.RebindingOperation _rebindingOperation;
+        private Action _onRebindCompeleted;
         protected abstract string SaveKeyName { get;}
         public abstract InputActionAsset InputAsset { get; }
         private string[] _inputTypeList;
@@ -69,7 +71,7 @@ namespace WGame.Input
             }
         }
         
-        public void RebindInputSetting(InputAction action, bool ignoreMouse = true)
+        public void RebindInputSetting(InputAction action, Action onCompleted = null, bool ignoreMouse = true)
         {
             WLogger.Print("开始重载");
             if (_action != null)
@@ -97,9 +99,7 @@ namespace WGame.Input
             _rebindingOperation?.Cancel();
             var index = _action.GetBindingIndex();
             WLogger.Print("Index:" + index);
-            for (var i = 0; i < _action.bindings.Count; i++)
-            {
-            }
+            _onRebindCompeleted = onCompleted;
             if (index >= _action.bindings.Count)
             {
                 WLogger.Print("超出键位限制，本次更改无效:" + _action.bindings.Count);
@@ -122,6 +122,11 @@ namespace WGame.Input
             _rebindingOperation.Start();
         }
 
+        public void CancelRebinding()
+        {
+            _rebindingOperation?.Cancel();
+        }
+
         private void OnRebindComplete(InputActionRebindingExtensions.RebindingOperation operation)
         {
             WLogger.Print("Compeleted:" + _action.GetBindingDisplayString());
@@ -137,11 +142,14 @@ namespace WGame.Input
             _rebindingOperation?.Dispose();
             _rebindingOperation = null;
             _action = null;
+            _onRebindCompeleted?.Invoke();
+            _onRebindCompeleted = null;
         }
 
-        public void ResetBindData(InputAction action)
+        public void ResetBindData(InputAction action, int bindingIndex = 0)
         {
-            action.RemoveAllBindingOverrides();
+            action.RemoveBindingOverride(bindingIndex);
+            WLogger.Print("重置成功：" + action.GetBindingDisplayString(bindingIndex));
         }
 
         public void Initialize()

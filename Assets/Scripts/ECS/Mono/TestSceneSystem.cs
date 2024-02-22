@@ -1,7 +1,5 @@
 using Entitas;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using WGame.Input;
 using WGame.Res;
 using Random = UnityEngine.Random;
 using WGame.UI;
@@ -43,8 +41,10 @@ public class TestSceneSystem : MonoBehaviour
         _settingContext = _contexts.setting;
 
         _settingContext.SetGameSetting(gameSetting);
+        var _inputAgent = new WInputAgentMyController();
+        SettingModel.Inst.InputAgent = _inputAgent;
         var _services = new Services(
-            new InputServiceImplementation(),
+            _inputAgent,
             new CameraServiceImplementation(),
             YooassetManager.Inst,
             new FactoryServiceImplementation(_contexts),
@@ -157,18 +157,7 @@ public class TestSceneSystem : MonoBehaviour
 	    EventCenter.Trigger(EventDefine.OnGameUpdate);
 
 	    TickManager.Inst.UpdateTick(_timeService.DeltaTime);
-
-	    if (Input.GetKeyDown(KeyCode.M))
-	    {
-		    _testInput.RebindInputSetting(_testInput.Input.Player.Fire);
-	    }
-
-	    if (Input.GetKeyDown(KeyCode.V))
-	    {
-	    }
     }
-
-    private WInputAgentMyController _testInput;
 
     private void FixedUpdate()
     {
@@ -189,7 +178,6 @@ public class TestSceneSystem : MonoBehaviour
         WLangMgr.Inst.OnDispose();
         EventCenter.RemoveListener(EventDefine.OnGameResourcesLoaded, OnGameStart);
         EntityUtils.Dispose();
-        _testInput.Destroy();
     }
 
     private void LateUpdate()
@@ -211,14 +199,6 @@ public class TestSceneSystem : MonoBehaviour
     {
 	    MainModel.Inst.InitInstance();
 	    SettingModel.Inst.SetVolume(volume);
-	    _testInput = new WInputAgentMyController();
-	    _testInput.Initialize();
-	    _testInput.Input.Player.Fire.started += context =>
-	    {
-			WLogger.Print("Fire:"+ _testInput.Input.Player.Fire.GetBindingDisplayString());
-	    };
-	    _testInput.Input.Player.Enable();
-	    WLogger.Print("Fire:"+ _testInput.Input.Player.Fire.GetBindingDisplayString());
 	    WInputManager.Inst.InitInstance();
     }
 
