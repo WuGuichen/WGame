@@ -8,7 +8,14 @@ namespace WGame.UI.Setting
 		public void SetData(int idx, InputAction inputAction)
 		{
 			index = idx;
-			title.text = inputAction.name;
+			if (index < SettingDefine.Inst.inputBtns.Length)
+			{
+				title.text = SettingDefine.Inst.inputBtns[index];
+			}
+			else
+			{
+				title.text = inputAction.name;
+			}
 			btnChange.text = inputAction.GetBindingDisplayString(0, InputBinding.DisplayStringOptions.DontIncludeInteractions);
 			var action = inputAction;
 			btnChange.onClick.Set(ctx =>
@@ -23,7 +30,7 @@ namespace WGame.UI.Setting
 				{
 					SetData(index ,action);
 					SettingModel.Inst.IsRebindingInput = false;
-				});
+				}, false);
 			});
 			btnReset.onClick.Set(ctx =>
 			{

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using WGame.UI.Setting;using FairyGUI;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,8 @@ namespace WGame.UI
 
 		private EventCallback0 onTabChanged;
 		private InputAction[] _inputActions;
+
+		private List<FUI_SettingItemInput> _inputItems = new();
 
 		protected override void OnRegisterEvent()
 		{
@@ -39,6 +42,11 @@ namespace WGame.UI
 		private void OnItemRender(int idx, GObject obj)
 		{
 			var item = obj as FUI_SettingItemInput;
+			_inputItems.Add(item);
+			if (_inputItems.Count > _inputActions.Length)
+			{
+				WLogger.Error("'数据错误");
+			}
 			item.SetData(idx, _inputActions[idx]);
 			// item.touchable = true;
 		}
@@ -66,7 +74,7 @@ namespace WGame.UI
 
 		protected override void OnDestroy()
 		{
-			
+			_inputItems.Clear();	
 		}
 
 		private void CleanUpRebinding()
@@ -80,10 +88,15 @@ namespace WGame.UI
 			if (SettingModel.Inst.IsRebindingInput)
 			{
 				ui.maskCommon.displayObject.visible = true;
+				ui.maskCommon.text = "请输入新按键";
 			}
 			else
 			{
 				ui.maskCommon.displayObject.visible = false;
+				for (var i = 0; i < _inputItems.Count; i++)
+				{
+					_inputItems[i].SetData(i, _inputActions[i]);
+				}
 			}
 		}
 	}

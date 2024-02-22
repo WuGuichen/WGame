@@ -12,6 +12,8 @@ namespace WGame.Input
         private bool _isEnable;
         private InputActionReference _inputActionReference;
         private InputActionRebindingExtensions.RebindingOperation _rebindingOperation;
+        private int _newInputBindingIndex;
+        private InputBinding _oldInputBinding;
         private Action _onRebindCompeleted;
         protected abstract string SaveKeyName { get;}
         public abstract InputActionAsset InputAsset { get; }
@@ -90,6 +92,7 @@ namespace WGame.Input
             {
                 _action.actionMap.Disable();
             }
+
             _inputActionReference = InputActionReference.Create(_action);
             if (_inputActionReference == null)
             {
@@ -98,8 +101,15 @@ namespace WGame.Input
             }
             _rebindingOperation?.Cancel();
             var index = _action.GetBindingIndex();
-            WLogger.Print("Index:" + index);
+            _oldInputBinding = _action.bindings[index];
+            _newInputBindingIndex = index;
             _onRebindCompeleted = onCompleted;
+            if (_action.bindings[index] == null || _action.bindings[index].isComposite)
+            {
+                WLogger.Print("暂时没有支持这种键位更改, 本次操作无效");
+                CleanUpOperation();
+                return;
+            }
             if (index >= _action.bindings.Count)
             {
                 WLogger.Print("超出键位限制，本次更改无效:" + _action.bindings.Count);
@@ -118,6 +128,7 @@ namespace WGame.Input
             {
                 _rebindingOperation.WithControlsExcluding("Mouse");
             }
+            _rebindingOperation.WithCancelingThrough("<Keyboard>/escape");
 
             _rebindingOperation.Start();
         }
@@ -130,17 +141,39 @@ namespace WGame.Input
         private void OnRebindComplete(InputActionRebindingExtensions.RebindingOperation operation)
         {
             WLogger.Print("Compeleted:" + _action.GetBindingDisplayString());
+
+            var newInputBinding = _action.bindings[_newInputBindingIndex];
+            // 解决按键冲突
+            foreach (var binding in _action.actionMap.bindings)
+            {
+                if (binding.action == newInputBinding.action)
+                {
+                    continue;
+                }
+
+                if (binding.effectivePath == newInputBinding.effectivePath)
+                {
+                    var oldAction = _action.actionMap.FindAction(binding.action);
+                    
+                    oldAction.ApplyBindingOverride(_newInputBindingIndex,_oldInputBinding.effectivePath);
+                }
+            }
             if (_isEnable)
             {
                 _action.actionMap.Enable();
             }
+
             CleanUpOperation();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void CleanUpOperation()
         {
             _rebindingOperation?.Dispose();
             _rebindingOperation = null;
+            _inputActionReference = null;
+            _oldInputBinding = new InputBinding(null);
+            _newInputBindingIndex = 0;
             _action = null;
             _onRebindCompeleted?.Invoke();
             _onRebindCompeleted = null;

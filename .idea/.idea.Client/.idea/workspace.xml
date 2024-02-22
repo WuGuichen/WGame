@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="按键绑定和设备检测代码">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="按键绑定ui接入测试">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Common/Common_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Common/Common_fui.bytes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Setting/Setting_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Setting/Setting_fui.bytes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/InputData/WInputAgentMyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/InputData/WInputAgentMyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/BaseView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/BaseView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/SettingModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/SettingModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Define/SettingDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Define/SettingDefine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingItemInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingItemInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/SettingInputView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/SettingInputView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingInputView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingInputView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInputAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Event/EventDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Event/EventDefine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,10 +219,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="14664">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8404">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="14664" />
+      <option name="pid" value="8404" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -327,7 +318,7 @@
       <workItem from="1708338893015" duration="177000" />
       <workItem from="1708339082651" duration="8140000" />
       <workItem from="1708509410423" duration="19710000" />
-      <workItem from="1708579080280" duration="13511000" />
+      <workItem from="1708579080280" duration="19858000" />
     </task>
     <task id="LOCAL-00004" summary="优化获取实体效率">
       <created>1702192420510</created>
@@ -672,7 +663,7 @@
       <option name="project" value="LOCAL" />
       <updated>1706809186438</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +689,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="从bootStrap打开游戏" />
     <MESSAGE value="bootstrap" />
     <MESSAGE value="更新yooasset并整理目录修复bug" />
     <MESSAGE value="完整的资源加载流程，（未测试远端更新）" />
@@ -723,7 +713,8 @@
     <MESSAGE value="移动可停止，以及角度数据检测" />
     <MESSAGE value="按键重绑定流程" />
     <MESSAGE value="按键绑定和设备检测代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="按键绑定和设备检测代码" />
+    <MESSAGE value="按键绑定ui接入测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="按键绑定ui接入测试" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

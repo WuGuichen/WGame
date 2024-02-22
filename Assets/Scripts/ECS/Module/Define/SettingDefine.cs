@@ -31,12 +31,12 @@ namespace WGame.UI
 
 		public string[] inputType = new string[]
 		{
-			"键盘", "触屏"
+			"键盘", "手柄"
 		};
 
-		public string[] inputBtns = new string[inputTypeNums]
+		public string[] inputBtns = new string[]
 		{
-			"攻击", "防御", "跳跃", "冲刺", "视角", "移动", "交互"
+			"移动", "攻击", "防御", "跳跃", "视角", "闪避", "锁定","交互"
 		};
 
 		public InputAction[] InputActions = new InputAction[inputTypeNums];
