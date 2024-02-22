@@ -28,7 +28,7 @@ namespace WGame.UI
 
 		private void OnItemRender(int idx, GObject obj)
 		{
-			var item = obj as FUI_SettingItem;
+			var item = obj as FUI_SettingItemInput;
 			item.title.text = SettingDefine.Inst.inputBtns[idx];
 			// item.touchable = true;
 		}

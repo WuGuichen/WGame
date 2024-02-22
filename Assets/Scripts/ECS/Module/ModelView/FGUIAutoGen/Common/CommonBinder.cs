@@ -13,6 +13,7 @@ namespace WGame.UI
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Common.FUI_Slider1.URL, typeof(WGame.UI.Common.FUI_Slider1));
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Common.FUI_BtnReset.URL, typeof(WGame.UI.Common.FUI_BtnReset));
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Common.FUI_BtnNormal.URL, typeof(WGame.UI.Common.FUI_BtnNormal));
+			UIObjectFactory.SetPackageItemExtension(WGame.UI.Common.FUI_BtnResetRect.URL, typeof(WGame.UI.Common.FUI_BtnResetRect));
 		}
 	}
 }

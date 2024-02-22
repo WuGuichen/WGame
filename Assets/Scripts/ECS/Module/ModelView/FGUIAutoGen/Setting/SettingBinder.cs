@@ -19,6 +19,7 @@ namespace WGame.UI
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Setting.FUI_SettingSubTabItem.URL, typeof(WGame.UI.Setting.FUI_SettingSubTabItem));
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Setting.FUI_SettingSliderItem.URL, typeof(WGame.UI.Setting.FUI_SettingSliderItem));
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Setting.FUI_SettingToggleItem.URL, typeof(WGame.UI.Setting.FUI_SettingToggleItem));
+			UIObjectFactory.SetPackageItemExtension(WGame.UI.Setting.FUI_SettingItemInput.URL, typeof(WGame.UI.Setting.FUI_SettingItemInput));
 		}
 	}
 }

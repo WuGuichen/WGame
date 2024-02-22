@@ -191,6 +191,7 @@ OPENBRACK   : '[';
 CLOSEBRACK  : ']';
 OPENPAREN   : '(';
 CLOSEPAREN  : ')';
+COMMENTHEADER : '--';
 
 ID  :   LETTER (LETTER | '_' | [0-9])* ;
 
@@ -204,7 +205,7 @@ CHAR :  '\'' . '\'' ;
 STRING: '"' ~( '"' | '\r' | '\n' )* '"'; 
 
 SLCOMMENT
-    :   '--' .*? '\n' -> skip
+    :   COMMENTHEADER .*? '\n' -> skip
     ;
 
 COMMNET

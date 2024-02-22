@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEngine;
 using System.IO;
 using System.Text;
-using WGame.Trigger;
+using UnityEngine;
 using WGame.Util;
 
 public class SceneUtils
@@ -19,6 +17,12 @@ public class SceneUtils
     static void OpenSandBox()
     {
         EditorSceneManager.OpenScene("Assets/Scenes/SandBox.unity");
+    }
+
+    [MenuItem("Utils/清除PlayerPrefs")]
+    static void ClearPlayerPrefs()
+    {
+        PlayerPrefs.DeleteKey("TestInput");    
     }
     [MenuItem("Utils/Open TestScene")]
     static void OpenTestScene()
@@ -38,7 +42,7 @@ public class SceneUtils
         WLangMgr.Inst.CallCode("MyHotAction");
     }
 
-    [MenuItem("Utils/生成命令数据")]
+    [MenuItem("Utils/代码生成/生成命令数据")]
     static void OpenTest()
     {
         var list = ReflectionHelper.GetStaticFunctionList(typeof(ActionHelper), new List<string>(){"DoAction", "Do"});

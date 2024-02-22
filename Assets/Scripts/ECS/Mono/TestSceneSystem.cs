@@ -1,5 +1,6 @@
 using Entitas;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using WGame.Input;
 using WGame.Res;
 using Random = UnityEngine.Random;
@@ -155,8 +156,19 @@ public class TestSceneSystem : MonoBehaviour
 
 	    EventCenter.Trigger(EventDefine.OnGameUpdate);
 
-	    TickManager.Inst.UpdateTick(_contexts.meta.timeService.instance.DeltaTime);
+	    TickManager.Inst.UpdateTick(_timeService.DeltaTime);
+
+	    if (Input.GetKeyDown(KeyCode.M))
+	    {
+		    _testInput.RebindInputSetting(_testInput.Input.Player.Fire);
+	    }
+
+	    if (Input.GetKeyDown(KeyCode.V))
+	    {
+	    }
     }
+
+    private WInputAgentMyController _testInput;
 
     private void FixedUpdate()
     {
@@ -177,6 +189,7 @@ public class TestSceneSystem : MonoBehaviour
         WLangMgr.Inst.OnDispose();
         EventCenter.RemoveListener(EventDefine.OnGameResourcesLoaded, OnGameStart);
         EntityUtils.Dispose();
+        _testInput.Destroy();
     }
 
     private void LateUpdate()
@@ -191,14 +204,22 @@ public class TestSceneSystem : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-		EntityUtils.BvhRed.DrawAllBounds();
+		// EntityUtils.BvhRed.DrawAllBounds();
     }
 
     void PreInitModel()
     {
 	    MainModel.Inst.InitInstance();
 	    SettingModel.Inst.SetVolume(volume);
-	    WInputCenter.Inst.InitInstance();
+	    _testInput = new WInputAgentMyController();
+	    _testInput.Initialize();
+	    _testInput.Input.Player.Fire.started += context =>
+	    {
+			WLogger.Print("Fire:"+ _testInput.Input.Player.Fire.GetBindingDisplayString());
+	    };
+	    _testInput.Input.Player.Enable();
+	    WLogger.Print("Fire:"+ _testInput.Input.Player.Fire.GetBindingDisplayString());
+	    WInputManager.Inst.InitInstance();
     }
 
     void RegisterEvents()

@@ -77,7 +77,7 @@ namespace WGame.UIEditor
             ExportedComponentInfos.Clear();
             ExtralExportURLs.Clear();
 
-            string fuiAssetsDir = Application.dataPath + "/../FGUIProject/assets";
+            string fuiAssetsDir = Application.dataPath + "/../../FGUIProject/assets";
             string[] packageDirs = Directory.GetDirectories(fuiAssetsDir);
             foreach (var packageDir in packageDirs)
             {

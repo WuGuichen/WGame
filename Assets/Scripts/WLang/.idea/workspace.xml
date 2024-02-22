@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4619b81-a009-41e5-87cd-268c260b8858" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ECS/InputData/WInputAgentMyController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Input/Data/WInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Input/Data/WInput.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor/MotionEditor/TriggerEditorWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Mono/TestSceneSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Editor/SceneUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Editor/SceneUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Input/WGame.Input.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/../Input/WGame.Input.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Input/WInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Input/WInput.inputactions" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Input/WInputCenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Input/WInputAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Utils/Tests/BinaryHeap.Tests/Tests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Utils/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Utils/Utils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/GameEvent/OnGameUpdate.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/GameEvent/OnGameUpdate.wl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLang.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLang.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLang.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLang.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLang.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLang.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLangLexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLangLexer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLangLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLangLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLangLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLangLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/WLangParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/WLangParser.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +59,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.WLang",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -53,6 +75,7 @@
       <workItem from="1704376368453" duration="10000" />
       <workItem from="1708335196929" duration="159000" />
       <workItem from="1708335602691" duration="1368000" />
+      <workItem from="1708531732170" duration="1043000" />
     </task>
     <servers />
   </component>

@@ -2070,6 +2070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42fe6bf9517dbf449a99fb4d4efe0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActionReference: {fileID: -4432408143508129375, guid: a469f928d3404ed42baef4de5b13ad6b, type: 3}
+  BindingID: c874aa1a-326f-4449-b6c8-f758cfa39448
 --- !u!4 &1850253277
 Transform:
   m_ObjectHideFlags: 0

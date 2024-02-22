@@ -52,7 +52,7 @@ public class WLogger
 #if UNITY_EDITOR
         StringBuilder buf = new StringBuilder();
         buf.Append("<color=#00ff00>");
-        buf.Append(msg.ToString());
+        buf.Append(msg);
         buf.Append("</color>");
         Debug.Log(buf.ToString());
 #endif
