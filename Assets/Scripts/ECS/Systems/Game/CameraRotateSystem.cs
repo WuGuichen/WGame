@@ -1,7 +1,5 @@
 using Entitas;
 using UnityEngine;
-using WGame.Attribute;
-using WGame.Runtime;
 using WGame.UI;
 
 public class CameraRotateSystem : IInitializeSystem, IExecuteSystem

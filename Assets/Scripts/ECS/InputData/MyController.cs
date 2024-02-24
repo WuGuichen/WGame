@@ -98,6 +98,15 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special"",
+                    ""type"": ""Button"",
+                    ""id"": ""557245e2-eb0e-4513-ace5-4e866e51b36a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -115,7 +124,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""790301de-13a1-472f-a2c3-59cd41ba244a"",
-                    ""path"": ""<XInputController>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""ConTwo"",
@@ -181,7 +190,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0f3ac21e-e2e3-4e8f-815c-58fc8b44f395"",
-                    ""path"": ""<XInputController>/leftStick"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""ConTwo"",
@@ -203,7 +212,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""12a7cbbd-0af7-4e65-afc9-6f20eb155fc8"",
-                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""ConTwo"",
@@ -224,6 +233,17 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1968265d-5de4-43a4-843d-b52b7d22fc02"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""ConTwo"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""dcf16b78-53e0-40eb-abd2-874c1cd04afd"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -238,7 +258,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                     ""id"": ""a95fd088-30b2-4b05-a70a-456c6be8b282"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=4,y=4)"",
                     ""groups"": ""ConTwo"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -258,7 +278,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7e030891-1881-4014-bb7a-3b6885184335"",
-                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""ConTwo"",
@@ -280,7 +300,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""975d2f84-7d8d-43f1-a8f7-4ab261271a60"",
-                    ""path"": ""<XInputController>/rightStickPress"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""ConTwo"",
@@ -302,11 +322,33 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d70920e2-1c97-49eb-a034-23c1eeb62358"",
-                    ""path"": ""<XInputController>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""ConTwo"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70aec86c-845e-490b-9ae3-5de40b7905a6"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""ConOne"",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87967a0c-273d-4b16-8a2e-ae7129eb7e37"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""ConTwo"",
+                    ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -381,6 +423,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
         m_GamePlay_Step = m_GamePlay.FindAction("Step", throwIfNotFound: true);
         m_GamePlay_Focus = m_GamePlay.FindAction("Focus", throwIfNotFound: true);
         m_GamePlay_Interact = m_GamePlay.FindAction("Interact", throwIfNotFound: true);
+        m_GamePlay_Special = m_GamePlay.FindAction("Special", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -453,6 +496,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Step;
     private readonly InputAction m_GamePlay_Focus;
     private readonly InputAction m_GamePlay_Interact;
+    private readonly InputAction m_GamePlay_Special;
     public struct GamePlayActions
     {
         private @MyController m_Wrapper;
@@ -465,6 +509,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
         public InputAction @Step => m_Wrapper.m_GamePlay_Step;
         public InputAction @Focus => m_Wrapper.m_GamePlay_Focus;
         public InputAction @Interact => m_Wrapper.m_GamePlay_Interact;
+        public InputAction @Special => m_Wrapper.m_GamePlay_Special;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -498,6 +543,9 @@ public partial class @MyController: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @Special.started += instance.OnSpecial;
+            @Special.performed += instance.OnSpecial;
+            @Special.canceled += instance.OnSpecial;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -526,6 +574,9 @@ public partial class @MyController: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @Special.started -= instance.OnSpecial;
+            @Special.performed -= instance.OnSpecial;
+            @Special.canceled -= instance.OnSpecial;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -617,6 +668,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
         void OnStep(InputAction.CallbackContext context);
         void OnFocus(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSpecial(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

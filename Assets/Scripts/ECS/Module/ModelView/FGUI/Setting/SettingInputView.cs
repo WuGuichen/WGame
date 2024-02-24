@@ -13,7 +13,7 @@ namespace WGame.UI
 		private EventCallback0 onTabChanged;
 		private InputAction[] _inputActions;
 
-		private List<FUI_SettingItemInput> _inputItems = new();
+		private FUI_SettingItemInput[] _inputItems;
 
 		protected override void OnRegisterEvent()
 		{
@@ -26,12 +26,12 @@ namespace WGame.UI
 			ui.title.text = "输入设置";
 			onTabChanged = OnTabChanged;
 			ui.c1.onChanged.Add(onTabChanged);
+			_inputItems = new FUI_SettingItemInput[_inputActions.Length];
 		}
 		protected override void AfterOpen()
 		{
 			SettingModel.Inst.IsRebindingInput = false;
 			ui.list.itemRenderer = OnItemRender;
-			ui.list.numItems = _inputActions.Length;
 			ui.tabList.itemRenderer = OnTabItemRender;
 			ui.tabList.numItems = SettingDefine.Inst.inputType.Length;
 			ui.c1.onChanged.Call();
@@ -42,12 +42,8 @@ namespace WGame.UI
 		private void OnItemRender(int idx, GObject obj)
 		{
 			var item = obj as FUI_SettingItemInput;
-			_inputItems.Add(item);
-			if (_inputItems.Count > _inputActions.Length)
-			{
-				WLogger.Error("'数据错误");
-			}
-			item.SetData(idx, _inputActions[idx]);
+			_inputItems[idx] = item;
+			item.SetData(idx, _inputActions[idx], ui.c1.selectedIndex);
 			// item.touchable = true;
 		}
 
@@ -61,6 +57,7 @@ namespace WGame.UI
 		{
 			SettingModel.Inst.InputAgent.CancelRebinding();
 			SettingModel.Inst.IsRebindingInput = false;
+			ui.list.numItems = _inputActions.Length;
 		}
 		protected override void BeforeClose()
 		{
@@ -74,7 +71,7 @@ namespace WGame.UI
 
 		protected override void OnDestroy()
 		{
-			_inputItems.Clear();	
+			_inputItems = null;
 		}
 
 		private void CleanUpRebinding()
@@ -93,9 +90,9 @@ namespace WGame.UI
 			else
 			{
 				ui.maskCommon.displayObject.visible = false;
-				for (var i = 0; i < _inputItems.Count; i++)
+				for (var i = 0; i < _inputItems.Length; i++)
 				{
-					_inputItems[i].SetData(i, _inputActions[i]);
+					_inputItems[i].SetData(i, _inputActions[i], ui.c1.selectedIndex);
 				}
 			}
 		}

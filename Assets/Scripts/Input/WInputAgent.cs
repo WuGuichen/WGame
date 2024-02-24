@@ -12,7 +12,7 @@ namespace WGame.Input
         private bool _isEnable;
         private InputActionReference _inputActionReference;
         private InputActionRebindingExtensions.RebindingOperation _rebindingOperation;
-        private int _newInputBindingIndex;
+        private int _bindingIndex;
         private InputBinding _oldInputBinding;
         private Action _onRebindCompeleted;
         protected abstract string SaveKeyName { get;}
@@ -49,11 +49,6 @@ namespace WGame.Input
         private string _curMapName;
         private string _curTypeName;
 
-        public void RebindInputSetting(string keyName)
-        {
-            var action = InputAsset.FindAction(keyName);
-            RebindInputSetting(action);
-        }
         public void RebindInputSetting(int typeIndex, int actionIndex)
         {
             if (InputActions.Count < typeIndex)
@@ -73,7 +68,7 @@ namespace WGame.Input
             }
         }
         
-        public void RebindInputSetting(InputAction action, Action onCompleted = null, bool ignoreMouse = true)
+        public void RebindInputSetting(InputAction action, Action onCompleted = null, bool ignoreMouse = true, int bindIndex = 0)
         {
             WLogger.Print("开始重载");
             if (_action != null)
@@ -100,9 +95,9 @@ namespace WGame.Input
                 return;
             }
             _rebindingOperation?.Cancel();
-            var index = _action.GetBindingIndex();
+            var index = bindIndex;
             _oldInputBinding = _action.bindings[index];
-            _newInputBindingIndex = index;
+            _bindingIndex = index;
             _onRebindCompeleted = onCompleted;
             if (_action.bindings[index] == null || _action.bindings[index].isComposite)
             {
@@ -142,8 +137,23 @@ namespace WGame.Input
         {
             WLogger.Print("Compeleted:" + _action.GetBindingDisplayString());
 
-            var newInputBinding = _action.bindings[_newInputBindingIndex];
-            // 解决按键冲突
+            ResolveConflict(_action, _bindingIndex, _oldInputBinding);
+            
+            if (_isEnable)
+            {
+                _action.actionMap.Enable();
+            }
+
+            CleanUpOperation();
+        }
+
+        // 方法参数很冗余，但问题不大
+        private void ResolveConflict(InputAction action, int index, InputBinding oldInputBinding)
+        {
+            _bindingIndex = index;
+            _oldInputBinding = oldInputBinding;
+            _action = action;
+            var newInputBinding = _action.bindings[_bindingIndex];
             foreach (var binding in _action.actionMap.bindings)
             {
                 if (binding.action == newInputBinding.action)
@@ -155,15 +165,9 @@ namespace WGame.Input
                 {
                     var oldAction = _action.actionMap.FindAction(binding.action);
                     
-                    oldAction.ApplyBindingOverride(_newInputBindingIndex,_oldInputBinding.effectivePath);
+                    oldAction.ApplyBindingOverride(_bindingIndex, _oldInputBinding.effectivePath);
                 }
             }
-            if (_isEnable)
-            {
-                _action.actionMap.Enable();
-            }
-
-            CleanUpOperation();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -173,15 +177,28 @@ namespace WGame.Input
             _rebindingOperation = null;
             _inputActionReference = null;
             _oldInputBinding = new InputBinding(null);
-            _newInputBindingIndex = 0;
+            _bindingIndex = 0;
             _action = null;
             _onRebindCompeleted?.Invoke();
             _onRebindCompeleted = null;
+            _isEnable = false;
         }
 
         public void ResetBindData(InputAction action, int bindingIndex = 0)
         {
+            var oldInputBinding = action.bindings[bindingIndex];
             action.RemoveBindingOverride(bindingIndex);
+            _isEnable = action.actionMap.enabled;
+            if (_isEnable)
+            {
+                action.actionMap.Disable();
+            }
+            ResolveConflict(action, bindingIndex, oldInputBinding);
+            if (_isEnable)
+            {
+                action.actionMap.Enable();
+            }
+            CleanUpOperation();
             WLogger.Print("重置成功：" + action.GetBindingDisplayString(bindingIndex));
         }
 

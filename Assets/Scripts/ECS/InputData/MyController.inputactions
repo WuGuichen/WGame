@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Special",
+                    "type": "Button",
+                    "id": "557245e2-eb0e-4513-ace5-4e866e51b36a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -93,7 +102,7 @@
                 {
                     "name": "",
                     "id": "790301de-13a1-472f-a2c3-59cd41ba244a",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "ConTwo",
@@ -159,7 +168,7 @@
                 {
                     "name": "",
                     "id": "0f3ac21e-e2e3-4e8f-815c-58fc8b44f395",
-                    "path": "<XInputController>/leftStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "ConTwo",
@@ -181,7 +190,7 @@
                 {
                     "name": "",
                     "id": "12a7cbbd-0af7-4e65-afc9-6f20eb155fc8",
-                    "path": "<XInputController>/leftShoulder",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "ConTwo",
@@ -202,6 +211,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1968265d-5de4-43a4-843d-b52b7d22fc02",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "ConTwo",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "dcf16b78-53e0-40eb-abd2-874c1cd04afd",
                     "path": "<Mouse>/delta",
                     "interactions": "",
@@ -216,7 +236,7 @@
                     "id": "a95fd088-30b2-4b05-a70a-456c6be8b282",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=4,y=4)",
                     "groups": "ConTwo",
                     "action": "Look",
                     "isComposite": false,
@@ -236,7 +256,7 @@
                 {
                     "name": "",
                     "id": "7e030891-1881-4014-bb7a-3b6885184335",
-                    "path": "<XInputController>/buttonSouth",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "ConTwo",
@@ -258,7 +278,7 @@
                 {
                     "name": "",
                     "id": "975d2f84-7d8d-43f1-a8f7-4ab261271a60",
-                    "path": "<XInputController>/rightStickPress",
+                    "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "ConTwo",
@@ -280,11 +300,33 @@
                 {
                     "name": "",
                     "id": "d70920e2-1c97-49eb-a034-23c1eeb62358",
-                    "path": "<XInputController>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "ConTwo",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "70aec86c-845e-490b-9ae3-5de40b7905a6",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "ConOne",
+                    "action": "Special",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87967a0c-273d-4b16-8a2e-ae7129eb7e37",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "ConTwo",
+                    "action": "Special",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

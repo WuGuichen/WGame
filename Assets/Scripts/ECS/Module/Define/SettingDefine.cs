@@ -36,7 +36,7 @@ namespace WGame.UI
 
 		public string[] inputBtns = new string[]
 		{
-			"移动", "攻击", "防御", "跳跃", "视角", "闪避", "锁定","交互"
+			"移动", "攻击", "防御", "跳跃", "视角", "闪避", "锁定","交互", "特殊"
 		};
 
 		public InputAction[] InputActions = new InputAction[inputTypeNums];

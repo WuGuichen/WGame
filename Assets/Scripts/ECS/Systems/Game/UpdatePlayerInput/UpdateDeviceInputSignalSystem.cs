@@ -39,7 +39,7 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
         {
             // 跳
             // 这里会有预输入
-            entity.ReplaceSignalJump(1f);
+            // entity.ReplaceSignalJump(1f);
         }
 
         if (_inputContext.defense.value)
