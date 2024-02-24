@@ -57,5 +57,18 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
         entity.motionService.service.AnimProcessor.SetAnimSpeed(1);
 
         character.isRotateInFocus = false;
+
+        var noticeService = character.notice.service;
+        
+        // 根据动作类型处理行为
+        var newID = entity.motionStart.UID;
+        if (newID == entity.motionLocalMotion.UID)
+        {
+            
+        }
+        else if (newID == entity.motionDefense.UID)
+        {
+            noticeService.AddReciever(NoticeDB.OnDefenseBeHit);
+        }
     }
 }

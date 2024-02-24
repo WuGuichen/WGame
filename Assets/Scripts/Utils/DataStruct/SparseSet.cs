@@ -2,26 +2,6 @@ using System.Collections.Generic;
 
 public class SparseSet<T>
 {
-    #region pool
-
-    private static Stack<SparseSet<T>> _pool;
-
-    public static SparseSet<T> Get()
-    {
-        if (_pool.Count > 0)
-        {
-            var node = _pool.Pop();
-            node.Clear();
-            return node;
-        }
-
-        return new SparseSet<T>();
-    }
-
-    public static void Push(SparseSet<T> node) => _pool.Push(node);
-
-    #endregion
-
     private List<T> packed = new List<T>();
     private int[] checkList = new int[32];
 

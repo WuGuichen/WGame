@@ -349,6 +349,8 @@ public class FactoryServiceImplementation : IFactoryService
 
         // UI组件
         entity.AddUIHeadPad(new HeadPadUIServiceImplementation());
+        // 通知中心
+        entity.AddNotice(new NoticeServiceImplementation());
 
         // ----- LinkAbilityEntity -----
         var ability = Contexts.sharedInstance.ability.CreateEntity();

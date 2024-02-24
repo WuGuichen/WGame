@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Entitas;
-using Motion;
 
 public class ProcessMotionEndSystem : ReactiveSystem<MotionEntity>
 {
@@ -29,17 +28,20 @@ public class ProcessMotionEndSystem : ReactiveSystem<MotionEntity>
 
     private void OnMotionEnd(MotionEntity entity)
     {
-        switch (entity.motionEnd.UID)
-        {
-            case MotionType.Attack1:
-                break;
-            case MotionType.Attack2:
-                break;
-            case MotionType.Attack3:
-                break;
-            default:
-                break;
-        }
+        var character = entity.linkCharacter.Character;
+        var noticeService = character.notice.service;
+        
         entity.motionService.service.OnMotionExit();
+        
+        // 根据动作类型处理行为
+        var newID = entity.motionEnd.UID;
+        if (newID == entity.motionLocalMotion.UID)
+        {
+            
+        }
+        else if (newID == entity.motionDefense.UID)
+        {
+            noticeService.RemoveReciever(NoticeDB.OnDefenseBeHit);
+        }
     }
 }

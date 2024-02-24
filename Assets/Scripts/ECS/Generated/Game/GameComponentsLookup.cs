@@ -67,43 +67,44 @@ public static class GameComponentsLookup {
     public const int MoveDirectionListener = 56;
     public const int MovementSpeed = 57;
     public const int Moving = 58;
-    public const int NotMove = 59;
-    public const int OnGroundState = 60;
-    public const int PlayerInputState = 61;
-    public const int Position = 62;
-    public const int PrepareAttackState = 63;
-    public const int PrepareDefenseState = 64;
-    public const int PrepareHoldAttackState = 65;
-    public const int PrepareJumpAttackState = 66;
-    public const int PrepareJumpState = 67;
-    public const int PrepareLocalMotionState = 68;
-    public const int PrepareStepState = 69;
-    public const int RigidbodyService = 70;
-    public const int RotateInFocus = 71;
-    public const int RotateLeftAngle = 72;
-    public const int RotationSpeed = 73;
-    public const int RunningMultiRate = 74;
-    public const int RunState = 75;
-    public const int SignalAttack = 76;
-    public const int SignalDefense = 77;
-    public const int SignalJump = 78;
-    public const int SignalLocalMotion = 79;
-    public const int SignalState = 80;
-    public const int SignalStep = 81;
-    public const int SpawnPoint = 82;
-    public const int StateChanged = 83;
-    public const int StateSwitchState = 84;
-    public const int StateSwitchStateListener = 85;
-    public const int StepEndState = 86;
-    public const int StepState = 87;
-    public const int TargetPlanarSqrDistance = 88;
-    public const int UIHeadPad = 89;
-    public const int Unbalanced = 90;
-    public const int WalkState = 91;
-    public const int WeaponDropService = 92;
-    public const int WeaponService = 93;
+    public const int Notice = 59;
+    public const int NotMove = 60;
+    public const int OnGroundState = 61;
+    public const int PlayerInputState = 62;
+    public const int Position = 63;
+    public const int PrepareAttackState = 64;
+    public const int PrepareDefenseState = 65;
+    public const int PrepareHoldAttackState = 66;
+    public const int PrepareJumpAttackState = 67;
+    public const int PrepareJumpState = 68;
+    public const int PrepareLocalMotionState = 69;
+    public const int PrepareStepState = 70;
+    public const int RigidbodyService = 71;
+    public const int RotateInFocus = 72;
+    public const int RotateLeftAngle = 73;
+    public const int RotationSpeed = 74;
+    public const int RunningMultiRate = 75;
+    public const int RunState = 76;
+    public const int SignalAttack = 77;
+    public const int SignalDefense = 78;
+    public const int SignalJump = 79;
+    public const int SignalLocalMotion = 80;
+    public const int SignalState = 81;
+    public const int SignalStep = 82;
+    public const int SpawnPoint = 83;
+    public const int StateChanged = 84;
+    public const int StateSwitchState = 85;
+    public const int StateSwitchStateListener = 86;
+    public const int StepEndState = 87;
+    public const int StepState = 88;
+    public const int TargetPlanarSqrDistance = 89;
+    public const int UIHeadPad = 90;
+    public const int Unbalanced = 91;
+    public const int WalkState = 92;
+    public const int WeaponDropService = 93;
+    public const int WeaponService = 94;
 
-    public const int TotalComponents = 94;
+    public const int TotalComponents = 95;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -165,6 +166,7 @@ public static class GameComponentsLookup {
         "MoveDirectionListener",
         "MovementSpeed",
         "Moving",
+        "Notice",
         "NotMove",
         "OnGroundState",
         "PlayerInputState",
@@ -262,6 +264,7 @@ public static class GameComponentsLookup {
         typeof(MoveDirectionListenerComponent),
         typeof(MovementSpeedComponent),
         typeof(MovingComponent),
+        typeof(NoticeComponent),
         typeof(NotMoveComponent),
         typeof(OnGroundStateComponent),
         typeof(PlayerInputStateComponent),
