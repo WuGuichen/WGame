@@ -356,7 +356,7 @@ public class FactoryServiceImplementation : IFactoryService
         // UI组件
         entity.AddUIHeadPad(new HeadPadUIServiceImplementation());
         // 通知中心
-        entity.AddNotice(new NoticeServiceImplementation());
+        entity.AddNotice(new NoticeServiceImplementation(entity));
 
         // ----- LinkAbilityEntity -----
         var ability = Contexts.sharedInstance.ability.CreateEntity();
@@ -417,6 +417,17 @@ public class FactoryServiceImplementation : IFactoryService
             EntityUtils.BvhRed.Add(entity.gameViewService.service);
         }
         
+        // 添加触发器预制体
+        var evadeObj = new GameObject("Evade_"+entity.instanceID.ID);
+        var evadeMono = evadeObj.AddComponent<SensorMono>();
+        var capsule = evadeObj.AddComponent<CapsuleCollider>();
+        var rigid = evadeObj.AddComponent<Rigidbody>();
+        rigid.isKinematic = true;
+        rigid.useGravity = false;
+        evadeMono.SetData(entity, EntityPartType.Evasion, capsule)
+            .SetSize(entity.gameViewService.service.Radius, entity.gameViewService.service.Height)
+            .SetLayer(EntityUtils.GetSensorLayer(entity));
+        ability.AddAbilityEvade(new UtimateEvasion(evadeMono));
         // 同步物理位置
         Physics.SyncTransforms();
         
@@ -558,5 +569,11 @@ public class FactoryServiceImplementation : IFactoryService
     public GameEntity GetGameEntity(int instId)
     {
         return _gameEntityDB[instId];
+    }
+
+    public const int CapsuleTriggerID = 4;
+    public void GenTriggerCapsule(GameEntity entity)
+    {
+            
     }
 }

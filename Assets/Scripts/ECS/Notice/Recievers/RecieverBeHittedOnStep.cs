@@ -3,25 +3,27 @@ using WGame.Notice;
 
 public class RecieverBeHittedOnStep : IReciever
 {
-    public RecieverBeHittedOnStep(int key, int times = 9999) : base(key, MessageDB.BeHittedID, times)
+    public RecieverBeHittedOnStep(int key) : base(key, MessageDB.BeHittedID, 9999)
     {
     }
 
-    public override void OnAdded()
+    public override void OnAdded(GameEntity entity)
     {
-        base.OnAdded();
+        entity.linkAbility.Ability.abilityEvade.service.Enable();
+        WLogger.Print("Added");
     }
 
-    public override void OnRemoved()
+    public override void OnRemoved(GameEntity entity)
     {
-        base.OnRemoved();
+        entity.linkAbility.Ability.abilityEvade.service.Disable();
+        WLogger.Print("Remove");
     }
 
-    public override void OnTrigger()
+    public override void OnTrigger(GameEntity entity, IMessage message)
     {
-        UnityEngine.Time.timeScale = 0.1f;
+        UnityEngine.Time.timeScale = 0.2f;
         WLogger.Print("极限");
-        Timer.Register(0.2f, () =>
+        Timer.Register(0.1f, () =>
         {
             UnityEngine.Time.timeScale = 1f;
         });
@@ -29,6 +31,12 @@ public class RecieverBeHittedOnStep : IReciever
 
     public override bool CheckCondition(IMessage message)
     {
-        return true;
+        var msg =(MessageDB.Define.BeHitted)message;
+        if (msg.hitInfo.part == EntityPartType.Evasion)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

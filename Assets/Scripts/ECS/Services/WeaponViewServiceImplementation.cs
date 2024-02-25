@@ -25,7 +25,7 @@ namespace Weapon
         private float checkOffset = 0f;
         private Vector3 lastUpDir;
         private Vector3 lastOriginPosition;
-        private RaycastHit[] _rayHits = new RaycastHit[8];
+        private RaycastHit[] _rayHits = new RaycastHit[12];
         private int hitLayer;
         private StickWeaponTrailEffect _trail;
 
@@ -101,7 +101,7 @@ namespace Weapon
 
         public void StartHitTargets()
         {
-            hittedList = new HashSet<int>();
+            hittedList.Clear();
             lastUpDir = transform.up;
             lastOriginPosition = transform.position + lastUpDir * lenUp;
             checkOffset = (lenUp - lenDown) / (checkNum-1);
@@ -166,7 +166,10 @@ namespace Weapon
                 var start = lastOriginPosition + i * checkOffset * lastUpDir;
                 var end = transform.position + lastUpDir * lenUp + i * checkOffset * transform.up;
                 var dir = end - start;
-                _rayHits = new RaycastHit[8];
+                for (var i1 = 0; i1 < _rayHits.Length; i1++)
+                {
+                    _rayHits[i1] = default;
+                }
                 Physics.RaycastNonAlloc(new Ray(start, dir), _rayHits, dir.magnitude, hitLayer);
                 for (int j = 0; j < _rayHits.Length; j++)
                 {
@@ -181,8 +184,10 @@ namespace Weapon
                             if (EntityUtils.TryGetEntitySensorMono(colliderID, out var sensorMono))
                             {
                                 var tarCharacter = sensorMono.Entity;
+
                                 var info = new ContactInfo();
                                 info.pos = tar.point;
+                                info.part = sensorMono.PartType;
                                 info.dir = dir;
                                 // 受击处理
                                 info.entity = tarCharacter;
@@ -226,5 +231,6 @@ namespace Weapon
         public Vector3 dir;
         public int count;
         public GameEntity entity;
+        public EntityPartType part;
     }
 }

@@ -48,9 +48,13 @@ namespace WGame.Notice
         private SparseSet<LinkedList<RecieverReference>> _messageTypeList = new();
         // 唯一id注册接收器数组字典
         private SparseSet<RecieverReference> _recieverTypeList = new();
+
+        // 绑定GameEntity
+        private GameEntity _entity;
         
-        public NoticeCenter()
+        public NoticeCenter(GameEntity entity)
         {
+            _entity = entity;
         }
 
         /// <summary>
@@ -67,9 +71,9 @@ namespace WGame.Notice
                 {
                     // 替换成新的接收器
                     // 触发移除效果
-                    refReciever.Reciever.OnRemoved();
+                    refReciever.Reciever.OnRemoved(_entity);
                     // 触发添加效果
-                    reciever.OnAdded();
+                    reciever.OnAdded(_entity);
 
                     // 替换接收器
                     refReciever.Set(reciever);
@@ -88,7 +92,7 @@ namespace WGame.Notice
                 }
                 linkedList.AddLast(refReciever);
                 // 触发添加效果
-                reciever.OnAdded();
+                reciever.OnAdded(_entity);
             }
         }
 
@@ -98,7 +102,7 @@ namespace WGame.Notice
             {
                 // 确实注册了接收器
                 // 触发移除效果
-                refReciever.Reciever.OnRemoved();
+                refReciever.Reciever.OnRemoved(_entity);
                 
                 // 接收器列表中移除
                 _messageTypeList[refReciever.Reciever.MessageType].Remove(refReciever);
@@ -119,7 +123,7 @@ namespace WGame.Notice
                     var reciever = currentNode.Value.Reciever;
                     if (reciever.CheckCondition(message))
                     {
-                        reciever.OnTrigger();
+                        reciever.OnTrigger(_entity, message);
                         if (reciever.LeftNoticeTime < 1000)
                         {
                             reciever.LeftNoticeTime--;

@@ -17,15 +17,15 @@ namespace WGame.Notice
         /// <summary>
         /// 被移除
         /// </summary>
-        public virtual void OnRemoved(){}
+        public virtual void OnRemoved(GameEntity entity){}
         /// <summary>
         /// 被添加
         /// </summary>
-        public virtual void OnAdded(){}
+        public virtual void OnAdded(GameEntity entity){}
         /// <summary>
         /// 被触发
         /// </summary>
-        public abstract void OnTrigger();
+        public abstract void OnTrigger(GameEntity entity, IMessage message);
         public abstract bool CheckCondition(IMessage message);
     }
 }

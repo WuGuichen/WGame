@@ -1,5 +1,7 @@
 using Entitas;
+using Oddworm.Framework;
 using UnityEngine;
+using Weapon;
 using WGame.Res;
 using Random = UnityEngine.Random;
 using WGame.UI;
@@ -133,6 +135,10 @@ public class TestSceneSystem : MonoBehaviour
 	    if (Input.GetKeyDown(KeyCode.LeftAlt))
 	    {
 			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(Cursor.visible ? 0 : 1));
+	    }
+	    if(Input.GetKeyDown(KeyCode.L))
+	    {
+			EntityUtils.GetCameraEntity().notice.service.Notice(MessageDB.Getter.GetBehitted(new ContactInfo(){part = EntityPartType.Evasion}));
 	    }
     }
 

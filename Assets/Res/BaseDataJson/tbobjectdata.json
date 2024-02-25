@@ -26,5 +26,12 @@
     "path": "Sword1",
     "type": 0,
     "needCache": true
+  },
+  {
+    "id": 4,
+    "name": "触发器_胶囊体",
+    "path": "CapsuleTrigger",
+    "type": 0,
+    "needCache": true
   }
 ]

@@ -1,3 +1,4 @@
+using Weapon;
 using WGame.Notice;
 
 public class MessageDB
@@ -9,6 +10,7 @@ public class MessageDB
     {
         public struct BeHitted : IMessage
         {
+            public ContactInfo hitInfo;
             public int TypeId => BeHittedID;
         }
         
@@ -21,8 +23,8 @@ public class MessageDB
     
     public class Getter
     {
-        public static Define.BeHitted GetBehitted()
-            => new Define.BeHitted();
+        public static Define.BeHitted GetBehitted(ContactInfo info)
+            => new Define.BeHitted(){hitInfo = info};
 
         public static Define.CastSkill GetCastSkill(int id)
             => new Define.CastSkill()

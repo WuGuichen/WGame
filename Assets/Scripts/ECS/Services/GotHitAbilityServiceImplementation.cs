@@ -19,6 +19,8 @@ public class GotHitAbilityServiceImplementation : IGotHitService
     {
     }
 
+    /// <param name="entity">自己</param>
+    /// <param name="hitInfo">受击信息</param>
     public void OnGotHit(GameEntity entity, ContactInfo hitInfo)
     {
         if (!entity.hasLinkMotion)

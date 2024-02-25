@@ -4,13 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="entity部位细分">
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Trigger/CapsuleTrigger.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbobjectdata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbobjectdata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/EntityPartType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/EntityPartType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Ability/AbilityComponentsLookup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Ability/AbilityComponentsLookup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IFactoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IFactoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/INoticeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/INoticeService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SensorMono.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SensorMono.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/MessageDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/MessageDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/NoticeDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/NoticeDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Recievers/RecieverBeHittedOnStep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Recievers/RecieverBeHittedOnStep.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GameViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GameViewServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GotHitAbilityServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GotHitAbilityServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/NoticeServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/NoticeServiceImplementation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/WeaponViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/WeaponViewServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Motion/ProcessMotionStartSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Motion/ProcessMotionStartSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/ActionHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/ActionHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Notice/IMessage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Notice/IReciever.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Notice/NoticeCenter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/characters.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/characters.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/objectPool.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/objectPool.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +46,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19e42a8dccd04fa0bcc0a7ed724024a9169600/16/ea4442f0/InputActionAsset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19e42a8dccd04fa0bcc0a7ed724024a9169600/18/be1bd6e0/IInputActionCollection2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19e42a8dccd04fa0bcc0a7ed724024a9169600/76/b33a6493/IInputActionCollection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2e5fd3a83e4c48e6b136968d0a8de9a81fe00/aa/82c90948/Physics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/ae/ee3cbf83/Type.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4911eca47f294e18a7b3306f02701303946200/2d/ed43d82f/Editor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/58/35d0bed1/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
@@ -35,6 +56,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/ac/31d94516/IObservable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/c1/8d476053/Assembly.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/3f/44877528/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/44/37c64a79/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/9c/ffc8f559/ScriptableObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/ac/bde4ce38/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7fb6dbaed5894b58b747e385194eed603e00/c7/ee0ce7eb/DebugSystems.cs" root0="SKIP_HIGHLIGHTING" />
@@ -42,8 +64,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/eb/3b0c9542/Entity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/f4/951eb165/Context`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d9bc681f70f2426daa493827dfaf804b28800/19/82d74e53/StringExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/UnityProject/WGame/Client/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioCtrl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/WAudioType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Ability/UtimateEvasion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Components/Ability/AbilityEvadeComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Components/CampComponents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Components/InstanceIDComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Components/NotMoveComponent.cs" root0="FORCE_HIGHLIGHTING" />
@@ -93,9 +118,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectorDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/Tests/WInputTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Notice/IMessage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Notice/IReciever.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Notice/NoticeCenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/Collision/ShapeTest/ContactTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/Collision/ShapeTest/TestAABB.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/Collision/Shapes/GJK/ShapeGJK.cs" root0="FORCE_HIGHLIGHTING" />
@@ -334,7 +356,7 @@
       <workItem from="1708769310963" duration="426000" />
       <workItem from="1708769757364" duration="15470000" />
       <workItem from="1708833092828" duration="11312000" />
-      <workItem from="1708866073865" duration="2460000" />
+      <workItem from="1708866073865" duration="9987000" />
     </task>
     <task id="LOCAL-00004" summary="优化获取实体效率">
       <created>1702192420510</created>
@@ -679,7 +701,7 @@
       <option name="project" value="LOCAL" />
       <updated>1706809186438</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,7 +727,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="通过UOS CDN加载资源" />
     <MESSAGE value="资源载入界面，AI和仇恨值优化" />
     <MESSAGE value="AI优化" />
     <MESSAGE value="Input" />
@@ -730,7 +751,8 @@
     <MESSAGE value="简单解决按键冲突" />
     <MESSAGE value="加入特殊技能按键" />
     <MESSAGE value="主要是更改了角色碰撞检测，改成一个或多个碰撞器对应一个角色" />
-    <option name="LAST_COMMIT_MESSAGE" value="主要是更改了角色碰撞检测，改成一个或多个碰撞器对应一个角色" />
+    <MESSAGE value="entity部位细分" />
+    <option name="LAST_COMMIT_MESSAGE" value="entity部位细分" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -740,19 +762,6 @@
           <line>117</line>
           <properties documentPath="E:\UnityProjects\WGame\Client\Assets\Scripts\Physics\Collision\Shapes\GJK\ShapeGJK.cs" initialLine="117" containingFunctionPresentation="Method 'EPA'" />
           <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs</url>
-          <line>25</line>
-          <properties documentPath="D:\UnityProject\WGame\Client\Assets\Scripts\ECS\Utilies\EntityUtils.cs" initialLine="25" containingFunctionPresentation="Method 'RegisterCollider'">
-            <startOffsets>
-              <option value="967" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1013" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

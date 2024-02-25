@@ -4,7 +4,8 @@ using WGame.Runtime;
 public class NoticeDB : Singleton<NoticeDB>
 {
     public const int OnDefenseBeHit = 0;
-    
+    public const int OnStepBeHit = 1;
+
     public void RemoveReciever( NoticeCenter center, int key)
     {
         center.RemoveReciever(key);
@@ -19,7 +20,8 @@ public class NoticeDB : Singleton<NoticeDB>
     private IReciever[] _recievers = new IReciever[]
     {
         // 0
-        new RecieverBeHittedOnDefense(OnDefenseBeHit)
+        new RecieverBeHittedOnDefense(OnDefenseBeHit),
+        new RecieverBeHittedOnStep(OnStepBeHit),
     };
 }
 
@@ -31,19 +33,9 @@ public class NoticeDB : Singleton<NoticeDB>
             // 只可以在特定类型的message下触发
         }
 
-        public override void OnAdded()
+        public override void OnTrigger(GameEntity entity, IMessage message)
         {
-            WLogger.Print("OnAdded");
-        }
-
-        public override void OnRemoved()
-        {
-            WLogger.Print("OnRemoved");
-        }
-
-        public override void OnTrigger()
-        {
-            WLogger.Print("OnTrigger");
+            
         }
 
         public override bool CheckCondition(IMessage message)
