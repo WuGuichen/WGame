@@ -120,10 +120,13 @@ namespace WGame.Notice
                     if (reciever.CheckCondition(message))
                     {
                         reciever.OnTrigger();
-                        reciever.LeftNoticeTime--;
-                        if (reciever.LeftNoticeTime <= 0)
+                        if (reciever.LeftNoticeTime < 1000)
                         {
-                            RemoveReciever(reciever.Key);
+                            reciever.LeftNoticeTime--;
+                            if (reciever.LeftNoticeTime <= 0)
+                            {
+                                RemoveReciever(reciever.Key);
+                            }
                         }
                     }
                     currentNode = currentNode.Next;

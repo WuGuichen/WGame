@@ -17,8 +17,6 @@ public interface IGameViewService
     void OnDead();
     Vector3 HeadPos { get; }
     void BeFocused(bool value);
-    void Thrust();
-    void OnUpdateMove(float deltaTime);
     IGameViewService OnInit(GameEntity entity);
     AABBF Bounds { get; }
     float Radius { get; }

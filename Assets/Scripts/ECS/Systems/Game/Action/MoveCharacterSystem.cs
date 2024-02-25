@@ -161,7 +161,7 @@ public class MoveCharacterSystem : IExecuteSystem
     {
         if (entity.hasGameViewService)
         {
-            entity.gameViewService.service.OnUpdateMove(_timeService.DeltaTime);
+            
         }
     }
 

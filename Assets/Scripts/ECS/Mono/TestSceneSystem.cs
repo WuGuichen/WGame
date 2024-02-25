@@ -83,7 +83,6 @@ public class TestSceneSystem : MonoBehaviour
 		_systems.Add(new UpdateFocusInputSystem(_contexts));
 		// _systems.Add(new CharacterFocusSystem(_contexts));
 		_systems.Add(new FocusEntitySystem(_contexts));
-		_systems.Add(new ThrustCharacterSystem(_contexts));
 		_systems.Add(new AIAgentUpdateSystem(_contexts));
 		_systems.Add(new RefreshCharacterUISystem(_contexts));
 		

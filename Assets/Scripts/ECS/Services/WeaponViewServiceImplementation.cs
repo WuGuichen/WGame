@@ -158,19 +158,14 @@ namespace Weapon
         }
 
         // todo 用WCollider优化
+        // 先用instanceID处理
         public void OnUpdateAttackSensor()
         {
             for (int i = 0; i < checkNum - 1; i++)
             {
-                // Debug.DrawLine(lastOriginPosition + i * checkOffset * lastUpDir,
-                //     transform.position + lastUpDir * lenUp + i * checkOffset * transform.up, Color.cyan, 3f);
                 var start = lastOriginPosition + i * checkOffset * lastUpDir;
                 var end = transform.position + lastUpDir * lenUp + i * checkOffset * transform.up;
                 var dir = end - start;
-                // for (var j = 0; j < _rayHits.Length; j++)
-                // {
-                //     _rayHits[j]
-                // }
                 _rayHits = new RaycastHit[8];
                 Physics.RaycastNonAlloc(new Ray(start, dir), _rayHits, dir.magnitude, hitLayer);
                 for (int j = 0; j < _rayHits.Length; j++)
@@ -178,21 +173,23 @@ namespace Weapon
                     var tar = _rayHits[j];
                     if (tar.collider != null)
                     {
-                        if (!hittedList.Contains(tar.collider.GetHashCode()))
+                        var colliderID = tar.collider.GetInstanceID();
+                        if (!hittedList.Contains(colliderID))
                         {
-                            hittedList.Add(tar.collider.GetHashCode());
-                            var motionService = tar.transform.GetComponentInChildren<IMotionService>();
-                            if (motionService != null)
+                            hittedList.Add(colliderID);
+                            // var gameView = tar.transform.GetComponentInParent<IGameViewService>();
+                            if (EntityUtils.TryGetEntity(colliderID, out var tarCharacter))
                             {
+                                // var tarCharacter = gameView.GetEntity();
                                 var info = new ContactInfo();
                                 info.pos = tar.point;
                                 info.dir = dir;
                                 // 受击处理
-                                info.entity = motionService.LinkEntity;
+                                info.entity = tarCharacter;
                                 ActionHelper.DoHitTarget(_character, info);
                                 // 击中处理
                                 info.entity = _character;
-                                ActionHelper.DoGotHit(motionService.LinkEntity, info);
+                                ActionHelper.DoGotHit(tarCharacter, info);
                             }
                         }
                     }

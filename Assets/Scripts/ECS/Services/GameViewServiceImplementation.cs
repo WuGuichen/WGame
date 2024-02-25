@@ -61,54 +61,6 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
         }
     }
 
-    public void Thrust()
-    {
-        var entity = GetEntity();
-        thrustPos = entity.actionThrust.targetPositions;
-        thrustTime = entity.actionThrust.durations;
-        thrustType = entity.actionThrust.types;
-        curThrustIndex = -1;
-        NextThrust();
-    }
-
-    public void OnUpdateMove(float deltaTime)
-    {
-        if (curThrustIndex >= thrustTime.Length)
-            return;
-        if (thrustTime[curThrustIndex] > 0)
-        {
-            var delta = deltaTime;
-            if (deltaTime > thrustTime[curThrustIndex])
-                delta = thrustTime[curThrustIndex];
-            thrustTime[curThrustIndex] -= deltaTime;
-            _transform.position += curDeltaTarThrustPos * delta;
-        }
-        else
-        {
-            NextThrust();
-        }
-    }
-
-    private void NextThrust()
-    {
-        curThrustIndex++;
-        if (curThrustIndex >= thrustPos.Length)
-        {
-            if (GetEntity().hasActionThrust)
-            {
-                GetEntity().RemoveActionThrust();
-            }
-        }
-        else
-        {
-            thrustPos[curThrustIndex].y = 0;
-            if(thrustTime[curThrustIndex] > 0)
-                curDeltaTarThrustPos = thrustPos[curThrustIndex] / thrustTime[curThrustIndex];
-            else
-                WLogger.Error("数据有误");
-        }
-    }
-
     public int InstanceID => _entity.instanceID.ID;
 
     public Vector3 GetCameraPos()
@@ -188,6 +140,11 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     public void Destroy()
     {
         gameObject.Unlink();
+        var colliders = Model.GetComponentsInChildren<Collider>();
+        for (var i = 0; i < colliders.Length; i++)
+        {
+            EntityUtils.CancelCollider(colliders[i]);
+        }
         DestroyImmediate(this.gameObject);
     }
 

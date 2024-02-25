@@ -5,7 +5,6 @@ public class NoticeDB : Singleton<NoticeDB>
 {
     public const int OnDefenseBeHit = 0;
     
-
     public void RemoveReciever( NoticeCenter center, int key)
     {
         center.RemoveReciever(key);
@@ -20,25 +19,16 @@ public class NoticeDB : Singleton<NoticeDB>
     private IReciever[] _recievers = new IReciever[]
     {
         // 0
-        RecieverBeHittedOnDefense.Create(OnDefenseBeHit, MessageBehitted.UID)
+        new RecieverBeHittedOnDefense(OnDefenseBeHit)
     };
 }
 
-public class MessageBehitted : IMessage
-    {
-        public const int UID = 0;
-        public int TypeId => UID;
-    }
-
     public class RecieverBeHittedOnDefense : IReciever
     {
-        public static RecieverBeHittedOnDefense Create( int key, int messageType)
+        public RecieverBeHittedOnDefense(int key, int times = 1) 
+            : base(key, MessageDB.BeHittedID, times)
         {
-            return new RecieverBeHittedOnDefense(key,messageType);
-        }
-
-        private RecieverBeHittedOnDefense(int key, int messageType, int times = 1) : base(key,messageType, times)
-        {
+            // 只可以在特定类型的message下触发
         }
 
         public override void OnAdded()
@@ -58,7 +48,11 @@ public class MessageBehitted : IMessage
 
         public override bool CheckCondition(IMessage message)
         {
-            var msg = message as MessageBehitted;
+            if (message.TypeId != MessageDB.BeHittedID)
+            {
+                return false;
+            }
+            var msg = (MessageDB.Define.BeHitted)message;
             return true;
         }
     }

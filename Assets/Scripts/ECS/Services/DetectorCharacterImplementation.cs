@@ -202,13 +202,7 @@ public class DetectorCharacterImplementation : IDetectorService
             if (CheckTargetIsAlive(hateEntity))
             {
                 var dist = DetectMgr.Inst.GetDistance(hateEntity, _character);
-                // var dir = hateEntity.position.value - _character.position.value;
-                // var normalDir = dir / dist;
-                // var angle = normalDir.GetAngle(_model.forward);
-                // var angle = DetectMgr.Inst.GetAngle()
                 var angle = DetectMgr.Inst.GetAngle(_character.instanceID.ID, hateEntity.instanceID.ID);
-                if(_character.isCampWhite)
-                    WLogger.Print(angle+"Dist:"+dist);
                 // 距离仇恨值增加
                 AddDistanceHatePoint(hateInfo.MaxHateEntityId, dist * dist, angle, deltaTime);
             }
