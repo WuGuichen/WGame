@@ -140,10 +140,10 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     public void Destroy()
     {
         gameObject.Unlink();
-        var colliders = Model.GetComponentsInChildren<Collider>();
-        for (var i = 0; i < colliders.Length; i++)
+        var sensorMonos = Model.GetComponentsInChildren<SensorMono>();
+        for (var i = 0; i < sensorMonos.Length; i++)
         {
-            EntityUtils.CancelCollider(colliders[i]);
+            sensorMonos[i].Dispose();
         }
         DestroyImmediate(this.gameObject);
     }

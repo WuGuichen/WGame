@@ -296,10 +296,10 @@ public class FactoryServiceImplementation : IFactoryService
         
         obj.layer = EntityUtils.GetLayer(entity);
         entity.gameViewService.service.Model.gameObject.layer = EntityUtils.GetSensorLayer(entity);
-        var colliders = entity.gameViewService.service.Model.GetComponentsInChildren<Collider>();
-        for (var i = 0; i < colliders.Length; i++)
+        var sensorMonos = entity.gameViewService.service.Model.GetComponentsInChildren<SensorMono>();
+        for (var i = 0; i <  sensorMonos.Length; i++)
         {
-            EntityUtils.RegisterCollider(colliders[i], entity);
+            sensorMonos[i].SetData(entity);
         }
         entity.AddCharacterSensor(1 << EntityUtils.GetTargetSensorLayer(entity), 10f);
         EntityUtils.SetEntityCamp(ref entity);

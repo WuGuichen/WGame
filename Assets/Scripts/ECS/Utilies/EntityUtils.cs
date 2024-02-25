@@ -19,21 +19,21 @@ public class EntityUtils
     private static WBVH<IGameViewService> _BVHEnemy =
         new WBVH<IGameViewService>(new WBVHEntityAdapter(Camp.Red), new List<IGameViewService>());
 
-    public static Dictionary<int, GameEntity> _colliderToEntityDict = new();
+    public static Dictionary<int, SensorMono> _colliderToEntityDict = new();
 
-    public static void RegisterCollider(Collider collider, GameEntity entity)
+    public static void RegisterCollider(SensorMono mono, GameEntity entity)
     {
-        _colliderToEntityDict[collider.GetInstanceID()] = entity;
+        _colliderToEntityDict[mono.ColliderId] = mono;
     }
 
-    public static void CancelCollider(Collider collider)
+    public static void CancelCollider(SensorMono mono)
     {
-        _colliderToEntityDict.Remove(collider.GetInstanceID());
+        _colliderToEntityDict.Remove(mono.ColliderId);
     }
 
-    public static bool TryGetEntity(int colliderId, out GameEntity entity)
+    public static bool TryGetEntitySensorMono(int colliderId, out SensorMono sensorMono)
     {
-        return _colliderToEntityDict.TryGetValue(colliderId, out entity);
+        return _colliderToEntityDict.TryGetValue(colliderId, out sensorMono);
     }
 
     public static WBVH<IGameViewService> BvhRed

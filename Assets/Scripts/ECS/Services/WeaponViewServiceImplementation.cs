@@ -178,9 +178,9 @@ namespace Weapon
                         {
                             hittedList.Add(colliderID);
                             // var gameView = tar.transform.GetComponentInParent<IGameViewService>();
-                            if (EntityUtils.TryGetEntity(colliderID, out var tarCharacter))
+                            if (EntityUtils.TryGetEntitySensorMono(colliderID, out var sensorMono))
                             {
-                                // var tarCharacter = gameView.GetEntity();
+                                var tarCharacter = sensorMono.Entity;
                                 var info = new ContactInfo();
                                 info.pos = tar.point;
                                 info.dir = dir;

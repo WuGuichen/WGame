@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 7587183826897919471}
   - component: {fileID: 1741436276007339564}
   - component: {fileID: 6526027800734122284}
+  - component: {fileID: 3329605788254188649}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -145,6 +146,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Animator: {fileID: 887060267214368687}
   _ActionOnDisable: 0
+--- !u!114 &3329605788254188649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344875507153063994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b5e01a1c3be90418af86cbb539170f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _partType: 1
+  _collider: {fileID: 7587183826897919471}
 --- !u!1 &350120321360387872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1474,7 @@ Transform:
   - {fileID: 3545503299307889767}
   - {fileID: 6834575256083877888}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7979976270682874498
 MonoBehaviour:
