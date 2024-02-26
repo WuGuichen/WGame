@@ -19,11 +19,32 @@ public class WInputManager : Singleton<WInputManager>
     public override void InitInstance()
     {
         var device = InputSystem.GetDevice("Mouse");
-        MouseID = device.deviceId;
+        if(device != null) 
+            MouseID = device.deviceId;
         device = InputSystem.GetDevice("XInputControllerWindows");
-        XInputControllerID = device.deviceId;
+        if(device != null) 
+            XInputControllerID = device.deviceId;
         device = InputSystem.GetDevice("Keyboard");
-        KeyboardID = device.deviceId;
+        if(device != null) 
+            KeyboardID = device.deviceId;
+        InputSystem.onDeviceChange += (inputDevice, change) =>
+        {
+            if (change == InputDeviceChange.Added || change == InputDeviceChange.Reconnected)
+            {
+                if (inputDevice.name == "XInputControllerWindows")
+                {
+                    XInputControllerID = inputDevice.deviceId;
+                }
+                else if(inputDevice.name == "Mouse")
+                {
+                    MouseID = inputDevice.deviceId;
+                }
+                else if (inputDevice.name == "Keyboard")
+                {
+                    KeyboardID = inputDevice.deviceId;
+                }
+            }
+        };
         InputSystem.onActionChange += (o, change) =>
         {
             var action = o as InputAction;

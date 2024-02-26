@@ -6,7 +6,6 @@ using CrashKonijn.Goap.Classes.Builders;
 using CrashKonijn.Goap.Configs;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Resolver;
-using Entitas;
 using Entitas.Unity;
 #if UNITY_EDITOR
 using System.IO;
@@ -156,7 +155,8 @@ public class FactoryServiceImplementation : IFactoryService
     
     public void InitGOAPRoot(Transform goapRoot)
     {
-        goapRunnerBehaviour = goapRoot.GetComponent<GoapRunnerBehaviour>();
+        var goapGO = new GameObject("GOAPRunner");
+        goapRunnerBehaviour = goapGO.AddComponent<GoapRunnerBehaviour>();
         goapRunnerBehaviour.Register(CreateBaseGoapConfig());
     }
 
