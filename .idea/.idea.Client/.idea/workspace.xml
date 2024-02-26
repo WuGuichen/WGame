@@ -5,32 +5,394 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="entity部位细分">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Trigger/CapsuleTrigger.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Trigger.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Trigger/CapsuleTrigger.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Weapons/Sources/Meshes/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Weapons/Sources/Meshes/Materials/PT_Weapons_Material.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Weapons/Sources/Meshes/Materials/PT_Weapons_Material.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene/OcclusionCullingData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/WGame.Ability.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/UtimateEvasion.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/Ability/AbilityEvadeComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/NotMoveComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/NoticeComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/RotateLeftAngleComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Chase.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Chase/ChaseGoal.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Chase/ChaseTarget.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Hate.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Hate/HateAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Hate/HateGoal.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Hate/HateTarget.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Hate/HateTargetSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Hate/IsHateRank.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Hate/IsHateSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Patrol.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Patrol/IsPatroling.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Patrol/PatrolAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Patrol/PatrolGoal.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Patrol/PatrolTarget.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Patrol/PatrolTargetSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/README.md.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/WDistanceObservers.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/EntityPartType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Ability/Components/AbilityAbilityEvadeComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameNotMoveComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameNoticeComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Game/Components/GameRotateLeftAngleComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/InputData/WInputAgentMyController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IBaseService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/INoticeService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingItemInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnResetRect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingItemInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SensorMono.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Base.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Base/IMessage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Base/IReciever.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Base/NoticeCenter.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/MessageDB.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/NoticeDB.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Recievers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Recievers/RecieverBeHittedOnStep.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/NormalGameViewImplementation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/NoticeServiceImplementation.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/RotateCharacterSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/WGame.ECS.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Data/WInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Data/WInput.inputactions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Tests.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Tests/WGame.Input.Tests.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/Tests/WInputTest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WGame.Input.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputAgent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Notice.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Notice/WGame.Notice.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/DataStruct/SparseSet.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/Bootstrap.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/Launcher.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/Sandbox.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/Sandbox.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/Sandbox/LightingData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/Sandbox/MatA.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/Sandbox/MatB.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/Sandbox/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/Directional Light Lens Flare (SRP).asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/GlobalVolume Profile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/LightingData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/Lightmap-0_comp_dir.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/Lightmap-0_comp_light.exr.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/Lightmap-0_comp_shadowmask.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/Lightmap-1_comp_dir.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/Lightmap-1_comp_light.exr.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/Lightmap-1_comp_shadowmask.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Scenes/TestScene/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Attributes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Attributes/ActionClassDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Attributes/ActionDebuggerClassDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Attributes/ClassDrawerBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Attributes/GoalClassDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Attributes/TargetSensorDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Attributes/WorldSensorDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/DebugGraph.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/Mappers.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/Models/Graph.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/Models/Node.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/Models/NodeCondition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/Models/NodeEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/Nodes.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Classes/RenderNode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Drawers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Drawers/GoapSetDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Drawers/ObjectDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Drawers/SerializableEffectDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Elements.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Elements/Card.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Elements/Header.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/GoapEditorSettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Classes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Classes/Node.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/ActionDataDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/AgentDataDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/AgentDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/BezierDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/DragDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/LineDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/NodeDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/NodesDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/Drawers/WorldDataDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/NodeInspector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/NodeViewer/NodeViewerEditorWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Styles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Styles/Generic.uss.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Styles/NodeViewer.uss.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Styles/NodeViewer_2022.uss.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/Textures/background_grid.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/TypeDrawers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/TypeDrawers/AgentEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/TypeDrawers/GoapRunnerEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/TypeDrawers/GoapSetConfigEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/TypeDrawers/GoapSetFactoryBaseEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Editor/CrashKonijn.Goap.Editor/com.crashkonijn.goap.editor.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Comparison.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/ConditionBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/CostBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/ExecutableBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Extensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/GraphBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/GraphResolver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/GraphResolverJob.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IActionKeyResolver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/ICondition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IConditionBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IConditionObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/ICostBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/ICostObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IExecutableBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IGraphResolver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IPositionBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Interfaces/IResolveHandle.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Models/Graph.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Models/Node.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Models/NodeCondition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/Models/NodeEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/NativeHeap.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/PositionBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/ResolveHandle.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.Resolver/com.crashkonijn.goap.resolver.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Attributes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Attributes/ActionClassAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Attributes/AgentDebuggerClass.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Attributes/GoalClassAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Attributes/TargetSensorAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Attributes/WorldSensorAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/ActionBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/AgentBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/AgentCollection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/AgentDebugGraph.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/AgentEvents.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/Delegates.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/GoalBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/GoapConfigBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/GoapRunnerBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/GoapSetBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/GoapSetFactoryBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/TargetKeyBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/WorldKeyBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/ActionContext.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders/ActionBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders/GoalBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders/GoapSetBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders/KeyBuilderBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders/TargetKeyBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders/TargetSensorBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders/WorldKeyBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Builders/WorldSensorBuilder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Condition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Effect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/GoapConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/GoapSet.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/GoapSetFactory.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Injectors.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Injectors/GoapInjector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/PositionTarget.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/References.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/References/DataReferenceInjector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/References/GetComponentAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/References/GetComponentInChildrenAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/References/GetComponentInParentAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Runners.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Runners/GoapRunner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Runners/GoapSetJobRunner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Runners/SensorRunner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/SenseValue.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/TransformTarget.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/ActionClassTypeValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/ActionConditionKeyValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/ActionEffectKeyValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/ActionEffectsValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/ActionTargetValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/Extensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/GoalClassTypeValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/GoalConditionKeyValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/GoalConditionsValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/GoapSetConfigValidatorRunner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/TargetKeySensorsValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/TargetSensorClassTypeValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/TargetSensorKeyValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/ValidationResults.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/WorldKeySensorsValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/WorldSensorClassTypeValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/Validators/WorldSensorKeyValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/ActionConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/GoalConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/GoapSetConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/IActionConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/IClassConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/IConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/IGoalConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/IGoapSetConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/IHasConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/ITargetKey.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/ITargetSensorConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/IWorldKey.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/Interfaces/IWorldSensorConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/TargetKey.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/TargetSensorConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/WorldKey.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Configs/WorldSensorConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Enums.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Enums/ActionMoveMode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Enums/ActionRunState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Enums/AgentMoveState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Enums/AgentState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Enums/EffectType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Exceptions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Exceptions/GoapException.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Extensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/GlobalWorldData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IActionBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IActionData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IAgent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IAgentCollection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IAgentDebugger.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IAgentDistanceObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IAgentEvents.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IComponentReference.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/ICondition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/ICostObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IDataReferenceInjector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGlobalTargetSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGlobalWorldSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGoalBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGoapConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGoapInjector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGoapResolver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGoapRunner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGoapSet.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IGoapSetConfigValidatorRunner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IKeyResolver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/ILocalTargetSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/ILocalWorldSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IMonoAgent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IMonoBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/ISensorRunner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/ITarget.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/ITargetSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IValidator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IWorldData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Interfaces/IWorldSensor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/LocalWorldData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Observers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Observers/ConditionObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Observers/ConditionObserverBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Observers/VectorDistanceObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Resolvers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Resolvers/ClassResolver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Resolvers/KeyResolver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Resolvers/KeyResolverBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Scriptables.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Scriptables/ActionConfigScriptable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Scriptables/GoalConfigScriptable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Scriptables/GoapSetConfigScriptable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Scriptables/TargetKeyScriptable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Scriptables/TargetSensorConfigScriptable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Scriptables/WorldKeyScriptable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Scriptables/WorldSensorConfigScriptable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Sensors.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Sensors/GlobalTargetSensorBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Sensors/GlobalWorldSensorBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Sensors/LocalTargetSensorBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Sensors/LocalWorldSensorBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Serializables.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Serializables/SerializableCondition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Serializables/SerializableEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/WorldDataBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/WorldSensorBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/com.crashkonijn.goap.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/package.json.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbobjectdata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbobjectdata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/MotionEditor/MotionEditor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/MotionEditor/MotionEditor.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/MotionEditor/TriggerEditorWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/UnityOnlineServicesData/UOSSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/UnityOnlineServicesData/UOSSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/UnityOnlineServicesData/UOSSettings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/UnityOnlineServicesData/UOSSettings.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Entitas/EntitasModule.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/Character_Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/Character_Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Motion1.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Motion2.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Motion3.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/MotionLow1.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/MotionLow2.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/MotionUp1.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/MotionUp2.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Shaders/PT_Armors_Shader_PBR.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Cloth_Mask_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Feathers_Mask_02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Gems_Mask_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Leather_Mask_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Lips_Scars_Mask_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Metal_Mask_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Skin_Eye_Hair_Mask_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Weapons/Sources/Materials/PT_Weapons_Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Weapons/Sources/Shaders/PT_Weapons_Shader_PBR.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Weapons/Sources/Textures/PT_Weapons_Texture_01_base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/Polytope Studio/Lowpoly_Weapons/Sources/Textures/PT_Weapons_Texture_01_mask.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/EntityPartType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GameData/EntityPartType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Ability/AbilityComponentsLookup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Generated/Ability/AbilityComponentsLookup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IFactoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IFactoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/INoticeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/INoticeService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SensorMono.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/SensorMono.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/MessageDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/MessageDB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/NoticeDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/NoticeDB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Recievers/RecieverBeHittedOnStep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/Recievers/RecieverBeHittedOnStep.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/Core/GoapWorldState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/IsHateSensor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/IsPatroling.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/PatrolAction.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/PatrolGoal.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/PatrolTarget.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/PatrolTargetSensor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/WDistanceObserver.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Nodes/WTrigger/SparseSet.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AI/FightAgent.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GotHitAbilityServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GotHitAbilityServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/NoticeServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/NoticeServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/WeaponViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/WeaponViewServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Motion/ProcessMotionStartSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Motion/ProcessMotionStartSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/ActionHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/ActionHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Notice/IMessage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Notice/IReciever.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Notice/NoticeCenter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/RotatePlayerSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/ThrustCharacterSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/TWY.ECS.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/ClosestEntity.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/WGame.ECS.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/WGame.ECS.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/Tencent.QCloud.Cos.Sdk.5.4.9/src/COSXML/COSXML.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib.sln.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UosCdnSDK/Editor/Package/wcs-csharp-sdk-1.0.1.0/lib/WcsLib/WcsLib.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/Tests/BinaryHeap.Tests/Tests.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/characters.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/characters.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/objectPool.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/objectPool.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,10 +615,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20376">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
-      <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20376" />
+      <option name="listenPortForConnections" value="true" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />

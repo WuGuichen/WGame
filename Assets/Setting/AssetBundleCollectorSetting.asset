@@ -171,16 +171,8 @@ MonoBehaviour:
     - GroupName: Objects
       GroupDesc: 
       AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/Prefabs/Trigger
-        CollectorGUID: 44cef8a56adf3874da2c9014f19e38c3
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
+      ActiveRuleName: DisableGroup
+      Collectors: []
   - PackageName: RawFilePackage
     PackageDesc: 
     EnableAddressable: 1
