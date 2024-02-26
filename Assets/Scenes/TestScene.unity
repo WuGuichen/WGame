@@ -980,6 +980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 10000002
       objectReference: {fileID: 0}
+    - target: {fileID: 2985564020142649649, guid: 71c444d070c713f4d986bb31bb0c316c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6441360642216505004, guid: 71c444d070c713f4d986bb31bb0c316c, type: 3}
       propertyPath: moveSpeed
       value: 300

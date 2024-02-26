@@ -138,8 +138,7 @@ public class MotionAnimationProcessor : AnimancerComponent
             lastAnimTime = -1f;
             if (setLocalMotion)
             {
-                SetAnimLayerWeight(AnimLayerType.UpperBody, 0);
-                SetAnimLayerWeight(AnimLayerType.LowerBody, 0);
+                SetToBaseLayer();
                 Play(AnimLayerType.Base, _focusMove, 0.25f, FadeMode.FixedDuration);
             }
         }
@@ -188,12 +187,18 @@ public class MotionAnimationProcessor : AnimancerComponent
         {
             Play(AnimLayerType.Base, _focusMove, 0.25f, FadeMode.FixedDuration);
         }
+
+        if (layer == AnimLayerType.Base)
+        {
+            SetToBaseLayer();
+        }
         Play(layer, clip, transTime, FadeMode.FromStart, offsetTime);
     }
-    
-    private void SetAnimLayerWeight(int layer, float weight, float duration = 0.2f)
+
+    private void SetToBaseLayer()
     {
-        Layers[layer].StartFade(weight, duration);
+        Layers[AnimLayerType.LowerBody].StartFade(0);
+        Layers[AnimLayerType.UpperBody].StartFade(0);
     }
     
     public void UpdateMoveSpeed(float forward, float right)
