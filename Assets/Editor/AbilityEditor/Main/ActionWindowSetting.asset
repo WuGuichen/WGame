@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666f4b53450da4b4faf5468da2d03fb0, type: 3}
+  m_Name: ActionWindowSetting
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: cb761e9645fc8994fad5065bd9d30fc0, type: 2}
+  groupAnimationName: Animation Group
+  groupEffectName: Effect Group
+  groupAudioName: Audio Group
+  groupCameraName: Camera Group
+  groupMiscName: Misc Group
+  groupAttackName: Attack Group
+  groupIntteruptName: Break Group
+  trackAnimationType: Animation
+  trackEffectType: Effect
+  trackAudioType: Audio
+  trackCameraType: Camera
+  trackMiscType: Misc
+  trackAttackType: Attack
+  trackIntteruptType: Break
+  refreshInterrupt: "\u540C\u6B65\u5237\u65B0"
+  contextNewAnimation:
+    m_Text: New Animation
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextNewEffect:
+    m_Text: New Effect
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextNewAudio:
+    m_Text: New Audio
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextNewCamera:
+    m_Text: New Camera
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextNewMisc:
+    m_Text: New Misc
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextNewAttack:
+    m_Text: New Attack
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextNewInterrupt:
+    m_Text: New Interrupt
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextAddEventSignal:
+    m_Text: Add Event Signal
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextAddEventDuration:
+    m_Text: Add Event Duration
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextDelTrack:
+    m_Text: Del Track
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextDelEvent:
+    m_Text: Del Event
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextDuplicateEvent:
+    m_Text: Duplicate Event
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextCopyEventValue:
+    m_Text: Copy Event Value
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextPasteEventValue:
+    m_Text: Paste Event Value
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextDelProperty:
+    m_Text: Del Property
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextResetTotalTime:
+    m_Text: Reset TotalTime
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  colorWhite: {r: 0, g: 0, b: 0, a: 0}
+  colorBlack: {r: 0, g: 0, b: 0, a: 0}
+  colorRed: {r: 0, g: 0, b: 0, a: 0}
+  colorGreen: {r: 0, g: 0, b: 0, a: 0}
+  colorBlue: {r: 0, g: 0, b: 0, a: 0}
+  colorSelection: {r: 0, g: 0, b: 0, a: 0}
+  colorGroup: {r: 0, g: 0, b: 0, a: 0}
+  colorGroupTrackBackground: {r: 0, g: 0, b: 0, a: 0}
+  colorAnimation: {r: 0, g: 0, b: 0, a: 0}
+  colorEffect: {r: 0, g: 0, b: 0, a: 0}
+  colorAudio: {r: 0, g: 0, b: 0, a: 0}
+  colorCamera: {r: 0, g: 0, b: 0, a: 0}
+  colorInterrupt: {r: 0, g: 0, b: 0, a: 0}
+  colorTrackBackground: {r: 0, g: 0, b: 0, a: 0}
+  colorTrackHeaderBackground: {r: 0, g: 0, b: 0, a: 0}
+  colorTrackBackgroundSelected: {r: 0, g: 0, b: 0, a: 0}
+  colorClipUnion: {r: 0, g: 0, b: 0, a: 0}
+  colorTopOutline3: {r: 0, g: 0, b: 0, a: 0}
+  colorDurationLine: {r: 0, g: 0, b: 0, a: 0}
+  colorDuration: {r: 0, g: 0, b: 0, a: 0}
+  colorSequenceBackground: {r: 0, g: 0, b: 0, a: 0}
+  colorTooltipBackground: {r: 0, g: 0, b: 0, a: 0}
+  colorSubSequenceOverlay: {r: 0, g: 0, b: 0, a: 0}
+  colorTimeline: {r: 0, g: 0, b: 0, a: 0}
+  colorEndmarker: {r: 0, g: 0, b: 0, a: 0}
+  colorEventSignal: {r: 0, g: 0, b: 0, a: 0}
+  colorEventDuration: {r: 0, g: 0, b: 0, a: 0}
+  colorEventHandle: {r: 0, g: 0, b: 0, a: 0}
+  colorEventHandleSelected: {r: 0, g: 0, b: 0, a: 0}
+  colorInspectorLabel: {r: 0, g: 0, b: 0, a: 0}
+  colorPropertySelected: {r: 0, g: 0, b: 0, a: 0}
+  colorRefreshInterrupt: {r: 0, g: 0, b: 0, a: 0}

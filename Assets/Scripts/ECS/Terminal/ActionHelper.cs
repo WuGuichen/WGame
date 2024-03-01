@@ -20,7 +20,7 @@ public partial class ActionHelper
         if (!entity.hasLinkAbility || !entity.linkAbility.Ability.hasAbilityGotHit)
             return;
         
-        entity.notice.service.Notice(MessageDB.Getter.GetBehitted(hitInfo));
+        entity.notice.service.Notice(WGame.Notice.MessageDB.Getter.GetBehitted(hitInfo));
         entity.linkAbility.Ability.abilityGotHit.service.OnGotHit(entity, hitInfo);
     }
 

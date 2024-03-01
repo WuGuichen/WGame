@@ -41,7 +41,6 @@ public class ProcessMotionEndSystem : ReactiveSystem<MotionEntity>
         }
         else if (newID == entity.motionDefense.UID)
         {
-            noticeService.RemoveReciever(NoticeDB.OnDefenseBeHit);
         }
     }
 }

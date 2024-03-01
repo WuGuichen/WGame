@@ -83,7 +83,7 @@ namespace Motion
                     margin = 1,
                     scaleWithWindow = true,
                     hSlider = true,
-                    vSlider = false,
+                    vSlider = true,
                     hBaseRangeMin = 0,
                     hBaseRangeMax = 2,
                     hRangeMin = 0,

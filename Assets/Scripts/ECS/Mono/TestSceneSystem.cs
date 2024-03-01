@@ -138,7 +138,7 @@ public class TestSceneSystem : MonoBehaviour
 	    }
 	    if(Input.GetKeyDown(KeyCode.L))
 	    {
-			EntityUtils.GetCameraEntity().notice.service.Notice(MessageDB.Getter.GetBehitted(new ContactInfo(){part = EntityPartType.Evasion}));
+			EntityUtils.GetCameraEntity().notice.service.Notice(WGame.Notice.MessageDB.Getter.GetBehitted(new ContactInfo(){part = EntityPartType.Evasion}));
 	    }
     }
 

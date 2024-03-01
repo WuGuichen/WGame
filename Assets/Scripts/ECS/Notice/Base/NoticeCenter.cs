@@ -113,6 +113,10 @@ namespace WGame.Notice
             }
         }
 
+        /// <summary>
+        /// 发出消息通知
+        /// </summary>
+        /// <param name="message"></param>
         public void Notice(IMessage message)
         {
             if (_messageTypeList.TryGet(message.TypeId, out var recievers))
@@ -136,6 +140,16 @@ namespace WGame.Notice
                     currentNode = currentNode.Next;
                 }
             }
+        }
+
+        /// <summary>
+        /// 直接触发效果
+        /// </summary>
+        /// <param name="recieverKey"></param>
+        /// <param name="message"></param>
+        public void TriggerReciever(int recieverKey, IMessage message)
+        {
+            NoticeDB.Inst.InternalTriggerReciever(recieverKey, _entity, message);
         }
     }
 }

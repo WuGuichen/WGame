@@ -1,50 +1,38 @@
+using System;
 using WGame.Notice;
 using WGame.Runtime;
 
 public class NoticeDB : Singleton<NoticeDB>
 {
-    public const int OnDefenseBeHit = 0;
-    public const int OnStepBeHit = 1;
+    public const int OnStepBeHit = 0;
 
     public void RemoveReciever( NoticeCenter center, int key)
     {
         center.RemoveReciever(key);
     }
-    public void AddReciever(NoticeCenter center, int key)
+
+    public void AddReciever(NoticeCenter center, int key, int times = 9)
     {
         if (_recievers.Length > key)
         {
-            center.AddReciever(_recievers[key]);
+            center.AddReciever(_recievers[key].Build(key, times));
         }
     }
-    private IReciever[] _recievers = new IReciever[]
-    {
-        // 0
-        new RecieverBeHittedOnDefense(OnDefenseBeHit),
-        new RecieverBeHittedOnStep(OnStepBeHit),
+    private readonly IReciever[] _recievers = {
+        new RecieverBeHittedOnStep(),
     };
-}
 
-    public class RecieverBeHittedOnDefense : IReciever
+    public void InternalTriggerReciever(int key, GameEntity entity, IMessage message)
     {
-        public RecieverBeHittedOnDefense(int key, int times = 1) 
-            : base(key, MessageDB.BeHittedID, times)
+        if (_recievers.Length < key)
         {
-            // 只可以在特定类型的message下触发
-        }
-
-        public override void OnTrigger(GameEntity entity, IMessage message)
-        {
-            
-        }
-
-        public override bool CheckCondition(IMessage message)
-        {
-            if (message.TypeId != MessageDB.BeHittedID)
+            var reciever = _recievers[key];
+            if (reciever.MessageType == message.TypeId)
             {
-                return false;
+                _recievers[key].OnTrigger(entity, message);
             }
-            var msg = (MessageDB.Define.BeHitted)message;
-            return true;
+            WLogger.Warning("消息不合法");
         }
+        WLogger.Warning("没有接收者");
     }
+}
