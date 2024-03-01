@@ -3,9 +3,29 @@ using UnityEngine;
 
 namespace WGame.Ability.Editor
 {
-    public class WindowSetting
+    [CreateAssetMenu(fileName = "AbilityWindowSetting", menuName = "Ability/Create Settings", order = 1)]
+    public class WindowSetting : ScriptableObject
     {
-        private GUISkin skin = new GUISkin();
+        [SerializeField]
+        private GUISkin skin;
+        
+        public string groupAnimationName = "Animation Group";
+        public string groupEffectName = "Effect Group";
+        
+        public string trackAnimationType = "Animation";
+        public string trackEffectType = "Effect";
+        
+        public GUIContent contextNewAnimation = new GUIContent("New Animation");
+        public GUIContent contextNewEffect = new GUIContent("New Effect");
+        public GUIContent contextAddEventSignal = new GUIContent("Add Event Signal");
+        public GUIContent contextAddEventDuration = new GUIContent("Add Event Duration");
+        public GUIContent contextDelTrack = new GUIContent("Del Track");
+        public GUIContent contextDelEvent = new GUIContent("Del Event");
+        public GUIContent contextDuplicateEvent = new GUIContent("Duplicate Event");
+        public GUIContent contextCopyEventValue = new GUIContent("Copy Event Value");
+        public GUIContent contextPasteEventValue = new GUIContent("Paste Event Value");
+        public GUIContent contextDelProperty = new GUIContent("Del Property");
+        public GUIContent contextResetTotalTime = new GUIContent("Reset TotalTime");
         
         public Color colorWhite = new Color(1.000f, 1.000f, 1.000f, 1.000f);
         public Color colorBlack = new Color(0.000f, 0.000f, 0.000f, 1.000f);
@@ -113,7 +133,7 @@ namespace WGame.Ability.Editor
             return EditorStyles.FromUSS(s);
         }
 
-        public WindowSetting()
+        public void Init()
         {
             stepBack = EditorGUIUtility.IconContent("d_StepLeftButton", "Go to the previous frame");
             stepForward = EditorGUIUtility.IconContent("d_StepButton", "Go to the next frame");

@@ -267,5 +267,6 @@ namespace WGame.Ability.Editor
             ViewTimeMin = 0;
             ViewTimeMax = Length;
         }
+        
     }
 }

@@ -5,13 +5,9 @@ namespace WGame.Ability.Editor
 {
     internal class TimelineScrub : WindowItemState
     {
-        public TimelineScrub(AbilityEditWindow window) : base(window)
-        {
-        }
-        
         private readonly GUIContent headerContent = new GUIContent();
-        private readonly GUIStyle _style;
-        private readonly Tooltip _tooltip;
+        private GUIStyle _style;
+        private Tooltip _tooltip;
         private Rect boundingRect;
         
         public Color headColor { get; set; }
@@ -36,14 +32,11 @@ namespace WGame.Ability.Editor
             }
         }
 
-        public GUIStyle style
-        {
-            get { return _style; }
-        }
+        public GUIStyle style => _style;
         public bool showTooltip { get; set; }
         public bool firstDrag { get; private set; }
 
-        public TimelineScrub(GUIStyle style, System.Action<float> onDrag) : base(AbilityEditWindow.Window)
+        public void Init(GUIStyle style, System.Action<float> onDrag)
         {
             drawLine = true;
             drawHead = true;
@@ -89,6 +82,10 @@ namespace WGame.Ability.Editor
             );
             AddManipulator(scrub);
         }
+        // public TimelineScrub(GUIStyle style, System.Action<float> onDrag)
+        // {
+        //     Init(style, onDrag);
+        // }
         
         public void Draw(float time)
         {

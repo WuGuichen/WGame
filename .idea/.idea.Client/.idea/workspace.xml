@@ -4,7 +4,88 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="" />
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="技能编辑器，时间轴部分，以及特效资源">
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIStyleScope.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIStyleScope.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.Undo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.Undo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/ContextMenuManipulator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/ContextMenuManipulator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/EventManipulator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/EventManipulator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/EventHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/EventHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/GroupItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/GroupItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TrackItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TrackItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TreeItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TreeItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/AbilityWindowSetting.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/AbilityWindowSetting.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/ActionEditorSkin.guiskin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/ActionEditorSkin.guiskin.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/BorderShadows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/BorderShadows.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/BottomShadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/BottomShadow.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/ClipBox.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/ClipBox.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/HollowFrame.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/HollowFrame.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/Key.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/Key.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Extensions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Extensions/common.uss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Extensions/common.uss.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineDisplay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineDisplay.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineGroupBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineGroupBackground.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineKeyframe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineKeyframe.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineOutline.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineOutline.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineSeqEnd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineSeqEnd.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineSwatch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineSwatch.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineTimeCursor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineTimeCursor.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/TimeIndicator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/TimeIndicator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/README.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/DataSettingAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/DataSettingAsset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Layout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Layout.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.TimeCursor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.TimeCursor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Timeline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Timeline.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/SpliteWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/SpliteWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TimelineScrub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TimelineScrub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowItemState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowItemState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowSetting.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/EffectCore/materials/blood/bloodShower.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/EffectCore/materials/blood/bloodShower.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/DataEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/DataEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EventTriggerType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EEventStyle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EventTriggerType.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EEventStyle.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/IEventData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/IEventData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +102,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/0a/58c4bcbd/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/76/7147575b/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/b8/cd26ed04/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/bc/ba0dc626/Enum.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4911eca47f294e18a7b3306f02701303946200/28/e2cf21da/EditorWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4911eca47f294e18a7b3306f02701303946200/32/c85406a1/Handles.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4911eca47f294e18a7b3306f02701303946200/36/42abdad6/AssetDatabase.cs" root0="SKIP_HIGHLIGHTING" />
@@ -29,6 +111,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/673908c2ea674418a53dc8058a28ff3810fc00/70/1d19218c/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/05/f8ad814b/Interlocked.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/10/ed622220/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/33/c769fc9e/IntPtr.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/50/e276bcaf/Int16.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/60/06cb223b/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6aa56e57ab504395b555cf3ed50fa53d46ac00/76/d3ebac2a/List`1.cs" root0="SKIP_HIGHLIGHTING" />
@@ -63,6 +146,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ac74098cc89b48a486afbaa153c00763bc00/c0/270c7ad5/Entity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cbf2a10624ce43bd854be663c98dfa0e2d400/2d/9585fbb3/FocusType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cbf2a10624ce43bd854be663c98dfa0e2d400/3f/06fc3e58/GUILayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cbf2a10624ce43bd854be663c98dfa0e2d400/47/bad833de/GUIStyle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cbf2a10624ce43bd854be663c98dfa0e2d400/8d/cfe20c02/Event.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d7db51aed1994277a2a44bdb68cd3ac9d400/df/a892e1e0/JsonWriter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7c707be18c043f8ad44c8eb15cf286927800/22/1ccc6643/AvatarMask.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,9 +155,11 @@
     <setting file="file://D:/2023UnityFiles/Scripts/Collision/CollisionUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/2023UnityFiles/TWY_Game_2023/Assets/Scripts/Physics/Collision/CollisionTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/2023UnityFiles/TWY_Game_2023/Assets/Scripts/Physics/Collision/CollisionUtils.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/CLineActionEditor/Editor/Script/ActionWindow/ActionWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/DataSettingAsset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIColorScope.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIStyleScope.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.Undo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Inspector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Layout.cs" root0="FORCE_HIGHLIGHTING" />
@@ -81,8 +167,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.TimeCursor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Timeline.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/ContextMenuManipulator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/EventManipulator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/IManipulator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/EventHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TimelineScrub.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TrackItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TreeItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/TimelineScrubManipulator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Tooltip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowItemState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -198,6 +290,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.6/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.7/Runtime/2D/UTess2D/UTess.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.33/UnityEditor.TestRunner/CommandLineTest/LogWriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/UnityProjects/WGame/Client/Luban/.cache.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/AgentBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Behaviours/Delegates.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Packages/com.crashkonijn.goap@7098c059f1/Runtime/CrashKonijn.Goap/Classes/References/DataReferenceInjector.cs" root0="SKIP_HIGHLIGHTING" />
@@ -225,32 +318,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.22408536&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.22408536",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.smartKeys_rider",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\WuGC\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\WuGC\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Unity.exe" />
@@ -278,10 +371,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15788">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2584">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="15788" />
+      <option name="pid" value="2584" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -388,13 +481,7 @@
       <workItem from="1709186003936" duration="907000" />
       <workItem from="1709186935507" duration="32862000" />
       <workItem from="1709270257251" duration="6109000" />
-    </task>
-    <task id="LOCAL-00007" summary="WLang函数调用待优化">
-      <created>1702223147837</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1702223147837</updated>
+      <workItem from="1709280974392" duration="17823000" />
     </task>
     <task id="LOCAL-00008" summary="需要处理antlr解析的gc">
       <created>1702229473238</created>
@@ -732,7 +819,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708958662383</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="技能编辑器，时间轴部分，以及特效资源">
+      <created>1709281064265</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1709281064265</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -758,7 +852,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="修复GJKbug" />
     <MESSAGE value="EPA，有bug" />
     <MESSAGE value="新的动画系统" />
     <MESSAGE value="修复AI动画逻辑" />
@@ -783,7 +876,8 @@
     <MESSAGE value="更新meta文件，输入设备部分在设备接入及卸下时处理" />
     <MESSAGE value="输入设备检测部分优化" />
     <MESSAGE value="动画层级切换优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="动画层级切换优化" />
+    <MESSAGE value="技能编辑器，时间轴部分，以及特效资源" />
+    <option name="LAST_COMMIT_MESSAGE" value="技能编辑器，时间轴部分，以及特效资源" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

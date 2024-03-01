@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,7 +17,6 @@ namespace WGame.Ability.Editor
                 if (_window == null)
                 {
                     _window = GetWindow<AbilityEditWindow>();
-                    _window._state = new WindowItemState(_window);
                 }
 
                 return _window;
@@ -32,10 +32,6 @@ namespace WGame.Ability.Editor
             Window.Focus();
         }
 
-        private WindowItemState _state;
-
-        public WindowItemState State => _state;
-
         private WindowSetting _setting;
         public WindowSetting Setting
         {
@@ -43,7 +39,9 @@ namespace WGame.Ability.Editor
             {
                 if (_setting == null)
                 {
-                    _setting = new WindowSetting();
+                    string path = Path.Combine(editorResourcePath, "AbilityWindowSetting.asset");
+                    _setting = AssetDatabase.LoadAssetAtPath<WindowSetting>(path);
+                    _setting.Init();
                 }
 
                 return _setting;
@@ -55,6 +53,20 @@ namespace WGame.Ability.Editor
         private static void OnInit()
         {
             
+        }
+        
+        private string _editorResourcePath = null;
+        public string editorResourcePath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_editorResourcePath))
+                {
+                    string root = Helper.GetRootDirectory();
+                    _editorResourcePath = Path.Combine(root, "Resource");
+                }
+                return _editorResourcePath;
+            }
         }
     }
 }

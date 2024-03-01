@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WGame.Ability
 {
-    public enum EventTriggerType
+    public enum EEventStyle
     {
         [Header("单次触发")]
         Signal = 0,

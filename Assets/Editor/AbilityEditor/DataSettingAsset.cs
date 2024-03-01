@@ -7,6 +7,6 @@ namespace WGame.Ability.Editor
     {
         [EnumLabel("事件数据类型")]
         public EventDataType _Data;
-        public EventTriggerType TriggerType;
+        public EEventStyle TriggerType;
     }
 }

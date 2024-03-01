@@ -13,6 +13,7 @@ namespace WGame.Ability.Editor
     internal sealed partial class AbilityEditWindow
     {
         [SerializeField] private float _playSpeed = 1f;
+        [SerializeReference] private TreeItem itemTreeView = null;
         [SerializeReference] private SpliteWindow actorSplitter;
         [SerializeReference] private SpliteWindow propertySplitter;
         [SerializeReference] private SpliteWindow inspectorSplitter;
@@ -26,6 +27,7 @@ namespace WGame.Ability.Editor
             DrawToolBar();
             HandleManipulator();
             
+            DrawTreeView();
             DrawSplitter();
             DrawTimeline();
             DrawTimeCursor(AreaType.Lines);
@@ -38,23 +40,30 @@ namespace WGame.Ability.Editor
             InitLayout();
             if (actorSplitter == null)
             {
-                actorSplitter = new SpliteWindow(this);
+                actorSplitter = CreateInstance<SpliteWindow>();
                 actorSplitter.Init(width => { headerWidth = width; }, () => headerWidth);
 
-                propertySplitter = new SpliteWindow(this);
+                propertySplitter = CreateInstance<SpliteWindow>();
                 propertySplitter.Init((width) => { propertyWidth = inspectorWidth - (rectWindow.width - width) - 2; },
                     () => rectWindow.width - inspectorWidth + propertyWidth + 2);
 
-                inspectorSplitter = new SpliteWindow(this);
+                inspectorSplitter = CreateInstance<SpliteWindow>();
                 inspectorSplitter.Init((width) => { inspectorWidth = rectWindow.width - width; }, 
                     () => rectWindow.width - inspectorWidth);
-                TimeFormat = TimeFormatType.Frames;
+                FrameRate = 100; 
+                timeFormat = TimeFormatType.Seconds;
             }
 
-            // if (Ability == null)
-            // {
-            //     Ability = new AbilityData();
-            // }
+            if (itemTreeView == null)
+            {
+                itemTreeView = ScriptableObject.CreateInstance<TreeItem>();
+                itemTreeView.Init(null);
+                itemTreeView.AddManipulator(new EventManipulator(itemTreeView));
+                itemTreeView.AddManipulator(new ContextMenuManipulator(itemTreeView));
+
+                CreateActorGroup(itemTreeView, Setting.groupAnimationName);
+                CreateActorGroup(itemTreeView, Setting.groupEffectName);
+            }
         }
 
         private void UpdateGUI()
@@ -62,6 +71,13 @@ namespace WGame.Ability.Editor
             var height = 0f;
             
             // 此处计算item总高度
+            var list = itemTreeView.BuildRows();
+            for (int i = 0; i < list.Count; ++i)
+            {
+                var item = list[i];
+                item.BuildRect(height);
+                height += item.totalHeight;
+            }
 
             horizontalScrollbarHeight =
                 GUI.skin.horizontalScrollbar.fixedHeight + GUI.skin.horizontalScrollbar.margin.top;
@@ -83,6 +99,16 @@ namespace WGame.Ability.Editor
 
             rectTimeArea.width -= 2 * verticalScrollbarWidth;
             rectTimeArea.height -= horizontalScrollbarHeight;
+        }
+        
+        private void DrawTreeView()
+        {
+            EditorGUI.DrawRect(rectClient, Setting.colorSequenceBackground);
+            scrollPosition = GUI.BeginScrollView(rectClient, scrollPosition, rectClientView, GUIStyle.none, GUI.skin.verticalScrollbar);
+            {
+                itemTreeView.Draw();
+            }
+            GUI.EndScrollView();
         }
         
         private void DrawTimelineRange()
@@ -173,6 +199,14 @@ namespace WGame.Ability.Editor
                             EditorStyles.toolbarDropDown))
                     {
                         GenericMenu menu = new GenericMenu();
+                        menu.AddItem(new GUIContent("Frames"), timeFormat == TimeFormatType.Frames, () =>
+                        {
+                            FrameRate = 60; timeFormat = TimeFormatType.Frames;
+                        });
+                        menu.AddItem(new GUIContent("Seconds"), timeFormat == TimeFormatType.Seconds, () =>
+                        {
+                            FrameRate = 100; timeFormat = TimeFormatType.Seconds;
+                        });
                         menu.ShowAsContext();
                     }
                 }
@@ -189,14 +223,6 @@ namespace WGame.Ability.Editor
             }
         }
 
-        private void HandleManipulator()
-        {
-            var curEvent = Event.current;
-            actorSplitter.HandleManipulatorsEvents(this, curEvent);
-            propertySplitter.HandleManipulatorsEvents(this, curEvent);
-            inspectorSplitter.HandleManipulatorsEvents(this, curEvent);
-        }
-        
         public void PreviewPlay()
         {
             _playState = _playState != PlayState.Play ? PlayState.Play : PlayState.Pause;

@@ -1,20 +1,22 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace WGame.Ability.Editor
 {
-    internal class WindowItemState
+    internal class WindowItemState : ScriptableObject
     {
-        public AbilityEditWindow Window { get; }
-
-
-        public WindowItemState(AbilityEditWindow window)
-        {
-            Window = window;
-        }
+        public AbilityEditWindow Window => AbilityEditWindow.Window;
+        
+        public virtual string GetItemType(){return String.Empty;}
 
         [SerializeField] private List<IManipulator> _captured = new();
         [SerializeField] protected Rect rect = Rect.zero;
+        
+        public Rect manipulatorRect
+        {
+            get { return rect; }
+        }
 
         public void AddManipulator(IManipulator manipulator)
         {

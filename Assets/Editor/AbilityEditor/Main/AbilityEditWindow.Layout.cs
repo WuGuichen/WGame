@@ -29,7 +29,7 @@ namespace WGame.Ability.Editor
         }
 
         private float horizontalScrollbarHeight = 18f;
-        private float verticalScrollbarWidth = 18f;
+        public float verticalScrollbarWidth = 18f;
         private const float timelineOffsetX = 6f;
 
         private float propertyHeight = 22f;

@@ -15,7 +15,8 @@ namespace WGame.Ability.Editor
         {
             if (_timeCursor == null || _timeCursor.style != Setting.timeCursor)
             {
-                _timeCursor = new TimelineScrub(Setting.timeCursor, OnDragTimelineHead);
+                _timeCursor = ScriptableObject.CreateInstance<TimelineScrub>();
+                _timeCursor.Init(Setting.timeCursor, OnDragTimelineHead);
             }
 
             var isHeaderMode = areaType == AreaType.Header;

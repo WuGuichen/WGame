@@ -28,5 +28,9 @@ namespace WGame.Ability
             writer.WriteObjectEnd();
             return writer;
         }
+
+        public void ForceSort()
+        {
+        }
     }
 }

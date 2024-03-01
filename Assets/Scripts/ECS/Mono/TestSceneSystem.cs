@@ -1,5 +1,4 @@
 using Entitas;
-using Oddworm.Framework;
 using UnityEngine;
 using Weapon;
 using WGame.Res;
@@ -80,10 +79,7 @@ public class TestSceneSystem : MonoBehaviour
 		
 		_systems.Add(new CharacterOnGroundSystem(_contexts));
 		_systems.Add(new UpdateDeviceInputSignalSystem(_contexts));
-		// _systems.Add(new UpdateAttackInputSystem(_contexts));
-		// _systems.Add(new UpdateStepInputSystem(_contexts));
 		_systems.Add(new UpdateFocusInputSystem(_contexts));
-		// _systems.Add(new CharacterFocusSystem(_contexts));
 		_systems.Add(new FocusEntitySystem(_contexts));
 		_systems.Add(new AIAgentUpdateSystem(_contexts));
 		_systems.Add(new RefreshCharacterUISystem(_contexts));
@@ -117,7 +113,6 @@ public class TestSceneSystem : MonoBehaviour
     private float FPS;
     private int frames = 0;
 
-    // Update is called once per frame
     void Update()
     {
 	    UpdateBeforeSystems();
@@ -142,7 +137,6 @@ public class TestSceneSystem : MonoBehaviour
 	    }
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     private void UpdateBeforeSystems()
     {
 	    _timeService.UpdateDeltaTime(Time.deltaTime);

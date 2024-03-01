@@ -11,10 +11,6 @@ namespace WGame.Ability.Editor
         [SerializeReference] private System.Action<float> setter = null;
         [SerializeReference] private System.Func<float> getter = null;
         
-        public SpliteWindow(AbilityEditWindow window) : base(window)
-        {
-        }
-        
         public Rect manipulatorRect
         {
             get { return rect; }
