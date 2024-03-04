@@ -131,10 +131,6 @@ public class TestSceneSystem : MonoBehaviour
 	    {
 			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(Cursor.visible ? 0 : 1));
 	    }
-	    if(Input.GetKeyDown(KeyCode.L))
-	    {
-			EntityUtils.GetCameraEntity().notice.service.Notice(WGame.Notice.MessageDB.Getter.GetBehitted(new ContactInfo(){part = EntityPartType.Evasion}));
-	    }
     }
 
     private void UpdateBeforeSystems()
@@ -186,7 +182,9 @@ public class TestSceneSystem : MonoBehaviour
 		_lateUpdateSystems.Cleanup();
 		
 		WTriggerMgr.Inst.OnEndUpdate();
+		UnityEngine.Profiling.Profiler.BeginSample("BvhOptimize");
 		EntityUtils.BvhRed.Optimize();
+		UnityEngine.Profiling.Profiler.EndSample();
     }
 
     private void OnDrawGizmos()

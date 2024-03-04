@@ -77,11 +77,11 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         if (!_entity.isDeadState && !_entity.isCamera)
         {
             fsmAgent.SetFSMState(true);
-            // UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
+            UnityEngine.Profiling.Profiler.BeginSample("FSMLogic");
             fsmAgent.OnUpdate();
+            UnityEngine.Profiling.Profiler.EndSample();
             IsActing = true;
             // UpdateGOAPBrain();
-            // UnityEngine.Profiling.Profiler.EndSample();
         }
         else
         {

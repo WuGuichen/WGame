@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -52,20 +53,27 @@ namespace SingularityGroup.HotReload {
         
         static string cachedUrl;
         static string url => cachedUrl ?? (cachedUrl = CreateUrl(serverInfo));
-        
-        static readonly HttpClient client = new HttpClient();
+
+        static readonly HttpClient client = CreateHttpClient();
         // separate client for each long polling request
-        static readonly HttpClient clientPollPatches = new HttpClient();
-        static readonly HttpClient clientPollAssets = new HttpClient();
-        static readonly HttpClient clientPollStatus = new HttpClient();
-        
+        static readonly HttpClient clientPollPatches = CreateHttpClient();
+        static readonly HttpClient clientPollAssets = CreateHttpClient();
+        static readonly HttpClient clientPollStatus = CreateHttpClient();
+
+        public static HttpClient CreateHttpClient() {
+            var handler = new HttpClientHandler {
+                // Without this flag HttpClients don't work for PCs with double-byte characters in the name
+                UseCookies = false
+            };
+            return new HttpClient(handler);
+        }
         /// <summary>
         /// Create url for a hostname and port
         /// </summary>
         internal static string CreateUrl(PatchServerInfo server) {
             return $"http://{server.hostName}:{server.port.ToString()}";
         }
-
+        
         public static void SetServerInfo(PatchServerInfo info) {
             if (info != null) Log.Debug($"SetServerInfo to {CreateUrl(info)}");
             serverInfo = info;
@@ -108,10 +116,10 @@ namespace SingularityGroup.HotReload {
         }
 
         static bool pollPending;
-        internal static string lastPatchId;
-        internal static async void PollMethodPatches(Action<MethodPatchResponse> onResponseReceived) {
-            if (pollPending) return;
-        
+        internal static async void PollMethodPatches(string lastPatchId, Action<MethodPatchResponse> onResponseReceived) {
+            if (pollPending) {
+                return;
+            }
             pollPending = true;
             var searchPaths = assemblySearchPaths ?? CodePatcher.I.GetAssemblySearchPaths();
             var body = SerializeRequestBody(new MethodPatchRequest(lastPatchId, searchPaths, TimeSpan.FromSeconds(20), Path.GetDirectoryName(Application.dataPath)));
@@ -125,7 +133,6 @@ namespace SingularityGroup.HotReload {
                     await ThreadUtility.SwitchToMainThread();
                     foreach(var response in responses) {
                         onResponseReceived(response);
-                        lastPatchId = response.id;
                     }
                 } else if(result.statusCode == HttpStatusCode.Unauthorized || result.statusCode == 0) {
                     // Server is not running or not authorized.
@@ -145,7 +152,7 @@ namespace SingularityGroup.HotReload {
         static bool pollPatchStatusPending;
         internal static async void PollPatchStatus(Action<PatchStatusResponse> onResponseReceived, PatchStatus latestStatus) {
             if (pollPatchStatusPending) return;
-        
+
             pollPatchStatusPending = true;
             var body = SerializeRequestBody(new PatchStatusRequest(TimeSpan.FromSeconds(20), latestStatus));
             
@@ -190,7 +197,7 @@ namespace SingularityGroup.HotReload {
                         var response = responses[i];
                         // Avoid importing assets twice
                         if (responses.Contains(response + ".meta")) {
-                            Log.Info($"Ignoring asset change inside Unity: {response}");
+                            Log.Debug($"Ignoring asset change inside Unity: {response}");
                             continue;
                         }
                         onResponseReceived(response);

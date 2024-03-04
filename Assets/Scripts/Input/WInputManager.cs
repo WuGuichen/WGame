@@ -4,12 +4,15 @@ using WGame.Runtime;
 
 public class WInputManager : Singleton<WInputManager>
 {
-    public int MouseID { get; private set; }
+    public int MouseID { get; private set; } = -1;
     public bool IsMouse => CurrentDeviceID == MouseID;
-    public int KeyboardID { get; private set; }
+    public bool HasMouse => MouseID >= 0;
+    public int KeyboardID { get; private set; } = -1;
+    public bool HasKeyboard => KeyboardID >= 0;
     public bool IsKeyboard => CurrentDeviceID == KeyboardID;
     public bool IsKeyboardOrMouse => CurrentDeviceID == KeyboardID || CurrentDeviceID == MouseID;
-    public int XInputControllerID { get; private set; }
+    public int XInputControllerID { get; private set; } = -1;
+    public bool HasXInputController => XInputControllerID >= 0;
     public bool IsXInputController => CurrentDeviceID == XInputControllerID;
     public InputDevice CurrentDevice { get; private set; }
     public int CurrentDeviceID { get; private set; } = -1;
@@ -42,6 +45,21 @@ public class WInputManager : Singleton<WInputManager>
                 else if (inputDevice.name == "Keyboard")
                 {
                     KeyboardID = inputDevice.deviceId;
+                }
+            }
+            else if (change == InputDeviceChange.Removed || change == InputDeviceChange.Disconnected)
+            {
+                if (inputDevice.name == "XInputControllerWindows")
+                {
+                    XInputControllerID = -1;
+                }
+                else if(inputDevice.name == "Mouse")
+                {
+                    MouseID = -1;
+                }
+                else if (inputDevice.name == "Keyboard")
+                {
+                    KeyboardID = -1;
                 }
             }
         };

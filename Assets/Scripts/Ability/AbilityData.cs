@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using LitJson;
-using WGame.EditorUtils;
+using UnityEngine;
+using WGame.Utils;
 
 namespace WGame.Ability
 {
@@ -9,6 +11,14 @@ namespace WGame.Ability
         public string Name { get; set; }
         public int TotalTime { get; set; }
         public string DebugName => Name;
+
+        [SerializeReference] private List<DataEvent> _eventList = new();
+        
+        public List<DataEvent> EventList
+        {
+            get => _eventList;
+            set => _eventList = value;
+        }
         
         public void Deserialize(JsonData jsonData)
         {

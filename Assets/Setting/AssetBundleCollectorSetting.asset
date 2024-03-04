@@ -20,9 +20,9 @@ MonoBehaviour:
     PackageDesc: 
     EnableAddressable: 1
     LocationToLower: 0
-    IncludeAssetGUID: 0
+    IncludeAssetGUID: 1
     IgnoreDefaultType: 0
-    AutoCollectShaders: 1
+    AutoCollectShaders: 0
     Groups:
     - GroupName: UI
       GroupDesc: "UI\u8D44\u6E90"

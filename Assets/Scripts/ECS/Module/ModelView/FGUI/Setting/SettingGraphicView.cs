@@ -1,5 +1,4 @@
 using WGame.UI.Setting;using FairyGUI;
-using WGame.UI.Main;
 using FUI_SettingSliderItem = WGame.UI.Setting.FUI_SettingSliderItem;
 
 namespace WGame.UI
@@ -29,11 +28,12 @@ namespace WGame.UI
 		private void OnItemRender(int idx, GObject obj)
 		{
 			var type = define.grapicConfigs[idx, 1];
+			var name = define.grapicConfigs[idx, 0];
 			if (type == SettingDefine.ComboBox)
 			{
 				FUI_SettingItem item = obj as FUI_SettingItem;
-				item.title.text = define.grapicConfigs[idx, 0];
-				if (item.title.text == "帧率")
+				item.title.text = name;
+				if (name == "帧率")
 				{
 					item.value.items = define.fpsListStr;
 					for (int i = 0; i < define.fpsList.Length; i++)
@@ -51,7 +51,16 @@ namespace WGame.UI
 			else if (type == SettingDefine.Toggle)
 			{
 				FUI_SettingToggleItem item = obj as FUI_SettingToggleItem;
-				item.SetData(idx, define.grapicConfigs[idx, 0], SettingModel.Inst.IsShowFPS);
+				bool isToggle = false;
+				if (name == "显示帧率")
+				{
+					isToggle = SettingModel.Inst.IsShowFPS;
+				}
+				else if (name == "显示消息")
+				{
+					isToggle = SettingModel.Inst.IsShowMessage;
+				}
+				item.SetData(idx, define.grapicConfigs[idx, 0], isToggle);
 				item.onClick.Add(item.OnToggleClick);
 			}
 			else if (type == SettingDefine.Slider)

@@ -144,13 +144,13 @@ namespace WGame.Ability.Editor
                     if (enableSignal)
                     {
                         menu.AddItem(Setting.contextAddEventSignal, false,
-                            () => { CreateActorEvent(track, posX, EEventStyle.Signal, actorType); });
+                            () => { CreateActorEvent(track, posX, EventStyle.Signal, actorType); });
                     }
 
                     if (enableDuration)
                     {
                         menu.AddItem(Setting.contextAddEventDuration, false,
-                            () => { CreateActorEvent(track, posX, EEventStyle.Duration, actorType); });
+                            () => { CreateActorEvent(track, posX, EventStyle.Duration, actorType); });
                     }
 
                 }
@@ -204,7 +204,7 @@ namespace WGame.Ability.Editor
             return track;
         }
         
-        public ActorEvent CreateActorEvent(TrackItem parent, float posX, EEventStyle style, string eventTag, bool forceUndo = true)
+        public ActorEvent CreateActorEvent(TrackItem parent, float posX, EventStyle style, string eventTag, bool forceUndo = true)
         {
             var evt = ScriptableObject.CreateInstance<ActorEvent>();
 

@@ -88,7 +88,6 @@ public class EntityUtils
         if (entity.hasLinkWeapon)
         {
             FactoryService.SetWeaponDrop(entity.linkWeapon.Weapon, entity.position.value + entity.gameViewService.service.Model.forward, Quaternion.identity, Vector3.one);
-            entity.linkMotion.Motion.motionService.service.ResetMotion();
         }
     }
 

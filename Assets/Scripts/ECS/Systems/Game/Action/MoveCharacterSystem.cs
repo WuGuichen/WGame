@@ -142,8 +142,9 @@ public class MoveCharacterSystem : IExecuteSystem
                 curSpeed = Mathf.Lerp(curSpeed, speed, 0.1f);
             }
             var move = entity.moveDirection.value * curSpeed;
-            entity.rigidbodyService.service.Velocity = new Vector3(move.x, speedY, move.z) + deltaRootMotion;
-            entity.gameViewService.service.Translate(deltaRootMotion);
+            var totalSpeed = new Vector3(move.x, speedY, move.z) +
+                             deltaRootMotion * _timeService.DivFixedDeltaTime;
+            entity.rigidbodyService.service.Velocity = totalSpeed;
             motion.motionService.service.AnimProcessor.ClearRootMotion();
             entity.rigidbodyService.service.OnFixedUpdate(_timeService.FixedDeltaTime);
             entity.ReplaceCharCurSpeed(curSpeed);
@@ -189,7 +190,7 @@ public class MoveCharacterSystem : IExecuteSystem
                 {
                     entity.ReplaceDoMove(leftPos);
                 }
-                gameEntity.gameViewService.service.Model.parent.position += movePos;
+                gameEntity.rigidbodyService.service.Velocity = movePos * _timeService.DivFixedDeltaTime;
                 break;
             default:
                 break;

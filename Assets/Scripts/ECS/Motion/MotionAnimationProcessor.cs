@@ -66,19 +66,17 @@ public class MotionAnimationProcessor : AnimancerComponent
 
     public void RefreshAnimClip(int type, string clipName)
     {
+        if (string.IsNullOrEmpty(clipName))
+        {
+            return;
+        }
         _factoryService.LoadAnimationClip(clipName, clip =>
         {
             if (localMotionStates[type] == null)
             {
                 var state = new ClipState(clip);
                 localMotionStates[type] = state;
-                var threshold = Vector2.zero;
-                if (type == LocalMotionType.Idle)
-                    threshold = new Vector2(0, 0);
-                else if (type == LocalMotionType.Walk_F)
-                    threshold = new Vector2(0, 1);
-                else if (type == LocalMotionType.Run_F)
-                    threshold = new Vector2(0, 2);
+                var threshold = GetThreshold(type);
                 bool needReset = _focusMove.ChildCount == 0;
                 _focusMove.Add(state, threshold);
                 if (needReset)
@@ -92,7 +90,24 @@ public class MotionAnimationProcessor : AnimancerComponent
             }
         });
     }
-    
+
+    private Vector2 GetThreshold(int type)
+    {
+        return type switch
+        {
+            LocalMotionType.Idle => new Vector2(0, 0),
+            LocalMotionType.Walk_F => new Vector2(0, 1),
+            LocalMotionType.Run_F => new Vector2(0, 2),
+            LocalMotionType.Walk_B => new Vector2(0, -1),
+            LocalMotionType.Run_B => new Vector2(0, -2),
+            LocalMotionType.Walk_L => new Vector2(-1, 0),
+            LocalMotionType.Run_L => new Vector2(-2, 0),
+            LocalMotionType.Walk_R => new Vector2(1, 0),
+            LocalMotionType.Run_R => new Vector2(2, 0),
+            _ => Vector2.zero
+        };
+    }
+
     public void RefreshAnimClip(int type, int clipId)
     {
         var clip = _factoryService.GetAnimationClip(clipId);
@@ -106,13 +121,7 @@ public class MotionAnimationProcessor : AnimancerComponent
         {
             var state = new ClipState(clip);
             localMotionStates[type] = state;
-            var threshold = Vector2.zero;
-            if (type == LocalMotionType.Idle)
-                threshold = new Vector2(0, 0);
-            else if (type == LocalMotionType.Walk_F)
-                threshold = new Vector2(0, 1);
-            else if (type == LocalMotionType.Run_F)
-                threshold = new Vector2(0, 2);
+            var threshold = GetThreshold(type);
             bool needReset = _focusMove.ChildCount == 0;
             _focusMove.Add(state, threshold);
             if (needReset)
@@ -247,6 +256,12 @@ public class LocalMotionType
     public const int Idle = 0;
     public const int Walk_F = 1;
     public const int Run_F = 2;
+    public const int Walk_B = 3;
+    public const int Run_B = 4;
+    public const int Walk_L = 5;
+    public const int Run_L = 6;
+    public const int Walk_R = 7;
+    public const int Run_R = 8;
 
-    public const int Count = 3;
+    public const int Count = 9;
 }

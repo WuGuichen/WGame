@@ -32,16 +32,17 @@ namespace Weapon
         private IFactoryService _factory;
 
         private float radius;
+        private bool isInitted = false;
 
         public IWeaponViewService RegisterEntity(WeaponEntity entity)
         {
             _entity = entity;
             // gameObject.Link(_entity);
             _trail = GetComponent<StickWeaponTrailEffect>();
-            // _trail.UseWithSRP = true;
-            _trail.enabled = false;
             radius = GetComponent<SphereCollider>().radius;
             _factory = Contexts.sharedInstance.meta.factoryService.instance;
+            // _trail.UseWithSRP = true;
+            _trail.enabled = false;
             return this;
         }
 
@@ -59,13 +60,9 @@ namespace Weapon
             gameObject.layer = LayerMask.NameToLayer("DropItem");
         }
 
-        public void UnLinkCharacter(GameEntity entity, bool resetLocalMotion = false)
+        public void UnLinkCharacter(GameEntity entity)
         {
-            if (resetLocalMotion)
-            {
-                _character.linkMotion.Motion.motionService.service.ResetMotion();
-            }
-            _entity.linkCharacter.Character.RemoveLinkWeapon();
+            _entity.linkCharacter.Character.weaponService.service.OnDropWeapon(_entity.linkCharacter.Character, _entity);
             _entity.RemoveLinkCharacter();
             _character = null;
             transform.parent = GameSceneMgr.Inst.genItemRoot;

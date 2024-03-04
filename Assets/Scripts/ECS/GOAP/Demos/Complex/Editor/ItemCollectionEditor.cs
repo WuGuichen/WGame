@@ -1,4 +1,5 @@
-﻿using Demos.Complex.Behaviours;
+﻿#if UNITY_EDITOR
+using Demos.Complex.Behaviours;
 using UnityEditor;
 using UnityEngine.UIElements;
 
@@ -28,3 +29,4 @@ namespace Demos.Complex.Editor
         }
     }
 }
+#endif

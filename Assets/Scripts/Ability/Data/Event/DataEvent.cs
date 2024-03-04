@@ -1,7 +1,7 @@
 using System;
 using LitJson;
 using UnityEngine;
-using WGame.EditorUtils;
+using WGame.Utils;
 
 namespace WGame.Ability
 {

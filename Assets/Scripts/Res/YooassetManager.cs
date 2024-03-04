@@ -7,7 +7,6 @@ using YooAsset;
 using Object = UnityEngine.Object;
 using WGame.Runtime;
 
-
 namespace WGame.Res
 {
     public class YooassetManager : MonoBehaviour, IAssetService

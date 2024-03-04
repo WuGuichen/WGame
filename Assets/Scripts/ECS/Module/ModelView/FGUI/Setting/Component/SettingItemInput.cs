@@ -21,10 +21,16 @@ namespace WGame.UI.Setting
 			var action = inputAction;
 			btnChange.onClick.Set(ctx =>
 			{
+				if (!HasDevice(tabIndex))
+				{
+					WLogger.Info("没有相应设备");
+					return;
+				}
 				if (SettingModel.Inst.IsRebindingInput)
 				{
 					return;
 				}
+				
 				SettingModel.Inst.IsRebindingInput = true;
 				btnChange.text = "等待新按键...";
 				SettingModel.Inst.InputAgent.RebindInputSetting(action, () =>
@@ -39,6 +45,21 @@ namespace WGame.UI.Setting
 				SetData(index, action, tabIndex);
 				EventCenter.Trigger(EventDefine.OnRebindingInputStateChange);
 			});
+		}
+
+		private bool HasDevice(int tabIndex)
+		{
+			if (tabIndex == 0)
+			{
+				// 键鼠
+				return WInputManager.Inst.HasKeyboard;
+			}
+			else if (tabIndex == 1)
+			{
+				return WInputManager.Inst.HasXInputController;
+			}
+
+			return false;
 		}
 	}
 }

@@ -7,7 +7,6 @@ public interface IGameViewService
     float Height { get; }
     float HalfHeight { get; }
     Vector3 GetCameraPos();
-    void Translate(Vector3 dir);
     Vector3 LocalizeVectorXY(Vector2 vector, bool isFocus = false);
     Transform Model { get; }
     Vector3 FocusPoint { get; }

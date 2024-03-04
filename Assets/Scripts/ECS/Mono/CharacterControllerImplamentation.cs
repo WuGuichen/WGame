@@ -30,6 +30,11 @@ public class CharacterControllerImplamentation : MonoBehaviour, IRigidbodyServic
         } 
     }
 
+    public void MovePosition(Vector3 dir)
+    {
+        _controller.SimpleMove(dir);
+    }
+
     public void OnFixedUpdate(float deltaTime)
     {
         if (_controller.isGrounded)

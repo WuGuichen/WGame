@@ -1,6 +1,5 @@
 using System.Text;
 using CrashKonijn.Goap.Interfaces;
-using Sirenix.Utilities.Editor;
 
 namespace WGame.GOAP
 {

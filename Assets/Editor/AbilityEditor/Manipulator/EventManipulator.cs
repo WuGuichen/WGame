@@ -95,10 +95,10 @@ namespace WGame.Ability.Editor
                     var actor = selectList[0] as ActorEvent;
                     switch (actor.eventStyle)
                     {
-                        case EEventStyle.Signal:
+                        case EventStyle.Signal:
                             TimeIndicator.Draw(window, actor.start);
                             break;
-                        case EEventStyle.Duration:
+                        case EventStyle.Duration:
                             TimeIndicator.Draw(window, actor.start, actor.end);
                             break;
                     }

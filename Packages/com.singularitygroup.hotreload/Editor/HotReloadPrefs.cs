@@ -1,8 +1,10 @@
 using System;
+using System.Globalization;
 using System.IO;
 using JetBrains.Annotations;
 using SingularityGroup.HotReload.Editor.Cli;
 using UnityEditor;
+using UnityEngine;
 
 namespace SingularityGroup.HotReload.Editor {
     internal static class HotReloadPrefs {
@@ -32,37 +34,43 @@ namespace SingularityGroup.HotReload.Editor {
         private const string PatchesGroupAllKey = "HotReloadWindow.PatchesGroupAll";
         private const string LaunchOnEditorStartKey = "HotReloadWindow.LaunchOnEditorStart";
         private const string AutoRecompileUnsupportedChangesKey = "HotReloadWindow.AutoRecompileUnsupportedChanges";
+        private const string AutoRecompilePartiallyUnsupportedChangesKey = "HotReloadWindow.AutoRecompilePartiallyUnsupportedChanges";
+        private const string ShowPatchingNotificationsKey = "HotReloadWindow.ShowPatchingNotifications";
+        private const string ShowCompilingUnsupportedNotificationsKey = "HotReloadWindow.ShowCompilingUnsupportedNotifications";
         private const string AutoRecompileUnsupportedChangesImmediatelyKey = "HotReloadWindow.AutoRecompileUnsupportedChangesImmediately";
+        private const string AutoRecompileUnsupportedChangesOnExitPlayModeKey = "HotReloadWindow.AutoRecompileUnsupportedChangesOnExitPlayMode";
         private const string AutoRecompileUnsupportedChangesInPlayModeKey = "HotReloadWindow.AutoRecompileUnsupportedChangesInPlayMode";
         private const string AllowDisableUnityAutoRefreshKey = "HotReloadWindow.AllowDisableUnityAutoRefresh";
         private const string DefaultAutoRefreshKey = "HotReloadWindow.DefaultAutoRefresh";
         private const string DefaultAutoRefreshModeKey = "HotReloadWindow.DefaultAutoRefreshMode";
         private const string DefaultScriptCompilationKeyKey = "HotReloadWindow.DefaultScriptCompilationKey";
+        private const string DefaultEditorTintKey = "HotReloadWindow.DefaultEditorTint";
         private const string AppliedAutoRefreshKey = "HotReloadWindow.AppliedAutoRefresh";
         private const string AppliedScriptCompilationKey = "HotReloadWindow.AppliedScriptCompilation";
+        private const string AppliedEditorTintKey = "HotReloadWindow.AppliedEditorTint";
         private const string AllAssetChangesKey = "HotReloadWindow.AllAssetChanges";
+        private const string IncludeShaderChangesKey = "HotReloadWindow.IncludeShaderChanges";
         private const string DisableConsoleWindowKey = "HotReloadWindow.DisableConsoleWindow";
         private const string RedeemLicenseEmailKey = "HotReloadWindow.RedeemLicenseEmail";
         private const string RedeemLicenseInvoiceKey = "HotReloadWindow.RedeemLicenseInvoice";
+        private const string RunTabEventsSuggestionsFoldoutKey = "HotReloadWindow.RunTabEventsSuggestionsFoldout";
+        private const string RunTabEventsTimelineFoldoutKey = "HotReloadWindow.RunTabEventsTimelineFoldout";
+        private const string RunTabUnsupportedChangesFilterKey = "HotReloadWindow.RunTabUnsupportedChangesFilter";
+        private const string RunTabCompileErrorFilterKey = "HotReloadWindow.RunTabCompileErrorFilter";
+        private const string RunTabPartiallyAppliedPatchesFilterKey = "HotReloadWindow.RunTabPartiallyAppliedPatchesFilter";
+        private const string RunTabAppliedPatchesFilterKey = "HotReloadWindow.RunTabAppliedPatchesFilter";
+        private const string RecompileDialogueShownKey = "HotReloadWindow.RecompileDialogueShown";
+        private const string OpenedWindowAtLeastOnceKey = "HotReloadWindow.OpenedWindowAtLeastOnce";
 
         public const string DontShowPromptForDownloadKey = "ServerDownloader.DontShowPromptForDownload";
 
-
-        static string[] settingCacheKeys;
-        [Obsolete]
-        public static string[] SettingCacheKeys = settingCacheKeys ?? (settingCacheKeys = new[] {
-            AllowHttpSettingCacheKey,
-            AutoRefreshSettingCacheKey,
-            ScriptCompilationSettingCacheKey,
-            ProjectGenerationSettingCacheKey,
-        });
-        
         [Obsolete] public const string AllowHttpSettingCacheKey = "HotReloadWindow.AllowHttpSettingCacheKey";
         [Obsolete] public const string AutoRefreshSettingCacheKey = "HotReloadWindow.AutoRefreshSettingCacheKey";
         [Obsolete] public const string ScriptCompilationSettingCacheKey = "HotReloadWindow.ScriptCompilationSettingCacheKey";
         [Obsolete] public const string ProjectGenerationSettingCacheKey = "HotReloadWindow.ProjectGenerationSettingCacheKey";
 
 
+        [Obsolete]
         public static bool RemoteServer {
             get { return EditorPrefs.GetBool(RemoteServerKey, false); }
             set { EditorPrefs.SetBool(RemoteServerKey, value); }
@@ -73,6 +81,7 @@ namespace SingularityGroup.HotReload.Editor {
             set { EditorPrefs.SetBool(DontShowPromptForDownloadKey, value); }
         }
 
+        [Obsolete]
         public static string RemoteServerHost {
             get { return EditorPrefs.GetString(RemoteServerHostKey); }
             set { EditorPrefs.SetString(RemoteServerHostKey, value); }
@@ -256,9 +265,29 @@ namespace SingularityGroup.HotReload.Editor {
             set { EditorPrefs.SetBool(AutoRecompileUnsupportedChangesKey, value); }
         }
         
+        public static bool AutoRecompilePartiallyUnsupportedChanges {
+            get { return EditorPrefs.GetBool(AutoRecompilePartiallyUnsupportedChangesKey, false); }
+            set { EditorPrefs.SetBool(AutoRecompilePartiallyUnsupportedChangesKey, value); }
+        }
+
+        public static bool ShowPatchingNotifications {
+            get { return EditorPrefs.GetBool(ShowPatchingNotificationsKey, true); }
+            set { EditorPrefs.SetBool(ShowPatchingNotificationsKey, value); }
+        }
+
+        public static bool ShowCompilingUnsupportedNotifications {
+            get { return EditorPrefs.GetBool(ShowCompilingUnsupportedNotificationsKey, true); }
+            set { EditorPrefs.SetBool(ShowCompilingUnsupportedNotificationsKey, value); }
+        }
+
         public static bool AutoRecompileUnsupportedChangesImmediately {
             get { return EditorPrefs.GetBool(AutoRecompileUnsupportedChangesImmediatelyKey, false); }
             set { EditorPrefs.SetBool(AutoRecompileUnsupportedChangesImmediatelyKey, value); }
+        }
+        
+        public static bool AutoRecompileUnsupportedChangesOnExitPlayMode {
+            get { return EditorPrefs.GetBool(AutoRecompileUnsupportedChangesOnExitPlayModeKey, false); }
+            set { EditorPrefs.SetBool(AutoRecompileUnsupportedChangesOnExitPlayModeKey, value); }
         }
         
         public static bool AutoRecompileUnsupportedChangesInPlayMode {
@@ -287,6 +316,11 @@ namespace SingularityGroup.HotReload.Editor {
             set { EditorPrefs.SetInt(DefaultScriptCompilationKeyKey, value); }
         }
         
+        public static Color? DefaultEditorTint {
+            get { return ColorFromString(EditorPrefs.GetString(DefaultEditorTintKey, string.Empty)); }
+            set { EditorPrefs.SetString(DefaultEditorTintKey, ColorToString(value)); }
+        }
+        
         public static bool AppliedAutoRefresh {
             get { return EditorPrefs.GetBool(AppliedAutoRefreshKey); }
             set { EditorPrefs.SetBool(AppliedAutoRefreshKey, value); }
@@ -297,9 +331,19 @@ namespace SingularityGroup.HotReload.Editor {
             set { EditorPrefs.SetBool(AppliedScriptCompilationKey, value); }
         }
         
+        public static Color? AppliedEditorTint {
+            get { return ColorFromString(EditorPrefs.GetString(AppliedEditorTintKey, string.Empty)); }
+            set { EditorPrefs.SetString(AppliedEditorTintKey, ColorToString(value)); }
+        }
+        
         public static bool AllAssetChanges {
             get { return EditorPrefs.GetBool(AllAssetChangesKey, false); }
             set { EditorPrefs.SetBool(AllAssetChangesKey, value); }
+        }
+        
+        public static bool IncludeShaderChanges {
+            get { return EditorPrefs.GetBool(IncludeShaderChangesKey, false); }
+            set { EditorPrefs.SetBool(IncludeShaderChangesKey, value); }
         }
         
         public static bool DisableConsoleWindow {
@@ -315,6 +359,65 @@ namespace SingularityGroup.HotReload.Editor {
         public static string RedeemLicenseInvoice {
             get { return EditorPrefs.GetString(RedeemLicenseInvoiceKey); }
             set { EditorPrefs.SetString(RedeemLicenseInvoiceKey, value); }
+        }
+        
+        public static bool RunTabEventsTimelineFoldout {
+            get { return EditorPrefs.GetBool(RunTabEventsTimelineFoldoutKey, true); }
+            set { EditorPrefs.SetBool(RunTabEventsTimelineFoldoutKey, value); }
+        }
+        
+        public static bool RunTabEventsSuggestionsFoldout {
+            get { return EditorPrefs.GetBool(RunTabEventsSuggestionsFoldoutKey, true); }
+            set { EditorPrefs.SetBool(RunTabEventsSuggestionsFoldoutKey, value); }
+        }
+        
+        public static bool RunTabUnsupportedChangesFilter {
+            get { return EditorPrefs.GetBool(RunTabUnsupportedChangesFilterKey, true); }
+            set { EditorPrefs.SetBool(RunTabUnsupportedChangesFilterKey, value); }
+        }
+        
+        public static bool RunTabCompileErrorFilter {
+            get { return EditorPrefs.GetBool(RunTabCompileErrorFilterKey, true); }
+            set { EditorPrefs.SetBool(RunTabCompileErrorFilterKey, value); }
+        }
+        
+        public static bool RunTabPartiallyAppliedPatchesFilter {
+            get { return EditorPrefs.GetBool(RunTabPartiallyAppliedPatchesFilterKey, true); }
+            set { EditorPrefs.SetBool(RunTabPartiallyAppliedPatchesFilterKey, value); }
+        }
+        
+        public static bool RunTabAppliedPatchesFilter {
+            get { return EditorPrefs.GetBool(RunTabAppliedPatchesFilterKey, true); }
+            set { EditorPrefs.SetBool(RunTabAppliedPatchesFilterKey, value); }
+        }
+        
+        public static bool RecompileDialogueShown {
+            get { return EditorPrefs.GetBool(RecompileDialogueShownKey); }
+            set { EditorPrefs.SetBool(RecompileDialogueShownKey, value); }
+        }
+        
+        public static bool OpenedWindowAtLeastOnce {
+            get { return EditorPrefs.GetBool(OpenedWindowAtLeastOnceKey); }
+            set { EditorPrefs.SetBool(OpenedWindowAtLeastOnceKey, value); }
+        }
+        
+        private const string rgbaDelimiter = ";";
+        public static string ColorToString(Color? _color) {
+            if (_color == null) {
+                return null;
+            }
+            var color = _color.Value;
+            var cultInfo = CultureInfo.InvariantCulture;
+            string[] rgbaList = { color.r.ToString(cultInfo), color.g.ToString(cultInfo), color.b.ToString(cultInfo), color.a.ToString(cultInfo)};
+            return String.Join(rgbaDelimiter, rgbaList);
+        }
+
+        public static Color? ColorFromString(string ser) {
+            if (string.IsNullOrEmpty(ser)) {
+                return null;
+            }
+            string[] rgbaParts = ser.Split(rgbaDelimiter.ToCharArray());
+            return new Color(float.Parse(rgbaParts[0]), float.Parse(rgbaParts[1]),float.Parse(rgbaParts[2]),float.Parse(rgbaParts[3]));
         }
     }
 }

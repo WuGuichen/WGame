@@ -25,7 +25,6 @@ namespace SingularityGroup.HotReload.Editor {
                 HotReloadWindow.Open();
             }
             if (HotReloadPrefs.LaunchOnEditorStart) {
-                HotReloadWindow.Open();
                 EditorCodePatcher.DownloadAndRun().Forget();
             }
             
@@ -50,6 +49,7 @@ namespace SingularityGroup.HotReload.Editor {
             HotReloadPrefs.AllowDisableUnityAutoRefresh = true;
             HotReloadPrefs.AllAssetChanges = true;
             HotReloadPrefs.AutoRecompileUnsupportedChanges = true;
+            HotReloadPrefs.AutoRecompileUnsupportedChangesOnExitPlayMode = true;
             if (HotReloadCli.CanOpenInBackground) {
                 HotReloadPrefs.DisableConsoleWindow = true;
             }

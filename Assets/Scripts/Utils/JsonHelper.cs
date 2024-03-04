@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using LitJson;
 using UnityEngine;
 
-namespace WGame.EditorUtils
+namespace WGame.Utils
 {
     public static class JsonHelper
     {

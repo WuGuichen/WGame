@@ -23,17 +23,17 @@ namespace WGame.Ability.Editor
             set => _parent = value;
         }
 
-        [SerializeField] private EEventStyle _eventStyle = EEventStyle.Signal;
-        public EEventStyle eventStyle
+        [SerializeField] private EventStyle _eventStyle = EventStyle.Signal;
+        public EventStyle eventStyle
         {
             get
             {
                 if (eventProperty != null)
                 {
-                    EEventStyle style = EEventStyle.Signal;
+                    EventStyle style = EventStyle.Signal;
                     if (eventProperty.TriggerType == ETriggerType.Duration)
                     {
-                        style = EEventStyle.Duration;
+                        style = EventStyle.Duration;
                     }
                     return style;
                 }
@@ -42,7 +42,7 @@ namespace WGame.Ability.Editor
             set
             {
                 _eventStyle = value;
-                if (value == EEventStyle.Signal)
+                if (value == EventStyle.Signal)
                 {
                     duration = 0;
                     leftHandle = null;
@@ -103,7 +103,7 @@ namespace WGame.Ability.Editor
             }
             set
             {
-                if (eventStyle == EEventStyle.Signal)
+                if (eventStyle == EventStyle.Signal)
                 {
                     _duration = 0f;
                 }
@@ -144,7 +144,7 @@ namespace WGame.Ability.Editor
         }
         
         
-        public void Init(TrackItem parent, float posX, EEventStyle style, string eventTag, bool manual)
+        public void Init(TrackItem parent, float posX, EventStyle style, string eventTag, bool manual)
         {
             this.parent = parent;
             this.parent.AddEvent(this);
@@ -152,9 +152,19 @@ namespace WGame.Ability.Editor
             eventProperty = new DataEvent();
             eventProperty.TrackName = parent.itemName;
             //eventProperty.TriggerTime = window.ToMillisecond(start);
+            
+            if  (eventTag == Window.Setting.trackAnimationType)
+            {
+                eventProperty.EventType = EventDataType.PlayAnim;
+            }
+            else if (eventTag == Window.Setting.trackEffectType)
+            {
+                eventProperty.EventType = EventDataType.PlayEffect;
+            }
 
             if (manual)
             {
+                Window.Ability.EventList.Add(eventProperty);
             }
 
             start = Window.SnapTime3(Window.Pos2Time(posX));
@@ -165,18 +175,7 @@ namespace WGame.Ability.Editor
         {
             if (Window.Ability != null)
             {
-                // if (eventProperty.EventType == EventDataType.EET_AttackDef)
-                // {
-                //     window.actorTreeViewAction.AttackList.Remove(eventProperty);
-                // }
-                // else if (eventProperty.EventType == EEventDataType.EET_Interrupt)
-                // {
-                //     window.actorTreeViewAction.InterruptList.Remove(eventProperty);
-                // }
-                // else
-                // {
-                    // Window.Setting.EventList.Remove(eventProperty);
-                // }
+                Window.Ability.EventList.Remove(eventProperty);
             }
         }
         
@@ -218,7 +217,7 @@ namespace WGame.Ability.Editor
 
             var selected = Window.HasSelect(this);
             var color = selected ? Window.Setting.colorRed :
-                eventStyle == EEventStyle.Signal ? Window.Setting.colorEventSignal : Window.Setting.colorEventDuration;
+                eventStyle == EventStyle.Signal ? Window.Setting.colorEventSignal : Window.Setting.colorEventDuration;
             using (new GUIColorScope(color))
             {
                 GUI.Box(rect, "", Window.Setting.customEventKey);
@@ -235,10 +234,10 @@ namespace WGame.Ability.Editor
 
             switch (eventStyle)
             {
-                case EEventStyle.Signal:
+                case EventStyle.Signal:
                     text.text = Window.FormatTime(start);
                     break;
-                case EEventStyle.Duration:
+                case EventStyle.Duration:
                     text.text = Window.FormatTime(duration);
                     break;
             }
@@ -252,7 +251,7 @@ namespace WGame.Ability.Editor
                 GUI.Label(rc, text, EditorStyles.label);
             }
 
-            if (eventStyle == EEventStyle.Duration)
+            if (eventStyle == EventStyle.Duration)
             {
                 leftHandle.Draw();
                 rightHandle.Draw();
@@ -261,7 +260,7 @@ namespace WGame.Ability.Editor
         
         public void BuildEventHandles(ref List<EventHandler> list)
         {
-            if (eventStyle == EEventStyle.Duration)
+            if (eventStyle == EventStyle.Duration)
             {
                 list.Add(leftHandle);
                 list.Add(rightHandle);

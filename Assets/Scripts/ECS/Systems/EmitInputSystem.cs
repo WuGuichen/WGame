@@ -53,8 +53,13 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
         }
         else
         {
-            if (MainModel.Inst.IsUseJoystick)
+            #if UNITY_EDITOR
+            if (false)
+            #else
+            if (MainModel.Inst.IsUseJoystick )
+            #endif
             {
+                // 用手柄控制
                 model.TickInputUpdate(_metaContext.timeService.instance.DeltaTime);
                 _inputContext.ReplaceMoveInput(model.MoveDir);
                 if (model.isLooking)

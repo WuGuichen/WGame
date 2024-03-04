@@ -4,87 +4,521 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="技能编辑器，时间轴部分，以及特效资源">
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIStyleScope.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIStyleScope.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.Undo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.Undo.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/ContextMenuManipulator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/ContextMenuManipulator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/EventManipulator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/EventManipulator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/EventHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/EventHandler.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/GroupItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/GroupItem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TrackItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TrackItem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TreeItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TreeItem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/AbilityWindowSetting.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/AbilityWindowSetting.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/ActionEditorSkin.guiskin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/ActionEditorSkin.guiskin.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/BorderShadows.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/BorderShadows.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/BottomShadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/BottomShadow.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/ClipBox.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/ClipBox.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/HollowFrame.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/HollowFrame.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/Key.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/Skins/Images/Key.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Extensions.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Extensions/common.uss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Extensions/common.uss.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineDisplay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineDisplay.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineGroupBackground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineGroupBackground.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineKeyframe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineKeyframe.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineOutline.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineOutline.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineSeqEnd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineSeqEnd.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineSwatch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineSwatch.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineTimeCursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Resource/StyleSheets/Images/TimelineTimeCursor.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/TimeIndicator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/TimeIndicator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/README.md.meta" afterDir="false" />
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/EditorPropertyAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/EditorPropertyAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Weapons/NewShaderVariants.shadervariants" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Weapons/NewShaderVariants.shadervariants.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Res/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/BuildinFileManifest.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/BuildinFileManifest.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/AbilityData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/AbilityData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/DataEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/DataEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventDataType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventDataType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventPlayAnim.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventPlayAnim.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventPlayEffect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventPlayEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventStyle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventStyle.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/IEventData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/IEventData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/IData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/IData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/GUIHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/GUIHelper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/HotReloadSuggestionsHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/HotReloadSuggestionsHelper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/HotReloadTimelineHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/HotReloadTimelineHelper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/UnitySettingsHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/UnitySettingsHelper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadEventPopup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadEventPopup.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Icn_Stop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Icn_Stop.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Icn_play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Icn_play.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/alert_info.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/alert_info.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/applied_patch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/applied_patch.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/blue.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/error.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/events.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/events.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/foldout_closed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/foldout_closed.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/foldout_open.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/foldout_open.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/infos.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/infos.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/logo.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/red_dot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/red_dot.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/refresh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/refresh.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/report_bug.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/report_bug.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/InvokeOnHotReloadLocal.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/InvokeOnHotReloadLocal.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/RawFilePackage/ManifestFiles/PackageManifest_RawFilePackage.version" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/RawFilePackage/ManifestFiles/PackageManifest_RawFilePackage_2024-03-02-1271.bytes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yoo/RawFilePackage/ManifestFiles/PackageManifest_RawFilePackage_2024-03-02-1271.hash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Main/Main_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Main/Main_fui.bytes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Setting/Setting_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Setting/Setting_fui.bytes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Terminal/Terminal_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Terminal/Terminal_fui.bytes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/DataSettingAsset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/DataSettingAsset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Layout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Layout.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.TimeCursor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.TimeCursor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Timeline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Timeline.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/SpliteWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/SpliteWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TimelineScrub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/TimelineScrub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowItemState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowItemState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowSetting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/EffectCore/materials/blood/bloodShower.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/EffectCore/materials/blood/bloodShower.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/EventManipulator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/EventManipulator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WGame.Ability.Editor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WGame.Ability.Editor.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Weapons/Sword1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Weapons/Sword1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharanim.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Res/BaseDataJson/tbcharanim.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/DataEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/DataEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EventTriggerType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EEventStyle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EventTriggerType.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EEventStyle.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/IEventData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/IEventData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/WGame.Ability.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/WGame.Ability.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/DataEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/DataEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EEventStyle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EEventStyle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EventDataType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/EventDataType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/IEventData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/Event/IEventData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/IData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/Data/IData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAP/Demos/Complex/Editor/ItemBaseEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAP/Demos/Complex/Editor/ItemBaseEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAP/Demos/Complex/Editor/ItemCollectionEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAP/Demos/Complex/Editor/ItemCollectionEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/WGoapDebugger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/GOAPAI/WGoapDebugger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IGameViewService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IGameViewService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IRigidbodyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IRigidbodyService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ITimeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/ITimeService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IWeaponViewService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Interfaces/IWeaponViewService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Define/SettingDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Define/SettingDefine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/SettingModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/SettingModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Main/GameMainView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Main/GameMainView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingItemInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingItemInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingToggleItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/Component/SettingToggleItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/SettingGraphicView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Setting/SettingGraphicView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/CharacterBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/CharacterBinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_AttributeInfoItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_AttributeInfoItem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_CharacterInfoView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_CharacterInfoView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_HeadPad.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_HeadPad.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_HpBar.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_HpBar.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_MessagePad.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Character/FUI_MessagePad.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/CommonBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/CommonBinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnNormal.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnNormal.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnReset.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_BtnReset.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Slider1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Slider1.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Slider1_grip.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Slider1_grip.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Toggle1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Common/FUI_Toggle1.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/FUIBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/FUIBinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_CommandView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_CommandView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_GameMainView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_GameMainView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_GameMainView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_GameMainView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_JoystickView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_JoystickView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_MainListItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_MainListItem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_ProgressBar1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_ProgressBar1.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/MainBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/MainBinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/PanelId.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/PanelId.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingComboBox.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingComboBox.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingComboBox_popup.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingComboBox_popup.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingGraphicView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingGraphicView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingInputView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingInputView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingItem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingPanel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingPanel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingSliderItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingSliderItem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingSubTabItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingSubTabItem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingTabItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingTabItem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingToggleItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingToggleItem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/FUI_SettingView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/SettingBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Setting/SettingBinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_TerminalMsgItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_TerminalMsgItem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_TerminalView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_TerminalView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_btnNormal1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/FUI_btnNormal1.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/TerminalBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Terminal/TerminalBinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/VDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/VDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/VDB.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/VDB.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/CharacterControllerImplamentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/CharacterControllerImplamentation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/RigidbodyServiceImplamentation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/RigidbodyServiceImplamentation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Mono/TestSceneSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Motion/MotionAnimationProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Motion/MotionAnimationProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/DetectorCharacterImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/DetectorCharacterImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GameViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/GameViewServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/MotionServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/MotionServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/NormalGameViewImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/NormalGameViewImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/PlayModeTimeServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/PlayModeTimeServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/WeaponRightServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/WeaponRightServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/WeaponViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/WeaponViewServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/EmitInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/EmitInputSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/MoveCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/MoveCharacterSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/CameraRotateSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/CameraRotateSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/EntityUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/WGame.ECS.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/WGame.ECS.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharAnim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/BaseData/Gen/CharAnim.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/WLogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/WLogger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/WTerminal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/WTerminal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/JsonHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/JsonHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/High_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/High_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Low_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Low_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Medium_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Medium_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Very High_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Very High_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Very Low_PipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Very Low_PipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/.cache.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/.cache.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Luban/Config/Datas/charactersAnimation.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Luban/Config/Datas/charactersAnimation.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Documentation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Documentation.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Documentation/Documentation.pdf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Documentation/Documentation.pdf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution/Attribution.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution/Attribution.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution/Attribution.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution/Attribution.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution/VSAttribution.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution/VSAttribution.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution/VSAttribution.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Attribution/VSAttribution.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/CliUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/CliUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/CliUtils.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/CliUtils.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/FallbackCliController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/FallbackCliController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/FallbackCliController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/FallbackCliController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/HotReloadCli.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/HotReloadCli.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/HotReloadCli.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/HotReloadCli.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/ICliController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/ICliController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/ICliController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/ICliController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/LinuxCliController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/LinuxCliController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/LinuxCliController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/LinuxCliController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/OsxCliController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/OsxCliController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/OsxCliController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/OsxCliController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/StartArgs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/StartArgs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/StartArgs.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/StartArgs.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/WindowsCliController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/WindowsCliController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/WindowsCliController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CLI/WindowsCliController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/DefaultCompileChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/DefaultCompileChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/DefaultCompileChecker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/DefaultCompileChecker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/ICompileChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/ICompileChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/ICompileChecker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/ICompileChecker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/LegacyCompileChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/LegacyCompileChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/LegacyCompileChecker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/CompileChecker/LegacyCompileChecker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Constants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Constants.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Constants.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Constants.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Demo.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Demo.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Demo/EditorDemo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Demo/EditorDemo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Demo/EditorDemo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Demo/EditorDemo.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/EditorCodePatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/EditorCodePatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/EditorCodePatcher.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/EditorCodePatcher.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/EditorIndicationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/EditorIndicationState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/EditorIndicationState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/EditorIndicationState.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/GitUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/GitUtil.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/GitUtil.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/GitUtil.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/AssemblyOmission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/AssemblyOmission.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/AssemblyOmission.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/AssemblyOmission.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/BuildInfoHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/BuildInfoHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/BuildInfoHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/BuildInfoHelper.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/EditorWindowHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/EditorWindowHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/EditorWindowHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/EditorWindowHelper.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/Spinner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/Spinner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/Spinner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Helpers/Spinner.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadOverlay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadOverlay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadOverlay.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadOverlay.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadPrefs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadPrefs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadPrefs.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadPrefs.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadSettingsEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadSettingsEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadSettingsEditor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/HotReloadSettingsEditor.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Icon_Player.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Icon_Player.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/DownloadUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/DownloadUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/DownloadUtility.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/DownloadUtility.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/ExponentialBackoff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/ExponentialBackoff.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/ExponentialBackoff.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/ExponentialBackoff.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/InstallUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/InstallUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/InstallUtility.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/InstallUtility.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/ServerDownloader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/ServerDownloader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/ServerDownloader.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/ServerDownloader.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/UpdateUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/UpdateUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/UpdateUtility.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Installation/UpdateUtility.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/BuildGenerateBuildInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/BuildGenerateBuildInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/BuildGenerateBuildInfo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/BuildGenerateBuildInfo.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/HotReloadBuildHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/HotReloadBuildHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/HotReloadBuildHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/HotReloadBuildHelper.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PostbuildModifyAndroidManifest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PostbuildModifyAndroidManifest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PostbuildModifyAndroidManifest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PostbuildModifyAndroidManifest.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PostbuildSendProjectState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PostbuildSendProjectState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PostbuildSendProjectState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PostbuildSendProjectState.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PrebuildIncludeResources.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PrebuildIncludeResources.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PrebuildIncludeResources.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/PlayerBuild/PrebuildIncludeResources.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/FileIOProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/FileIOProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/FileIOProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/FileIOProvider.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/GUIDProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/GUIDProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/GUIDProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/GUIDProvider.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IFileIO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IFileIO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IFileIO.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IFileIO.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IGUIDGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IGUIDGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IGUIDGenerator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IGUIDGenerator.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IHotReloadProjectGenerationPostProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IHotReloadProjectGenerationPostProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IHotReloadProjectGenerationPostProcessor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/IHotReloadProjectGenerationPostProcessor.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGenenerationPostProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGenenerationPostProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGenenerationPostProcessor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGenenerationPostProcessor.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGeneration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGeneration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGeneration.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGeneration.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGenerationFlag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGenerationFlag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGenerationFlag.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectGenerationFlag.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectPart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectPart.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectPart.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/ProjectPart.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/SolutionGuidGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/SolutionGuidGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/SolutionGuidGenerator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/SolutionGuidGenerator.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util/FileSystemUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util/FileSystemUtil.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util/FileSystemUtil.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util/FileSystemUtil.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util/StringUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util/StringUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util/StringUtils.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ProjectGeneration/Util/StringUtils.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/RequiredSettings.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/RequiredSettings.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/RequiredSettings/RequiredSettingChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/RequiredSettings/RequiredSettingChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/RequiredSettings/RequiredSettingChecker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/RequiredSettings/RequiredSettingChecker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Icon_DarkMode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Icon_DarkMode.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Icon_LightMode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Icon_LightMode.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Logo_HotReload_DarkMode.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Logo_HotReload_DarkMode.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Logo_HotReload_LightMode.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/Logo_HotReload_LightMode.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/close.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/close.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/close.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/green.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/grey.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/grey.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_check_circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_check_circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_circle_black.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_circle_black.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_circle_gray.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_circle_gray.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_loading_star_dark_mode_96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_loading_star_dark_mode_96.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_loading_star_light_mode_96.png" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_loading_star_light_mode_96.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_loading_star_light_mode_96.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_loading_star_light_mode_96.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_warning_circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/icon_warning_circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/red.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/red.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/warning.png" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/warning.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/warning.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/warning.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/yellow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Resources/yellow.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ServerHealthCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ServerHealthCheck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ServerHealthCheck.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/ServerHealthCheck.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/SingularityGroup.HotReload.Editor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/SingularityGroup.HotReload.Editor.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/SingularityGroup.HotReload.Editor.asmdef.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/SingularityGroup.HotReload.Editor.asmdef.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/SingularityGroup.HotReload.EditorDependencies.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/SingularityGroup.HotReload.EditorDependencies.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/SingularityGroup.HotReload.EditorDependencies.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/SingularityGroup.HotReload.EditorDependencies.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning/PackageUpdateChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning/PackageUpdateChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning/PackageUpdateChecker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning/PackageUpdateChecker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning/SemVer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning/SemVer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning/SemVer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Versioning/SemVer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons/OpenDialogueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons/OpenDialogueButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons/OpenDialogueButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons/OpenDialogueButton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons/OpenURLButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons/OpenURLButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons/OpenURLButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Buttons/OpenURLButton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/EditorTextures.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/EditorTextures.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/EditorTextures.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/EditorTextures.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/IGUIComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/IGUIComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/IGUIComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/IGUIComponent.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/AllowAndroidAppToMakeHttpRequestsOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/AllowAndroidAppToMakeHttpRequestsOption.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/AllowAndroidAppToMakeHttpRequestsOption.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/AllowAndroidAppToMakeHttpRequestsOption.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base/HotReloadOptionBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base/HotReloadOptionBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base/HotReloadOptionBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base/HotReloadOptionBase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base/OptionInterfaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base/OptionInterfaces.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base/OptionInterfaces.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/Base/OptionInterfaces.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/ExposeServerOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/ExposeServerOption.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/ExposeServerOption.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/ExposeServerOption.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/IncludeInBuildOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/IncludeInBuildOption.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/IncludeInBuildOption.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Options/IncludeInBuildOption.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Base.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Base.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Base/HotReloadTabBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Base/HotReloadTabBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Base/HotReloadTabBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Base/HotReloadTabBase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Helpers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Helpers.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Helpers/RedeemLicenseHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Helpers/RedeemLicenseHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Helpers/RedeemLicenseHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/Helpers/RedeemLicenseHelper.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadAboutTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadAboutTab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadAboutTab.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadAboutTab.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadOptionsSection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadOptionsSection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadOptionsSection.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadOptionsSection.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadRunTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadRunTab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadRunTab.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadRunTab.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadSettingsTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadSettingsTab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadSettingsTab.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/GUI/Tabs/HotReloadSettingsTab.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/HotReloadWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/HotReloadWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/HotReloadWindow.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/HotReloadWindow.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/ShowOnStartupEnum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/ShowOnStartupEnum.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/ShowOnStartupEnum.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/ShowOnStartupEnum.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/Styles.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/Styles.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/Styles/HotReloadWindowStyles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/Styles/HotReloadWindowStyles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/Styles/HotReloadWindowStyles.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Editor/Window/Styles/HotReloadWindowStyles.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/LICENSE.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/LICENSE.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/README.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/README.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/AppCallbackListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/AppCallbackListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/AppCallbackListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/AppCallbackListener.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/BuildInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/BuildInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/BuildInfo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/BuildInfo.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Burst.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Burst.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Burst/JobHotReloadUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Burst/JobHotReloadUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Burst/JobHotReloadUtility.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Burst/JobHotReloadUtility.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/BurstChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/BurstChecker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/BurstChecker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/BurstChecker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/CodePatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/CodePatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/CodePatcher.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/CodePatcher.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBasicDemo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBasicDemo.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBasicDemo.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBasicDemo.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBurstDemo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBurstDemo.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBurstDemo.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBurstDemo.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBurstDemoSettings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBurstDemoSettings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBurstDemoSettings.lighting.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scenes/HotReloadBurstDemoSettings.lighting.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/HotReloadBasicDemo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/HotReloadBasicDemo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/HotReloadBasicDemo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/HotReloadBasicDemo.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/HotReloadBurstJobsDemo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/HotReloadBurstJobsDemo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/HotReloadBurstJobsDemo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/HotReloadBurstJobsDemo.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/IDemo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/IDemo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/IDemo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Demo/Scripts/IDemo.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/HotReloadPrompts.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/HotReloadPrompts.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/HotReloadPrompts.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/HotReloadPrompts.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/HotReloadSettingsObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/HotReloadSettingsObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/HotReloadSettingsObject.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/HotReloadSettingsObject.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/IServerHealthCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/IServerHealthCheck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/IServerHealthCheck.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/IServerHealthCheck.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/InstallQRDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/InstallQRDialog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/InstallQRDialog.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/InstallQRDialog.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/IpHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/IpHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/IpHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/IpHelper.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2019.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2019.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2019.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2019.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2020.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2020.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2020.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2020.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2022.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2022.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2022.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/EditorOnly/SingularityGroup.HotReload.RuntimeDependencies2022.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2019.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2019.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2019.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2019.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2020.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2020.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2020.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2020.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2022.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2022.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2022.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Libs/OnDevice/SingularityGroup.HotReload.RuntimeDependencies2022.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodCompatiblity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodCompatiblity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodCompatiblity.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodCompatiblity.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodPatchResponsesConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodPatchResponsesConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodPatchResponsesConverter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodPatchResponsesConverter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodUtils.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MethodUtils.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/ConnectionDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/ConnectionDialog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/ConnectionDialog.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/ConnectionDialog.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/Prompts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/Prompts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/Prompts.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/Prompts.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/QuestionDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/QuestionDialog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/QuestionDialog.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/QuestionDialog.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/RetryDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/RetryDialog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/RetryDialog.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoBehaviours/RetryDialog.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoMethod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoMethod.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoMethod.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/MonoMethod.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/OSX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/OSX.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/OSX/HotReloadNativeHelper.dylib.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/OSX/HotReloadNativeHelper.dylib.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/OnHotReloadDispatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/OnHotReloadDispatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/OnHotReloadDispatch.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/OnHotReloadDispatch.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PackageConst.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PackageConst.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PackageConst.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PackageConst.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PatchServerInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PatchServerInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PatchServerInfo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PatchServerInfo.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PersistencePaths.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PersistencePaths.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PersistencePaths.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PersistencePaths.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PlayerCodePatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PlayerCodePatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PlayerCodePatcher.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PlayerCodePatcher.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PlayerEntrypoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PlayerEntrypoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PlayerEntrypoint.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/PlayerEntrypoint.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/HotReloadLogging.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/HotReloadLogging.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/HotReloadLogging.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/HotReloadLogging.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/InvokeOnHotReload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/InvokeOnHotReload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/InvokeOnHotReload.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/InvokeOnHotReload.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/Log.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/Log.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/Log.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/Log.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/LogLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/LogLevel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/LogLevel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/LogLevel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/SingularityGroup.HotReload.Runtime.Public.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/SingularityGroup.HotReload.Runtime.Public.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/SingularityGroup.HotReload.Runtime.Public.asmdef.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/Public/SingularityGroup.HotReload.Runtime.Public.asmdef.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/RequestHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/RequestHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/RequestHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/RequestHelper.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ServerHandshake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ServerHandshake.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ServerHandshake.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ServerHandshake.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ServerHealthCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ServerHealthCheck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ServerHealthCheck.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ServerHealthCheck.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SingularityGroup.HotReload.Runtime.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SingularityGroup.HotReload.Runtime.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SingularityGroup.HotReload.Runtime.asmdef.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SingularityGroup.HotReload.Runtime.asmdef.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SymbolResolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SymbolResolver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SymbolResolver.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SymbolResolver.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SymbolResolvingFailedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SymbolResolvingFailedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SymbolResolvingFailedException.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/SymbolResolvingFailedException.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/TaskExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/TaskExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/TaskExtensions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/TaskExtensions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ThreadUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ThreadUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ThreadUtility.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/ThreadUtility.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/UnityHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/UnityHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/UnityHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Runtime/UnityHelper.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/hot-reload-config.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/hot-reload-config.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/hot-reload-config.graphql.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/hot-reload-config.graphql.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64/hotreload-start-script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64/hotreload-start-script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64/hotreload-start-script.sh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64/hotreload-start-script.sh.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64/terminal-run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64/terminal-run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64/terminal-run.sh.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Server/linux-x64/terminal-run.sh.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Third Party Notices.md" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Third Party Notices.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Third Party Notices.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/Third Party Notices.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/package.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/com.singularitygroup.hotreload/package.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/HybridCLRSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/HybridCLRSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yoo/RawFilePackage/ApplicationFootPrint.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/yoo/RawFilePackage/ApplicationFootPrint.bytes" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +568,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/9f/ac071a2e/AtomicSafetyHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6c9b376c3fca40b787e8c1a2133bf243171a00/a5/a3b98140/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73c3b9fa4da644c9a21a8a16d8e2909f173200/bf/ea150eec/IMGUIContainer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73c3b9fa4da644c9a21a8a16d8e2909f173200/c7/06b2df78/VisualTreeViewDataUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73c3b9fa4da644c9a21a8a16d8e2909f173200/f1/bad3745a/RenderChain.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7fb6dbaed5894b58b747e385194eed603e00/de/ef8a49d5/DebugSystems.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8a6435c78e7b40e4b723b1cfa9bd1f66355e20/21/78478717/SyntaxErrorException.cs" root0="SKIP_HIGHLIGHTING" />
@@ -156,6 +591,7 @@
     <setting file="file://D:/2023UnityFiles/TWY_Game_2023/Assets/Scripts/Physics/Collision/CollisionTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/2023UnityFiles/TWY_Game_2023/Assets/Scripts/Physics/Collision/CollisionUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/DataSettingAsset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/EditorPropertyAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIColorScope.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIStyleScope.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.Undo.cs" root0="FORCE_HIGHLIGHTING" />
@@ -180,9 +616,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowItemState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowSetting.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Tools/EditorIcons.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ability/AbilityData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioCtrl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/WAudioType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Ability/UtimateEvasion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Components/Ability/AbilityEvadeComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Components/CampComponents.cs" root0="FORCE_HIGHLIGHTING" />
@@ -318,32 +754,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.22408536",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.smartKeys_rider",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.22408536&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\WuGC\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\WuGC\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\WuGC\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Unity.exe" />
@@ -371,10 +807,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2584">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18788">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="2584" />
+      <option name="pid" value="18788" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -481,14 +917,9 @@
       <workItem from="1709186003936" duration="907000" />
       <workItem from="1709186935507" duration="32862000" />
       <workItem from="1709270257251" duration="6109000" />
-      <workItem from="1709280974392" duration="17823000" />
-    </task>
-    <task id="LOCAL-00008" summary="需要处理antlr解析的gc">
-      <created>1702229473238</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1702229473238</updated>
+      <workItem from="1709280974392" duration="20461000" />
+      <workItem from="1709363606696" duration="21428000" />
+      <workItem from="1709539647702" duration="6038000" />
     </task>
     <task id="LOCAL-00009" summary="主要优化代码gc，修复bug">
       <created>1702401702359</created>
@@ -826,7 +1257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709281064265</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="技能编辑器树形结构，以及样式资源">
+      <created>1709306470490</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1709306470490</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -852,7 +1290,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EPA，有bug" />
     <MESSAGE value="新的动画系统" />
     <MESSAGE value="修复AI动画逻辑" />
     <MESSAGE value="动画层级" />
@@ -877,7 +1314,8 @@
     <MESSAGE value="输入设备检测部分优化" />
     <MESSAGE value="动画层级切换优化" />
     <MESSAGE value="技能编辑器，时间轴部分，以及特效资源" />
-    <option name="LAST_COMMIT_MESSAGE" value="技能编辑器，时间轴部分，以及特效资源" />
+    <MESSAGE value="技能编辑器树形结构，以及样式资源" />
+    <option name="LAST_COMMIT_MESSAGE" value="技能编辑器树形结构，以及样式资源" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

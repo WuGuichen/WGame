@@ -39,7 +39,7 @@ E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/item_tbitem.json,107DDC4A7
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharacter.json,FBDFFAC7F456E988C4BCF35A9AFFD28B,251,1708954583163
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharacterinfo.json,89A0563FDBA5D820BC7995D3F4EC5CE2,959,1708954583164
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharai.json,3B0C3303BE51B8F1166848938B62444,115,1708954583164
-E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharanim.json,E27E908274501956ED2E9FAC4DBD9027,262,1708954583164
+E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharanim.json,758D62223AE3977326CA17ADAAEA4,565,1709364428027
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbobjectdata.json,64C0AB18C59F339857845741AE6CA72,631,1709119129151
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/weapon_tbweapon.json,A84E531BF1C638684FAD680AC2A905D,427,1708954583165
 E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/anim/Clip.cs,C82524BE7E5C5FC84F0D2869E8ACD7,1708,1709118832645
@@ -51,7 +51,7 @@ E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/Character/Race.cs,
 E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/CharacterData.cs,B3CFEEB8569A5D5FDAC97BCDBB69A33,2614,1709118832651
 E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/CharacterInfoData.cs,B1C42E2F4C1E6AC5CF4CA46D08DD9A2,7837,1709118832649
 E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/CharAI.cs,70F97B2E1623436652C7EF7FCD40C1,2284,1709118832648
-E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/CharAnim.cs,1C4BD99B3EC0BA2A6416F66583429F67,2445,1709118832647
+E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/CharAnim.cs,85CA6C835B32DD87BCE884D8582158DB,3804,1709364428027
 E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/item/EQuality.cs,CFAB47294A9A7E99549294C2C127EA6F,772,1709118832645
 E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/item/Item.cs,107EAFD894F6BD3CD265C729BDDAD4E,5843,1709118832645
 E:/UnityProjects/WGame/Client/Assets/Scripts/Res/BaseData/Gen/item/ItemExchange.cs,AF10DBD6607664C22FFFC63B0FC76AE,1741,1709118832645
@@ -74,7 +74,7 @@ E:/UnityProjects/WGame/Client/Luban/Config/Datas/animationClips.xlsx,1D99E42FB93
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/characterInfoData.xlsx,3868441DB4C166A09499AAB8E8EFCCB8,11241,1706430426197
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/characters.xlsx,70C9671973B77D91149AD7EEB3C0E6BE,10648,1708952492258
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/charactersAI.xlsx,2CE7706AFF498CBDF99987B073993EE8,10507,1703682165409
-E:/UnityProjects/WGame/Client/Luban/Config/Datas/charactersAnimation.xlsx,4851E186341CD028705F07CE3F11CA6,10588,1706431140627
+E:/UnityProjects/WGame/Client/Luban/Config/Datas/charactersAnimation.xlsx,14E1C54D54101A8E84542CEA7C42497,10740,1709364419762
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/item.xlsx,5E27B42B19E2BBC41436E9CC432C870,11214,1700953090098
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/objectPool.xlsx,6CCE96BD3E5B8CC934AD322F4D49E,10903,1709119120636
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/weapons.xlsx,46C38745BB3F9F5843FC7A81123AB1E,10854,1706431678318

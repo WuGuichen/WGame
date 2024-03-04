@@ -1,4 +1,5 @@
 using FairyGUI;
+using WGame.Runtime;
 
 namespace WGame.UI.Setting
 {
@@ -24,6 +25,11 @@ namespace WGame.UI.Setting
 			if (index == 1)
 			{
 				SettingModel.Inst.IsShowFPS = toggle.selected;
+			}
+			else if (index == 2)
+			{
+				SettingModel.Inst.IsShowMessage = toggle.selected;
+				EventCenter.Trigger(EventDefine.OnTerminalMessageUpdate);
 			}
 		}
 	}

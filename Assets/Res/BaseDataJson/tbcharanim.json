@@ -4,13 +4,25 @@
     "name": "默认",
     "idle": "Idle",
     "walk_F": "Walk_F",
-    "run_F": "Run_F"
+    "run_F": "Run_F",
+    "walk_B": "",
+    "run_B": "",
+    "walk_L": "",
+    "run_L": "",
+    "walk_R": "",
+    "run_R": ""
   },
   {
     "id": 2,
     "name": "长剑动画",
     "idle": "Longs_Idle1",
     "walk_F": "Longs_WalkFwd",
-    "run_F": "Longs_RunFwd"
+    "run_F": "Longs_RunFwd",
+    "walk_B": "Longs_WalkBwd",
+    "run_B": "Longs_RunBwd",
+    "walk_L": "Longs_WalkLeft",
+    "run_L": "Longs_RunLeft",
+    "walk_R": "Longs_WalkRight",
+    "run_R": "Longs_RunRight"
   }
 ]

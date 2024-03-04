@@ -44,7 +44,7 @@ public class NormalGameViewImplementation : MonoBehaviour, IGameViewService
         throw new System.NotImplementedException();
     }
 
-    public void Translate(Vector3 dir)
+    public void SetMoveVelocity(Vector3 dir)
     {
         _transform.Translate(dir);
     }
