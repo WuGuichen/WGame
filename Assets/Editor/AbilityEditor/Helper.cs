@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using UnityEngine;
 
 namespace WGame.Ability.Editor
 {
     public static partial class Helper
     {
+        public static readonly string Letter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        
         public static string GetRootDirectory()
         {
             string[] directories = Directory.GetDirectories("Assets/Editor", "AbilityEditor", SearchOption.AllDirectories);
@@ -102,6 +105,26 @@ namespace WGame.Ability.Editor
             }
 
             return idx;
+        }
+        
+        public static string RandomString(int n)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i=0; i<n; ++i)
+            {
+                int index = UnityEngine.Random.Range(0, Letter.Length);
+                sb.Append(Letter[index]);
+            }
+
+            return sb.ToString();
+        }
+
+        public static string NonceStr(int n = 32)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("{0:d19}{1}", System.DateTime.Now.Ticks, RandomString(n - 19));
+
+            return sb.ToString();
         }
     }
 }

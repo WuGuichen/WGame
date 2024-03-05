@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using WGame.Editor;
 
 namespace WGame.Ability.Editor
 {
@@ -50,7 +51,7 @@ namespace WGame.Ability.Editor
         
         private static void OnInit()
         {
-            
+            GameAssetsMgr.Inst.InitInstance();
         }
         
         private string _editorResourcePath = null;

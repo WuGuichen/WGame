@@ -65,6 +65,10 @@ namespace WGame.Ability.Editor
             children.Remove(item);
         }
 
+        /// <summary>
+        /// 填加到handler列表
+        /// </summary>
+        /// <param name="list">要添加的列表</param>
         public virtual void BuildEventHandles(ref List<EventHandler> list)
         {
             using (var itr = children.GetEnumerator())

@@ -12,6 +12,8 @@ namespace WGame.Ability.Editor
 
         [SerializeField] private List<IManipulator> _captured = new();
         [SerializeField] protected Rect rect = Rect.zero;
+
+        public int ItemIndex;
         
         public Rect manipulatorRect
         {

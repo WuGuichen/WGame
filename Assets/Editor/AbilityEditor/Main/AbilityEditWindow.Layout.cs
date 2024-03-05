@@ -28,11 +28,11 @@ namespace WGame.Ability.Editor
             set => _inspectorWidth = Mathf.Clamp(value, minInspectorWidth, maxInspectorWidth);
         }
 
-        private float horizontalScrollbarHeight = 18f;
+        public float horizontalScrollbarHeight = 18f;
         public float verticalScrollbarWidth = 18f;
         private const float timelineOffsetX = 6f;
 
-        private float propertyHeight = 22f;
+        public float propertyHeight = 22f;
 
         private const float minPropertyWidth = 150f;
         private const float maxPropertyWidth = 450f;

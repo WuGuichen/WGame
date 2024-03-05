@@ -33,6 +33,8 @@ namespace WGame.Ability.Editor
             DrawTimeCursor(AreaType.Lines);
             DrawTimelineRange();
             DrawTimeCursor(AreaType.Header);
+            DrawInspector();
+            DrawOverlay();
         }
 
         private void InitGUI()
@@ -58,6 +60,7 @@ namespace WGame.Ability.Editor
             {
                 itemTreeView = ScriptableObject.CreateInstance<TreeItem>();
                 itemTreeView.Init(null);
+                itemTreeView.AddManipulator(new EventHandlerManipulator(itemTreeView));
                 itemTreeView.AddManipulator(new EventManipulator(itemTreeView));
                 itemTreeView.AddManipulator(new ContextMenuManipulator(itemTreeView));
 
@@ -250,6 +253,90 @@ namespace WGame.Ability.Editor
         private void Save()
         {
             
+        }
+        
+        private void BuildItemEventTree(DataEvent evt, string groupName, string trackType, Color trackColor,
+            GUIContent trackIcon)
+        {
+            GroupItem group = null;
+            using (var itr = itemTreeView.children.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    if (itr.Current.itemName == groupName)
+                    {
+                        group = itr.Current as GroupItem;
+                        break;
+                    }
+                }
+            }
+
+            TrackItem track = null;
+            
+            using (var itr = group.children.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    if (itr.Current.ItemIndex == evt.TrackIndex)
+                    {
+                        track = itr.Current as TrackItem;
+                        break;
+                    }
+                }
+            }
+            
+            if  (track == null)
+            {
+                track = CreateActorTrack(group, trackType, trackColor, trackIcon, false);
+                track.ItemIndex = evt.TrackIndex;
+                track.itemName = evt.TrackName;
+            }
+            
+            float posX = Time2Pos(ToSecond(evt.TriggerTime)) + rectTimeArea.x;
+            var style = evt.TriggerType == ETriggerType.Signal ? EventStyle.Signal : EventStyle.Duration;
+            var ae = CreateActorEvent(track, posX, style, trackType, false);
+            ae.eventProperty = evt;
+        }
+
+        public void BuildTreeView(AbilityData ab)
+        {
+            Ability = ab;
+            
+            ab.ForceSort();
+
+            // 事件列表
+            using (var itr = ab.EventList.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    switch (itr.Current.EventType)
+                    {
+                        case EventDataType.PlayAnim:
+                            {
+                                BuildItemEventTree(itr.Current, Setting.groupAnimationName, Setting.trackAnimationType, Setting.colorAnimation, Setting.animationTrackIcon);
+                            }
+                            break;
+                        case EventDataType.PlayEffect:
+                            {
+                                BuildItemEventTree(itr.Current, Setting.groupEffectName, Setting.trackEffectType, Setting.colorEffect, Setting.effectTrackIcon);
+                            }
+                            break;
+                    }
+                }
+            }
+        }
+
+        public void ClearTreeView()
+        {
+            Ability = null;
+
+            using (var itr = itemTreeView.children.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    itr.Current.children.Clear();
+                }
+            }
         }
     }
 }

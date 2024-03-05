@@ -1,8 +1,7 @@
 {
-    "name": "WGame.Ability",
+    "name": "WGame.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:c3c6fa1a57c17004283f0339e0e302cc",
         "GUID:d274c6a4453e1d04dbd09c5497aae871"
     ],
     "includePlatforms": [],

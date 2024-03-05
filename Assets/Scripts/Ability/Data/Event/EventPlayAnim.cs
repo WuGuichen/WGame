@@ -14,7 +14,7 @@ namespace WGame.Ability
         Force = 4,
     }
     
-    internal class EventPlayAnim : IData, IEventData
+    public sealed class EventPlayAnim : IData, IEventData
     {
         public string DebugName => GetType().ToString();
         

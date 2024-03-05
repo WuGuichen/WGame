@@ -7,22 +7,17 @@ namespace WGame.Ability
 {
     public sealed class AbilityData : IData
     {
-        public int ID { get; set; }
+        public string ID { get; set; }
         public string Name { get; set; }
         public int TotalTime { get; set; }
         public string DebugName => Name;
 
-        [SerializeReference] private List<DataEvent> _eventList = new();
-        
-        public List<DataEvent> EventList
-        {
-            get => _eventList;
-            set => _eventList = value;
-        }
-        
+        [field: SerializeReference]
+        public List<DataEvent> EventList { get; set; } = new();
+
         public void Deserialize(JsonData jsonData)
         {
-            ID = JsonHelper.ReadInt(jsonData["ID"]);
+            ID = JsonHelper.ReadString(jsonData["ID"]);
             Name = JsonHelper.ReadString(jsonData["Name"]);
             TotalTime = JsonHelper.ReadInt(jsonData["TotalTime"]);
         }

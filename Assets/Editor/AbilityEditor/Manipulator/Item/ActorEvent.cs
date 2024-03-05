@@ -223,14 +223,13 @@ namespace WGame.Ability.Editor
                 GUI.Box(rect, "", Window.Setting.customEventKey);
             }
 
-            // if (eventProperty != null && eventProperty.EventData != null && eventProperty.EventData is EventPlayAnim epa)
-            // {
-            //     if (!string.IsNullOrEmpty(epa.AnimName) && UnitWrapper.Instance.StateHash.ContainsKey(epa.AnimName))
-            //     {
-            //         UnityEditor.Animations.AnimatorState state = UnitWrapper.Instance.StateHash[epa.AnimName];
-            //         duration = state.motion.averageDuration;
-            //     }
-            // }
+            if (eventProperty != null && eventProperty.EventData != null && eventProperty.EventData is EventPlayAnim epa)
+            {
+                if (!string.IsNullOrEmpty(epa.AnimName))
+                {
+                    duration = 0.2f;
+                }
+            }
 
             switch (eventStyle)
             {

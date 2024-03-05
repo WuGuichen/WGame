@@ -53,6 +53,13 @@ namespace WGame.Ability
                     switch (_dataType)
                     {
                         case EventDataType.None:
+                            EventData = null;
+                            break;
+                        case EventDataType.PlayAnim:
+                            EventData = new EventPlayAnim();
+                            break;
+                        case EventDataType.PlayEffect:
+                            EventData = new EventPlayEffect();
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();

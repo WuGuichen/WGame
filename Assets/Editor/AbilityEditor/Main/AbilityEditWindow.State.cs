@@ -10,6 +10,7 @@ namespace WGame.Ability.Editor
         [SerializeReference] private List<IManipulator> captureList = new();
         
         [System.NonSerialized] public List<WindowItemState> selectionList = new();
+        [System.NonSerialized] public List<WindowItemState> dataList = new();
         
         public void AddCaptured(IManipulator manipulator)
         {
@@ -75,6 +76,28 @@ namespace WGame.Ability.Editor
         {
             var list = selectionList.Where(x => x is ActorEvent).ToList();
             return list.Count == 1 ? (ActorEvent)list[0] : null;
+        }
+        
+        public void SelectData(WindowItemState item)
+        {
+            dataList.Clear();
+            dataList.Add(item);
+        }
+
+        public void DeselectAllData()
+        {
+            dataList.Clear();
+        }
+
+        public ItemTreeData GetItemData()
+        {
+            var list = dataList.Where(x => x is ItemTreeData).ToList();
+            return list.Count > 0 ? (ItemTreeData)list[0] : null;
+        }
+        
+        public bool HasSelectData(WindowItemState item)
+        {
+            return dataList.Contains(item);
         }
         
         public void DrawOverlay()
