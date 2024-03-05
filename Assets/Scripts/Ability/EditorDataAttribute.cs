@@ -1,8 +1,8 @@
-namespace WGame.Ability.Editor
+namespace WGame.Ability
 {
     using System;
     
-    public enum EditorPropertyType
+    public enum EditorDataType
     {
         Bool = 1,
         Int,
@@ -30,12 +30,12 @@ namespace WGame.Ability.Editor
     }
     
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    public class EditorPropertyAttribute : Attribute
+    public class EditorDataAttribute : Attribute
     {
-        public EditorPropertyAttribute(string name, EditorPropertyType type)
+        public EditorDataAttribute(string name, EditorDataType type)
         {
             PropertyName = name;
-            PropertyType = type;
+            DataType = type;
             Edit = true;
             Deprecated = null;
             LabelWidth = 100;
@@ -44,7 +44,7 @@ namespace WGame.Ability.Editor
         #region property
         public string PropertyName { get; set; }
 
-        public EditorPropertyType PropertyType { get; set; }
+        public EditorDataType DataType { get; set; }
 
         public bool Edit { get; set; }
 

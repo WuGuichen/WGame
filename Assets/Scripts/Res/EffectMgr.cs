@@ -8,8 +8,6 @@ namespace WGame.Res
 {
     public class EffectMgr : Singleton<EffectMgr>
     {
-        private static object locker = new object();
-
         private Dictionary<int, GameObject> loadedEffects = new Dictionary<int, GameObject>();
 
         public static void LoadEffect(int objId, Transform parent, Vector3 pos, Quaternion dir,
@@ -71,7 +69,6 @@ namespace WGame.Res
                     Inst.loadedEffects.Remove(key);
                 }
             }
-
         }
     }
 }

@@ -56,7 +56,7 @@ namespace WGame.Ability.Editor
 
         private void SaveAbility()
         {
-            var path = $"{GameAssetsMgr.AbilityDataPath}Action/TestGroup.json";
+            var path = $"{GameAssetsMgr.AbilityDataPath}/TestGroup.json";
             SerializeData<AbilityData>(path, itemAbilityTree);
             
             EditorUtility.DisplayDialog("INFO", "Succeed to save!", "OK");

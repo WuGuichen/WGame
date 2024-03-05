@@ -23,7 +23,7 @@ namespace WGame.Ability
         public Vector3 Position { get; set; }
         public Vector3 EulerAngle { get; set; }
         public bool UseRandom { get; set; }
-        public List<string> RandomEffectList { get; set; }
+        public List<string> RandomEffectList { get; set; } = new();
         public EventDataType EventType => EventDataType.PlayEffect;
 
         public void Deserialize(JsonData jd)

@@ -3,7 +3,6 @@ using WGame.Utils;
 namespace WGame.Ability
 {
     using LitJson;
-    using UnityEngine;
     
     public enum WAnimType
     {
@@ -18,9 +17,13 @@ namespace WGame.Ability
     {
         public string DebugName => GetType().ToString();
         
+        [EditorData("动画名", EditorDataType.String)]
         public string AnimName { get; set; }
+        [EditorData("动画类型", EditorDataType.Enum)]
         public WAnimType AnimType { get; set; }
+        [EditorData("触发器名", EditorDataType.String)]
         public string TriggerName { get; set; }
+        [EditorData("触发器值", EditorDataType.String)]
         public string TriggerValue { get; set; }
         public EventDataType EventType => EventDataType.PlayAnim;
         public float AnimCrossFadeDuration { get; set; }

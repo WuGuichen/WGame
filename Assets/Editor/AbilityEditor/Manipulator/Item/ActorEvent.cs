@@ -268,7 +268,45 @@ namespace WGame.Ability.Editor
         
         public override void DrawInspector()
         {
-            
+            GUILayout.BeginVertical();
+            {
+                GUILayout.Space(5);
+                Window.rightScrollPos = GUILayout.BeginScrollView(Window.rightScrollPos, false, true);
+                {
+                    using (new GUIColorScope(Window.Setting.colorInspectorLabel))
+                    {
+                        GUILayout.Label("Event");
+                    }
+
+                    GUILayout.Space(2);
+                    Window.DrawData(eventProperty);
+
+                    GUILayout.Space(5);
+                    using (new GUIColorScope(Window.Setting.colorInspectorLabel))
+                    {
+                        GUILayout.Label("Event Data");
+                    }
+
+                    GUILayout.Space(2);
+                    if (eventProperty.EventData != null)
+                    {
+                        switch (eventProperty.EventType)
+                        {
+                            // case EventDataType.EET_Interrupt:
+                            //     DrawInspectorInterrupt();
+                            //     break;
+                            // case EventDataType.EET_AttackDef:
+                            //     DrawInspectorAttackDef();
+                            //     break;
+                            default:
+                                Window.DrawData(eventProperty.EventData);
+                                break;
+                        }
+                    }
+                }
+                GUILayout.EndScrollView();
+            }
+            GUILayout.EndVertical();
         }
         
         public void OnChangeTrackName(string trackName)
