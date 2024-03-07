@@ -51,11 +51,11 @@ public class ObjectPool : SingletonMono<ObjectPool>
             }
         }
     }
-    private Dictionary<int, Pool> objPools;
+    private Dictionary<int, Pool> objPools =new();
+    private Dictionary<string, Pool> stringObjPools = new();
 
     private void Awake()
     {
-        objPools = new Dictionary<int, Pool>();
     }
 
     public void PreLoad(int objId, int num)
@@ -75,6 +75,43 @@ public class ObjectPool : SingletonMono<ObjectPool>
         Action<GameObject> callback = null)
     {
         GetObject(objId, Vector3.zero, Quaternion.identity, parent, callback);
+    }
+
+    public void GetObject(string objName, Vector3 pos, Quaternion rot, Transform parent = null,
+        Action<GameObject> callback = null)
+    {
+        if (parent == null) 
+            parent = transform;
+        if (stringObjPools.TryGetValue(objName, out var pool))
+        {
+            if (pool.Get(parent, pos, rot, out var obj))
+            {
+                obj.name = objName;
+                callback?.Invoke(obj);
+                return;
+            }
+        }
+        
+        YooassetManager.Inst.LoadGameObject(objName, o =>
+        {
+            var trans = o.transform;
+            trans.parent = parent;
+            trans.position = pos;
+            trans.rotation = rot;
+            o.name = objName;
+            callback?.Invoke(o);
+        });
+    }
+    
+    public void PushObject(GameObject obj)
+    {
+        var objId = obj.name;
+        if (!stringObjPools.TryGetValue(objId, out var root))
+        {
+            root = new Pool(objId.ToString(), transform);
+            stringObjPools[objId] = root;
+        }
+        root.Push(obj); 
     }
 
     public void GetObject(int objId, Vector3 pos, Quaternion rot, Transform parent = null, Action<GameObject> callback = null)

@@ -43,6 +43,10 @@ namespace WGame.Ability
 
         public void ForceSort()
         {
+            EventList.Sort((l, r) =>
+            {
+                return l.TrackIndex < r.TrackIndex ? -1 : (l.TrackIndex == r.TrackIndex ? 0 : 1);
+            });
         }
 
         private void SerializeEvent(ref JsonWriter writer)

@@ -126,6 +126,14 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/Prefabs/Effects
+        CollectorGUID: 18464088758c01642a21c0db824f9847
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
     - GroupName: Weapon
       GroupDesc: 
       AssetTags: 

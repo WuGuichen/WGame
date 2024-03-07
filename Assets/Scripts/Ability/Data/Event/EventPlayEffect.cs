@@ -13,11 +13,14 @@ namespace WGame.Ability
         Custom,
         InputByUser,     // user set 'PropertyName.sInputSkillPosition'
     }
-    internal class EventPlayEffect : IData, IEventData
+
+    public class EventPlayEffect : IData, IEventData
     {
         public string DebugName => GetType().ToString();
         [EditorData("特效名称", EditorDataType.GameObject)]
         public string EffectName { get; set; }
+
+        public string AddressName { get; private set; }
         [EditorData("是否循环", EditorDataType.Bool)]
         public bool IsLoop { get; set; }
         public string LoopName { get; set; }
@@ -32,6 +35,7 @@ namespace WGame.Ability
         public void Deserialize(JsonData jd)
         {
             EffectName = JsonHelper.ReadString(jd["EffectName"]);
+            AddressName = WUtils.GetFileNameWithoutExtension(EffectName);
             IsLoop = JsonHelper.ReadBool(jd["IsLoop"]);
             LoopName = JsonHelper.ReadString(jd["LoopName"]);
             DummyType = JsonHelper.ReadEnum<EffectDummyType>(jd["DummyType"]);

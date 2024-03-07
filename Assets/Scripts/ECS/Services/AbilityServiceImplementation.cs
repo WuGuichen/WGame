@@ -6,7 +6,7 @@ public class AbilityServiceImplementation : IAbility
     private readonly GameEntity _entity;
     private AbilityData _curAbility;
 
-    private LinkedList<AbilityStatus> _abilityStatusList = new();
+    private LinkedList<AbilityStatusCharacter> _abilityStatusList = new();
 
     public AbilityServiceImplementation(GameEntity entity)
     {
@@ -16,10 +16,8 @@ public class AbilityServiceImplementation : IAbility
     public void Do(string name)
     {
         var ability = WAbilityMgr.Inst.GetAbility(name);
-        var status = new AbilityStatus();
-        status.Initialize(ability);
+        var status = AbilityStatusCharacter.Get(_entity, ability);
         _abilityStatusList.AddLast(status);
-        WLogger.Print(ability.Name);
     }
 
     public void Process(float deltaTime)
@@ -37,6 +35,7 @@ public class AbilityServiceImplementation : IAbility
             {
                 var next = node.Next;
                 _abilityStatusList.Remove(node);
+                AbilityStatusCharacter.Push(node.Value);
                 node = next;
             }
         }
