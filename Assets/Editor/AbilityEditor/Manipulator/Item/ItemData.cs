@@ -38,7 +38,7 @@ namespace WGame.Ability.Editor
                 }
                 if (selected)
                 {
-                    // Window.DrawSelectable(window.editorResources.colorRed);
+                    Window.DrawSelectable(Window.Setting.colorRed);
                 }
             }
             GUILayout.EndHorizontal();
@@ -49,7 +49,30 @@ namespace WGame.Ability.Editor
             GUILayout.BeginVertical();
             {
                 GUILayout.Space(2);
-                GUILayout.Label("未定义");
+                Window.rightScrollPos = GUILayout.BeginScrollView(Window.rightScrollPos, false, true);
+                {
+                    if (Data is AbilityData)
+                    {
+                        using (new GUIColorScope(Window.Setting.colorInspectorLabel))
+                        {
+                            GUILayout.Label("Ability Attribute");
+                            GUILayout.Space(5);
+                        }
+
+                        Window.DrawData(Data);
+                    }
+
+                    if (Data is AbilityData ability)
+                    {
+                        using (new GUIColorScope(Window.Setting.colorInspectorLabel))
+                        {
+                            GUILayout.Space(5);
+                        }
+
+                        GUILayout.Space(2);
+                    }
+                }
+                GUILayout.EndScrollView();
             }
             GUILayout.EndVertical();
         }

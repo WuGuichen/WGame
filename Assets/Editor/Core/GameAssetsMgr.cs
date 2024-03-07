@@ -1,5 +1,3 @@
-
-
 namespace WGame.Editor
 {
     using UnityEngine;
@@ -9,36 +7,39 @@ namespace WGame.Editor
 
     public class GameAssetsMgr : Singleton<GameAssetsMgr>
     {
-        private Dictionary<string, string> _fileMap = new Dictionary<string, string>();
-        public const string ResRoot = "Assets/Res";
+        private Dictionary<string, string> _prefabMap = new Dictionary<string, string>();
+        // public const string ResRoot = "Assets/Res";
+        public const string PrefabRoot = "Assets/Prefabs";
         
-        public static string ResDataPath { get; private set; }
+        public static string PrefabDataPath { get; private set; }
+        public static string PrefabEffectPath { get; private set; }
 
         public static string AbilityDataPath { get; private set; }
 
         private void BuildResMap()
         {
-            string abRoot = Path.Combine(Directory.GetCurrentDirectory(), ResRoot);
+            string abRoot = Path.Combine(Directory.GetCurrentDirectory(), PrefabRoot);
             if (!Directory.Exists(abRoot))
                 WLogger.Error("The directory of resource is not exist!");
 
-            string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Texture t:TextAsset t:GameObject t:Shader t:Font", new string[] { ResRoot });
+            var guids = UnityEditor.AssetDatabase.FindAssets("t:Texture t:TextAsset t:GameObject t:Shader t:Font", new string[] { PrefabRoot });
             for (int i=0; i<guids.Length; ++i)
             {
                 string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[i]);
                 if (File.Exists(assetPath))
                 {
-                    string fileName = assetPath.Replace(ResRoot, "");
-                    _fileMap[fileName] = assetPath;
+                    string fileName = assetPath.Replace(PrefabRoot, "");
+                    _prefabMap[fileName] = assetPath;
                 }
             }
         }
 
         private void InitResFolderPath()
         {
-            ResDataPath = Application.dataPath.Replace("Assets", ResRoot);
+            PrefabDataPath = Application.dataPath.Replace("Assets", PrefabRoot);
             
-            AbilityDataPath = $"{ResDataPath}/AbilityData/";
+            AbilityDataPath = $"{PrefabDataPath}/AbilityData/";
+            PrefabEffectPath = $"{PrefabDataPath}/Effects/";
         }
         
         public override void InitInstance()
@@ -49,7 +50,7 @@ namespace WGame.Editor
 
         private bool FindResource(string fileName, out string asset)
         {
-            if (_fileMap.TryGetValue(fileName, out asset))
+            if (_prefabMap.TryGetValue(fileName, out asset))
             {
                 return true;
             }
@@ -59,7 +60,7 @@ namespace WGame.Editor
         
         public string FormatResourceName(string name)
         {
-            return name.Replace(ResRoot, "");
+            return name.Replace(PrefabRoot, "");
         }
         
         public Object LoadObject(string fileName, System.Type type)
@@ -104,7 +105,7 @@ namespace WGame.Editor
         {
             List<string> fileList = new List<string>();
 
-            using (var itr = _fileMap.GetEnumerator())
+            using (var itr = _prefabMap.GetEnumerator())
             {
                 while (itr.MoveNext())
                 {

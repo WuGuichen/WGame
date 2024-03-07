@@ -7,8 +7,11 @@ namespace WGame.Ability
 {
     public sealed class AbilityData : IData
     {
+        [EditorData("ID", EditorDataType.String)]
         public string ID { get; set; }
+        [EditorData("名称", EditorDataType.String)]
         public string Name { get; set; }
+        [EditorData("总时间(ms)", EditorDataType.Int)]
         public int TotalTime { get; set; }
         public string DebugName => Name;
 

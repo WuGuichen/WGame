@@ -77,7 +77,7 @@ namespace WGame.Ability
             get => _trackIndex;
             set => _trackIndex = value;
         }
-
+        
         public IEventData EventData
         {
             get => _eventData;

@@ -314,15 +314,15 @@ namespace WGame.Ability.Editor
             eventProperty.TrackName = parent.itemName;
         }
         
-        // public ActorEvent Clone()
-        // {
-        //     var posX = Window.Time2Pos(start);
-        //     var newAE = Window.CreateActorEvent(parent, posX, eventStyle, parent.GetActorType());
-        //
-        //     newAE.ActorIndex = this.ActorIndex;
-        //     this.eventProperty.CopyTo(newAE.eventProperty);
-        //
-        //     return newAE;
-        // }
+        public ActorEvent Clone()
+        {
+            var posX = Window.Time2Pos(start);
+            var newAE = Window.CreateActorEvent(parent, posX, eventStyle, parent.GetItemType());
+        
+            newAE.ItemIndex = this.ItemIndex;
+            this.eventProperty.CopyTo(newAE.eventProperty);
+        
+            return newAE;
+        }
     }
 }

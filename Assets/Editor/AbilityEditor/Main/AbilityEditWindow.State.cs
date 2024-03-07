@@ -12,6 +12,8 @@ namespace WGame.Ability.Editor
         [System.NonSerialized] public List<WindowItemState> selectionList = new();
         [System.NonSerialized] public List<WindowItemState> dataList = new();
         
+        private ActorEvent copyEvent = null;
+        
         public void AddCaptured(IManipulator manipulator)
         {
             if (!captureList.Contains(manipulator))
@@ -191,6 +193,50 @@ namespace WGame.Ability.Editor
                         parent.RemoveChild(track);
 
                         BuildTrackIndex(parent);
+                    }
+                });
+            }
+            else if (item is ActorEvent e)
+            {
+                if (e.eventProperty != null && e.eventProperty.EventData != null &&
+                    e.eventProperty.EventData is EventPlayAnim epa)
+                {
+                    menu.AddItem(Setting.contextResetTotalTime, false, () =>
+                    {
+                        if (Ability != null)
+                        {
+                            //todo 重置动画播放时间
+                            Length = ToSecond(e.eventProperty.TriggerTime) + 1f;
+                        }
+                    });
+                }
+                else
+                {
+                    menu.AddItem(Setting.contextDuplicateEvent, false, () =>
+                    {
+                        var newAE = e.Clone();
+                        newAE.start += SnapInterval;
+                    });
+                    menu.AddItem(Setting.contextCopyEventValue, false, () => { copyEvent = e; });
+                    menu.AddItem(Setting.contextPasteEventValue, false, () =>
+                    {
+                        if (copyEvent != null)
+                        {
+                            copyEvent.eventProperty.CopyTo(e.eventProperty);
+                        }
+                    });
+                }
+                
+                menu.AddItem(Setting.contextDelEvent, false, () =>
+                {
+                    if (EditorUtility.DisplayDialog("Delete Event", "Are you sure?", "YES", "NO!"))
+                    {
+                        var parent = e.parent;
+
+                        Helper.PushUndo(new Object[] { parent, e }, Setting.contextDelEvent.text);
+                        Helper.PushDestroyUndo(parent, e);
+
+                        parent.RemoveEvent(e);
                     }
                 });
             }

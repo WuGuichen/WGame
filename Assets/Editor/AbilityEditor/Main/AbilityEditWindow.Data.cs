@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEditor;
+using WGame.Editor;
 
 namespace WGame.Ability.Editor
 {
@@ -138,6 +139,28 @@ namespace WGame.Ability.Editor
         private void GameObjectField(object obj, string propertyName, object val)
         {
             GameObject go = null;
+            var szPath = (string)val;
+
+            if (!string.IsNullOrEmpty(szPath))
+            {
+                if (gameobject2stringDic.ContainsKey(szPath))
+                {
+                    go = gameobject2stringDic[szPath];
+                }
+                else
+                {
+                    go = GameAssetsMgr.Inst.LoadObject<GameObject>(szPath);
+                    if (go != null && !gameobject2stringDic.ContainsKey(szPath))
+                    {
+                        gameobject2stringDic.Add(szPath, go);
+                    }
+                }
+            }
+            
+            go = EditorGUILayout.ObjectField(go, typeof(GameObject), true) as GameObject;
+            var name = GameAssetsMgr.Inst.FormatResourceName(AssetDatabase.GetAssetPath(go));
+
+            Helper.SetProperty(obj, propertyName, (go != null ? name : string.Empty));
         }
 
         private void GameObjectListField(object obj, string propertyName, object val)

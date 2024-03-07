@@ -17,6 +17,9 @@ namespace WGame.Ability.Editor
     {
         [System.NonSerialized] public Vector2 leftScrollPos;
         [System.NonSerialized] public Vector2 rightScrollPos;
+        [System.NonSerialized] private Texture2D cacheTexture = null;
+        
+        private static Dictionary<string, GameObject> gameobject2stringDic = new Dictionary<string, GameObject>();
         
         private int inspectorID = 0;
         private string[] inspectorNames = new string[] { "Ability" };
@@ -66,7 +69,8 @@ namespace WGame.Ability.Editor
         
         private void DeserializeData<T>(string filename, ItemTreeData item) where T : IData, new()
         {
-            if (File.Exists(GameAssetsMgr.AbilityDataPath + filename.Replace("/AbilityData/", "")))
+            var tmpName = GameAssetsMgr.AbilityDataPath + filename.Replace("/AbilityData/", "");
+            if (File.Exists(tmpName))
             {
                 TextAsset text = GameAssetsMgr.Inst.LoadObject(filename, typeof(TextAsset)) as TextAsset;
                 if (text == null)
@@ -131,6 +135,21 @@ namespace WGame.Ability.Editor
         private void DeserializeAll()
         {
             InitInspectorAbility();
+        }
+        
+        public void DrawSelectable(Color color, int size = 16)
+        {
+            if (cacheTexture == null)
+            {
+                cacheTexture = new Texture2D(size, size);
+                for (int i = 0; i < size; ++i)
+                    for (int j = 0; j < size; ++j)
+                        cacheTexture.SetPixel(i, j, color);
+                cacheTexture.Apply();
+                cacheTexture.hideFlags = HideFlags.HideAndDontSave;
+            }
+
+            GUILayout.Label(cacheTexture);
         }
     }
 }

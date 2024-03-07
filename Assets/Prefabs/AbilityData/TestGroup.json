@@ -1,0 +1,39 @@
+
+{
+    "Data" : [
+        {
+            "ID" : "0638453498572385587I5mB89",
+            "Name" : "Aminos",
+            "TotalTime" : 666,
+            "Events"    : [
+                {
+                    "TrackName" : "Effect 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Signal",
+                    "TriggerTime" : 94,
+                    "Duration"    : 0,
+                    "EventType"   : "PlayEffect",
+                    "EventData"   : {
+                        "EffectName" : "",
+                        "IsLoop"     : false,
+                        "LoopName"   : "",
+                        "DummyType"  : "DummyFollow",
+                        "Position"   : {
+                            "x" : 0.0,
+                            "y" : 0.0,
+                            "z" : 0.0
+                        },
+                        "Euler"      : {
+                            "x" : 0.0,
+                            "y" : 0.0,
+                            "z" : 0.0
+                        },
+                        "UseRandom"  : false,
+                        "RandomEffectList" : [
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

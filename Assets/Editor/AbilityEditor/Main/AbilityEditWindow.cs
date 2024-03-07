@@ -47,7 +47,7 @@ namespace WGame.Ability.Editor
             }
         }
         
-        public AbilityData Ability { get; set; }
+        public AbilityData Ability { get; private set; }
         
         private static void OnInit()
         {

@@ -13,6 +13,7 @@ namespace WGame.Ability.Editor
             itemAbilityTree = ScriptableObject.CreateInstance<ItemTreeData>();
             itemAbilityTree.Init(null);
             itemAbilityTree.AddManipulator(new ItemTreeDataManipulator(itemAbilityTree));
+            DeserializeAbility();
         }
 
         private void DrawInspectorAbility()
@@ -65,8 +66,8 @@ namespace WGame.Ability.Editor
         public void DeserializeAbility()
         {
             itemAbilityTree.RemoveAll();
-            var groupName = "defaultGroup";
-            var fileName = "/Res/Ability/" + groupName + ".json";
+            var groupName = "TestGroup";
+            var fileName = "/AbilityData/" + groupName + ".json";
             
             DeserializeData<AbilityData>(fileName, itemAbilityTree);
         }

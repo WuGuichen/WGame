@@ -16,9 +16,12 @@ namespace WGame.Ability
     internal class EventPlayEffect : IData, IEventData
     {
         public string DebugName => GetType().ToString();
+        [EditorData("特效名称", EditorDataType.GameObject)]
         public string EffectName { get; set; }
+        [EditorData("是否循环", EditorDataType.Bool)]
         public bool IsLoop { get; set; }
         public string LoopName { get; set; }
+        [EditorData("特效类型", EditorDataType.Enum)]
         public EffectDummyType DummyType { get; set; }
         public Vector3 Position { get; set; }
         public Vector3 EulerAngle { get; set; }
