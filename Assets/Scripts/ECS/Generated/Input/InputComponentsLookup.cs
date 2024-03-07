@@ -22,9 +22,10 @@ public static class InputComponentsLookup {
     public const int MoveInput = 11;
     public const int RightMouse = 12;
     public const int RunInput = 13;
-    public const int StepInput = 14;
+    public const int Special = 14;
+    public const int StepInput = 15;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
         "AttackHoldInput",
@@ -41,6 +42,7 @@ public static class InputComponentsLookup {
         "MoveInput",
         "RightMouse",
         "RunInput",
+        "Special",
         "StepInput"
     };
 
@@ -59,6 +61,7 @@ public static class InputComponentsLookup {
         typeof(MoveInputComponent),
         typeof(RightMouseComponent),
         typeof(RunInputComponent),
+        typeof(SpecialComponent),
         typeof(StepInputComponent)
     };
 }

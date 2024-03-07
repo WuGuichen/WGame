@@ -13,11 +13,6 @@ public class SceneUtils
     {
         EditorSceneManager.OpenScene("Assets/Scenes/BootStrap.unity");
     }
-    [MenuItem("Utils/Open SandBox")]
-    static void OpenSandBox()
-    {
-        EditorSceneManager.OpenScene("Assets/Scenes/SandBox.unity");
-    }
 
     [MenuItem("Utils/清除PlayerPrefs")]
     static void ClearPlayerPrefs()

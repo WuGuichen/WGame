@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using WGame.Editor;
 
 namespace WGame.Ability.Editor
 {
@@ -227,7 +228,8 @@ namespace WGame.Ability.Editor
             {
                 if (!string.IsNullOrEmpty(epa.AnimName))
                 {
-                    duration = 0.2f;
+                    var clip =GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
+                    duration = clip.length;
                 }
             }
 

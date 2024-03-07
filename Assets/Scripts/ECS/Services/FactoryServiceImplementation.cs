@@ -30,7 +30,7 @@ public class FactoryServiceImplementation : IFactoryService
     private AvatarMask[] _avatarMasks;
     private Dictionary<int, EventNodeScriptableObject> _motions = new Dictionary<int, EventNodeScriptableObject>();
 
-    private readonly InstaceDB<GameEntity> _gameEntityDB;
+    private readonly InstanceDB<GameEntity> _gameEntityDB;
 
     private const int characterBaseID = EntityUtils.CharacterBaseID;
     private int genCharacterNum = 0;
@@ -51,7 +51,7 @@ public class FactoryServiceImplementation : IFactoryService
 #endif
         _gameContext = contexts.game;
         _weaponContext = contexts.weapon;
-        _gameEntityDB = new InstaceDB<GameEntity>(EntityUtils.CharacterBaseID);
+        _gameEntityDB = new InstanceDB<GameEntity>(EntityUtils.CharacterBaseID);
     }
     
     #if UNITY_EDITOR
@@ -360,6 +360,7 @@ public class FactoryServiceImplementation : IFactoryService
 
         // ----- LinkAbilityEntity -----
         var ability = Contexts.sharedInstance.ability.CreateEntity();
+        ability.AddAbilityService(new AbilityServiceImplementation(entity));
         // 受击能力
         ability.AddAbilityGotHit(new GotHitAbilityServiceImplementation());
         entity.AddLinkAbility(ability);

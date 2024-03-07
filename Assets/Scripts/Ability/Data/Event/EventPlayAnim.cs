@@ -17,7 +17,7 @@ namespace WGame.Ability
     {
         public string DebugName => GetType().ToString();
         
-        [EditorData("动画名", EditorDataType.String)]
+        [EditorData("动画名", EditorDataType.AnimationClip)]
         public string AnimName { get; set; }
         [EditorData("动画类型", EditorDataType.Enum)]
         public WAnimType AnimType { get; set; }

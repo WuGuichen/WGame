@@ -91,6 +91,7 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
                 _inputContext.ReplaceStepInput(_inputService.StepWasPressed);
                 _inputContext.ReplaceFocusInput(_inputService.FocusWasPressed);
                 _inputContext.ReplaceDefense(_inputService.DefensePressing);
+                _inputContext.ReplaceSpecial(_inputService.SpecialWasPressed);
                 if (_inputService.InteractWasPressed)
                 {
                     MainModel.Inst.OnInteractTagClick();

@@ -72,5 +72,10 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
         {
             entity.ReplaceSignalStep(0.2f);
         }
+
+        if (_inputContext.special.value)
+        {
+            entity.linkAbility.Ability.abilityService.service.Do("Aminos");
+        }
     }
 }

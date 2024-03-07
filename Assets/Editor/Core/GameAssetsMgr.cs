@@ -2,12 +2,17 @@ namespace WGame.Editor
 {
     using UnityEngine;
     using WGame.Runtime;
+    using System.Linq;
     using System.IO;
     using System.Collections.Generic;
 
     public class GameAssetsMgr : Singleton<GameAssetsMgr>
     {
         private Dictionary<string, string> _prefabMap = new Dictionary<string, string>();
+
+        private Dictionary<string, string> _animClipMap = new();
+        private Dictionary<string, AnimationClip> _animClipCache = new();
+        public const string AnimClipFolder = "Assets/Res/Animations";
         // public const string ResRoot = "Assets/Res";
         public const string PrefabRoot = "Assets/Prefabs";
         
@@ -29,7 +34,7 @@ namespace WGame.Editor
                 if (File.Exists(assetPath))
                 {
                     string fileName = assetPath.Replace(PrefabRoot, "");
-                    _prefabMap[fileName] = assetPath;
+                    _prefabMap.Add(fileName, assetPath);
                 }
             }
         }
@@ -41,11 +46,22 @@ namespace WGame.Editor
             AbilityDataPath = $"{PrefabDataPath}/AbilityData/";
             PrefabEffectPath = $"{PrefabDataPath}/Effects/";
         }
-        
+
         public override void InitInstance()
         {
             InitResFolderPath();
             BuildResMap();
+            
+            var guids = UnityEditor.AssetDatabase.FindAssets("t:AnimationClip", new string[] { AnimClipFolder });
+            for (int i=0; i<guids.Length; ++i)
+            {
+                string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[i]);
+                if (File.Exists(assetPath))
+                {
+                    var clipName = Path.GetFileNameWithoutExtension(assetPath);
+                    _animClipMap.Add(clipName, assetPath);
+                }
+            }
         }
 
         private bool FindResource(string fileName, out string asset)
@@ -61,6 +77,26 @@ namespace WGame.Editor
         public string FormatResourceName(string name)
         {
             return name.Replace(PrefabRoot, "");
+        }
+        
+        public AnimationClip LoadAnimClip(string fileName)
+        {
+            if (_animClipCache.TryGetValue(fileName, out var clip))
+            {
+                return clip;
+            }
+            if (_animClipMap.TryGetValue(fileName, out var assetPath))
+            {
+                clip = UnityEditor.AssetDatabase.LoadAssetAtPath<AnimationClip>(assetPath);
+                if (null == clip)
+                {
+                    WLogger.Error($"无法加载{assetPath}");
+                }
+                _animClipCache.Add(fileName, clip);
+                return clip;
+            }
+            WLogger.Error($"Res/Animations/文件夹下没有{fileName}");
+            return null;
         }
         
         public Object LoadObject(string fileName, System.Type type)
@@ -117,6 +153,18 @@ namespace WGame.Editor
             }
 
             return fileList.ToArray();
+        }
+
+        public List<string> GetAllAnimationClips()
+        {
+            return _animClipMap.Keys.ToList();
+        }
+
+        public void Dispose()
+        {
+            _animClipMap.Clear();
+            _animClipCache.Clear();
+            _prefabMap.Clear();
         }
     }
 }

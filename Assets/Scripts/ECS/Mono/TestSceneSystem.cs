@@ -1,6 +1,5 @@
-using Entitas;
 using UnityEngine;
-using Weapon;
+using WGame.Ability;
 using WGame.Res;
 using Random = UnityEngine.Random;
 using WGame.UI;
@@ -21,11 +20,10 @@ public class TestSceneSystem : MonoBehaviour
 	[SerializeField] private UnityEngine.Rendering.Volume volume;
 	[SerializeField] private Transform goapTrans;
 
-	private Systems _systems;
-    
-	private Systems _rigidSystems;
-	private Systems _lateFixedUpdateSystems;
-	private Systems _lateUpdateSystems;
+	private OtherSystems _otherSystems;
+	private CharacterRigidbodySystems _rigidSystems;
+	private LateFixedUpdateSystems _lateFixedUpdateSystems;
+	private LateUpdateSystems _lateUpdateSystems;
 	private SensorDetectSystems _detectSystems;
 	private GameEventSystems _gameEventSystems;
 	private ProcessMotionSystems _processMotionSystems;
@@ -53,6 +51,7 @@ public class TestSceneSystem : MonoBehaviour
             );
         _registrationSystems = new ServiceRegistrationSystems(_contexts, _services);
         _gameSystems = new GameSystems(_contexts);
+        
         _registrationSystems.Initialize();
         _gameSystems.Initialize();
 
@@ -64,41 +63,21 @@ public class TestSceneSystem : MonoBehaviour
     private void Awake()
     {
         PreInit();
-		_systems = new Feature("Game Systems");
-		_rigidSystems = new Feature("Rigidbody Systems");
-		_lateFixedUpdateSystems = new Feature("LateFixedUpdate Systems");
-		_lateUpdateSystems = new Feature("LateUpdate Systems");
+        _otherSystems = new OtherSystems(_contexts);
+        _lateFixedUpdateSystems = new LateFixedUpdateSystems(_contexts);
+		_lateUpdateSystems = new LateUpdateSystems(_contexts);
 		_detectSystems = new SensorDetectSystems(_contexts);
 		_gameEventSystems = new GameEventSystems(_contexts);
 		_processMotionSystems = new ProcessMotionSystems(_contexts);
 		_vmSystems = new VMSystems(_contexts);
-		
-		// 注意系统顺序
-		_systems.Add(new UpdateCharacterDataSystem(_contexts));
-		_systems.Add(new AnimSpeedSystem(_contexts));
-		
-		_systems.Add(new CharacterOnGroundSystem(_contexts));
-		_systems.Add(new UpdateDeviceInputSignalSystem(_contexts));
-		_systems.Add(new UpdateFocusInputSystem(_contexts));
-		_systems.Add(new FocusEntitySystem(_contexts));
-		_systems.Add(new AIAgentUpdateSystem(_contexts));
-		_systems.Add(new RefreshCharacterUISystem(_contexts));
-		
-		_rigidSystems.Add(new MoveCharacterSystem(_contexts));
-		_rigidSystems.Add(new RotateCharacterSystem(_contexts));
-		_rigidSystems.Add(new UpdateMoveDirectionSystem(_contexts));
-
-		_lateFixedUpdateSystems.Add(new CameraFollowTargetSystem(_contexts));
-		_lateFixedUpdateSystems.Add(new CameraRotateSystem(_contexts));
-		
-		_lateUpdateSystems.Add(new DeadCharacterSystem(_contexts));
+		_rigidSystems = new CharacterRigidbodySystems(_contexts);
     }
 
     // Start is called before the first frame update
     void Start()
     {
 		_vmSystems.Initialize();
-		_systems.Initialize();
+		_otherSystems.Initialize();
 		_processMotionSystems.Initialize();
 		_rigidSystems.Initialize();
 		_lateFixedUpdateSystems.Initialize();
@@ -120,10 +99,10 @@ public class TestSceneSystem : MonoBehaviour
 	    _gameSystems.Execute();
 	    _detectSystems.Execute();
 	    _gameEventSystems.Execute();
-	    _systems.Execute();
+	    _otherSystems.Execute();
 		_contexts.meta.factoryService.instance.GOAPRunner?.OnUpdate();
 	    _processMotionSystems.Execute();
-	    _systems.Cleanup();
+	    _otherSystems.Cleanup();
 	    _processMotionSystems.Cleanup();
 	    _gameEventSystems.Cleanup();
 
@@ -229,5 +208,6 @@ public class TestSceneSystem : MonoBehaviour
 	    WLangMgr.Inst.LordInitCode(TerminalModel.Inst.Interp);
 		_contexts.meta.factoryService.instance.InitSceneObjectRoot(sceneRoot);
 		_contexts.meta.factoryService.instance.InitGOAPRoot(goapTrans);
+		WAbilityMgr.Inst.Initialize(new AbilityAssetLoader());
     }
 }

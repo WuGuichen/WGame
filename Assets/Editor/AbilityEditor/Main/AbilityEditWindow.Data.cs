@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using WGame.Editor;
 
@@ -73,9 +74,9 @@ namespace WGame.Ability.Editor
                                 case EditorDataType.Enum:
                                     Helper.SetProperty(obj, pis[i].Name, EditorGUILayout.EnumPopup((Enum)val));
                                     break;
-                                case EditorDataType.AnimatorState:
+                                case EditorDataType.AnimationClip:
                                 {
-                                    // PopupList(obj, pis[i].Name, val, UnitWrapper.Instance.StateNameList);
+                                    AnimationClipField(obj, pis[i].Name, val);
                                 }
                                     break;
                                 case EditorDataType.AnimatorParam:
@@ -136,6 +137,32 @@ namespace WGame.Ability.Editor
         {
         }
 
+        private void AnimationClipField(object obj, string propertyName, object val)
+        {
+            AnimationClip clip = null;
+            var szPath = (string)val;
+
+            if (!string.IsNullOrEmpty(szPath))
+            {
+                if (animationClip2stringDic.ContainsKey(szPath))
+                {
+                    clip = animationClip2stringDic[szPath];
+                }
+                else
+                {
+                    clip = GameAssetsMgr.Inst.LoadAnimClip(szPath);
+                    if (clip != null && !animationClip2stringDic.ContainsKey(szPath))
+                    {
+                        animationClip2stringDic.Add(szPath, clip);
+                    }
+                }
+            }
+            
+            clip = EditorGUILayout.ObjectField(clip, typeof(AnimationClip), true) as AnimationClip;
+            var name = AssetDatabase.GetAssetPath(clip);
+
+            Helper.SetProperty(obj, propertyName, (clip != null ? Path.GetFileNameWithoutExtension(name) : string.Empty));
+        }
         private void GameObjectField(object obj, string propertyName, object val)
         {
             GameObject go = null;

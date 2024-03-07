@@ -1,4 +1,4 @@
-public class InstaceDB<T> where T : new()
+public class InstanceDB<T> where T : new()
 {
     private T[] list = new T[8];
     private int count = 0;
@@ -6,7 +6,7 @@ public class InstaceDB<T> where T : new()
     private readonly T empty = default;
     private int _maxNum;
 
-    public InstaceDB(int maxNum)
+    public InstanceDB(int maxNum)
     {
         _maxNum = maxNum;
     }

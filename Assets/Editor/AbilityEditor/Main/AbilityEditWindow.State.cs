@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using WGame.Editor;
 
 namespace WGame.Ability.Editor
 {
@@ -206,7 +207,8 @@ namespace WGame.Ability.Editor
                         if (Ability != null)
                         {
                             //todo 重置动画播放时间
-                            Length = ToSecond(e.eventProperty.TriggerTime) + 1f;
+                            var clip = GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
+                            Length = ToSecond(e.eventProperty.TriggerTime) + clip.length;
                         }
                     });
                 }

@@ -20,6 +20,7 @@ namespace WGame.Ability.Editor
         [System.NonSerialized] private Texture2D cacheTexture = null;
         
         private static Dictionary<string, GameObject> gameobject2stringDic = new Dictionary<string, GameObject>();
+        private static Dictionary<string, AnimationClip> animationClip2stringDic = new();
         
         private int inspectorID = 0;
         private string[] inspectorNames = new string[] { "Ability" };
@@ -150,6 +151,11 @@ namespace WGame.Ability.Editor
             }
 
             GUILayout.Label(cacheTexture);
+        }
+
+        private void OnDestroy()
+        {
+            GameAssetsMgr.Inst.Dispose();
         }
     }
 }

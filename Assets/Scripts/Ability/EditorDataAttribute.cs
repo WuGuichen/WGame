@@ -19,7 +19,7 @@ namespace WGame.Ability
         GameObject,
 
         //popup list string
-        AnimatorState,
+        AnimationClip,
         AnimatorParam,
         CustomProperty,
         Action,
