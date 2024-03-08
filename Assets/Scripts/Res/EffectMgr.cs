@@ -8,9 +8,21 @@ namespace WGame.Res
 {
     public class EffectMgr : Singleton<EffectMgr>
     {
-        private static object locker = new object();
-
         private Dictionary<int, GameObject> loadedEffects = new Dictionary<int, GameObject>();
+
+        public static void LoadEffect(string objName, Transform parent, Vector3 pos, Quaternion dir,
+            float duration = 10f, Action<GameObject> onCompleted = null)
+        {
+            ObjectPool.Inst.GetObject(objName, pos, dir, parent, obj =>
+            {
+                onCompleted?.Invoke(obj);
+                int key = obj.GetInstanceID();
+                if (Inst.loadedEffects.ContainsKey(key))
+                    WLogger.Warning("重复加载特效");
+                Inst.loadedEffects[key] = obj;
+                DisposeEffect(key, duration);
+            });
+        }
 
         public static void LoadEffect(int objId, Transform parent, Vector3 pos, Quaternion dir,
             float duration = -1f, Action<GameObject> onCompleted = null)
@@ -46,6 +58,26 @@ namespace WGame.Res
             }
         }
 
+        public static void DisposeEffect(int key, float delayTime = 0)
+        {
+            if (Inst.loadedEffects.TryGetValue(key, out var obj))
+            {
+                if (delayTime > 0)
+                {
+                    Timer.Register(delayTime, () =>
+                    {
+                        ObjectPool.Inst.PushObject(obj);
+                        Inst.loadedEffects.Remove(key);
+                    });
+                }
+                else
+                {
+                    ObjectPool.Inst.PushObject(obj);
+                    Inst.loadedEffects.Remove(key);
+                }
+            }
+        }
+        
         public static void DisposeEffect(int objId ,int key, float delayTime = 0)
         {
             var data = GameData.Tables.TbObjectData[objId];
@@ -71,7 +103,6 @@ namespace WGame.Res
                     Inst.loadedEffects.Remove(key);
                 }
             }
-
         }
     }
 }

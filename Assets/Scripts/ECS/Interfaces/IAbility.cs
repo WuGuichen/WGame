@@ -1,6 +1,5 @@
 public interface IAbility
 {
-    void Start();
-    void Update();
-    void End();
+    void Do(string name);
+    void Process(float deltaTime);
 }

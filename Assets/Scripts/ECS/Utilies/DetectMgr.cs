@@ -38,17 +38,17 @@ public class DetectMgr : Singleton<DetectMgr>
 
     public void UpdateDistance(int id1, int id2, float distance)
     {
-        _distanceDict[Utils.PairInt(id1, id2)] = distance;
+        _distanceDict[WUtils.PairInt(id1, id2)] = distance;
     }
 
     public void UpdateAngle(int from, int to, float angle)
     {
-        _angleDict[Utils.SortPairInt(from, to)] = angle;
+        _angleDict[WUtils.SortPairInt(from, to)] = angle;
     }
 
     public float GetDistance(GameEntity entity1, GameEntity entity2)
     {
-        if (_distanceDict.TryGetValue(Utils.PairInt(entity1.instanceID.ID, entity2.instanceID.ID), out float dist))
+        if (_distanceDict.TryGetValue(WUtils.PairInt(entity1.instanceID.ID, entity2.instanceID.ID), out float dist))
         {
             return dist;
         }
@@ -58,7 +58,7 @@ public class DetectMgr : Singleton<DetectMgr>
 
     public float GetAngle(GameEntity from, GameEntity to)
     {
-        if (_distanceDict.TryGetValue(Utils.SortPairInt(from.instanceID.ID, to.instanceID.ID), out float angle))
+        if (_distanceDict.TryGetValue(WUtils.SortPairInt(from.instanceID.ID, to.instanceID.ID), out float angle))
         {
             return angle;
         }
@@ -68,7 +68,7 @@ public class DetectMgr : Singleton<DetectMgr>
     }
     public float GetAngle(int from, int to)
     {
-        if (_angleDict.TryGetValue(Utils.SortPairInt(from, to), out float angle))
+        if (_angleDict.TryGetValue(WUtils.SortPairInt(from, to), out float angle))
         {
             if (angle <= 180)
             {
@@ -83,7 +83,7 @@ public class DetectMgr : Singleton<DetectMgr>
     }
     public float GetAngle360(int from, int to)
     {
-        if (_angleDict.TryGetValue(Utils.SortPairInt(from, to), out float angle))
+        if (_angleDict.TryGetValue(WUtils.SortPairInt(from, to), out float angle))
         {
             return angle;
         }
@@ -94,7 +94,7 @@ public class DetectMgr : Singleton<DetectMgr>
 
     public float GetDistance(int id1, int id2)
     {
-        if (_distanceDict.TryGetValue(Utils.PairInt(id1, id2), out float dist))
+        if (_distanceDict.TryGetValue(WUtils.PairInt(id1, id2), out float dist))
         {
             return dist;
         }

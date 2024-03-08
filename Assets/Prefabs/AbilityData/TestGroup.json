@@ -1,0 +1,62 @@
+
+{
+    "Data" : [
+        {
+            "ID" : "0638453498572385587I5mB89",
+            "Name" : "Aminos",
+            "TotalTime" : 833,
+            "Events"    : [
+                {
+                    "TrackName" : "Animation 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Duration",
+                    "TriggerTime" : 0,
+                    "Duration"    : 833,
+                    "EventType"   : "PlayAnim",
+                    "EventData"   : {
+                        "AnimName" : "Longs_Jump_Platformer_Land",
+                        "FadeTime" : 0.0
+                    }
+                },
+                {
+                    "TrackName" : "Effect 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Signal",
+                    "TriggerTime" : 90,
+                    "Duration"    : 0,
+                    "EventType"   : "PlayEffect",
+                    "EventData"   : {
+                        "EffectName" : "/Effects/HCFX_Buff_Up.prefab",
+                        "IsLoop"     : false,
+                        "LoopName"   : "",
+                        "DummyType"  : "DummyFollow",
+                        "Position"   : {
+                            "x" : 0.0,
+                            "y" : 0.0,
+                            "z" : 0.0
+                        },
+                        "Euler"      : {
+                            "x" : 0.0,
+                            "y" : 0.0,
+                            "z" : 0.0
+                        },
+                        "UseRandom"  : false,
+                        "RandomEffectList" : [
+                        ]
+                    }
+                },
+                {
+                    "TrackName" : "Notice 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Signal",
+                    "TriggerTime" : 514,
+                    "Duration"    : 0,
+                    "EventType"   : "NoticeMessage",
+                    "EventData"   : {
+                        "ReceiverID" : 0
+                    }
+                }
+            ]
+        }
+    ]
+}

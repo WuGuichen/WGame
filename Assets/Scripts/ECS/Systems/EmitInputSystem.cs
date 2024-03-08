@@ -53,8 +53,13 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
         }
         else
         {
-            if (MainModel.Inst.IsUseJoystick)
+            #if UNITY_EDITOR
+            if (false)
+            #else
+            if (MainModel.Inst.IsUseJoystick )
+            #endif
             {
+                // 用手柄控制
                 model.TickInputUpdate(_metaContext.timeService.instance.DeltaTime);
                 _inputContext.ReplaceMoveInput(model.MoveDir);
                 if (model.isLooking)
@@ -66,7 +71,7 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
                     _inputContext.ReplaceLookInput(Vector2.zero);
                 }
 
-                _inputContext.ReplaceJumpInput(model.IsTriggerJump);
+                _inputContext.ReplaceSpecial(model.IsTriggerSpecial);
                 _inputContext.ReplaceRunInput(model.IsRunningState);
                 _inputContext.ReplaceAttackInput(model.IsTriggerAttack);
                 _inputContext.ReplaceAttackHoldInput(model.IsHoldAttack);
@@ -86,6 +91,7 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
                 _inputContext.ReplaceStepInput(_inputService.StepWasPressed);
                 _inputContext.ReplaceFocusInput(_inputService.FocusWasPressed);
                 _inputContext.ReplaceDefense(_inputService.DefensePressing);
+                _inputContext.ReplaceSpecial(_inputService.SpecialWasPressed);
                 if (_inputService.InteractWasPressed)
                 {
                     MainModel.Inst.OnInteractTagClick();

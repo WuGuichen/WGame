@@ -15,6 +15,7 @@ public interface IInputService
     bool StepWasPressed { get; }
     bool FocusWasPressed { get; }
     bool DefensePressing { get; }
+    bool SpecialWasPressed { get; }
     void Dispose();
     void CleanUp();
 }

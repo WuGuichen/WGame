@@ -14,6 +14,8 @@ namespace WGame.UI.Main
 		public GGraph focusPoint;
 		public GButton interactTag;
 		public GList topList;
+		public GTextField messageBox;
+		public GGraph messageBtn;
 		public const string URL = "ui://x1rerq2ky2kd2";
 
 		public static FUI_GameMainView CreateInstance()
@@ -32,6 +34,8 @@ namespace WGame.UI.Main
 			focusPoint = (GGraph)GetChildAt(4);
 			interactTag = (GButton)GetChildAt(5);
 			topList = (GList)GetChildAt(6);
+			messageBox = (GTextField)GetChildAt(7);
+			messageBtn = (GGraph)GetChildAt(8);
 		}
 	}
 }

@@ -5,7 +5,7 @@ ExternalTools/
 Logs/
 obj/
 Assets/Wwise/
-Assets/StreamAssets/yoo/
+Assets/StreamingAssets/yoo/
 Assets/StreamingAssets/yoo/DefaultPackage/
 HybridCLRData/
 WwiseUnityIntegration_Mac_Src.zip

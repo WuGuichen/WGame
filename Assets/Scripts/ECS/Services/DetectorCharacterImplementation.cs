@@ -130,7 +130,6 @@ public class DetectorCharacterImplementation : IDetectorService
         vm.Set("E_MAX_HATE_POINT", nullInfo.Value);
         hateInfo.RegisterOnHateRankChanged(() =>
         {
-            WLogger.Print(info.MaxHateEntityRank + "Rank");
             vm.Set("E_MAX_HATE_RANK", info.MaxHateEntityRank);
             vm.Set("E_MAX_HATE_ENTITY", info.MaxHateEntityId);
         }, () => { vm.Set("E_MAX_HATE_POINT", info.MaxHateEntityPoint); });

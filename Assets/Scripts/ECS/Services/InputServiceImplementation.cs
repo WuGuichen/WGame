@@ -33,6 +33,7 @@ public class InputServiceImplementation : IInputService
     public bool FocusWasPressed => _input.GamePlay.Focus.WasPressedThisFrame();
     private bool defensePressing = false;
     public bool DefensePressing => defensePressing;
+    public bool SpecialWasPressed => _input.GamePlay.Special.WasPressedThisFrame();
 
 
     public InputServiceImplementation()

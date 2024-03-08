@@ -2,6 +2,7 @@
 public interface ITimeService
 {
     float DeltaTime { get; }
+    float DivFixedDeltaTime { get; }
     float FixedDeltaTime { get; }
     float RealTimeSinceStart { get; }
     void UpdateDeltaTime(float value);

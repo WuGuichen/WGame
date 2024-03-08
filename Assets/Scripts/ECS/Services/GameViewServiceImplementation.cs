@@ -26,6 +26,8 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     private float halfHeight;
     private float radius;
     private float radiusTwo;
+
+    private ITimeService _timeService;
     public void OnDead()
     {
         GetEntity().isMoveable = false;
@@ -68,9 +70,9 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
         return _cameraTransform.position;
     }
 
-    public void Translate(Vector3 dir)
+    public void SetMoveVelocity(Vector3 dir)
     {
-        _transform.Translate(dir);
+        _entity.rigidbodyService.service.Velocity += (dir * _timeService.DivFixedDeltaTime);
     }
 
     public Vector3 LocalizeVectorXY(Vector2 vector, bool isFocus)
@@ -94,6 +96,7 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     
     public IGameViewService OnInit(GameEntity entity)
     {
+        _timeService = Contexts.sharedInstance.meta.timeService.instance;
         _transform = transform;
         _entity = entity;
         if (_cameraTransform != null)

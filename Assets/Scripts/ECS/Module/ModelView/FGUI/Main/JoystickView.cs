@@ -137,16 +137,16 @@ namespace WGame.UI
 				model.isDefencePressing = false;
 			});
 			
-			ui.btnJump.onTouchBegin.Add(() =>
+			ui.btnSpecial.onTouchBegin.Add(() =>
 			{
-				model.isJumpPressing = true;
-				model.IsTriggerJump = true;
+				model.isSpecialPressing = true;
+				model.IsTriggerSpecial = true;
 			});
-			ui.btnJump.visible = false;
-			ui.btnJump.onTouchEnd.Add(() =>
+			// ui.btnSpecial.visible = false;
+			ui.btnSpecial.onTouchEnd.Add(() =>
 			{
-				model.isJumpPressing = false;
-				model.IsHoldJump = false;
+				model.isSpecialPressing = false;
+				model.IsHoldSpecial = false;
 			});
 			
 			ui.btnStep.onTouchBegin.Add(() =>

@@ -7,7 +7,6 @@ using YooAsset;
 using Object = UnityEngine.Object;
 using WGame.Runtime;
 
-
 namespace WGame.Res
 {
     public class YooassetManager : MonoBehaviour, IAssetService
@@ -22,7 +21,6 @@ namespace WGame.Res
         private ResourcePackage rawFilePackage;
 
         #if UNITY_EDITOR
-        [SerializeField]
         private EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
         #else
         private EPlayMode PlayMode = EPlayMode.OfflinePlayMode;

@@ -246,7 +246,15 @@ public partial class MethodDefine
                 }
             }
         }
-        EffectMgr.LoadEffect(param[1].Value, parent, pos, rot, duration, callback);
+
+        if (param[1].Type == TYPE_INT)
+        {
+            EffectMgr.LoadEffect(param[1].Value, parent, pos, rot, duration, callback);
+        }
+        else if(param[1].Type == TYPE_STRING)
+        {
+            EffectMgr.LoadEffect(param[1].Text, parent, pos, rot, duration, callback);
+        }
     }
 
     private void DisposeEffect(List<Symbol> param, Interpreter interpreter)

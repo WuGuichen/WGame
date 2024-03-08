@@ -1,3 +1,4 @@
+using System;
 using WGame.UI.Main;using FairyGUI;
 using UnityEngine;
 using WGame.Attribute;
@@ -19,6 +20,12 @@ namespace WGame.UI
 			model = MainModel.Inst;
 			ui.interactTag.visible = false;
 			ui.topList.visible = false;
+			ui.messageBox.text = WTerminal.LastMessage;
+			ui.messageBtn.onClick.Add(() =>
+			{
+				UIManager.OpenView(VDB.TerminalView);
+			});
+			OnTerminalUpdate();
 		}
 
 		// ReSharper disable Unity.PerformanceAnalysis
@@ -29,6 +36,21 @@ namespace WGame.UI
 			AddEvent(EventDefine.OnFocusPointUpdate, RefreshFocusPoint);
 			AddEvent(EventDefine.OnInteractTagRefresh, RefreshInteractTag);
 			AddEvent(EventDefine.OnGameStart, OnGameStart);
+			AddEvent(EventDefine.OnTerminalMessageUpdate, OnTerminalUpdate);
+		}
+
+		private void OnTerminalUpdate()
+		{
+			if (SettingModel.Inst.IsShowMessage)
+			{
+				ui.messageBox.text = WTerminal.LastMessage;
+				ui.messageBtn.touchable = true;
+			}
+			else
+			{
+				ui.messageBox.text = String.Empty;
+				ui.messageBtn.touchable = false;
+			}
 		}
 
 		void OnGameStart()

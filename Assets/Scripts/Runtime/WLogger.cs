@@ -7,12 +7,7 @@ public class WLogger
 {
     private static StringBuilder _buf = new StringBuilder();
 
-    private static bool isEnableWLangLog;
-    public static bool IsEnableWLangLog
-    {
-        get => isEnableWLangLog;
-        set => isEnableWLangLog = value;
-    }
+    public static bool IsEnableWLangLog { get; set; }
 
     public static void AppendBuffer(string str)
     {
@@ -93,10 +88,12 @@ public class WLogger
     public static void Error(string msg)
     {
         Debug.LogError(msg);
+        WTerminal.Output("Error: " + msg);
     }
     public static void Exception(System.Exception msg)
     {
         Debug.LogException(msg);
+        WTerminal.Output("Exception: " + msg);
     }
 
     public static InvalidExpressionException ThrowError(string msg)
@@ -112,7 +109,7 @@ public class WLogger
     // ReSharper disable Unity.PerformanceAnalysis
     public static void WLangLog(object msg)
     {
-        if (isEnableWLangLog)
+        if (IsEnableWLangLog)
         {
             StringBuilder buf = new StringBuilder();
             buf.Append("<color=#EE7600>");

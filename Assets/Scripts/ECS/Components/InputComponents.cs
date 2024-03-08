@@ -83,3 +83,9 @@ public class DefenseComponent : IComponent
 {
     public bool value;
 }
+
+[Input, Unique]
+public class SpecialComponent : IComponent
+{
+    public bool value;
+}

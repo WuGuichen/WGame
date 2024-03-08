@@ -6,7 +6,7 @@ public class UpdateFocusInputSystem : IExecuteSystem
     private readonly ITimeService _timeService;
     private readonly IGroup<GameEntity> _cameraGroup;
     private const float THRESHOLDS = 18;
-    private float thresholds = 18;
+    private float thresholds = 28;
     private const float COOLDOWN = 0.5f;
     private float timer = COOLDOWN;
     
@@ -33,17 +33,7 @@ public class UpdateFocusInputSystem : IExecuteSystem
             if (entity.hasFocusEntity)
             {
                 var look = _inputContext.lookInput.value;
-                if (look.y > thresholds)
-                {
-                    entity.ReplaceActionFocus(FocusType.Up, area);
-                    thresholds = 9999;
-                }
-                else if (look.y < -thresholds)
-                {
-                    entity.ReplaceActionFocus(FocusType.Down, area);
-                    thresholds = 9999;
-                }
-                else if (look.x < -thresholds)
+                if (look.x < -thresholds)
                 {
                     entity.ReplaceActionFocus(FocusType.Left, area);
                     thresholds = 9999;

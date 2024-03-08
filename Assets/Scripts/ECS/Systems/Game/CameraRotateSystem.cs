@@ -67,19 +67,13 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
                         distSqr = 0.1f;
                     var focusPos = tarPos;
                     var rate = 0.3f;
-                    float offsetY;
-                    if (distSqr > 1)
-                    {
-                        offsetY = Mathf.Sqrt(distSqr) * rate;
-                        focusPos.y -= offsetY;
-                        lastOffsetY = focusPos.y;
-                    }
-                    else
-                    {
-                        focusPos.y = lastOffsetY + (1 - Mathf.Sqrt(distSqr));
-                        if (focusPos.y > 0)
-                            focusPos.y = 0;
-                    }
+
+                    var offsetY = Mathf.Sqrt(distSqr) * rate;
+                    focusPos.y -= offsetY;
+                    if (focusPos.y > 0)
+                        focusPos.y = 0;
+                    lastOffsetY = focusPos.y;
+
 
                     MainModel.Inst.FocusPosition = tarPos;
                     _cameraTransform.LookAt(focusPos);

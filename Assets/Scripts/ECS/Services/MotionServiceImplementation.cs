@@ -112,14 +112,17 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
         animationProcessor.RefreshAnimClip(LocalMotionType.Idle, cfg.Idle);
         animationProcessor.RefreshAnimClip(LocalMotionType.Walk_F, cfg.WalkF);
         animationProcessor.RefreshAnimClip(LocalMotionType.Run_F, cfg.RunF);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Walk_B, cfg.WalkB);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Run_B, cfg.RunB);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Walk_L, cfg.WalkL);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Run_L, cfg.RunL);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Walk_R, cfg.WalkR);
+        animationProcessor.RefreshAnimClip(LocalMotionType.Run_R, cfg.RunR);
     }
 
     public void ResetMotion()
     {
-        // animationProcessor.SetControllerClip("Walk_F", null);
-        // animationProcessor.SetControllerClip("Run_F", null);
-        // animationProcessor.SetControllerClip("Idle", null);
-        // animationProcessor.RefreshAnimClip();
+        SetLocalMotion(1);
         entity.ReplaceMotionAttack1(MotionIDs.Attack1_0);
         if(entity.hasMotionAttack2)
             entity.RemoveMotionAttack2();

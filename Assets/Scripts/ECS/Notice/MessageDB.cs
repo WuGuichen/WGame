@@ -1,35 +1,38 @@
 using Weapon;
 using WGame.Notice;
 
-public class MessageDB
+namespace WGame.Notice
 {
-    public const int BeHittedID = 0;
-    public const int CastSkillID = 1;
-    
-    public class Define
+    public class MessageDB
     {
-        public struct BeHitted : IMessage
-        {
-            public ContactInfo hitInfo;
-            public int TypeId => BeHittedID;
-        }
-        
-        public struct CastSkill : IMessage
-        {
-            public int TypeId => CastSkillID;
-            public int SkillID { get; set; }
-        }
-    }
-    
-    public class Getter
-    {
-        public static Define.BeHitted GetBehitted(ContactInfo info)
-            => new Define.BeHitted(){hitInfo = info};
+        public const int BeHittedID = 0;
+        public const int CastSkillID = 1;
 
-        public static Define.CastSkill GetCastSkill(int id)
-            => new Define.CastSkill()
+        public class Define
+        {
+            public struct BeHitted : IMessage
             {
-                SkillID = id
-            };
+                public ContactInfo hitInfo;
+                public int TypeId => BeHittedID;
+            }
+
+            public struct CastSkill : IMessage
+            {
+                public int TypeId => CastSkillID;
+                public int SkillID { get; set; }
+            }
+        }
+
+        public class Getter
+        {
+            public static Define.BeHitted GetBehitted(ContactInfo info)
+                => new Define.BeHitted() { hitInfo = info };
+
+            public static Define.CastSkill GetCastSkill(int id)
+                => new Define.CastSkill()
+                {
+                    SkillID = id
+                };
+        }
     }
 }

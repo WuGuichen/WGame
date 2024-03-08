@@ -23,16 +23,28 @@ public sealed partial class CharAnim :  Bright.Config.BeanBase
         { if(!_json["idle"].IsString) { throw new SerializationException(); }  Idle = _json["idle"]; }
         { if(!_json["walk_F"].IsString) { throw new SerializationException(); }  WalkF = _json["walk_F"]; }
         { if(!_json["run_F"].IsString) { throw new SerializationException(); }  RunF = _json["run_F"]; }
+        { if(!_json["walk_B"].IsString) { throw new SerializationException(); }  WalkB = _json["walk_B"]; }
+        { if(!_json["run_B"].IsString) { throw new SerializationException(); }  RunB = _json["run_B"]; }
+        { if(!_json["walk_L"].IsString) { throw new SerializationException(); }  WalkL = _json["walk_L"]; }
+        { if(!_json["run_L"].IsString) { throw new SerializationException(); }  RunL = _json["run_L"]; }
+        { if(!_json["walk_R"].IsString) { throw new SerializationException(); }  WalkR = _json["walk_R"]; }
+        { if(!_json["run_R"].IsString) { throw new SerializationException(); }  RunR = _json["run_R"]; }
         PostInit();
     }
 
-    public CharAnim(int id, string name, string idle, string walk_F, string run_F ) 
+    public CharAnim(int id, string name, string idle, string walk_F, string run_F, string walk_B, string run_B, string walk_L, string run_L, string walk_R, string run_R ) 
     {
         this.Id = id;
         this.Name = name;
         this.Idle = idle;
         this.WalkF = walk_F;
         this.RunF = run_F;
+        this.WalkB = walk_B;
+        this.RunB = run_B;
+        this.WalkL = walk_L;
+        this.RunL = run_L;
+        this.WalkR = walk_R;
+        this.RunR = run_R;
         PostInit();
     }
 
@@ -55,6 +67,12 @@ public sealed partial class CharAnim :  Bright.Config.BeanBase
     public string Idle { get; private set; }
     public string WalkF { get; private set; }
     public string RunF { get; private set; }
+    public string WalkB { get; private set; }
+    public string RunB { get; private set; }
+    public string WalkL { get; private set; }
+    public string RunL { get; private set; }
+    public string WalkR { get; private set; }
+    public string RunR { get; private set; }
 
     public const int __ID__ = 1499632295;
     public override int GetTypeId() => __ID__;
@@ -76,6 +94,12 @@ public sealed partial class CharAnim :  Bright.Config.BeanBase
         + "Idle:" + Idle + ","
         + "WalkF:" + WalkF + ","
         + "RunF:" + RunF + ","
+        + "WalkB:" + WalkB + ","
+        + "RunB:" + RunB + ","
+        + "WalkL:" + WalkL + ","
+        + "RunL:" + RunL + ","
+        + "WalkR:" + WalkR + ","
+        + "RunR:" + RunR + ","
         + "}";
     }
     

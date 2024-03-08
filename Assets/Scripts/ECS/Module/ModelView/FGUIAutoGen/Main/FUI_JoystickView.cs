@@ -13,7 +13,7 @@ namespace WGame.UI.Main
 		public GGraph handle;
 		public GButton btnDefense;
 		public GButton btnAttack;
-		public GButton btnJump;
+		public GButton btnSpecial;
 		public GButton btnStep;
 		public GButton btnRun;
 		public GButton btnFocus;
@@ -35,7 +35,7 @@ namespace WGame.UI.Main
 			handle = (GGraph)GetChildAt(3);
 			btnDefense = (GButton)GetChildAt(4);
 			btnAttack = (GButton)GetChildAt(5);
-			btnJump = (GButton)GetChildAt(6);
+			btnSpecial = (GButton)GetChildAt(6);
 			btnStep = (GButton)GetChildAt(7);
 			btnRun = (GButton)GetChildAt(8);
 			btnFocus = (GButton)GetChildAt(9);

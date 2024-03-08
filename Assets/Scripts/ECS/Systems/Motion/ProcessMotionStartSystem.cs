@@ -68,7 +68,6 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
         }
         else if (newID == entity.motionDefense.UID)
         {
-            noticeService.AddReciever(NoticeDB.OnDefenseBeHit);
         }
         else if (newID == entity.motionStepFwd.UID)
         {

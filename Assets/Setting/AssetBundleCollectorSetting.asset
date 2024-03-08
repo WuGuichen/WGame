@@ -20,9 +20,9 @@ MonoBehaviour:
     PackageDesc: 
     EnableAddressable: 1
     LocationToLower: 0
-    IncludeAssetGUID: 0
+    IncludeAssetGUID: 1
     IgnoreDefaultType: 0
-    AutoCollectShaders: 1
+    AutoCollectShaders: 0
     Groups:
     - GroupName: UI
       GroupDesc: "UI\u8D44\u6E90"
@@ -105,6 +105,14 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/Prefabs/AbilityData
+        CollectorGUID: dbc6d3c2eeaf40a459e427d7bebbedbe
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
     - GroupName: Effects
       GroupDesc: 
       AssetTags: 
@@ -112,6 +120,14 @@ MonoBehaviour:
       Collectors:
       - CollectPath: Assets/Res/EffectCore/packs
         CollectorGUID: 9ce151a2f2884664f9ff801688f78bd6
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Prefabs/Effects
+        CollectorGUID: 18464088758c01642a21c0db824f9847
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
@@ -171,16 +187,8 @@ MonoBehaviour:
     - GroupName: Objects
       GroupDesc: 
       AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/Prefabs/Trigger
-        CollectorGUID: 44cef8a56adf3874da2c9014f19e38c3
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
+      ActiveRuleName: DisableGroup
+      Collectors: []
   - PackageName: RawFilePackage
     PackageDesc: 
     EnableAddressable: 1

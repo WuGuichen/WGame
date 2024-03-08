@@ -53,6 +53,7 @@ namespace WGame.UI
 		{
 			{"帧率", ComboBox},
 			{"显示帧率", Toggle},
+			{"显示消息", Toggle},
 			{"亮度", Slider},
 			{"对比度", Slider},
 			{"饱和度", Slider},

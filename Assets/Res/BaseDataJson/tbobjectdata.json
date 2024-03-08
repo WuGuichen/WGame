@@ -29,8 +29,8 @@
   },
   {
     "id": 4,
-    "name": "触发器_胶囊体",
-    "path": "CapsuleTrigger",
+    "name": "火球",
+    "path": "eff_fireball",
     "type": 0,
     "needCache": true
   }

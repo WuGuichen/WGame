@@ -15,7 +15,9 @@ namespace WGame.UI
 
 		private const string keyFPS = "GameFPS";
 		private const string keyShowFPS = "GameShowFPS";
+		private const string keyShowMessage = "GameShowMessage";
 		public bool isShowFPS;
+		public bool IsShowMessage { get; set; } = true;
 		private Volume volume;
 
 		public bool ShowStatePad = false;
@@ -60,6 +62,8 @@ namespace WGame.UI
 				isShowFPS = value;
 			}
 		}
+		
+		
 		private int fps;
 		public int FPS
 		{
@@ -109,6 +113,7 @@ namespace WGame.UI
 		{
 			FPS = PlayerPrefs.GetInt(keyFPS, 60);
 			IsShowFPS = PlayerPrefs.GetInt(keyShowFPS, 1) == 1;
+			IsShowMessage = PlayerPrefs.GetInt(keyShowMessage, 1) == 1;
 			SetScreenSetting(SettingDefine.Exposure,PlayerPrefs.GetInt(KeyExposure, 15));
 			SetScreenSetting(SettingDefine.Contrast, PlayerPrefs.GetInt(KeyContrast, 10));
 			SetScreenSetting(SettingDefine.Saturation,PlayerPrefs.GetInt(KeySaturation, 25));
@@ -195,6 +200,7 @@ namespace WGame.UI
 		{
 			PlayerPrefs.SetInt(keyFPS, FPS);
 			PlayerPrefs.SetInt(keyShowFPS, isShowFPS ? 1 : 0);
+			PlayerPrefs.SetInt(keyShowMessage, IsShowMessage ? 1 : 0);
 			PlayerPrefs.SetInt(KeyExposure, ScreenSettings[SettingDefine.Exposure]);
 			PlayerPrefs.SetInt(KeyContrast, ScreenSettings[SettingDefine.Contrast]);
 			PlayerPrefs.SetInt(KeySaturation, ScreenSettings[SettingDefine.Saturation]);

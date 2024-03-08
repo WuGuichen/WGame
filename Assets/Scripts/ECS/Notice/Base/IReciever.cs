@@ -1,31 +1,28 @@
 namespace WGame.Notice
 {
-    public abstract class IReciever
+    public interface IReciever
     {
-        public int LeftNoticeTime { get; internal set; }
-        public int MessageType => _messageType;
-        private int _messageType;
-        public int Key { get; }
+        public int LeftNoticeTime { get; set; }
+        /// <summary>
+        /// 写死的对应消息类型(如果需要后续可以相应多种消息类型）
+        /// </summary>
+        public int MessageType { get; }
+        public int Key { get; set; }
 
-        public IReciever(int key, int messageType, int times = 1)
-        {
-            Key = key;
-            _messageType = messageType;
-            LeftNoticeTime = times;
-        }
-        
         /// <summary>
         /// 被移除
         /// </summary>
-        public virtual void OnRemoved(GameEntity entity){}
+        public void OnRemoved(GameEntity entity){}
         /// <summary>
         /// 被添加
         /// </summary>
-        public virtual void OnAdded(GameEntity entity){}
+        public void OnAdded(GameEntity entity){}
         /// <summary>
         /// 被触发
         /// </summary>
-        public abstract void OnTrigger(GameEntity entity, IMessage message);
-        public abstract bool CheckCondition(IMessage message);
+        public void OnTrigger(GameEntity entity, IMessage message);
+        public bool CheckCondition(IMessage message);
+
+        public IReciever Build(int key, int times);
     }
 }

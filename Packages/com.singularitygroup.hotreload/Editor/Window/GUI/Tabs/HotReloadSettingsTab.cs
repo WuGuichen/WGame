@@ -28,7 +28,7 @@ namespace SingularityGroup.HotReload.Editor {
             this.registrationRequired = registrationRequired;
         }
     }
-    
+
     internal class HotReloadSettingsTab : HotReloadTabBase {
         private readonly HotReloadOptionsSection optionsSection;
 
@@ -41,7 +41,7 @@ namespace SingularityGroup.HotReload.Editor {
             var target = BuildPipeline.GetBuildTargetGroup(EditorUserBuildSettings.activeBuildTarget);
             return HotReloadBuildHelper.IsMonoSupported(target);
         });
-        
+
         // Resources.Load uses cache, so it's safe to call it every frame.
         //  Retrying Load every time fixes an issue where you import the package and constructor runs, but resources aren't loadable yet.
         private Texture iconCheck => Resources.Load<Texture>("icon_check_circle");
@@ -51,20 +51,15 @@ namespace SingularityGroup.HotReload.Editor {
         public HotReloadSettingsTab(HotReloadWindow window) : base(window,
             "Settings",
             "_Popup",
-            "Make changes to a build running on-device.")
-        {
+            "Make changes to a build running on-device.") {
             optionsSection = new HotReloadOptionsSection();
         }
 
         private GUIStyle headlineStyle;
         private GUIStyle paddedStyle;
-
-        /*
-         * EditorGUILayout.LabelField is designed to work with the Unity editor's inspector window,
-         * which has its own layout and padding system. This can cause some issues with custom GUIStyles,
-         * as the padding and layout settings of the custom style may not match the inspector window's settings.
-         */
-
+        
+        private Vector2 _settingsTabScrollPos;
+        
         HotReloadSettingsTabState currentState;
         public override void OnGUI() {
             // HotReloadAboutTabState ensures rendering is consistent between Layout and Repaint calls
@@ -73,74 +68,103 @@ namespace SingularityGroup.HotReload.Editor {
             // See thread for more context: https://answers.unity.com/questions/17718/argumentexception-getting-control-2s-position-in-a.html
             if (Event.current.type == EventType.Layout) {
                 currentState = new HotReloadSettingsTabState(
-                    running: EditorCodePatcher.Running, 
+                    running: EditorCodePatcher.Running,
                     trialLicense: EditorCodePatcher.Status != null && (EditorCodePatcher.Status?.isTrial == true),
                     loginStatus: EditorCodePatcher.Status,
                     isServerHealthy: ServerHealthCheck.I.IsServerHealthy,
                     registrationRequired: RedeemLicenseHelper.I.RegistrationRequired
                 );
             }
-
-
-            if (!EditorCodePatcher.LoginNotRequired 
-                && !currentState.registrationRequired 
-                // Delay showing login in settings to not confuse users that they need to login to use Free trial
-                && (HotReloadPrefs.RateAppShown
-                    || PackageConst.IsAssetStoreBuild)
-            ) {
-                using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.DynamicSectionOuterBoxCompact)) {
-                    using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.DynamicSectionInnerBoxWide)) {
-                        using (new EditorGUILayout.VerticalScope()) {
-                            RenderLicenseInfoSection();
+            using (var scope = new EditorGUILayout.ScrollViewScope(_settingsTabScrollPos, GUI.skin.horizontalScrollbar, GUI.skin.verticalScrollbar, GUILayout.MaxHeight(Math.Max(HotReloadWindowStyles.windowScreenHeight, 800)), GUILayout.MaxWidth(Math.Max(HotReloadWindowStyles.windowScreenWidth, 800)))) {
+                _settingsTabScrollPos.x = scope.scrollPosition.x;
+                _settingsTabScrollPos.y = scope.scrollPosition.y;
+                using (new EditorGUILayout.VerticalScope(HotReloadWindowStyles.DynamicSectionHelpTab)) {
+                    GUILayout.Space(10);
+                    if (!EditorCodePatcher.LoginNotRequired
+                        && !currentState.registrationRequired
+                        // Delay showing login in settings to not confuse users that they need to login to use Free trial
+                        && (HotReloadPrefs.RateAppShown
+                            || PackageConst.IsAssetStoreBuild)
+                       ) {
+                        using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionOuterBoxCompact)) {
+                            using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionInnerBoxWide)) {
+                                using (new EditorGUILayout.VerticalScope()) {
+                                    RenderLicenseInfoSection();
+                                }
+                            }
                         }
                     }
-                }
-            }
 
-            using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.DynamicSectionOuterBoxCompact)) {
-                using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.DynamicSectionInnerBoxWide)) {
-                    using (new EditorGUILayout.VerticalScope()) {
-                        HotReloadPrefs.ShowConfiguration = EditorGUILayout.Foldout(HotReloadPrefs.ShowConfiguration, "Configuration", true, HotReloadWindowStyles.FoldoutStyle);
-                        if (HotReloadPrefs.ShowConfiguration) {
-                            EditorGUILayout.Space();
-                            RenderUnityAutoRefresh();
-                            RenderAssetRefresh();
-                            using (new EditorGUI.DisabledScope(!EditorCodePatcher.autoRecompileUnsupportedChangesSupported)) {
-                                RenderAutoRecompileUnsupportedChanges();
-                                if (HotReloadPrefs.AutoRecompileUnsupportedChanges && EditorCodePatcher.autoRecompileUnsupportedChangesSupported) {
-                                    using (new EditorGUILayout.VerticalScope(paddedStyle ?? (paddedStyle = new GUIStyle { padding = new RectOffset(20, 0, 0, 0) }))) {
-                                        RenderAutoRecompileUnsupportedChangesImmediately();
-                                        RenderAutoRecompileUnsupportedChangesInPlayMode();
+                    using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionOuterBoxCompact)) {
+                        using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionInnerBoxWide)) {
+                            using (new EditorGUILayout.VerticalScope()) {
+                                HotReloadPrefs.ShowConfiguration = EditorGUILayout.Foldout(HotReloadPrefs.ShowConfiguration, "Configuration", true, HotReloadWindowStyles.FoldoutStyle);
+                                if (HotReloadPrefs.ShowConfiguration) {
+                                    EditorGUILayout.Space();
+                                    RenderUnityAutoRefresh();
+                                    RenderAssetRefresh();
+                                    if (HotReloadPrefs.AllAssetChanges) {
+                                        using (new EditorGUILayout.VerticalScope(paddedStyle ?? (paddedStyle = new GUIStyle { padding = new RectOffset(20, 0, 0, 0) }))) {
+                                            RenderIncludeShaderChanges();
+                                        }
+
+                                        EditorGUILayout.Space();
+                                    }
+                                    using (new EditorGUI.DisabledScope(!EditorCodePatcher.autoRecompileUnsupportedChangesSupported)) {
+                                        RenderAutoRecompileUnsupportedChanges();
+                                        if (HotReloadPrefs.AutoRecompileUnsupportedChanges && EditorCodePatcher.autoRecompileUnsupportedChangesSupported) {
+                                            using (new EditorGUILayout.VerticalScope(paddedStyle ?? (paddedStyle = new GUIStyle { padding = new RectOffset(20, 0, 0, 0) }))) {
+                                                RenderAutoRecompileUnsupportedChangesImmediately();
+                                                RenderAutoRecompileUnsupportedChangesOnExitPlayMode();
+                                                RenderAutoRecompileUnsupportedChangesInPlayMode();
+                                                RenderAutoRecompilePartiallyUnsupportedChanges();
+                                            }
+                                        }
+                                        EditorGUILayout.Space();
+                                    }
+                                    RenderConsoleWindow();
+                                    RenderAutostart();
+
+                                    if (EditorWindowHelper.supportsNotifications) {
+                                        RenderShowNotifications();
+                                        using (new EditorGUILayout.VerticalScope(paddedStyle ?? (paddedStyle = new GUIStyle { padding = new RectOffset(20, 0, 0, 0) }))) {
+                                            RenderShowPatchingNotifications();
+                                            RenderShowCompilingUnsupportedNotifications();
+                                        }
+
+                                        EditorGUILayout.Space();
+                                    }
+                                    EditorGUILayout.Space();
+                                    using (new EditorGUILayout.HorizontalScope()) {
+                                        GUILayout.FlexibleSpace();
+                                        HotReloadWindow.RenderShowOnStartup();
                                     }
                                 }
-                                EditorGUILayout.Space();
                             }
-                            RenderConsoleWindow();
-                            RenderAutostart();
                         }
                     }
-                }
-            }
 
-            if (!EditorCodePatcher.LoginNotRequired && currentState.trialLicense && currentState.running) {
-                using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.DynamicSectionOuterBoxCompact)) {
-                    using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.DynamicSectionInnerBoxWide)) {
-                        using (new EditorGUILayout.VerticalScope()) {
-                            RenderPromoCodeSection();
+                    if (!EditorCodePatcher.LoginNotRequired && currentState.trialLicense && currentState.running) {
+                        using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionOuterBoxCompact)) {
+                            using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionInnerBoxWide)) {
+                                using (new EditorGUILayout.VerticalScope()) {
+                                    RenderPromoCodeSection();
+                                }
+                            }
                         }
                     }
-                }
-            }
 
-            using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.DynamicSectionOuterBoxCompact)) {
-                using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.DynamicSectionInnerBoxWide)) {
-                    using (new EditorGUILayout.VerticalScope()) {
-                        RenderOnDevice();
+                    using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionOuterBoxCompact)) {
+                        using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionInnerBoxWide)) {
+                            using (new EditorGUILayout.VerticalScope()) {
+                                RenderOnDevice();
+                            }
+                        }
                     }
                 }
             }
         }
-        
+
         void RenderUnityAutoRefresh() {
             var newSettings = EditorGUILayout.BeginToggleGroup(new GUIContent("Allow to manage Unity's Auto Compile settings (recommended)"), HotReloadPrefs.AllowDisableUnityAutoRefresh);
             if (newSettings != HotReloadPrefs.AllowDisableUnityAutoRefresh) {
@@ -181,6 +205,18 @@ namespace SingularityGroup.HotReload.Editor {
             EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
             EditorGUILayout.EndToggleGroup();
             EditorGUILayout.Space(3f);
+        }
+        
+        void RenderIncludeShaderChanges() {
+            HotReloadPrefs.IncludeShaderChanges = EditorGUILayout.BeginToggleGroup(new GUIContent("Refresh shaders"), HotReloadPrefs.IncludeShaderChanges);
+            string toggleDescription;
+            if (HotReloadPrefs.IncludeShaderChanges) {
+                toggleDescription = "Hot Reload will auto refresh shaders. Note that enabling this setting might impact performance.";
+            } else {
+                toggleDescription = "Enable to auto-refresh shaders. Note that enabling this setting might impact performance";
+            }
+            EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
+            EditorGUILayout.EndToggleGroup();
         }
 
         void RenderConsoleWindow() {
@@ -228,15 +264,68 @@ namespace SingularityGroup.HotReload.Editor {
             EditorGUILayout.Space();
         }
 
+        void RenderShowNotifications() {
+            GUILayout.Label("Indications", HotReloadWindowStyles.NotificationsTitleStyle);
+            
+            string toggleDescription;
+            if (!EditorWindowHelper.supportsNotifications && !UnitySettingsHelper.I.playmodeTintSupported) {
+                toggleDescription = "Indications are not supported in the Unity version you use.";
+            } else {
+                toggleDescription = "Chosen indications are enabled:";
+            }
+
+            EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
+        }
+
+        void RenderShowPatchingNotifications() {
+            HotReloadPrefs.ShowPatchingNotifications = EditorGUILayout.BeginToggleGroup(new GUIContent("Patching Indication"), HotReloadPrefs.ShowPatchingNotifications);
+            string toggleDescription;
+            if (!EditorWindowHelper.supportsNotifications) {
+                toggleDescription = "Patching Notification is not supported in the Unity version you use.";
+            } else if (!HotReloadPrefs.ShowPatchingNotifications) {
+                toggleDescription = "Enable to show GameView and SceneView indications when Patching.";
+            } else {
+                toggleDescription = "Indications will be shown in GameView and SceneView when Patching.";
+            }
+            EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
+            EditorGUILayout.EndToggleGroup();
+        }
+
+        void RenderShowCompilingUnsupportedNotifications() {
+            HotReloadPrefs.ShowCompilingUnsupportedNotifications = EditorGUILayout.BeginToggleGroup(new GUIContent("Compiling Unsupported Changes Indication"), HotReloadPrefs.ShowCompilingUnsupportedNotifications);
+            string toggleDescription;
+            if (!EditorWindowHelper.supportsNotifications) {
+                toggleDescription = "Compiling Unsupported Changes Notification is not supported in the Unity version you use.";
+            } else if (!HotReloadPrefs.ShowCompilingUnsupportedNotifications) {
+                toggleDescription = "Enable to show GameView and SceneView indications when compiling unsupported changes.";
+            } else {
+                toggleDescription = "Indications will be shown in GameView and SceneView when compiling unsupported changes.";
+            }
+            EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
+            EditorGUILayout.EndToggleGroup();
+        }
+        
         void RenderAutoRecompileUnsupportedChanges() {
             HotReloadPrefs.AutoRecompileUnsupportedChanges = EditorGUILayout.BeginToggleGroup(new GUIContent("Auto recompile unsupported changes (recommended)"), HotReloadPrefs.AutoRecompileUnsupportedChanges && EditorCodePatcher.autoRecompileUnsupportedChangesSupported);
             string toggleDescription;
             if (!EditorCodePatcher.autoRecompileUnsupportedChangesSupported) {
                 toggleDescription = "Auto recompiling unsupported changes is not supported in the Unity version you use.";
             } else if (HotReloadPrefs.AutoRecompileUnsupportedChanges) {
-                toggleDescription = "Hot Reload will recompile when unsupported changes detected.";
+                toggleDescription = "Hot Reload will recompile when unsupported changes are detected.";
             } else {
-                toggleDescription = "Enable to recompile when unsupported changes detected.";
+                toggleDescription = "Enable to recompile when unsupported changes are detected.";
+            }
+            EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
+            EditorGUILayout.EndToggleGroup();
+        }
+        
+        void RenderAutoRecompilePartiallyUnsupportedChanges() {
+            HotReloadPrefs.AutoRecompilePartiallyUnsupportedChanges = EditorGUILayout.BeginToggleGroup(new GUIContent("Include partially unsupported changes"), HotReloadPrefs.AutoRecompilePartiallyUnsupportedChanges);
+            string toggleDescription;
+            if (HotReloadPrefs.AutoRecompilePartiallyUnsupportedChanges) {
+                toggleDescription = "Hot Reload will recompile partially unsupported changes.";
+            } else {
+                toggleDescription = "Enable to recompile partially unsupported changes.";
             }
             EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
             EditorGUILayout.EndToggleGroup();
@@ -265,6 +354,18 @@ namespace SingularityGroup.HotReload.Editor {
             EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
             EditorGUILayout.EndToggleGroup();
         }
+        
+        void RenderAutoRecompileUnsupportedChangesOnExitPlayMode() {
+            HotReloadPrefs.AutoRecompileUnsupportedChangesOnExitPlayMode = EditorGUILayout.BeginToggleGroup(new GUIContent("Recompile on exit Play Mode"), HotReloadPrefs.AutoRecompileUnsupportedChangesOnExitPlayMode);
+            string toggleDescription;
+            if (HotReloadPrefs.AutoRecompileUnsupportedChangesOnExitPlayMode) {
+                toggleDescription = "Hot Reload will recompile unsupported changes when exiting Play Mode.";
+            } else {
+                toggleDescription = "Enable to recompile unsupported changes when exiting Play Mode.";
+            }
+            EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
+            EditorGUILayout.EndToggleGroup();
+        }
 
         void RenderOnDevice() {
             HotReloadPrefs.ShowOnDevice = EditorGUILayout.Foldout(HotReloadPrefs.ShowOnDevice, "On-Device", true, HotReloadWindowStyles.FoldoutStyle);
@@ -280,7 +381,7 @@ namespace SingularityGroup.HotReload.Editor {
                         alignment = TextAnchor.MiddleLeft
                     };
                     headlineStyle.normal.textColor = HotReloadWindowStyles.H2TitleStyle.normal.textColor;
-
+            
                     // bg color
                     if (HotReloadWindowStyles.IsDarkMode) {
                         headlineStyle.normal.background = EditorTextures.DarkGray40;
@@ -292,7 +393,7 @@ namespace SingularityGroup.HotReload.Editor {
                     headlineStyle.margin = new RectOffset(6, 6, 6, 6);
                 }
                 GUILayout.Space(9f); // space between logo and headline
-
+            
                 GUILayout.Label("Make changes to a build running on-device",
                     headlineStyle, GUILayout.MinHeight(EditorGUIUtility.singleLineHeight * 1.4f));
                 // image showing how Hot Reload works with a phone
@@ -313,11 +414,16 @@ namespace SingularityGroup.HotReload.Editor {
                 // indent all controls (this works with non-labels)
                 GUILayout.Space(16f);
                 GUILayout.BeginVertical();
-
-                HotReloadWindowStyles.H3TitleStyle.wordWrap = true;
-                GUILayout.Label($"If auto-pair fails, use this IP to connect: {IpHelper.GetIpAddress()}" +
-                                "\nMake sure you are on the same LAN/WiFi network",
-                    HotReloadWindowStyles.H3TitleStyle);
+            
+                string text;
+                var ip = IpHelper.GetIpAddressCached();
+                if (string.IsNullOrEmpty(ip)) {
+                    text = $"If auto-pair fails, find your local IP in OS settings, and use this format to connect: '{{ip}}'";
+                } else {
+                    text = $"If auto-pair fails, use this IP to connect: {ip}" +
+                        "\nMake sure you are on the same LAN/WiFi network";
+                }
+                GUILayout.Label(text, HotReloadWindowStyles.H3TitleWrapStyle);
 
                 if (!currentState.isServerHealthy) {
                     DrawHorizontalCheck(ServerHealthCheck.I.IsServerHealthy,
@@ -332,8 +438,7 @@ namespace SingularityGroup.HotReload.Editor {
                         summary,
                         summary);
                 }
-
-                HotReloadWindowStyles.H3TitleStyle.wordWrap = false;
+            
                 // explainer image that shows phone needs same wifi to auto connect ?
                 
                 GUILayout.EndVertical();
@@ -371,7 +476,7 @@ namespace SingularityGroup.HotReload.Editor {
 
             // Settings checkboxes (Hot Reload options)
             {
-                GUILayout.Label("Mobile", HotReloadWindowStyles.H3TitleStyle);
+                GUILayout.Label("Options", HotReloadWindowStyles.H3TitleStyle);
                 if (settingsObject) {
                     optionsSection.DrawGUI(so);
                 }
@@ -380,7 +485,8 @@ namespace SingularityGroup.HotReload.Editor {
         }
         
         private void RenderLicenseInfoSection() {
-            _window.RunTab.RenderLicenseInfo(
+            HotReloadRunTab.RenderLicenseInfo(
+                _window.RunTabState,
                 currentState.loginStatus,
                 verbose: true,
                 allowHide: false,
@@ -488,7 +594,6 @@ namespace SingularityGroup.HotReload.Editor {
                 $"The current platform is {selectedPlatform.ToString()} which is not supported");
 
             using (new EditorGUI.DisabledScope(!isCurrentBuildTargetSupported.Value)) {
-                // "Allow Mobile Builds to Connect (WiFi)"
                 foreach (var option in allOptions) {
                     DrawHorizontalCheck(option.GetValue(so),
                         $"Enable \"{option.ShortSummary}\"",
@@ -508,12 +613,7 @@ namespace SingularityGroup.HotReload.Editor {
                     $"Stripping Level = {StrippingLevel}",
                     suggestedSolutionText: "Code stripping needs to be disabled to ensure that all methods are available for patching."
                 );
-
-                // if (isSupported) {
-                //     GUILayout.Label("Great! Your current build settings are supported by Hot Reload.\nBuild and Run to try it.", HotReloadWindowStyles.WrapStyle);
-                // }
             }
-            // dont show the build settings checklist because some are relevant only for the current platform.
         }
 
         /// <summary>

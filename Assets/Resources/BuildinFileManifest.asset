@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0c6061da777a44aab43a41ff692bcd, type: 3}
+  m_Name: BuildinFileManifest
+  m_EditorClassIdentifier: 
+  BuildinFiles:
+  - PackageName: DefaultPackage
+    FileName: 0bb162bd9567cdb8f7c9b101390ffa7d.bundle
+    FileCRC32: 66c9eae3
+  - PackageName: DefaultPackage
+    FileName: 20063450c4e6dd20428664a40a840e0e.bundle
+    FileCRC32: 2afdf3a7
+  - PackageName: DefaultPackage
+    FileName: 264cd02bb487715155bd57f51cc61e52.bundle
+    FileCRC32: 783eea2a
+  - PackageName: DefaultPackage
+    FileName: 641e90db650dc5459f5dfe1ca4b83c20.bundle
+    FileCRC32: 417416f3
+  - PackageName: DefaultPackage
+    FileName: 79420b5811284aeda94390e7bac6bd7d.bundle
+    FileCRC32: 94ff7230
+  - PackageName: DefaultPackage
+    FileName: 7d3e03661c408e8fb3469e1dc9d787b8.bundle
+    FileCRC32: 4cb83fea
+  - PackageName: DefaultPackage
+    FileName: 8109d875dd15177a70f5b157141d19a2.bundle
+    FileCRC32: 726686c4
+  - PackageName: DefaultPackage
+    FileName: 83740fe3d5cd79b6a43e521eedda7faf.bundle
+    FileCRC32: 9e18d43e
+  - PackageName: DefaultPackage
+    FileName: 847a85c25db4150ea5724d2ebe409562.bundle
+    FileCRC32: b77020ec
+  - PackageName: DefaultPackage
+    FileName: 926a2b5202c07bf6ff5f20090bb97a67.bundle
+    FileCRC32: 2abf3f39
+  - PackageName: DefaultPackage
+    FileName: c8689cbd22b92c201b32a6d4e46b3200.bundle
+    FileCRC32: afd19a8c
+  - PackageName: DefaultPackage
+    FileName: ea0d81f569a91601517472aaf0806822.bundle
+    FileCRC32: 84c885af
+  - PackageName: DefaultPackage
+    FileName: ebacdb2570b40c4a514b40b87a2fd05b.bundle
+    FileCRC32: acca116d
+  - PackageName: DefaultPackage
+    FileName: ec2d0a582227134c0212d9c53626257d.bundle
+    FileCRC32: 77274545
+  - PackageName: DefaultPackage
+    FileName: f4db01afa1b79b3f2e287262f5b6b948.bundle
+    FileCRC32: e17ac8b0
+  - PackageName: RawFilePackage
+    FileName: 0d8d67040915085f10e735617702fed4.rawfile
+    FileCRC32: d45e2b84
+  - PackageName: RawFilePackage
+    FileName: 113340d967c4d8263f8630d4f0f3cd44.rawfile
+    FileCRC32: 2d46dcc6
+  - PackageName: RawFilePackage
+    FileName: 1653dbac6110e399c26ac1153e443715.rawfile
+    FileCRC32: d14bcb13
+  - PackageName: RawFilePackage
+    FileName: 1ef7f0b60df978d7feb2d7cccaf6a6fe.rawfile
+    FileCRC32: c411d851
+  - PackageName: RawFilePackage
+    FileName: 228070a4059b19076bbf63f24d3df574.rawfile
+    FileCRC32: 8c3f711d
+  - PackageName: RawFilePackage
+    FileName: 2921ea12d35db323447636fa54f3d6c7.rawfile
+    FileCRC32: 6c0d1446
+  - PackageName: RawFilePackage
+    FileName: 2df6e2245dd6047bcdc58285e03303dd.rawfile
+    FileCRC32: 1de65a75
+  - PackageName: RawFilePackage
+    FileName: 36646e6866cc8505f3ad9910b9a0b89b.rawfile
+    FileCRC32: 3c4390c3
+  - PackageName: RawFilePackage
+    FileName: 389c8bd9940d23cb674c806b1d0d5abe.rawfile
+    FileCRC32: ea7fb97a
+  - PackageName: RawFilePackage
+    FileName: 412948554f6425dccf917df83205a73b.rawfile
+    FileCRC32: 2a97044d
+  - PackageName: RawFilePackage
+    FileName: 5519170caca09741e672c9e2db3d32d8.rawfile
+    FileCRC32: 2824936b
+  - PackageName: RawFilePackage
+    FileName: 5b71794d6e8be16382d075150d4fa501.rawfile
+    FileCRC32: 47c24254
+  - PackageName: RawFilePackage
+    FileName: 5c0e0de5569121cb85b651854808cf9d.rawfile
+    FileCRC32: 32715ec7
+  - PackageName: RawFilePackage
+    FileName: 64c0d250a1b3286443b2af3e5903930b.rawfile
+    FileCRC32: 06b85897
+  - PackageName: RawFilePackage
+    FileName: 6653e2eba7f797f12aca7ef5e3640023.rawfile
+    FileCRC32: 227b2e55
+  - PackageName: RawFilePackage
+    FileName: 6fd5062149dab72d44a7dd51332a9130.rawfile
+    FileCRC32: baf528b9
+  - PackageName: RawFilePackage
+    FileName: 6fdd2150044ab59c1f339618641d33a9.rawfile
+    FileCRC32: 23b3ec20
+  - PackageName: RawFilePackage
+    FileName: 82932103a6bc29dd1568fdfbd866aae9.rawfile
+    FileCRC32: c094556c
+  - PackageName: RawFilePackage
+    FileName: 8cf238c822631ee89236d9b3e996e1f0.rawfile
+    FileCRC32: 5c9148f4
+  - PackageName: RawFilePackage
+    FileName: 8eeb3911f1b30bf5d474fd38219503aa.rawfile
+    FileCRC32: baf1daa5
+  - PackageName: RawFilePackage
+    FileName: 955aed12d4b25ff986162d9b0c7bfb7f.rawfile
+    FileCRC32: 85639098
+  - PackageName: RawFilePackage
+    FileName: 95b8c825b14cb86c0de4eb56c31c37ab.rawfile
+    FileCRC32: effb99f0
+  - PackageName: RawFilePackage
+    FileName: 9a6b20bbb20ecf208d0a9eb860e3ad42.rawfile
+    FileCRC32: 1e29e44b
+  - PackageName: RawFilePackage
+    FileName: 9ae56bd12b3bd3b5ebd3647a1dc3eb4e.rawfile
+    FileCRC32: fc9adba0
+  - PackageName: RawFilePackage
+    FileName: a434972262a74a3ada9fe480706fb55e.rawfile
+    FileCRC32: 6ec6d411
+  - PackageName: RawFilePackage
+    FileName: a952655903c18809a2b52d4c7e449b24.rawfile
+    FileCRC32: b2099524
+  - PackageName: RawFilePackage
+    FileName: b10f3c6d44b02868a995a398313558f3.rawfile
+    FileCRC32: 53822af6
+  - PackageName: RawFilePackage
+    FileName: badbbc2cc9111ce6f95038afddf2824e.rawfile
+    FileCRC32: 5f6ce094
+  - PackageName: RawFilePackage
+    FileName: cdda18dafeb298ca6d6186ceabfecd55.rawfile
+    FileCRC32: 51c2e5de
+  - PackageName: RawFilePackage
+    FileName: d0bdacb0d6c71b6b098501c035159f65.rawfile
+    FileCRC32: 0cfb0170
+  - PackageName: RawFilePackage
+    FileName: d5813431714f980151a6d2408ee0e702.rawfile
+    FileCRC32: 7ec26d53
+  - PackageName: RawFilePackage
+    FileName: d7078c4f7d87510ee638ad5714642e99.rawfile
+    FileCRC32: 7302c8c3
+  - PackageName: RawFilePackage
+    FileName: d7e23564fd73821342aa80295d7ccb6d.rawfile
+    FileCRC32: 0d33d454
+  - PackageName: RawFilePackage
+    FileName: d98dc841673198d1a2ebb4a9f1599a85.rawfile
+    FileCRC32: b337d630
+  - PackageName: RawFilePackage
+    FileName: ea35e95044881dd9f766ecd6fa2eec26.rawfile
+    FileCRC32: 948a595c
+  - PackageName: RawFilePackage
+    FileName: f345f30b078956e83d82671911439766.rawfile
+    FileCRC32: 259b5d17
+  - PackageName: RawFilePackage
+    FileName: f46b0afa775842c3ff59ff95d2e3c0ac.rawfile
+    FileCRC32: a12f6386

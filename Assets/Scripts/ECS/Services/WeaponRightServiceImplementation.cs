@@ -11,8 +11,15 @@ public class WeaponRightServiceImplementation : MonoBehaviour, IWeaponService
     public bool HasWeapon { get; }
     public void OnDropWeapon(GameEntity entity, WeaponEntity weapon)
     {
-        entity.RemoveLinkWeapon();
-        weapon.RemoveLinkCharacter();
+        if (entity.linkWeapon.Weapon == weapon)
+        {
+            entity.RemoveLinkWeapon();
+            entity.linkMotion.Motion.motionService.service.ResetMotion();
+        }
+        else
+        {
+            WLogger.Error("移除不存在的武器？");
+        }
     }
 
     public void ReleaseWeapon(GameEntity entity)

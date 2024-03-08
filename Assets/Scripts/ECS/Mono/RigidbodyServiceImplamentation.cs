@@ -35,6 +35,11 @@ public class RigidbodyServiceImplamentation : MonoBehaviour, IRigidbodyService, 
         set => _rigidbody.velocity = value;
     }
 
+    public void MovePosition(Vector3 dir)
+    {
+        throw new NotImplementedException();
+    }
+
     public void OnFixedUpdate(float deltaTime)
     {
     }
