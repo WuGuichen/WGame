@@ -4,42 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Effects/HCFX_Hit_01.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Effects/HCFX_Hit_01.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Effects/HCFX_Hit_10.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Effects/HCFX_Hit_10.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/WLang语法高亮.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="锁定功能优化，以及框架demo">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Bundles/FGUI/Main/Main_fui.bytes" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Bundles/FGUI/Main/Main_fui.bytes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Core/WGame.Editor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Core/WGame.Editor.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/Character_Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Character/BaseCharacter/Character_Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/Effects/VFX_Klaus/Prefabs/Hyper Casual FX/HCFX_Hit_01.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/Effects/VFX_Klaus/Prefabs/Hyper Casual FX/HCFX_Hit_01.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/Effects/VFX_Klaus/Prefabs/Hyper Casual FX/HCFX_Hit_10.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Res/Effects/VFX_Klaus/Prefabs/Hyper Casual FX/HCFX_Hit_10.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildinFileManifest.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildinFileManifest.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/Action/ActionFocus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Components/Action/ActionFocus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/MainModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/Model/MainModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Main/JoystickView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUI/Main/JoystickView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_JoystickView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Module/ModelView/FGUIAutoGen/Main/FUI_JoystickView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AiAgentServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/EmitInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/EmitInputSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/DeadCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/DeadCharacterSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/FocusEntitySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/Action/FocusEntitySystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdatePlayerInput/UpdateFocusInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Game/UpdatePlayerInput/UpdateFocusInputSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/SensorCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Systems/Sensor/SensorCharacterSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/YooassetManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/WUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/WUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnFight.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/BTree/BaseOnFight.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFightCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/BaseFightCode.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit1.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Code/Motion/GotHit1.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WLang/Runtime/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -495,14 +462,7 @@
       <workItem from="1709800352846" duration="13658000" />
       <workItem from="1709814875704" duration="15368000" />
       <workItem from="1709885272206" duration="10702000" />
-      <workItem from="1709896640901" duration="319000" />
-    </task>
-    <task id="LOCAL-00017" summary="比较完整的状态机和行为树组合">
-      <created>1703701878450</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1703701878450</updated>
+      <workItem from="1709896640901" duration="1122000" />
     </task>
     <task id="LOCAL-00018" summary="代码优化">
       <created>1703791418252</created>
@@ -840,7 +800,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709889768795</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="锁定功能优化，以及框架demo">
+      <created>1709897012877</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1709897012877</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -866,7 +833,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="GOAP更新顺序修改" />
     <MESSAGE value="GOAP文档" />
     <MESSAGE value="GOAP的降低仇恨值Goal" />
     <MESSAGE value="索敌更新使用总线模式" />
@@ -891,7 +857,8 @@
     <MESSAGE value="特效加载优化" />
     <MESSAGE value="ability编辑器热重载" />
     <MESSAGE value="模块说明文档" />
-    <option name="LAST_COMMIT_MESSAGE" value="模块说明文档" />
+    <MESSAGE value="锁定功能优化，以及框架demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="锁定功能优化，以及框架demo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
