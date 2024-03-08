@@ -19,4 +19,5 @@ logRunSetup.txt
 *.unityproj
 *.DS_Store
 *.dwlt
+.idea
 ~*
