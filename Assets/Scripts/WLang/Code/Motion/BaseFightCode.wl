@@ -3,9 +3,7 @@
 waitTarget = 0
 def WaitEnter()
 {
-    Print("Wait")
     waitTarget = E_MAX_HATE_ENTITY
-    print(E_MAX_HATE_ENTITY)
 }
 
 def FightEnter(){

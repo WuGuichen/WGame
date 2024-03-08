@@ -11,8 +11,8 @@ public enum FocusType
 {
     Focus,
     Cancel,
-    Up,
-    Down,
+    // Up,
+    // Down,
     Left,
     Right,
     Switch,

@@ -34,7 +34,6 @@ public class SensorCharacterSystem : IExecuteSystem
                 var modelTarget = tar.gameViewService.service.Model;
                 var dir = tar.position.value - entity.position.value;
                 var sqrDist = dir.sqrMagnitude;
-                // var dist = math.sqrt(hitInfo.SqrDist);
                 var dist = math.sqrt(sqrDist);
                 var normalDir = dir / dist;
                 var angleToTarget = model.forward.GetAngle360(normalDir, model.up);

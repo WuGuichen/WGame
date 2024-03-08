@@ -155,13 +155,13 @@ namespace WGame.UI
 		public bool isDefencePressing = false;
 
 		private float jumpTimer = HOLD_TIME_LIMIT;
-		private bool isTriggerJump = false;
-		public bool IsTriggerJump
+		private bool isTriggerSpecial = false;
+		public bool IsTriggerSpecial
 		{
-			get => isTriggerJump;
+			get => isTriggerSpecial;
 			set
 			{
-				isTriggerJump = value;
+				isTriggerSpecial = value;
 			}
 		}
 
@@ -173,17 +173,17 @@ namespace WGame.UI
 			}
 		}
 		
-		private bool isHoldJump = false;
-		public bool IsHoldJump
+		private bool isHoldSpecial = false;
+		public bool IsHoldSpecial
 		{
-			get => isHoldJump;
+			get => isHoldSpecial;
 			set
 			{
-				isHoldJump = value;
+				isHoldSpecial = value;
 			}
 		}
 
-		public bool isJumpPressing = false;
+		public bool isSpecialPressing = false;
 		
 		private bool isTriggerStep = false;
 
@@ -216,12 +216,12 @@ namespace WGame.UI
 		{
 			if(isLooking)
 				isLooking = false;
-			if(isTriggerJump)
-				isTriggerJump = false;
+			if(isTriggerSpecial)
+				isTriggerSpecial = false;
 			if(isTriggerAttack)
 				isTriggerAttack = false;
-			if(isTriggerJump)
-				isTriggerJump = false;
+			if(isTriggerSpecial)
+				isTriggerSpecial = false;
 			if(isTriggerStep)
 				isTriggerStep = false;
 			// if(isDefencing)
@@ -233,11 +233,11 @@ namespace WGame.UI
 
 		public void TickInputUpdate(float deltaTime)
 		{
-			if (isJumpPressing)
+			if (isSpecialPressing)
 			{
-				if (IsHoldJump == false && jumpTimer < 0)
+				if (IsHoldSpecial == false && jumpTimer < 0)
 				{
-					IsHoldJump = true;
+					IsHoldSpecial = true;
 				}
 				jumpTimer -= deltaTime;
 			}

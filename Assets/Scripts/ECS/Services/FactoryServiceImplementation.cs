@@ -558,11 +558,12 @@ public class FactoryServiceImplementation : IFactoryService
         {
             int num = Random.Range(0, genCharacterNum+1);
             var entity = _gameContext.GetEntityWithEntityID(num + characterBaseID);
-            if (entity != null && entity.isEnabled && entity.entityID.id != ActionHelper.CurCameraEntityID)
+            if ( entity != null && entity.isEnabled && entity.isDeadState == false && entity.entityID.id != ActionHelper.CurCameraEntityID)
             {
                 return entity;
             }
         }
+        WLogger.Print("没有可选择的角色!!");
 
         return null;
     }

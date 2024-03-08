@@ -916,7 +916,7 @@ MonoBehaviour:
   gender: 1
   race: 1
   camp: 2
-  moveSpeed: 400
+  moveSpeed: 40
   rotationSpeed: 200
   runSpeedRate: 200
   patrolPoints:

@@ -53,8 +53,10 @@ public class DeadCharacterSystem : IExecuteSystem
         }
         for(int i= 0 ; i < listFocus.Count; i++)
         {
-            // listFocus[i].RemoveFocus();
-            listFocus[i].RemoveFocusEntity();
+            if (!listFocus[i].isCamera)
+            {
+                EntityUtils.SetFocusTarget(listFocus[i], null);
+            }
         }
     }
 }

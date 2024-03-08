@@ -44,8 +44,7 @@ public class WUtils
             while (--index >= 0)
             {
                 char ch = path[index];
-                if ((int)ch == (int)Path.DirectorySeparatorChar || (int)ch == (int)Path.AltDirectorySeparatorChar ||
-                    (int)ch == (int)Path.VolumeSeparatorChar)
+                if ((int)ch == (int)'/' || (int)ch == (int)'\\')
                     return path.Substring(index + 1, length - index - 1);
             }
         }

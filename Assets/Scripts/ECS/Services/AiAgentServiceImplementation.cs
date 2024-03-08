@@ -106,17 +106,17 @@ public partial class AiAgentServiceImplementation : IAiAgentService
 
     public void Initialize()
     {
-        var agent = _entity.gameViewService.service.Model
-            .GetOrAddComponent<AgentBehaviour>();
-        goapBrain = new BaseAgentBrain(agent, _entity, _factory.GOAPRunner.GetGoapSet("Base"), WDistanceObserver.entity);
-        if (_entity.isCampRed)
-        {
-            goapBrain.SetEnable(true);
-        }
-        else
-        {
-            goapBrain.SetEnable(false);
-        }
+        // var agent = _entity.gameViewService.service.Model
+        //     .GetOrAddComponent<AgentBehaviour>();
+        // goapBrain = new BaseAgentBrain(agent, _entity, _factory.GOAPRunner.GetGoapSet("Base"), WDistanceObserver.entity);
+        // if (_entity.isCampRed)
+        // {
+        //     goapBrain.SetEnable(true);
+        // }
+        // else
+        // {
+        //     goapBrain.SetEnable(false);
+        // }
     }
     
     private void UpdateGOAPBrain()

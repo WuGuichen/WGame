@@ -71,7 +71,7 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
                     _inputContext.ReplaceLookInput(Vector2.zero);
                 }
 
-                _inputContext.ReplaceJumpInput(model.IsTriggerJump);
+                _inputContext.ReplaceSpecial(model.IsTriggerSpecial);
                 _inputContext.ReplaceRunInput(model.IsRunningState);
                 _inputContext.ReplaceAttackInput(model.IsTriggerAttack);
                 _inputContext.ReplaceAttackHoldInput(model.IsHoldAttack);

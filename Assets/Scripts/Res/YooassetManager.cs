@@ -21,7 +21,6 @@ namespace WGame.Res
         private ResourcePackage rawFilePackage;
 
         #if UNITY_EDITOR
-        [SerializeField]
         private EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
         #else
         private EPlayMode PlayMode = EPlayMode.OfflinePlayMode;
