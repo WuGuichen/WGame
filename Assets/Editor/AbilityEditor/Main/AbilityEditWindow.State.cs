@@ -152,6 +152,14 @@ namespace WGame.Ability.Editor
                             Setting.effectTrackIcon);
                     });
                 }
+                else if (group.itemName == Setting.groupNoticeName)
+                {
+                    menu.AddItem(Setting.contextNewNotice, false, () =>
+                    {
+                        var track = CreateActorTrack(group, Setting.trackNoticeType, Setting.colorNotice,
+                            Setting.otherTrackIcon);
+                    });
+                }
             }
             else if (item is TrackItem track)
             {

@@ -20,7 +20,7 @@ namespace WGame.Ability
 
         //popup list string
         AnimationClip,
-        AnimatorParam,
+        NoticeReceiver,
         CustomProperty,
         Action,
 
@@ -32,6 +32,14 @@ namespace WGame.Ability
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class EditorDataAttribute : Attribute
     {
+        public EditorDataAttribute(string name, EditorDataType type, float lableWidth)
+        {
+            PropertyName = name;
+            DataType = type;
+            Edit = true;
+            Deprecated = null;
+            LabelWidth = lableWidth;
+        }
         public EditorDataAttribute(string name, EditorDataType type)
         {
             PropertyName = name;

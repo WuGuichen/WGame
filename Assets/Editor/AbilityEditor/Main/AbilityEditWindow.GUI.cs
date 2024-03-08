@@ -13,7 +13,7 @@ namespace WGame.Ability.Editor
     internal sealed partial class AbilityEditWindow
     {
         [SerializeField] private float _playSpeed = 1f;
-        [SerializeReference] private TreeItem itemTreeView = null;
+        [SerializeReference] private TreeItem itemTreeView;
         [SerializeReference] private SpliteWindow actorSplitter;
         [SerializeReference] private SpliteWindow propertySplitter;
         [SerializeReference] private SpliteWindow inspectorSplitter;
@@ -66,6 +66,9 @@ namespace WGame.Ability.Editor
 
                 CreateActorGroup(itemTreeView, Setting.groupAnimationName);
                 CreateActorGroup(itemTreeView, Setting.groupEffectName);
+                CreateActorGroup(itemTreeView, Setting.groupNoticeName);
+                
+                DeserializeAll();
             }
         }
 
@@ -109,7 +112,15 @@ namespace WGame.Ability.Editor
             EditorGUI.DrawRect(rectClient, Setting.colorSequenceBackground);
             scrollPosition = GUI.BeginScrollView(rectClient, scrollPosition, rectClientView, GUIStyle.none, GUI.skin.verticalScrollbar);
             {
-                itemTreeView.Draw();
+                if (Ability != null)
+                {
+                    itemTreeView.Draw();
+                }
+                else
+                {
+                    GUILayout.Label("请先选择Ability");
+                }
+            
             }
             GUI.EndScrollView();
         }
@@ -292,7 +303,7 @@ namespace WGame.Ability.Editor
                 track.itemName = evt.TrackName;
             }
             
-            float posX = Time2Pos(ToSecond(evt.TriggerTime)) + rectTimeArea.x;
+            var posX = Time2Pos(ToSecond(evt.TriggerTime)) + rectTimeArea.x;
             var style = evt.TriggerType == ETriggerType.Signal ? EventStyle.Signal : EventStyle.Duration;
             var ae = CreateActorEvent(track, posX, style, trackType, false);
             ae.eventProperty = evt;
@@ -305,23 +316,27 @@ namespace WGame.Ability.Editor
             ab.ForceSort();
 
             // 事件列表
-            using (var itr = ab.EventList.GetEnumerator())
+            using var itr = ab.EventList.GetEnumerator();
+            while (itr.MoveNext())
             {
-                while (itr.MoveNext())
+                switch (itr.Current.EventType)
                 {
-                    switch (itr.Current.EventType)
-                    {
-                        case EventDataType.PlayAnim:
-                            {
-                                BuildItemEventTree(itr.Current, Setting.groupAnimationName, Setting.trackAnimationType, Setting.colorAnimation, Setting.animationTrackIcon);
-                            }
-                            break;
-                        case EventDataType.PlayEffect:
-                            {
-                                BuildItemEventTree(itr.Current, Setting.groupEffectName, Setting.trackEffectType, Setting.colorEffect, Setting.effectTrackIcon);
-                            }
-                            break;
-                    }
+                    case EventDataType.PlayAnim:
+                        BuildItemEventTree(itr.Current, Setting.groupAnimationName, Setting.trackAnimationType,
+                            Setting.colorAnimation, Setting.animationTrackIcon);
+                        break;
+                    case EventDataType.PlayEffect:
+                        BuildItemEventTree(itr.Current, Setting.groupEffectName, Setting.trackEffectType,
+                            Setting.colorEffect, Setting.effectTrackIcon);
+                        break;
+                    case EventDataType.NoticeMessage:
+                        BuildItemEventTree(itr.Current, Setting.groupNoticeName, Setting.trackNoticeType,
+                            Setting.colorNotice, Setting.otherTrackIcon);
+                        break;
+                    case EventDataType.None:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -330,12 +345,10 @@ namespace WGame.Ability.Editor
         {
             Ability = null;
 
-            using (var itr = itemTreeView.children.GetEnumerator())
+            using var itr = itemTreeView.children.GetEnumerator();
+            while (itr.MoveNext())
             {
-                while (itr.MoveNext())
-                {
-                    itr.Current.children.Clear();
-                }
+                itr.Current.children.Clear();
             }
         }
     }

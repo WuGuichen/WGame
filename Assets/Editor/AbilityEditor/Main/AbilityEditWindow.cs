@@ -31,6 +31,11 @@ namespace WGame.Ability.Editor
             Window.Focus();
         }
 
+        private void OnDestroy()
+        {
+            GameAssetsMgr.Inst.Dispose();
+        }
+
         private WindowSetting _setting;
         public WindowSetting Setting
         {

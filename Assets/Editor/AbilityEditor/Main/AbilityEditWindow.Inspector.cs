@@ -135,6 +135,7 @@ namespace WGame.Ability.Editor
 
         private void DeserializeAll()
         {
+            GameAssetsMgr.Inst.InitInstance();
             InitInspectorAbility();
         }
         
@@ -151,11 +152,6 @@ namespace WGame.Ability.Editor
             }
 
             GUILayout.Label(cacheTexture);
-        }
-
-        private void OnDestroy()
-        {
-            GameAssetsMgr.Inst.Dispose();
         }
     }
 }

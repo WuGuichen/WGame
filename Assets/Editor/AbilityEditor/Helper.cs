@@ -126,5 +126,22 @@ namespace WGame.Ability.Editor
 
             return sb.ToString();
         }
+
+        public static Dictionary<int, string> GetTypeLabelList<T>()
+        {
+            var res = new Dictionary<int, string>();
+            var type = typeof(T);
+            var properties = type.GetProperties();
+            for (var i = 0; i < properties.Length; i++)
+            {
+                var attrs = properties[i].GetCustomAttributes(type, false);
+                if (attrs.Length == 1)
+                {
+                    var labelAttr = (WLableAttribute)attrs[0];
+                }
+            }
+
+            return res;
+        }
     }
 }

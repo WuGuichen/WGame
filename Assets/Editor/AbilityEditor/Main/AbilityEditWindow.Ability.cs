@@ -16,6 +16,7 @@ namespace WGame.Ability.Editor
             DeserializeAbility();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void DrawInspectorAbility()
         {
             GUILayout.BeginVertical();
@@ -24,18 +25,28 @@ namespace WGame.Ability.Editor
                 GUILayout.BeginHorizontal(Setting.btnToolBoxStyle, GUILayout.Width(rectInspectorLeft.width),
                     GUILayout.Height(16));
                 {
-                    if (GUILayout.Button("New"))
+                    if (Application.isPlaying)
                     {
-                        var ap = CreateData(itemAbilityTree, typeof(AbilityData));
-                        var ac = ap.Data as AbilityData;
-                        ac.TotalTime = 1666;
-                        ac.ID = Helper.NonceStr(25);
+                        if (GUILayout.Button("Hot Reload"))
+                        {
+                            WAbilityMgr.Inst.HotReloadGroup(WAbilityMgr.Inst.Loader.GetAbilityGroups()[0]);
+                        }
                     }
-
-                    if (GUILayout.Button("Delete"))
+                    else
                     {
-                        DeleteProperty();
-                        ClearTreeView();
+                        if (GUILayout.Button("New"))
+                        {
+                            var ap = CreateData(itemAbilityTree, typeof(AbilityData));
+                            var ac = ap.Data as AbilityData;
+                            ac.TotalTime = 1666;
+                            ac.ID = Helper.NonceStr(25);
+                        }
+
+                        if (GUILayout.Button("Delete"))
+                        {
+                            DeleteProperty();
+                            ClearTreeView();
+                        }
                     }
 
                     if (GUILayout.Button("Save"))

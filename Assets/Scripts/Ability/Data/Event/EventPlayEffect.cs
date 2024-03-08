@@ -65,16 +65,18 @@ namespace WGame.Ability
 
         public IEventData Clone()
         {
-            EventPlayEffect evt = new EventPlayEffect();
-            evt.EffectName = EffectName;
-            evt.IsLoop = IsLoop;
-            evt.LoopName = LoopName;
-            evt.DummyType = DummyType;
-            // evt.mDummyRoot = this.mDummyRoot;
-            // evt.mDummyAttach = this.mDummyAttach;
-            evt.Position = Position;
-            evt.EulerAngle = EulerAngle;
-            evt.UseRandom = UseRandom;
+            var evt = new EventPlayEffect
+            {
+                EffectName = EffectName,
+                IsLoop = IsLoop,
+                LoopName = LoopName,
+                DummyType = DummyType,
+                // evt.mDummyRoot = this.mDummyRoot;
+                // evt.mDummyAttach = this.mDummyAttach;
+                Position = Position,
+                EulerAngle = EulerAngle,
+                UseRandom = UseRandom
+            };
             evt.RandomEffectList.AddRange(this.RandomEffectList);
 
             return evt;

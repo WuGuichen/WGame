@@ -7,6 +7,7 @@ namespace WGame.Ability
         [Header("无")]
         None,
         PlayAnim,
-        PlayEffect
+        PlayEffect,
+        NoticeMessage,
     }
 }

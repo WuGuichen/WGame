@@ -3,7 +3,6 @@ namespace WGame.Ability.Editor
     using LitJson;
     using UnityEngine;
     
-    [System.Serializable]
     internal class ItemData : ItemTreeData
     {
         [SerializeReference] public IData Data = null;

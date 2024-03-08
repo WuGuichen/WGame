@@ -11,7 +11,6 @@ namespace WGame.Ability.Editor
         private void OnEnable()
         {
             EditorApplication.update += OnEditorUpdate;
-            DeserializeAll();
         }
 
         private void OnDisable()

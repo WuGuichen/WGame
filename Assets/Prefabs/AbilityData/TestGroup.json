@@ -15,17 +15,14 @@
                     "EventType"   : "PlayAnim",
                     "EventData"   : {
                         "AnimName" : "Longs_Jump_Platformer_Land",
-                        "AnimType" : "SetBool",
-                        "TriggerName" : "",
-                        "TriggerValue" : "",
-                        "FadeTime"     : 0.0
+                        "FadeTime" : 0.0
                     }
                 },
                 {
                     "TrackName" : "Effect 0",
                     "TrackIndex" : 0,
                     "TriggerType" : "Signal",
-                    "TriggerTime" : 616,
+                    "TriggerTime" : 90,
                     "Duration"    : 0,
                     "EventType"   : "PlayEffect",
                     "EventData"   : {
@@ -46,6 +43,17 @@
                         "UseRandom"  : false,
                         "RandomEffectList" : [
                         ]
+                    }
+                },
+                {
+                    "TrackName" : "Notice 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Signal",
+                    "TriggerTime" : 514,
+                    "Duration"    : 0,
+                    "EventType"   : "NoticeMessage",
+                    "EventData"   : {
+                        "ReceiverID" : 0
                     }
                 }
             ]

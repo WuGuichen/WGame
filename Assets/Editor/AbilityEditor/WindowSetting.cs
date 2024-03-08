@@ -11,12 +11,15 @@ namespace WGame.Ability.Editor
         
         public string groupAnimationName = "Animation Group";
         public string groupEffectName = "Effect Group";
+        public string groupNoticeName = "Notice Group";
         
         public string trackAnimationType = "Animation";
         public string trackEffectType = "Effect";
+        public string trackNoticeType = "Notice";
         
         public GUIContent contextNewAnimation = new GUIContent("New Animation");
         public GUIContent contextNewEffect = new GUIContent("New Effect");
+        public GUIContent contextNewNotice = new GUIContent("New Notice");
         public GUIContent contextAddEventSignal = new GUIContent("Add Event Signal");
         public GUIContent contextAddEventDuration = new GUIContent("Add Event Duration");
         public GUIContent contextDelTrack = new GUIContent("Del Track");
@@ -37,6 +40,7 @@ namespace WGame.Ability.Editor
         public Color colorGroupTrackBackground = new Color(0.080f, 0.305f, 0.328f, 0.178f);
         public Color colorAnimation = new Color(0.141f, 0.333f, 0.537f, 1.000f);
         public Color colorEffect = new Color(0.000f, 0.597f, 0.128f, 1.000f);
+        public Color colorNotice = new Color(0.100f, 0.397f, 0.028f, 1.000f);
         public Color colorAudio = new Color(1.000f, 0.635f, 0.000f, 1.000f);
         public Color colorCamera = new Color(0.702f, 0.302f, 0.302f, 1.000f);
         public Color colorInterrupt = new Color(0.3215f, 0.827f, 0.960f, 1.000f);

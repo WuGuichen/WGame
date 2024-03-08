@@ -4,20 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="Ability部分执行流程，ECS system整理">
+    <list default="true" id="339b415e-5d90-4706-b934-2ea6ee160553" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Custom.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Custom/NoticeDefine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Custom/NoticeDefine.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventNoticeMessage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventNoticeMessage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/WLableAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/WLableAttribute.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/AbilityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/AbilityData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/AbilityStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/AbilityStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Ability.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Data.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Inspector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Inspector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Layout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Layout.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Preview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.Preview.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Main/AbilityEditWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/Manipulator/Item/ItemData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WGame.Ability.Editor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WGame.Ability.Editor.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AbilityEditor/WindowSetting.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Core/GameAssetsMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Core/GameAssetsMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AbilityData/TestGroup.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AbilityData/TestGroup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/DataEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/DataEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventDataType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventDataType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventPlayAnim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventPlayAnim.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventPlayEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventPlayEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityStatusImplementation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Ability/AbilityStatusImplementation.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AbilityServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Services/AbilityServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectMgr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/EffectMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/EffectMgr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Res/ObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Res/ObjectPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/WUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/Utils.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/WUtils.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Setting/AssetBundleCollectorSetting.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/EditorDataAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/EditorDataAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ability/WAbilityMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ability/WAbilityMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/NoticeDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ECS/Notice/NoticeDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/WUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/WUtils.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +53,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/0a/58c4bcbd/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/76/7147575b/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/7e/ef90acf1/Path.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/9c/6b88ffc6/Attribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/b8/cd26ed04/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/bc/ba0dc626/Enum.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/c4/4a4b98c7/List`1.cs" root0="SKIP_HIGHLIGHTING" />
@@ -101,6 +120,7 @@
     <setting file="file://D:/2023UnityFiles/Scripts/Collision/CollisionUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/2023UnityFiles/TWY_Game_2023/Assets/Scripts/Physics/Collision/CollisionTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/2023UnityFiles/TWY_Game_2023/Assets/Scripts/Physics/Collision/CollisionUtils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/Custom/NoticeDefine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/DataSettingAsset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIColorScope.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/AbilityEditor/GUIStyleScope.cs" root0="FORCE_HIGHLIGHTING" />
@@ -135,7 +155,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Tools/EditorIcons.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ability/AbilityData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/Ability/AbilityData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/UnityProjects/WGame/Client/Assets/Scripts/Ability/AbilityData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ability/AbilityStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/EventNoticeMessage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ability/WAbilityMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioCtrl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/WAudioType.cs" root0="FORCE_HIGHLIGHTING" />
@@ -198,6 +220,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Terminal/MethodDefine.Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/DetectorDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ECS/Utilies/WLableAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/Tests/WInputTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/WInputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/Collision/ShapeTest/ContactTest.cs" root0="FORCE_HIGHLIGHTING" />
@@ -458,14 +481,8 @@
       <workItem from="1709627002255" duration="14433000" />
       <workItem from="1709720512923" duration="14628000" />
       <workItem from="1709800352846" duration="13658000" />
-      <workItem from="1709814875704" duration="4342000" />
-    </task>
-    <task id="LOCAL-00014" summary="准备用堆结构来管理仇恨值信息">
-      <created>1703424330402</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1703424330403</updated>
+      <workItem from="1709814875704" duration="15368000" />
+      <workItem from="1709885272206" duration="267000" />
     </task>
     <task id="LOCAL-00015" summary="探测类型分类和探测等级分级">
       <created>1703426161086</created>
@@ -803,7 +820,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709810678248</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="特效加载优化">
+      <created>1709820852743</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1709820852743</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -829,7 +853,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="代码整理，GOAPDemo" />
     <MESSAGE value="角色旋转优化" />
     <MESSAGE value="巡逻点优化" />
     <MESSAGE value="GOAP更新顺序修改" />
@@ -854,7 +877,8 @@
     <MESSAGE value="inspector标签" />
     <MESSAGE value="动态类型和特效资源目录" />
     <MESSAGE value="Ability部分执行流程，ECS system整理" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ability部分执行流程，ECS system整理" />
+    <MESSAGE value="特效加载优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="特效加载优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -864,6 +888,19 @@
           <line>117</line>
           <properties documentPath="E:\UnityProjects\WGame\Client\Assets\Scripts\Physics\Collision\Shapes\GJK\ShapeGJK.cs" initialLine="117" containingFunctionPresentation="Method 'EPA'" />
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Ability/Data/Event/DataEvent.cs</url>
+          <line>64</line>
+          <properties documentPath="E:\UnityProjects\WGame\Client\Assets\Scripts\Ability\Data\Event\DataEvent.cs" initialLine="64" containingFunctionPresentation="Property 'EventType'">
+            <startOffsets>
+              <option value="1886" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1923" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

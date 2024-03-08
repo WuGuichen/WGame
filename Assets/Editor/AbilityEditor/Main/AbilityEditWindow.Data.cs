@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using WGame.Ability.Editor.Custom;
 using WGame.Editor;
 
 namespace WGame.Ability.Editor
@@ -79,9 +80,9 @@ namespace WGame.Ability.Editor
                                     AnimationClipField(obj, pis[i].Name, val);
                                 }
                                     break;
-                                case EditorDataType.AnimatorParam:
+                                case EditorDataType.NoticeReceiver:
                                 {
-                                    // PopupList(obj, pis[i].Name, val, UnitWrapper.Instance.ParameterList);
+                                    PopupList(obj, pis[i].Name, val, new NoticeDefine());
                                 }
                                     break;
                                 case EditorDataType.CustomProperty:
@@ -130,6 +131,17 @@ namespace WGame.Ability.Editor
             if (idx >= 0 && idx < list.Count)
             {
                 Helper.SetProperty(obj, propertyName, list[idx]);
+            }
+        }
+        
+        private void PopupList(object obj, string propertyName, object val, StringToIDDefine define)
+        {
+            int idx = define.GetIndex((int)val);
+            var list = define.StringArray;
+            idx = EditorGUILayout.Popup(idx, list);
+            if (idx >= 0 && idx < list.Length)
+            {
+                Helper.SetProperty(obj, propertyName, define.IDArray[idx]);
             }
         }
 

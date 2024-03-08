@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Text;
+using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 using WGame.Editor;
@@ -17,6 +19,10 @@ namespace WGame.Ability.Editor
         [SerializeField] private int selectInterruptIndex = -1;
         
         [System.NonSerialized] private bool _hasExecute = false;
+        
+
+        [System.NonSerialized]
+        private StringBuilder _tipBuf = new StringBuilder();
         
         public TrackItem parent
         {
@@ -162,6 +168,10 @@ namespace WGame.Ability.Editor
             {
                 eventProperty.EventType = EventDataType.PlayEffect;
             }
+            else if (eventTag == Window.Setting.trackNoticeType)
+            {
+                eventProperty.EventType = EventDataType.NoticeMessage;
+            }
 
             if (manual)
             {
@@ -211,9 +221,6 @@ namespace WGame.Ability.Editor
             if (start < Window.ViewTimeMin || start > Window.ViewTimeMax)
                 return;
 
-            //if (window.frameWidth <= 10)
-            //    return;
-
             BuildRect();
 
             var selected = Window.HasSelect(this);
@@ -224,24 +231,30 @@ namespace WGame.Ability.Editor
                 GUI.Box(rect, "", Window.Setting.customEventKey);
             }
 
+            _tipBuf.Clear();
             if (eventProperty != null && eventProperty.EventData != null && eventProperty.EventData is EventPlayAnim epa)
             {
                 if (!string.IsNullOrEmpty(epa.AnimName))
                 {
                     var clip =GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
                     duration = clip.length;
+                    _tipBuf.Append(clip.name);
+                    _tipBuf.Append(",");
                 }
             }
 
             switch (eventStyle)
             {
                 case EventStyle.Signal:
-                    text.text = Window.FormatTime(start);
+                    _tipBuf.Append(Window.FormatTime(start));
                     break;
                 case EventStyle.Duration:
-                    text.text = Window.FormatTime(duration);
+                    _tipBuf.Append(Window.FormatTime(duration));
                     break;
             }
+
+            text.text = _tipBuf.ToString();
+            
             using (new GUIColorScope(Window.Setting.colorBlack))
             {
                 var rc = rect;

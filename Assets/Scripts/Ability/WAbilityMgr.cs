@@ -25,6 +25,12 @@ namespace WGame.Ability
                 Load(filePath, (AbilityData ac) => { _abilityDataDict.Add(ac.Name, ac); });
             }
         }
+
+        public void HotReloadGroup(string filePath)
+        {
+            Load(filePath, (AbilityData ac) => { _abilityDataDict[ac.Name] = ac; });
+            WLogger.Print($"已更新AbilityGroup: {filePath}");
+        }
         
         private void Load<T>(string name, System.Action<T> handler) where T : IData, new()
         {

@@ -61,6 +61,9 @@ namespace WGame.Ability
                         case EventDataType.PlayEffect:
                             EventData = new EventPlayEffect();
                             break;
+                        case EventDataType.NoticeMessage:
+                            EventData = new EventNoticeMessage();
+                            break;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }

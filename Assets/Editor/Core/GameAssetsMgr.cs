@@ -49,6 +49,7 @@ namespace WGame.Editor
 
         public override void InitInstance()
         {
+            Dispose();
             InitResFolderPath();
             BuildResMap();
             
