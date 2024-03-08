@@ -22,8 +22,6 @@ public partial class AiAgentServiceImplementation : IAiAgentService
     private readonly MoveAgent moveAgent;
     private readonly FSMAgent fsmAgent;
     private readonly BTreeAgent bTreeAgent;
-    private WAgentBrainBase goapBrain;
-
     private readonly CharacterInitInfo _initInfo;
 
     private readonly CharAI _aiCfg = null;
@@ -91,11 +89,6 @@ public partial class AiAgentServiceImplementation : IAiAgentService
         }
     }
 
-    private void UpdateGOAPBrain()
-    {
-        goapBrain.OnUpdate();
-    }
-
     public void TriggerFSM(int type)
     {
         TriggerFSM(_aiCfg.BaseFSM, type);
@@ -109,19 +102,26 @@ public partial class AiAgentServiceImplementation : IAiAgentService
     public MoveAgent MoveAgent => moveAgent;
     public FSMAgent FSMAgent => fsmAgent;
 
+    private WAgentBrainBase goapBrain;
+
     public void Initialize()
     {
-        // var agent = _entity.gameViewService.service.Model
-        //     .GetOrAddComponent<AgentBehaviour>();
-        // goapBrain = new BaseAgentBrain(agent, _entity, _factory.GOAPRunner.GetGoapSet("Base"), WDistanceObserver.entity);
-        // if (_entity.isCampRed)
-        // {
-        //     goapBrain.SetEnable(true);
-        // }
-        // else
-        // {
-        //     goapBrain.SetEnable(false);
-        // }
+        var agent = _entity.gameViewService.service.Model
+            .GetOrAddComponent<AgentBehaviour>();
+        goapBrain = new BaseAgentBrain(agent, _entity, _factory.GOAPRunner.GetGoapSet("Base"), WDistanceObserver.entity);
+        if (_entity.isCampRed)
+        {
+            goapBrain.SetEnable(true);
+        }
+        else
+        {
+            goapBrain.SetEnable(false);
+        }
+    }
+    
+    private void UpdateGOAPBrain()
+    {
+        goapBrain.OnUpdate();
     }
 
     public void Destroy()

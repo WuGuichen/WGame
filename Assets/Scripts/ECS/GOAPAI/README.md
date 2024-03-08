@@ -1,5 +1,17 @@
 # GOAP
+
+本文主要更简单的介绍自己对GOAP各个定义的理解。 </br>
+项目中则是将GOAP集成到AI模块中，主要是减少了对Monobehavior的依赖，使其更容易编辑和使用。
+以及将自定义数据结构耦合到框架中，以提高易用性和效率。
+
+构建示例
+![GOAP构建示例](../../../../Images/GOAP构建示例.png)
+使用示例
+![GOAP使用示例](../../../../Images/GOAP使用示例.png)
+
 本项目的理解，更详细的可以去GOAP文档看
+[https://github.com/crashkonijn/GOAP](https://github.com/crashkonijn/GOAP)
+
 ## Goal
 
 ### 示例
