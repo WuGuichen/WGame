@@ -25,7 +25,7 @@ public class RotateCharacterSystem : IExecuteSystem
             Vector3 tarDir;
             Vector3 fwd;
             bool isCamera = entity.isCamera;
-            playerTrans = entity.gameViewService.service.Model;
+            playerTrans = entity.gameViewService.service.Model.parent;
             if (isCamera)
             {
                 moveDir = _inputContext.moveInput.value;

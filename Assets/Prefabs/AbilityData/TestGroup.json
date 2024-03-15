@@ -49,11 +49,45 @@
                     "TrackName" : "Notice 0",
                     "TrackIndex" : 0,
                     "TriggerType" : "Signal",
-                    "TriggerTime" : 514,
+                    "TriggerTime" : 229,
                     "Duration"    : 0,
                     "EventType"   : "NoticeMessage",
                     "EventData"   : {
                         "ReceiverID" : 0
+                    }
+                }
+            ]
+        },
+        {
+            "ID" : "0638460501134701969dsSlXB",
+            "Name" : "FireBall",
+            "TotalTime" : 1666,
+            "Events"    : [
+                {
+                    "TrackName" : "Effect 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Signal",
+                    "TriggerTime" : 359,
+                    "Duration"    : 0,
+                    "EventType"   : "PlayEffect",
+                    "EventData"   : {
+                        "EffectName" : "/Effects/HCFX_Buff_Up.prefab",
+                        "IsLoop"     : false,
+                        "LoopName"   : "",
+                        "DummyType"  : "DummyFollow",
+                        "Position"   : {
+                            "x" : 0.0,
+                            "y" : 0.0,
+                            "z" : 0.0
+                        },
+                        "Euler"      : {
+                            "x" : 0.0,
+                            "y" : 0.0,
+                            "z" : 0.0
+                        },
+                        "UseRandom"  : false,
+                        "RandomEffectList" : [
+                        ]
                     }
                 }
             ]

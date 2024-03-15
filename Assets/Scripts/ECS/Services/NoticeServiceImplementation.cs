@@ -15,14 +15,14 @@ public class NoticeServiceImplementation : INoticeService
         _notice.Notice(message);
     }
 
-    public void AddReciever(int key)
+    public void AddReciever(int key, int times = 1, bool replace = true)
     {
-        NoticeDB.Inst.AddReciever(_notice, key);
+        NoticeDB.Inst.AddReciever(_notice, key, times);
     }
 
-    public void AddReciever(int key, float duration, bool replace = true)
+    public void AddReciever(int key, float duration, int times = 1, bool replace = true)
     {
-        NoticeDB.Inst.AddReciever(_notice, key);
+        NoticeDB.Inst.AddReciever(_notice, key, times);
         Timer.Register(duration, () =>
         {
             RemoveReciever(key);

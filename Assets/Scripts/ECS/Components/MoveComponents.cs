@@ -1,8 +1,7 @@
 using Entitas;
-using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 //
-[Game, Event(EventTarget.Self)]
+[Game, Sensor]
 public class MoveDirectionComponent : IComponent
 {
     public Vector3 value;

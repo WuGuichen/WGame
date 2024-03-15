@@ -9,12 +9,15 @@ public class GameSceneMgr : Singleton<GameSceneMgr>
     public void InitEnvironment()
     {
         environment = GameObject.FindWithTag("Environment").GetComponent<EnvironmentMono>();
+        TriggerObjectRoot = new GameObject("TriggerObjectRoot").transform;
+        GameObject.DontDestroyOnLoad(TriggerObjectRoot);
     }
 
     public Transform genItemRoot => environment.Items;
     public Transform genCharacterRoot => environment.Characters;
     public Transform editCharacterRoot => environment.CharacterRoot;
-    
+    public Transform TriggerObjectRoot { get; private set; }
+
     public void LoadNewScene(string sceneName)
     {
         var handle = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);

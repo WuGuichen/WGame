@@ -5,6 +5,7 @@ public class SensorMono : MonoBehaviour
 {
     private GameEntity _entity;
     public GameEntity Entity => _entity;
+    public int EntityId { get; private set; }
 
     [SerializeField] private EntityPartType _partType;
     public EntityPartType PartType => _partType;
@@ -61,6 +62,7 @@ public class SensorMono : MonoBehaviour
         _collider = collider;
         _collider.isTrigger = true;
         _entity = entity;
+        EntityId = entity.instanceID.ID;
         _partType = type;
         _colliderId = collider.GetInstanceID();
         _transform = transform;

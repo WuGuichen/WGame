@@ -8,19 +8,23 @@
 //------------------------------------------------------------------------------
 public static class SensorComponentsLookup {
 
-    public const int DetectChar = 0;
-    public const int DetectCharacterDegree = 1;
-    public const int DetectCharOpen = 2;
-    public const int DetectorCharacterService = 3;
-    public const int DetectSpottedRadius = 4;
-    public const int DetectWarningRadius = 5;
-    public const int LinkCharacter = 6;
-    public const int SensorCharOpen = 7;
-    public const int SensorCharRadius = 8;
+    public const int Destroyed = 0;
+    public const int DetectChar = 1;
+    public const int DetectCharacterDegree = 2;
+    public const int DetectCharOpen = 3;
+    public const int DetectorCharacterService = 4;
+    public const int DetectSpottedRadius = 5;
+    public const int DetectWarningRadius = 6;
+    public const int LinkCharacter = 7;
+    public const int MoveDirection = 8;
+    public const int SensorCharOpen = 9;
+    public const int SensorCharRadius = 10;
+    public const int TriggerObjectSensor = 11;
 
-    public const int TotalComponents = 9;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
+        "Destroyed",
         "DetectChar",
         "DetectCharacterDegree",
         "DetectCharOpen",
@@ -28,11 +32,14 @@ public static class SensorComponentsLookup {
         "DetectSpottedRadius",
         "DetectWarningRadius",
         "LinkCharacter",
+        "MoveDirection",
         "SensorCharOpen",
-        "SensorCharRadius"
+        "SensorCharRadius",
+        "TriggerObjectSensor"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(DestroyedComponent),
         typeof(DetectChar),
         typeof(DetectCharacterDegreeComponent),
         typeof(DetectCharOpen),
@@ -40,7 +47,9 @@ public static class SensorComponentsLookup {
         typeof(DetectSpottedRadiusComponent),
         typeof(DetectWarningRadiusComponent),
         typeof(LinkCharacterComponent),
+        typeof(MoveDirectionComponent),
         typeof(SensorCharOpen),
-        typeof(SensorCharRadius)
+        typeof(SensorCharRadius),
+        typeof(TriggerObjectSensorComponent)
     };
 }

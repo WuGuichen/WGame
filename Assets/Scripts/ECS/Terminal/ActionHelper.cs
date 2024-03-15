@@ -23,7 +23,7 @@ public partial class ActionHelper
         entity.notice.service.Notice(WGame.Notice.MessageDB.Getter.GetBehitted(hitInfo));
         entity.linkAbility.Ability.abilityGotHit.service.OnGotHit(entity, hitInfo);
     }
-
+    
     public static void DoHitTarget(GameEntity entity, ContactInfo hitInfo)
     {
         if (!entity.hasLinkAbility || !entity.linkAbility.Ability.hasAbilityGotHit)

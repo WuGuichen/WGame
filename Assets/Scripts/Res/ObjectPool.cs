@@ -4,6 +4,11 @@ using UnityEngine;
 using WGame.Res;
 using WGame.Runtime;
 
+public enum NativeObjectType
+{
+    SphereTrigger = 0,
+}
+
 public class ObjectPool : SingletonMono<ObjectPool>
 {
     class Pool
@@ -14,6 +19,7 @@ public class ObjectPool : SingletonMono<ObjectPool>
         public Pool(string name, Transform parent)
         {
             root = new GameObject(name).transform;
+            GameObject.DontDestroyOnLoad(root);
             root.parent = parent;
             count = 0;
         }
@@ -51,12 +57,8 @@ public class ObjectPool : SingletonMono<ObjectPool>
             }
         }
     }
-    private Dictionary<int, Pool> objPools =new();
+    private Dictionary<int, Pool> objPools =new(7);
     private Dictionary<string, Pool> stringObjPools = new();
-
-    private void Awake()
-    {
-    }
 
     public void PreLoad(int objId, int num)
     {
@@ -71,17 +73,62 @@ public class ObjectPool : SingletonMono<ObjectPool>
         }
     }
 
-    public void GetObject(int objId, Transform parent = null,
-        Action<GameObject> callback = null)
+    public void GetObject(NativeObjectType type, Action<GameObject> callback = null)
     {
-        GetObject(objId, Vector3.zero, Quaternion.identity, parent, callback);
+        GetObject(type, Vector3.zero, Quaternion.identity, transform, callback);
+    }
+    
+    public void GetObject(NativeObjectType type, Vector3 pos, Quaternion rot, Action<GameObject> callback = null)
+    {
+        GetObject(type, pos, rot, transform, callback);
     }
 
-    public void GetObject(string objName, Vector3 pos, Quaternion rot, Transform parent = null,
+    public void GetObject(NativeObjectType type, Vector3 pos, Quaternion rot, Transform parent, Action<GameObject> callback = null)
+    {
+        var objName = type.ToString();
+        
+        if (stringObjPools.TryGetValue(objName, out var pool))
+        {
+            if (pool.Get(parent, pos, rot, out var obj))
+            {
+                obj.name = objName;
+                callback?.Invoke(obj);
+                return;
+            }
+        }
+
+        var newObj = new GameObject(objName);
+        
+        switch (type)
+        {
+            case NativeObjectType.SphereTrigger:
+                newObj.AddComponent<SphereCollider>();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+
+        var trans = newObj.transform;
+        trans.parent = parent;
+        trans.position = pos;
+        trans.rotation = rot;
+        callback?.Invoke(newObj);
+    }
+
+    public void GetObject(int objId ,Action<GameObject> callback = null)
+    {
+        GetObject(objId, Vector3.zero, Quaternion.identity, transform, callback);
+    }
+
+    public void GetObject(string objName, Vector3 pos, Quaternion rot,
         Action<GameObject> callback = null)
     {
-        if (parent == null) 
-            parent = transform;
+        GetObject(objName, pos, rot, transform, callback);
+    }
+    
+    public void GetObject(string objName, Vector3 pos, Quaternion rot, Transform parent,
+        Action<GameObject> callback = null)
+    {
         if (stringObjPools.TryGetValue(objName, out var pool))
         {
             if (pool.Get(parent, pos, rot, out var obj))
@@ -102,22 +149,18 @@ public class ObjectPool : SingletonMono<ObjectPool>
             callback?.Invoke(o);
         });
     }
-    
-    public void PushObject(GameObject obj)
+    public void GetObject(int objId, Vector3 pos, Quaternion rot, Action<GameObject> callback = null)
     {
-        var objId = obj.name;
-        if (!stringObjPools.TryGetValue(objId, out var root))
-        {
-            root = new Pool(objId.ToString(), transform);
-            stringObjPools[objId] = root;
-        }
-        root.Push(obj); 
+        GetObject(objId, pos, rot, transform, callback);
     }
 
-    public void GetObject(int objId, Vector3 pos, Quaternion rot, Transform parent = null, Action<GameObject> callback = null)
+    public void GetObject(int objId, Transform parent, Action<GameObject> callback = null)
     {
-        if (parent == null) 
-            parent = transform;
+        GetObject(objId, Vector3.zero, Quaternion.identity, parent, callback);
+    }
+    
+    public void GetObject(int objId, Vector3 pos, Quaternion rot, Transform parent, Action<GameObject> callback = null)
+    {
         var data = GameData.Tables.TbObjectData[objId];
         if (objPools.TryGetValue(objId, out var pool))
         {
@@ -147,4 +190,16 @@ public class ObjectPool : SingletonMono<ObjectPool>
         }
         root.Push(obj); 
     }
+    
+    public void PushObject(GameObject obj)
+    {
+        var objId = obj.name;
+        if (!stringObjPools.TryGetValue(objId, out var root))
+        {
+            root = new Pool(objId.ToString(), transform);
+            stringObjPools[objId] = root;
+        }
+        root.Push(obj); 
+    }
+
 }

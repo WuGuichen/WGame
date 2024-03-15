@@ -56,6 +56,11 @@ public class GotHitAbilityServiceImplementation : IGotHitService
         MethodDefine.AddHatePointTo(hitInfo.entity.instanceID.ID, entity, 360*3, HatePointType.BeHitted);
     }
 
+    public void OnGotHit(SensorEntity sensor, int parts)
+    {
+        WLogger.Print(sensor.triggerObjectSensor.obj.TypeName);
+    }
+
     public void OnHitTarget(GameEntity entity, ContactInfo hitInfo)
     {
         if (hitInfo.entity.isDeadState)

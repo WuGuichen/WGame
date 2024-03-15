@@ -22,12 +22,12 @@ namespace WGame.Ability.Editor.Custom
     {
         private static readonly string[] stringArray = {
             "受击/闪避中",
-            "受击/防御中"
+            "生成/技能实体"
         };
         
         private static readonly int[] idArray = {
             NoticeDB.OnStepBeHit,
-            2,
+            NoticeDB.OnUseAbility,
         };
 
         public override string[] StringArray => stringArray;

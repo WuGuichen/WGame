@@ -19,7 +19,23 @@ public class EntityUtils
     private static WBVH<IGameViewService> _BVHEnemy =
         new WBVH<IGameViewService>(new WBVHEntityAdapter(Camp.Red), new List<IGameViewService>());
 
-    public static Dictionary<int, SensorMono> _colliderToEntityDict = new();
+    private static Dictionary<int, SensorMono> _colliderToEntityDict = new();
+    private static Dictionary<int, AbilityTriggerInfo> _triggerToEntityDict = new();
+    
+    public static void RegisterTrigger(int triggerInstId, AbilityTriggerInfo info)
+    {
+        _triggerToEntityDict[triggerInstId] = info;
+    }
+    
+    public static void CancelTrigger(int triggerInstId)
+    {
+        _triggerToEntityDict.Remove(triggerInstId);
+    }
+    
+    public static bool TryGetAbilityTrigger(int triggerInstId, out AbilityTriggerInfo info)
+    {
+        return _triggerToEntityDict.TryGetValue(triggerInstId, out info);
+    }
 
     public static void RegisterCollider(SensorMono mono, GameEntity entity)
     {

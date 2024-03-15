@@ -2,7 +2,7 @@ using UnityTimer;
 
 namespace WGame.Notice
 {
-    public struct RecieverBeHittedOnStep : IReciever
+    public struct ReceiverBeHittedOnStep : IReciever
     {
         public void OnAdded(GameEntity entity)
         {
@@ -40,7 +40,7 @@ namespace WGame.Notice
 
         public IReciever Build(int key, int times)
         {
-            return new RecieverBeHittedOnStep(){Key = key, LeftNoticeTime = times};
+            return new ReceiverBeHittedOnStep(){Key = key, LeftNoticeTime = times};
         }
     }
 }

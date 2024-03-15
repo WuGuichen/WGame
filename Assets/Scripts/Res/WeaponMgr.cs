@@ -10,7 +10,7 @@ namespace WGame.Res
         private Dictionary<int, int> mapWeapon = new Dictionary<int, int>();
         public void GetWeaponObj(int objId, Action<GameObject> callback, Transform parent = null)
         {
-            ObjectPool.Inst.GetObject(objId, parent, (o) =>
+            ObjectPool.Inst.GetObject(objId,Vector3.zero, Quaternion.identity, parent, (o) =>
             {
                 int instId = o.GetInstanceID();
                 if (mapWeapon.ContainsKey(instId))

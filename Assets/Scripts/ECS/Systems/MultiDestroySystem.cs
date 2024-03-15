@@ -16,6 +16,7 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
             contexts.game.CreateCollector(GameMatcher.Destroyed),
             contexts.input.CreateCollector(InputMatcher.Destroyed),
             contexts.weapon.CreateCollector(WeaponMatcher.Destroyed),
+            contexts.sensor.CreateCollector(SensorMatcher.Destroyed),
         };
     }
 
@@ -82,10 +83,13 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
             {
                 weaponEntity.weaponWeaponView.service.Destroy(true);
             }
-            // else if (e is TriggerEntity triggerEntity)
-            // {
-            //     
-            // }
+            else if (e is SensorEntity sensorEntity)
+            {
+                if (sensorEntity.hasTriggerObjectSensor)
+                {
+                    sensorEntity.triggerObjectSensor.obj.Dispose();
+                }
+            }
             e.Destroy();
         }
     }

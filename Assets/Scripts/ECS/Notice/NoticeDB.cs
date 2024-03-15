@@ -4,6 +4,7 @@ using WGame.Runtime;
 public class NoticeDB : Singleton<NoticeDB>
 {
     public const int OnStepBeHit = 0;
+    public const int OnUseAbility = 1;
 
     public void RemoveReciever( NoticeCenter center, int key)
     {
@@ -16,9 +17,14 @@ public class NoticeDB : Singleton<NoticeDB>
         {
             center.AddReciever(_recievers[key].Build(key, times));
         }
+        else
+        {
+            WLogger.Error("尝试添加未加入_recievers的接收者");
+        }
     }
     private readonly IReciever[] _recievers = {
-        new RecieverBeHittedOnStep(),
+        new ReceiverBeHittedOnStep(),
+        new ReceiverGenAbilityEntity()
     };
 
     public void InternalTriggerReciever(int key, GameEntity entity, IMessage message)

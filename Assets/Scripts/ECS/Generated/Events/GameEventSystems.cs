@@ -12,7 +12,6 @@ public sealed class GameEventSystems : Feature {
         Add(new ActionCameraRotateEventSystem(contexts)); // priority: 0
         Add(new ActionModelRotateEventSystem(contexts)); // priority: 0
         Add(new ActionThrustUpEventSystem(contexts)); // priority: 0
-        Add(new MoveDirectionEventSystem(contexts)); // priority: 0
         Add(new StateSwitchStateEventSystem(contexts)); // priority: 0
     }
 }

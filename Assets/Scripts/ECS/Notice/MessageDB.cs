@@ -1,5 +1,5 @@
 using Weapon;
-using WGame.Notice;
+using WGame.Ability;
 
 namespace WGame.Notice
 {
@@ -19,7 +19,7 @@ namespace WGame.Notice
             public struct CastSkill : IMessage
             {
                 public int TypeId => CastSkillID;
-                public int SkillID { get; set; }
+                public AbilityEntityInfo Info { get; set; }
             }
         }
 
@@ -28,10 +28,10 @@ namespace WGame.Notice
             public static Define.BeHitted GetBehitted(ContactInfo info)
                 => new Define.BeHitted() { hitInfo = info };
 
-            public static Define.CastSkill GetCastSkill(int id)
+            public static Define.CastSkill GetCastSkill(AbilityEntityInfo info)
                 => new Define.CastSkill()
                 {
-                    SkillID = id
+                    Info = info
                 };
         }
     }
