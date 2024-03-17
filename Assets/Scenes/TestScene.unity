@@ -1488,7 +1488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2131735449397793009, guid: b3d9af7cf667c384bb300fa69a530368, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.82
+      value: -0.99
       objectReference: {fileID: 0}
     - target: {fileID: 2131735449397793009, guid: b3d9af7cf667c384bb300fa69a530368, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2384,6 +2384,7 @@ GameObject:
   - component: {fileID: 7162770942561014730}
   - component: {fileID: 3518024257848148230}
   - component: {fileID: 7648602301035751344}
+  - component: {fileID: 7648602301035751345}
   m_Layer: 0
   m_Name: '[TestSystems]'
   m_TagString: Untagged
@@ -2436,6 +2437,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PackageMapping: {fileID: 11400000, guid: cf13ec90e7d97cd4eb5fcdb55917ecd9, type: 2}
   unloadUnusedUIPackageImmediately: 0
+--- !u!114 &7648602301035751345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227570113761475006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71c942dcbbab7f478a51023fd0711f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8845416383178882215
 PrefabInstance:
   m_ObjectHideFlags: 0

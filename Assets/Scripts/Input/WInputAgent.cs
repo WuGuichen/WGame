@@ -208,7 +208,7 @@ namespace WGame.Input
             if (!string.IsNullOrEmpty(data))
             {
                 InputAsset.LoadBindingOverridesFromJson(data);
-                WLogger.Print("LoadKey" +SaveKeyName);
+                WLogger.Print("LoadKey:" +SaveKeyName);
             }
         }
 

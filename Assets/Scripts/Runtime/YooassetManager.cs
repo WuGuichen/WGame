@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using HybridCLR;
 // using Motion;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
 using Object = UnityEngine.Object;
-using WGame.Runtime;
 
 namespace WGame.Runtime
 {
@@ -22,9 +23,10 @@ namespace WGame.Runtime
         private ResourcePackage rawFilePackage;
 
         #if UNITY_EDITOR
+        [SerializeField]
         private EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
         #else
-        private EPlayMode PlayMode = EPlayMode.OfflinePlayMode;
+        private EPlayMode PlayMode = EPlayMode.HostPlayMode;
         #endif
 
         public bool IsInitted { get; private set; } = false;
@@ -48,6 +50,23 @@ namespace WGame.Runtime
             package = YooAssets.GetPackage("DefaultPackage");
             YooAssets.SetDefaultPackage(package);
             IsInitted = true;
+            var hotDllList = HotUpdateList.HotList;
+            
+            foreach (var dllName in hotDllList)
+            {
+                var hotDll = LoadBytesSync(dllName);
+                Assembly.Load(hotDll);
+            }
+
+            foreach (var dllName in AOTGenericReferences.PatchedAOTAssemblyList)
+            {
+                LoadBytesAsync(dllName, bytes =>
+                {
+                    var err = HybridCLR.RuntimeApi.LoadMetadataForAOTAssembly(bytes, HomologousImageMode.SuperSet);
+                    Debug.Log($"LoadMetadataForAOTAssembly:{dllName}. ret:{err}");
+                });
+            }
+
             EventCenter.Trigger(EventDefine.OnGameAssetsManagerInitted);
         }
 

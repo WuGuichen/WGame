@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Bootstrap.unity
     guid: ee79058cf20821749a1ca4c1be526e71
   - enabled: 0
@@ -14,9 +14,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Sandbox.unity
     guid: 32c63ac16c19b80469e8dfcce5a0343b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: 55f42d93e7de23749b0b8da25a5ba0fd
   m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: 6145b0d1bab557c4e88c9c55abb58c90, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: f6dc7d2cbda8f4f4588d2ab29bccc902, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: f623a6f7180e38349bca77ebc7c221f5, type: 2}

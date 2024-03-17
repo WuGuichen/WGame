@@ -1,0 +1,22 @@
+{
+    "name": "WGame.Physics",
+    "rootNamespace": "",
+    "references": [
+        "Unity.Mathematics",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner",
+        "WGame.Res",
+        "WGame.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

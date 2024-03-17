@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -81,7 +80,14 @@ public class PatchWindow : MonoBehaviour
         _eventGroup.AddListener<PatchEventDefine.WebFileDownloadFailed>(OnHandleEventMessage);
         
         EventCenter.AddListener(EventDefine.OnSceneLoaded, OnSceneLoaded);
+        StartCoroutine(LoadAOTMetaDLL());
     }
+
+    IEnumerator LoadAOTMetaDLL()
+    {
+        yield return null;
+    }
+    
     void OnDestroy()
     {
         _eventGroup.RemoveAllListener();

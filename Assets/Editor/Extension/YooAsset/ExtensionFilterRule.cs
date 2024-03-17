@@ -40,4 +40,12 @@ namespace WGame.Util
             return Path.GetExtension(data.AssetPath) == ".wl";
         }
     }
+
+    public class CollectDLL : IFilterRule
+    {
+        public bool IsCollectAsset(FilterRuleData data)
+        {
+            return Path.GetExtension(data.AssetPath) == ".dll";
+        }
+    }
 }

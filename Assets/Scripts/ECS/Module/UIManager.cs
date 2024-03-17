@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using FairyGUI.Dynamic;
 using FairyGUI;
 using UnityEngine;
-using UnityTimer;
 
 namespace WGame.UI
 {

@@ -197,6 +197,27 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: DisableGroup
       Collectors: []
+    - GroupName: HotUpdate
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Res/HotUpdateDll
+        CollectorGUID: 61179632d1607ac4baf412fb71e7e236
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Res/AOTMetaDll
+        CollectorGUID: 04413bd8942218342b76d7b245bd9445
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
   - PackageName: RawFilePackage
     PackageDesc: 
     EnableAddressable: 1

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bootstrap : MonoBehaviour
 {
     [SerializeField] private string firstSceneName;
+    [SerializeField] private GameObject window;
 
     public static bool isQuitting { get; private set; }
 
@@ -21,8 +22,9 @@ public class Bootstrap : MonoBehaviour
     {
         GameSceneMgr.Inst.LoadNewScene(firstSceneName);
         // 加载更新页面
-        var go = Resources.Load<GameObject>("PatchWindow");
-        GameObject.Instantiate(go);
+        // var go = Resources.Load<GameObject>("PatchWindow");
+        // GameObject.Instantiate(go);
+        window.SetActive(true);
     }
 
 }

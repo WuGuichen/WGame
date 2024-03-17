@@ -5,7 +5,6 @@ using WGame.UI;
 using WGame.Runtime;
 using WGame.Trigger;
 
-// [DefaultExecutionOrder(-120)]
 public class TestSceneSystem : MonoBehaviour
 {
     public GameSetting gameSetting;
@@ -28,6 +27,8 @@ public class TestSceneSystem : MonoBehaviour
 	private ProcessMotionSystems _processMotionSystems;
 	private VMSystems _vmSystems;
 	private ITimeService _timeService;
+
+	private bool isDirectlyLoad = false;
 
     void PreInit()
     {
@@ -58,7 +59,7 @@ public class TestSceneSystem : MonoBehaviour
         if (YooassetManager.Inst == null)
         {
 	        gameObject.AddComponent<YooassetManager>();
-	        EventCenter.Trigger(EventDefine.OnEnterGameMainView);
+	        isDirectlyLoad = true;
         }
     }
     
@@ -211,5 +212,6 @@ public class TestSceneSystem : MonoBehaviour
 		_contexts.meta.factoryService.instance.InitGOAPRoot(goapTrans);
 		WAbilityMgr.Inst.Initialize(new AbilityAssetLoader());
 		EventCenter.Trigger(EventDefine.OnGameSystemsInitted);
+	    EventCenter.Trigger(EventDefine.OnEnterGameMainView);
     }
 }

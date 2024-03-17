@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UniFramework.Event;
 using UnityEngine;
@@ -137,11 +136,11 @@ public class PatchOperation : GameAsyncOperation
         fsm = new StateMachine<int, int, int>();
 
         MonoBehaviour mono = YooassetManager.Inst;
-        fsm.AddState(INITIALIZE_PACKAGE, new CoState<int>(mono, InitPackage));
-        fsm.AddState(UPDATE_PACKAGE_VERSION, new CoState<int>(mono, UpdatePackageVersion));
-        fsm.AddState(UPDATE_PACKAGE_MANIFEST, new CoState<int>(mono, UpdatePackageManifest));
-        fsm.AddState(CREATE_PACKAGE_DOWNLOADER, new CoState<int>(mono, CreatePackageDownloader));
-        fsm.AddState(DOWNLOAD_PACKAGE_FILES, new CoState<int>(mono, DownloadPackageFiles));
+        fsm.AddState(INITIALIZE_PACKAGE, new State<int>(s => mono.StartCoroutine(InitPackage())));
+        fsm.AddState(UPDATE_PACKAGE_VERSION, new State<int>(onEnter: state => {mono.StartCoroutine(UpdatePackageVersion());}));
+        fsm.AddState(UPDATE_PACKAGE_MANIFEST, new State<int>(s => mono.StartCoroutine(UpdatePackageManifest())));
+        fsm.AddState(CREATE_PACKAGE_DOWNLOADER, new State<int>(s => mono.StartCoroutine(CreatePackageDownloader())));
+        fsm.AddState(DOWNLOAD_PACKAGE_FILES, new State<int>( s => mono.StartCoroutine(DownloadPackageFiles())));
         fsm.AddState(DOWNLOAD_PACKAGE_OVER, new State<int>(onEnter: DownloadPackageOver));
         fsm.AddState(CLEAR_PACKAGE_CACHE, new State<int>(onEnter: ClearPackageCache));
         fsm.AddState(UPDATE_DONE, new State<int>());
@@ -246,26 +245,26 @@ public class PatchOperation : GameAsyncOperation
     {
         //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
         string hostServerIP = "https://a.unity.cn/client_api/v1/buckets/1f7d7f39-2adc-4b09-bb59-6c1966e6b4c4/entry_by_path/content/?path=";
-        string appVersion = "v1.0";
+        string appVersion = "v1.1";
 
 #if UNITY_EDITOR
         if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-            return $"{hostServerIP}/UOS CDN/Android/{fileTypePrifix}/{appVersion}";
+            return $"{hostServerIP}/Android/{fileTypePrifix}/{appVersion}";
         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-            return $"{hostServerIP}/UOS CDN/IPhone/{fileTypePrifix}/{appVersion}";
+            return $"{hostServerIP}/IPhone/{fileTypePrifix}/{appVersion}";
         else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-            return $"{hostServerIP}/UOS CDN/WebGL/{fileTypePrifix}/{appVersion}";
+            return $"{hostServerIP}/WebGL/{fileTypePrifix}/{appVersion}";
         else
-            return $"{hostServerIP}/UOS CDN/PC/{fileTypePrifix}/{appVersion}";
+            return $"{hostServerIP}/PC/{fileTypePrifix}/{appVersion}";
 #else
         if (Application.platform == RuntimePlatform.Android)
-            return $"{hostServerIP}/CDN/Android/{appVersion}";
+            return $"{hostServerIP}/Android/{fileTypePrifix}/{appVersion}";
         else if (Application.platform == RuntimePlatform.IPhonePlayer)
-            return $"{hostServerIP}/CDN/IPhone/{appVersion}";
+            return $"{hostServerIP}/IPhone/{fileTypePrifix}/{appVersion}";
         else if (Application.platform == RuntimePlatform.WebGLPlayer)
-            return $"{hostServerIP}/CDN/WebGL/{appVersion}";
+            return $"{hostServerIP}/WebGL/{fileTypePrifix}/{appVersion}";
         else
-            return $"{hostServerIP}/CDN/PC/{appVersion}";
+            return $"{hostServerIP}/PC/{fileTypePrifix}/{appVersion}";
 #endif
     }
 

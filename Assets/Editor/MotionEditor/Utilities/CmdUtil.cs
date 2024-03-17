@@ -29,6 +29,12 @@ public class CmdUtil : MonoBehaviour
     {
         RunBat("run_luban_server.bat", "", Application.dataPath.Replace("Assets", "Luban"));
     }
+    
+    [MenuItem("Utils/HotUpdate/更新到CDN")]
+    public static void UpdateToCDN()
+    {
+        RunBat("UpdateCDN.bat", "", Application.dataPath.Replace("Assets", "Bundles"));
+    }
 
     [MenuItem("Utils/数据表/打开动画配置表")]
     public static void OpenAnimConfig()
