@@ -13,6 +13,7 @@ using System.IO;
 using UnityEngine;
 using Motion;
 using Pathfinding;
+using Sirenix.Serialization;
 using Weapon;
 using WGame.Attribute;
 using WGame.GOAP;
@@ -186,7 +187,11 @@ public class FactoryServiceImplementation : IFactoryService
             {
                 if (ids[i] == motionID)
                 {
-                    YooassetManager.Inst.LoadMotionScriptSync(MotionIDs.NameList[i], o => motion = o);
+                    YooassetManager.Inst.LoadRawFileSync(MotionIDs.NameList[i], bytes =>
+                    {
+                        motion = Sirenix.Serialization.SerializationUtility.DeserializeValue<EventNodeScriptableObject>(
+                            bytes, DataFormat.JSON);
+                    });
                     _motions[motionID] = motion;
                     break;
                 }
@@ -218,7 +223,12 @@ public class FactoryServiceImplementation : IFactoryService
             if (names[i] == path)
             {
                 motionID = MotionIDs.IDList[i];
-                YooassetManager.Inst.LoadMotionScriptAsync(path, o => _motions[motionID] = o);
+                YooassetManager.Inst.LoadRawFileSync(MotionIDs.NameList[i], bytes =>
+                {
+                    var motion = Sirenix.Serialization.SerializationUtility.DeserializeValue<EventNodeScriptableObject>(
+                        bytes, DataFormat.JSON);
+                    _motions[motionID] = motion;
+                });
                 break;
             }
         }

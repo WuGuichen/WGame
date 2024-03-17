@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Motion;
+// using Motion;
 using UnityEngine;
 using YooAsset;
 using Object = UnityEngine.Object;
@@ -244,27 +244,47 @@ namespace WGame.Res
             };
         }
 
-        public void LoadMotionScriptSync(string path, Action<EventNodeScriptableObject> callback)
+        public void LoadRawFileSync(string path, Action<byte[]> callback)
         {
             var handle = rawFilePackage.LoadRawFileSync(path);
-            handle.Completed += node =>
+            handle.Completed += operationHandle =>
             {
-                SerializationHelper.DeserializeValue<EventNodeScriptableObject>(node.GetRawFileData(), out var scriptable);
-                callback.Invoke(scriptable);
+                callback.Invoke(operationHandle.GetRawFileData());
                 handle.Release();
             };
         }
 
-        public void LoadMotionScriptAsync(string path, Action<EventNodeScriptableObject> callback)
+        public void LoadRawFileASync(string path, Action<byte[]> callback)
         {
             var handle = rawFilePackage.LoadRawFileAsync(path);
-            handle.Completed += node =>
+            handle.Completed += operationHandle =>
             {
-                SerializationHelper.DeserializeValue<EventNodeScriptableObject>(node.GetRawFileData(), out var scriptable);
-                callback.Invoke(scriptable);
+                callback.Invoke(operationHandle.GetRawFileData());
                 handle.Release();
             };
         }
+
+        // public void LoadMotionScriptSync(string path, Action<EventNodeScriptableObject> callback)
+        // {
+        //     var handle = rawFilePackage.LoadRawFileSync(path);
+        //     handle.Completed += node =>
+        //     {
+        //         SerializationHelper.DeserializeValue<EventNodeScriptableObject>(node.GetRawFileData(), out var scriptable);
+        //         callback.Invoke(scriptable);
+        //         handle.Release();
+        //     };
+        // }
+
+        // public void LoadMotionScriptAsync(string path, Action<EventNodeScriptableObject> callback)
+        // {
+        //     var handle = rawFilePackage.LoadRawFileAsync(path);
+        //     handle.Completed += node =>
+        //     {
+        //         SerializationHelper.DeserializeValue<EventNodeScriptableObject>(node.GetRawFileData(), out var scriptable);
+        //         callback.Invoke(scriptable);
+        //         handle.Release();
+        //     };
+        // }
 
         IEnumerator LoadAllObjectsInternal(string location, Action<object> callback, Action onComplete)
         {

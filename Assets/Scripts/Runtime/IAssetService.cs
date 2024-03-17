@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-using Motion;
+// using Motion;
 using Object = UnityEngine.Object;
 
 namespace WGame.Res
@@ -21,7 +21,9 @@ namespace WGame.Res
         public void LoadAvatarMask(string location, Action<AvatarMask> callback);
         public void LoadRawFileSync(string path, Action<string> callback);
         public void LoadRawFileASync(string path, Action<string> callback);
-        public void LoadMotionScriptSync(string path, Action<EventNodeScriptableObject> callback);
-        public void LoadMotionScriptAsync(string path, Action<EventNodeScriptableObject> callback);
+        public void LoadRawFileSync(string path, Action<byte[]> callback);
+        public void LoadRawFileASync(string path, Action<byte[]> callback);
+        // public void LoadMotionScriptSync(string path, Action<EventNodeScriptableObject> callback);
+        // public void LoadMotionScriptAsync(string path, Action<EventNodeScriptableObject> callback);
     }
 }
