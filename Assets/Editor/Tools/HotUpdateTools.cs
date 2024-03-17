@@ -5,19 +5,43 @@ using UnityEngine;
 public class HotUpdateTools
 {
     private static readonly string _basePath = Application.dataPath + "/../HybridCLRData/HotUpdateDlls/";
+    private static readonly string _baseMetaPath = Application.dataPath + "/../HybridCLRData/AssembliesPostIl2CppStrip/";
     private static readonly string _targetPath = Application.dataPath + "/Res/HotUpdateDll/";
     private static readonly string _targetMetaDLLPath = Application.dataPath + "/Res/AOTMetaDll/";
+
+    private static void ResetDictionary(string path)
+    {
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        else
+        {
+            var direction = new DirectoryInfo(path);
+            var files = direction.GetFiles("*", SearchOption.AllDirectories);
+
+            Debug.Log(files.Length);
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (files[i].Name.EndsWith(".meta"))
+                {
+                    continue;
+                }
+
+                string FilePath = path + "/" + files[i].Name;
+                File.Delete(FilePath);
+            }
+        }
+    }
     
     [MenuItem("Utils/HotUpdate/更新AOT MetaDLL", false, 100)]
     private static void CopyBuildAOTMetaDllToHotUpdate()
     {
         BuildTarget buildTarget = EditorUserBuildSettings.activeBuildTarget;
-        var sourcePath = _basePath + buildTarget;
+        var sourcePath = _baseMetaPath + buildTarget;
         var list = AOTGenericReferences.PatchedAOTAssemblyList;
-        if (!Directory.Exists(_targetMetaDLLPath))
-        {
-            Directory.CreateDirectory(_targetMetaDLLPath);
-        }
+        ResetDictionary(_targetMetaDLLPath);
         foreach (var name in list)
         {
             var source = Path.Combine(sourcePath, name);
@@ -36,10 +60,7 @@ public class HotUpdateTools
         BuildTarget buildTarget = EditorUserBuildSettings.activeBuildTarget;
         var sourcePath = _basePath + buildTarget;
         var list = WGame.Runtime.HotUpdateList.HotList;
-        if (!Directory.Exists(_targetPath))
-        {
-            Directory.CreateDirectory(_targetPath);
-        }
+        ResetDictionary(_targetPath);
         foreach (var name in list)
         {
             var source = Path.Combine(sourcePath, name);
