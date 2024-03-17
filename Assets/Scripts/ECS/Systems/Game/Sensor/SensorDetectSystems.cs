@@ -11,7 +11,6 @@ public class SensorDetectSystems : Feature
         Add(new DrawSensorCharacterSystem(contexts));
 
         Add(new UpdateTriggerObjectSystem(contexts));
-        Add(new MoveTriggerObjectSystem(contexts));
         Add(new DrawTriggerObjectSystem(contexts));
     }
 }

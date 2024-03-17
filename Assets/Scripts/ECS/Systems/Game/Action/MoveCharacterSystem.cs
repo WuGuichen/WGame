@@ -38,6 +38,7 @@ public class MoveCharacterSystem : IExecuteSystem
             if (motion.hasDoMove)
             {
                 motion.motionService.service.AnimProcessor.ClearRootMotion();
+                motion.motionService.service.AnimProcessor.UpdateMoveSpeed(0,0);
                 DoMove(motion);
                 continue;
             }

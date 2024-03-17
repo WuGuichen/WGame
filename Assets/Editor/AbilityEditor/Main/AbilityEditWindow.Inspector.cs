@@ -5,13 +5,9 @@ namespace WGame.Ability.Editor
     using UnityEditor;
     using UnityEngine;
     using System.Collections.Generic;
-    using System.Reflection;
-    using System;
     using LitJson;
     using System.IO;
     using System.Text;
-    using System.Linq;
-    using System.Text.RegularExpressions;
     
     internal sealed partial class AbilityEditWindow
     {
@@ -23,7 +19,7 @@ namespace WGame.Ability.Editor
         private static Dictionary<string, AnimationClip> animationClip2stringDic = new();
         
         private int inspectorID = 0;
-        private string[] inspectorNames = new string[] { "Ability" };
+        private string[] inspectorNames = new string[] { "Ability", "Buff"};
 
         private void DrawInspector()
         {
@@ -40,6 +36,9 @@ namespace WGame.Ability.Editor
                 {
                     case 0:
                         DrawInspectorAbility();
+                        break;
+                    case 1:
+                        DrawInspectorBuff();
                         break;
                 }
             }
@@ -137,6 +136,9 @@ namespace WGame.Ability.Editor
         {
             GameAssetsMgr.Inst.InitInstance();
             InitInspectorAbility();
+            InitInspectorBuff();
+            
+            DeserializeData<BuffFactoryData>("/AbilityData/Buff/Buff.json", itemBuffTree);
         }
         
         public void DrawSelectable(Color color, int size = 16)

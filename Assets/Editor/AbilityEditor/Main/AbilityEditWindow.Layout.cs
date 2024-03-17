@@ -34,7 +34,7 @@ namespace WGame.Ability.Editor
 
         public float propertyHeight = 22f;
 
-        private const float minPropertyWidth = 150f;
+        private const float minPropertyWidth = 100f;
         private const float maxPropertyWidth = 450f;
         private float _propertyWidth = 200f;
         public float propertyWidth

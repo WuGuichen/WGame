@@ -31,6 +31,8 @@ public abstract class TriggerObject
     private int _detectTargetNum;
     private short[] _parts = new short[MAX_TARGET_NUM];
 
+    private List<Transform> _effectList = new();
+
     private TriggerObject(TriggerObjType type)
     {
         Type = type;
@@ -48,7 +50,6 @@ public abstract class TriggerObject
     {
         IsEnable = true;
         Owner = sensor;
-        _targetSet.Clear();
         TargetLayer = 1 << EntityUtils.GetTargetSensorLayer(sensor.linkCharacter.Character);
     }
 
@@ -68,7 +69,35 @@ public abstract class TriggerObject
     {
         Owner = null;
         IsEnable = false;
+        _targetSet.Clear();
+        for (var i = 0; i < _effectList.Count; i++)
+        {
+            ObjectPool.Inst.PushObject(_effectList[i].gameObject);
+        }
+        _effectList.Clear();
         PushInternal(this);
+    }
+
+    public void AttachEffect(string effName)
+    {
+        AttachEffect(effName, Quaternion.identity, Vector3.zero, Vector3.one);
+    }
+    public void AttachEffect(string effName, float size)
+    {
+        AttachEffect(effName, new Vector3(size, size, size));
+    }
+    public void AttachEffect(string effName, Vector3 size)
+    {
+        AttachEffect(effName, Quaternion.identity, Vector3.zero, size);
+    }
+    public void AttachEffect(string effName, Quaternion rotation, Vector3 deltaPosition, Vector3 size)
+    {
+        ObjectPool.Inst.GetObject(effName, Position+deltaPosition, rotation, o =>
+        {
+            var trans=  o.transform;
+            trans.localScale = size;
+            _effectList.Add(trans);
+        });
     }
 
     protected abstract int Detect();
@@ -124,6 +153,16 @@ public abstract class TriggerObject
 
     public int GetTarget(int idx) => _targets[idx];
     public int GetPart(int idx) => _parts[idx];
+
+    public void Translate(Vector3 dir)
+    {
+        Position += dir;
+        int count = _effectList.Count;
+        for (var i = 0; i < count; i++)
+        {
+            _effectList[i].Translate(dir);
+        }
+    }
 
     public class Sphere : TriggerObject
     {

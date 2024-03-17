@@ -29,12 +29,13 @@ public class NoticeDB : Singleton<NoticeDB>
 
     public void InternalTriggerReciever(int key, GameEntity entity, IMessage message)
     {
-        if (_recievers.Length < key)
+        if (_recievers.Length > key)
         {
             var reciever = _recievers[key];
             if (reciever.MessageType == message.TypeId)
             {
                 _recievers[key].OnTrigger(entity, message);
+                return;
             }
             WLogger.Warning("消息不合法");
         }

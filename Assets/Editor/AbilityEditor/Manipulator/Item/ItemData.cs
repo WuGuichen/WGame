@@ -57,9 +57,9 @@ namespace WGame.Ability.Editor
                             GUILayout.Label("Ability Attribute");
                             GUILayout.Space(5);
                         }
-
-                        Window.DrawData(Data);
                     }
+                    
+                    Window.DrawData(Data);
 
                     if (Data is AbilityData ability)
                     {
@@ -69,6 +69,10 @@ namespace WGame.Ability.Editor
                         }
 
                         GUILayout.Space(2);
+                    }
+                    else if (Data is BuffFactoryData buff)
+                    {
+                        Window.DrawBuff(buff);
                     }
                 }
                 GUILayout.EndScrollView();

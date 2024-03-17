@@ -2,6 +2,7 @@ using Motion;
 using UnityEngine;
 using Weapon;
 using WGame.Attribute;
+using WGame.Res;
 
 public class GotHitAbilityServiceImplementation : IGotHitService
 {
@@ -56,9 +57,11 @@ public class GotHitAbilityServiceImplementation : IGotHitService
         MethodDefine.AddHatePointTo(hitInfo.entity.instanceID.ID, entity, 360*3, HatePointType.BeHitted);
     }
 
-    public void OnGotHit(SensorEntity sensor, int parts)
+    public void OnGotHit(GameEntity entity, SensorEntity sensor, int parts)
     {
-        WLogger.Print(sensor.triggerObjectSensor.obj.TypeName);
+        ActionHelper.DoMove(entity, sensor.moveDirection.value*sensor.moveInfo.value.Speed, 4f);
+        var model = entity.gameViewService.service.Model;
+        EffectMgr.LoadEffect("HCFX_Stun", model, entity.gameViewService.service.HeadPos, Quaternion.identity, 2f);
     }
 
     public void OnHitTarget(GameEntity entity, ContactInfo hitInfo)

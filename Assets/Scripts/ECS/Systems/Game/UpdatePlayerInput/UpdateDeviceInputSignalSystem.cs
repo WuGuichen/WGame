@@ -79,12 +79,10 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
         if (_inputContext.special.value)
         {
             entity.linkAbility.Ability.abilityService.service.Do("FireBall");
-            entity.notice.service.AddReciever(NoticeDB.OnUseAbility, 10f);
         }
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.H))
         {
-            entity.notice.service.Notice(MessageDB.Getter.GetCastSkill(new AbilityEntityInfo()));
         }
     }
 }

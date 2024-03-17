@@ -48,17 +48,17 @@ public class AbilityServiceImplementation : IAbility
         }
     }
 
-    public void GenEntity(AbilityEntityInfo info)
+    public void GenEntity(EntityMoveInfo info)
     {
         WLogger.Print("生成技能实体");
         var sensor = _sensorContext.CreateEntity();
         // 单向绑定
         sensor.AddLinkCharacter(_entity);
         var sphereTrigger = TriggerObject.GenSphere(sensor, _entity.gameViewService.service.HeadPos, 2f);
+        sphereTrigger.AttachEffect("HCFX_ElementOrb_03", 0.7f);
         sensor.AddTriggerObjectSensor(sphereTrigger);
-        Timer.Register(5f, () =>
-        {
-            sensor.isDestroyed = true;
-        });
+        sensor.AddMoveDirection(_entity.gameViewService.service.Model.forward);
+        sensor.AddMoveInfo(info);
+        sensor.AddLifeTime(8f);
     }
 }

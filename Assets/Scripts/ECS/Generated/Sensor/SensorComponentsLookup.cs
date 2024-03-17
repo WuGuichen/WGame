@@ -15,13 +15,15 @@ public static class SensorComponentsLookup {
     public const int DetectorCharacterService = 4;
     public const int DetectSpottedRadius = 5;
     public const int DetectWarningRadius = 6;
-    public const int LinkCharacter = 7;
-    public const int MoveDirection = 8;
-    public const int SensorCharOpen = 9;
-    public const int SensorCharRadius = 10;
-    public const int TriggerObjectSensor = 11;
+    public const int LifeTime = 7;
+    public const int LinkCharacter = 8;
+    public const int MoveDirection = 9;
+    public const int MoveInfo = 10;
+    public const int SensorCharOpen = 11;
+    public const int SensorCharRadius = 12;
+    public const int TriggerObjectSensor = 13;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
         "Destroyed",
@@ -31,8 +33,10 @@ public static class SensorComponentsLookup {
         "DetectorCharacterService",
         "DetectSpottedRadius",
         "DetectWarningRadius",
+        "LifeTime",
         "LinkCharacter",
         "MoveDirection",
+        "MoveInfo",
         "SensorCharOpen",
         "SensorCharRadius",
         "TriggerObjectSensor"
@@ -46,8 +50,10 @@ public static class SensorComponentsLookup {
         typeof(DetectorCharacterServiceComponent),
         typeof(DetectSpottedRadiusComponent),
         typeof(DetectWarningRadiusComponent),
+        typeof(LifeTimeComponent),
         typeof(LinkCharacterComponent),
         typeof(MoveDirectionComponent),
+        typeof(MoveInfoComponent),
         typeof(SensorCharOpen),
         typeof(SensorCharRadius),
         typeof(TriggerObjectSensorComponent)

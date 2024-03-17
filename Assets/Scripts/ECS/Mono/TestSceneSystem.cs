@@ -21,7 +21,7 @@ public class TestSceneSystem : MonoBehaviour
 	[SerializeField] private Transform goapTrans;
 
 	private OtherSystems _otherSystems;
-	private CharacterRigidbodySystems _rigidSystems;
+	private FixedUpdateSystems _rigidSystems;
 	private LateFixedUpdateSystems _lateFixedUpdateSystems;
 	private LateUpdateSystems _lateUpdateSystems;
 	private SensorDetectSystems _detectSystems;
@@ -70,7 +70,7 @@ public class TestSceneSystem : MonoBehaviour
 		_gameEventSystems = new GameEventSystems(_contexts);
 		_processMotionSystems = new ProcessMotionSystems(_contexts);
 		_vmSystems = new VMSystems(_contexts);
-		_rigidSystems = new CharacterRigidbodySystems(_contexts);
+		_rigidSystems = new FixedUpdateSystems(_contexts);
     }
 
     // Start is called before the first frame update

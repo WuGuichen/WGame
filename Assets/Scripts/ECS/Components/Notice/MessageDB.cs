@@ -19,7 +19,7 @@ namespace WGame.Notice
             public struct CastSkill : IMessage
             {
                 public int TypeId => CastSkillID;
-                public AbilityEntityInfo Info { get; set; }
+                public EntityMoveInfo Info { get; set; }
             }
         }
 
@@ -28,7 +28,7 @@ namespace WGame.Notice
             public static Define.BeHitted GetBehitted(ContactInfo info)
                 => new Define.BeHitted() { hitInfo = info };
 
-            public static Define.CastSkill GetCastSkill(AbilityEntityInfo info)
+            public static Define.CastSkill GetCastSkill(EntityMoveInfo info)
                 => new Define.CastSkill()
                 {
                     Info = info

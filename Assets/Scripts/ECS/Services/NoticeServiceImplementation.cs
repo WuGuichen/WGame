@@ -15,6 +15,11 @@ public class NoticeServiceImplementation : INoticeService
         _notice.Notice(message);
     }
 
+    public void TriggerReceiver(int receiverId, IMessage message)
+    {
+        _notice.TriggerReciever(receiverId, message);
+    }
+
     public void AddReciever(int key, int times = 1, bool replace = true)
     {
         NoticeDB.Inst.AddReciever(_notice, key, times);

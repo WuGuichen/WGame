@@ -21,7 +21,7 @@ namespace WGame.Ability
         //popup list string
         AnimationClip,
         NoticeReceiver,
-        CustomProperty,
+        AttributeTypeID,
         Action,
 
         // for list
@@ -40,13 +40,14 @@ namespace WGame.Ability
             Deprecated = null;
             LabelWidth = lableWidth;
         }
+        
         public EditorDataAttribute(string name, EditorDataType type)
         {
             PropertyName = name;
             DataType = type;
             Edit = true;
             Deprecated = null;
-            LabelWidth = 100;
+            LabelWidth = 60;
         }
         
         #region property

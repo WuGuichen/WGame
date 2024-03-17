@@ -94,10 +94,15 @@ namespace WGame.Ability
             {
                 OnTriggerPlayEffect(playEffect);
             }
+            else if (eventData is EventNoticeMessage noticeMessage)
+            {
+                OnNoticeMessage(noticeMessage);
+            }
         }
 
         protected abstract void OnDurationPlayAnim(EventPlayAnim animData);
         protected abstract void OnTriggerPlayEffect(EventPlayEffect effectData);
+        protected abstract void OnNoticeMessage(EventNoticeMessage message);
 
         protected virtual void OnEnd()
         {

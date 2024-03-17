@@ -61,13 +61,13 @@
         {
             "ID" : "0638460501134701969dsSlXB",
             "Name" : "FireBall",
-            "TotalTime" : 1666,
+            "TotalTime" : 833,
             "Events"    : [
                 {
                     "TrackName" : "Effect 0",
                     "TrackIndex" : 0,
                     "TriggerType" : "Signal",
-                    "TriggerTime" : 359,
+                    "TriggerTime" : 0,
                     "Duration"    : 0,
                     "EventType"   : "PlayEffect",
                     "EventData"   : {
@@ -88,6 +88,29 @@
                         "UseRandom"  : false,
                         "RandomEffectList" : [
                         ]
+                    }
+                },
+                {
+                    "TrackName" : "Animation 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Duration",
+                    "TriggerTime" : 0,
+                    "Duration"    : 833,
+                    "EventType"   : "PlayAnim",
+                    "EventData"   : {
+                        "AnimName" : "Longs_Jump_Platformer_Land",
+                        "FadeTime" : 0.0
+                    }
+                },
+                {
+                    "TrackName" : "Notice 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Signal",
+                    "TriggerTime" : 111,
+                    "Duration"    : 0,
+                    "EventType"   : "NoticeMessage",
+                    "EventData"   : {
+                        "ReceiverID" : 1
                     }
                 }
             ]

@@ -82,12 +82,12 @@ namespace WGame.Ability.Editor
                                     break;
                                 case EditorDataType.NoticeReceiver:
                                 {
-                                    PopupList(obj, pis[i].Name, val, new NoticeDefine());
+                                    PopupList(obj, pis[i].Name, val, StringToIDDefine.Notice);
                                 }
                                     break;
-                                case EditorDataType.CustomProperty:
+                                case EditorDataType.AttributeTypeID:
                                 {
-                                    // PopupList(obj, pis[i].Name, val, ActionEngine.PropertyName.CustomPropertyList());
+                                    PopupList(obj, pis[i].Name, val, StringToIDDefine.Attribute);
                                 }
                                     break;
                                 case EditorDataType.Action:

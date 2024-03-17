@@ -1,0 +1,16 @@
+
+{
+    "Data" : [
+        {
+            "BuffType" : "Numerical",
+            "BuffData" : {
+                "ID" : "",
+                "Name" : "\u6D4B\u8BD5",
+                "Target" : "None",
+                "Attr"   : 0,
+                "AddVal" : 0,
+                "MulVal" : 0
+            }
+        }
+    ]
+}

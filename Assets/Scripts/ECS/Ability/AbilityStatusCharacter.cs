@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using WGame.Ability;
+using WGame.Notice;
 using WGame.Res;
 
 public class AbilityStatusCharacter : AbilityStatus
@@ -53,6 +54,12 @@ public class AbilityStatusCharacter : AbilityStatus
     {
         EffectMgr.LoadEffect(effectData.AddressName, _entity.gameViewService.service.Model, _entity.position.value,
             Quaternion.identity);
+    }
+
+    protected override void OnNoticeMessage(EventNoticeMessage message)
+    {
+            _entity.notice.service.TriggerReceiver(NoticeDB.OnUseAbility,
+                MessageDB.Getter.GetCastSkill(new EntityMoveInfo(EntityMoveType.Move_Dir_Linear, 10f)));
     }
 
     protected override void OnEnd()

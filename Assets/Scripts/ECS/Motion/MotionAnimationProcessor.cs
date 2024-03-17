@@ -236,19 +236,6 @@ public class MotionAnimationProcessor : AnimancerComponent
     {
         deltaPosition = Vector3.zero;
     }
-    public void UpdateRootMotion(bool clear = false)
-    {
-        if (clear)
-        {
-            deltaPosition = Vector3.zero;
-            return;
-        }
-        if (rootMotionRate > 0)
-        {
-            parentTrans.position += deltaPosition;
-        }
-        deltaPosition = Vector3.zero;
-    }
 }
 
 public class LocalMotionType
