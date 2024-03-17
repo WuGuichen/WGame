@@ -20,11 +20,18 @@ public class GameSceneMgr : Singleton<GameSceneMgr>
 
     public void LoadNewScene(string sceneName)
     {
-        var handle = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        handle.completed += operation =>
+        // var handle = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        // handle.completed += operation =>
+        // {
+        //     EventCenter.Trigger(EventDefine.OnSceneLoaded, WEventContext.Get(sceneName));
+        // };
+        EventCenter.AddListener(EventDefine.OnGameAssetsManagerInitted, () =>
         {
-            EventCenter.Trigger(EventDefine.OnSceneLoaded, WEventContext.Get(sceneName));
-        };
+            YooassetManager.Inst.LoadSceneAsync(sceneName, () =>
+            {
+                EventCenter.Trigger(EventDefine.OnEnterGameMainView);
+            });
+        });
     }
 
     public void UnloadScene(string sceneName)

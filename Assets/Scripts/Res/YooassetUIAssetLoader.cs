@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using FairyGUI.Dynamic;
 using UnityEngine;
-using WGame.Res;
+using WGame.Runtime;
 
 public class YooassetUIAssetLoader : IUIAssetLoader
 {

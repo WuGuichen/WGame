@@ -5,6 +5,7 @@ public class EventDefine
     public const int OnGameCodeInitted = 3;
     public const int OnGameStart = 4;
     public const int OnCharacterInit = 5;
+    public const int OnGameSystemsInitted = 6;
     
     public const int OnGameExit = 7;
     public const int OnControlCharacterChanged = 8;
@@ -28,4 +29,6 @@ public class EventDefine
     public const int OnSceneLoaded = 60;
     // 按键绑定状态变化
     public const int OnRebindingInputStateChange = 61;
+    
+    public const int OnEnterGameMainView = 62;
 }

@@ -4,7 +4,7 @@ using System.IO;
 using UniFramework.Event;
 using UnityEngine;
 using UnityHFSM;
-using WGame.Res;
+using WGame.Runtime;
 using YooAsset;
 
 public class PatchOperation : GameAsyncOperation

@@ -3,7 +3,7 @@ using System;
 // using Motion;
 using Object = UnityEngine.Object;
 
-namespace WGame.Res
+namespace WGame.Runtime
 {
     public interface IAssetService
     {
@@ -23,6 +23,8 @@ namespace WGame.Res
         public void LoadRawFileASync(string path, Action<string> callback);
         public void LoadRawFileSync(string path, Action<byte[]> callback);
         public void LoadRawFileASync(string path, Action<byte[]> callback);
+
+        public void LoadSceneAsync(string name, Action callback);
         // public void LoadMotionScriptSync(string path, Action<EventNodeScriptableObject> callback);
         // public void LoadMotionScriptAsync(string path, Action<EventNodeScriptableObject> callback);
     }

@@ -1,5 +1,5 @@
 using Entitas;
-using WGame.Res;
+using WGame.Runtime;
 
 public class RegisterResourcesServiceSystem : IInitializeSystem, ITearDownSystem
 {

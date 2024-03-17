@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 // using Motion;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YooAsset;
 using Object = UnityEngine.Object;
 using WGame.Runtime;
 
-namespace WGame.Res
+namespace WGame.Runtime
 {
     public class YooassetManager : MonoBehaviour, IAssetService
     {
@@ -46,6 +47,7 @@ namespace WGame.Res
             yield return defaultOperation;
             package = YooAssets.GetPackage("DefaultPackage");
             YooAssets.SetDefaultPackage(package);
+            IsInitted = true;
             EventCenter.Trigger(EventDefine.OnGameAssetsManagerInitted);
         }
 
@@ -261,6 +263,16 @@ namespace WGame.Res
             {
                 callback.Invoke(operationHandle.GetRawFileData());
                 handle.Release();
+            };
+        }
+
+        public void LoadSceneAsync(string name, Action callback)
+        {
+            var handle = package.LoadSceneAsync(name, LoadSceneMode.Single);
+            handle.Completed += operationHandle =>
+            {
+                EventCenter.Trigger(EventDefine.OnSceneLoaded, WEventContext.Get(name));
+                callback?.Invoke();
             };
         }
 

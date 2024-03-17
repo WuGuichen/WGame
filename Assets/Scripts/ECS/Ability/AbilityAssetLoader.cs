@@ -1,5 +1,5 @@
 using WGame.Ability;
-using WGame.Res;
+using WGame.Runtime;
 
 public class AbilityAssetLoader : IGameAssetLoader
 {

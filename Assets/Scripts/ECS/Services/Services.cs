@@ -1,4 +1,4 @@
-using WGame.Res;
+using WGame.Runtime;
 
 public class Services
 {

@@ -12,7 +12,7 @@ public partial class MetaContext {
     public AssetsServiceComponent assetsService { get { return assetsServiceEntity.assetsService; } }
     public bool hasAssetsService { get { return assetsServiceEntity != null; } }
 
-    public MetaEntity SetAssetsService(WGame.Res.IAssetService newService) {
+    public MetaEntity SetAssetsService(WGame.Runtime.IAssetService newService) {
         if (hasAssetsService) {
             throw new Entitas.EntitasException("Could not set AssetsService!\n" + this + " already has an entity with AssetsServiceComponent!",
                 "You should check if the context already has a assetsServiceEntity before setting it or use context.ReplaceAssetsService().");
@@ -22,7 +22,7 @@ public partial class MetaContext {
         return entity;
     }
 
-    public void ReplaceAssetsService(WGame.Res.IAssetService newService) {
+    public void ReplaceAssetsService(WGame.Runtime.IAssetService newService) {
         var entity = assetsServiceEntity;
         if (entity == null) {
             entity = SetAssetsService(newService);
@@ -49,14 +49,14 @@ public partial class MetaEntity {
     public AssetsServiceComponent assetsService { get { return (AssetsServiceComponent)GetComponent(MetaComponentsLookup.AssetsService); } }
     public bool hasAssetsService { get { return HasComponent(MetaComponentsLookup.AssetsService); } }
 
-    public void AddAssetsService(WGame.Res.IAssetService newService) {
+    public void AddAssetsService(WGame.Runtime.IAssetService newService) {
         var index = MetaComponentsLookup.AssetsService;
         var component = (AssetsServiceComponent)CreateComponent(index, typeof(AssetsServiceComponent));
         component.service = newService;
         AddComponent(index, component);
     }
 
-    public void ReplaceAssetsService(WGame.Res.IAssetService newService) {
+    public void ReplaceAssetsService(WGame.Runtime.IAssetService newService) {
         var index = MetaComponentsLookup.AssetsService;
         var component = (AssetsServiceComponent)CreateComponent(index, typeof(AssetsServiceComponent));
         component.service = newService;

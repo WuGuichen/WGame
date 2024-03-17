@@ -1,6 +1,6 @@
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
-using WGame.Res;
+using WGame.Runtime;
 
 [Meta][DontGenerate]
 public class ResourcesServiceComponent : IComponent

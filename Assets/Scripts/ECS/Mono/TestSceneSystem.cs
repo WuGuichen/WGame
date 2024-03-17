@@ -1,6 +1,5 @@
 using UnityEngine;
 using WGame.Ability;
-using WGame.Res;
 using Random = UnityEngine.Random;
 using WGame.UI;
 using WGame.Runtime;
@@ -57,7 +56,10 @@ public class TestSceneSystem : MonoBehaviour
 
         _timeService = _contexts.meta.timeService.instance;
         if (YooassetManager.Inst == null)
-			gameObject.AddComponent<YooassetManager>();
+        {
+	        gameObject.AddComponent<YooassetManager>();
+	        EventCenter.Trigger(EventDefine.OnEnterGameMainView);
+        }
     }
     
     private void Awake()
@@ -73,7 +75,6 @@ public class TestSceneSystem : MonoBehaviour
 		_rigidSystems = new FixedUpdateSystems(_contexts);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
 		_vmSystems.Initialize();
@@ -85,6 +86,11 @@ public class TestSceneSystem : MonoBehaviour
 		_gameEventSystems.Initialize();
 
 		lastUpdateFPSTime = Time.realtimeSinceStartup;
+
+		if (YooassetManager.Inst.IsInitted)
+		{
+			OnGameSystemsInitted();
+		}
     }
 
     private float lastUpdateFPSTime;
@@ -166,11 +172,6 @@ public class TestSceneSystem : MonoBehaviour
 		UnityEngine.Profiling.Profiler.EndSample();
     }
 
-    private void OnDrawGizmos()
-    {
-		// EntityUtils.BvhRed.DrawAllBounds();
-    }
-
     void PreInitModel()
     {
 	    MainModel.Inst.InitInstance();
@@ -181,7 +182,7 @@ public class TestSceneSystem : MonoBehaviour
     void RegisterEvents()
     {
 	    EventCenter.AddListener(EventDefine.OnGameStart, OnGameStart);
-	    EventCenter.AddListener(EventDefine.OnGameAssetsManagerInitted, OnGameAssetsManagerInited);
+	    EventCenter.AddListener(EventDefine.OnGameAssetsManagerInitted, OnGameSystemsInitted);
 	    EventCenter.AddListener(EventDefine.SetCursorState, (_contexts) =>
 	    {
 		    var value = _contexts.pInt > 0;
@@ -203,11 +204,12 @@ public class TestSceneSystem : MonoBehaviour
 	    }
     }
 
-    void OnGameAssetsManagerInited()
+    void OnGameSystemsInitted()
     {
 	    WLangMgr.Inst.LordInitCode(TerminalModel.Inst.Interp);
 		_contexts.meta.factoryService.instance.InitSceneObjectRoot(sceneRoot);
 		_contexts.meta.factoryService.instance.InitGOAPRoot(goapTrans);
 		WAbilityMgr.Inst.Initialize(new AbilityAssetLoader());
+		EventCenter.Trigger(EventDefine.OnGameSystemsInitted);
     }
 }

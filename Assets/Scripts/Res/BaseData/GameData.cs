@@ -1,6 +1,6 @@
 using BaseData;
 using SimpleJSON;
-using WGame.Res;
+using WGame.Runtime;
 
 public class GameData
 {

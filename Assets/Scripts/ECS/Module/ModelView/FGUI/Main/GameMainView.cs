@@ -69,7 +69,7 @@ namespace WGame.UI
 			ui.topList.onClickItem.Add(OnTopItemClick);
 			RefreshFPS();
 			RefreshFocusPoint();
-			WGame.Res.YooassetManager.Inst.LoadTextAssetSync("item_tbitem");
+			WGame.Runtime.YooassetManager.Inst.LoadTextAssetSync("item_tbitem");
 			TickManager.Inst.AddTick(OnUpdate);
 		}
 

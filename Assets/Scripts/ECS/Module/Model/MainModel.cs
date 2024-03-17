@@ -44,7 +44,7 @@ namespace WGame.UI
 		
 		public MainModel()
 		{
-			EventCenter.AddListener(EventDefine.OnGameResourcesLoaded, OnGameResourcesLoaded);
+			EventCenter.AddListener(EventDefine.OnEnterGameMainView, OnEnterMainView);
 			EventCenter.AddListener(EventDefine.OnGameStart, OnGameStart);
 			WTriggerMgr.Inst.Init();
 			isGameStart = false;
@@ -57,7 +57,7 @@ namespace WGame.UI
 		}
 
 		// 游戏开始，数据的设置需要在这里进行
-		private void OnGameResourcesLoaded()
+		private void OnEnterMainView()
 		{
 #if UNITY_ANDROID
 			IsUseJoystick = true;
