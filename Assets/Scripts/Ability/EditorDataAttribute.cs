@@ -22,6 +22,8 @@ namespace WGame.Ability
         AnimationClip,
         NoticeReceiver,
         AttributeTypeID,
+        BuffDataTypeID,
+        BUffName,
         Action,
 
         // for list

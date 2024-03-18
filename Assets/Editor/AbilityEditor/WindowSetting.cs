@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace WGame.Ability.Editor
 {
@@ -12,14 +13,17 @@ namespace WGame.Ability.Editor
         public string groupAnimationName = "Animation Group";
         public string groupEffectName = "Effect Group";
         public string groupNoticeName = "Notice Group";
+        public string groupActionName = "Action Group";
         
         public string trackAnimationType = "Animation";
         public string trackEffectType = "Effect";
         public string trackNoticeType = "Notice";
+        public string trackActionType = "Action";
         
         public GUIContent contextNewAnimation = new GUIContent("New Animation");
         public GUIContent contextNewEffect = new GUIContent("New Effect");
         public GUIContent contextNewNotice = new GUIContent("New Notice");
+        public GUIContent contextNewAction = new GUIContent("New Action");
         public GUIContent contextAddEventSignal = new GUIContent("Add Event Signal");
         public GUIContent contextAddEventDuration = new GUIContent("Add Event Duration");
         public GUIContent contextDelTrack = new GUIContent("Del Track");
@@ -41,6 +45,7 @@ namespace WGame.Ability.Editor
         public Color colorAnimation = new Color(0.141f, 0.333f, 0.537f, 1.000f);
         public Color colorEffect = new Color(0.000f, 0.597f, 0.128f, 1.000f);
         public Color colorNotice = new Color(0.100f, 0.397f, 0.028f, 1.000f);
+        public Color colorAction = new Color(0.900f, 0.397f, 0.328f, 1.000f);
         public Color colorAudio = new Color(1.000f, 0.635f, 0.000f, 1.000f);
         public Color colorCamera = new Color(0.702f, 0.302f, 0.302f, 1.000f);
         public Color colorInterrupt = new Color(0.3215f, 0.827f, 0.960f, 1.000f);
@@ -87,6 +92,7 @@ namespace WGame.Ability.Editor
         public GUIContent otherTrackIcon { get; private set; }
 
         public GUIContent attackTrackIcon { get; private set; }
+        public GUIContent actionTrackIcon { get; private set; }
 
         public GUIContent interruptTrackIcon { get; private set; }
 
@@ -156,6 +162,7 @@ namespace WGame.Ability.Editor
             cameraTrackIcon = EditorGUIUtility.IconContent("Camera Icon");
             otherTrackIcon = EditorGUIUtility.IconContent("Tilemap Icon");
             attackTrackIcon = EditorGUIUtility.IconContent("VisualEffectAsset Icon");
+            actionTrackIcon = EditorGUIUtility.IconContent("VisualEffectAsset Icon");
             interruptTrackIcon = EditorGUIUtility.IconContent("BlendTree Icon");
 
             groupBackground = GetGUIStyle("groupBackground");

@@ -12,6 +12,7 @@ namespace WGame.Ability.Editor
         
         [System.NonSerialized] public List<WindowItemState> selectionList = new();
         [System.NonSerialized] public List<WindowItemState> dataList = new();
+        [System.NonSerialized] public List<WindowItemState> conditionList = new();
         
         private ActorEvent copyEvent = null;
         
@@ -69,6 +70,7 @@ namespace WGame.Ability.Editor
         {
             return selectionList.Count > 0 ? selectionList[0] : null;
         }
+        
 
         public List<WindowItemState> GetAllActorEvent()
         {
@@ -101,6 +103,28 @@ namespace WGame.Ability.Editor
         public bool HasSelectData(WindowItemState item)
         {
             return dataList.Contains(item);
+        }
+        
+        public void SelectCondition(WindowItemState item)
+        {
+            conditionList.Clear();
+            conditionList.Add(item);
+        }
+
+        public void DeselectAllCondition()
+        {
+            conditionList.Clear();
+        }
+
+        public ItemCondition GetActorCondition()
+        {
+            var list = conditionList.Where(x => x is ItemCondition).ToList();
+            return list.Count > 0 ? (ItemCondition)list[0] : null;
+        }
+
+        public bool HasSelectCondition(WindowItemState item)
+        {
+            return conditionList.Contains(item);
         }
         
         public void DrawOverlay()
@@ -150,6 +174,14 @@ namespace WGame.Ability.Editor
                     {
                         var track = CreateActorTrack(group, Setting.trackEffectType, Setting.colorEffect,
                             Setting.effectTrackIcon);
+                    });
+                }
+                else if (group.itemName == Setting.groupActionName)
+                {
+                    menu.AddItem(Setting.contextNewAction, false, () =>
+                    {
+                        var track = CreateActorTrack(group, Setting.trackActionType, Setting.colorAction,
+                            Setting.actionTrackIcon);
                     });
                 }
                 else if (group.itemName == Setting.groupNoticeName)

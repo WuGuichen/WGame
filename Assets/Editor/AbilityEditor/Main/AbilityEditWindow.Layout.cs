@@ -17,7 +17,7 @@ namespace WGame.Ability.Editor
     internal sealed partial class AbilityEditWindow
     {
         public float toobarHeight = 21f;
-        private const float timeRulerHeight = 22f;
+        public float timeRulerHeight = 22f;
 
         private const float minInspectorWidth = 300f;
         private const float maxInspectorWidth = 800f;

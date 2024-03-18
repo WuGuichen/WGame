@@ -16,6 +16,14 @@ namespace WGame.Ability.Editor
                 
                 Window.ResetTimelineView();
             }
+            else if (Data is BuffFactoryData buff)
+            {
+                Window.ClearConditionTree();
+                if (buff.Buff != null && buff.Buff is CBuffData cbuff)
+                {
+                    Window.BuildConditionTree(cbuff.ConditionList);
+                }
+            }
         }
 
         public override void Draw()

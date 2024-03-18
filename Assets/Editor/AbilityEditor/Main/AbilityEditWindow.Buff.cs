@@ -7,7 +7,8 @@ namespace WGame.Ability.Editor
 {
     internal sealed partial class AbilityEditWindow
     {
-        [FormerlySerializedAs("actorBuffTree")] [SerializeField] private ItemTreeData itemBuffTree = null;
+        [SerializeField] private ItemTreeData itemBuffTree = null;
+        [System.NonSerialized] private ConditionType buffConditionType = ConditionType.None;
         
         private void InitInspectorBuff()
         {
@@ -70,11 +71,72 @@ namespace WGame.Ability.Editor
             {
                 DrawData(buff.Buff);
 
-                // if (buff.Buff is CBuffProperty)
-                // {
-                //     DrawBuffCondition(buff.BuffProperty as CBuffProperty);
-                // }
+                if (buff.Buff is CBuffData)
+                {
+                    DrawBuffCondition(buff.Buff as CBuffData);
+                }
             }
+        }
+        
+        private void DrawBuffCondition(CBuffData buff)
+        {
+            GUILayout.Space(5);
+            using (new GUIColorScope(Setting.colorInspectorLabel))
+            {
+                EditorGUILayout.LabelField("BUFF条件编辑");
+            }
+
+            GUILayout.Space(2);
+            GUILayout.BeginHorizontal();
+            {
+                buffConditionType = (ConditionType)EditorGUILayout.EnumPopup(buffConditionType);
+                if (GUILayout.Button("New Cond"))
+                {
+                    NewBuffCondition(buff);
+                    BuildConditionTree(buff.ConditionList);
+                }
+                if (GUILayout.Button("Del Cond"))
+                {
+                    DelBuffCondition(buff);
+                    BuildConditionTree(buff.ConditionList);
+                }
+                if (GUILayout.Button("Del ALL"))
+                {
+                    DelAllBuffCondition(buff);
+                    BuildConditionTree(buff.ConditionList);
+                }
+            }
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(5);
+            DrawCondition();
+        }
+        
+        private void NewBuffCondition(CBuffData buff)
+        {
+            if (buffConditionType == ConditionType.None || buffConditionType == ConditionType.MAX)
+            {
+                EditorUtility.DisplayDialog("INFO", "Please select BUFF condition type.", "OK");
+            }
+            else
+            {
+                buff.Add(buffConditionType);
+            }
+        }
+
+        private void DelBuffCondition(CBuffData buff)
+        {
+            var selectable = GetActorCondition();
+            if (selectable != null)
+            {
+                buff.Remove(selectable.Data as ICondition);
+                DeselectAllCondition();
+            }
+        }
+
+        private void DelAllBuffCondition(CBuffData buff)
+        {
+            buff.RemoveAll();
         }
     }
 }

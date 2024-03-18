@@ -2,14 +2,29 @@
 {
     "Data" : [
         {
-            "BuffType" : "Numerical",
+            "BuffType" : "Condition",
             "BuffData" : {
-                "ID" : "",
-                "Name" : "\u6D4B\u8BD5",
+                "ID" : 0,
+                "Name" : "",
                 "Target" : "None",
-                "Attr"   : 0,
-                "AddVal" : 0,
-                "MulVal" : 0
+                "AddNum" : 1,
+                "Duration" : -1,
+                "AddBuffList" : [
+                ],
+                "RemoveBuffList" : [
+                ],
+                "Conditions"     : [
+                    {
+                        "ConditionType" : "CheckHP",
+                        "CmpType"       : "Greater",
+                        "CondType"      : "CheckHP",
+                        "CmpValue"      : {
+                            "Type" : "Normal",
+                            "AttrID" : 0,
+                            "ModValue" : 324
+                        }
+                    }
+                ]
             }
         }
     ]

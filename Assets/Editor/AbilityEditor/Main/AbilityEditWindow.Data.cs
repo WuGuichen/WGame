@@ -80,6 +80,10 @@ namespace WGame.Ability.Editor
                                     AnimationClipField(obj, pis[i].Name, val);
                                 }
                                     break;
+                                case EditorDataType.BUffName:
+                                {
+                                }
+                                    break;
                                 case EditorDataType.NoticeReceiver:
                                 {
                                     PopupList(obj, pis[i].Name, val, StringToIDDefine.Notice);
@@ -88,6 +92,11 @@ namespace WGame.Ability.Editor
                                 case EditorDataType.AttributeTypeID:
                                 {
                                     PopupList(obj, pis[i].Name, val, StringToIDDefine.Attribute);
+                                }
+                                    break;
+                                case EditorDataType.BuffDataTypeID:
+                                {
+                                    PopupList(obj, pis[i].Name, val, StringToIDDefine.BuffData);
                                 }
                                     break;
                                 case EditorDataType.Action:

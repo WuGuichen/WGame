@@ -106,7 +106,7 @@
                     "TrackName" : "Notice 0",
                     "TrackIndex" : 0,
                     "TriggerType" : "Signal",
-                    "TriggerTime" : 111,
+                    "TriggerTime" : 347,
                     "Duration"    : 0,
                     "EventType"   : "NoticeMessage",
                     "EventData"   : {

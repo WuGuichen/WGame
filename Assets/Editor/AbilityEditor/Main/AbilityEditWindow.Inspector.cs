@@ -137,6 +137,7 @@ namespace WGame.Ability.Editor
             GameAssetsMgr.Inst.InitInstance();
             InitInspectorAbility();
             InitInspectorBuff();
+            InitInspectorCondition();
             
             DeserializeData<BuffFactoryData>("/AbilityData/Buff/Buff.json", itemBuffTree);
         }

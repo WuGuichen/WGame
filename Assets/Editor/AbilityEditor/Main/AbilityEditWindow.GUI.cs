@@ -66,6 +66,7 @@ namespace WGame.Ability.Editor
 
                 CreateActorGroup(itemTreeView, Setting.groupAnimationName);
                 CreateActorGroup(itemTreeView, Setting.groupEffectName);
+                CreateActorGroup(itemTreeView, Setting.groupActionName);
                 CreateActorGroup(itemTreeView, Setting.groupNoticeName);
                 
                 DeserializeAll();
@@ -332,6 +333,10 @@ namespace WGame.Ability.Editor
                     case EventDataType.NoticeMessage:
                         BuildItemEventTree(itr.Current, Setting.groupNoticeName, Setting.trackNoticeType,
                             Setting.colorNotice, Setting.otherTrackIcon);
+                        break;
+                    case EventDataType.DoAction:
+                        BuildItemEventTree(itr.Current, Setting.groupActionName, Setting.trackActionType,
+                            Setting.colorAction, Setting.actionTrackIcon);
                         break;
                     case EventDataType.None:
                         break;
