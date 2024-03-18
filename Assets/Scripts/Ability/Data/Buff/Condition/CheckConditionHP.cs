@@ -13,8 +13,7 @@ namespace WGame.Ability
 
         private CBuffStatus _owner;
 
-        [EditorData("比较条件", EditorDataType.Enum)]
-        public ConditionType CondType { get; set; } = ConditionType.None;
+        public ConditionType CondType => ConditionType.CheckHP;
         public ICondition Clone()
         {
             return new CheckConditionHP()
@@ -48,14 +47,12 @@ namespace WGame.Ability
         public void Deserialize(JsonData jd)
         {
             CmpType = JsonHelper.ReadEnum<CompareType>(jd["CmpType"]);
-            CondType = JsonHelper.ReadEnum<ConditionType>(jd["CondType"]);
             CmpValue.Deserialize(jd["CmpValue"]);
         }
 
         public JsonWriter Serialize(JsonWriter writer)
         {
             JsonHelper.WriteProperty(ref writer, "CmpType", CmpType.ToString());
-            JsonHelper.WriteProperty(ref writer, "CondType", CondType.ToString());
             writer.WritePropertyName("CmpValue");
             writer.WriteObjectStart();
             writer = CmpValue.Serialize(writer);

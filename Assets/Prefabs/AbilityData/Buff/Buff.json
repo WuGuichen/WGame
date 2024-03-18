@@ -5,7 +5,7 @@
             "BuffType" : "Condition",
             "BuffData" : {
                 "ID" : 0,
-                "Name" : "",
+                "Name" : "AddHP",
                 "Target" : "None",
                 "AddNum" : 1,
                 "Duration" : -1,
@@ -17,7 +17,6 @@
                     {
                         "ConditionType" : "CheckHP",
                         "CmpType"       : "Greater",
-                        "CondType"      : "CheckHP",
                         "CmpValue"      : {
                             "Type" : "Normal",
                             "AttrID" : 0,

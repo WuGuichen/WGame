@@ -13,12 +13,12 @@ namespace WGame.Ability
     {
         public string DebugName => "数值";
 
-        [EditorData("", EditorDataType.Enum, 50)]
+        [EditorData("", EditorDataType.Enum, 0)]
         public CustomValueType ValueType { get; set; } = CustomValueType.Normal;
-        [EditorData("作用值(千分比)", EditorDataType.Int)]
+        [EditorData("值(千分比)", EditorDataType.Int, 35)]
         public int ModValue { get; set; }
         
-        [EditorData("属性类型", EditorDataType.AttributeTypeID)]
+        [EditorData("属性", EditorDataType.AttributeTypeID, 30)]
         public int AttrID { get; set; }
         
         public void Deserialize(JsonData jd)
