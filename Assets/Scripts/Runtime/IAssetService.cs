@@ -8,6 +8,7 @@ namespace WGame.Runtime
     public interface IAssetService
     {
         public void LoadGameObject(string path, Action<GameObject> callback);
+        public void LoadPrefab(string path, Action<GameObject> callback);
         public void ReleaseAssetHandle(string path);
         public void UnloadAsset(Object obj);
 

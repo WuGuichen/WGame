@@ -1,7 +1,6 @@
-namespace WGame.Utils
-{
     using UnityEngine;
-    
+    using WGame.Utils;
+
     public interface TAny
     {
         public static TAny New(DataType type)
@@ -17,6 +16,9 @@ namespace WGame.Utils
                     break;
                 case DataType.Long:
                     obj = new TAnyLong(0);
+                    break;
+                case DataType.ULong:
+                    obj = new TAnyUnsignLong(0);
                     break;
                 case DataType.Float:
                     obj = new TAnyFloat(0f);
@@ -64,6 +66,63 @@ namespace WGame.Utils
         {
             value = v;
         }
+
+
+    }
+
+    public static class TAnyExtension
+    {
+        public static int AsInt(this TAny t)
+        {
+            return (t as TAnyInt).value;
+        }
+        
+        public static string AsString(this TAny t)
+        {
+            return (t as TAnyString).value;
+        }
+        
+        public static float AsFloat(this TAny t)
+        {
+            return (t as TAnyFloat).value;
+        }
+        
+        public static bool AsBool(this TAny t)
+        {
+            return (t as TAnyBool).value;
+        }
+        
+        public static Vector3Int AsVector3Int(this TAny t)
+        {
+            return (t as TAnyVector3Int).value;
+        }
+        
+        public static Vector3 AsVector3(this TAny t)
+        {
+            return (t as TAnyVector3).value;
+        }
+
+        public static Vector2 AsVector2(this TAny t)
+        {
+            return (t as TAnyVector2).value;
+        }
+        public static ulong AsULong(this TAny t)
+        {
+            return (t as TAnyUnsignLong).value;
+        }
+        
+        public static long AsLong(this TAny t)
+        {
+            return (t as TAnyLong).value;
+        }
+        public static Color AsColor(this TAny t)
+        {
+            return (t as TAnyColor).value;
+        }
+        public static Quaternion AsQuaternion(this TAny t)
+        {
+            return (t as TAnyQuaternion).value;
+        }
     }
 
     public sealed class TAnyBool : TAnyVal<bool>
@@ -81,6 +140,12 @@ namespace WGame.Utils
     public sealed class TAnyLong : TAnyVal<long>
     {
         public TAnyLong(long v) : base(v)
+        { }
+    }
+    
+    public sealed class TAnyUnsignLong : TAnyVal<ulong>
+    {
+        public TAnyUnsignLong(ulong v) : base(v)
         { }
     }
 
@@ -138,4 +203,3 @@ namespace WGame.Utils
         public TAnyColor(Color v) : base(v)
         { }
     }
-}

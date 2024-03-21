@@ -17,7 +17,7 @@ using Unity.Jobs;
 using Unity.Networking.Transport;
 using Unity.Networking.Transport.Relay;
 using Unity.Networking.Transport.Utilities;
-using DataStreamReader = Unity.Networking.Transport.DataStreamReader;
+using DataStreamReader = Unity.Collections.DataStreamReader;
 #if UTP_TRANSPORT_2_0_ABOVE
 using Unity.Networking.Transport.TLS;
 #endif

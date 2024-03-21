@@ -2,10 +2,6 @@ using System;
 using System.Collections.Generic;
 using BaseData.Character;
 using CrashKonijn.Goap.Behaviours;
-using CrashKonijn.Goap.Classes.Builders;
-using CrashKonijn.Goap.Configs;
-using CrashKonijn.Goap.Enums;
-using CrashKonijn.Goap.Resolver;
 using Entitas.Unity;
 #if UNITY_EDITOR
 using System.IO;
@@ -16,7 +12,6 @@ using Pathfinding;
 using Sirenix.Serialization;
 using Weapon;
 using WGame.Attribute;
-using WGame.GOAP;
 using WGame.Res;
 using WGame.Runtime;
 using Random = UnityEngine.Random;
@@ -103,7 +98,7 @@ public class FactoryServiceImplementation : IFactoryService
         }
     }
     
-    public void InitSceneObjectRoot(Transform sceneRoot)
+    public void InitSceneObjectRoot()
     {
         this.sceneRoot = sceneRoot;
         if (dropItemRoot == null)
@@ -112,53 +107,16 @@ public class FactoryServiceImplementation : IFactoryService
             dropItemRoot = GameObject.Instantiate(root).transform;
             dropItemRoot.name = dropItemRoot.name.Replace("(Clone)", "");
         }
-        dropItemRoot.SetParent(this.sceneRoot);
+        dropItemRoot.SetParent(GameSceneMgr.Inst.Root);
         InitClips();
         InitAvatarMask();
     }
 
-    private GoapSetConfig CreateBaseGoapConfig()
-    {
-        var builder = new GoapSetBuilder("Base");
-
-        // Debugger
-        builder.SetAgentDebugger<WGoapDebugger>();
-
-        // Goals
-        // 进行巡逻
-        builder.AddGoal<PatrolGoal>()
-            .AddCondition<IsPatroling>(Comparison.GreaterThanOrEqual, 1);
-
-        // 使仇恨等级小于警戒
-        builder.AddGoal<HateGoal>()
-            .AddCondition<IsHateRank>(Comparison.SmallerThan, HateRankType.Alert);
-
-        // Actions
-        // 增加巡逻
-        builder.AddAction<PatrolAction>()
-            .SetTarget<PatrolTarget>()
-            .AddEffect<IsPatroling>(EffectType.Increase);
-
-        // 减少仇恨值
-        builder.AddAction<HateAction>()
-            .SetTarget<HateTarget>()
-            .AddEffect<IsHateRank>(EffectType.Decrease);
-        
-        // TargetSensors
-        builder.AddTargetSensor<PatrolTargetSensor>()
-            .SetTarget<PatrolTarget>();
-
-        builder.AddTargetSensor<HateTargetSensor>()
-            .SetTarget<HateTarget>();
-
-        return builder.Build();
-    }
-    
-    public void InitGOAPRoot(Transform goapRoot)
+    public void InitGOAPRoot()
     {
         var goapGO = new GameObject("GOAPRunner");
         goapRunnerBehaviour = goapGO.AddComponent<GoapRunnerBehaviour>();
-        goapRunnerBehaviour.Register(CreateBaseGoapConfig());
+        goapRunnerBehaviour.Register(WGOAPMgr.Inst.CreateBaseGoapConfig());
     }
 
     public GoapRunnerBehaviour GOAPRunner => goapRunnerBehaviour;
@@ -239,6 +197,38 @@ public class FactoryServiceImplementation : IFactoryService
     public void RemoveCharacter(int instanceID)
     {
         _gameEntityDB.Cancel(instanceID);
+    }
+    
+    public void GenCharacterNet(int charID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback = null)
+    {
+        var data = GameData.Tables.TbCharacter[charID];
+        if (data == null)
+        {
+            entity = null;
+            WLogger.Error("没有相应角色id：" + charID);
+            return;
+        }
+
+        int infoID = data.InfoId;
+        int id = characterBaseID + genCharacterNum;
+        genCharacterNum++;
+        entity = _gameContext.CreateEntity();
+        entity.AddEntityID(id);
+        entity.AddCharacterInfo(WCharacterInfo.GetCharacterInfo(infoID));
+        entity.AddPosition(pos);
+        var gameEntity = entity;
+        WLogger.Print(pos);
+        ObjectPool.Inst.GetObject(data.ObjectId, pos, rot, GameSceneMgr.Inst.genCharacterRoot, obj =>
+        {
+            obj.name = id.ToString();
+            var infoMono = obj.GetComponent<WCharacterInfo>();
+
+            InitCharacter(ref gameEntity, obj, ref infoMono);
+            
+            // gameEntity.linkMotion.Motion.motionService.service.AnimProcessor.ClearRootMotion();
+            // 真正完成角色生成
+            callback?.Invoke(gameEntity);
+        });
     }
 
     public void GenCharacter(int charID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback = null)
@@ -464,15 +454,6 @@ public class FactoryServiceImplementation : IFactoryService
         weapon.AddWeaponTypeID(weaponID);
     }
 
-    public void SetWeaponDrop(int entityID, Vector3 pos, Quaternion rot, Vector3 scale)
-    {
-        var weapon = _weaponContext.GetEntityWithEntityID(entityID);
-        if (weapon != null && weapon.isEnabled)
-        {
-            SetWeaponDrop(weapon, pos, rot, scale);
-        }
-    }
-
     public void SetWeaponDrop(WeaponEntity weapon, Vector3 pos, Quaternion rot, Vector3 scale)
     {
         int oldId = weapon.weaponObject.objId;
@@ -581,11 +562,5 @@ public class FactoryServiceImplementation : IFactoryService
     public GameEntity GetGameEntity(int instId)
     {
         return _gameEntityDB[instId];
-    }
-
-    public const int CapsuleTriggerID = 4;
-    public void GenTriggerCapsule(GameEntity entity)
-    {
-            
     }
 }

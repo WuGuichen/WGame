@@ -27,14 +27,14 @@ public class WBTreeMgr : Singleton<WBTreeMgr>
 
     public void RefreshFSM(string text)
     { 
-        EventCenter.Trigger(EventDefine.OnFSMHotUpdate, WEventContext.Get(text));
+        EventCenter.Trigger(EventDefine.OnFSMHotUpdate, text);
         
         WLogger.Print("重载FSM成功:" + text);
         if (_fsmTree.TryGetValue(text, out var list))
         {
             for (int i = 0; i < list.Count; i++)
             {
-                EventCenter.Trigger(EventDefine.OnFSMHotUpdate, WEventContext.Get(list[i]));
+                EventCenter.Trigger(EventDefine.OnFSMHotUpdate, list[i]);
             }
         }
     }

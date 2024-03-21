@@ -45,8 +45,8 @@ MonoBehaviour:
         FilterRuleName: CollectBytes
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/Scenes/TestScene.unity
-        CollectorGUID: 55f42d93e7de23749b0b8da25a5ba0fd
+      - CollectPath: Assets/Prefabs/SceneObject
+        CollectorGUID: c014f6de18ac3eb45bf7ff72a45bbbcd
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory

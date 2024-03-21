@@ -31,4 +31,7 @@ public class EventDefine
     public const int OnRebindingInputStateChange = 61;
     
     public const int OnEnterGameMainView = 62;
+
+    public const int OnClientChanged = 63;
+    public const int OnPlayerRoomInfoRefresh = 64;
 }

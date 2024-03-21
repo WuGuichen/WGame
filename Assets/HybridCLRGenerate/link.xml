@@ -64,7 +64,6 @@
   </assembly>
   <assembly fullname="AstarPathfindingProject">
     <type fullname="Pathfinding.Path" preserve="all" />
-    <type fullname="Pathfinding.RaycastModifier" preserve="all" />
     <type fullname="Pathfinding.Seeker" preserve="all" />
   </assembly>
   <assembly fullname="CrashKonijn.Goap">
@@ -257,6 +256,7 @@
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
     <type fullname="System.Collections.Generic.LinkedListNode`1" preserve="all" />
     <type fullname="System.Collections.Generic.LinkedList`1" preserve="all" />
+    <type fullname="System.Collections.Generic.LinkedList`1/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.Queue`1" preserve="all" />
     <type fullname="System.Collections.Generic.Stack`1" preserve="all" />
     <type fullname="System.ComponentModel.EditorBrowsableAttribute" preserve="all" />
@@ -312,6 +312,11 @@
     <type fullname="Unity.Mathematics.float3x3" preserve="all" />
     <type fullname="Unity.Mathematics.float4" preserve="all" />
     <type fullname="Unity.Mathematics.math" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.Netcode.Runtime">
+    <type fullname="Unity.Netcode.NetworkBehaviour" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkManager" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkObject" preserve="all" />
   </assembly>
   <assembly fullname="Unity.RenderPipelines.Core.Runtime">
     <type fullname="UnityEngine.Rendering.ClampedFloatParameter" preserve="all" />
@@ -384,6 +389,7 @@
     <type fullname="UnityEngine.Renderer" preserve="all" />
     <type fullname="UnityEngine.RequireComponent" preserve="all" />
     <type fullname="UnityEngine.Resources" preserve="all" />
+    <type fullname="UnityEngine.RuntimeInitializeOnLoadMethodAttribute" preserve="all" />
     <type fullname="UnityEngine.SceneManagement.SceneManager" preserve="all" />
     <type fullname="UnityEngine.Screen" preserve="all" />
     <type fullname="UnityEngine.ScriptableObject" preserve="all" />
@@ -446,6 +452,7 @@
   <assembly fullname="WGame.Utils">
     <type fullname="SparseSet`1" preserve="all" />
     <type fullname="WGame.Utils.JsonHelper" preserve="all" />
+    <type fullname="WLableAttribute" preserve="all" />
     <type fullname="WUtils" preserve="all" />
   </assembly>
   <assembly fullname="mscorlib">

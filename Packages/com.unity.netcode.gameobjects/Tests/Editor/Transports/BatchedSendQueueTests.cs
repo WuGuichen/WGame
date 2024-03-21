@@ -2,9 +2,9 @@ using System;
 using NUnit.Framework;
 using Unity.Collections;
 using Unity.Netcode.Transports.UTP;
-using Unity.Networking.Transport;
-using DataStreamReader = Unity.Networking.Transport.DataStreamReader;
-using DataStreamWriter = Unity.Networking.Transport.DataStreamWriter;
+
+using DataStreamReader = Unity.Collections.DataStreamReader;
+using DataStreamWriter = Unity.Collections.DataStreamWriter;
 
 namespace Unity.Netcode.EditorTests
 {

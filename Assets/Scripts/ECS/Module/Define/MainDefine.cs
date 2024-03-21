@@ -1,15 +1,21 @@
 // 数据定义
 
-using System;
-using System.Collections.Generic;
-
 namespace WGame.UI
 {
 	public class MainDefine : Runtime.Singleton<MainDefine>
 	{
+		public const string BtnName_StartClient = "开始客户端";
+		public const string BtnName_StartServer = "加入服务器";
+		public const string BtnName_StartHost = "建立服务器并加入";
+		public const string BtnName_ShutDownServer = "关闭服务器";
+		public const string BtnName_CmdList = "命令列表";
+		public const string BtnName_Setting = "设置";
+		public const string BtnName_Quit = "退出";
+
 		public string[] mainBtnListNames = new string[]
 		{
-			"开始", "命令列表", "设置", "退出"
+			BtnName_StartClient, BtnName_StartServer, BtnName_StartHost, BtnName_ShutDownServer,
+			BtnName_CmdList, BtnName_Setting, BtnName_Quit
 		};
 		
 		public string[] mainTopBtnListNames = new string[]

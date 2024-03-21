@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using HybridCLR;
-// using Motion;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
@@ -16,8 +13,8 @@ namespace WGame.Runtime
         private static YooassetManager _inst;
         public static YooassetManager Inst => _inst;
 
-        private Dictionary<string, AssetHandle> handles = new Dictionary<string, AssetHandle>();
-        private Dictionary<int, string> locations = new Dictionary<int, string>();
+        private Dictionary<string, AssetHandle> handles = new();
+        private Dictionary<int, string> locations = new();
 
         private ResourcePackage package;
         private ResourcePackage rawFilePackage;
@@ -40,8 +37,10 @@ namespace WGame.Runtime
 
         IEnumerator LoadPackages()
         {
-            var defaultOperation = new PatchOperation("DefaultPackage", EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), PlayMode, PatchOperation.PackageType.Default);
-            var rawFileOperation = new PatchOperation("RawFilePackage", EDefaultBuildPipeline.RawFileBuildPipeline.ToString(), PlayMode, PatchOperation.PackageType.RawFile);
+            var defaultOperation = new PatchOperation("DefaultPackage",
+                EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), PlayMode, PatchOperation.PackageType.Default);
+            var rawFileOperation = new PatchOperation("RawFilePackage",
+                EDefaultBuildPipeline.RawFileBuildPipeline.ToString(), PlayMode, PatchOperation.PackageType.RawFile);
             YooAssets.StartOperation(rawFileOperation);
             yield return rawFileOperation;
             rawFilePackage = YooAssets.GetPackage("RawFilePackage");
@@ -50,6 +49,7 @@ namespace WGame.Runtime
             package = YooAssets.GetPackage("DefaultPackage");
             YooAssets.SetDefaultPackage(package);
             IsInitted = true;
+#if !UNITY_EDITOR
             var hotDllList = HotUpdateList.HotList;
             
             foreach (var dllName in hotDllList)
@@ -60,14 +60,23 @@ namespace WGame.Runtime
 
             foreach (var dllName in AOTGenericReferences.PatchedAOTAssemblyList)
             {
-                LoadBytesAsync(dllName, bytes =>
-                {
-                    var err = HybridCLR.RuntimeApi.LoadMetadataForAOTAssembly(bytes, HomologousImageMode.SuperSet);
-                    Debug.Log($"LoadMetadataForAOTAssembly:{dllName}. ret:{err}");
-                });
+                var hotDll = LoadBytesSync(dllName);
+                var err = HybridCLR.RuntimeApi.LoadMetadataForAOTAssembly(hotDll, HomologousImageMode.SuperSet);
+                WLogger.Info($"LoadMetadataForAOTAssembly:{dllName}. ret:{err}");
             }
+#endif
 
             EventCenter.Trigger(EventDefine.OnGameAssetsManagerInitted);
+        }
+
+        public void LoadPrefab(string path, Action<GameObject> callback)
+        {
+            var handle = package.LoadAssetAsync<GameObject>(path);
+            handle.Completed += assetHandle =>
+            {
+                callback.Invoke(assetHandle.GetAssetObject<GameObject>());
+                assetHandle.Release();
+            };
         }
 
         public void LoadGameObject(string path, Action<GameObject> callback)
@@ -290,7 +299,7 @@ namespace WGame.Runtime
             var handle = package.LoadSceneAsync(name, LoadSceneMode.Single);
             handle.Completed += operationHandle =>
             {
-                EventCenter.Trigger(EventDefine.OnSceneLoaded, WEventContext.Get(name));
+                EventCenter.Trigger(EventDefine.OnSceneLoaded, name);
                 callback?.Invoke();
             };
         }

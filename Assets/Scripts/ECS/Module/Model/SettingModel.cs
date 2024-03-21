@@ -22,9 +22,9 @@ namespace WGame.UI
 
 		public bool ShowStatePad = false;
 
-		public void SetVolume(Volume volume)
+		public void SetVolume()
 		{
-			this.volume = volume;
+			this.volume = GameSceneMgr.Inst.Root.GetComponent<UnityEngine.Rendering.Volume>();
 			InitSetting();
 		}
 		

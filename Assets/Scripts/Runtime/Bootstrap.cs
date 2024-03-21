@@ -1,4 +1,5 @@
 using UnityEngine;
+using WGame.Runtime;
 
 public class Bootstrap : MonoBehaviour
 {

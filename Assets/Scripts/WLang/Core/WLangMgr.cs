@@ -161,7 +161,7 @@ public class WLangMgr : Singleton<WLangMgr>
                     {
                         UnityEditor.EditorApplication.delayCall += () =>
                         {
-                            EventCenter.Trigger(EventDefine.OnBTreeHotUpdate, WEventContext.Get(name));
+                            EventCenter.Trigger(EventDefine.OnBTreeHotUpdate, name);
                             WLogger.Print("重载BTree成功：" + name);
                         };
                     }
@@ -378,7 +378,7 @@ public class WLangMgr : Singleton<WLangMgr>
                                 WBTreeMgr.Inst.RefreshFSM(list[i].name);
                             else if (list[i].type == ImporterType.BTree)
                             {
-                                EventCenter.Trigger(EventDefine.OnBTreeHotUpdate, WEventContext.Get(list[i].name));
+                                EventCenter.Trigger(EventDefine.OnBTreeHotUpdate, list[i].name);
                                 WLogger.Print("重载BTree成功：" + list[i].name);
                             }
                         }

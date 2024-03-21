@@ -9,6 +9,9 @@ public class HotUpdateTools
     private static readonly string _targetPath = Application.dataPath + "/Res/HotUpdateDll/";
     private static readonly string _targetMetaDLLPath = Application.dataPath + "/Res/AOTMetaDll/";
 
+    private static readonly string _bundlesPath = Application.dataPath + "/../Bundles/";
+    private static readonly string _cdnPath = Application.dataPath + "/../Bundles/UOSCDN/";
+
     private static void ResetDictionary(string path)
     {
         if (!Directory.Exists(path))
@@ -71,5 +74,45 @@ public class HotUpdateTools
             }
         }
         AssetDatabase.Refresh();
+    }
+    
+    [MenuItem("Utils/HotUpdate/更新到CDN")]
+    public static void UpdateToCDN()
+    {
+        BuildTarget buildTarget = EditorUserBuildSettings.activeBuildTarget;
+        string version = "v1.1";
+        var baseSource = _bundlesPath + buildTarget;
+        var defaultSource = baseSource + "/DefaultPackage/" + version;
+        var rawSource = baseSource + "/RawFilePackage/" + version;
+        var buildTargetPath = buildTarget switch
+        {
+            BuildTarget.Android => "Android",
+            BuildTarget.StandaloneWindows64 => "PC",
+        };
+        var baseTarget = _cdnPath + buildTargetPath;
+        var defaultTarget = baseTarget + "/Default/" + version;
+        var rawTarget = baseTarget + "/RawFile/" + version;
+        CopyDirToNewDir(defaultSource, defaultTarget);
+        CopyDirToNewDir(rawSource, rawTarget);
+        System.Diagnostics.Process.Start("explorer.exe", baseTarget.Replace("/", "\\"));
+        AssetDatabase.Refresh();
+    }
+
+    private static void CopyDirToNewDir(string sourceDir, string targetDir)
+    {
+        if (!Directory.Exists(sourceDir))
+        {
+            return;
+        }
+
+        var fileInfos = Directory.GetFiles(sourceDir);
+        ResetDictionary(targetDir);
+        foreach (var fileInfo in fileInfos)
+        {
+            var fileName = Path.GetFileName(fileInfo);
+            var targetName = $"{targetDir}/{fileName}";
+            File.Copy(fileInfo, targetName);
+        }
+        Debug.Log("更新完成！" + fileInfos.Length);
     }
 }

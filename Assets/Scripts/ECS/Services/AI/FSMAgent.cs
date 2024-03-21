@@ -62,9 +62,9 @@ public class FSMAgent
         }
     }
 
-    private void OnFSMHotUpdate(WEventContext context)
+    private void OnFSMHotUpdate(TAny context)
     {
-        RefreshFSM(context.pString);
+        RefreshFSM(context.AsString());
     }
 
     private void RefreshFSM(string name)

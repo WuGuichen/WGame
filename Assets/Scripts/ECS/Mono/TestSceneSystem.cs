@@ -1,9 +1,11 @@
+using Unity.Netcode;
 using UnityEngine;
 using WGame.Ability;
 using Random = UnityEngine.Random;
 using WGame.UI;
 using WGame.Runtime;
 using WGame.Trigger;
+using WGame.Utils;
 
 public class TestSceneSystem : MonoBehaviour
 {
@@ -14,10 +16,6 @@ public class TestSceneSystem : MonoBehaviour
     private ServiceRegistrationSystems _registrationSystems;
     private GameSystems _gameSystems;
     
-	[SerializeField] private Transform sceneRoot;
-	[SerializeField] private UnityEngine.Rendering.Volume volume;
-	[SerializeField] private Transform goapTrans;
-
 	private OtherSystems _otherSystems;
 	private FixedUpdateSystems _rigidSystems;
 	private LateFixedUpdateSystems _lateFixedUpdateSystems;
@@ -33,7 +31,6 @@ public class TestSceneSystem : MonoBehaviour
     void PreInit()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
-        GameSceneMgr.Inst.InitEnvironment();
 		PreInitModel();
 	    RegisterEvents();
         _contexts = Contexts.sharedInstance;
@@ -56,11 +53,6 @@ public class TestSceneSystem : MonoBehaviour
         _gameSystems.Initialize();
 
         _timeService = _contexts.meta.timeService.instance;
-        if (YooassetManager.Inst == null)
-        {
-	        gameObject.AddComponent<YooassetManager>();
-	        isDirectlyLoad = true;
-        }
     }
     
     private void Awake()
@@ -78,6 +70,8 @@ public class TestSceneSystem : MonoBehaviour
 
     void Start()
     {
+	    WNetMgr.Inst.InitInstance();
+	    
 		_vmSystems.Initialize();
 		_otherSystems.Initialize();
 		_processMotionSystems.Initialize();
@@ -115,7 +109,7 @@ public class TestSceneSystem : MonoBehaviour
 
 	    if (Input.GetKeyDown(KeyCode.LeftAlt))
 	    {
-			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(Cursor.visible ? 0 : 1));
+			EventCenter.Trigger(EventDefine.SetCursorState, Cursor.visible ? 0 : 1);
 	    }
     }
 
@@ -157,6 +151,7 @@ public class TestSceneSystem : MonoBehaviour
         _registrationSystems.TearDown();
         _settingContext.RemoveGameSetting();
         WLangMgr.Inst.OnDispose();
+        WNetMgr.Inst.OnDispose();
         EventCenter.RemoveListener(EventDefine.OnGameResourcesLoaded, OnGameStart);
         EntityUtils.Dispose();
     }
@@ -176,7 +171,7 @@ public class TestSceneSystem : MonoBehaviour
     void PreInitModel()
     {
 	    MainModel.Inst.InitInstance();
-	    SettingModel.Inst.SetVolume(volume);
+	    SettingModel.Inst.SetVolume();
 	    WInputManager.Inst.InitInstance();
     }
 
@@ -186,7 +181,7 @@ public class TestSceneSystem : MonoBehaviour
 	    EventCenter.AddListener(EventDefine.OnGameAssetsManagerInitted, OnGameSystemsInitted);
 	    EventCenter.AddListener(EventDefine.SetCursorState, (_contexts) =>
 	    {
-		    var value = _contexts.pInt > 0;
+		    var value = _contexts.AsInt() > 0;
 		    Cursor.visible = value;
 		    Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
 	    });
@@ -194,24 +189,15 @@ public class TestSceneSystem : MonoBehaviour
     
     void OnGameStart()
     {
-	    var characterRoot = GameSceneMgr.Inst.editCharacterRoot;
-	    for (int i = 0; i < characterRoot.childCount; i++)
-	    {
-		    var child = characterRoot.GetChild(i).gameObject;
-		    if (child.activeSelf)
-		    {
-			    _contexts.meta.factoryService.instance.GenCharacter(child.gameObject);
-		    }
-	    }
+	    EntityUtils.InitCharacterRoot();
     }
 
     void OnGameSystemsInitted()
     {
 	    WLangMgr.Inst.LordInitCode(TerminalModel.Inst.Interp);
-		_contexts.meta.factoryService.instance.InitSceneObjectRoot(sceneRoot);
-		_contexts.meta.factoryService.instance.InitGOAPRoot(goapTrans);
+		_contexts.meta.factoryService.instance.InitSceneObjectRoot();
+		_contexts.meta.factoryService.instance.InitGOAPRoot();
 		WAbilityMgr.Inst.Initialize(new AbilityAssetLoader());
 		EventCenter.Trigger(EventDefine.OnGameSystemsInitted);
-	    EventCenter.Trigger(EventDefine.OnEnterGameMainView);
     }
 }

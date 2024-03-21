@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BaseData.Character;
 using TWY.Physics;
 using UnityEngine;
+using WGame.Runtime;
 
 public class EntityUtils
 {
@@ -154,6 +155,39 @@ public class EntityUtils
         {
             ActionHelper.DoSetCharacterCameraByID(entity.entityID.id);
         }
+    }
+
+    private static void InitCharGroup(string name)
+    {
+	    var root = GameSceneMgr.Inst.editCharacterRoot;
+        
+        YooassetManager.Inst.LoadGameObject(name, o =>
+        {
+            var characterRoot = o.transform;
+            characterRoot.parent = root;
+            characterRoot.position = Vector3.zero;
+            
+            for (int i = 0; i < characterRoot.childCount; i++)
+            {
+                var child = characterRoot.GetChild(i).gameObject;
+                var entityId = int.Parse(child.name);
+                var entity = GetGameEntity(entityId);
+                if (child.activeSelf && entity == null)
+                {
+                    Contexts.sharedInstance.meta.factoryService.instance.GenCharacter(child.gameObject);
+                }
+
+                if (entityId == 10000001)
+                {
+                    ActionHelper.DoSetCharacterCameraByID(10000001);
+                }
+            }
+        });
+    }
+    public static void InitCharacterRoot()
+    {
+        // InitCharGroup("WhiteGroup");
+        // InitCharGroup("RedGroup");
     }
 
     public static void GenCharacter(int type = 2)

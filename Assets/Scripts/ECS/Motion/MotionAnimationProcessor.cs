@@ -30,7 +30,6 @@ public class MotionAnimationProcessor : AnimancerComponent
     private LinearMixerState _regularMove;
 
     private AnimancerLayer[] _animancerLayers;
-    private const int layerCount = 3;
 
     // ReSharper disable Unity.PerformanceAnalysis
     public void OnInit()

@@ -25,9 +25,9 @@ namespace WGame.UI
 			EventCenter.AddListener(EventDefine.OnControlCharacterChanged, OnCharacterChanged);	
 		}
 
-		private void OnCharacterChanged(WEventContext ctx)
+		private void OnCharacterChanged(TAny ctx)
 		{
-			int id = ctx.pInt;
+			int id = ctx.AsInt();
 			var entity = Contexts.sharedInstance.game.GetEntityWithEntityID(beforeControlledCharacterID);
 			if (entity != null && entity.hasAttribute)
 			{

@@ -34,11 +34,6 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
         gameObject.Unlink();
     }
 
-    public void OnAlive()
-    {
-        GetEntity().isMoveable = true;
-    }
-
     public float Height => height;
     public float HalfHeight => halfHeight;
 

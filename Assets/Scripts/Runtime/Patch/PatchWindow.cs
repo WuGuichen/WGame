@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniFramework.Event;
 using WGame.Runtime;
+using WGame.Utils;
 
 public class PatchWindow : MonoBehaviour
 {
@@ -19,10 +20,7 @@ public class PatchWindow : MonoBehaviour
 
         public bool ActiveSelf
         {
-            get
-            {
-                return _cloneObject.activeSelf;
-            }
+            get { return _cloneObject.activeSelf; }
         }
 
         public void Create(GameObject cloneObject)
@@ -40,12 +38,14 @@ public class PatchWindow : MonoBehaviour
             _cloneObject.SetActive(true);
             _cloneObject.transform.SetAsLastSibling();
         }
+
         public void Hide()
         {
             _content.text = string.Empty;
             _clickOK = null;
             _cloneObject.SetActive(false);
         }
+
         private void OnClickYes()
         {
             _clickOK?.Invoke();
@@ -60,6 +60,7 @@ public class PatchWindow : MonoBehaviour
     // UGUI相关
     private GameObject _messageBoxObj;
     private Slider _slider;
+    private Button _btnPlay;
     private Text _tips;
 
 
@@ -68,6 +69,9 @@ public class PatchWindow : MonoBehaviour
         _slider = transform.Find("UIWindow/Slider").GetComponent<Slider>();
         _tips = transform.Find("UIWindow/Slider/txt_tips").GetComponent<Text>();
         _tips.text = "Initializing the game world !";
+        _btnPlay = transform.Find("UIWindow/btn_play").GetComponent<Button>();
+        _btnPlay.onClick.AddListener(OnClickPlay);
+        _btnPlay.gameObject.SetActive(false);
         _messageBoxObj = transform.Find("UIWindow/MessgeBox").gameObject;
         _messageBoxObj.SetActive(false);
 
@@ -78,27 +82,42 @@ public class PatchWindow : MonoBehaviour
         _eventGroup.AddListener<PatchEventDefine.PackageVersionUpdateFailed>(OnHandleEventMessage);
         _eventGroup.AddListener<PatchEventDefine.PatchManifestUpdateFailed>(OnHandleEventMessage);
         _eventGroup.AddListener<PatchEventDefine.WebFileDownloadFailed>(OnHandleEventMessage);
-        
+
         EventCenter.AddListener(EventDefine.OnSceneLoaded, OnSceneLoaded);
+        EventCenter.AddListener(EventDefine.OnGameSystemsInitted, OnGameSystemsInitted);
         StartCoroutine(LoadAOTMetaDLL());
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnGameSystemsInitted()
+    {
+        _btnPlay.gameObject.SetActive(true);
+    }
+
+    private void OnClickPlay()
+    {
+        Destroy(gameObject);
+        EventCenter.Trigger(EventDefine.OnEnterGameMainView);
     }
 
     IEnumerator LoadAOTMetaDLL()
     {
         yield return null;
     }
-    
+
     void OnDestroy()
     {
         _eventGroup.RemoveAllListener();
         EventCenter.RemoveListener(EventDefine.OnSceneLoaded, OnSceneLoaded);
+        EventCenter.RemoveListener(EventDefine.OnGameSystemsInitted, OnGameSystemsInitted);
     }
 
-    private void OnSceneLoaded(WEventContext context)
+    private void OnSceneLoaded(TAny context)
     {
-        if (context.pString == "TestScene")
+        if ((context as TAnyString).value == "TestScene")
         {
             GameSceneMgr.Inst.UnloadScene("BootStrap");
+            GameSceneMgr.Inst.SetEnvironment();
         }
     }
 
@@ -110,10 +129,7 @@ public class PatchWindow : MonoBehaviour
     {
         if (message is PatchEventDefine.InitializeFailed)
         {
-            System.Action callback = () =>
-            {
-                UserEventDefine.UserTryInitialize.SendEventMessage();
-            };
+            System.Action callback = () => { UserEventDefine.UserTryInitialize.SendEventMessage(); };
             ShowMessageBox($"Failed to initialize package !", callback);
         }
         else if (message is PatchEventDefine.PatchStatesChange)
@@ -124,14 +140,12 @@ public class PatchWindow : MonoBehaviour
         else if (message is PatchEventDefine.FoundUpdateFiles)
         {
             var msg = message as PatchEventDefine.FoundUpdateFiles;
-            System.Action callback = () =>
-            {
-                UserEventDefine.UserBeginDownloadWebFiles.SendEventMessage();
-            };
+            System.Action callback = () => { UserEventDefine.UserBeginDownloadWebFiles.SendEventMessage(); };
             float sizeMB = msg.TotalSizeBytes / 1048576f;
             sizeMB = Mathf.Clamp(sizeMB, 0.1f, float.MaxValue);
             string totalSizeMB = sizeMB.ToString("f1");
-            ShowMessageBox($"Found update patch files, Total count {msg.TotalCount} Total szie {totalSizeMB}MB", callback);
+            ShowMessageBox($"Found update patch files, Total count {msg.TotalCount} Total szie {totalSizeMB}MB",
+                callback);
         }
         else if (message is PatchEventDefine.DownloadProgressUpdate)
         {
@@ -143,27 +157,18 @@ public class PatchWindow : MonoBehaviour
         }
         else if (message is PatchEventDefine.PackageVersionUpdateFailed)
         {
-            System.Action callback = () =>
-            {
-                UserEventDefine.UserTryUpdatePackageVersion.SendEventMessage();
-            };
+            System.Action callback = () => { UserEventDefine.UserTryUpdatePackageVersion.SendEventMessage(); };
             ShowMessageBox($"Failed to update static version, please check the network status.", callback);
         }
         else if (message is PatchEventDefine.PatchManifestUpdateFailed)
         {
-            System.Action callback = () =>
-            {
-                UserEventDefine.UserTryUpdatePatchManifest.SendEventMessage();
-            };
+            System.Action callback = () => { UserEventDefine.UserTryUpdatePatchManifest.SendEventMessage(); };
             ShowMessageBox($"Failed to update patch manifest, please check the network status.", callback);
         }
         else if (message is PatchEventDefine.WebFileDownloadFailed)
         {
             var msg = message as PatchEventDefine.WebFileDownloadFailed;
-            System.Action callback = () =>
-            {
-                UserEventDefine.UserTryDownloadWebFiles.SendEventMessage();
-            };
+            System.Action callback = () => { UserEventDefine.UserTryDownloadWebFiles.SendEventMessage(); };
             ShowMessageBox($"Failed to download file : {msg.FileName}", callback);
         }
         else

@@ -155,5 +155,21 @@ namespace WGame.UI
                 return true;
             return false;
         }
+
+        public static void CloseTopView()
+        {
+            if (GRoot.inst.GetTopWindow() is BaseView view)
+            {
+                switch (view.ViewName)
+                {
+                    case VDB.GameMainView:
+                    case VDB.JoystickView:
+                        break;
+                    default:
+                        CloseView(view.ViewName);
+                        break;
+                }
+            }
+        }
     }
 }

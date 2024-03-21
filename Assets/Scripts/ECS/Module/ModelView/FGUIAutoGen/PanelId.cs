@@ -9,6 +9,7 @@ namespace WGame.UI
 		GameMainView,
 		JoystickView,
 		CommandView,
+		ServerRoomView,
 		SettingView,
 		SettingInputView,
 		SettingGraphicView,

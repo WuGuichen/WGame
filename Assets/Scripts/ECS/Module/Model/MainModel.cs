@@ -1,7 +1,7 @@
 // 数据缓存，数据逻辑操作
 
+using System.Collections.Generic;
 using UnityEngine;
-using UnityTimer;
 using WGame.Trigger;
 using WtEventType = WGame.Trigger.WtEventType;
 using WGame.Runtime;
@@ -53,7 +53,7 @@ namespace WGame.UI
 		private void OnGameStart()
 		{
 			isGameStart = true;
-			EventCenter.Trigger(EventDefine.SetCursorState, WEventContext.Get(0));
+			EventCenter.Trigger(EventDefine.SetCursorState, 0);
 		}
 
 		// 游戏开始，数据的设置需要在这里进行
@@ -64,6 +64,9 @@ namespace WGame.UI
 #elif UNITY_STANDALONE_WIN
 			IsUseJoystick = false;
 #endif
+			#if UNITY_EDITOR
+			IsUseJoystick = false;
+			#endif
 			UIManager.OpenView(VDB.GameMainView);
 		}
 
@@ -296,27 +299,46 @@ namespace WGame.UI
 					break;
 			}
 		}
-		public void OnGameMainViewItemClick(int index)
+		public void OnGameMainViewItemClick(string index)
 		{
 			switch (index)
 			{
-				case 0:
+				case MainDefine.BtnName_StartClient:
 					if (isGameStart)
 						break;
 					EventCenter.Trigger(EventDefine.OnGameStart);
-						ActionHelper.DoSetCharacterCameraByID(10000001);
 					break;
-				case 1:
+				case MainDefine.BtnName_StartServer:
+					// WNetMgr.Inst.StartClient();
+					UIManager.OpenView(VDB.ServerRoomView);
+					break;
+				case MainDefine.BtnName_StartHost:
+					if (WNetMgr.Inst.IsHost == false)
+					{
+						if (WNetMgr.Inst.StartHost())
+						{
+							UIManager.OpenView(VDB.ServerRoomView);
+						}
+					}
+					else
+					{
+						UIManager.OpenView(VDB.ServerRoomView);
+					}
+					break;
+				case MainDefine.BtnName_CmdList:
 					// UIManager.OpenView(VDB.CommandView);
 					UIManager.OpenView(VDB.TerminalView);
 					break;
-				case 2:
+				case MainDefine.BtnName_Setting:
 					UIManager.OpenView(VDB.SettingView);
 					break;
-				case 3:
-					ActionHelper.DoExitGame();
+				case MainDefine.BtnName_ShutDownServer:
+					WNetMgr.Inst.ShutDown();
 					break;
-				default:
+				case MainDefine.BtnName_Quit:
+					WNetMgr.Inst.ShutDown();
+					WLogger.Info("结束游戏");
+					ActionHelper.DoExitGame();
 					break;
 			}	
 		}

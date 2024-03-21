@@ -4,8 +4,8 @@ using UnityEngine;
 
 public interface IFactoryService
 {
-    public void InitSceneObjectRoot(Transform sceneRoot);
-    public void InitGOAPRoot(Transform sceneRoot);
+    public void InitSceneObjectRoot();
+    public void InitGOAPRoot();
     public CrashKonijn.Goap.Behaviours.GoapRunnerBehaviour GOAPRunner { get; }
     public AnimationClip GetAnimationClip(int clipID);
     public AvatarMask GetAvatarMask(int layerType);
@@ -16,10 +16,8 @@ public interface IFactoryService
     public void GenCharacter(GameObject obj);
 
     public void GenWeaponEntity(int weaponID, out WeaponEntity weapon);
-    public void SetWeaponDrop(int entityID, Vector3 pos, Quaternion rot, Vector3 scale);
     public void SetWeaponDrop(WeaponEntity weapon, Vector3 pos, Quaternion rot, Vector3 scale);
     public void SetWeaponEquipTo(WeaponEntity weapon, GameEntity entity);
     public GameEntity SelectRandomGenCharacter();
     public GameEntity GetGameEntity(int instId);
-    public void GenTriggerCapsule(GameEntity entity);
 }

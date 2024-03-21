@@ -85,12 +85,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Action<object,int>
 	// System.Action<object,object>
 	// System.Action<object>
-	// System.ArraySegment.Enumerator<UnityEngine.Vector2>
-	// System.ArraySegment.Enumerator<UnityEngine.Vector3>
-	// System.ArraySegment.Enumerator<int>
-	// System.ArraySegment<UnityEngine.Vector2>
-	// System.ArraySegment<UnityEngine.Vector3>
-	// System.ArraySegment<int>
+	// System.Action<ulong>
 	// System.ByReference<UnityEngine.Vector2>
 	// System.ByReference<UnityEngine.Vector3>
 	// System.ByReference<int>
@@ -129,6 +124,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.Enumerator<object,Symbol>
 	// System.Collections.Generic.Dictionary.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.Enumerator<ulong,object>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,HatePointInfo.HateInfo>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,float>
@@ -137,6 +133,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,Symbol>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<ulong,object>
 	// System.Collections.Generic.Dictionary.KeyCollection<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary.KeyCollection<int,HatePointInfo.HateInfo>
 	// System.Collections.Generic.Dictionary.KeyCollection<int,float>
@@ -145,6 +142,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.KeyCollection<object,Symbol>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,int>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,object>
+	// System.Collections.Generic.Dictionary.KeyCollection<ulong,object>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,HatePointInfo.HateInfo>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,float>
@@ -153,6 +151,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,Symbol>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<ulong,object>
 	// System.Collections.Generic.Dictionary.ValueCollection<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary.ValueCollection<int,HatePointInfo.HateInfo>
 	// System.Collections.Generic.Dictionary.ValueCollection<int,float>
@@ -161,6 +160,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.ValueCollection<object,Symbol>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,int>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,object>
+	// System.Collections.Generic.Dictionary.ValueCollection<ulong,object>
 	// System.Collections.Generic.Dictionary<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary<int,HatePointInfo.HateInfo>
 	// System.Collections.Generic.Dictionary<int,float>
@@ -169,6 +169,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary<object,Symbol>
 	// System.Collections.Generic.Dictionary<object,int>
 	// System.Collections.Generic.Dictionary<object,object>
+	// System.Collections.Generic.Dictionary<ulong,object>
 	// System.Collections.Generic.EqualityComparer<AbilityTriggerInfo>
 	// System.Collections.Generic.EqualityComparer<HatePointInfo.HateInfo>
 	// System.Collections.Generic.EqualityComparer<Symbol>
@@ -176,6 +177,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.EqualityComparer<float>
 	// System.Collections.Generic.EqualityComparer<int>
 	// System.Collections.Generic.EqualityComparer<object>
+	// System.Collections.Generic.EqualityComparer<ulong>
 	// System.Collections.Generic.HashSet.Enumerator<int>
 	// System.Collections.Generic.HashSet.Enumerator<object>
 	// System.Collections.Generic.HashSet<int>
@@ -193,6 +195,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,Symbol>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,object>>
+	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<ulong,object>>
 	// System.Collections.Generic.ICollection<System.ValueTuple<int,int>>
 	// System.Collections.Generic.ICollection<TWY.Physics.CapsuleF>
 	// System.Collections.Generic.ICollection<Unity.Mathematics.float4>
@@ -229,6 +232,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,Symbol>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,object>>
+	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<ulong,object>>
 	// System.Collections.Generic.IEnumerable<System.ValueTuple<int,int>>
 	// System.Collections.Generic.IEnumerable<TWY.Physics.CapsuleF>
 	// System.Collections.Generic.IEnumerable<Unity.Mathematics.float4>
@@ -249,6 +253,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,Symbol>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,object>>
+	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<ulong,object>>
 	// System.Collections.Generic.IEnumerator<System.ValueTuple<int,int>>
 	// System.Collections.Generic.IEnumerator<TWY.Physics.CapsuleF>
 	// System.Collections.Generic.IEnumerator<Unity.Mathematics.float4>
@@ -260,6 +265,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerator<object>
 	// System.Collections.Generic.IEqualityComparer<int>
 	// System.Collections.Generic.IEqualityComparer<object>
+	// System.Collections.Generic.IEqualityComparer<ulong>
 	// System.Collections.Generic.IList<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.IList<HitInfo>
 	// System.Collections.Generic.IList<Symbol>
@@ -281,6 +287,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.KeyValuePair<object,Symbol>
 	// System.Collections.Generic.KeyValuePair<object,int>
 	// System.Collections.Generic.KeyValuePair<object,object>
+	// System.Collections.Generic.KeyValuePair<ulong,object>
 	// System.Collections.Generic.LinkedList.Enumerator<object>
 	// System.Collections.Generic.LinkedList<object>
 	// System.Collections.Generic.LinkedListNode<object>
@@ -331,6 +338,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ObjectEqualityComparer<float>
 	// System.Collections.Generic.ObjectEqualityComparer<int>
 	// System.Collections.Generic.ObjectEqualityComparer<object>
+	// System.Collections.Generic.ObjectEqualityComparer<ulong>
 	// System.Collections.Generic.Queue.Enumerator<HatePointInfo.HateInfo>
 	// System.Collections.Generic.Queue<HatePointInfo.HateInfo>
 	// System.Collections.Generic.Stack.Enumerator<int>
@@ -422,18 +430,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Predicate<byte>
 	// System.Predicate<int>
 	// System.Predicate<object>
-	// System.ReadOnlySpan.Enumerator<UnityEngine.Vector2>
-	// System.ReadOnlySpan.Enumerator<UnityEngine.Vector3>
-	// System.ReadOnlySpan.Enumerator<int>
 	// System.ReadOnlySpan<UnityEngine.Vector2>
 	// System.ReadOnlySpan<UnityEngine.Vector3>
 	// System.ReadOnlySpan<int>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.CreateValueCallback<object,object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.Enumerator<object,object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable<object,object>
-	// System.Span.Enumerator<UnityEngine.Vector2>
-	// System.Span.Enumerator<UnityEngine.Vector3>
-	// System.Span.Enumerator<int>
 	// System.Span<UnityEngine.Vector2>
 	// System.Span<UnityEngine.Vector3>
 	// System.Span<int>

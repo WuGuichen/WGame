@@ -155,7 +155,6 @@ public class MoveCharacterSystem : IExecuteSystem
             {
                 EntityUtils.BvhRed.MarkForUpdate(entity.gameViewService.service);
             }
-
         }
     }
 

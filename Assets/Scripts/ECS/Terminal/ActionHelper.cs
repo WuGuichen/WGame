@@ -60,7 +60,7 @@ public partial class ActionHelper
             entt.isCamera = true;
             currentCameraEntityID = uid;
             CharacterModel.Inst.currentControlledCharacterID = uid;
-            EventCenter.Trigger(EventDefine.OnControlCharacterChanged, WEventContext.Get(uid));
+            EventCenter.Trigger(EventDefine.OnControlCharacterChanged, uid);
             if(entt.hasUIHeadPad)
                 entt.uIHeadPad.service.IsActive = false;
         }

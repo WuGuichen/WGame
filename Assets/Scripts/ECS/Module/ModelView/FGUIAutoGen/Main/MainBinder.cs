@@ -13,6 +13,8 @@ namespace WGame.UI
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_JoystickView.URL, typeof(WGame.UI.Main.FUI_JoystickView));
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_CommandView.URL, typeof(WGame.UI.Main.FUI_CommandView));
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_ProgressBar1.URL, typeof(WGame.UI.Main.FUI_ProgressBar1));
+			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_ServerRoomView.URL, typeof(WGame.UI.Main.FUI_ServerRoomView));
+			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_ServerItem.URL, typeof(WGame.UI.Main.FUI_ServerItem));
 		}
 	}
 }

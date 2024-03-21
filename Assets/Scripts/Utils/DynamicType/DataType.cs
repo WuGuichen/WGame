@@ -5,6 +5,7 @@ namespace WGame.Utils
         Bool,
         Int,
         Long,
+        ULong,
         Float,
         String,
         Vector2,

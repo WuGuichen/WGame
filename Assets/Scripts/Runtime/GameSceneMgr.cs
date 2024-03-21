@@ -5,32 +5,42 @@ using WGame.Runtime;
 public class GameSceneMgr : Singleton<GameSceneMgr>
 {
     private EnvironmentMono environment;
+    public EnvironmentMono Environment => environment;
+    
+    private Transform _transform;
 
-    public void InitEnvironment()
+    private bool isInitted = false;
+
+    public void SetEnvironment()
     {
-        environment = GameObject.FindWithTag("Environment").GetComponent<EnvironmentMono>();
-        TriggerObjectRoot = new GameObject("TriggerObjectRoot").transform;
-        GameObject.DontDestroyOnLoad(TriggerObjectRoot);
+        if (isInitted)
+        {
+            return;
+        }
+
+        var o = GameObject.FindGameObjectWithTag("Environment");
+        environment = o.GetComponent<EnvironmentMono>();
+        _transform = o.transform;
+        isInitted = true;
+            YooassetManager.Inst.LoadGameObject("GameSystems",
+                o => { });
     }
 
     public Transform genItemRoot => environment.Items;
     public Transform genCharacterRoot => environment.Characters;
     public Transform editCharacterRoot => environment.CharacterRoot;
-    public Transform TriggerObjectRoot { get; private set; }
+    public Transform Root => _transform;
+    public Transform TriggerObjectRoot => environment.TriggerObjRoot;
 
     public void LoadNewScene(string sceneName)
     {
-        // var handle = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        // handle.completed += operation =>
-        // {
-        //     EventCenter.Trigger(EventDefine.OnSceneLoaded, WEventContext.Get(sceneName));
-        // };
         EventCenter.AddListener(EventDefine.OnGameAssetsManagerInitted, () =>
         {
-            YooassetManager.Inst.LoadSceneAsync(sceneName, () =>
+            var handle = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            handle.completed += operation =>
             {
-                EventCenter.Trigger(EventDefine.OnEnterGameMainView);
-            });
+                EventCenter.Trigger(EventDefine.OnSceneLoaded, sceneName);
+            };
         });
     }
 

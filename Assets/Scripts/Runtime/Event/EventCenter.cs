@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using WGame.Utils;
 
 namespace WGame.Runtime
 {
     public delegate void WEventCallback0();
-    public delegate void WEventCallback1(WEventContext context);
+    public delegate void WEventCallback1(TAny context);
+    // public delegate void WEventCallback2(TAny);
     public class WEventContext
     {
         private static Stack<WEventContext> pool = new Stack<WEventContext>();
@@ -84,9 +86,15 @@ namespace WGame.Runtime
                 _callback1 = null; 
             }
 
-            public void CallInternal(WEventContext context)
+            // public void CallInternal(WEventContext context)
+            // {
+            //     _callback1?.Invoke(context);
+            //     _callback0?.Invoke();
+            // }
+            
+            public void CallInternal(TAny ctx)
             {
-                _callback1?.Invoke(context);
+                _callback1?.Invoke(ctx);
                 _callback0?.Invoke();
             }
 
@@ -97,7 +105,7 @@ namespace WGame.Runtime
             }
         }
 
-        private static Dictionary<int, EventBridge> eventList = new Dictionary<int, EventBridge>();
+        private static Dictionary<int, EventBridge> eventList = new(67);
 
         public static void AddListener(int type, WEventCallback0 callback)
         {
@@ -141,6 +149,36 @@ namespace WGame.Runtime
             bridge.Remove(callback);
         }
 
+        public static void Trigger(int type, string ctx)
+        {
+            if (eventList.TryGetValue(type, out var bridge))
+            {
+                UnityEngine.Profiling.Profiler.BeginSample("TriggerEvent");
+                var t = new TAnyString(ctx);
+                bridge.CallInternal(t);
+                UnityEngine.Profiling.Profiler.EndSample();
+            }
+        }
+        public static void Trigger(int type, int ctx)
+        {
+            if (eventList.TryGetValue(type, out var bridge))
+            {
+                UnityEngine.Profiling.Profiler.BeginSample("TriggerEvent");
+                var t = new TAnyInt(ctx);
+                bridge.CallInternal(t);
+                UnityEngine.Profiling.Profiler.EndSample();
+            }
+        }
+
+        public static void Trigger(int type, ulong ctx)
+        {
+            if (eventList.TryGetValue(type, out var bridge))
+            {
+                UnityEngine.Profiling.Profiler.BeginSample("TriggerEvent");
+                bridge.CallInternal(new TAnyUnsignLong(ctx));
+                UnityEngine.Profiling.Profiler.EndSample();
+            }
+        }
         public static void Trigger(int type)
         {
             if (eventList.TryGetValue(type, out var bridge))
@@ -151,13 +189,13 @@ namespace WGame.Runtime
             }
         }
 
-        public static void Trigger(int type, WEventContext context)
-        {
-            if (eventList.TryGetValue(type, out var bridge))
-            {
-                bridge.CallInternal(context);
-            }
-            WEventContext.Push(context);
-        }
+        // public static void Trigger(int type, WEventContext context)
+        // {
+        //     if (eventList.TryGetValue(type, out var bridge))
+        //     {
+        //         bridge.CallInternal(context);
+        //     }
+        //     WEventContext.Push(context);
+        // }
     }
 }

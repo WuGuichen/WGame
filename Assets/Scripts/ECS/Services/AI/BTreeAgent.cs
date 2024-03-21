@@ -43,9 +43,9 @@ public class BTreeAgent
         EventCenter.AddListener(EventDefine.OnBTreeHotUpdate, OnHotUpdate);
     }
 
-    private void OnHotUpdate(WEventContext context)
+    private void OnHotUpdate(TAny context)
     {
-        RefreshBTree(context.pString);
+        RefreshBTree(context.AsString());
     }
 
     private void RefreshBTree(string name)

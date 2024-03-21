@@ -1,0 +1,215 @@
+using System.Collections.Generic;
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
+using WGame.Runtime;
+
+public class WNetMgr : Singleton<WNetMgr>
+{
+	private Dictionary<int, GameEntity> _netEntities = new();
+	private IFactoryService _factory;
+	
+    private Dictionary<ulong, PlayerRoomInfo> playerRoomInfoDict = new();
+
+    private List<PlayerRoomInfo> _allPlayerInfo = new();
+
+    private bool isInitCtrls = false;
+
+    public bool TryGetPlayerRoomInfo(ulong id, out PlayerRoomInfo info)
+    {
+	    return playerRoomInfoDict.TryGetValue(id, out info);
+    }
+
+    private void RefreshAllPlayerInfo()
+    {
+	    _allPlayerInfo.Clear();
+	    var itr = playerRoomInfoDict.Values.GetEnumerator();
+	    while (itr.MoveNext())
+	    {
+		    _allPlayerInfo.Add(itr.Current);
+	    }
+    }
+
+    public List<PlayerRoomInfo> AllPlayerInfo => _allPlayerInfo;
+
+    public ulong LocalClientId => NetworkManager.Singleton.LocalClientId;
+    public bool IsHost => NetworkManager.Singleton.IsHost;
+    // public bool IsServer => NetworkManager.Singleton.IsListening && NetworkManager.Singleton.IsServer;
+    public bool IsClient => NetworkManager.Singleton.IsClient;
+    
+    public WNetAgent Agent { get; private set; }
+
+    public void SetAgent(WNetAgent agent)
+    {
+	    Agent = agent;
+    }
+
+	public void InitInstance()
+	{
+		NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+		NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisConnected;
+		NetworkManager.Singleton.OnClientStarted += OnServerStarted;
+
+		_factory = Contexts.sharedInstance.meta.factoryService.instance;
+
+		// YooassetManager.Inst.LoadGameObject("WNetAgent", gameObject => { });
+	}
+
+	private string connectMsg => Transport.ConnectionData.Address + ":" + Transport.ConnectionData.Port;
+
+	public bool StartClient()
+	{
+		if (IsClient)
+		{
+			WLogger.Info("已经加入游戏");
+			return true;
+		}
+		
+		if (NetworkManager.Singleton.StartClient())
+		{
+			WLogger.Info("客户端启动成功！" + connectMsg);
+			return true;
+		}
+		else
+		{
+			WLogger.Error("客户端启动失败！" + connectMsg);
+			return false;
+		}
+	}
+
+	public bool StartHost()
+	{
+		if (NetworkManager.Singleton.StartHost())
+		{
+			WLogger.Info("服务器和客户端启动成功！" + connectMsg);
+			return true;
+		}
+		else
+		{
+			WLogger.Error("服务器和客户端启动失败！" + connectMsg);
+			return false;
+		}
+	}
+
+	public void StartServer()
+	{
+		if (NetworkManager.Singleton.StartServer())
+		{
+			WLogger.Info("服务器启动成功！" + connectMsg);
+		}
+		else
+		{
+			WLogger.Error("服务器启动失败！" + connectMsg);
+		}
+	}
+
+	public void ShutDown()
+	{
+		NetworkManager.Singleton?.Shutdown();
+	}
+
+	private void OnClientConnected(ulong id)
+	{
+		WLogger.Info("Client connected id: " + id + ", " + Transport.ConnectionData.Address);
+
+		// var charId = 1;
+		// var pos = EntityUtils.GetCameraPos() + EntityUtils.GetCameraFwdDir()*2;
+		// pos.y = 0.5f;
+		// _factory.GenCharacter(charId, pos, Quaternion.identity, out var entity,
+		// 	gameEntity =>
+		// 	{
+		// 		var obj = gameEntity.gameViewService.service.Model.parent.gameObject;
+		// 		var netObj = obj.AddComponent<WNetObject>();
+		// 		gameEntity.AddNetObject(netObj);
+		// 		var trans = obj.AddComponent<NetworkTransform>();
+		// 		_netEntities.Add(gameEntity.instanceID.ID, gameEntity);
+		// 	});
+		EventCenter.Trigger(EventDefine.OnClientChanged);
+	}
+	
+	private UnityTransport Transport => NetworkManager.Singleton.NetworkConfig.NetworkTransport as UnityTransport;
+
+	public void SetConnectData(string ipv4, ushort port, string listenAddress = null)
+	{
+		Transport.SetConnectionData(ipv4, port, listenAddress);	
+	}
+
+	public void AddPlayer(List<PlayerRoomInfo> infos)
+	{
+		for (var i = 0; i < infos.Count; i++)
+		{
+			var info = infos[i];
+			playerRoomInfoDict[info.id] = info;
+		}
+		RefreshAllPlayerInfo();
+		EventCenter.Trigger(EventDefine.OnClientChanged);
+	}
+	
+	public void AddPlayer(PlayerRoomInfo info)
+	{
+		playerRoomInfoDict[info.id] = info;
+		RefreshAllPlayerInfo();
+		EventCenter.Trigger(EventDefine.OnClientChanged);
+	}
+
+	private void RemovePlayer(ulong id)
+	{
+		playerRoomInfoDict.Remove(id);
+		RefreshAllPlayerInfo();
+		EventCenter.Trigger(EventDefine.OnClientChanged);
+	}
+	
+	private void OnClientDisConnected(ulong id)
+	{
+		WLogger.Info("Client disconnected id: " + id);
+	}
+
+	private void OnServerStarted()
+	{
+		WLogger.Info("server started!");
+		if (isInitCtrls)
+		{
+			return;
+		}
+		isInitCtrls = true;
+		// if(NetworkManager.Singleton.IsServer)
+		// {YooassetManager.Inst.LoadGameObject("ServerCtrs", o =>
+	 //    {
+		//     o.GetComponent<NetworkObject>().Spawn();
+	 //    });}
+	}
+
+	public int GetClientNum()
+	{
+		return playerRoomInfoDict.Count;
+	}
+
+	public bool IsReady
+	{
+		get
+		{
+			if (playerRoomInfoDict.TryGetValue(LocalClientId, out var info))
+			{
+				return info.isReady;
+			}
+
+			return false;
+		}
+	}
+
+	public void RefreshPlayRoomInfo(ulong id, bool isReady)
+	{
+		if(playerRoomInfoDict.TryGetValue(id, out var info))
+		{
+			info.isReady = isReady;
+			playerRoomInfoDict[id] = info;
+			RefreshAllPlayerInfo();
+			EventCenter.Trigger(EventDefine.OnPlayerRoomInfoRefresh, id);
+			WLogger.Print("触发事件");
+		}
+	}
+
+	public void OnDispose()
+	{
+		ShutDown();
+	}
+}

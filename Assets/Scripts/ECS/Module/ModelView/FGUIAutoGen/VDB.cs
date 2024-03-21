@@ -8,6 +8,7 @@ namespace WGame.UI
 		public const string GameMainView = "GameMainView";
 		public const string JoystickView = "JoystickView";
 		public const string CommandView = "CommandView";
+		public const string ServerRoomView = "ServerRoomView";
 		public const string SettingView = "SettingView";
 		public const string SettingInputView = "SettingInputView";
 		public const string SettingGraphicView = "SettingGraphicView";
@@ -19,6 +20,7 @@ namespace WGame.UI
 			{GameMainView, typeof(GameMainView)},
 			{JoystickView, typeof(JoystickView)},
 			{CommandView, typeof(CommandView)},
+			{ServerRoomView, typeof(ServerRoomView)},
 			{SettingView, typeof(SettingView)},
 			{SettingInputView, typeof(SettingInputView)},
 			{SettingGraphicView, typeof(SettingGraphicView)},

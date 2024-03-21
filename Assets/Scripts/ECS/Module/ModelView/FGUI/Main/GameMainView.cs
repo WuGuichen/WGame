@@ -16,6 +16,7 @@ namespace WGame.UI
 
 		protected override void CustomInit()
 		{
+			ui.txtVersion.text = "3.20";
 			callback0 = OnItemClick;
 			model = MainModel.Inst;
 			ui.interactTag.visible = false;
@@ -114,7 +115,7 @@ namespace WGame.UI
 		void OnItemClick(EventContext ctx)
 		{
 			var c = ctx.data as FUI_MainListItem;
-			MainModel.Inst.OnGameMainViewItemClick(c.index);
+			MainModel.Inst.OnGameMainViewItemClick(MainDefine.Inst.mainBtnListNames[c.index]);
 		}
 		
 		void OnTopItemClick(EventContext ctx)

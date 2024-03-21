@@ -11,8 +11,10 @@ public class UpdateCharacterDataSystem : IExecuteSystem
     {
         foreach (var entity in _positionGroup)
         {
-            if(entity.hasGameViewService)
+            if (entity.hasGameViewService)
+            {
                 entity.ReplacePosition(entity.gameViewService.service.Model.position);
+            }
         }
     }
 }
