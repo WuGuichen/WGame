@@ -5,6 +5,7 @@ using WGame.Runtime;
 
 public class WNetMgr : Singleton<WNetMgr>
 {
+	public const int NetPort = 7777;
 	private Dictionary<int, GameEntity> _netEntities = new();
 	private IFactoryService _factory;
 	
@@ -33,8 +34,10 @@ public class WNetMgr : Singleton<WNetMgr>
 
     public ulong LocalClientId => NetworkManager.Singleton.LocalClientId;
     public bool IsHost => NetworkManager.Singleton.IsHost;
-    // public bool IsServer => NetworkManager.Singleton.IsListening && NetworkManager.Singleton.IsServer;
+    public bool IsServer => NetworkManager.Singleton.IsListening && NetworkManager.Singleton.IsServer;
     public bool IsClient => NetworkManager.Singleton.IsClient;
+    public bool IsConnected => NetworkManager.Singleton.IsConnectedClient;
+    public bool IsConnecting => NetworkManager.Singleton.IsClient && !IsConnected;
     
     public WNetAgent Agent { get; private set; }
 
@@ -67,6 +70,7 @@ public class WNetMgr : Singleton<WNetMgr>
 		if (NetworkManager.Singleton.StartClient())
 		{
 			WLogger.Info("客户端启动成功！" + connectMsg);
+			EventCenter.Trigger(EventDefine.OnClientChanged);
 			return true;
 		}
 		else
@@ -104,7 +108,15 @@ public class WNetMgr : Singleton<WNetMgr>
 
 	public void ShutDown()
 	{
+        RemoveAllPlayer();
 		NetworkManager.Singleton?.Shutdown();
+	}
+
+	public void RemoveAllPlayer()
+	{
+		playerRoomInfoDict.Clear();
+		RefreshAllPlayerInfo();
+		EventCenter.Trigger(EventDefine.OnClientChanged);
 	}
 
 	private void OnClientConnected(ulong id)
@@ -123,6 +135,10 @@ public class WNetMgr : Singleton<WNetMgr>
 		// 		var trans = obj.AddComponent<NetworkTransform>();
 		// 		_netEntities.Add(gameEntity.instanceID.ID, gameEntity);
 		// 	});
+		if (id == LocalClientId)
+		{
+			EventCenter.Trigger(EventDefine.OnSelfClientConnected);
+		}
 		EventCenter.Trigger(EventDefine.OnClientChanged);
 	}
 	
@@ -151,16 +167,23 @@ public class WNetMgr : Singleton<WNetMgr>
 		EventCenter.Trigger(EventDefine.OnClientChanged);
 	}
 
-	private void RemovePlayer(ulong id)
+	public void RemovePlayer(ulong id)
 	{
-		playerRoomInfoDict.Remove(id);
-		RefreshAllPlayerInfo();
-		EventCenter.Trigger(EventDefine.OnClientChanged);
+		if (playerRoomInfoDict.ContainsKey(id))
+		{
+			playerRoomInfoDict.Remove(id);
+			RefreshAllPlayerInfo();
+			EventCenter.Trigger(EventDefine.OnClientChanged);
+		}
 	}
 	
 	private void OnClientDisConnected(ulong id)
 	{
 		WLogger.Info("Client disconnected id: " + id);
+		if (id == LocalClientId)
+		{
+			EventCenter.Trigger(EventDefine.OnSelfClientDisconnected);
+		}
 	}
 
 	private void OnServerStarted()
@@ -196,6 +219,16 @@ public class WNetMgr : Singleton<WNetMgr>
 		}
 	}
 
+	public void RefreshPlayRoomInfo(ulong id, int charId)
+	{
+		if(playerRoomInfoDict.TryGetValue(id, out var info))
+		{
+			info.charId = charId;
+			playerRoomInfoDict[id] = info;
+			RefreshAllPlayerInfo();
+			EventCenter.Trigger(EventDefine.OnPlayerRoomInfoRefresh, id);
+		}
+	}
 	public void RefreshPlayRoomInfo(ulong id, bool isReady)
 	{
 		if(playerRoomInfoDict.TryGetValue(id, out var info))
@@ -204,7 +237,6 @@ public class WNetMgr : Singleton<WNetMgr>
 			playerRoomInfoDict[id] = info;
 			RefreshAllPlayerInfo();
 			EventCenter.Trigger(EventDefine.OnPlayerRoomInfoRefresh, id);
-			WLogger.Print("触发事件");
 		}
 	}
 

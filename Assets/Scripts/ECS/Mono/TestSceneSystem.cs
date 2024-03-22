@@ -1,11 +1,9 @@
-using Unity.Netcode;
 using UnityEngine;
 using WGame.Ability;
 using Random = UnityEngine.Random;
 using WGame.UI;
 using WGame.Runtime;
 using WGame.Trigger;
-using WGame.Utils;
 
 public class TestSceneSystem : MonoBehaviour
 {
@@ -182,8 +180,8 @@ public class TestSceneSystem : MonoBehaviour
 	    EventCenter.AddListener(EventDefine.SetCursorState, (_contexts) =>
 	    {
 		    var value = _contexts.AsInt() > 0;
-		    Cursor.visible = value;
 		    Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
+		    Cursor.visible = Cursor.lockState != CursorLockMode.Locked;
 	    });
     }
     

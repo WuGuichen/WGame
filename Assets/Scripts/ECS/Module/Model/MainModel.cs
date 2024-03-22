@@ -303,7 +303,7 @@ namespace WGame.UI
 		{
 			switch (index)
 			{
-				case MainDefine.BtnName_StartClient:
+				case MainDefine.BtnName_StartOffline:
 					if (isGameStart)
 						break;
 					EventCenter.Trigger(EventDefine.OnGameStart);

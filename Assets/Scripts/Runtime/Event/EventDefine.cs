@@ -34,4 +34,6 @@ public class EventDefine
 
     public const int OnClientChanged = 63;
     public const int OnPlayerRoomInfoRefresh = 64;
+    public const int OnSelfClientDisconnected = 65;
+    public const int OnSelfClientConnected = 66;
 }

@@ -9,6 +9,8 @@ namespace WGame.UI.Main
 	{
 		public GTextField txtName;
 		public GTextField txtState;
+		public GTextField txtCharName;
+		public GGraph imgServer;
 		public const string URL = "ui://x1rerq2kpmrzc";
 
 		public static FUI_ServerItem CreateInstance()
@@ -22,6 +24,8 @@ namespace WGame.UI.Main
 
 			txtName = (GTextField)GetChildAt(1);
 			txtState = (GTextField)GetChildAt(2);
+			txtCharName = (GTextField)GetChildAt(3);
+			imgServer = (GGraph)GetChildAt(4);
 		}
 	}
 }

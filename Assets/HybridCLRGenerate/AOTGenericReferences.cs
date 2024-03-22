@@ -17,6 +17,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		"System.Core.dll",
 		"System.dll",
 		"Unity.InputSystem.dll",
+		"Unity.Netcode.Runtime.dll",
 		"Unity.RenderPipelines.Core.Runtime.dll",
 		"UnityEngine.CoreModule.dll",
 		"WGame.Runtime.dll",
@@ -71,6 +72,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// SparseSet<object>
 	// System.Action<BoundsOctreeNode.OctreeObject<object>>
 	// System.Action<HitInfo>
+	// System.Action<PlayerRoomInfo>
 	// System.Action<Symbol>
 	// System.Action<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Action<System.ValueTuple<int,int>>
@@ -91,6 +93,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.ByReference<int>
 	// System.Collections.Generic.ArraySortHelper<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.ArraySortHelper<HitInfo>
+	// System.Collections.Generic.ArraySortHelper<PlayerRoomInfo>
 	// System.Collections.Generic.ArraySortHelper<Symbol>
 	// System.Collections.Generic.ArraySortHelper<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.ArraySortHelper<System.ValueTuple<int,int>>
@@ -104,6 +107,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ArraySortHelper<object>
 	// System.Collections.Generic.Comparer<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.Comparer<HitInfo>
+	// System.Collections.Generic.Comparer<PlayerRoomInfo>
 	// System.Collections.Generic.Comparer<Symbol>
 	// System.Collections.Generic.Comparer<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.Comparer<System.ValueTuple<int,int>>
@@ -124,6 +128,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.Enumerator<object,Symbol>
 	// System.Collections.Generic.Dictionary.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.Enumerator<ulong,PlayerRoomInfo>
 	// System.Collections.Generic.Dictionary.Enumerator<ulong,object>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<int,HatePointInfo.HateInfo>
@@ -133,6 +138,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,Symbol>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<ulong,PlayerRoomInfo>
 	// System.Collections.Generic.Dictionary.KeyCollection.Enumerator<ulong,object>
 	// System.Collections.Generic.Dictionary.KeyCollection<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary.KeyCollection<int,HatePointInfo.HateInfo>
@@ -142,6 +148,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.KeyCollection<object,Symbol>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,int>
 	// System.Collections.Generic.Dictionary.KeyCollection<object,object>
+	// System.Collections.Generic.Dictionary.KeyCollection<ulong,PlayerRoomInfo>
 	// System.Collections.Generic.Dictionary.KeyCollection<ulong,object>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,HatePointInfo.HateInfo>
@@ -151,6 +158,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,Symbol>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,int>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<object,object>
+	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<ulong,PlayerRoomInfo>
 	// System.Collections.Generic.Dictionary.ValueCollection.Enumerator<ulong,object>
 	// System.Collections.Generic.Dictionary.ValueCollection<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary.ValueCollection<int,HatePointInfo.HateInfo>
@@ -160,6 +168,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary.ValueCollection<object,Symbol>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,int>
 	// System.Collections.Generic.Dictionary.ValueCollection<object,object>
+	// System.Collections.Generic.Dictionary.ValueCollection<ulong,PlayerRoomInfo>
 	// System.Collections.Generic.Dictionary.ValueCollection<ulong,object>
 	// System.Collections.Generic.Dictionary<int,AbilityTriggerInfo>
 	// System.Collections.Generic.Dictionary<int,HatePointInfo.HateInfo>
@@ -169,9 +178,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Dictionary<object,Symbol>
 	// System.Collections.Generic.Dictionary<object,int>
 	// System.Collections.Generic.Dictionary<object,object>
+	// System.Collections.Generic.Dictionary<ulong,PlayerRoomInfo>
 	// System.Collections.Generic.Dictionary<ulong,object>
 	// System.Collections.Generic.EqualityComparer<AbilityTriggerInfo>
 	// System.Collections.Generic.EqualityComparer<HatePointInfo.HateInfo>
+	// System.Collections.Generic.EqualityComparer<PlayerRoomInfo>
 	// System.Collections.Generic.EqualityComparer<Symbol>
 	// System.Collections.Generic.EqualityComparer<byte>
 	// System.Collections.Generic.EqualityComparer<float>
@@ -186,6 +197,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.HashSetEqualityComparer<object>
 	// System.Collections.Generic.ICollection<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.ICollection<HitInfo>
+	// System.Collections.Generic.ICollection<PlayerRoomInfo>
 	// System.Collections.Generic.ICollection<Symbol>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<int,AbilityTriggerInfo>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<int,HatePointInfo.HateInfo>>
@@ -195,6 +207,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,Symbol>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<object,object>>
+	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<ulong,PlayerRoomInfo>>
 	// System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<ulong,object>>
 	// System.Collections.Generic.ICollection<System.ValueTuple<int,int>>
 	// System.Collections.Generic.ICollection<TWY.Physics.CapsuleF>
@@ -207,6 +220,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ICollection<object>
 	// System.Collections.Generic.IComparer<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.IComparer<HitInfo>
+	// System.Collections.Generic.IComparer<PlayerRoomInfo>
 	// System.Collections.Generic.IComparer<Symbol>
 	// System.Collections.Generic.IComparer<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.IComparer<System.ValueTuple<int,int>>
@@ -223,6 +237,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IDictionary<object,object>
 	// System.Collections.Generic.IEnumerable<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.IEnumerable<HitInfo>
+	// System.Collections.Generic.IEnumerable<PlayerRoomInfo>
 	// System.Collections.Generic.IEnumerable<Symbol>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int,AbilityTriggerInfo>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<int,HatePointInfo.HateInfo>>
@@ -232,6 +247,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,Symbol>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,object>>
+	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<ulong,PlayerRoomInfo>>
 	// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<ulong,object>>
 	// System.Collections.Generic.IEnumerable<System.ValueTuple<int,int>>
 	// System.Collections.Generic.IEnumerable<TWY.Physics.CapsuleF>
@@ -244,6 +260,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerable<object>
 	// System.Collections.Generic.IEnumerator<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.IEnumerator<HitInfo>
+	// System.Collections.Generic.IEnumerator<PlayerRoomInfo>
 	// System.Collections.Generic.IEnumerator<Symbol>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<int,AbilityTriggerInfo>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<int,HatePointInfo.HateInfo>>
@@ -253,6 +270,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,Symbol>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,int>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<object,object>>
+	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<ulong,PlayerRoomInfo>>
 	// System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<ulong,object>>
 	// System.Collections.Generic.IEnumerator<System.ValueTuple<int,int>>
 	// System.Collections.Generic.IEnumerator<TWY.Physics.CapsuleF>
@@ -268,6 +286,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.IEqualityComparer<ulong>
 	// System.Collections.Generic.IList<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.IList<HitInfo>
+	// System.Collections.Generic.IList<PlayerRoomInfo>
 	// System.Collections.Generic.IList<Symbol>
 	// System.Collections.Generic.IList<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.IList<System.ValueTuple<int,int>>
@@ -287,12 +306,14 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.KeyValuePair<object,Symbol>
 	// System.Collections.Generic.KeyValuePair<object,int>
 	// System.Collections.Generic.KeyValuePair<object,object>
+	// System.Collections.Generic.KeyValuePair<ulong,PlayerRoomInfo>
 	// System.Collections.Generic.KeyValuePair<ulong,object>
 	// System.Collections.Generic.LinkedList.Enumerator<object>
 	// System.Collections.Generic.LinkedList<object>
 	// System.Collections.Generic.LinkedListNode<object>
 	// System.Collections.Generic.List.Enumerator<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.List.Enumerator<HitInfo>
+	// System.Collections.Generic.List.Enumerator<PlayerRoomInfo>
 	// System.Collections.Generic.List.Enumerator<Symbol>
 	// System.Collections.Generic.List.Enumerator<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.List.Enumerator<System.ValueTuple<int,int>>
@@ -306,6 +327,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.List.Enumerator<object>
 	// System.Collections.Generic.List<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.List<HitInfo>
+	// System.Collections.Generic.List<PlayerRoomInfo>
 	// System.Collections.Generic.List<Symbol>
 	// System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.List<System.ValueTuple<int,int>>
@@ -319,6 +341,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.List<object>
 	// System.Collections.Generic.ObjectComparer<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.Generic.ObjectComparer<HitInfo>
+	// System.Collections.Generic.ObjectComparer<PlayerRoomInfo>
 	// System.Collections.Generic.ObjectComparer<Symbol>
 	// System.Collections.Generic.ObjectComparer<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.Generic.ObjectComparer<System.ValueTuple<int,int>>
@@ -333,6 +356,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.ObjectComparer<object>
 	// System.Collections.Generic.ObjectEqualityComparer<AbilityTriggerInfo>
 	// System.Collections.Generic.ObjectEqualityComparer<HatePointInfo.HateInfo>
+	// System.Collections.Generic.ObjectEqualityComparer<PlayerRoomInfo>
 	// System.Collections.Generic.ObjectEqualityComparer<Symbol>
 	// System.Collections.Generic.ObjectEqualityComparer<byte>
 	// System.Collections.Generic.ObjectEqualityComparer<float>
@@ -347,6 +371,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.Generic.Stack<object>
 	// System.Collections.ObjectModel.ReadOnlyCollection<BoundsOctreeNode.OctreeObject<object>>
 	// System.Collections.ObjectModel.ReadOnlyCollection<HitInfo>
+	// System.Collections.ObjectModel.ReadOnlyCollection<PlayerRoomInfo>
 	// System.Collections.ObjectModel.ReadOnlyCollection<Symbol>
 	// System.Collections.ObjectModel.ReadOnlyCollection<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Collections.ObjectModel.ReadOnlyCollection<System.ValueTuple<int,int>>
@@ -360,6 +385,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Collections.ObjectModel.ReadOnlyCollection<object>
 	// System.Comparison<BoundsOctreeNode.OctreeObject<object>>
 	// System.Comparison<HitInfo>
+	// System.Comparison<PlayerRoomInfo>
 	// System.Comparison<Symbol>
 	// System.Comparison<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Comparison<System.ValueTuple<int,int>>
@@ -417,6 +443,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Nullable<short>
 	// System.Predicate<BoundsOctreeNode.OctreeObject<object>>
 	// System.Predicate<HitInfo>
+	// System.Predicate<PlayerRoomInfo>
 	// System.Predicate<Symbol>
 	// System.Predicate<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Predicate<System.ValueTuple<int,int>>
@@ -455,6 +482,9 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Unity.Collections.NativeArray<UnityEngine.Vector2>
 	// Unity.Collections.NativeArray<UnityEngine.Vector3>
 	// Unity.Collections.NativeArray<int>
+	// Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerReader>
+	// Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerWriter>
+	// Unity.Netcode.BufferSerializer<object>
 	// UnityEngine.InputSystem.InputBindingComposite<UnityEngine.Vector2>
 	// UnityEngine.InputSystem.InputControl<UnityEngine.Vector2>
 	// UnityEngine.InputSystem.InputProcessor<UnityEngine.Vector2>
@@ -524,6 +554,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object Sirenix.Serialization.SerializationUtility.DeserializeValue<object>(byte[],Sirenix.Serialization.DataFormat,Sirenix.Serialization.DeserializationContext)
 		// Sirenix.Serialization.Serializer<object> Sirenix.Serialization.Serializer.Get<object>()
 		// bool Sirenix.Utilities.LinqExtensions.IsNullOrEmpty<object>(System.Collections.Generic.IList<object>)
+		// PlayerRoomInfo System.Activator.CreateInstance<PlayerRoomInfo>()
 		// object System.Activator.CreateInstance<object>()
 		// byte[] System.Array.Empty<byte>()
 		// bool System.Linq.Enumerable.Any<object>(System.Collections.Generic.IEnumerable<object>)
@@ -556,6 +587,18 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// int Unity.Collections.LowLevel.Unsafe.UnsafeUtility.SizeOf<UnityEngine.Vector2>()
 		// int Unity.Collections.LowLevel.Unsafe.UnsafeUtility.SizeOf<UnityEngine.Vector3>()
 		// int Unity.Collections.LowLevel.Unsafe.UnsafeUtility.SizeOf<int>()
+		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<byte>(byte&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<ulong>(ulong&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializable<PlayerRoomInfo>(PlayerRoomInfo&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<PlayerRoomInfo>(PlayerRoomInfo&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<PlayerRoomInfo>(PlayerRoomInfo&)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<PlayerRoomInfo>(PlayerRoomInfo&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
+		// System.Void Unity.Netcode.INetworkSerializable.NetworkSerialize<Unity.Netcode.BufferSerializerReader>(Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerReader>)
+		// System.Void Unity.Netcode.INetworkSerializable.NetworkSerialize<Unity.Netcode.BufferSerializerWriter>(Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerWriter>)
+		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<byte>(byte&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<ulong>(ulong&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// object UnityEngine.Component.GetComponent<object>()
 		// object UnityEngine.Component.GetComponentInChildren<object>()
 		// object UnityEngine.Component.GetComponentInChildren<object>(bool)

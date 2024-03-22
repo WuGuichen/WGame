@@ -55,13 +55,13 @@ namespace WGame.Runtime
             foreach (var dllName in hotDllList)
             {
                 var hotDll = LoadBytesSync(dllName);
-                Assembly.Load(hotDll);
+                System.Reflection.Assembly.Load(hotDll);
             }
 
             foreach (var dllName in AOTGenericReferences.PatchedAOTAssemblyList)
             {
                 var hotDll = LoadBytesSync(dllName);
-                var err = HybridCLR.RuntimeApi.LoadMetadataForAOTAssembly(hotDll, HomologousImageMode.SuperSet);
+                var err = HybridCLR.RuntimeApi.LoadMetadataForAOTAssembly(hotDll, HybridCLR.HomologousImageMode.SuperSet);
                 WLogger.Info($"LoadMetadataForAOTAssembly:{dllName}. ret:{err}");
             }
 #endif

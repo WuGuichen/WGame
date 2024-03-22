@@ -206,11 +206,14 @@
     <type fullname="FairyGUI.GSlider" preserve="all" />
     <type fullname="FairyGUI.GTextField" preserve="all" />
     <type fullname="FairyGUI.GTextInput" preserve="all" />
+    <type fullname="FairyGUI.GoWrapper" preserve="all" />
     <type fullname="FairyGUI.HitTestContext" preserve="all" />
     <type fullname="FairyGUI.InputEvent" preserve="all" />
+    <type fullname="FairyGUI.InputTextField" preserve="all" />
     <type fullname="FairyGUI.ListItemProvider" preserve="all" />
     <type fullname="FairyGUI.ListItemRenderer" preserve="all" />
     <type fullname="FairyGUI.PlayCompleteCallback" preserve="all" />
+    <type fullname="FairyGUI.RichTextField" preserve="all" />
     <type fullname="FairyGUI.ShaderConfig" preserve="all" />
     <type fullname="FairyGUI.Transition" preserve="all" />
     <type fullname="FairyGUI.UIConfig" preserve="all" />
@@ -314,9 +317,28 @@
     <type fullname="Unity.Mathematics.math" preserve="all" />
   </assembly>
   <assembly fullname="Unity.Netcode.Runtime">
+    <type fullname="Unity.Netcode.BufferSerializer`1" preserve="all" />
+    <type fullname="Unity.Netcode.ClientRpcAttribute" preserve="all" />
+    <type fullname="Unity.Netcode.ClientRpcParams" preserve="all" />
+    <type fullname="Unity.Netcode.FastBufferReader" preserve="all" />
+    <type fullname="Unity.Netcode.FastBufferWriter" preserve="all" />
+    <type fullname="Unity.Netcode.FastBufferWriter/ForNetworkSerializable" preserve="all" />
+    <type fullname="Unity.Netcode.FastBufferWriter/ForPrimitives" preserve="all" />
+    <type fullname="Unity.Netcode.INetworkSerializable" preserve="all" />
+    <type fullname="Unity.Netcode.IReaderWriter" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkBehaviour/RpcReceiveHandler" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkBehaviour/__RpcExecStage" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkConfig" preserve="all" />
     <type fullname="Unity.Netcode.NetworkManager" preserve="all" />
     <type fullname="Unity.Netcode.NetworkObject" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkTransport" preserve="all" />
+    <type fullname="Unity.Netcode.RpcDelivery" preserve="all" />
+    <type fullname="Unity.Netcode.ServerRpcAttribute" preserve="all" />
+    <type fullname="Unity.Netcode.ServerRpcParams" preserve="all" />
+    <type fullname="Unity.Netcode.Transports.UTP.UnityTransport" preserve="all" />
+    <type fullname="Unity.Netcode.Transports.UTP.UnityTransport/ConnectionAddressData" preserve="all" />
+    <type fullname="Unity.Netcode.__RpcParams" preserve="all" />
   </assembly>
   <assembly fullname="Unity.RenderPipelines.Core.Runtime">
     <type fullname="UnityEngine.Rendering.ClampedFloatParameter" preserve="all" />
@@ -444,13 +466,14 @@
     <type fullname="WGame.Runtime.Singleton`1" preserve="all" />
     <type fullname="WGame.Runtime.WEventCallback0" preserve="all" />
     <type fullname="WGame.Runtime.WEventCallback1" preserve="all" />
-    <type fullname="WGame.Runtime.WEventContext" preserve="all" />
     <type fullname="WGame.Runtime.YooassetManager" preserve="all" />
     <type fullname="WLogger" preserve="all" />
     <type fullname="WTerminal" preserve="all" />
   </assembly>
   <assembly fullname="WGame.Utils">
     <type fullname="SparseSet`1" preserve="all" />
+    <type fullname="TAny" preserve="all" />
+    <type fullname="TAnyExtension" preserve="all" />
     <type fullname="WGame.Utils.JsonHelper" preserve="all" />
     <type fullname="WLableAttribute" preserve="all" />
     <type fullname="WUtils" preserve="all" />
@@ -476,6 +499,8 @@
     <type fullname="System.Collections.Generic.Dictionary`2/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/KeyCollection" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/KeyCollection/Enumerator" preserve="all" />
+    <type fullname="System.Collections.Generic.Dictionary`2/ValueCollection" preserve="all" />
+    <type fullname="System.Collections.Generic.Dictionary`2/ValueCollection/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.ICollection`1" preserve="all" />
     <type fullname="System.Collections.Generic.IDictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerable`1" preserve="all" />

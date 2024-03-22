@@ -1,4 +1,3 @@
-using System;
 using Unity.Netcode;
 using WGame.Runtime;
 
@@ -9,7 +8,7 @@ public class ServerRoomCtrl : NetworkBehaviour
         if (IsServer)
         {
             NetworkManager.OnClientConnectedCallback += OnClientConnectedCallback;
-
+            NetworkManager.OnClientDisconnectCallback += OnOnClientDisconnectCallback;
         }
 
         RegisterEvent();
@@ -19,11 +18,38 @@ public class ServerRoomCtrl : NetworkBehaviour
         UpdateAllPlayerInfo();
     }
 
+    public override void OnDestroy()
+    {
+        if (IsServer)
+        {
+            NetworkManager.OnClientConnectedCallback -= OnClientConnectedCallback;
+            NetworkManager.OnClientDisconnectCallback -= OnOnClientDisconnectCallback;
+        }
+
+        UnRegisterEvent();
+        base.OnDestroy();
+    }
+
+    private void UnRegisterEvent()
+    {
+        if (IsOwner)
+        {
+            EventCenter.RemoveListener(EventDefine.OnPlayerRoomInfoRefresh, OnPlayerRoomInfoRefresh);
+            EventCenter.RemoveListener(EventDefine.OnSelfClientDisconnected, OnSelfDisconnected);
+        }
+    }
+
+    private void OnSelfDisconnected()
+    {
+        WNetMgr.Inst.RemoveAllPlayer();
+    }
+
     private void RegisterEvent()
     {
         if (IsOwner)
         {
             EventCenter.AddListener(EventDefine.OnPlayerRoomInfoRefresh, OnPlayerRoomInfoRefresh);
+            EventCenter.AddListener(EventDefine.OnSelfClientDisconnected, OnSelfDisconnected);
         }
     }
 
@@ -31,13 +57,19 @@ public class ServerRoomCtrl : NetworkBehaviour
     {
         if (WNetMgr.Inst.TryGetPlayerRoomInfo(context.AsULong(), out var info))
         {
-            RefreshPlayerRoomInfo(info.id, info.isReady);
+            RefreshPlayerRoomInfo(info.id);
         }
     }
 
     private void OnClientConnectedCallback(ulong obj)
     {
         WNetMgr.Inst.AddPlayer(new PlayerRoomInfo(obj, false));
+        UpdateAllPlayerInfo();
+    }
+
+    private void OnOnClientDisconnectCallback(ulong obj)
+    {
+        WNetMgr.Inst.RemovePlayer(obj);
         UpdateAllPlayerInfo();
     }
     
@@ -61,7 +93,7 @@ public class ServerRoomCtrl : NetworkBehaviour
         }
     }
     
-    public void RefreshPlayerRoomInfo(ulong id, bool isReady)
+    public void RefreshPlayerRoomInfo(ulong id)
     {
         if (IsServer)
         {

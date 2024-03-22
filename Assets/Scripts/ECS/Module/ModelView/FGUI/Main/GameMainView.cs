@@ -2,6 +2,7 @@ using System;
 using WGame.UI.Main;using FairyGUI;
 using UnityEngine;
 using WGame.Attribute;
+using WGame.Runtime;
 
 namespace WGame.UI
 {
@@ -13,10 +14,10 @@ namespace WGame.UI
 
 		private EventCallback1 callback0;
 		private MainModel model;
-
+		
 		protected override void CustomInit()
 		{
-			ui.txtVersion.text = "3.20";
+			ui.txtVersion.text = "点击Alt切换鼠标";
 			callback0 = OnItemClick;
 			model = MainModel.Inst;
 			ui.interactTag.visible = false;

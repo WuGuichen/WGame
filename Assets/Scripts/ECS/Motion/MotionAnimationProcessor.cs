@@ -32,8 +32,13 @@ public class MotionAnimationProcessor : AnimancerComponent
     private AnimancerLayer[] _animancerLayers;
 
     // ReSharper disable Unity.PerformanceAnalysis
+    private bool isInitted = false;
     public void OnInit()
     {
+        if (isInitted)
+        {
+            return;
+        }
         _factoryService = Contexts.sharedInstance.meta.factoryService.instance;
         InitAnimLayer(AnimLayerType.Base);
         InitAnimLayer(AnimLayerType.UpperBody);
@@ -45,6 +50,8 @@ public class MotionAnimationProcessor : AnimancerComponent
         this._transform = transform;
         parentTrans = _transform.parent;
         // UpdateMode = AnimatorUpdateMode.AnimatePhysics;
+
+        isInitted = true;
     }
 
     private void InitAnimLayer(int layerType)
@@ -63,6 +70,26 @@ public class MotionAnimationProcessor : AnimancerComponent
     {
     }
 
+    public void RefreshAnimClip(int type, AnimationClip clip)
+    {
+        if (localMotionStates[type] == null)
+        {
+            var state = new ClipState(clip);
+            localMotionStates[type] = state;
+            var threshold = GetThreshold(type);
+            bool needReset = _focusMove.ChildCount == 0;
+            _focusMove.Add(state, threshold);
+            if (needReset)
+            {
+                ResetState(true);
+            }
+        }
+        else
+        {
+            localMotionStates[type].Clip = clip;
+        }
+    }
+
     public void RefreshAnimClip(int type, string clipName)
     {
         if (string.IsNullOrEmpty(clipName))
@@ -71,22 +98,7 @@ public class MotionAnimationProcessor : AnimancerComponent
         }
         _factoryService.LoadAnimationClip(clipName, clip =>
         {
-            if (localMotionStates[type] == null)
-            {
-                var state = new ClipState(clip);
-                localMotionStates[type] = state;
-                var threshold = GetThreshold(type);
-                bool needReset = _focusMove.ChildCount == 0;
-                _focusMove.Add(state, threshold);
-                if (needReset)
-                {
-                    ResetState(true);
-                }
-            }
-            else
-            {
-                localMotionStates[type].Clip = clip;
-            }
+            RefreshAnimClip(type, clip);
         });
     }
 
@@ -116,20 +128,7 @@ public class MotionAnimationProcessor : AnimancerComponent
             return;
         }
 
-        if (localMotionStates[type] == null)
-        {
-            var state = new ClipState(clip);
-            localMotionStates[type] = state;
-            var threshold = GetThreshold(type);
-            bool needReset = _focusMove.ChildCount == 0;
-            _focusMove.Add(state, threshold);
-            if (needReset)
-            {
-                ResetState(true);
-            }
-        }
-        else
-            localMotionStates[type].Clip = clip;
+        RefreshAnimClip(type, clip);
     }
 
     public void OnUpdate(float checkTime)
