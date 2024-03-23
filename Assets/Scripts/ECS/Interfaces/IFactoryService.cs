@@ -12,6 +12,7 @@ public interface IFactoryService
     public void LoadAnimationClip(string clipName, Action<AnimationClip> callback);
     public EventNodeScriptableObject GetMotion(int motionID);
     public void Dispose();
+    public void GenServerCharacter(PlayerRoomInfo info, out GameEntity entity);
     public void GenCharacter(int charID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback =null);
     public void GenCharacter(GameObject obj);
 

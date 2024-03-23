@@ -116,7 +116,8 @@ namespace Weapon
         /// <param name="onlyThis">是否只有武器销毁，否则是因为武器持有者entity销毁</param>
         public void Destroy(bool onlyThis = false)
         {
-            this.gameObject.Unlink();
+            var link = gameObject.GetEntityLink();
+            link?.Unlink();
             if (onlyThis)
             {
                 // 只有武器entity Destroy

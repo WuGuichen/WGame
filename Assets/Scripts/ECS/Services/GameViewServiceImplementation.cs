@@ -137,7 +137,8 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
 
     public void Destroy()
     {
-        gameObject.Unlink();
+        var linker = gameObject.GetEntityLink();
+        linker?.Unlink();
         var sensorMonos = Model.GetComponentsInChildren<SensorMono>();
         for (var i = 0; i < sensorMonos.Length; i++)
         {

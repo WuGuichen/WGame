@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
+using UnityEngine;
 using WGame.Runtime;
 
 public class WNetMgr : Singleton<WNetMgr>
@@ -14,6 +15,24 @@ public class WNetMgr : Singleton<WNetMgr>
     private List<PlayerRoomInfo> _allPlayerInfo = new();
 
     private bool isInitCtrls = false;
+    
+    public WNetAgent Agent { get; private set; }
+    public Dictionary<ulong, WNetAgent> OtherAgents { get; private set; } = new();
+
+    public void SetAgent(WNetAgent agent)
+    {
+	    Agent = agent;
+    }
+
+    public void AddOtherAgent(WNetAgent agent)
+    {
+	    OtherAgents.Add(agent.OwnerClientId, agent);
+    }
+    
+    public void RemoveOtherAgent(WNetAgent agent)
+    {
+	    OtherAgents.Remove(agent.OwnerClientId);
+    }
 
     public bool TryGetPlayerRoomInfo(ulong id, out PlayerRoomInfo info)
     {
@@ -26,11 +45,16 @@ public class WNetMgr : Singleton<WNetMgr>
 	    var itr = playerRoomInfoDict.Values.GetEnumerator();
 	    while (itr.MoveNext())
 	    {
+		    if (itr.Current.id == LocalClientId)
+		    {
+			    MyPlayerInfo = itr.Current;
+		    }
 		    _allPlayerInfo.Add(itr.Current);
 	    }
     }
 
     public List<PlayerRoomInfo> AllPlayerInfo => _allPlayerInfo;
+    public PlayerRoomInfo MyPlayerInfo { get; private set; }
 
     public ulong LocalClientId => NetworkManager.Singleton.LocalClientId;
     public bool IsHost => NetworkManager.Singleton.IsHost;
@@ -39,13 +63,6 @@ public class WNetMgr : Singleton<WNetMgr>
     public bool IsConnected => NetworkManager.Singleton.IsConnectedClient;
     public bool IsConnecting => NetworkManager.Singleton.IsClient && !IsConnected;
     
-    public WNetAgent Agent { get; private set; }
-
-    public void SetAgent(WNetAgent agent)
-    {
-	    Agent = agent;
-    }
-
 	public void InitInstance()
 	{
 		NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
@@ -53,8 +70,6 @@ public class WNetMgr : Singleton<WNetMgr>
 		NetworkManager.Singleton.OnClientStarted += OnServerStarted;
 
 		_factory = Contexts.sharedInstance.meta.factoryService.instance;
-
-		// YooassetManager.Inst.LoadGameObject("WNetAgent", gameObject => { });
 	}
 
 	private string connectMsg => Transport.ConnectionData.Address + ":" + Transport.ConnectionData.Port;
@@ -194,11 +209,7 @@ public class WNetMgr : Singleton<WNetMgr>
 			return;
 		}
 		isInitCtrls = true;
-		// if(NetworkManager.Singleton.IsServer)
-		// {YooassetManager.Inst.LoadGameObject("ServerCtrs", o =>
-	 //    {
-		//     o.GetComponent<NetworkObject>().Spawn();
-	 //    });}
+
 	}
 
 	public int GetClientNum()
@@ -238,6 +249,30 @@ public class WNetMgr : Singleton<WNetMgr>
 			RefreshAllPlayerInfo();
 			EventCenter.Trigger(EventDefine.OnPlayerRoomInfoRefresh, id);
 		}
+	}
+
+	public bool IsAllPlayerReady()
+	{
+		// for (var i = 0; i < AllPlayerInfo.Count; i++)
+		// {
+		// 	var info = AllPlayerInfo[i];
+		// 	if (!info.isReady)
+		// 	{
+		// 		return false;
+		// 	}
+		// }
+
+		return true;
+	}
+
+	public void StartGame()
+	{
+		EventCenter.Trigger(EventDefine.OnServerStartGame);
+	}
+
+	public void BackToMainView()
+	{
+		EventCenter.Trigger(EventDefine.OnServerEndGame);
 	}
 
 	public void OnDispose()

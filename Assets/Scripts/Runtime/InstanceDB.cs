@@ -1,3 +1,5 @@
+using System;
+
 public class InstanceDB<T> where T : new()
 {
     private T[] list = new T[8];
@@ -50,9 +52,21 @@ public class InstanceDB<T> where T : new()
         list[instID] = empty;
     }
 
-    public void Clear()
+    public void Clear(Action<T> action = null)
     {
         emptyStk.Clear();
+        if (action != null)
+        {
+            for (var i = 0; i < list.Length; i++)
+            {
+                var item = list[i];
+                if (item != null)
+                {
+                    action.Invoke(item);
+                }
+            }
+        }
+
         list = new T[1];
         count = 0;
     }

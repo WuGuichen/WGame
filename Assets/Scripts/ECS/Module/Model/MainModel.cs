@@ -5,6 +5,7 @@ using UnityEngine;
 using WGame.Trigger;
 using WtEventType = WGame.Trigger.WtEventType;
 using WGame.Runtime;
+using WGame.UI.Main;
 
 namespace WGame.UI
 {
@@ -12,11 +13,9 @@ namespace WGame.UI
 	{
 		private WtEventType eventType;
 		private WTrigger trigger;
-		
+
 		private bool isFocus;
 		public bool isGameStart = false;
-
-		public bool IsBootByBootstrap { get; set; } = false;
 
 		public bool IsFocus
 		{
@@ -30,6 +29,7 @@ namespace WGame.UI
 				}
 			}
 		}
+
 		private Vector3 focusPosition;
 
 		public Vector3 FocusPosition
@@ -41,7 +41,7 @@ namespace WGame.UI
 				EventCenter.Trigger(EventDefine.OnFocusPointUpdate);
 			}
 		}
-		
+
 		public MainModel()
 		{
 			EventCenter.AddListener(EventDefine.OnEnterGameMainView, OnEnterMainView);
@@ -64,9 +64,9 @@ namespace WGame.UI
 #elif UNITY_STANDALONE_WIN
 			IsUseJoystick = false;
 #endif
-			#if UNITY_EDITOR
+#if UNITY_EDITOR
 			IsUseJoystick = false;
-			#endif
+#endif
 			UIManager.OpenView(VDB.GameMainView);
 		}
 
@@ -101,10 +101,11 @@ namespace WGame.UI
 				}
 			}
 		}
-		
+
 		private Vector2 lookDir;
 
 		public bool isLooking = false;
+
 		public Vector2 LookDir
 		{
 			get => lookDir;
@@ -122,25 +123,21 @@ namespace WGame.UI
 		private const float HOLD_TIME_LIMIT = 0.2f;
 
 		private bool isTriggerAttack = false;
+
 		public bool IsTriggerAttack
 		{
 			get => isTriggerAttack;
-			set
-			{
-				isTriggerAttack = value;
-			}
+			set { isTriggerAttack = value; }
 		}
 
 		private float attackTimer = HOLD_TIME_LIMIT;
 		public bool isAttackPressing = false;
 		private bool isHoldAttack = false;
+
 		public bool IsHoldAttack
 		{
 			get => isHoldAttack;
-			set
-			{
-				isHoldAttack = value;
-			}
+			set { isHoldAttack = value; }
 		}
 
 		public bool IsReleaseAttack
@@ -159,44 +156,34 @@ namespace WGame.UI
 
 		private float jumpTimer = HOLD_TIME_LIMIT;
 		private bool isTriggerSpecial = false;
+
 		public bool IsTriggerSpecial
 		{
 			get => isTriggerSpecial;
-			set
-			{
-				isTriggerSpecial = value;
-			}
+			set { isTriggerSpecial = value; }
 		}
 
 		public bool IsReleaseJump
 		{
-			set
-			{
-				jumpTimer = HOLD_TIME_LIMIT;
-			}
+			set { jumpTimer = HOLD_TIME_LIMIT; }
 		}
-		
+
 		private bool isHoldSpecial = false;
+
 		public bool IsHoldSpecial
 		{
 			get => isHoldSpecial;
-			set
-			{
-				isHoldSpecial = value;
-			}
+			set { isHoldSpecial = value; }
 		}
 
 		public bool isSpecialPressing = false;
-		
+
 		private bool isTriggerStep = false;
 
 		public bool IsTriggerStep
 		{
 			get => isTriggerStep;
-			set
-			{
-				isTriggerStep = value;
-			}
+			set { isTriggerStep = value; }
 		}
 
 		private bool isRunningState = false;
@@ -217,15 +204,15 @@ namespace WGame.UI
 
 		public void CleanUpInputs()
 		{
-			if(isLooking)
+			if (isLooking)
 				isLooking = false;
-			if(isTriggerSpecial)
+			if (isTriggerSpecial)
 				isTriggerSpecial = false;
-			if(isTriggerAttack)
+			if (isTriggerAttack)
 				isTriggerAttack = false;
-			if(isTriggerSpecial)
+			if (isTriggerSpecial)
 				isTriggerSpecial = false;
-			if(isTriggerStep)
+			if (isTriggerStep)
 				isTriggerStep = false;
 			// if(isDefencing)
 			// isDefencing = false;
@@ -242,6 +229,7 @@ namespace WGame.UI
 				{
 					IsHoldSpecial = true;
 				}
+
 				jumpTimer -= deltaTime;
 			}
 
@@ -255,7 +243,7 @@ namespace WGame.UI
 				attackTimer -= deltaTime;
 			}
 		}
-		
+
 		public void RefreshJoystickViewState()
 		{
 			if (IsUseJoystick)
@@ -271,7 +259,7 @@ namespace WGame.UI
 				UIManager.CloseView(VDB.JoystickView);
 			}
 		}
-		
+
 		#endregion
 
 		public void OnGameMainViewTopItemClick(int index)
@@ -299,48 +287,9 @@ namespace WGame.UI
 					break;
 			}
 		}
+
 		public void OnGameMainViewItemClick(string index)
 		{
-			switch (index)
-			{
-				case MainDefine.BtnName_StartOffline:
-					if (isGameStart)
-						break;
-					EventCenter.Trigger(EventDefine.OnGameStart);
-					break;
-				case MainDefine.BtnName_StartServer:
-					// WNetMgr.Inst.StartClient();
-					UIManager.OpenView(VDB.ServerRoomView);
-					break;
-				case MainDefine.BtnName_StartHost:
-					if (WNetMgr.Inst.IsHost == false)
-					{
-						if (WNetMgr.Inst.StartHost())
-						{
-							UIManager.OpenView(VDB.ServerRoomView);
-						}
-					}
-					else
-					{
-						UIManager.OpenView(VDB.ServerRoomView);
-					}
-					break;
-				case MainDefine.BtnName_CmdList:
-					// UIManager.OpenView(VDB.CommandView);
-					UIManager.OpenView(VDB.TerminalView);
-					break;
-				case MainDefine.BtnName_Setting:
-					UIManager.OpenView(VDB.SettingView);
-					break;
-				case MainDefine.BtnName_ShutDownServer:
-					WNetMgr.Inst.ShutDown();
-					break;
-				case MainDefine.BtnName_Quit:
-					WNetMgr.Inst.ShutDown();
-					WLogger.Info("结束游戏");
-					ActionHelper.DoExitGame();
-					break;
-			}	
 		}
 
 		public void OnPresetCommandClick(int idx)
@@ -360,7 +309,7 @@ namespace WGame.UI
 					break;
 			}
 		}
-		
+
 		public bool IsShowTag { get; private set; }
 
 		public Interactable curInteractTag { get; private set; }
@@ -389,6 +338,7 @@ namespace WGame.UI
 		}
 
 		private float _frames;
+
 		public float frames
 		{
 			get => _frames;
@@ -398,5 +348,201 @@ namespace WGame.UI
 				EventCenter.Trigger(EventDefine.OnFPSUpdate);
 			}
 		}
+		
+		private Vector3 _originCamPos;
+		private Quaternion _originCamRot;
+
+		private void InitGameStartInfo()
+		{
+			var trans = Contexts.sharedInstance.meta.mainCameraService.service.Root;
+			_originCamPos = trans.position;
+			_originCamRot = trans.rotation;
+		}
+		
+		public void StartGame(bool isServer = false)
+		{
+			InitGameStartInfo();
+			if (isGameStart)
+			{
+				return;
+			}
+
+			if (isServer)
+			{
+				if (!WNetMgr.Inst.IsAllPlayerReady())
+				{
+					WLogger.Print("还有人未准备");
+					return;
+				}
+
+				// 通知服务器
+				WNetMgr.Inst.StartGame();
+			}
+			else
+			{
+				if (WNetMgr.Inst.IsServer)
+				{
+					SetMainViewBtnState(MainDefine.Btn_StartOffline, "中止游戏");
+				}
+				else
+				{
+					SetMainViewBtnState(MainDefine.Btn_StartOffline, false);
+				}
+				EventCenter.Trigger(EventDefine.OnGameStart);
+			}
+			UIManager.CloseView(VDB.ServerRoomView);
+		}
+
+		public void BackToMainView(bool isServer = false)
+		{
+			if (!isGameStart)
+			{
+				return;
+			}
+
+			if (isServer)
+			{
+				// 通知服务器
+				WNetMgr.Inst.BackToMainView();
+			}
+			else
+			{
+				var trans = Contexts.sharedInstance.meta.mainCameraService.service.Root;
+				trans.position = _originCamPos;
+				trans.rotation = _originCamRot;
+				EventCenter.Trigger(EventDefine.OnBackToMainView);
+				isGameStart = false;
+			}
+		}
+
+		#region 主界面按钮
+
+		private SparseSet<FUI_MainListItem> _curMainBtnDict = new();
+		private SparseSet<MainBtnInfo> _mainBtnInfoDict = new();
+
+		public void InitMainBtnDict()
+		{
+			var list = MainDefine.AllMainBtnList;
+			for (var i = 0; i < list.Count; i++)
+			{
+				var info = list[i];
+				_mainBtnInfoDict.Add(info.ID, info);
+			}
+		}
+
+		public void RegisterMainViewBtn(FUI_MainListItem item)
+		{
+			if (_curMainBtnDict.IsContain(item.Info.ID))
+			{
+				return;
+			}
+			_curMainBtnDict.Add(item.Info.ID, item);
+		}
+
+		public void UnregisterMainViewBtn(FUI_MainListItem item)
+		{
+			if (_curMainBtnDict.IsContain(item.Info.ID))
+			{
+				_curMainBtnDict.Remove(item.Info.ID);
+			}
+		}
+
+		public void SetMainViewBtnState(int id, string text)
+		{
+			if (_mainBtnInfoDict.TryGet(id, out var info))
+			{
+				info.Name = text;
+			}
+			else
+			{
+				WLogger.Error("非法按钮ID: " + id);
+				return;
+			}
+			
+			if (_curMainBtnDict.TryGet(id, out var item))
+			{
+				item.RefreshInfo();
+			}
+		}
+		public void SetMainViewBtnState(int id, bool isShow)
+		{
+			if (_mainBtnInfoDict.TryGet(id, out var info))
+			{
+				info.IsShow = isShow;
+			}
+			else
+			{
+				WLogger.Error("非法按钮ID: " + id);
+				return;
+			}
+			if (_curMainBtnDict.TryGet(id, out var item))
+			{
+				item.RefreshInfo();
+			}
+		}
+		
+		public MainBtnInfo GetMainBtnInfo(int id)
+		{
+			if(_mainBtnInfoDict.TryGet(id, out var info))
+			{
+				return info;
+			}
+
+			return MainBtnInfo.Empty;
+		}
+
+		public void OnClickMainBtn(MainBtnInfo info)
+		{
+			OnClickMainBtn(info.ID);	
+		}
+
+		public void OnClickMainBtn(int id)
+		{
+			switch (id)
+			{
+				case MainDefine.Btn_StartOffline:
+					if (isGameStart)
+					{
+						BackToMainView(WNetMgr.Inst.IsServer);
+					}
+					else
+					{
+						StartGame();
+					}
+					break;
+				case MainDefine.Btn_StartServer:
+					UIManager.OpenView(VDB.ServerRoomView);
+					break;
+				case MainDefine.Btn_StartHost:
+					if (WNetMgr.Inst.IsHost == false)
+					{
+						if (WNetMgr.Inst.StartHost())
+						{
+							UIManager.OpenView(VDB.ServerRoomView);
+						}
+					}
+					else
+					{
+						UIManager.OpenView(VDB.ServerRoomView);
+					}
+					break;
+				case MainDefine.Btn_ShutDownServer:
+					WNetMgr.Inst.ShutDown();
+					break;
+				case MainDefine.Btn_CmdList:
+					UIManager.OpenView(VDB.TerminalView);
+					break;
+				case MainDefine.Btn_Setting:
+					UIManager.OpenView(VDB.SettingView);
+					break;
+				case MainDefine.Btn_Quit:
+					WNetMgr.Inst.ShutDown();
+					WLogger.Info("结束游戏");
+					ActionHelper.DoExitGame();
+					break;
+			}	
+		}
+
+		#endregion
 	}
 }

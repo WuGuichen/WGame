@@ -91,8 +91,7 @@ namespace WGame.UI
 
 		private void OnClickStart()
 		{
-			WLogger.Print("开始游戏");
-			CloseView();
+			MainModel.Inst.StartGame(true);
 		}
 		
 		private void RefreshServerList()

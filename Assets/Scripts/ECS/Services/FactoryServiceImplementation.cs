@@ -48,9 +48,38 @@ public class FactoryServiceImplementation : IFactoryService
         _gameContext = contexts.game;
         _weaponContext = contexts.weapon;
         _gameEntityDB = new InstanceDB<GameEntity>(EntityUtils.CharacterBaseID);
+        
+        EventCenter.AddListener(EventDefine.OnBackToMainView, OnBackToMainView);
+        EventCenter.AddListener(EventDefine.OnGameStart, OnGameStart);
     }
-    
-    #if UNITY_EDITOR
+
+    private void OnGameStart()
+    {
+        var charList = WNetMgr.Inst.AllPlayerInfo;
+        var camPos = EntityUtils.GetCameraPos();
+        var pos = Random.insideUnitSphere * 6 + camPos;
+        pos.y = 0.5f;
+        var info = WNetMgr.Inst.MyPlayerInfo;
+        if (info.charId > 0)
+        {
+            GenCharacter(info.charId, pos, Quaternion.identity, out var entity, gameEntity =>
+            {
+                gameEntity.isCamera = true;
+                gameEntity.AddNetAgent(WNetMgr.Inst.Agent);
+            });
+            WNetMgr.Inst.Agent.GenCharacter(info);
+        }
+    }
+
+    private void OnBackToMainView()
+    {
+        _gameEntityDB.Clear(entity =>
+        {
+            entity.isDestroyed = true;
+        });
+    }
+
+#if UNITY_EDITOR
     private FileSystemWatcher GetWatcher(string dir, FileSystemEventHandler handler)
     {
         var watcher = new FileSystemWatcher();
@@ -199,35 +228,25 @@ public class FactoryServiceImplementation : IFactoryService
         _gameEntityDB.Cancel(instanceID);
     }
     
-    public void GenCharacterNet(int charID, Vector3 pos, Quaternion rot, out GameEntity entity, Action<GameEntity> callback = null)
+    public void GenServerCharacter(PlayerRoomInfo info, out GameEntity entity)
     {
-        var data = GameData.Tables.TbCharacter[charID];
-        if (data == null)
-        {
-            entity = null;
-            WLogger.Error("没有相应角色id：" + charID);
-            return;
-        }
-
+        var data = GameData.Tables.TbCharacter[info.charId];
+        var pos = Random.insideUnitSphere * 6 + EntityUtils.GetCameraPos();
+        pos.y = 0.5f;
         int infoID = data.InfoId;
         int id = characterBaseID + genCharacterNum;
         genCharacterNum++;
         entity = _gameContext.CreateEntity();
         entity.AddEntityID(id);
         entity.AddCharacterInfo(WCharacterInfo.GetCharacterInfo(infoID));
-        entity.AddPosition(pos);
         var gameEntity = entity;
-        WLogger.Print(pos);
-        ObjectPool.Inst.GetObject(data.ObjectId, pos, rot, GameSceneMgr.Inst.genCharacterRoot, obj =>
+        ObjectPool.Inst.GetObject(data.ObjectId, pos, Quaternion.identity, GameSceneMgr.Inst.genCharacterRoot, obj =>
         {
             obj.name = id.ToString();
             var infoMono = obj.GetComponent<WCharacterInfo>();
-
             InitCharacter(ref gameEntity, obj, ref infoMono);
-            
-            // gameEntity.linkMotion.Motion.motionService.service.AnimProcessor.ClearRootMotion();
-            // 真正完成角色生成
-            callback?.Invoke(gameEntity);
+            gameEntity.AddNetAgent(WNetMgr.Inst.OtherAgents[info.id]);
+            gameEntity.netAgent.Agent.SetGameEntity(ref gameEntity);
         });
     }
 

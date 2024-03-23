@@ -13,6 +13,8 @@ public class DrawSensorCharacterSystem : IExecuteSystem
         {
             if (sensor.hasDetectorCharacterService)
             {
+                if(EntityUtils.IsNetCamera(sensor.linkCharacter.Character))
+                    continue;
                 sensor.detectorCharacterService.service.UpdateSensorDrawer();
             }
         }

@@ -58,20 +58,23 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
 
         character.isRotateInFocus = false;
 
-        var noticeService = character.notice.service;
-        
-        // 根据动作类型处理行为
-        var newID = entity.motionStart.UID;
-        if (newID == entity.motionLocalMotion.UID)
+        if (character.hasNotice)
         {
-            
-        }
-        else if (newID == entity.motionDefense.UID)
-        {
-        }
-        else if (newID == entity.motionStepFwd.UID)
-        {
-            noticeService.AddReciever(NoticeDB.OnStepBeHit, 1f);
+            var noticeService = character.notice.service;
+
+            // 根据动作类型处理行为
+            var newID = entity.motionStart.UID;
+            if (newID == entity.motionLocalMotion.UID)
+            {
+
+            }
+            else if (newID == entity.motionDefense.UID)
+            {
+            }
+            else if (newID == entity.motionStepFwd.UID)
+            {
+                noticeService.AddReciever(NoticeDB.OnStepBeHit, 1f);
+            }
         }
     }
 }

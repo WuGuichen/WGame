@@ -4,6 +4,9 @@ public class OtherSystems : Feature
 	{
 		// 注意系统顺序
 		Add(new UpdateCharacterDataSystem(contexts));
+		Add(new IsCameraTriggerSystem(contexts));
+		Add(new UpdateCharacterSyncDataSystem(contexts));
+		Add(new SyncServerCharacterSystem(contexts));
 		Add(new AnimSpeedSystem(contexts));
 		
 		Add(new CharacterOnGroundSystem(contexts));

@@ -311,4 +311,14 @@ public class EntityUtils
             }
         }
     }
+
+    public static bool IsNetCamera(GameEntity entity)
+    {
+        if (entity.hasNetAgent)
+        {
+            return entity.netAgent.Agent.IsCamera;
+        }
+
+        return false;
+    }
 }

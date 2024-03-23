@@ -22,6 +22,8 @@ public class MoveCharacterSystem : IExecuteSystem
     {
         foreach (var entity in _movingGroup)
         {
+            if(EntityUtils.IsNetCamera(entity))
+                continue;
             if(entity.hasLinkMotion == false)
                 continue;
             curSpeed = entity.charCurSpeed.value;

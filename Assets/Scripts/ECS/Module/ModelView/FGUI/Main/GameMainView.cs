@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using WGame.UI.Main;using FairyGUI;
 using UnityEngine;
 using WGame.Attribute;
@@ -14,9 +15,13 @@ namespace WGame.UI
 
 		private EventCallback1 callback0;
 		private MainModel model;
-		
+
 		protected override void CustomInit()
 		{
+			MainModel.Inst.InitMainBtnDict();
+			ui.list.itemRenderer = RenderItemList;
+			ui.topList.itemRenderer = RenderTopItemList;
+			
 			ui.txtVersion.text = "点击Alt切换鼠标";
 			callback0 = OnItemClick;
 			model = MainModel.Inst;
@@ -38,6 +43,7 @@ namespace WGame.UI
 			AddEvent(EventDefine.OnFocusPointUpdate, RefreshFocusPoint);
 			AddEvent(EventDefine.OnInteractTagRefresh, RefreshInteractTag);
 			AddEvent(EventDefine.OnGameStart, OnGameStart);
+			AddEvent(EventDefine.OnBackToMainView, OnBackToMainView);
 			AddEvent(EventDefine.OnTerminalMessageUpdate, OnTerminalUpdate);
 		}
 
@@ -54,6 +60,13 @@ namespace WGame.UI
 				ui.messageBtn.touchable = false;
 			}
 		}
+		
+		private void OnBackToMainView()
+		{
+			model.SetMainViewBtnState(MainDefine.Btn_StartOffline, true);
+			model.SetMainViewBtnState(MainDefine.Btn_StartOffline, "离线模式开始");
+			ui.topList.visible = false;
+		}
 
 		void OnGameStart()
 		{
@@ -62,11 +75,9 @@ namespace WGame.UI
 
 		protected override void AfterOpen()
 		{
-			ui.list.itemRenderer = RenderItemList;
-			ui.list.numItems = MainDefine.Inst.mainBtnListNames.Length;
+			ui.list.numItems = MainDefine.AllMainBtnList.Count;
 			ui.list.onClickItem.Add(callback0);
 			ui.interactTag.onClick.Add(model.OnInteractTagClick);
-			ui.topList.itemRenderer = RenderTopItemList;
 			ui.topList.numItems = MainDefine.Inst.mainTopBtnListNames.Length;
 			ui.topList.onClickItem.Add(OnTopItemClick);
 			RefreshFPS();
@@ -102,8 +113,7 @@ namespace WGame.UI
 		void RenderItemList(int idx, GObject obj)
 		{
 			FUI_MainListItem item = obj as FUI_MainListItem;
-			item.hello.text = MainDefine.Inst.mainBtnListNames[idx];
-			item.index = idx;
+			item.SetData(idx);
 		}
 
 		void RenderTopItemList(int idx, GObject obj)
@@ -116,7 +126,7 @@ namespace WGame.UI
 		void OnItemClick(EventContext ctx)
 		{
 			var c = ctx.data as FUI_MainListItem;
-			MainModel.Inst.OnGameMainViewItemClick(MainDefine.Inst.mainBtnListNames[c.index]);
+			MainModel.Inst.OnClickMainBtn(c.Info);
 		}
 		
 		void OnTopItemClick(EventContext ctx)

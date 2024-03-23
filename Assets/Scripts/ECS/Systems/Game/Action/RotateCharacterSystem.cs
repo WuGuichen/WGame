@@ -21,6 +21,8 @@ public class RotateCharacterSystem : IExecuteSystem
     {
         foreach (var entity in _moveGroup)
         {
+            if(EntityUtils.IsNetCamera(entity))
+                continue;
             Vector2 moveDir;
             Vector3 tarDir;
             Vector3 fwd;

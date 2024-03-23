@@ -14,6 +14,8 @@ public class DetectCharacterSystem : IExecuteSystem
         UnityEngine.Profiling.Profiler.BeginSample("DetectSensorCharacter");
         foreach (var sensor in charDetectorGroup)
         {
+            if(EntityUtils.IsNetCamera(sensor.linkCharacter.Character))
+                continue;
             if (sensor.hasDetectorCharacterService)
             {
                 sensor.detectorCharacterService.service.UpdateDetect(_time.DeltaTime);

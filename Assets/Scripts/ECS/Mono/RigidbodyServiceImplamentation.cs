@@ -1,6 +1,5 @@
 using System;
 using Entitas;
-using Entitas.Unity;
 using UnityEngine;
 using UnityTimer;
 using Vector3 = UnityEngine.Vector3;

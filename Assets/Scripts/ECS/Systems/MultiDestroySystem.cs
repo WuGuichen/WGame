@@ -45,7 +45,10 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
 
                 if (entity.hasLinkWeapon)
                 {
-                    entity.linkWeapon.Weapon.weaponWeaponView.service.Destroy();
+                    if (entity.linkWeapon.Weapon.hasWeaponWeaponView)
+                    {
+                        entity.linkWeapon.Weapon.weaponWeaponView.service.Destroy();
+                    }
                     entity.linkWeapon.Weapon.Destroy();
                 }
 

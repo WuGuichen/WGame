@@ -14,6 +14,9 @@ public class AIAgentUpdateSystem : IExecuteSystem, ICleanupSystem
         foreach (var entity in _aiGroup)
         {
             if (entity.isMoveable == false) continue;
+            
+            if(EntityUtils.IsNetCamera(entity))
+                continue;
 
             entity.aiAgent.service.UpdateFSM();
         }

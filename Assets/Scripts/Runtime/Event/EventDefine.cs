@@ -16,6 +16,8 @@ public class EventDefine
     public const int OnFPSUpdate = 11;
     public const int OnGameUpdate = 12;
 
+    public const int OnBackToMainView = 13;
+
     public const int OnTerminalMessageUpdate = 21;
     
     public const int OnInteractTagRefresh = 31;
@@ -36,4 +38,6 @@ public class EventDefine
     public const int OnPlayerRoomInfoRefresh = 64;
     public const int OnSelfClientDisconnected = 65;
     public const int OnSelfClientConnected = 66;
+    public const int OnServerStartGame = 67;
+    public const int OnServerEndGame = 68;
 }

@@ -66,7 +66,10 @@ namespace WGame.Res
                 {
                     Timer.Register(delayTime, () =>
                     {
-                        ObjectPool.Inst.PushObject(obj);
+                        if (obj != null)
+                        {
+                            ObjectPool.Inst.PushObject(obj);
+                        }
                         Inst.loadedEffects.Remove(key);
                     });
                 }
@@ -87,10 +90,15 @@ namespace WGame.Res
                 {
                     Timer.Register(delayTime, () =>
                     {
-                        if(data.NeedCache)
-                            ObjectPool.Inst.PushObject(data.Id, obj);
-                        else
-                            GameObject.Destroy(obj);
+                        if (obj != null)
+                        {
+                            if (data.NeedCache)
+                                ObjectPool.Inst.PushObject(data.Id, obj);
+                            else
+                                GameObject.Destroy(obj);
+
+                        }
+
                         Inst.loadedEffects.Remove(key);
                     });
                 }

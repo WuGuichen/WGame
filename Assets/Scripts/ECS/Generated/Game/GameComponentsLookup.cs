@@ -66,45 +66,46 @@ public static class GameComponentsLookup {
     public const int MoveDirection = 55;
     public const int MovementSpeed = 56;
     public const int Moving = 57;
-    public const int NetObject = 58;
-    public const int Notice = 59;
-    public const int NotMove = 60;
-    public const int OnGroundState = 61;
-    public const int PlayerInputState = 62;
-    public const int Position = 63;
-    public const int PrepareAttackState = 64;
-    public const int PrepareDefenseState = 65;
-    public const int PrepareHoldAttackState = 66;
-    public const int PrepareJumpAttackState = 67;
-    public const int PrepareJumpState = 68;
-    public const int PrepareLocalMotionState = 69;
-    public const int PrepareStepState = 70;
-    public const int RigidbodyService = 71;
-    public const int RotateInFocus = 72;
-    public const int RotateLeftAngle = 73;
-    public const int RotationSpeed = 74;
-    public const int RunningMultiRate = 75;
-    public const int RunState = 76;
-    public const int SignalAttack = 77;
-    public const int SignalDefense = 78;
-    public const int SignalJump = 79;
-    public const int SignalLocalMotion = 80;
-    public const int SignalState = 81;
-    public const int SignalStep = 82;
-    public const int SpawnPoint = 83;
-    public const int StateChanged = 84;
-    public const int StateSwitchState = 85;
-    public const int StateSwitchStateListener = 86;
-    public const int StepEndState = 87;
-    public const int StepState = 88;
-    public const int TargetPlanarSqrDistance = 89;
-    public const int UIHeadPad = 90;
-    public const int Unbalanced = 91;
-    public const int WalkState = 92;
-    public const int WeaponDropService = 93;
-    public const int WeaponService = 94;
+    public const int NetAgent = 58;
+    public const int NetObject = 59;
+    public const int Notice = 60;
+    public const int NotMove = 61;
+    public const int OnGroundState = 62;
+    public const int PlayerInputState = 63;
+    public const int Position = 64;
+    public const int PrepareAttackState = 65;
+    public const int PrepareDefenseState = 66;
+    public const int PrepareHoldAttackState = 67;
+    public const int PrepareJumpAttackState = 68;
+    public const int PrepareJumpState = 69;
+    public const int PrepareLocalMotionState = 70;
+    public const int PrepareStepState = 71;
+    public const int RigidbodyService = 72;
+    public const int RotateInFocus = 73;
+    public const int RotateLeftAngle = 74;
+    public const int RotationSpeed = 75;
+    public const int RunningMultiRate = 76;
+    public const int RunState = 77;
+    public const int SignalAttack = 78;
+    public const int SignalDefense = 79;
+    public const int SignalJump = 80;
+    public const int SignalLocalMotion = 81;
+    public const int SignalState = 82;
+    public const int SignalStep = 83;
+    public const int SpawnPoint = 84;
+    public const int StateChanged = 85;
+    public const int StateSwitchState = 86;
+    public const int StateSwitchStateListener = 87;
+    public const int StepEndState = 88;
+    public const int StepState = 89;
+    public const int TargetPlanarSqrDistance = 90;
+    public const int UIHeadPad = 91;
+    public const int Unbalanced = 92;
+    public const int WalkState = 93;
+    public const int WeaponDropService = 94;
+    public const int WeaponService = 95;
 
-    public const int TotalComponents = 95;
+    public const int TotalComponents = 96;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -165,6 +166,7 @@ public static class GameComponentsLookup {
         "MoveDirection",
         "MovementSpeed",
         "Moving",
+        "NetAgent",
         "NetObject",
         "Notice",
         "NotMove",
@@ -263,6 +265,7 @@ public static class GameComponentsLookup {
         typeof(MoveDirectionComponent),
         typeof(MovementSpeedComponent),
         typeof(MovingComponent),
+        typeof(NetAgentComponent),
         typeof(NetObjectComponent),
         typeof(NoticeComponent),
         typeof(NotMoveComponent),
