@@ -12,9 +12,16 @@ public class UpdateCharacterSyncDataSystem : IExecuteSystem
     {
         foreach (var entity in _netAgentGroup)
         {
-            if (entity.netAgent.Agent.IsOwner)
+            var agent = entity.netAgent.Agent;
+            if (agent.IsOwner)
             {
-                entity.netAgent.Agent.UpdatePosition(entity.position.value);
+                agent.UpdatePosition(entity.position.value, entity.gameViewService.service.Model.parent.localRotation);
+                if (entity.hasLinkMotion)
+                {
+                    var anim = entity.linkMotion.Motion.motionService.service.AnimProcessor;
+                    var param = anim.MoveParam;
+                    agent.SetAnimParam(param.x, param.y);
+                }
             }
         }
     }

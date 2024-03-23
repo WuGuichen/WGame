@@ -1,20 +1,23 @@
-using System.Collections.Generic;
-using BaseData.Character;
-using Entitas.Unity;
-using Motion;
-using Pathfinding;
 using Unity.Netcode;
 using UnityEngine;
-using WGame.Attribute;
 
 public class WNetAgent : NetworkBehaviour
 {
     private NetworkVariable<Vector3> _syncPos = new();
+    private NetworkVariable<Quaternion> _syncRot = new();
     private NetworkVariable<bool> _syncIsCamera = new();
+    private NetworkVariable<float> _syncAnimRight = new();
+    private NetworkVariable<float> _syncAnimUp = new();
     private IFactoryService _factory;
     private GameEntity _entity;
 
+    private const float threshold = 0.1f;
+
     public Vector3 SyncPos => _syncPos.Value;
+    public Quaternion SyncRot => _syncRot.Value;
+    public float AnimRight => _syncAnimRight.Value;
+    public float AnimUp => _syncAnimUp.Value;
+    
     public bool IsCamera
     {
         get => !IsOwner && _syncIsCamera.Value;
@@ -31,7 +34,40 @@ public class WNetAgent : NetworkBehaviour
         }
     }
     
-    [ServerRpc(RequireOwnership = false)]
+    public void SetAnimParam(float right, float up)
+    {
+        if (IsServer)
+        {
+            if (Mathf.Abs(_syncAnimRight.Value - right) > threshold)
+            {
+                _syncAnimRight.Value = right;
+            }
+            if (Mathf.Abs(_syncAnimUp.Value - up) > threshold)
+            {
+                _syncAnimUp.Value = up;
+            }
+        }
+        else
+        {
+            SetAnimParamServerRpc(right, up);         
+        }
+    }
+
+    [ServerRpc]
+    private void SetAnimParamServerRpc(float right, float up)
+    {
+        if (Mathf.Abs(_syncAnimRight.Value - right) > threshold)
+        {
+            _syncAnimRight.Value = right;
+        }
+
+        if (Mathf.Abs(_syncAnimUp.Value - up) > threshold)
+        {
+            _syncAnimUp.Value = up;
+        }
+    }
+
+    [ServerRpc]
     private void SetIsCameraServerRpc(bool value)
     {
         _syncIsCamera.Value = value;
@@ -42,17 +78,8 @@ public class WNetAgent : NetworkBehaviour
         _entity = entity;
         if (IsServer)
         {
-            UpdatePosition(Vector3.zero);
+            UpdatePosition(Vector3.zero, Quaternion.identity);
         }
-        else
-        {
-            _syncPos.OnValueChanged += OnPositionChanged;
-        }
-    }
-
-    private void OnPositionChanged(Vector3 previousvalue, Vector3 newvalue)
-    {
-        _entity.gameViewService.service.Model.transform.position = newvalue;
     }
 
     private IFactoryService Factory
@@ -67,26 +94,24 @@ public class WNetAgent : NetworkBehaviour
         }
     }
 
-    public void UpdatePosition(Vector3 pos)
+    public void UpdatePosition(Vector3 pos, Quaternion rot)
     {
-        if (_entity != null && _entity.hasInstanceID)
-        {
-            WLogger.Print(_entity.instanceID.ID);
-        }
         if (IsServer)
         {
             _syncPos.Value = pos;
+            _syncRot.Value = rot;
         }
         else
         {
-            UpdatePositionServerRpc(pos);
+            UpdatePositionServerRpc(pos, rot);
         }
     }
     
-    [ServerRpc(RequireOwnership = false)]
-    private void UpdatePositionServerRpc(Vector3 pos)
+    [ServerRpc]
+    private void UpdatePositionServerRpc(Vector3 pos, Quaternion rot)
     {
         _syncPos.Value = pos;
+        _syncRot.Value = rot;
     }
     
 
@@ -119,7 +144,6 @@ public class WNetAgent : NetworkBehaviour
             WNetMgr.Inst.RemoveOtherAgent(this);
         }
         
-        _syncPos.OnValueChanged -= OnPositionChanged;
         _entity = null;
         _factory = null;
     }

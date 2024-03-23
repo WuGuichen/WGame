@@ -16,9 +16,16 @@ public class SyncServerCharacterSystem : IExecuteSystem
         {
             if(entity.netAgent.Agent.IsOwner)
                 continue;
+            var agent = entity.netAgent.Agent;
             if (entity.hasGameViewService)
             {
-                entity.gameViewService.service.Model.parent.transform.position = entity.netAgent.Agent.SyncPos;
+                var trans = entity.gameViewService.service.Model.parent;
+                trans.position = agent.SyncPos;
+                trans.rotation = agent.SyncRot;
+            }
+            if(entity.hasLinkMotion)
+            {
+                entity.linkMotion.Motion.motionService.service.AnimProcessor.UpdateMoveSpeed(agent.AnimUp, agent.AnimRight);
             }
         }
         // Physics.SyncTransforms();

@@ -27,6 +27,7 @@ public class MotionAnimationProcessor : AnimancerComponent
 
     private ClipState[] localMotionStates;
     private MixerState<Vector2> _focusMove;
+    public Vector2 MoveParam => _focusMove.Parameter;
     private LinearMixerState _regularMove;
 
     private AnimancerLayer[] _animancerLayers;

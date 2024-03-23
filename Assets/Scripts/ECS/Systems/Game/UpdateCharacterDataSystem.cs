@@ -17,13 +17,6 @@ public class UpdateCharacterDataSystem : IExecuteSystem
             {
                 var pos = entity.gameViewService.service.Model.position;
                 entity.ReplacePosition(pos);
-                if (entity.hasNetAgent)
-                {
-                    if (entity.netAgent.Agent.IsOwner)
-                    {
-                        entity.netAgent.Agent.UpdatePosition(pos);
-                    }
-                }
             }
         }
     }
