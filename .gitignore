@@ -5,6 +5,8 @@ ExternalTools/
 Logs/
 obj/
 yoo/
+Assets/Res/AOTMetaDll/
+Assets/Res/HotUpdateDll/
 Assets/Wwise/
 Assets/StreamingAssets/yoo/
 Assets/StreamingAssets/yoo/DefaultPackage/
