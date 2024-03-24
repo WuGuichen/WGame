@@ -76,6 +76,7 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
 
     public void Optimize()
     {
+        int maxDepth = -1;
         foreach (var entity in _entityGroup)
         {
             if (entity.isEnabled && entity.hasGameViewService)
@@ -87,21 +88,35 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
                     if (list == null)
                         list = new List<WBVHNode<IGameViewService>>();
                     list.Add(node);
+                    if (node.depth > maxDepth)
+                    {
+                        maxDepth = node.depth;
+                    }
                     bucket[node.depth] = list;
                 }
             }
         }
 
-        for (int i = BVH.maxDepth-1; i >= 0; i--)
+        if (maxDepth > -1)
         {
-            var data = bucket[i];
-            if (data != null)
+            var data = bucket[maxDepth];
+            for (int j = 0; j < data.Count; j++)
             {
-                for (int j = 0; j < data.Count; j++)
-                {
-                    data[j].TryRotate(BVH);
-                }
+                data[j].TryRotate(BVH);
             }
+            bucket[maxDepth].Clear();
         }
+
+        // for (int i = BVH.maxDepth-1; i >= 0; i--)
+        // {
+        //     var data = bucket[i];
+        //     if (data != null)
+        //     {
+        //         for (int j = 0; j < data.Count; j++)
+        //         {
+        //             data[j].TryRotate(BVH);
+        //         }
+        //     }
+        // }
     }
 }

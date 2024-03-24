@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using WGame.Ability;
 using Random = UnityEngine.Random;
@@ -109,6 +110,11 @@ public class TestSceneSystem : MonoBehaviour
 	    {
 			EventCenter.Trigger(EventDefine.SetCursorState, Cursor.visible ? 0 : 1);
 	    }
+
+	    if (Input.GetKeyDown(KeyCode.L))
+	    {
+		    EntityUtils.RandomKillCharacter();
+	    }
     }
 
     private void UpdateBeforeSystems()
@@ -162,9 +168,14 @@ public class TestSceneSystem : MonoBehaviour
 		_lateUpdateSystems.Cleanup();
 		
 		WTriggerMgr.Inst.OnEndUpdate();
-		UnityEngine.Profiling.Profiler.BeginSample("BvhOptimize");
-		EntityUtils.BvhRed.Optimize();
-		UnityEngine.Profiling.Profiler.EndSample();
+		// UnityEngine.Profiling.Profiler.BeginSample("BvhOptimize");
+		// EntityUtils.BvhRed.Optimize();
+		// UnityEngine.Profiling.Profiler.EndSample();
+    }
+
+    private void OnDrawGizmos()
+    {
+	    EntityUtils.BvhRed.DrawAllBounds();
     }
 
     void PreInitModel()

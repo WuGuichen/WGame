@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BaseData.Character;
+using NativeQuadTree;
 using TWY.Physics;
 using UnityEngine;
 using WGame.Runtime;
@@ -51,6 +52,13 @@ public class EntityUtils
     public static bool TryGetEntitySensorMono(int colliderId, out SensorMono sensorMono)
     {
         return _colliderToEntityDict.TryGetValue(colliderId, out sensorMono);
+    }
+
+    public static void RandomKillCharacter()
+    {
+        var factory = Contexts.sharedInstance.meta.factoryService.instance;
+        var entity = factory.SelectRandomGenCharacter();
+        entity.isDestroyed = true;
     }
 
     public static WBVH<IGameViewService> BvhRed

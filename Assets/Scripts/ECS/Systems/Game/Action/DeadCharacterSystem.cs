@@ -47,6 +47,7 @@ public class DeadCharacterSystem : IExecuteSystem
             if(entity.detectedCharacter.entity.isDeadState)
                 listDetected.Add(entity);
         }
+        
         for(int i= 0 ; i < listDetected.Count; i++)
         {
             listDetected[i].RemoveDetectedCharacter();

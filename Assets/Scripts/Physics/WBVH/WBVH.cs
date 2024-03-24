@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -115,6 +116,8 @@ namespace TWY.Physics
             hitList.Clear();
             this.Traverse(root, capsuleF, hitList);
         }
+        
+        public HashSet<WBVHNode<T>> refitNodes = new HashSet<WBVHNode<T>>(); 
 
         public void Optimize()
         {
@@ -123,13 +126,16 @@ namespace TWY.Physics
                 throw new System.Exception("In order to use optimize, you must set LEAF_OBJ_MAX=1");
             }
 
-            // var list = refitNodes.ToList();
-            //
-            // var sweepNodes = refitNodes.Where(n => n.depth == maxDepth).ToList();
-            // sweepNodes.ForEach(n => refitNodes.Remove(n));
-            // 就是从最深层开始进行tryRotate
-            // sweepNodes.ForEach(n => n.TryRotate(this));
-            adapter.Optimize();
+            while (refitNodes.Count > 0)
+            {
+                int maxDepth = refitNodes.Max(n => n.depth);
+
+                var sweepNodes = refitNodes.Where(n => n.depth == maxDepth).ToList();
+                sweepNodes.ForEach(n => refitNodes.Remove(n));
+                // 就是从最深层开始进行tryRotate
+                sweepNodes.ForEach(n => n.TryRotate(this));
+            }
+            // adapter.Optimize();
         }
 
         public void Add(T newObj)

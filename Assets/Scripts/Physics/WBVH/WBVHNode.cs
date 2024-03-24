@@ -39,7 +39,21 @@ namespace TWY.Physics
             get { return _objects; }
             set { _objects = value; }
         }
-        public bool needRefit { get; set; }
+
+        private bool _needRefit = false;
+
+        public bool needRefit
+        {
+            get => _needRefit;
+            set
+            {
+                _needRefit = value;
+                if (IsLeaf)
+                {
+                    WLogger.Error("???");
+                }
+            }
+        }
 
         internal WBVHNode(WBVH<T> bvh)
         {
@@ -137,7 +151,8 @@ namespace TWY.Physics
                 if (parent != null)
                 {
                     // needRefit
-                    parent.needRefit = true;
+                    // parent.needRefit = true;
+                    adapter.BVH.refitNodes.Add(parent);
                 }
             }
         }
@@ -628,8 +643,8 @@ namespace TWY.Physics
             // 把叶节点的祖父加入, 因为它们的子节点一定不是叶节点
             if (left.IsLeaf && right.IsLeaf && parent != null)
             {
-                // bvh.refitNodes.Add(parent);
-                parent.needRefit = true;
+                bvh.refitNodes.Add(parent);
+                // parent.needRefit = true;
                 return;
             }
 
@@ -696,8 +711,8 @@ namespace TWY.Physics
                     // 限制一下refit次数
                     if (Random.Range(0, 100) < 2)
                     {
-                        // bvh.refitNodes.Add(parent);
-                        parent.needRefit = true;
+                        bvh.refitNodes.Add(parent);
+                        // parent.needRefit = true;
                     }
                 }
             }
@@ -705,8 +720,8 @@ namespace TWY.Physics
             {
                 if (parent != null)
                 {
-                    // bvh.refitNodes.Add(parent);
-                    parent.needRefit = true;
+                    bvh.refitNodes.Add(parent);
+                    // parent.needRefit = true;
                 }
 
                 // 看优化了多少，以此判断是否需要旋转
