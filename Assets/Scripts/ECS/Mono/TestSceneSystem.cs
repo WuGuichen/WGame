@@ -45,9 +45,9 @@ public class TestSceneSystem : MonoBehaviour
             new PlayModeTimeServiceImplementation()
             );
         _registrationSystems = new ServiceRegistrationSystems(_contexts, _services);
-        _gameSystems = new GameSystems(_contexts);
-        
         _registrationSystems.Initialize();
+        
+        _gameSystems = new GameSystems(_contexts);
         _gameSystems.Initialize();
 
         _timeService = _contexts.meta.timeService.instance;
@@ -152,6 +152,7 @@ public class TestSceneSystem : MonoBehaviour
         WNetMgr.Inst.OnDispose();
         EventCenter.RemoveListener(EventDefine.OnGameResourcesLoaded, OnGameStart);
         EntityUtils.Dispose();
+        ActionHelper.Dispose();
     }
 
     private void LateUpdate()

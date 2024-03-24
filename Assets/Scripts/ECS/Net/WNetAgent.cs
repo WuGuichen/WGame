@@ -1,13 +1,20 @@
+using System;
 using Unity.Netcode;
 using UnityEngine;
+using WGame.Attribute;
 
 public class WNetAgent : NetworkBehaviour
 {
-    private NetworkVariable<Vector3> _syncPos = new();
-    private NetworkVariable<Quaternion> _syncRot = new();
-    private NetworkVariable<bool> _syncIsCamera = new();
-    private NetworkVariable<float> _syncAnimRight = new();
-    private NetworkVariable<float> _syncAnimUp = new();
+    private readonly NetworkVariable<Vector3> _syncPos = new();
+    private readonly NetworkVariable<Quaternion> _syncRot = new();
+    private readonly NetworkVariable<bool> _syncIsCamera = new();
+    private readonly NetworkVariable<float> _syncAnimRight = new();
+    private readonly NetworkVariable<float> _syncAnimUp = new();
+    private readonly NetworkVariable<int> _syncMotionID = new();
+    private delegate void OnOtherClientAttrChange(int attrId, int value);
+
+    private NetworkVariable<int> _attrHp = new();
+
     private IFactoryService _factory;
     private GameEntity _entity;
 
@@ -32,6 +39,24 @@ public class WNetAgent : NetworkBehaviour
                 SetIsCameraServerRpc(value);             
             }
         }
+    }
+
+    public void SwitchMotion(int newID)
+    {
+        if (IsServer)
+        {
+            _syncMotionID.Value = newID;
+        }
+        else
+        {
+            SwitchMotionServerRpc(newID);
+        }
+    }
+
+    [ServerRpc]
+    private void SwitchMotionServerRpc(int newID)
+    {
+        _syncMotionID.Value = newID;
     }
     
     public void SetAnimParam(float right, float up)
@@ -80,6 +105,71 @@ public class WNetAgent : NetworkBehaviour
         {
             UpdatePosition(Vector3.zero, Quaternion.identity);
         }
+        else
+        {
+            _syncMotionID.OnValueChanged += OnMotionIdChange;
+        }
+
+        if (!IsOwner)
+        {
+            // 不是自己，则监听属性变化
+            if (_entity.hasAttribute)
+            {
+                for (int i = 0; i < WAttrType.Count; i++)
+                {
+                    _entity.attribute.value.RegisterEvent(i, OnAttrChange);
+                }
+            }
+        }
+    }
+
+    private void OnAttrValueChange(int attrId, int newValue)
+    {
+        WLogger.Print("Set: " + attrId + ": " + newValue);
+        _entity.attribute.value.Set(attrId, newValue);
+    }
+
+    private void RefreshAttr(int id, int value)
+    {
+        switch (id)
+        {
+            case WAttrType.CurHP:
+                _attrHp.Value = value;
+                break;
+        }
+
+        if (IsServer)
+        {
+            _entity.attribute.value.Set(id, value);
+        }
+    }
+
+    private void OnAttrChange(WaEventContext context)
+    {
+        // 其他角色的属性变化
+        if (IsServer)
+        {
+            RefreshAttr(context.attrID, context.value);
+        }
+        else
+        {
+            OnAttrChangeServerRpc(context.attrID ,context.value);
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void OnAttrChangeServerRpc(int id, int value)
+    {
+        WLogger.Print("Change: " + OwnerClientId + " :" +value) ;
+        RefreshAttr(id, value);
+    }
+
+    private void OnMotionIdChange(int previousvalue, int newvalue)
+    {
+        if (_entity.hasLinkMotion)
+        {
+            _entity.linkMotion.Motion.motionService.service.SwitchMotion(newvalue);
+        }
     }
 
     private IFactoryService Factory
@@ -117,6 +207,17 @@ public class WNetAgent : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        if (IsServer)
+        {
+            _attrHp.Value = 0;
+        }
+        else
+        {
+            _attrHp.OnValueChanged += (value, newValue) =>
+            {
+                _entity.attribute.value.Set(WAttrType.CurHP, newValue);
+            };
+        }
         if(IsOwner)
         {
             WNetMgr.Inst.SetAgent(this);
@@ -135,6 +236,7 @@ public class WNetAgent : NetworkBehaviour
 
     public override void OnNetworkDespawn()
     {
+        Dispose();
         if (IsOwner)
         {
             NetworkManager.OnClientDisconnectCallback -= OnDisconnected;
@@ -143,9 +245,7 @@ public class WNetAgent : NetworkBehaviour
         {
             WNetMgr.Inst.RemoveOtherAgent(this);
         }
-        
-        _entity = null;
-        _factory = null;
+
     }
 
     public void GenCharacter(PlayerRoomInfo info)
@@ -167,6 +267,27 @@ public class WNetAgent : NetworkBehaviour
         {
             WLogger.Print("生成：" + info.id + "type" + info.charId + "isOwner" + (info.id==WNetMgr.Inst.LocalClientId));
             Factory.GenServerCharacter(info, out var gameEntity);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (_entity != null && _entity.isEnabled)
+        {
+            if (!IsOwner)
+            {
+                if (_entity.hasAttribute)
+                {
+                    for (int i = 0; i < WAttrType.Count; i++)
+                    {
+                        _entity.attribute.value.CancelEvent(i, OnAttrChange);
+                    }
+                }
+            }
+
+            _entity.RemoveNetAgent();
+            _entity = null;
+            _factory = null;
         }
     }
 }

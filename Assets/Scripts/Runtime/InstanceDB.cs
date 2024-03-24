@@ -52,20 +52,20 @@ public class InstanceDB<T> where T : new()
         list[instID] = empty;
     }
 
-    public void Clear(Action<T> action = null)
+    public void Foreach(Action<T> action)
     {
-        emptyStk.Clear();
-        if (action != null)
+        foreach (var item in list)
         {
-            for (var i = 0; i < list.Length; i++)
+            if (item != null)
             {
-                var item = list[i];
-                if (item != null)
-                {
-                    action.Invoke(item);
-                }
+                action.Invoke(item);
             }
         }
+    }
+
+    public void Clear()
+    {
+        emptyStk.Clear();
 
         list = new T[1];
         count = 0;

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
-using UnityEngine;
 using WGame.Runtime;
 
 public class WNetMgr : Singleton<WNetMgr>
@@ -62,6 +61,7 @@ public class WNetMgr : Singleton<WNetMgr>
     public bool IsClient => NetworkManager.Singleton.IsClient;
     public bool IsConnected => NetworkManager.Singleton.IsConnectedClient;
     public bool IsConnecting => NetworkManager.Singleton.IsClient && !IsConnected;
+    public bool IsSelfClient(WNetAgent agent) => agent.OwnerClientId == LocalClientId;
     
 	public void InitInstance()
 	{

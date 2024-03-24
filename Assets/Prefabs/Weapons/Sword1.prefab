@@ -131,9 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d07f3300333874caacdb193ed92623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lenUp: -0.06
-  lenDown: 0.73
-  checkNum: 7
+  lenUp: 0.23
+  lenDown: 0.71
+  checkNum: 8
   showLen: 1
 --- !u!135 &3635390463083301000
 SphereCollider:

@@ -29,7 +29,7 @@ public class GotHitAbilityServiceImplementation : IGotHitService
 
         if (entity.isDeadState)
             return;
-
+        
         var vm = entity.linkVM.VM.vMService.service;
         var attackerPos = hitInfo.entity.gameViewService.service.PlanarPosition;
         var myPos = entity.gameViewService.service.PlanarPosition;
@@ -38,7 +38,7 @@ public class GotHitAbilityServiceImplementation : IGotHitService
 
         var isFwd = Vector3.Dot(entity.gameViewService.service.Model.forward,
             hitInfo.pos - entity.position.value) > 0;
-        
+
         vm.Set("THRUST_FWD", thrustFwd);
         vm.Set("E_ATTACKER", hitInfo.entity.entityID.id);
         vm.Set("HIT_DIR", new Vector3(hitDir.x, 0, hitDir.y), false);

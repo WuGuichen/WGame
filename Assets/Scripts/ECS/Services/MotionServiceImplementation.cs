@@ -87,6 +87,14 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
 
     public void SwitchMotion(int newID)
     {
+        if (character.hasNetAgent)
+        {
+            var agent = character.netAgent.Agent;
+            if (agent.IsOwner)
+            {
+                agent.SwitchMotion(newID);
+            }
+        }
         if(entity.hasDoMove)
             entity.RemoveDoMove();
         if (entity.hasMotionStart)
@@ -294,11 +302,6 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
             MotionHelper.Inst.InterpretByteCodeNode(node, character);
         }
     }
-
-    public void AddTriggerEvent(int type, int param1, int param1Param, int param2)
-    {
-        // triggerEventList.Add(new WtEventData(type, param1, param1Param, param2));
-    }
     
     public void OnMotionExit()
     {
@@ -317,7 +320,7 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
 
     public void Destroy()
     {
-        this.gameObject.Unlink();
+        gameObject.Unlink();
         this.character = null;
     }
 }

@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using WGame.UI.Main;using FairyGUI;
 using UnityEngine;
 using WGame.Attribute;
-using WGame.Runtime;
 
 namespace WGame.UI
 {
@@ -169,7 +167,7 @@ namespace WGame.UI
 
 		private void RefreshCharacterInfo()
 		{
-			var entity = Contexts.sharedInstance.game.GetEntityWithEntityID(CharacterModel.Inst.beforeControlledCharacterID);
+			var entity = EntityUtils.GetGameEntity(CharacterModel.Inst.beforeControlledCharacterID);
 			if (entity != null && entity.hasAttribute)
 			{
 				var attribute = entity.attribute.value;
@@ -178,7 +176,7 @@ namespace WGame.UI
 				attribute.CancelEvent(WAttrType.MaxMP, OnMPChanged);
 				attribute.CancelEvent(WAttrType.CurMP, OnMPChanged);
 			}
-			entity = Contexts.sharedInstance.game.GetEntityWithEntityID(CharacterModel.Inst.currentControlledCharacterID);
+			entity = EntityUtils.GetGameEntity(CharacterModel.Inst.currentControlledCharacterID);
 			if (entity != null && entity.hasAttribute)
 			{
 				var attribute = entity.attribute.value;
@@ -186,38 +184,32 @@ namespace WGame.UI
 				attribute.RegisterEvent(WAttrType.MaxHP, OnHPChanged);
 				attribute.RegisterEvent(WAttrType.MaxMP, OnMPChanged);
 				attribute.RegisterEvent(WAttrType.CurMP, OnMPChanged);
+
+				ui.hpBar.visible = true;
+				ui.mpBar.visible = true;
+				ui.hpBar.max = entity.attribute.value.Get(WAttrType.MaxHP);
+				ui.hpBar.value = entity.attribute.value.Get(WAttrType.CurHP);
+				ui.mpBar.max = entity.attribute.value.Get(WAttrType.MaxMP);
+				ui.mpBar.value = entity.attribute.value.Get(WAttrType.CurMP);
 			}
-			ui.hpBar.max = entity.attribute.value.Get(WAttrType.MaxHP);
-			ui.hpBar.value = entity.attribute.value.Get(WAttrType.CurHP);
-			ui.mpBar.max = entity.attribute.value.Get(WAttrType.MaxMP);
-			ui.mpBar.value = entity.attribute.value.Get(WAttrType.CurMP);
+			else
+			{
+				ui.hpBar.visible = false;
+				ui.mpBar.visible = false;
+			}
 		}
 
 		private void RefreshInteractTag()
 		{
-			// if (model.IsUseJoystick)
-			// {
-			// 	if (model.IsShowTag)
-			// 	{
-			// 			
-			// 	}
-			// 	else
-			// 	{
-			// 		
-			// 	}
-			// }
-			// else
-			// {
-				if (model.IsShowTag)
-				{
-					ui.interactTag.visible = true;
-				}
-				else
-				{
-					ui.interactTag.visible = false;
-					ui.interactTag.position = GRoot.inst.GlobalToLocal(new Vector2(0, 999999));
-				}
-			// }
+			if (model.IsShowTag)
+			{
+				ui.interactTag.visible = true;
+			}
+			else
+			{
+				ui.interactTag.visible = false;
+				ui.interactTag.position = GRoot.inst.GlobalToLocal(new Vector2(0, 999999));
+			}
 		}
 	}
 }

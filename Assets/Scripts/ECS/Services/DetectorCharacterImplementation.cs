@@ -145,7 +145,7 @@ public class DetectorCharacterImplementation : IDetectorService
 
     public void UpdateSensorDrawer()
     {
-        if (_character.isDeadState || _character.isCamera)
+        if (_character.isDeadState || _character.isCamera || EntityUtils.IsNetCamera(_character))
         {
             detectorDrawer.EndDraw(DetectorDrawer.Detect);
             detectorDrawer.EndDraw(DetectorDrawer.Spotted);
@@ -240,6 +240,10 @@ public class DetectorCharacterImplementation : IDetectorService
 
     private bool CheckTargetIsAlive(GameEntity target, bool clearHate = true)
     {
+        if (target == null)
+        {
+            return false;
+        }
         if (target.isDeadState)
         {
             if(clearHate)

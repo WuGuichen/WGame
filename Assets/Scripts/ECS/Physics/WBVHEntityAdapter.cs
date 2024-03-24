@@ -95,11 +95,12 @@ public class WBVHEntityAdapter : WBVHNodeAdapter<IGameViewService>
         for (int i = BVH.maxDepth-1; i >= 0; i--)
         {
             var data = bucket[i];
-            if(data != null)
-            {for (int j = 0; j < data.Count; j++)
+            if (data != null)
             {
-                data[j].TryRotate(BVH);
-            }
+                for (int j = 0; j < data.Count; j++)
+                {
+                    data[j].TryRotate(BVH);
+                }
             }
         }
     }

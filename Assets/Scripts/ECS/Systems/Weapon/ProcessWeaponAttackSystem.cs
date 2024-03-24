@@ -13,7 +13,19 @@ public class ProcessWeaponAttackSystem : IExecuteSystem
     {
         foreach (var entity in _weaponGroup)
         {
-            entity.weaponWeaponView.service.OnUpdateAttackSensor();
+            var character = entity.linkCharacter.Character;
+            if (character.hasNetAgent)
+            {
+                if (WNetMgr.Inst.IsSelfClient(character.netAgent.Agent))
+                {
+                    // 只有本地玩家可以检测自己的攻击是否击中本地位置的敌人
+                    entity.weaponWeaponView.service.OnUpdateAttackSensor();
+                }
+            }
+            else
+            {
+                entity.weaponWeaponView.service.OnUpdateAttackSensor();
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ public partial class ActionHelper
     private static readonly int enemySensorLayer = LayerMask.NameToLayer("EnemyHitSensor");
     private static readonly int playerSensorLayer = LayerMask.NameToLayer("PlayerHitSensor");
 
-    private static int currentCameraEntityID = 0;
+    private static int currentCameraEntityID = -1;
     public static int CurCameraEntityID => currentCameraEntityID;
     
     /// <param name="entity">受击者</param>
@@ -40,30 +40,32 @@ public partial class ActionHelper
     {
         if (currentCameraEntityID == uid)
             return;
-        if (currentCameraEntityID > 100)
+        var entity = EntityUtils.GetGameEntity(currentCameraEntityID);
+        if (entity != null && entity.isEnabled)
         {
-            var entity = Contexts.sharedInstance.game.GetEntityWithEntityID(currentCameraEntityID);
-            if (entity != null && entity.isEnabled)
+            entity.isCamera = false;
+            if (entity.hasUIHeadPad)
+                entity.uIHeadPad.service.IsActive = true;
+            if (entity.hasFocusEntity)
             {
-                entity.isCamera = false;
-                if (entity.hasUIHeadPad)
-                    entity.uIHeadPad.service.IsActive = true;
-                if (entity.hasFocusEntity)
-                {
-                    entity.gameViewService.service.BeFocused(false);
-                }
+                entity.gameViewService.service.BeFocused(false);
             }
         }
-        var entt = Contexts.sharedInstance.game.GetEntityWithEntityID(uid);
+
+        var entt = EntityUtils.GetGameEntity(uid);
         if (entt != null && entt.isEnabled)
         {
             entt.isCamera = true;
-            currentCameraEntityID = uid;
-            CharacterModel.Inst.currentControlledCharacterID = uid;
-            EventCenter.Trigger(EventDefine.OnControlCharacterChanged, uid);
-            if(entt.hasUIHeadPad)
+            if (entt.hasUIHeadPad)
                 entt.uIHeadPad.service.IsActive = false;
         }
+        else
+        {
+            currentCameraEntityID = uid;
+        }
+        currentCameraEntityID = uid;
+        CharacterModel.Inst.currentControlledCharacterID = uid;
+        EventCenter.Trigger(EventDefine.OnControlCharacterChanged, uid);
     }
 
     public static void DoExitGame()
@@ -81,5 +83,10 @@ public partial class ActionHelper
         motion.ReplaceDoMove(tarPos);
         motion.ReplaceDoMoveSpeed(speed);
         motion.ReplaceDoMoveType(type);
+    }
+
+    public static void Dispose()
+    {
+        currentCameraEntityID = -1;
     }
 }

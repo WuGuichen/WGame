@@ -101,7 +101,7 @@ namespace Weapon
             hittedList.Clear();
             lastUpDir = transform.up;
             lastOriginPosition = transform.position + lastUpDir * lenUp;
-            checkOffset = (lenUp - lenDown) / (checkNum-1);
+            checkOffset = (-lenUp - lenDown) / (checkNum-1);
             _entity.isOpenSensor = true;
             _trail.enabled = true;
         }
@@ -145,31 +145,27 @@ namespace Weapon
 
                 lastOriginPosition = transform.position + transform.right * 0.4f;
                 lastUpDir = transform.up;
-                checkOffset = (lenUp - lenDown) / (checkNum - 1);
-                for (int i = 0; i < checkNum - 1; i++)
+                checkOffset = -(lenUp + lenDown) / (checkNum-1);
+                for (int i = 0; i < checkNum; i++)
                 {
-                    Gizmos.DrawLine(lastOriginPosition + i * checkOffset * lastUpDir,
+                    Gizmos.DrawLine(lastOriginPosition + (i-1) * checkOffset * lastUpDir,
                         transform.position + lastUpDir * lenUp + i * checkOffset * transform.up);
                 }
             }
 
         }
 
-        // todo 用WCollider优化
         // 先用instanceID处理
         public void OnUpdateAttackSensor()
         {
-            for (int i = 0; i < checkNum - 1; i++)
+            for (int i = 0; i < checkNum; i++)
             {
                 var start = lastOriginPosition + i * checkOffset * lastUpDir;
                 var end = transform.position + lastUpDir * lenUp + i * checkOffset * transform.up;
                 var dir = end - start;
-                for (var i1 = 0; i1 < _rayHits.Length; i1++)
-                {
-                    _rayHits[i1] = default;
-                }
-                Physics.RaycastNonAlloc(new Ray(start, dir), _rayHits, dir.magnitude, hitLayer);
-                for (int j = 0; j < _rayHits.Length; j++)
+                var num = Physics.RaycastNonAlloc(new Ray(start, dir), _rayHits, dir.magnitude, hitLayer);
+                // Oddworm.Framework.DbgDraw.Ray(start, dir, Color.black, 2f);
+                for (int j = 0; j < num; j++)
                 {
                     var tar = _rayHits[j];
                     if (tar.collider != null)

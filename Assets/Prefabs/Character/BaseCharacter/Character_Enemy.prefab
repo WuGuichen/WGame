@@ -924,10 +924,10 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 6.5}
   - {x: -4.85, y: 0, z: -1.99}
   - {x: -5.83, y: 0, z: 2.22}
-  maxHP: 180
-  curHP: 180
-  maxMP: 90
-  curMP: 90
+  maxHP: 1800
+  curHP: 1800
+  maxMP: 1500
+  curMP: 1500
   ATK: 8
   DEF: 12
   PatrolMul: 40

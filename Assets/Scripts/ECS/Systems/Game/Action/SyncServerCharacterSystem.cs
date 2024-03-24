@@ -28,6 +28,5 @@ public class SyncServerCharacterSystem : IExecuteSystem
                 entity.linkMotion.Motion.motionService.service.AnimProcessor.UpdateMoveSpeed(agent.AnimUp, agent.AnimRight);
             }
         }
-        // Physics.SyncTransforms();
     }
 }

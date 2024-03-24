@@ -60,12 +60,14 @@ public class FactoryServiceImplementation : IFactoryService
         var pos = Random.insideUnitSphere * 6 + camPos;
         pos.y = 0.5f;
         var info = WNetMgr.Inst.MyPlayerInfo;
+        WLogger.Print(info.charId);
         if (info.charId > 0)
         {
             GenCharacter(info.charId, pos, Quaternion.identity, out var entity, gameEntity =>
             {
-                gameEntity.isCamera = true;
                 gameEntity.AddNetAgent(WNetMgr.Inst.Agent);
+                gameEntity.netAgent.Agent.SetGameEntity(ref gameEntity);
+                ActionHelper.DoSetCharacterCameraByID(gameEntity.instanceID.ID);
             });
             WNetMgr.Inst.Agent.GenCharacter(info);
         }
@@ -73,7 +75,7 @@ public class FactoryServiceImplementation : IFactoryService
 
     private void OnBackToMainView()
     {
-        _gameEntityDB.Clear(entity =>
+        _gameEntityDB.Foreach(entity =>
         {
             entity.isDestroyed = true;
         });
@@ -225,7 +227,17 @@ public class FactoryServiceImplementation : IFactoryService
 
     public void RemoveCharacter(int instanceID)
     {
+        var entity = GetGameEntity(instanceID);
         _gameEntityDB.Cancel(instanceID);
+        if (entity.hasCharacterInfo)
+        {
+            var info = entity.characterInfo.value;
+            if (info.camp == Camp.Red)
+            {
+                EntityUtils.BvhRed.Remove(entity.gameViewService.service);
+                WLogger.Print("Remove");
+            }
+        }
     }
     
     public void GenServerCharacter(PlayerRoomInfo info, out GameEntity entity)
@@ -268,7 +280,6 @@ public class FactoryServiceImplementation : IFactoryService
         entity.AddCharacterInfo(WCharacterInfo.GetCharacterInfo(infoID));
         entity.AddPosition(pos);
         var gameEntity = entity;
-        WLogger.Print(pos);
         ObjectPool.Inst.GetObject(data.ObjectId, pos, rot, GameSceneMgr.Inst.genCharacterRoot, obj =>
         {
             obj.name = id.ToString();
@@ -442,6 +453,7 @@ public class FactoryServiceImplementation : IFactoryService
         var evadeMono = evadeObj.AddComponent<SensorMono>();
         var capsule = evadeObj.AddComponent<CapsuleCollider>();
         var rigid = evadeObj.AddComponent<Rigidbody>();
+        capsule.enabled = false;
         rigid.isKinematic = true;
         rigid.useGravity = false;
         evadeMono.SetData(entity, EntityPartType.Evasion, capsule)
@@ -568,7 +580,9 @@ public class FactoryServiceImplementation : IFactoryService
         {
             int num = Random.Range(0, genCharacterNum+1);
             var entity = _gameContext.GetEntityWithEntityID(num + characterBaseID);
-            if ( entity != null && entity.isEnabled && entity.isDeadState == false && entity.entityID.id != ActionHelper.CurCameraEntityID)
+            if ( entity != null && entity.isEnabled && entity.isDeadState == false 
+                 && entity.entityID.id != ActionHelper.CurCameraEntityID
+                 && !EntityUtils.IsNetCamera(entity))
             {
                 return entity;
             }
@@ -580,6 +594,8 @@ public class FactoryServiceImplementation : IFactoryService
 
     public GameEntity GetGameEntity(int instId)
     {
+        if (instId < 0)
+            return null;
         return _gameEntityDB[instId];
     }
 }

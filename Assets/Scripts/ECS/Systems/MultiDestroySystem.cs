@@ -4,9 +4,11 @@ using Entitas;
 // inherit from MultiReactiveSystem using the IDestroyed interface defined above
 public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contexts>
 {
+    private readonly IFactoryService _factory;
     // base class takes in all contexts, not just one as in normal ReactiveSystems
     public MultiDestroySystem(Contexts contexts) : base(contexts)
     {
+        _factory = contexts.meta.factoryService.instance;
     }
 
     // return an ICollector[] with a collector from each context
@@ -32,6 +34,16 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
             // Debug.Log("Destroyed Entity from " + e.contextInfo.name + " context");
             if (e is GameEntity entity)
             {
+                if (entity.hasInstanceID)
+                {
+                    _factory.RemoveCharacter(entity.instanceID.ID);
+                }
+
+                if (entity.isCamera)
+                {
+                    ActionHelper.DoSetCharacterCameraByID(-1);
+                }
+                
                 if (entity.hasLinkAbility)
                 {
                     entity.linkAbility.Ability.Destroy();
@@ -64,6 +76,11 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
                     entity.linkVM.VM.Destroy();
                 }
 
+                if (entity.hasNetAgent)
+                {
+                    entity.netAgent.Agent.Dispose();
+                }
+
                 if (entity.hasGameViewService)
                 {
                     entity.gameViewService.service.Destroy();
@@ -80,7 +97,9 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
                 }
 
                 if (entity.hasUIHeadPad)
+                {
                     entity.uIHeadPad.service.Destroy(entity);
+                }
             }
             else if (e is WeaponEntity weaponEntity)
             {

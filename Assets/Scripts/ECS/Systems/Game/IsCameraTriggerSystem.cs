@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Entitas;
+using WGame.Runtime;
 
 public class IsCameraTriggerSystem : ReactiveSystem<GameEntity>
 {
