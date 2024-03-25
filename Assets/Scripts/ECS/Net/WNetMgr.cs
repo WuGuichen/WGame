@@ -5,6 +5,8 @@ using WGame.Runtime;
 
 public class WNetMgr : Singleton<WNetMgr>
 {
+    public const float DeltaTickTime = 1/30;
+    
 	public const int NetPort = 7777;
 	private Dictionary<int, GameEntity> _netEntities = new();
 	private IFactoryService _factory;

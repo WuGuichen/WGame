@@ -101,6 +101,10 @@ public class HatePointInfo
                 }
             }
         }
+        // if (_entity.isCampRed)
+        // {
+        //     WLogger.Print("Refresh" + newMaxHateInfo.Rank + ":" + newMaxHateInfo.Value);
+        // }
     }
 
     private void LimitLowValue(ref int rank, ref float value, int changeType)
@@ -168,6 +172,10 @@ public class HatePointInfo
             value = info.Value + value;
             rank = info.Rank;
         }
+        // if (_entity.isCampRed)
+        // {
+        //     WLogger.Print("Change" + rank + ":" + value);
+        // }
 
         if (value < 0)
         {
@@ -246,6 +254,15 @@ public class HatePointInfo
         RefreshNewMaxHate(id, rank, value);
     }
 
+    public void ClearHateInfo()
+    {
+        WLogger.Print("清空仇恨" + (_entity.isCampRed ? "红" : "白"));
+        _hatePointDict.Clear();
+        maxHateInfo = HateInfo.NULL;
+        newMaxHateInfo = HateInfo.NULL;
+        OnHateRankUpdate.Invoke();
+        OnHatePointUpdate.Invoke();
+    }
     public void Remove(int id)
     {
         if (_hatePointDict.TryGetValue(id, out var info))

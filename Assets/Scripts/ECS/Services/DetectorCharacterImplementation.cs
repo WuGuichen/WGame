@@ -130,6 +130,10 @@ public class DetectorCharacterImplementation : IDetectorService
         vm.Set("E_MAX_HATE_POINT", nullInfo.Value);
         hateInfo.RegisterOnHateRankChanged(() =>
         {
+            if (_character.isCampRed)
+            {
+                WLogger.Print(info.MaxHateEntityRank + "value :" + info.MaxHateEntityPoint);
+            }
             vm.Set("E_MAX_HATE_RANK", info.MaxHateEntityRank);
             vm.Set("E_MAX_HATE_ENTITY", info.MaxHateEntityId);
         }, () => { vm.Set("E_MAX_HATE_POINT", info.MaxHateEntityPoint); });
@@ -217,6 +221,10 @@ public class DetectorCharacterImplementation : IDetectorService
         RefreshMaxHateTarget(deltaTime);
         if (detectList.Count > 0)
         {
+            if (_character.isCampRed)
+            {
+                WLogger.Print(detectList.Count);
+            }
             for (int i = 0; i < detectList.Count; i++)
             {
                 var point = detectList[i];
@@ -256,7 +264,10 @@ public class DetectorCharacterImplementation : IDetectorService
 
     public void AddDetectTarget(HitInfo hitInfo)
     {
-        detectList.Add(hitInfo);
+        if (!_character.isCamera)
+        {
+            detectList.Add(hitInfo);
+        }
     }
 
     private void AddDistanceHatePoint(int id, float sqrDist, float angle, float deltaTime)
@@ -286,6 +297,16 @@ public class DetectorCharacterImplementation : IDetectorService
     {
         // 此处rank代表type
         _hateInfoChangeBuffer.Enqueue(new HatePointInfo.HateInfo(entityId, type, value));
+    }
+
+    public void ClearHateInfoBuffer()
+    {
+        _hateInfoChangeBuffer.Clear();
+        _hateInfoSetBuffer.Clear();
+        detectList.Clear();
+        // hateInfo.BeginChangeHate();
+        hateInfo.ClearHateInfo();
+        // hateInfo.EndChangeHate();
     }
     public void SetHateInfoBuffer(int entityId, float value, int type)
     {

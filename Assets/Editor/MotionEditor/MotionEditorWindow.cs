@@ -125,8 +125,12 @@ namespace Motion
                 {
                     player = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Character/BaseCharacter/BaseCharacter.prefab");
                     player = Instantiate(player);
-                    var cam = Camera.main.transform;
-                    var pos = cam.position + cam.forward * 3;
+                    var pos = Vector3.zero;
+                    if (Camera.main != null)
+                    {
+                        var cam = Camera.main.transform;
+                        pos = cam.position + cam.forward * 3;
+                    }
                     player.transform.position = new Vector3(pos.x, -1.5f, pos.z);
                     player.transform.rotation = UnityEngine.Quaternion.Euler(new Vector3(0, 90, 0));
                     playerModel = player.transform.GetChild(1).gameObject;

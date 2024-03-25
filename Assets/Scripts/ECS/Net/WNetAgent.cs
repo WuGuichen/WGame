@@ -19,6 +19,8 @@ public class WNetAgent : NetworkBehaviour
     private GameEntity _entity;
 
     private const float threshold = 0.1f;
+    
+    public bool IsServerAgent => OwnerClientId == 0;
 
     public Vector3 SyncPos => _syncPos.Value;
     public Quaternion SyncRot => _syncRot.Value;
@@ -53,10 +55,15 @@ public class WNetAgent : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void SwitchMotionServerRpc(int newID)
     {
+        WLogger.Print("ServerChangeMotionID:" + newID);
         _syncMotionID.Value = newID;
+        if (IsServer)
+        {
+            OnMotionIdChange(0, newID);
+        }
     }
     
     public void SetAnimParam(float right, float up)
@@ -107,7 +114,6 @@ public class WNetAgent : NetworkBehaviour
         }
         else
         {
-            _syncMotionID.OnValueChanged += OnMotionIdChange;
         }
 
         if (!IsOwner)
@@ -166,9 +172,14 @@ public class WNetAgent : NetworkBehaviour
 
     private void OnMotionIdChange(int previousvalue, int newvalue)
     {
+        // 不是自己才接受广播，因为自己的变化用客户端实时变化
+        // if (IsOwner)
+        // {
+        // }
+        // WLogger.Print("执行：" + newvalue);
         if (_entity.hasLinkMotion)
         {
-            _entity.linkMotion.Motion.motionService.service.SwitchMotion(newvalue);
+            _entity.linkMotion.Motion.motionService.service.SwitchMotion(newvalue, false);
         }
     }
 
@@ -213,6 +224,9 @@ public class WNetAgent : NetworkBehaviour
         }
         else
         {
+            _syncMotionID.OnValueChanged += OnMotionIdChange;
+            _syncPos.OnValueChanged += OnPositionChanged;
+            
             _attrHp.OnValueChanged += (value, newValue) =>
             {
                 _entity.attribute.value.Set(WAttrType.CurHP, newValue);
@@ -227,6 +241,11 @@ public class WNetAgent : NetworkBehaviour
         {
             WNetMgr.Inst.AddOtherAgent(this);
         }
+    }
+
+    private void OnPositionChanged(Vector3 previousvalue, Vector3 newvalue)
+    {
+        
     }
 
     private void OnDisconnected(ulong obj)

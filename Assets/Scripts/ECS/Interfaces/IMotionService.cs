@@ -2,7 +2,7 @@ public interface IMotionService
 {
     void StartMotion(int motionID);
     void UpdateMotion();
-    void SwitchMotion(int UID);
+    void SwitchMotion(int UID, bool isNet=true);
     void SetLocalMotion(int animGroup);
     void ResetMotion();
     GameEntity LinkEntity { get; }

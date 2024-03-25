@@ -7,5 +7,6 @@ public interface IDetectorService : IBaseService
     SensorEntity Sensor { get; }
     HatePointInfo HatePointInfo { get; }
     void ChangeHateInfoBuffer(int entityId, float value, int type);
+    void ClearHateInfoBuffer();
     void SetHateInfoBuffer(int entityId, float value, int type);
 }

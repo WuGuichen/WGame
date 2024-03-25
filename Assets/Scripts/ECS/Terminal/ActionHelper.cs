@@ -43,13 +43,25 @@ public partial class ActionHelper
         var entity = EntityUtils.GetGameEntity(currentCameraEntityID);
         if (entity != null && entity.isEnabled)
         {
-            entity.isCamera = false;
             if (entity.hasUIHeadPad)
                 entity.uIHeadPad.service.IsActive = true;
             if (entity.hasFocusEntity)
             {
                 entity.gameViewService.service.BeFocused(false);
             }
+
+            if (entity.hasLinkSensor)
+            {
+                var sensorService = entity.linkSensor.Sensor.detectorCharacterService.service;
+                sensorService.ClearHateInfoBuffer();
+                // sensorService.UpdateDetect(0);
+            }
+
+            if (entity.hasAiAgent)
+            {
+                entity.aiAgent.service.UpdateFSM();
+            }
+            entity.isCamera = false;
         }
 
         var entt = EntityUtils.GetGameEntity(uid);

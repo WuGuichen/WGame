@@ -71,7 +71,7 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
     {
         if (ElapsedTime > 9f && character.isOnGroundState)
         {
-            SwitchMotion(entity.motionSpare.UID);
+            // SwitchMotion(entity.motionSpare.UID);
         }
 
         if (character.isMoving || (character.hasAiAgent && character.aiAgent.service.IsActing))
@@ -85,16 +85,47 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
         SwitchMotion(entity.motionLocalMotion.UID);
     }
 
-    public void SwitchMotion(int newID)
+    public void SwitchMotion(int newID, bool isNet = true)
     {
-        if (character.hasNetAgent)
+        if (isNet)
         {
-            var agent = character.netAgent.Agent;
-            if (agent.IsOwner)
+            if (character.hasNetAgent)
             {
+                var agent = character.netAgent.Agent;
                 agent.SwitchMotion(newID);
+                if (!WNetMgr.Inst.IsServer)
+                {
+                    if (agent.IsServerAgent)
+                    {
+                        WLogger.Print("客户端改变服务端");
+                        return;
+                    }
+                    else if (agent.IsOwner)
+                    {
+                    }
+                }
             }
         }
+        else
+        {
+            if (character.hasNetAgent)
+            {
+                var agent = character.netAgent.Agent;
+                if (entity.motionStart.UID == newID)
+                {
+                    // 预测执行服务端数据成功
+                    if (!WNetMgr.Inst.IsServer)
+                    {
+                        if (agent.IsOwner)
+                        {
+                            // 取消服务端动作
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
         if(entity.hasDoMove)
             entity.RemoveDoMove();
         if (entity.hasMotionStart)

@@ -5,30 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4619b81-a009-41e5-87cd-268c260b8858" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Prefabs/Character/BaseCharacter/BaseCharacter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prefabs/Character/BaseCharacter/BaseCharacter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Prefabs/Character/BaseCharacter/Character_Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prefabs/Character/BaseCharacter/Character_Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Res/BaseDataJson/tbcharacterinfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Res/BaseDataJson/tbcharacterinfo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Module/ModelView/FGUI/Main/GameMainView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Module/ModelView/FGUI/Main/GameMainView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Mono/TestSceneSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/BuildinFileManifest.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/BuildinFileManifest.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Net/WNetAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Net/WNetAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Net/WNetMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Net/WNetMgr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/DetectorCharacterImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/DetectorCharacterImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/GameViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/GameViewServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/GotHitAbilityServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/GotHitAbilityServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/MotionServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/MotionServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/WeaponViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/WeaponViewServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Game/Action/SyncServerCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Game/Action/SyncServerCharacterSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Game/IsCameraTriggerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Game/IsCameraTriggerSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Sensor/DrawDetectCharacterSystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Sensor/DrawSensorCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Sensor/DrawSensorCharacterSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Weapon/ProcessWeaponAttackSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Weapon/ProcessWeaponAttackSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Terminal/ActionHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Terminal/ActionHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Motion/InitGotHitDict.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/InitGotHitDict.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Luban/Config/Datas/characterInfoData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Luban/Config/Datas/characterInfoData.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +58,7 @@
       <workItem from="1708531732170" duration="1043000" />
       <workItem from="1711209262342" duration="539000" />
       <workItem from="1711211237537" duration="1587000" />
+      <workItem from="1711278511958" duration="665000" />
     </task>
     <servers />
   </component>

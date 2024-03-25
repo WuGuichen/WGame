@@ -70,20 +70,32 @@ public class FocusEntitySystem : ReactiveSystem<GameEntity>
 
     private void Detect(GameEntity entity)
     {
-        var length = hitResults.Length;
-        for (var i = 0; i < length; i++)
-        {
-            hitResults[i] = null;
-        }
-        
         var fwd = entity.gameViewService.service.Model.forward;
         var area = entity.actionFocus.area;
-        var center = entity.position.value + fwd * area * 0.9f;
-        // WDrawer.Inst.RegisterCircle(center+Vector3.up*0.2f,entity.gameViewService.service.Model.up, area);
-        SphereF sphere = new SphereF(center.ToFloat3(), area);
+        var enttPos = entity.position.value;
+        var center = enttPos + fwd * area * 0.9f;
         if (entity.isCampWhite)
         {
+            SphereF sphere = new SphereF(center.ToFloat3(), area);
             EntityUtils.BvhRed.TestHitSphereNonAlloc(sphere, ref hitTargets);
+        }
+        else if (entity.isCampRed)
+        {
+            hitTargets.Clear();
+            var num = Physics.OverlapSphereNonAlloc(center, area, hitResults, 1 << EntityUtils.GetTargetSensorLayer(entity));
+            WLogger.Print(num);
+            for (int i = 0; i < num; i++)
+            {
+                var col = hitResults[i];
+                if (EntityUtils.TryGetEntitySensorMono(col.GetInstanceID(), out var target))
+                {
+                    if (target.PartType == EntityPartType.Body)
+                    {
+                        var tarPos = target.Entity.position.value;
+                        hitTargets.Add(new HitInfo(target.EntityId, (enttPos - tarPos).sqrMagnitude, tarPos));
+                    }
+                }
+            }
         }
     }
 
