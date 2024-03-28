@@ -37,7 +37,7 @@ C:/2023UnityFile/ARPG_2023/Luban/Config/Datas/weapons.xlsx,D3B3558D7A9B4CE9CC54F
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/anim_tbclip.json,34434E5ED8651872CBC50B5F7AEBD4B,850,1708954583162
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/item_tbitem.json,107DDC4A7C90B68EC4CB824B675F187E,4795,1708954583163
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharacter.json,FBDFFAC7F456E988C4BCF35A9AFFD28B,251,1708954583163
-E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharacterinfo.json,69B1521BEF1932815FF619033982EBA,963,1711205182421
+E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharacterinfo.json,69B1521BEF1932815FF619033982EBA,963,1711598933884
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharai.json,3B0C3303BE51B8F1166848938B62444,115,1708954583164
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbcharanim.json,758D62223AE3977326CA17ADAAEA4,565,1709364428027
 E:/UnityProjects/WGame/Client/Assets/Res/BaseDataJson/tbobjectdata.json,64C0AB18C59F339857845741AE6CA72,631,1709119129151
@@ -71,7 +71,7 @@ E:/UnityProjects/WGame/Client/Luban/Config/Datas/__beans__.xlsx,33E7FDED5833E868
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/__enums__.xlsx,F6AE2B50315B3D554EF5A2B584B28,11059,1702648278203
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/__tables__.xlsx,43456C71ABCE2F118AB3E971895FD,10339,1706430577611
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/animationClips.xlsx,1D99E42FB9364F5381E622F4BCD8DB,10871,1706428368559
-E:/UnityProjects/WGame/Client/Luban/Config/Datas/characterInfoData.xlsx,987E3A37A6FDE9285E28B0294ED8ED1,11252,1711205171297
+E:/UnityProjects/WGame/Client/Luban/Config/Datas/characterInfoData.xlsx,782C8218CABE90497057D74E62AD4786,11253,1711598927562
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/characters.xlsx,70C9671973B77D91149AD7EEB3C0E6BE,10648,1708952492258
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/charactersAI.xlsx,2CE7706AFF498CBDF99987B073993EE8,10507,1703682165409
 E:/UnityProjects/WGame/Client/Luban/Config/Datas/charactersAnimation.xlsx,14E1C54D54101A8E84542CEA7C42497,10740,1709364419762

@@ -1,6 +1,5 @@
 // 数据缓存，数据逻辑操作
 
-using System.Collections.Generic;
 using UnityEngine;
 using WGame.Trigger;
 using WtEventType = WGame.Trigger.WtEventType;
@@ -17,6 +16,19 @@ namespace WGame.UI
 		private bool isFocus;
 		public bool isGameStart = false;
 
+		public bool HasWeakPoint { get; set; } = false;
+		
+		private Vector3 weakPosition;
+
+		public Vector3 WeakPosition
+		{
+			get => weakPosition;
+			set
+			{
+				weakPosition = value;
+				EventCenter.Trigger(EventDefine.OnWeakPointUpdate);
+			}
+		}
 		public bool IsFocus
 		{
 			get => isFocus;
@@ -386,7 +398,7 @@ namespace WGame.UI
 				}
 				else
 				{
-					SetMainViewBtnState(MainDefine.Btn_StartOffline, false);
+					SetMainViewBtnState(MainDefine.Btn_StartOffline, "返回主菜单");
 				}
 				EventCenter.Trigger(EventDefine.OnGameStart);
 			}
@@ -507,6 +519,7 @@ namespace WGame.UI
 					}
 					else
 					{
+						EntityUtils.GenCharacter(1, true);
 						StartGame();
 					}
 					break;

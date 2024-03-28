@@ -25,6 +25,7 @@ namespace WGame.UI
 			model = MainModel.Inst;
 			ui.interactTag.visible = false;
 			ui.topList.visible = false;
+			ui.weakPoint.visible = false;
 			ui.messageBox.text = WTerminal.LastMessage;
 			ui.messageBtn.onClick.Add(() =>
 			{
@@ -39,6 +40,7 @@ namespace WGame.UI
 			AddEvent(EventDefine.OnFPSUpdate, RefreshFPS);
 			AddEvent(EventDefine.OnControlCharacterChanged, RefreshCharacterInfo);
 			AddEvent(EventDefine.OnFocusPointUpdate, RefreshFocusPoint);
+			AddEvent(EventDefine.OnWeakPointUpdate, OnWeakPointUpdate);
 			AddEvent(EventDefine.OnInteractTagRefresh, RefreshInteractTag);
 			AddEvent(EventDefine.OnGameStart, OnGameStart);
 			AddEvent(EventDefine.OnBackToMainView, OnBackToMainView);
@@ -98,6 +100,14 @@ namespace WGame.UI
 			var pos = model.FocusPosition;
 			pos = GRoot.inst.WorldToLocal(pos);
 			ui.focusPoint.position = pos;
+		}
+		
+		private void OnWeakPointUpdate()
+		{
+			ui.weakPoint.visible = model.HasWeakPoint;
+			var pos = model.WeakPosition;
+			pos = GRoot.inst.WorldToLocal(pos);
+			ui.weakPoint.position = pos;
 		}
 
 		private void RefreshFPS()

@@ -8,15 +8,17 @@
 //------------------------------------------------------------------------------
 public static class AbilityComponentsLookup {
 
-    public const int AbilityEvade = 0;
-    public const int AbilityGotHit = 1;
-    public const int AbilityNormalAttack = 2;
-    public const int AbilityService = 3;
-    public const int LinkCharacter = 4;
+    public const int AbilityBackStab = 0;
+    public const int AbilityEvade = 1;
+    public const int AbilityGotHit = 2;
+    public const int AbilityNormalAttack = 3;
+    public const int AbilityService = 4;
+    public const int LinkCharacter = 5;
 
-    public const int TotalComponents = 5;
+    public const int TotalComponents = 6;
 
     public static readonly string[] componentNames = {
+        "AbilityBackStab",
         "AbilityEvade",
         "AbilityGotHit",
         "AbilityNormalAttack",
@@ -25,6 +27,7 @@ public static class AbilityComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AbilityBackStabComponent),
         typeof(AbilityEvadeComponent),
         typeof(AbilityGotHitComponent),
         typeof(AbilityNormalAttackComponent),

@@ -17,6 +17,7 @@ namespace WGame.UI.Main
 		public GTextField messageBox;
 		public GGraph messageBtn;
 		public GTextField txtVersion;
+		public GGraph weakPoint;
 		public const string URL = "ui://x1rerq2ky2kd2";
 
 		public static FUI_GameMainView CreateInstance()
@@ -38,6 +39,7 @@ namespace WGame.UI.Main
 			messageBox = (GTextField)GetChildAt(7);
 			messageBtn = (GGraph)GetChildAt(8);
 			txtVersion = (GTextField)GetChildAt(9);
+			weakPoint = (GGraph)GetChildAt(10);
 		}
 	}
 }

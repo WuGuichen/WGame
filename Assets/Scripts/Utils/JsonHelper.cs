@@ -54,6 +54,15 @@ namespace WGame.Utils
             wr.WritePropertyName(propertyName);
             wr.Write(value);
         }
+        
+        public static void WriteProperty(ref JsonWriter wr, string propertyName, Vector2 value)
+        {
+            wr.WritePropertyName(propertyName);
+            wr.WriteObjectStart();
+            WriteProperty(ref wr, "x", value.x);
+            WriteProperty(ref wr, "y", value.y);
+            wr.WriteObjectEnd();
+        }
 
         public static void WriteProperty(ref JsonWriter wr, string propertyName, Vector3 value)
         {
@@ -76,6 +85,28 @@ namespace WGame.Utils
             wr.WriteObjectEnd();
         }
 
+        public static void WriteProperty(ref JsonWriter wr, string propertyName, Vector4 value)
+        {
+            wr.WritePropertyName(propertyName);
+            wr.WriteArrayStart();
+            wr.Write(value.x);
+            wr.Write(value.y);
+            wr.Write(value.z);
+            wr.Write(value.w);
+            wr.WriteArrayEnd();
+        }
+        
+        public static void WriteProperty(ref JsonWriter wr, string propertyName, Quaternion value)
+        {
+            wr.WritePropertyName(propertyName);
+            wr.WriteArrayStart();
+            wr.Write(value.x);
+            wr.Write(value.y);
+            wr.Write(value.z);
+            wr.Write(value.w);
+            wr.WriteArrayEnd();
+        }
+        
         public static void WriteProperty(ref JsonWriter wr, string propertyName, List<string> value)
         {
             wr.WritePropertyName(propertyName);
@@ -117,7 +148,7 @@ namespace WGame.Utils
         {
             return Convert.ToInt32(ReadString(jd));
         }
-
+        
         public static bool ReadBool(JsonData jd)
         {
             return Convert.ToBoolean(ReadString(jd));
@@ -168,6 +199,16 @@ namespace WGame.Utils
             }
 
             return lt;
+        }
+
+        public static Vector4 ReadVector4(JsonData jd)
+        {
+            return new Vector4(ReadFloat(jd[0]), ReadFloat(jd[1]), ReadFloat(jd[2]), ReadFloat(jd[3]));
+        }
+        
+        public static Quaternion ReadQuaternion(JsonData jd)
+        {
+            return new Quaternion(ReadFloat(jd[0]), ReadFloat(jd[1]), ReadFloat(jd[2]), ReadFloat(jd[3]));
         }
 
         public static LinkedList<string> ReadLinkListString(JsonData jd)

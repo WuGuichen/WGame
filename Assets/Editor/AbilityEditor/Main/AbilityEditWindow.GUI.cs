@@ -65,8 +65,8 @@ namespace WGame.Ability.Editor
                 itemTreeView.AddManipulator(new ContextMenuManipulator(itemTreeView));
 
                 CreateActorGroup(itemTreeView, Setting.groupAnimationName);
-                CreateActorGroup(itemTreeView, Setting.groupEffectName);
                 CreateActorGroup(itemTreeView, Setting.groupActionName);
+                CreateActorGroup(itemTreeView, Setting.groupEffectName);
                 CreateActorGroup(itemTreeView, Setting.groupNoticeName);
                 
                 DeserializeAll();

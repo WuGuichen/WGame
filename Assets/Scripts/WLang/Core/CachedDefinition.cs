@@ -43,14 +43,14 @@ public class CachedDefinition : ISharedDefinition
         listFloat[idxFloat] = value;
         int cachedId = idxFloat + FloatNum;
         idxFloat++;
-        return new Symbol(cachedId, BaseDefinition.TYPE_FLOAT, value.ToString());
+        return new Symbol(cachedId, BaseDefinition.TYPE_FLOAT, null);
     }
     
     public Symbol Define(float value, int cacheId)
     {
         var index = cacheId - FloatNum;
         listFloat[index] = value;
-        return new Symbol(cacheId, BaseDefinition.TYPE_FLOAT, value.ToString());
+        return new Symbol(cacheId, BaseDefinition.TYPE_FLOAT, null);
     }
 
     public Symbol Define(Method value)

@@ -130,10 +130,6 @@ public class DetectorCharacterImplementation : IDetectorService
         vm.Set("E_MAX_HATE_POINT", nullInfo.Value);
         hateInfo.RegisterOnHateRankChanged(() =>
         {
-            if (_character.isCampRed)
-            {
-                WLogger.Print(info.MaxHateEntityRank + "value :" + info.MaxHateEntityPoint);
-            }
             vm.Set("E_MAX_HATE_RANK", info.MaxHateEntityRank);
             vm.Set("E_MAX_HATE_ENTITY", info.MaxHateEntityId);
         }, () => { vm.Set("E_MAX_HATE_POINT", info.MaxHateEntityPoint); });
@@ -152,9 +148,9 @@ public class DetectorCharacterImplementation : IDetectorService
         if (_character.isDeadState || _character.isCamera || EntityUtils.IsNetCamera(_character))
         {
             detectorDrawer.EndDraw(DetectorDrawer.Detect);
-            detectorDrawer.EndDraw(DetectorDrawer.Spotted);
-            detectorDrawer.EndDraw(DetectorDrawer.Warning);
-            detectorDrawer.EndDraw(DetectorDrawer.Sensor);
+            // detectorDrawer.EndDraw(DetectorDrawer.Spotted);
+            // detectorDrawer.EndDraw(DetectorDrawer.Warning);
+            // detectorDrawer.EndDraw(DetectorDrawer.Sensor);
             return;
         }
         // if (hateInfo.MaxHateEntityRank >= 0)
@@ -179,9 +175,9 @@ public class DetectorCharacterImplementation : IDetectorService
                 tmp.sectorArcLengthInDegrees = 360;
             }
 
-            detectorDrawer.Draw(DetectorDrawer.Spotted, _model, RadiusSpotted, DegreeDetect);
-            detectorDrawer.Draw(DetectorDrawer.Warning, _model, RadiusWarning, DegreeDetect);
-            detectorDrawer.EndDraw(DetectorDrawer.Sensor);
+            // detectorDrawer.Draw(DetectorDrawer.Spotted, _model, RadiusSpotted, DegreeDetect);
+            // detectorDrawer.Draw(DetectorDrawer.Warning, _model, RadiusWarning, DegreeDetect);
+            // detectorDrawer.EndDraw(DetectorDrawer.Sensor);
             if (hateInfo.MaxHateEntityPoint > 0)
                 detectorDrawer.Draw(DetectorDrawer.Detect, _model, tmp);
             else
@@ -221,26 +217,23 @@ public class DetectorCharacterImplementation : IDetectorService
         RefreshMaxHateTarget(deltaTime);
         if (detectList.Count > 0)
         {
-            if (_character.isCampRed)
-            {
-                WLogger.Print(detectList.Count);
-            }
-            for (int i = 0; i < detectList.Count; i++)
-            {
-                var point = detectList[i];
-                if(point.EntityId == hateInfo.MaxHateEntityId)
-                    continue;
-                var target = EntityUtils.GetGameEntity(point.EntityId);
-                if (CheckTargetIsAlive(target))
+                for (int i = 0; i < detectList.Count; i++)
                 {
-                    // var dir = point.Position - _model.position;
-                    // var normalDir = dir / point.Dist;
-                    // var angle = normalDir.GetAngle(_model.forward);
-                    var angle = DetectMgr.Inst.GetAngle(_character.instanceID.ID, point.EntityId);
-                    // 距离仇恨值增加
-                    AddDistanceHatePoint(point.EntityId, point.SqrDist, angle, deltaTime);
+                    var point = detectList[i];
+                    if (point.EntityId == hateInfo.MaxHateEntityId)
+                        continue;
+                    var target = EntityUtils.GetGameEntity(point.EntityId);
+                    if (CheckTargetIsAlive(target))
+                    {
+                        // var dir = point.Position - _model.position;
+                        // var normalDir = dir / point.Dist;
+                        // var angle = normalDir.GetAngle(_model.forward);
+                        var angle = DetectMgr.Inst.GetAngle(_character.instanceID.ID, point.EntityId);
+                        // 距离仇恨值增加
+                        AddDistanceHatePoint(point.EntityId, point.SqrDist, angle, deltaTime);
+                    }
                 }
-            }
+
             detectList.Clear();
         }
         hateInfo.EndChangeHate();
@@ -272,22 +265,26 @@ public class DetectorCharacterImplementation : IDetectorService
 
     private void AddDistanceHatePoint(int id, float sqrDist, float angle, float deltaTime)
     {
+        UnityEngine.Profiling.Profiler.BeginSample("AddDistanceSensor");
         if (angle <= AngleDetectHalf)
         {
             if (sqrDist <= RadiusSpottedSqr)
             {
                 // 一级探测范围内
                 hateInfo.Change(id, SPOTTED_ADD * deltaTime, HatePointType.Spotted);
+                UnityEngine.Profiling.Profiler.EndSample();
                 return;
             }
             if (sqrDist <= RadiusWarningSqr)
             {
                 // 二级探测范围内
                 hateInfo.Change(id, WARNING_ADD * deltaTime, HatePointType.Warning);
+                UnityEngine.Profiling.Profiler.EndSample();
                 return;
             }
         }
         hateInfo.Change(id, OUTSIGN_ADD * deltaTime, HatePointType.OutSign);
+        UnityEngine.Profiling.Profiler.EndSample();
     }
 
     public GameEntity Entity => _character;

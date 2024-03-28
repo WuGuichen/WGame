@@ -310,6 +310,7 @@
     <type fullname="UnityEngine.InputSystem.Utilities.ReadOnlyArray`1/Enumerator" preserve="all" />
   </assembly>
   <assembly fullname="Unity.Mathematics">
+    <type fullname="Unity.Mathematics.float2" preserve="all" />
     <type fullname="Unity.Mathematics.float3" preserve="all" />
     <type fullname="Unity.Mathematics.float3x2" preserve="all" />
     <type fullname="Unity.Mathematics.float3x3" preserve="all" />
@@ -318,6 +319,8 @@
   </assembly>
   <assembly fullname="Unity.Netcode.Runtime">
     <type fullname="Unity.Netcode.BufferSerializer`1" preserve="all" />
+    <type fullname="Unity.Netcode.BytePacker" preserve="all" />
+    <type fullname="Unity.Netcode.ByteUnpacker" preserve="all" />
     <type fullname="Unity.Netcode.ClientRpcAttribute" preserve="all" />
     <type fullname="Unity.Netcode.ClientRpcParams" preserve="all" />
     <type fullname="Unity.Netcode.FastBufferReader" preserve="all" />
@@ -326,6 +329,7 @@
     <type fullname="Unity.Netcode.FastBufferWriter/ForPrimitives" preserve="all" />
     <type fullname="Unity.Netcode.INetworkSerializable" preserve="all" />
     <type fullname="Unity.Netcode.IReaderWriter" preserve="all" />
+    <type fullname="Unity.Netcode.LogLevel" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour/RpcReceiveHandler" preserve="all" />
     <type fullname="Unity.Netcode.NetworkBehaviour/__RpcExecStage" preserve="all" />
@@ -333,9 +337,16 @@
     <type fullname="Unity.Netcode.NetworkManager" preserve="all" />
     <type fullname="Unity.Netcode.NetworkObject" preserve="all" />
     <type fullname="Unity.Netcode.NetworkTransport" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkVariableBase" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkVariableReadPermission" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkVariableSerializationTypes" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkVariableWritePermission" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkVariable`1" preserve="all" />
+    <type fullname="Unity.Netcode.NetworkVariable`1/OnValueChangedDelegate" preserve="all" />
     <type fullname="Unity.Netcode.RpcDelivery" preserve="all" />
     <type fullname="Unity.Netcode.ServerRpcAttribute" preserve="all" />
     <type fullname="Unity.Netcode.ServerRpcParams" preserve="all" />
+    <type fullname="Unity.Netcode.ServerRpcReceiveParams" preserve="all" />
     <type fullname="Unity.Netcode.Transports.UTP.UnityTransport" preserve="all" />
     <type fullname="Unity.Netcode.Transports.UTP.UnityTransport/ConnectionAddressData" preserve="all" />
     <type fullname="Unity.Netcode.__RpcParams" preserve="all" />

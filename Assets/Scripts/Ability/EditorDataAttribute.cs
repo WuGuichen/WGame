@@ -24,7 +24,8 @@ namespace WGame.Ability
         AttributeTypeID,
         BuffDataTypeID,
         BUffName,
-        Action,
+        ActionID,
+        Param,
 
         // for list
         List,

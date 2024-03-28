@@ -6,9 +6,9 @@ namespace WGame.Ability
 {
     public class CBuffData : BuffData
     {
-        [EditorData("添加BUFF列表", EditorDataType.List)]
+        [EditorData("添加BUFF列表", EditorDataType.List, 86)]
         public List<string> AddBuffList { get; set; } = new();
-        [EditorData("移除BUFF列表", EditorDataType.List)]
+        [EditorData("移除BUFF列表", EditorDataType.List, 86)]
         public List<string> RemoveBuffList { get; set; } = new();
 
         public List<ICondition> ConditionList { get; set; } = new();

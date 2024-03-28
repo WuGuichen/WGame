@@ -9,7 +9,6 @@ public class EventDefine
     
     public const int OnGameExit = 7;
     public const int OnControlCharacterChanged = 8;
-    public const int OnFocusPointUpdate = 9;
     
     public const int OnJoystickStateChanged = 10;
 
@@ -40,4 +39,7 @@ public class EventDefine
     public const int OnSelfClientConnected = 66;
     public const int OnServerStartGame = 67;
     public const int OnServerEndGame = 68;
+    
+    public const int OnWeakPointUpdate = 80;
+    public const int OnFocusPointUpdate = 81;
 }

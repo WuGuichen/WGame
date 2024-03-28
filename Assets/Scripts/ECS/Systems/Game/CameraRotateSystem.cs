@@ -11,16 +11,16 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
 
     private readonly Transform _cameraTransform;
     private readonly Transform _cameraPivotTransform;
-    private readonly Transform _camera;
+    private readonly ICameraService _cameraService;
 
     private float _lookAngle;
+    private float _currentLookAngle;
     private float _pivotAngle;
+    private bool _needRefreshAngle = false;
     private float _minPivotAngle;
     private float _maxPivotAngle;
 
     private readonly IGroup<GameEntity> _cameraGroup;
-
-    private float lastOffsetY;
 
     public CameraRotateSystem(Contexts contexts)
     {
@@ -31,7 +31,7 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
         _timeService = contexts.meta.timeService.instance;
         _cameraTransform = contexts.meta.mainCameraService.service.Root;
         _cameraPivotTransform = contexts.meta.mainCameraService.service.Pivot;
-        _camera = contexts.meta.mainCameraService.service.Camera;
+        _cameraService = contexts.meta.mainCameraService.service;
         _cameraGroup = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.GameViewService, GameMatcher.Camera));
     }
 
@@ -46,66 +46,96 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
 
     public void Execute()
     {
-        foreach (var entity in _cameraGroup)
+        if (_cameraService.IsAutoControl)
         {
-            Vector2 look = _inputContext.lookInput.value;
-            MainModel.Inst.IsFocus = entity.hasFocusEntity;
-            if (MainModel.Inst.IsFocus)
+            _needRefreshAngle = true;
+        }
+        else
+        {
+            var fixedDeltaTime = _timeService.FixedDeltaTime;
+            if (_needRefreshAngle)
             {
-                if (entity.focusEntity.entity.isDeadState)
+                _pivotAngle = _cameraPivotTransform.localEulerAngles.x;
+                if (_pivotAngle > _maxPivotAngle || _pivotAngle < _minPivotAngle)
                 {
-                    entity.ReplaceActionFocus(FocusType.Switch, 18f);
-                    _lookAngle = _cameraTransform.eulerAngles.y;
-                    _pivotAngle = _cameraPivotTransform.localEulerAngles.x;
+                    if (_pivotAngle > 0)
+                    {
+                        _pivotAngle -= 360;
+                    }
+                    else if (_pivotAngle < 0)
+                    {
+                        _pivotAngle += 360;
+                    }
+                }
+                _lookAngle = _cameraTransform.eulerAngles.y;
+                
+                _needRefreshAngle = false;
+            }
+
+            foreach (var entity in _cameraGroup)
+            {
+                Vector2 look = _inputContext.lookInput.value;
+                MainModel.Inst.IsFocus = entity.hasFocusEntity;
+                if (MainModel.Inst.IsFocus)
+                {
+                    if (entity.focusEntity.entity.isDeadState)
+                    {
+                        entity.ReplaceActionFocus(FocusType.Switch, 18f);
+                        _lookAngle = _cameraTransform.eulerAngles.y;
+                        _pivotAngle = _cameraPivotTransform.localEulerAngles.x;
+                    }
+                    else
+                    {
+                        // Contexts.sharedInstance.meta.mainCameraService.service.Camera.LookAt(entity.focus.target);
+                        var tarPos = entity.focusEntity.entity.gameViewService.service.FocusPoint;
+                        var distSqr = (tarPos - _cameraTransform.position).sqrMagnitude;
+                        if (distSqr <= 0)
+                            distSqr = 0.1f;
+                        var focusPos = tarPos;
+                        var rate = 0.3f;
+
+                        var offsetY = Mathf.Sqrt(distSqr) * rate;
+                        focusPos.y -= offsetY;
+                        if (focusPos.y > 0)
+                            focusPos.y = 0;
+                        // lastOffsetY = focusPos.y;
+
+
+                        MainModel.Inst.FocusPosition = tarPos;
+                        _cameraTransform.LookAt(focusPos);
+                        var tmpRot = _cameraTransform.eulerAngles;
+                        // WLogger.Info(tmpRot);
+                        _lookAngle = Mathf.LerpAngle(_lookAngle, tmpRot.y, _gameContext.cameraLookSpeed.value*fixedDeltaTime);
+                        _pivotAngle = tmpRot.x;
+                    }
+                }
+                else if (entity.isActionLookFwd)
+                {
+                    _lookAngle = entity.gameViewService.service.Model.eulerAngles.y;
+                    _pivotAngle = 8f;
+                    entity.isActionLookFwd = false;
                 }
                 else
                 {
-                    // Contexts.sharedInstance.meta.mainCameraService.service.Camera.LookAt(entity.focus.target);
-                    var tarPos = entity.focusEntity.entity.gameViewService.service.FocusPoint;
-                    var distSqr = (tarPos - _cameraTransform.position).sqrMagnitude;
-                    if (distSqr <= 0)
-                        distSqr = 0.1f;
-                    var focusPos = tarPos;
-                    var rate = 0.3f;
-
-                    var offsetY = Mathf.Sqrt(distSqr) * rate;
-                    focusPos.y -= offsetY;
-                    if (focusPos.y > 0)
-                        focusPos.y = 0;
-                    lastOffsetY = focusPos.y;
-
-
-                    MainModel.Inst.FocusPosition = tarPos;
-                    _cameraTransform.LookAt(focusPos);
-                    var tmpRot = _cameraTransform.eulerAngles;
-                    // WLogger.Info(tmpRot);
-                    _lookAngle = tmpRot.y;
-                    _pivotAngle = tmpRot.x;
+                    _lookAngle += (look.x * _gameContext.cameraLookSpeed.value*fixedDeltaTime);
+                    _pivotAngle += (look.y * _gameContext.cameraPivotSpeed.value*fixedDeltaTime);
                 }
-            }
-            else if (entity.isActionLookFwd)
-            {
-                _lookAngle = entity.gameViewService.service.Model.eulerAngles.y;
-                entity.isActionLookFwd = false;
-            }
-            else
-            {
-                _lookAngle += (look.x * _gameContext.cameraLookSpeed.value);
-                _pivotAngle += (look.y * _gameContext.cameraPivotSpeed.value);
-            }
-            
-            _pivotAngle = Mathf.Clamp(_pivotAngle, _minPivotAngle, _maxPivotAngle);
 
-            Vector3 rotation = Vector2.zero;
-            rotation.y = _lookAngle;
-            var tarRot = Quaternion.Euler(rotation);
-            _cameraTransform.rotation = tarRot;
-            entity.ReplaceActionCameraRotate(tarRot);
+                _pivotAngle = Mathf.Clamp(_pivotAngle, _minPivotAngle, _maxPivotAngle);
 
-            rotation = Vector3.zero;
-            rotation.x = _pivotAngle;
-            tarRot = Quaternion.Euler(rotation);
-            _cameraPivotTransform.localRotation = tarRot;
+                Vector3 rotation = Vector3.zero;
+                rotation.y = _lookAngle;
+                var tarRot = Quaternion.Euler(rotation);
+                _cameraTransform.rotation = tarRot;
+                entity.ReplaceActionCameraRotate(tarRot);
+
+                rotation = Vector3.zero;
+                rotation.x = _pivotAngle;
+                tarRot = Quaternion.Euler(rotation);
+                _cameraPivotTransform.localRotation = tarRot;
+            }
         }
+
+        _cameraService.Process(_timeService.FixedDeltaTime);
     }
 }

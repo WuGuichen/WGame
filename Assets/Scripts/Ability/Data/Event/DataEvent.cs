@@ -24,6 +24,7 @@ namespace WGame.Ability
         
         [System.NonSerialized] private int _curTime = 0;
         
+        public int EndTime { get; private set; }
         public ETriggerType TriggerType
         {
             get => _triggerType;
@@ -57,6 +58,9 @@ namespace WGame.Ability
                             break;
                         case EventDataType.PlayAnim:
                             EventData = new EventPlayAnim();
+                            break;
+                        case EventDataType.DoAction:
+                            EventData = new EventDoAction();
                             break;
                         case EventDataType.PlayEffect:
                             EventData = new EventPlayEffect();
@@ -97,6 +101,7 @@ namespace WGame.Ability
             _triggerType = JsonHelper.ReadEnum<ETriggerType>(jd["TriggerType"]);
             _triggerTime = JsonHelper.ReadInt(jd["TriggerTime"]);
             _duration = JsonHelper.ReadInt(jd["Duration"]);
+            EndTime = _triggerTime + _duration;
             EventType = JsonHelper.ReadEnum<EventDataType>(jd["EventType"]);
             
             (_eventData as IData).Deserialize(jd["EventData"]);

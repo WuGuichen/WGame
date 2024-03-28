@@ -8,6 +8,7 @@ public class SensorCharacterSystem : IExecuteSystem
 {
     private readonly IGroup<SensorEntity> charSensorGroup;
     private List<HitInfo> hitInfos = new();
+    private int tickCount = 0;
     private readonly IGroup<GameEntity> _whiteGroup;
     private readonly IGroup<GameEntity> _redGroup;
     public SensorCharacterSystem(Contexts contexts)
@@ -19,7 +20,27 @@ public class SensorCharacterSystem : IExecuteSystem
     public void Execute()
     {
         UnityEngine.Profiling.Profiler.BeginSample("SensorCharacter");
-        
+        //
+        // if (_whiteGroup.count > 0)
+        // {
+        //     if (tickCount > _whiteGroup.count)
+        //     {
+        //         tickCount = 0;
+        //     }
+        //
+        //     var itr = _whiteGroup.GetEnumerator();
+        //     int index = 0;
+        //     while (itr.MoveNext())
+        //     {
+        //         if (index == tickCount)
+        //         {
+        //             Tick(itr.Current);
+        //             break;
+        //         }
+        //
+        //         index++;
+        //     }
+        // }
         foreach (var entity in _whiteGroup)
         {
             var position = entity.position.value;
@@ -36,10 +57,10 @@ public class SensorCharacterSystem : IExecuteSystem
                 var sqrDist = dir.sqrMagnitude;
                 var dist = math.sqrt(sqrDist);
                 var normalDir = dir / dist;
-                var angleToTarget = model.forward.GetAngle360(normalDir, model.up);
-                var angleToEntity = modelTarget.forward.GetAngle360(-normalDir, modelTarget.up);
                 DetectMgr.Inst.UpdateDistance(tar.instanceID.ID, entity.instanceID.ID, dist);
+                var angleToTarget = model.forward.GetAngle360(normalDir, model.up);
                 DetectMgr.Inst.UpdateAngle(entity.instanceID.ID, hitInfo.EntityId, angleToTarget*Mathf.Rad2Deg);
+                var angleToEntity = modelTarget.forward.GetAngle360(-normalDir, modelTarget.up);
                 DetectMgr.Inst.UpdateAngle(tar.instanceID.ID, entity.instanceID.ID, angleToEntity*Mathf.Rad2Deg);
                 tar.linkSensor.Sensor.detectorCharacterService.service.AddDetectTarget(new HitInfo(entity.instanceID.ID,
                     position, dist, sqrDist));
@@ -47,7 +68,12 @@ public class SensorCharacterSystem : IExecuteSystem
                     tar.position.value, dist, sqrDist));
             }
         }
-        
+
         UnityEngine.Profiling.Profiler.EndSample();
     }
+
+    // private void Tick(GameEntity entity)
+    // {
+    //     tickCount++;
+    // }
 }

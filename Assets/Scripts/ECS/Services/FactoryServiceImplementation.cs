@@ -33,6 +33,8 @@ public class FactoryServiceImplementation : IFactoryService
     private const int weaponBaseID = EntityUtils.WeaponBaseID;
     private int genWeaponNum = 0;
 
+    private int whiteCount = 0;
+
     #if UNITY_EDITOR
     private FileSystemWatcher motionWatcher;
     #endif
@@ -333,6 +335,10 @@ public class FactoryServiceImplementation : IFactoryService
         }
         entity.AddCharacterSensor(1 << EntityUtils.GetTargetSensorLayer(entity), 10f);
         EntityUtils.SetEntityCamp(ref entity);
+        if (entity.isCampWhite)
+        {
+            whiteCount++;
+        }
 
         // motion
         var motion = Contexts.sharedInstance.motion.CreateEntity();

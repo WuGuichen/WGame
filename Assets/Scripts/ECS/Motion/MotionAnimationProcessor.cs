@@ -182,15 +182,20 @@ public class MotionAnimationProcessor : AnimancerComponent
         }
     }
 
+    public void PlayAnimationClip(AnimationClip clip, float transTime = 0.1f, float offsetTime = 0f,
+        int layer = AnimLayerType.Base, bool resetBaseLayer = false)
+    {
+        InternalPlayAnimationClip(clip, transTime, offsetTime, layer, resetBaseLayer);
+    }
     public void PlayAnimationClip(int clipID, float transTime = 0.1f, float offsetTime = 0f,
         int layer = AnimLayerType.Base, bool resetBaseLayer = false)
     {
         InternalPlayAnimationClip(clipID, transTime, offsetTime, layer, resetBaseLayer);
     }
-    
-    private void InternalPlayAnimationClip(int clipID, float transTime = 0.1f, float offsetTime = 0f, int layer = AnimLayerType.Base, bool resetBaseLayer = false)
+
+    private void InternalPlayAnimationClip(AnimationClip clip, float transTime = 0.1f, float offsetTime = 0f,
+        int layer = AnimLayerType.Base, bool resetBaseLayer = false)
     {
-        var clip = _factoryService.GetAnimationClip(clipID);
         if (layer != AnimLayerType.Base && resetBaseLayer)
         {
             Play(AnimLayerType.Base, _focusMove, 0.25f, FadeMode.FixedDuration);
@@ -201,6 +206,12 @@ public class MotionAnimationProcessor : AnimancerComponent
             SetToBaseLayer();
         }
         Play(layer, clip, transTime, FadeMode.FromStart, offsetTime);
+    }
+    
+    private void InternalPlayAnimationClip(int clipID, float transTime = 0.1f, float offsetTime = 0f, int layer = AnimLayerType.Base, bool resetBaseLayer = false)
+    {
+        var clip = _factoryService.GetAnimationClip(clipID);
+        InternalPlayAnimationClip(clip, transTime, offsetTime, layer, resetBaseLayer);
     }
 
     private void SetToBaseLayer()

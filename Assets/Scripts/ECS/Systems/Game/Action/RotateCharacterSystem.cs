@@ -8,10 +8,12 @@ public class RotateCharacterSystem : IExecuteSystem
     private Transform playerTrans;
     private readonly IGroup<GameEntity> _moveGroup;
     private readonly ITimeService _time;
+    private readonly ICameraService _cameraService;
 
     public RotateCharacterSystem(Contexts contexts)
     {
         _inputContext = contexts.input;
+        _cameraService = contexts.meta.mainCameraService.service;
         this.cameraTrans = contexts.meta.mainCameraService.service.Camera;
         _moveGroup = contexts.game.GetGroup(GameMatcher.Moveable);
         _time = contexts.meta.timeService.instance;
@@ -22,6 +24,8 @@ public class RotateCharacterSystem : IExecuteSystem
         foreach (var entity in _moveGroup)
         {
             if(EntityUtils.IsNetCamera(entity))
+                continue;
+            if(entity.isUnbalanced)
                 continue;
             Vector2 moveDir;
             Vector3 tarDir;
@@ -38,12 +42,11 @@ public class RotateCharacterSystem : IExecuteSystem
                 moveDir = new Vector2(tmp.x, tmp.z);
             }
 
-            float leftAngle;
-            if (entity.hasFocusEntity && !entity.isRotateInFocus)
+            if (entity.isCamera && entity.hasFocusEntity && !entity.isRotateInFocus)
             {
                 if (isCamera)
                 {
-                    fwd = cameraTrans.forward;
+                    fwd = _cameraService.CachedFwd;
                 }
                 else
                 {
@@ -59,7 +62,7 @@ public class RotateCharacterSystem : IExecuteSystem
                 var tarRot = Quaternion.LookRotation(fwd);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
                 var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
-                leftAngle = fwd.GetAngle(moveDir);
+                // leftAngle = fwd.GetAngle(moveDir);
                 playerTrans.localRotation = playerRot;
             }
             else
@@ -86,6 +89,10 @@ public class RotateCharacterSystem : IExecuteSystem
 
                 var tarRot = Quaternion.LookRotation(tarDir);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
+                if (!entity.isCamera)
+                {
+                    rotRate *= 0.5f;
+                }
                 var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
 
                 playerTrans.localRotation = playerRot;

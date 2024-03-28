@@ -922,7 +922,7 @@ public class Interpreter : WLangBaseVisitor<Symbol>
 
     public override Symbol VisitPrimarySTRING(WLangParser.PrimarySTRINGContext context)
     {
-        return new Symbol(context.i.Text.Trim('"'), TYPE_STRING);
+        return new Symbol(context.TrimText, TYPE_STRING);
     }
 
     public override Symbol VisitPrimaryBOOL(WLangParser.PrimaryBOOLContext context)

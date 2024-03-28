@@ -105,7 +105,7 @@ public class EntityUtils
 
     public static GameEntity GetCameraEntity()
     {
-        return Contexts.sharedInstance.game.GetEntityWithEntityID(ActionHelper.CurCameraEntityID);
+        return GetGameEntity(ActionHelper.CurCameraEntityID);
     }
 
     public static void DropEntityWeapon(GameEntity entity)
@@ -198,12 +198,19 @@ public class EntityUtils
         // InitCharGroup("RedGroup");
     }
 
-    public static void GenCharacter(int type = 2)
+    public static void GenCharacter(int type = 2, bool setCamera = false)
     {
         int num = Random.Range(1, 3);
         num = type;
         int charId = num;
-        FactoryService.GenCharacter(charId, GetRandomPositionAroundCharacter(), Quaternion.identity, out var entity);
+        FactoryService.GenCharacter(charId, GetRandomPositionAroundCharacter(), Quaternion.identity, out var entity,
+            gameEntity =>
+            {
+                if (setCamera)
+                {
+                    ActionHelper.DoSetCharacterCameraByID(gameEntity.instanceID.ID);
+                }
+            });
     }
 
     public static void GenRandomWeapon()

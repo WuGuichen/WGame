@@ -67,8 +67,23 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
 
         if (_inputContext.attackInput.value)
         {
+            if (entity.hasLinkAbility)
+            {
+                var ability = entity.linkAbility.Ability;
+                if (ability.hasAbilityBackStab)
+                {
+                    ActionHelper.DoFinishAttack(ability);
+                }
+                else
+                {
+                    entity.ReplaceSignalAttack(0.2f);
+                }
+            }
+            else
+            {
+                entity.ReplaceSignalAttack(0.2f);
+            }
             // 攻击
-            entity.ReplaceSignalAttack(0.2f);
         }
 
         if (_inputContext.stepInput.value)

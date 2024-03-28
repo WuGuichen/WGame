@@ -97,8 +97,20 @@ public partial class ActionHelper
         motion.ReplaceDoMoveType(type);
     }
 
+    public static void DoFinishAttack(AbilityEntity attacker)
+    {
+        var victim = EntityUtils.GetGameEntity(attacker.abilityBackStab.EntityID);
+        bool done = victim.linkAbility.Ability.abilityService.service.Do("BeFinishAtk", true);
+        if (done)
+        {
+            attacker.abilityService.service.Do("FinishAtk", true);
+        }
+    }
+
     public static void Dispose()
     {
         currentCameraEntityID = -1;
     }
+    
+    
 }

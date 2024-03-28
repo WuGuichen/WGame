@@ -114,6 +114,109 @@
                     }
                 }
             ]
+        },
+        {
+            "ID" : "0638469951469580970EB5NnU",
+            "Name" : "FinishAtk",
+            "TotalTime" : 2833,
+            "Events"    : [
+                {
+                    "TrackName" : "Animation 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Duration",
+                    "TriggerTime" : 0,
+                    "Duration"    : 2833,
+                    "EventType"   : "PlayAnim",
+                    "EventData"   : {
+                        "AnimName" : "Longs_Finish_RU_Ataker",
+                        "FadeTime" : 0.0
+                    }
+                },
+                {
+                    "TrackName" : "Action 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Duration",
+                    "TriggerTime" : 0,
+                    "Duration"    : 1823,
+                    "EventType"   : "DoAction",
+                    "EventData"   : {
+                        "Type" : "2",
+                        "Param" : {
+                            "Value" : {
+                                "x" : 20.0,
+                                "y" : -74.1100006103516,
+                                "z" : 0.0
+                            },
+                            "Type"  : "Vector3"
+                        }
+                    }
+                },
+                {
+                    "TrackName" : "Action 1",
+                    "TrackIndex" : 1,
+                    "TriggerType" : "Duration",
+                    "TriggerTime" : 0,
+                    "Duration"    : 1827,
+                    "EventType"   : "DoAction",
+                    "EventData"   : {
+                        "Type" : "1",
+                        "Param" : {
+                            "Value" : {
+                                "x" : 1.0,
+                                "y" : 0.0,
+                                "z" : 0.0
+                            },
+                            "Type"  : "Vector3"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "ID" : "0638471757163027751q1CG5X",
+            "Name" : "BeFinishAtk",
+            "TotalTime" : 4563,
+            "Events"    : [
+                {
+                    "TrackName" : "Action 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Duration",
+                    "TriggerTime" : 12,
+                    "Duration"    : 4551,
+                    "EventType"   : "DoAction",
+                    "EventData"   : {
+                        "Type" : "0",
+                        "Param" : {
+                            "Value" : true,
+                            "Type"  : "Bool"
+                        }
+                    }
+                },
+                {
+                    "TrackName" : "Animation 0",
+                    "TrackIndex" : 0,
+                    "TriggerType" : "Duration",
+                    "TriggerTime" : 77,
+                    "Duration"    : 2833,
+                    "EventType"   : "PlayAnim",
+                    "EventData"   : {
+                        "AnimName" : "Longs_Finish_RU_Victim",
+                        "FadeTime" : 0.0
+                    }
+                },
+                {
+                    "TrackName" : "Animation 1",
+                    "TrackIndex" : 1,
+                    "TriggerType" : "Duration",
+                    "TriggerTime" : 2896,
+                    "Duration"    : 1667,
+                    "EventType"   : "PlayAnim",
+                    "EventData"   : {
+                        "AnimName" : "Longs_GetUpBack",
+                        "FadeTime" : 0.0
+                    }
+                }
+            ]
         }
     ]
 }

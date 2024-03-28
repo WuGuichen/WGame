@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using WGame.Utils;
 
 namespace WGame.Runtime
 {
@@ -153,20 +152,16 @@ namespace WGame.Runtime
         {
             if (eventList.TryGetValue(type, out var bridge))
             {
-                UnityEngine.Profiling.Profiler.BeginSample("TriggerEvent");
                 var t = new TAnyString(ctx);
                 bridge.CallInternal(t);
-                UnityEngine.Profiling.Profiler.EndSample();
             }
         }
         public static void Trigger(int type, int ctx)
         {
             if (eventList.TryGetValue(type, out var bridge))
             {
-                UnityEngine.Profiling.Profiler.BeginSample("TriggerEvent");
                 var t = new TAnyInt(ctx);
                 bridge.CallInternal(t);
-                UnityEngine.Profiling.Profiler.EndSample();
             }
         }
 
@@ -174,18 +169,14 @@ namespace WGame.Runtime
         {
             if (eventList.TryGetValue(type, out var bridge))
             {
-                UnityEngine.Profiling.Profiler.BeginSample("TriggerEvent");
                 bridge.CallInternal(new TAnyUnsignLong(ctx));
-                UnityEngine.Profiling.Profiler.EndSample();
             }
         }
         public static void Trigger(int type)
         {
             if (eventList.TryGetValue(type, out var bridge))
             {
-                UnityEngine.Profiling.Profiler.BeginSample("TriggerEvent");
                 bridge.CallInternal();
-                UnityEngine.Profiling.Profiler.EndSample();
             }
         }
 

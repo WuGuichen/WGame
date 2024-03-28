@@ -206,6 +206,10 @@ namespace WGame.Ability.Editor
                         enableSignal = false;
                         enableDuration = true;
                     }
+                    else if (actorType == Setting.trackActionType)
+                    {
+                        enableDuration = true;
+                    }
 
                     if (enableSignal)
                     {

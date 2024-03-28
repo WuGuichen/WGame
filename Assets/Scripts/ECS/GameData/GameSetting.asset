@@ -19,8 +19,8 @@ MonoBehaviour:
     MovementSpeed: 4
     RotationSpeed: 0.03
   CameraConfig:
-    CameraLookSpeed: 1
-    CameraPivotSpeed: -0.5
+    CameraLookSpeed: 6
+    CameraPivotSpeed: -3
     CameraSmoothTime: 0.1
-    MinimumPivotAngle: -10
+    MinimumPivotAngle: -24
     MaximumPivotAngle: 60

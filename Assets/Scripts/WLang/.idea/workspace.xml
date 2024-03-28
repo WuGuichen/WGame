@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4619b81-a009-41e5-87cd-268c260b8858" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../HybridCLRGenerate/AOTGenericReferences.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../HybridCLRGenerate/AOTGenericReferences.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../HybridCLRGenerate/link.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HybridCLRGenerate/link.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Resources/BuildinFileManifest.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/BuildinFileManifest.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Net/WNetAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Net/WNetAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Services/DetectorCharacterImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/DetectorCharacterImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/Motion/BaseFSMCode.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/BaseFSMCode.wl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +63,7 @@
       <workItem from="1711209262342" duration="539000" />
       <workItem from="1711211237537" duration="1587000" />
       <workItem from="1711278511958" duration="665000" />
+      <workItem from="1711352080545" duration="876000" />
     </task>
     <servers />
   </component>

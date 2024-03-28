@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace WGame.Ability
 {
@@ -7,9 +8,11 @@ namespace WGame.Ability
         protected AbilityData _ability;
         private float _curTime;
         private int _millisecondTime;
+        public string AbilityName => _ability.Name;
         public bool IsEnable { get; private set; }
 
         private int _curTriggerredIndex;
+        private LinkedList<DataEvent> _durationList = new();
 
         protected void Reset()
         {
@@ -71,20 +74,64 @@ namespace WGame.Ability
                     case ETriggerType.Duration:
                         if (checkTime)
                         {
-                            OnEnterDuration(eventData.EventData);
+                            OnEnterDuration(eventData.EventData, eventData.Duration);
+                            _durationList.AddLast(eventData);
                         }
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
+
+            var itr = _durationList.GetEnumerator();
+            while (itr.MoveNext())
+            {
+                OnProcessDuration(itr.Current);
+            }
         }
 
-        private void OnEnterDuration(IEventData eventData)
+        private void OnProcessDuration(DataEvent dataEvent)
+        {
+            if (_curTime > dataEvent.EndTime)
+            {
+                switch (dataEvent.EventType)
+                {
+                    case EventDataType.PlayAnim:
+                        OnEndPlayAnim(dataEvent.EventData as EventPlayAnim);
+                        break;
+                    case EventDataType.DoAction:
+                        OnEndDoAction(dataEvent.EventData as EventDoAction);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                _durationList.Remove(dataEvent);
+            }
+            else
+            {
+                // switch (dataEvent.EventType)
+                // {
+                //     case EventDataType.PlayAnim:
+                //         OnDurationPlayAnim(dataEvent.EventData as EventPlayAnim);
+                //         break;
+                //     case EventDataType.DoAction:
+                //         OnDurationDoAction(dataEvent.EventData as EventDoAction);
+                //         break;
+                //     default:
+                //         throw new ArgumentOutOfRangeException();
+                // }
+            }
+        }
+
+        private void OnEnterDuration(IEventData eventData, float duration)
         {
             if (eventData is EventPlayAnim playAnim)
             {
-                OnDurationPlayAnim(playAnim);
+                OnEnterDurationPlayAnim(playAnim);
+            }
+            else if (eventData.EventType == EventDataType.DoAction)
+            {
+                OnEnterDurationDoAction(eventData as EventDoAction, duration);
             }
         }
 
@@ -94,19 +141,43 @@ namespace WGame.Ability
             {
                 OnTriggerPlayEffect(playEffect);
             }
+            else if (eventData is EventDoAction doAction)
+            {
+                OnTriggerDoAction(doAction);
+            }
             else if (eventData is EventNoticeMessage noticeMessage)
             {
                 OnNoticeMessage(noticeMessage);
             }
         }
 
-        protected abstract void OnDurationPlayAnim(EventPlayAnim animData);
+        protected abstract void OnEnterDurationDoAction(EventDoAction actionData, float duration);
+        protected abstract void OnEndDoAction(EventDoAction actionData);
+        protected abstract void OnTriggerDoAction(EventDoAction actionData);
+        protected abstract void OnEnterDurationPlayAnim(EventPlayAnim animData);
+        protected abstract void OnEndPlayAnim(EventPlayAnim animData);
         protected abstract void OnTriggerPlayEffect(EventPlayEffect effectData);
         protected abstract void OnNoticeMessage(EventNoticeMessage message);
 
         protected virtual void OnEnd()
         {
-            WLogger.Print($"End {_ability.Name}");
+            var itr = _durationList.GetEnumerator();
+            while (itr.MoveNext())
+            {
+                var item = itr.Current;
+                var eType = item.EventType;
+                switch (eType)
+                {
+                    case EventDataType.PlayAnim:
+                        OnEndPlayAnim(item.EventData as EventPlayAnim);
+                        break;
+                    case EventDataType.DoAction:
+                        OnEndDoAction(item.EventData as EventDoAction);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
 
         protected virtual void OnStart()

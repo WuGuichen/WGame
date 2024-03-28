@@ -8,6 +8,7 @@ public class AbilityServiceImplementation : IAbility
     private readonly GameEntity _entity;
     private AbilityData _curAbility;
     private SensorContext _sensorContext;
+    private HashSet<string> _abilitySet = new();
 
     private LinkedList<AbilityStatusCharacter> _abilityStatusList = new();
 
@@ -17,14 +18,25 @@ public class AbilityServiceImplementation : IAbility
         _sensorContext = Contexts.sharedInstance.sensor;
     }
     
-    public void Do(string name)
+    public bool Do(string name, bool unique = false)
     {
+        if (unique)
+        {
+            if (_abilitySet.Contains(name))
+            {
+                return false;
+            }
+
+            _abilitySet.Add(name);
+        }
         var ability = WAbilityMgr.Inst.GetAbility(name);
         if (ability != null)
         {
             var status = AbilityStatusCharacter.Get(_entity, ability);
             _abilityStatusList.AddLast(status);
         }
+
+        return true;
     }
 
     public void Process(float deltaTime)
@@ -42,6 +54,7 @@ public class AbilityServiceImplementation : IAbility
             {
                 var next = node.Next;
                 _abilityStatusList.Remove(node);
+                _abilitySet.Remove(node.Value.AbilityName);
                 AbilityStatusCharacter.Push(node.Value);
                 node = next;
             }

@@ -6,11 +6,14 @@ public class SensorDetectSystems : Feature
         Add(new GroundSensorDetectSystem(contexts));
         Add(new DropItemDetectSystem(contexts));
         Add(new SensorCharacterSystem(contexts));
+        
         Add(new DetectCharacterSystem(contexts));
         // Add(new DrawDetectCharacterSystem(contexts));
         Add(new DrawSensorCharacterSystem(contexts));
 
         Add(new UpdateTriggerObjectSystem(contexts));
         Add(new DrawTriggerObjectSystem(contexts));
+        
+        Add(new UpdateSensorAbilitySystem(contexts));
     }
 }

@@ -67,7 +67,6 @@ namespace CrashKonijn.Goap.Classes.Runners
         public Graph GetGraph(IGoapSet goapSet) => this.goapSets[goapSet].GetGraph();
         public bool Knows(IGoapSet goapSet) => this.goapSets.ContainsKey(goapSet);
         public IMonoAgent[] Agents => this.goapSets.Keys.SelectMany(x => x.Agents.All()).ToArray();
-        
         [System.Obsolete("'Sets' is deprecated, please use 'GoapSets' instead.   Exact same functionality, name changed to mitigate confusion with the word 'set' which could have many meanings.")]
         public IGoapSet[] Sets => this.goapSets.Keys.ToArray();
 

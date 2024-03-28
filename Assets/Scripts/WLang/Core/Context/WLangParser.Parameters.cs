@@ -54,4 +54,22 @@ public partial class WLangParser
             return i.Text;
         }
     }
+
+    public partial class PrimarySTRINGContext
+    {
+        private string trimText;
+
+        public string TrimText
+        {
+            get
+            {
+                if (trimText == null)
+                {
+                    trimText = i.Text.Trim('"');
+                }
+
+                return trimText;
+            }
+        }
+    }
 }

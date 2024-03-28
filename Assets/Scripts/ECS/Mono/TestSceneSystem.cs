@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using WGame.Ability;
 using Random = UnityEngine.Random;
@@ -113,7 +112,17 @@ public class TestSceneSystem : MonoBehaviour
 
 	    if (Input.GetKeyDown(KeyCode.L))
 	    {
-		    EntityUtils.RandomKillCharacter();
+		    // EntityUtils.RandomKillCharacter();
+		    // _contexts.meta.mainCameraService.service.Shake(0.6f, 0.2f, WEaseType.ElasticOut);
+		    var cam = _contexts.meta.mainCameraService.service;
+		    cam.Rotate(new Vector3(-16, -96, 0), WEaseType.QuadOut, 2f, 0.2f);
+	    }
+
+	    var scroll = Input.mouseScrollDelta;
+	    if (scroll.sqrMagnitude > 0.1f)
+	    {
+		    var cam = _contexts.meta.mainCameraService.service;
+		    cam.Move(new Vector3(0,0,scroll.y * 0.5f), WEaseType.Linear, 0.2f);
 	    }
     }
 

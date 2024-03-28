@@ -88,6 +88,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Action<object,object>
 	// System.Action<object>
 	// System.Action<ulong>
+	// System.ArraySegment.Enumerator<UnityEngine.Vector2>
+	// System.ArraySegment.Enumerator<UnityEngine.Vector3>
+	// System.ArraySegment.Enumerator<int>
+	// System.ArraySegment<UnityEngine.Vector2>
+	// System.ArraySegment<UnityEngine.Vector3>
+	// System.ArraySegment<int>
 	// System.ByReference<UnityEngine.Vector2>
 	// System.ByReference<UnityEngine.Vector3>
 	// System.ByReference<int>
@@ -406,11 +412,16 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Func<object,byte>
 	// System.Func<object,float>
 	// System.Func<object,int,int,object>
+	// System.Func<object,int>
 	// System.Func<object,object,System.UIntPtr>
 	// System.Func<object,object,int>
 	// System.Func<object,object>
 	// System.Func<object>
 	// System.IComparable<object>
+	// System.IEquatable<UnityEngine.Quaternion>
+	// System.IEquatable<UnityEngine.Vector3>
+	// System.IEquatable<byte>
+	// System.IEquatable<float>
 	// System.IEquatable<object>
 	// System.Lazy<object>
 	// System.Linq.Buffer<object>
@@ -421,14 +432,18 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Linq.Enumerable.WhereArrayIterator<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Linq.Enumerable.WhereArrayIterator<object>
 	// System.Linq.Enumerable.WhereEnumerableIterator<System.Collections.Generic.KeyValuePair<object,object>>
+	// System.Linq.Enumerable.WhereEnumerableIterator<int>
 	// System.Linq.Enumerable.WhereEnumerableIterator<object>
 	// System.Linq.Enumerable.WhereListIterator<System.Collections.Generic.KeyValuePair<object,object>>
 	// System.Linq.Enumerable.WhereListIterator<object>
 	// System.Linq.Enumerable.WhereSelectArrayIterator<int,object>
+	// System.Linq.Enumerable.WhereSelectArrayIterator<object,int>
 	// System.Linq.Enumerable.WhereSelectArrayIterator<object,object>
 	// System.Linq.Enumerable.WhereSelectEnumerableIterator<int,object>
+	// System.Linq.Enumerable.WhereSelectEnumerableIterator<object,int>
 	// System.Linq.Enumerable.WhereSelectEnumerableIterator<object,object>
 	// System.Linq.Enumerable.WhereSelectListIterator<int,object>
+	// System.Linq.Enumerable.WhereSelectListIterator<object,int>
 	// System.Linq.Enumerable.WhereSelectListIterator<object,object>
 	// System.Linq.EnumerableSorter<object,float>
 	// System.Linq.EnumerableSorter<object>
@@ -457,12 +472,18 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Predicate<byte>
 	// System.Predicate<int>
 	// System.Predicate<object>
+	// System.ReadOnlySpan.Enumerator<UnityEngine.Vector2>
+	// System.ReadOnlySpan.Enumerator<UnityEngine.Vector3>
+	// System.ReadOnlySpan.Enumerator<int>
 	// System.ReadOnlySpan<UnityEngine.Vector2>
 	// System.ReadOnlySpan<UnityEngine.Vector3>
 	// System.ReadOnlySpan<int>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.CreateValueCallback<object,object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.Enumerator<object,object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable<object,object>
+	// System.Span.Enumerator<UnityEngine.Vector2>
+	// System.Span.Enumerator<UnityEngine.Vector3>
+	// System.Span.Enumerator<int>
 	// System.Span<UnityEngine.Vector2>
 	// System.Span<UnityEngine.Vector3>
 	// System.Span<int>
@@ -485,6 +506,55 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerReader>
 	// Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerWriter>
 	// Unity.Netcode.BufferSerializer<object>
+	// Unity.Netcode.FallbackSerializer<UnityEngine.Quaternion>
+	// Unity.Netcode.FallbackSerializer<UnityEngine.Vector3>
+	// Unity.Netcode.FallbackSerializer<byte>
+	// Unity.Netcode.FallbackSerializer<float>
+	// Unity.Netcode.FallbackSerializer<int>
+	// Unity.Netcode.INetworkVariableSerializer<UnityEngine.Quaternion>
+	// Unity.Netcode.INetworkVariableSerializer<UnityEngine.Vector3>
+	// Unity.Netcode.INetworkVariableSerializer<byte>
+	// Unity.Netcode.INetworkVariableSerializer<float>
+	// Unity.Netcode.INetworkVariableSerializer<int>
+	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<UnityEngine.Quaternion>
+	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<UnityEngine.Vector3>
+	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<byte>
+	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<float>
+	// Unity.Netcode.NetworkVariable.OnValueChangedDelegate<int>
+	// Unity.Netcode.NetworkVariable<UnityEngine.Quaternion>
+	// Unity.Netcode.NetworkVariable<UnityEngine.Vector3>
+	// Unity.Netcode.NetworkVariable<byte>
+	// Unity.Netcode.NetworkVariable<float>
+	// Unity.Netcode.NetworkVariable<int>
+	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<UnityEngine.Quaternion>
+	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<UnityEngine.Vector3>
+	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<byte>
+	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<float>
+	// Unity.Netcode.NetworkVariableSerialization.EqualsDelegate<int>
+	// Unity.Netcode.NetworkVariableSerialization<UnityEngine.Quaternion>
+	// Unity.Netcode.NetworkVariableSerialization<UnityEngine.Vector3>
+	// Unity.Netcode.NetworkVariableSerialization<byte>
+	// Unity.Netcode.NetworkVariableSerialization<float>
+	// Unity.Netcode.NetworkVariableSerialization<int>
+	// Unity.Netcode.UnmanagedTypeSerializer<UnityEngine.Quaternion>
+	// Unity.Netcode.UnmanagedTypeSerializer<UnityEngine.Vector3>
+	// Unity.Netcode.UnmanagedTypeSerializer<byte>
+	// Unity.Netcode.UnmanagedTypeSerializer<float>
+	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<UnityEngine.Quaternion>
+	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<UnityEngine.Vector3>
+	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<byte>
+	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<float>
+	// Unity.Netcode.UserNetworkVariableSerialization.DuplicateValueDelegate<int>
+	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<UnityEngine.Quaternion>
+	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<UnityEngine.Vector3>
+	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<byte>
+	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<float>
+	// Unity.Netcode.UserNetworkVariableSerialization.ReadValueDelegate<int>
+	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<UnityEngine.Quaternion>
+	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<UnityEngine.Vector3>
+	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<byte>
+	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<float>
+	// Unity.Netcode.UserNetworkVariableSerialization.WriteValueDelegate<int>
 	// UnityEngine.InputSystem.InputBindingComposite<UnityEngine.Vector2>
 	// UnityEngine.InputSystem.InputControl<UnityEngine.Vector2>
 	// UnityEngine.InputSystem.InputProcessor<UnityEngine.Vector2>
@@ -568,9 +638,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object System.Linq.Enumerable.FirstOrDefault<object>(System.Collections.Generic.IEnumerable<object>,System.Func<object,bool>)
 		// Unity.Mathematics.float4 System.Linq.Enumerable.Last<Unity.Mathematics.float4>(System.Collections.Generic.IEnumerable<Unity.Mathematics.float4>)
 		// int System.Linq.Enumerable.Last<int>(System.Collections.Generic.IEnumerable<int>)
+		// int System.Linq.Enumerable.Max<object>(System.Collections.Generic.IEnumerable<object>,System.Func<object,int>)
 		// object System.Linq.Enumerable.Min<int,object>(System.Collections.Generic.IEnumerable<int>,System.Func<int,object>)
 		// object System.Linq.Enumerable.Min<object>(System.Collections.Generic.IEnumerable<object>)
 		// System.Linq.IOrderedEnumerable<object> System.Linq.Enumerable.OrderBy<object,float>(System.Collections.Generic.IEnumerable<object>,System.Func<object,float>)
+		// System.Collections.Generic.IEnumerable<int> System.Linq.Enumerable.Select<object,int>(System.Collections.Generic.IEnumerable<object>,System.Func<object,int>)
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Select<int,object>(System.Collections.Generic.IEnumerable<int>,System.Func<int,object>)
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Select<object,object>(System.Collections.Generic.IEnumerable<object>,System.Func<object,object>)
 		// object[] System.Linq.Enumerable.ToArray<object>(System.Collections.Generic.IEnumerable<object>)
@@ -578,6 +650,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Collections.Generic.List<object> System.Linq.Enumerable.ToList<object>(System.Collections.Generic.IEnumerable<object>)
 		// System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,object>> System.Linq.Enumerable.Where<System.Collections.Generic.KeyValuePair<object,object>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<object,object>>,System.Func<System.Collections.Generic.KeyValuePair<object,object>,bool>)
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Where<object>(System.Collections.Generic.IEnumerable<object>,System.Func<object,bool>)
+		// System.Collections.Generic.IEnumerable<int> System.Linq.Enumerable.Iterator<object>.Select<int>(System.Func<object,int>)
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Iterator<int>.Select<object>(System.Func<int,object>)
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Iterator<object>.Select<object>(System.Func<object,object>)
 		// System.Void* Unity.Collections.LowLevel.Unsafe.NativeArrayUnsafeUtility.GetUnsafeReadOnlyPtr<UnityEngine.Vector2>(Unity.Collections.NativeArray<UnityEngine.Vector2>)
@@ -591,14 +664,34 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.BufferSerializer<object>.SerializeValue<ulong>(ulong&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.FastBufferReader.ReadNetworkSerializable<PlayerRoomInfo>(PlayerRoomInfo&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<byte>(byte&)
+		// System.Void Unity.Netcode.FastBufferReader.ReadUnmanagedSafe<float>(float&)
 		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<PlayerRoomInfo>(PlayerRoomInfo&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
+		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<byte>(byte&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.FastBufferReader.ReadValueSafe<float>(float&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteNetworkSerializable<PlayerRoomInfo>(PlayerRoomInfo&)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanagedSafe<byte>(byte&)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteUnmanagedSafe<float>(float&)
 		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<PlayerRoomInfo>(PlayerRoomInfo&,Unity.Netcode.FastBufferWriter.ForNetworkSerializable)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<byte>(byte&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// System.Void Unity.Netcode.FastBufferWriter.WriteValueSafe<float>(float&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.INetworkSerializable.NetworkSerialize<Unity.Netcode.BufferSerializerReader>(Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerReader>)
 		// System.Void Unity.Netcode.INetworkSerializable.NetworkSerialize<Unity.Netcode.BufferSerializerWriter>(Unity.Netcode.BufferSerializer<Unity.Netcode.BufferSerializerWriter>)
 		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<byte>(byte&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<int>(int&,Unity.Netcode.FastBufferWriter.ForPrimitives)
 		// System.Void Unity.Netcode.IReaderWriter.SerializeValue<ulong>(ulong&,Unity.Netcode.FastBufferWriter.ForPrimitives)
+		// bool Unity.Netcode.NetworkVariableSerialization<UnityEngine.Quaternion>.EqualityEquals<UnityEngine.Quaternion>(UnityEngine.Quaternion&,UnityEngine.Quaternion&)
+		// bool Unity.Netcode.NetworkVariableSerialization<UnityEngine.Vector3>.EqualityEquals<UnityEngine.Vector3>(UnityEngine.Vector3&,UnityEngine.Vector3&)
+		// bool Unity.Netcode.NetworkVariableSerialization<byte>.EqualityEquals<byte>(byte&,byte&)
+		// bool Unity.Netcode.NetworkVariableSerialization<float>.EqualityEquals<float>(float&,float&)
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeEqualityChecker_UnmanagedIEquatable<UnityEngine.Quaternion>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeEqualityChecker_UnmanagedIEquatable<UnityEngine.Vector3>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeEqualityChecker_UnmanagedIEquatable<byte>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeEqualityChecker_UnmanagedIEquatable<float>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeSerializer_UnmanagedByMemcpy<UnityEngine.Quaternion>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeSerializer_UnmanagedByMemcpy<UnityEngine.Vector3>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeSerializer_UnmanagedByMemcpy<byte>()
+		// System.Void Unity.Netcode.NetworkVariableSerializationTypes.InitializeSerializer_UnmanagedByMemcpy<float>()
 		// object UnityEngine.Component.GetComponent<object>()
 		// object UnityEngine.Component.GetComponentInChildren<object>()
 		// object UnityEngine.Component.GetComponentInChildren<object>(bool)

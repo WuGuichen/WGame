@@ -164,6 +164,10 @@ namespace WGame.Ability.Editor
             {
                 eventProperty.EventType = EventDataType.PlayAnim;
             }
+            else if (eventTag == Window.Setting.trackActionType)
+            {
+                eventProperty.EventType = EventDataType.DoAction;
+            }
             else if (eventTag == Window.Setting.trackEffectType)
             {
                 eventProperty.EventType = EventDataType.PlayEffect;

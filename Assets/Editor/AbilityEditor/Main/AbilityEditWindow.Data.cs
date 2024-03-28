@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor;
 using WGame.Ability.Editor.Custom;
 using WGame.Editor;
+using WGame.Utils;
 
 namespace WGame.Ability.Editor
 {
@@ -99,9 +100,14 @@ namespace WGame.Ability.Editor
                                     PopupList(obj, pis[i].Name, val, StringToIDDefine.BuffData);
                                 }
                                     break;
-                                case EditorDataType.Action:
+                                case EditorDataType.ActionID:
                                 {
-                                    // PopupList(obj, pis[i].Name, val, ActionList());
+                                    PopupList(obj, pis[i].Name, val, StringToIDDefine.Action);
+                                } 
+                                    break;
+                                case EditorDataType.Param:
+                                {
+                                    SetParam(obj, pis[i].Name, val);
                                 }
                                     break;
                                 case EditorDataType.Object:
@@ -142,6 +148,61 @@ namespace WGame.Ability.Editor
                 Helper.SetProperty(obj, propertyName, list[idx]);
             }
         }
+
+        private void SetParam(object obj, string propertyName, object val)
+        {
+            if (obj is CustomParam param)
+            {
+                Helper.SetProperty(obj, propertyName, EditorGUILayout.EnumPopup((Enum)val, GUILayout.Width(80)));
+                switch (param.ParamType)
+                {
+                    case DataType.Bool:
+                        var res = EditorGUILayout.Toggle(param.Value.AsBool());
+                        TAny.Set(param.Value, res);
+                        break;
+                    case DataType.Int:
+                        TAny.Set(param.Value, EditorGUILayout.IntField(param.Value.AsInt()));
+                        break;
+                    case DataType.Long:
+                        TAny.Set(param.Value, EditorGUILayout.LongField(param.Value.AsLong()));
+                        break;
+                    case DataType.ULong:
+                        TAny.Set(param.Value, EditorGUILayout.LongField((long)param.Value.AsULong()));
+                        break;
+                    case DataType.Float:
+                        TAny.Set(param.Value, EditorGUILayout.FloatField(param.Value.AsFloat()));
+                        break;
+                    case DataType.String:
+                        TAny.Set(param.Value, EditorGUILayout.TextField(param.Value.AsString()));
+                        break;
+                    case DataType.Vector2:
+                        TAny.Set(param.Value, EditorGUILayout.Vector2Field("",param.Value.AsVector2()));
+                        break;
+                    case DataType.Vector2Int:
+                        TAny.Set(param.Value, EditorGUILayout.Vector2IntField("",param.Value.AsVector2Int()));
+                        break;
+                    case DataType.Vector3:
+                        TAny.Set(param.Value, EditorGUILayout.Vector3Field("",param.Value.AsVector3()));
+                        break;
+                    case DataType.Vector3Int:
+                        TAny.Set(param.Value, EditorGUILayout.Vector3IntField("",param.Value.AsVector3Int()));
+                        break;
+                    case DataType.Vector4:
+                        TAny.Set(param.Value, EditorGUILayout.Vector4Field("",param.Value.AsVector4()));
+                        break;
+                    case DataType.Quaternion:
+                        TAny.Set(param.Value, EditorGUILayout.Vector4Field("",param.Value.AsVector4()));
+                        break;
+                    case DataType.Color:
+                        TAny.Set(param.Value, EditorGUILayout.ColorField("",param.Value.AsColor()));
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            // Helper.SetProperty(obj, propertyName, newValue);
+        }
         
         private void PopupList(object obj, string propertyName, object val, StringToIDDefine define)
         {
@@ -156,6 +217,109 @@ namespace WGame.Ability.Editor
 
         private void ListField(object obj, string propertyName, object val)
         {
+            var itemType = typeof(bool);
+            var list = val as System.Collections.IList;
+            foreach (var interfaceType in val.GetType().GetInterfaces())
+            {
+                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(IList<>))
+                {
+                    itemType = val.GetType().GetGenericArguments()[0];
+                    break;
+                }
+            }
+
+            GUILayout.BeginVertical();
+            {
+                GUILayout.BeginHorizontal();
+                {
+                    using (new GUIColorScope(Setting.colorInspectorLabel))
+                    {
+                        GUILayout.Label("Size");
+                    }
+                    int count = list.Count;
+                        GUILayout.BeginHorizontal();
+                        {
+                            GUILayout.Label("总数:"+count);
+                            if (GUILayout.Button("+"))
+                            {
+                                count++;
+                            }
+                            if (GUILayout.Button("-"))
+                            {
+                                count--;
+                            }
+
+                            if (GUILayout.Button("Clear"))
+                            {
+                                count = 0;
+                            }
+                        }
+                        GUILayout.EndHorizontal();
+                    if (count < list.Count)
+                    {
+                        int idx = list.Count;
+                        while (idx > count)
+                        {
+                            list.RemoveAt(idx - 1);
+                            idx--;
+                        }
+                    }
+                    else if (count > list.Count)
+                    {
+                        int num = count - list.Count;
+                        for (int j = 0; j < num; ++j)
+                        {
+                            TypeCode typeCode = Type.GetTypeCode(itemType);
+                            if (typeCode == TypeCode.String)
+                            {
+                                list.Add(string.Empty);
+                            }
+                            else
+                            {
+                                list.Add(System.Activator.CreateInstance(itemType));
+                            }
+                        }
+                    }
+                }
+                GUILayout.EndHorizontal();
+
+                for (int j = 0; j < list.Count; ++j)
+                {
+                    GUILayout.BeginVertical();
+                    {
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label(j.ToString(), GUILayout.Width(10));
+                        if (itemType.IsEnum)
+                        {
+                            list[j] = EditorGUILayout.EnumPopup((Enum)list[j]);
+                        }
+                        else
+                        {
+                            var typeCode = Type.GetTypeCode(itemType);
+                            switch (typeCode)
+                            {
+                                case TypeCode.Int32:
+                                    list[j] = EditorGUILayout.IntField((int)list[j]);
+                                    break;
+                                case TypeCode.Single:
+                                    list[j] = EditorGUILayout.FloatField((float)list[j]);
+                                    break;
+                                case TypeCode.String:
+                                    list[j] = EditorGUILayout.TextField((string)list[j]);
+                                    break;
+                                case TypeCode.Object:
+                                    DrawData(list[j]);
+                                    break;
+                            }
+                        }
+                        GUILayout.EndHorizontal();
+                    }
+                    GUILayout.EndVertical();
+                }
+            }
+            GUILayout.EndVertical();
+
+            Helper.SetProperty(obj, propertyName, list);
         }
 
         private void AnimationClipField(object obj, string propertyName, object val)

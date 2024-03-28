@@ -27,6 +27,7 @@
                     obj = new TAnyString(string.Empty);
                     break;
                 case DataType.Vector2:
+                    obj = new TAnyVector2(Vector2.zero);
                     break;
                 case DataType.Vector3:
                     obj = new TAnyVector3(Vector3.zero);
@@ -106,6 +107,7 @@
         {
             return (t as TAnyVector2).value;
         }
+        
         public static ulong AsULong(this TAny t)
         {
             return (t as TAnyUnsignLong).value;

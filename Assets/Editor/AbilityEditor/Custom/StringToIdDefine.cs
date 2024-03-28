@@ -8,6 +8,8 @@ namespace WGame.Ability.Editor.Custom
         public static NoticeDefine Notice = new NoticeDefine();
         public static CustomDefine Attribute = new CustomDefine(typeof(WGame.Attribute.WAttrType));
         public static CustomDefine BuffData = new CustomDefine(typeof(BuffDataDefine));
+        public static CustomDefine Action = new CustomDefine(typeof(WActionType));
+        public static CustomDefine Param = new CustomDefine(typeof(WParamType));
         
         public int GetIndex(int id)
         {

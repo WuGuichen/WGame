@@ -2,7 +2,7 @@ using WGame.Ability;
 
 public interface IAbility
 {
-    void Do(string name);
+    bool Do(string name, bool unique =false);
     void Process(float deltaTime);
     void GenEntity(EntityMoveInfo info);
 }

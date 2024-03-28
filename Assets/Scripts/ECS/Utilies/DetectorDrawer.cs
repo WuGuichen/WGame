@@ -14,9 +14,9 @@ public class DetectorDrawer
     public const int Detect = 3;
     private readonly WDrawer.CircleDrawInfo[] drawInfos = new WDrawer.CircleDrawInfo[4];
 
-    private static readonly Color _colorWarning = Color.cyan*0.2f;
-    private static Color _colorSpotted = Color.blue*0.2f;
-    private static Color _colorDetectted = Color.red*0.2f;
+    private static readonly Color _colorWarning = Color.cyan*0.4f;
+    private static Color _colorSpotted = Color.blue*0.4f;
+    private static Color _colorDetectted = Color.red*0.4f;
     private static Color _colorDetecting = Color.yellow*0.2f;
     private static Color _colorSensor = Color.white*0.2f;
     
