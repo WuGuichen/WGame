@@ -31,6 +31,25 @@ namespace WGame.Ability
         }
 
         public EventDataType EventType => EventDataType.DoAction;
+        public void Enter(EventOwner owner)
+        {
+            switch (ActionType)
+            {
+                case WActionType.SetAnimGroup:
+                    owner.SetAnimGroup(ActionParam.Value.AsInt());
+                    break;
+            }
+        }
+
+        public void Duration(EventOwner owner, float deltaTime, int duration, int totalTime)
+        {
+            
+        }
+
+        public void Exit(EventOwner owner, bool isBreak)
+        {
+            
+        }
 
         public IEventData Clone()
         {

@@ -125,7 +125,26 @@ public class ObjectPool : SingletonMono<ObjectPool>
     {
         GetObject(objName, pos, rot, transform, callback);
     }
+
+    public bool GetOrNewGameObject(string objName, out GameObject obj)
+    {
+        return GetOrNewGameObject(objName, Vector3.zero, Quaternion.identity, out obj);
+    }
     
+    public bool GetOrNewGameObject(string objName, Vector3 pos, Quaternion rot, out GameObject obj)
+    {
+        if (stringObjPools.TryGetValue(objName, out var pool))
+        {
+            if (pool.Get(GameSceneMgr.Inst.Root, pos, rot, out obj))
+            {
+                return true;
+            }
+        }
+        obj = new GameObject(objName);
+        obj.transform.parent = GameSceneMgr.Inst.Root;
+        return false;
+    }
+        
     public void GetObject(string objName, Vector3 pos, Quaternion rot, Transform parent,
         Action<GameObject> callback = null)
     {

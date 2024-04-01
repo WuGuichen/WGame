@@ -42,6 +42,8 @@ public class RotateCharacterSystem : IExecuteSystem
                 moveDir = new Vector2(tmp.x, tmp.z);
             }
 
+            var rateTime = _time.FixedDeltaTime * entity.characterTimeScale.rate;
+
             if (entity.isCamera && entity.hasFocusEntity && !entity.isRotateInFocus)
             {
                 if (isCamera)
@@ -61,7 +63,7 @@ public class RotateCharacterSystem : IExecuteSystem
                 }
                 var tarRot = Quaternion.LookRotation(fwd);
                 var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
-                var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
+                var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * rateTime);
                 // leftAngle = fwd.GetAngle(moveDir);
                 playerTrans.localRotation = playerRot;
             }
@@ -93,7 +95,7 @@ public class RotateCharacterSystem : IExecuteSystem
                 {
                     rotRate *= 0.5f;
                 }
-                var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * _time.FixedDeltaTime);
+                var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * rateTime);
 
                 playerTrans.localRotation = playerRot;
             }

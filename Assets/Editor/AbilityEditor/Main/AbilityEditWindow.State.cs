@@ -168,6 +168,14 @@ namespace WGame.Ability.Editor
                             Setting.animationTrackIcon);
                     });
                 }
+                else if (group.itemName == Setting.groupInterruptName)
+                {
+                    menu.AddItem(Setting.contextNewInterrupt, false, () =>
+                    {
+                        var track = CreateActorTrack(group, Setting.trackInterruptType, Setting.colorInterrupt,
+                            Setting.interruptTrackIcon);
+                    });
+                }
                 else if (group.itemName == Setting.groupEffectName)
                 {
                     menu.AddItem(Setting.contextNewEffect, false, () =>
@@ -201,7 +209,8 @@ namespace WGame.Ability.Editor
                     var enableSignal = true;
                     var enableDuration = false;
                     var actorType = track.GetItemType();
-                    if (actorType == Setting.trackAnimationType)
+                    if (actorType == Setting.trackAnimationType
+                        || actorType == Setting.trackInterruptType)
                     {
                         enableSignal = false;
                         enableDuration = true;
@@ -252,7 +261,8 @@ namespace WGame.Ability.Editor
                         {
                             //todo 重置动画播放时间
                             var clip = GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
-                            Length = ToSecond(e.eventProperty.TriggerTime) + clip.length;
+                            var offset = ToSecond(epa.PlayOffsetStart + epa.PlayOffsetEnd);
+                            Length = ToSecond(e.eventProperty.TriggerTime) + clip.length - offset;
                         }
                     });
                 }
@@ -305,7 +315,6 @@ namespace WGame.Ability.Editor
             var operation = $"{type} {group.childCount}";
             if (forceUndo)
             {
-                // todo Undo原理
                 Helper.RegisterCreatedObjectUndo(track, operation);
                 Helper.PushUndo(new Object[] { group, track }, operation);
             }

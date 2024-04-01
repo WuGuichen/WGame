@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Security;
 using Entitas;
 using UnityEngine;
 
@@ -25,21 +21,19 @@ public class GroundSensorDetectSystem : IExecuteSystem
         {
             var startPoint = entity.position.value;
 
-            Physics.OverlapBoxNonAlloc(startPoint, size, cols, Quaternion.identity, lm);
-            if (cols[0] != null)
+            var num = Physics.OverlapBoxNonAlloc(startPoint, size, cols, Quaternion.identity, lm);
+            if (num > 0)
             {
                 if (entity.groundSensor.intersect == false)
                 {
                     entity.ReplaceGroundSensor(true);
                 }
-                cols[0] = null;
             }
             else
             {
-                if (entity.groundSensor.intersect == true)
+                if (entity.groundSensor.intersect)
                     entity.ReplaceGroundSensor(false);
             }
-            // }
         }
     }
 }

@@ -2,28 +2,20 @@
 {
     "Data" : [
         {
-            "BuffType" : "Condition",
+            "BuffType" : "Numerical",
             "BuffData" : {
                 "ID" : 0,
                 "Name" : "AddHP",
-                "Target" : "None",
-                "AddNum" : 1,
+                "Desc" : "",
+                "Target" : "Self",
+                "AddType" : "AddNone",
+                "AddNum"  : 1,
                 "Duration" : -1,
-                "AddBuffList" : [
-                ],
-                "RemoveBuffList" : [
-                ],
-                "Conditions"     : [
-                    {
-                        "ConditionType" : "CheckHP",
-                        "CmpType"       : "Greater",
-                        "CmpValue"      : {
-                            "Type" : "Normal",
-                            "AttrID" : 0,
-                            "ModValue" : 324
-                        }
-                    }
-                ]
+                "Attr"     : 0,
+                "AddVal"   : 50000,
+                "MulVal"   : 2000,
+                "EffStart" : "/Effects/HCFX_Buff_Up.prefab",
+                "EffKeep"  : ""
             }
         }
     ]

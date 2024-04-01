@@ -1,15 +1,18 @@
 using Entitas;
+using WGame.Ability;
 using WGame.Trigger;
 
 public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
 {
     private readonly IGroup<MotionEntity> _motionGroup;
     private readonly ITimeService _timeService;
+    private readonly InputContext _inputContext;
     
     public ProcessMotionSignalUpdateSystem(Contexts contexts)
     {
         _motionGroup = contexts.motion.GetGroup(MotionMatcher.MotionService);
         _timeService = contexts.meta.timeService.instance;
+        _inputContext = contexts.input;
     }
 
 
@@ -20,34 +23,61 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
             if (!motion.hasLinkCharacter)
                 continue;
             var entity = motion.linkCharacter.Character;
+            var ability = entity.linkAbility.Ability.abilityService.service;
+            var inputState = entity.signalState.state;
+            bool notChange = true;
 
             if (entity.hasSignalAttack)
             {
-                if (motion.hasMotionJump && motion.motionStart.UID == motion.motionJump.UID)
-                    entity.isPrepareJumpAttackState = true;
-                else
-                    entity.isPrepareAttackState = true;
+                inputState.EnableState(InputType.Attack);
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Attack, out var id))
+                {
+                    motion.motionService.service.SwitchMotion(id);
+                    notChange = false;
+                }
             }
 
             if (entity.hasSignalJump)
             {
-                entity.isPrepareJumpState = true;
+                inputState.EnableState(InputType.Jump);
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Jump, out var id))
+                {
+                    motion.motionService.service.SwitchMotion(id);
+                    notChange = false;
+                }
             }
 
             if (entity.hasSignalStep)
             {
-                entity.isPrepareStepState = true;
+                inputState.EnableState(InputType.Step);
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Step, out var id))
+                {
+                    motion.motionService.service.SwitchMotion(id);
+                    notChange = false;
+                }
             }
 
             if (entity.hasSignalLocalMotion)
             {
-                entity.isPrepareLocalMotionState = true;
+                inputState.EnableState(InputType.LocalMotion);
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.LocalMotion, out var id))
+                {
+                    motion.motionService.service.SwitchMotion(id);
+                    notChange = false;
+                }
             }
 
             if (entity.hasSignalDefense)
-            {
-                entity.isPrepareDefenseState = true;
+            { 
+                inputState.EnableState(InputType.Defense);
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Defense, out var id))
+                {
+                    motion.motionService.service.SwitchMotion(id);
+                    notChange = false;
+                }
             }
+            
+            inputState.CheckStateChange();
         }
     }
 
@@ -59,7 +89,7 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
                 continue;
             var entity = motion.linkCharacter.Character;
             float leftSignalTime = 0;
-            float deltaTime = _timeService.DeltaTime;
+            float deltaTime = _timeService.DeltaTime(0.2f);
 
             if (entity.hasSignalAttack)
             {
@@ -99,17 +129,16 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
 
             if (entity.hasSignalDefense)
             {
-                leftSignalTime = entity.signalDefense.time - deltaTime;
-                if (leftSignalTime < 0)
-                {
+                // leftSignalTime = -1;
+                // if (leftSignalTime < 0)
+                // {
                     entity.RemoveSignalDefense();
                     WTriggerMgr.Inst.TriggerEvent(MainTypeDefine.InputSignal, InputSignalSubType.Defense,
                         InputSignalEvent.WasReleased, new WTrigger.Context(entity.entityID.id));
-                }
-                else
-                    entity.ReplaceSignalDefense(leftSignalTime);
+                // }
+                // else
+                //     entity.ReplaceSignalDefense(leftSignalTime);
             }
-            
         }
     }
 }

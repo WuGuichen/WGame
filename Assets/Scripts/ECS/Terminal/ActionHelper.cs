@@ -12,18 +12,23 @@ public partial class ActionHelper
 
     private static int currentCameraEntityID = -1;
     public static int CurCameraEntityID => currentCameraEntityID;
-    
+
     /// <param name="entity">受击者</param>
     /// <param name="hitInfo">受击信息</param>
     public static void DoGotHit(GameEntity entity, ContactInfo hitInfo)
     {
         if (!entity.hasLinkAbility || !entity.linkAbility.Ability.hasAbilityGotHit)
             return;
-        
+
+        var ability = entity.linkAbility.Ability;
+        // if (ability.abilityParryAttack.value.Parry(hitInfo))
+        // {
+        //     return;
+        // }
         entity.notice.service.Notice(WGame.Notice.MessageDB.Getter.GetBehitted(hitInfo));
-        entity.linkAbility.Ability.abilityGotHit.service.OnGotHit(entity, hitInfo);
+        ability.abilityGotHit.service.OnGotHit(entity, hitInfo);
     }
-    
+
     public static void DoHitTarget(GameEntity entity, ContactInfo hitInfo)
     {
         if (!entity.hasLinkAbility || !entity.linkAbility.Ability.hasAbilityGotHit)
@@ -100,11 +105,11 @@ public partial class ActionHelper
     public static void DoFinishAttack(AbilityEntity attacker)
     {
         var victim = EntityUtils.GetGameEntity(attacker.abilityBackStab.EntityID);
-        bool done = victim.linkAbility.Ability.abilityService.service.Do("BeFinishAtk", true);
-        if (done)
-        {
-            attacker.abilityService.service.Do("FinishAtk", true);
-        }
+        // bool done = victim.linkAbility.Ability.abilityService.service.Do("BeFinishAtk", true);
+        // if (done)
+        // {
+        //     attacker.abilityService.service.Do("FinishAtk", true);
+        // }
     }
 
     public static void Dispose()

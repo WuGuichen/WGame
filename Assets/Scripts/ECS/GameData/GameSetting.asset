@@ -18,9 +18,10 @@ MonoBehaviour:
     PlayerPrefab: {fileID: 0}
     MovementSpeed: 4
     RotationSpeed: 0.03
+    GravitySpeed: -10
   CameraConfig:
     CameraLookSpeed: 6
     CameraPivotSpeed: -3
-    CameraSmoothTime: 0.1
+    CameraSmoothTime: 0.001
     MinimumPivotAngle: -24
     MaximumPivotAngle: 60

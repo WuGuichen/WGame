@@ -1,7 +1,6 @@
 using Entitas;
 using UnityEngine;
 using WGame.Ability;
-using WGame.Notice;
 using WGame.Trigger;
 
 public class UpdateDeviceInputSignalSystem : IExecuteSystem
@@ -28,6 +27,11 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
 
     void HandleInputSignal(GameEntity entity)
     {
+        var inputState = entity.inputState.state;
+        if (_inputContext.runInput.value)
+        {
+            inputState.EnableState(InputType.Jump);
+        }
         if (_inputContext.runInput.value && entity.linkMotion.Motion.motionStart.UID == entity.linkMotion.Motion.motionLocalMotion.UID)
         {
             // 跑
@@ -40,6 +44,7 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
         
         if (_inputContext.jumpInput.value)
         {
+            inputState.EnableState(InputType.Jump);
             // 跳
             // 这里会有预输入
             // entity.ReplaceSignalJump(1f);
@@ -50,6 +55,7 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
             // 防御
             // entity.isPrepareDefenseState = true;
             entity.ReplaceSignalDefense(0.1f);
+            inputState.EnableState(InputType.Defense);
         }
 
         if (_inputContext.attackHoldInput.value)
@@ -57,6 +63,7 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
             // 蓄力攻击
             WTriggerMgr.Inst.TriggerEvent(MainTypeDefine.InputSignal, InputSignalSubType.Attack, InputSignalEvent.IsHold, new WTrigger.Context(entity.entityID.id));
             entity.isPrepareHoldAttackState = true;
+            inputState.EnableState(InputType.HoldAttack);
         }
         else
         {
@@ -67,6 +74,7 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
 
         if (_inputContext.attackInput.value)
         {
+            inputState.EnableState(InputType.Attack);
             if (entity.hasLinkAbility)
             {
                 var ability = entity.linkAbility.Ability;
@@ -88,16 +96,19 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
 
         if (_inputContext.stepInput.value)
         {
+            inputState.EnableState(InputType.Step);
             entity.ReplaceSignalStep(0.2f);
         }
 
         if (_inputContext.special.value)
         {
-            entity.linkAbility.Ability.abilityService.service.Do("FireBall");
+            inputState.EnableState(InputType.Special);
+            // entity.linkAbility.Ability.abilityService.service.Do("FireBall");
         }
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.H))
         {
         }
+        inputState.CheckStateChange();
     }
 }

@@ -12,16 +12,18 @@ public static class AbilityComponentsLookup {
     public const int AbilityEvade = 1;
     public const int AbilityGotHit = 2;
     public const int AbilityNormalAttack = 3;
-    public const int AbilityService = 4;
-    public const int LinkCharacter = 5;
+    public const int AbilityParryAttack = 4;
+    public const int AbilityService = 5;
+    public const int LinkCharacter = 6;
 
-    public const int TotalComponents = 6;
+    public const int TotalComponents = 7;
 
     public static readonly string[] componentNames = {
         "AbilityBackStab",
         "AbilityEvade",
         "AbilityGotHit",
         "AbilityNormalAttack",
+        "AbilityParryAttack",
         "AbilityService",
         "LinkCharacter"
     };
@@ -31,6 +33,7 @@ public static class AbilityComponentsLookup {
         typeof(AbilityEvadeComponent),
         typeof(AbilityGotHitComponent),
         typeof(AbilityNormalAttackComponent),
+        typeof(AbilityParryAttackComponent),
         typeof(AbilityServiceComponent),
         typeof(LinkCharacterComponent)
     };

@@ -11,6 +11,7 @@ using Motion;
 using Pathfinding;
 using Sirenix.Serialization;
 using Weapon;
+using WGame.Ability;
 using WGame.Attribute;
 using WGame.Res;
 using WGame.Runtime;
@@ -62,7 +63,6 @@ public class FactoryServiceImplementation : IFactoryService
         var pos = Random.insideUnitSphere * 6 + camPos;
         pos.y = 0.5f;
         var info = WNetMgr.Inst.MyPlayerInfo;
-        WLogger.Print(info.charId);
         if (info.charId > 0)
         {
             GenCharacter(info.charId, pos, Quaternion.identity, out var entity, gameEntity =>
@@ -310,6 +310,7 @@ public class FactoryServiceImplementation : IFactoryService
     {
         int instanceID = _gameEntityDB.Register(entity);
         entity.AddInstanceID(instanceID);
+        entity.AddCharacterTimeScale(1);
         
         var info = entity.characterInfo.value;
         // 游戏物体
@@ -318,6 +319,9 @@ public class FactoryServiceImplementation : IFactoryService
         entity.AddRigidbodyService(obj.GetComponent<IRigidbodyService>().OnInit());
         entity.rigidbodyService.service.SetEntity(entity);
         entity.AddMoveDirection(Vector3.zero);
+        entity.AddCharacterState(new StateMgr());
+        entity.AddInputState(new StateMgr());
+        entity.AddSignalState(new StateMgr());
         // 是否是动态加载的角色
         var isDynamicLoad = entity.hasPosition;
         if (!isDynamicLoad)
@@ -346,16 +350,16 @@ public class FactoryServiceImplementation : IFactoryService
         entity.AddLinkMotion(motion);
         motion.AddLinkCharacter(entity);
         motion.AddMotionService(obj.GetComponentInChildren<IMotionService>().OnInit(motion));
-        motion.AddMotionLocalMotion(MotionIDs.LocalMotion1);
-        motion.AddMotionStepFwd(MotionIDs.Step1);
-        motion.AddMotionHitFwd(MotionIDs.Hit1);
+        motion.AddMotionLocalMotion(AbilityIDs.LocalMotion);
+        motion.AddMotionStepFwd(AbilityIDs.LS_Step);
+        motion.AddMotionHitFwd(AbilityIDs.LS_Hit_Fwd);
         motion.AddMotionSpare(MotionIDs.Spare1);
-        motion.AddMotionHitBwd(MotionIDs.HitBwd1);
-        motion.AddMotionJump(MotionIDs.Jump1);
-        motion.AddMotionJumpLand(MotionIDs.JumpLand1);
-        motion.AddMotionDefense(MotionIDs.Block1);
-        motion.AddMotionJumpAttack(MotionIDs.JumpAttack1);
-        motion.AddMotionDead(MotionIDs.Dead_R1);
+        motion.AddMotionHitBwd(AbilityIDs.LS_Hit_Bwd);
+        motion.AddMotionJump(AbilityIDs.LS_Jump);
+        motion.AddMotionJumpLand(AbilityIDs.LS_JumpLand);
+        motion.AddMotionDefense(AbilityIDs.LS_Defense);
+        motion.AddMotionJumpAttack(AbilityIDs.LS_Attack3);
+        motion.AddMotionDead(AbilityIDs.LS_Death_L);
         // 初始motion
         motion.AddMotionStart(motion.motionLocalMotion.UID);
         // 武器位
@@ -454,23 +458,42 @@ public class FactoryServiceImplementation : IFactoryService
             EntityUtils.BvhRed.Add(entity.gameViewService.service);
         }
         
-        // 添加触发器预制体
-        var evadeObj = new GameObject("Evade_"+entity.instanceID.ID);
-        var evadeMono = evadeObj.AddComponent<SensorMono>();
-        var capsule = evadeObj.AddComponent<CapsuleCollider>();
-        var rigid = evadeObj.AddComponent<Rigidbody>();
-        capsule.enabled = false;
-        rigid.isKinematic = true;
-        rigid.useGravity = false;
+        // 添加极限闪避触发器预制体
+        var isCached = ObjectPool.Inst.GetOrNewGameObject("EvadeTrigger", out var evadeObj);
+        SensorMono evadeMono;
+        if (isCached)
+        {
+            evadeMono = evadeObj.GetComponent<SensorMono>();
+            evadeMono.SetSize(entity.gameViewService.service.Radius, entity.gameViewService.service.Height)
+            .SetLayer(EntityUtils.GetSensorLayer(entity));
+        }
+        else
+        {
+            evadeMono = evadeObj.AddComponent<SensorMono>();
+            var capsule = evadeObj.AddComponent<CapsuleCollider>();
+            var rigid = evadeObj.AddComponent<Rigidbody>();
+            capsule.enabled = false;
+            rigid.isKinematic = true;
+            rigid.useGravity = false;
+            rigid.automaticCenterOfMass = false;
+            rigid.automaticInertiaTensor = false;
+            rigid.constraints = RigidbodyConstraints.FreezeAll;
         evadeMono.SetData(entity, EntityPartType.Evasion, capsule)
             .SetSize(entity.gameViewService.service.Radius, entity.gameViewService.service.Height)
             .SetLayer(EntityUtils.GetSensorLayer(entity));
+        }
         ability.AddAbilityEvade(new UtimateEvasion(evadeMono));
+        ability.AddAbilityParryAttack(new ParryAttack(entity));
+        ability.abilityParryAttack.value.IsEnable = true;
+        
         // 同步物理位置
         Physics.SyncTransforms();
         
         // 数据初始化
         entity.aiAgent.service.Initialize();
+        ability.abilityService.service.SwitchMotionAbility(motion.motionLocalMotion.UID);
+        motion.motionService.service.Initialize();
+        attribute.Init();
     }
 
     public void GenWeaponEntity(int weaponID, out WeaponEntity weapon)
@@ -573,9 +596,10 @@ public class FactoryServiceImplementation : IFactoryService
         var motion = entity.linkMotion.Motion.motionService.service;
         motion.SetLocalMotion(data.AnimGroupId);
         var motionEntt = entity.linkMotion.Motion;
-        motionEntt.ReplaceMotionAttack1(data.Attack1);
-        motionEntt.ReplaceMotionAttack2(data.Attack2);
-        motionEntt.ReplaceMotionAttack3(data.Attack3);
+        var abilityMgr = WAbilityMgr.Inst;
+        motionEntt.ReplaceMotionAttack1(abilityMgr.GetAbilityID(data.Attack1));
+        motionEntt.ReplaceMotionAttack2(abilityMgr.GetAbilityID(data.Attack2));
+        motionEntt.ReplaceMotionAttack3(abilityMgr.GetAbilityID(data.Attack3));
     }
 
     public GameEntity SelectRandomGenCharacter()

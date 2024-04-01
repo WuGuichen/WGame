@@ -6,6 +6,11 @@ namespace WGame.Utils
     {
         private Dictionary<string, TAny> propertyHash = new Dictionary<string, TAny>();
 
+        public void AddProperty(string key, TAny value)
+        {
+            propertyHash[key] = value;
+        }
+        
         public void AddProperty(string key, DataType type)
         {
             propertyHash[key] = TAny.New(type);

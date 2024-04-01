@@ -24,22 +24,22 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         { if(!_json["objectId"].IsNumber) { throw new SerializationException(); }  ObjectId = _json["objectId"]; }
         { if(!_json["dropId"].IsNumber) { throw new SerializationException(); }  DropId = _json["dropId"]; }
         { if(!_json["localMotion"].IsNumber) { throw new SerializationException(); }  LocalMotion = _json["localMotion"]; }
-        { if(!_json["attack1"].IsNumber) { throw new SerializationException(); }  Attack1 = _json["attack1"]; }
-        { if(!_json["attack2"].IsNumber) { throw new SerializationException(); }  Attack2 = _json["attack2"]; }
-        { if(!_json["attack3"].IsNumber) { throw new SerializationException(); }  Attack3 = _json["attack3"]; }
-        { if(!_json["block1"].IsNumber) { throw new SerializationException(); }  Block1 = _json["block1"]; }
-        { if(!_json["deadR1"].IsNumber) { throw new SerializationException(); }  DeadR1 = _json["deadR1"]; }
-        { if(!_json["hitFwd1"].IsNumber) { throw new SerializationException(); }  HitFwd1 = _json["hitFwd1"]; }
-        { if(!_json["hitBwd1"].IsNumber) { throw new SerializationException(); }  HitBwd1 = _json["hitBwd1"]; }
-        { if(!_json["jump1"].IsNumber) { throw new SerializationException(); }  Jump1 = _json["jump1"]; }
-        { if(!_json["jumpLand1"].IsNumber) { throw new SerializationException(); }  JumpLand1 = _json["jumpLand1"]; }
-        { if(!_json["Spare1"].IsNumber) { throw new SerializationException(); }  Spare1 = _json["Spare1"]; }
-        { if(!_json["Step1"].IsNumber) { throw new SerializationException(); }  Step1 = _json["Step1"]; }
+        { if(!_json["attack1"].IsString) { throw new SerializationException(); }  Attack1 = _json["attack1"]; }
+        { if(!_json["attack2"].IsString) { throw new SerializationException(); }  Attack2 = _json["attack2"]; }
+        { if(!_json["attack3"].IsString) { throw new SerializationException(); }  Attack3 = _json["attack3"]; }
+        { if(!_json["block1"].IsString) { throw new SerializationException(); }  Block1 = _json["block1"]; }
+        { if(!_json["deadR1"].IsString) { throw new SerializationException(); }  DeadR1 = _json["deadR1"]; }
+        { if(!_json["hitFwd1"].IsString) { throw new SerializationException(); }  HitFwd1 = _json["hitFwd1"]; }
+        { if(!_json["hitBwd1"].IsString) { throw new SerializationException(); }  HitBwd1 = _json["hitBwd1"]; }
+        { if(!_json["jump1"].IsString) { throw new SerializationException(); }  Jump1 = _json["jump1"]; }
+        { if(!_json["jumpLand1"].IsString) { throw new SerializationException(); }  JumpLand1 = _json["jumpLand1"]; }
+        { if(!_json["Spare1"].IsString) { throw new SerializationException(); }  Spare1 = _json["Spare1"]; }
+        { if(!_json["Step1"].IsString) { throw new SerializationException(); }  Step1 = _json["Step1"]; }
         { if(!_json["animGroupId"].IsNumber) { throw new SerializationException(); }  AnimGroupId = _json["animGroupId"]; }
         PostInit();
     }
 
-    public Weapon(int id, string name, string desc, int objectId, int dropId, int localMotion, int attack1, int attack2, int attack3, int block1, int deadR1, int hitFwd1, int hitBwd1, int jump1, int jumpLand1, int Spare1, int Step1, int animGroupId ) 
+    public Weapon(int id, string name, string desc, int objectId, int dropId, int localMotion, string attack1, string attack2, string attack3, string block1, string deadR1, string hitFwd1, string hitBwd1, string jump1, string jumpLand1, string Spare1, string Step1, int animGroupId ) 
     {
         this.Id = id;
         this.Name = name;
@@ -88,17 +88,17 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
     /// </summary>
     public int DropId { get; private set; }
     public int LocalMotion { get; private set; }
-    public int Attack1 { get; private set; }
-    public int Attack2 { get; private set; }
-    public int Attack3 { get; private set; }
-    public int Block1 { get; private set; }
-    public int DeadR1 { get; private set; }
-    public int HitFwd1 { get; private set; }
-    public int HitBwd1 { get; private set; }
-    public int Jump1 { get; private set; }
-    public int JumpLand1 { get; private set; }
-    public int Spare1 { get; private set; }
-    public int Step1 { get; private set; }
+    public string Attack1 { get; private set; }
+    public string Attack2 { get; private set; }
+    public string Attack3 { get; private set; }
+    public string Block1 { get; private set; }
+    public string DeadR1 { get; private set; }
+    public string HitFwd1 { get; private set; }
+    public string HitBwd1 { get; private set; }
+    public string Jump1 { get; private set; }
+    public string JumpLand1 { get; private set; }
+    public string Spare1 { get; private set; }
+    public string Step1 { get; private set; }
     /// <summary>
     /// 基础动画组
     /// </summary>

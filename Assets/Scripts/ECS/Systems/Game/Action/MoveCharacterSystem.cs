@@ -29,18 +29,19 @@ public class MoveCharacterSystem : IExecuteSystem
             curSpeed = entity.charCurSpeed.value;
             speedMulti = entity.charSpeedMulti.value;
             var motion = entity.linkMotion.Motion;
-            var deltaRootMotion = motion.motionService.service.AnimProcessor.DeltaRootMotionPos;
+            var anim = motion.motionService.service.AnimProcessor;
+            var deltaRootMotion = anim.DeltaRootMotionPos + anim.DeltaEventMovePos;
             if (entity.hasActionThrust)
             {
-                motion.motionService.service.AnimProcessor.ClearRootMotion();
+                anim.ClearMotionMove();
                 DoThrust(entity);
                 continue;
             }
 
             if (motion.hasDoMove)
             {
-                motion.motionService.service.AnimProcessor.ClearRootMotion();
-                motion.motionService.service.AnimProcessor.UpdateMoveSpeed(0,0);
+                anim.ClearMotionMove();
+                anim.UpdateMoveSpeed(0,0);
                 DoMove(motion);
                 continue;
             }
@@ -58,7 +59,7 @@ public class MoveCharacterSystem : IExecuteSystem
                 entity.ReplaceTargetPlanarSqrDistance(sqrDist);
                 if (entity.hasKeepTargetDistance && sqrDist <= entity.keepTargetDistance.value * entity.keepTargetDistance.value)
                 {
-                    motion.motionService.service.AnimProcessor.ClearRootMotion();
+                    anim.ClearMotionMove();
                     continue;
                 }
             }
@@ -78,7 +79,7 @@ public class MoveCharacterSystem : IExecuteSystem
                 speedMulti = Mathf.Lerp(speedMulti, tarMuti, 1f);
             var totalMulti = entity.animMoveMulti.rate * speedMulti * 0.0001f;
             var speed = entity.movementSpeed.value * totalMulti;
-            var speedY = entity.rigidbodyService.service.Velocity.y;
+            // var speedY = entity.rigidbodyService.service.Velocity.y;
             float vecMulti;
             var model = entity.gameViewService.service.Model;
             if (entity.isCamera)
@@ -90,13 +91,13 @@ public class MoveCharacterSystem : IExecuteSystem
                         var mainModel = MainModel.Inst;
                         if (mainModel.IsUseJoystick)
                         {
-                            motion.motionService.service.AnimProcessor.UpdateMoveSpeed(
+                            anim.UpdateMoveSpeed(
                                 mainModel.MoveDir.y * totalMulti,
                                 mainModel.MoveDir.x * totalMulti);
                         }
                         else
                         {
-                            motion.motionService.service.AnimProcessor.UpdateMoveSpeed(
+                            anim.UpdateMoveSpeed(
                                 _inputService.Move.y * totalMulti,
                                 _inputService.Move.x * totalMulti);
                         }
@@ -110,7 +111,7 @@ public class MoveCharacterSystem : IExecuteSystem
                     speed *= vecMulti;
                     if (motion.hasMotionService)
                     {
-                        motion.motionService.service.AnimProcessor.UpdateMoveSpeed(vecMulti*totalMulti, 0);
+                        anim.UpdateMoveSpeed(vecMulti*totalMulti, 0);
                     }
                 }
 
@@ -119,12 +120,12 @@ public class MoveCharacterSystem : IExecuteSystem
             {
                 var moveDir = entity.moveDirection.value;
                 moveDir = model.InverseTransformVector(moveDir);
-                vecMulti = Mathf.Clamp01(Vector3.Dot(
-                        model.forward,
-                        moveDir));
+                // vecMulti = Mathf.Clamp01(Vector3.Dot(
+                //         model.forward,
+                //         moveDir));
                 if (entity.hasFocusEntity)
                 {
-                    motion.motionService.service.AnimProcessor.UpdateMoveSpeed(
+                    anim.UpdateMoveSpeed(
                         moveDir.z,
                         moveDir.x);
                 }
@@ -134,7 +135,7 @@ public class MoveCharacterSystem : IExecuteSystem
                         model.forward,
                         entity.moveDirection.value));
                     speed *= vecMulti;
-                    motion.motionService.service.AnimProcessor.UpdateMoveSpeed(vecMulti * totalMulti, 0);
+                    anim.UpdateMoveSpeed(vecMulti * totalMulti, 0);
                 }
             }
 
@@ -145,11 +146,12 @@ public class MoveCharacterSystem : IExecuteSystem
                 curSpeed = Mathf.Lerp(curSpeed, speed, 0.1f);
             }
             var move = entity.moveDirection.value * curSpeed;
-            var totalSpeed = new Vector3(move.x, speedY, move.z) +
-                             deltaRootMotion * _timeService.DivFixedDeltaTime;
+            var rateDeltaTime = entity.characterTimeScale.rate * _timeService.FixedDeltaTime;
+            var totalSpeed = new Vector3(move.x, 0, move.z) * rateDeltaTime +
+                             deltaRootMotion;
             entity.rigidbodyService.service.Velocity = totalSpeed;
-            motion.motionService.service.AnimProcessor.ClearRootMotion();
-            entity.rigidbodyService.service.OnFixedUpdate(_timeService.FixedDeltaTime);
+            anim.ClearMotionMove();
+            entity.rigidbodyService.service.OnFixedUpdate(rateDeltaTime);
             entity.ReplaceCharCurSpeed(curSpeed);
             entity.ReplaceCharSpeedMulti(speedMulti);
 
@@ -172,10 +174,11 @@ public class MoveCharacterSystem : IExecuteSystem
     {
         var gameEntity = entity.linkCharacter.Character;
         var tarPos = entity.doMove.tarPos;
+        var rateDeltaTime = gameEntity.characterTimeScale.rate * _timeService.FixedDeltaTime;
         switch (entity.doMoveType.type)
         {
             case DoMoveType.Lerp:
-                var movePos = tarPos * entity.doMoveSpeed.value * _timeService.FixedDeltaTime;
+                var movePos = tarPos * entity.doMoveSpeed.value * rateDeltaTime;
                 var dirX = tarPos.x;
                 var leftPos = tarPos - movePos;
                 bool needRemove = false;
@@ -192,7 +195,7 @@ public class MoveCharacterSystem : IExecuteSystem
                 {
                     entity.ReplaceDoMove(leftPos);
                 }
-                gameEntity.rigidbodyService.service.Velocity = movePos * _timeService.DivFixedDeltaTime;
+                gameEntity.rigidbodyService.service.Velocity = movePos * rateDeltaTime;
                 break;
             default:
                 break;

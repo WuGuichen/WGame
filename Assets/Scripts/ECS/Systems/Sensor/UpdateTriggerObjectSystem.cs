@@ -24,7 +24,7 @@ public class UpdateTriggerObjectSystem : IExecuteSystem
             }
             else
             {
-                leftTime -= _time.DeltaTime;
+                leftTime -= _time.DeltaTime(1f);
                 sensor.ReplaceLifeTime(leftTime);
             }
         }

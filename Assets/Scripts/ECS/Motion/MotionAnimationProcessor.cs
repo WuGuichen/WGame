@@ -10,9 +10,9 @@ public class MotionAnimationProcessor : AnimancerComponent
     private float checkTime = 0f;
 
     private float lastAnimTime = -1;
-    private float rootMotionRate = 1f;
+    private int rootMotionRate = 1;
 
-    public float RootMotionRate
+    public int RootMotionRate
     {
         get => rootMotionRate;
         set => rootMotionRate = value;
@@ -40,12 +40,14 @@ public class MotionAnimationProcessor : AnimancerComponent
         {
             return;
         }
+
+        Playable.PauseGraph();
         _factoryService = Contexts.sharedInstance.meta.factoryService.instance;
         InitAnimLayer(AnimLayerType.Base);
         InitAnimLayer(AnimLayerType.UpperBody);
         InitAnimLayer(AnimLayerType.LowerBody);
-        rootMotionRate = 0f;
-        ClearRootMotion();
+        rootMotionRate = 0;
+        ClearMotionMove();
         localMotionStates = new ClipState[LocalMotionType.Count];
         _focusMove = new CartesianMixerState();
         this._transform = transform;
@@ -132,9 +134,10 @@ public class MotionAnimationProcessor : AnimancerComponent
         RefreshAnimClip(type, clip);
     }
 
-    public void OnUpdate(float checkTime)
+    public void OnUpdate(float checkTime, float deltaTime)
     {
         this.checkTime = checkTime;
+        Evaluate(deltaTime);
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -142,7 +145,7 @@ public class MotionAnimationProcessor : AnimancerComponent
     {
         if (_focusMove.ChildCount > 0)
         {
-            rootMotionRate = 0f;
+            // rootMotionRate = 0;
             lastAnimTime = -1f;
             if (setLocalMotion)
             {
@@ -168,7 +171,9 @@ public class MotionAnimationProcessor : AnimancerComponent
             return state;
         }
         else
+        {
             return Layers[layer].Play(clip, fadeDuration, mode);
+        }
     }
     
     public void ProcessAnimationNode(PlayAnimationNode node)
@@ -242,9 +247,12 @@ public class MotionAnimationProcessor : AnimancerComponent
 
     public Vector3 DeltaRootMotionPos => deltaPosition;
 
-    public void ClearRootMotion()
+    public Vector3 DeltaEventMovePos { get; set; } = Vector3.zero;
+
+    public void ClearMotionMove()
     {
         deltaPosition = Vector3.zero;
+        DeltaEventMovePos = Vector3.zero;
     }
 }
 

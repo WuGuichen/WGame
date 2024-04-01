@@ -15,6 +15,7 @@ namespace WGame.Ability
         public string DebugName => Buff != null ? Buff.Name : "noname" + System.DateTime.Now.ToString("yyyyMMddhhmmss");
 
         public int ID => Buff != null ? Buff.ID : -1;
+        public string Name => Buff != null ? Buff.Name : "None";
 
         #region property
         [EditorData("BUFF类型", EditorDataType.Enum)]

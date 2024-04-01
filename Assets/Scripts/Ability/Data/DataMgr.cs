@@ -6,7 +6,7 @@ namespace WGame.Ability
 {
     public class DataMgr : Singleton<DataMgr>
     {
-        private Dictionary<int, BuffFactoryData> mBuffPropertyHash = new();
+        private Dictionary<string, BuffFactoryData> mBuffPropertyHash = new();
 
         private IGameAssetLoader _loader;
 
@@ -14,7 +14,7 @@ namespace WGame.Ability
         {
             _loader = loader;
             
-            Load("/Buff/Buff.json", (BuffFactoryData b) => { mBuffPropertyHash.Add(b.ID, b); });
+            Load("Buff", (BuffFactoryData b) => { mBuffPropertyHash.Add(b.Name, b); });
         }
 
         public void Dispose()
@@ -42,11 +42,11 @@ namespace WGame.Ability
             }
         }
 
-        public bool TryGetBuffData(int id, out BuffFactoryData data)
+        public bool TryGetBuffData(string id, out BuffFactoryData data)
         {
             return mBuffPropertyHash.TryGetValue(id, out data);
         }
-        public BuffFactoryData GetBuffData(int id)
+        public BuffFactoryData GetBuffData(string id)
         {
             if (!mBuffPropertyHash.TryGetValue(id, out var buff))
             {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using WGame.Editor;
@@ -7,6 +8,7 @@ namespace WGame.Ability.Editor
     internal sealed partial class AbilityEditWindow
     {
         [SerializeField] private ItemTreeData itemAbilityTree = null;
+        [SerializeField] private Searcher searcher = new Searcher();
         
         private void InitInspectorAbility()
         {
@@ -14,6 +16,90 @@ namespace WGame.Ability.Editor
             itemAbilityTree.Init(null);
             itemAbilityTree.AddManipulator(new ItemTreeDataManipulator(itemAbilityTree));
             DeserializeAbility();
+            
+            searcher.onInputChanged = OnInputChanged;
+            searcher.onConfirm = OnConfirm;
+        }
+        
+        private void OnInputChanged(string searchString)
+        {
+            searcher.ClearResults();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                foreach (var item in itemAbilityTree.Children)
+                {
+                    var ap = item as ItemData;
+                    var ac = ap.Data as AbilityData;
+                    if (!string.IsNullOrEmpty(ac.Name) && ac.Name.Contains(searchString))
+                    {
+                        searcher.AddResult(ac.Name);
+                    }
+                }
+            }
+        }
+        
+        private void OnConfirm(string result)
+        {
+            foreach (var item in itemAbilityTree.Children)
+            {
+                var ap = item as ItemData;
+                var ac = ap.Data as AbilityData;
+                if (ac.Name == result)
+                {
+                    item.OnSelected();
+                    SelectData(item);
+
+                    leftScrollPos.y = item.manipulatorRect.y;
+
+                    break;
+                }
+            }
+        }
+
+        public List<KeyValuePair<string, int>> AbilityList()
+        {
+            var res = new List<KeyValuePair<string, int>>();
+            using (var itr = itemAbilityTree.Children.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    var ap = itr.Current as ItemData;
+                    var ac = ap.Data as AbilityData;
+                    res.Add(new KeyValuePair<string, int>(ac.Name, ac.ID));
+                }
+            }
+
+            return res;
+        }
+
+        public HashSet<int> AbilityIDSet()
+        {
+            HashSet<int> list = new();
+            using (var itr = itemAbilityTree.Children.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    var ap = itr.Current as ItemData;
+                    var ac = ap.Data as AbilityData;
+                    list.Add(ac.ID);
+                }
+            }
+
+            return list;
+        }
+
+        public int GenEmptyAbilityID()
+        {
+            var idSet = AbilityIDSet();
+            for (int i = 0; i < 10000; i++)
+            {
+                if (!idSet.Contains(i))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -22,46 +108,54 @@ namespace WGame.Ability.Editor
             GUILayout.BeginVertical();
             {
                 GUILayout.Space(2);
-                GUILayout.BeginHorizontal(Setting.btnToolBoxStyle, GUILayout.Width(rectInspectorLeft.width),
-                    GUILayout.Height(16));
+                
+                searcher.OnGUI();
+
+                if (!searcher.HasSearchbarFocused())
                 {
-                    if (Application.isPlaying)
+                    GUILayout.BeginHorizontal(Setting.btnToolBoxStyle, GUILayout.Width(rectInspectorLeft.width),
+                        GUILayout.Height(16));
                     {
-                        if (GUILayout.Button("Hot Reload"))
+                        if (Application.isPlaying)
                         {
-                            WAbilityMgr.Inst.HotReloadGroup(WAbilityMgr.Inst.Loader.GetAbilityGroups()[0]);
+                            if (GUILayout.Button("Hot Reload"))
+                            {
+                                WAbilityMgr.Inst.HotReloadGroup(WAbilityMgr.Inst.Loader.GetAbilityGroups()[0]);
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (GUILayout.Button("New"))
+                        else
                         {
-                            var ap = CreateData(itemAbilityTree, typeof(AbilityData));
-                            var ac = ap.Data as AbilityData;
-                            ac.TotalTime = 1666;
-                            ac.ID = Helper.NonceStr(25);
+                            if (GUILayout.Button("New"))
+                            {
+                                var ap = CreateData(itemAbilityTree, typeof(AbilityData));
+                                var ac = ap.Data as AbilityData;
+                                ac.TotalTime = 1666;
+                                ac.ID = GenEmptyAbilityID();
+                                ac.Name = Helper.NonceStr();
+                            }
+
+                            if (GUILayout.Button("Delete"))
+                            {
+                                DeleteProperty();
+                                ClearTreeView();
+                            }
                         }
 
-                        if (GUILayout.Button("Delete"))
+                        if (GUILayout.Button("Save"))
                         {
-                            DeleteProperty();
-                            ClearTreeView();
+                            SaveAbility();
                         }
                     }
 
-                    if (GUILayout.Button("Save"))
+                    GUILayout.EndHorizontal();
+                    GUILayout.Space(2);
+                    leftScrollPos = GUILayout.BeginScrollView(leftScrollPos, false, true);
                     {
-                        SaveAbility();
+                        itemAbilityTree.HandleManipulatorsEvents(this, Event.current);
+                        itemAbilityTree.Draw();
                     }
+                    GUILayout.EndScrollView();
                 }
-                GUILayout.EndHorizontal();
-                GUILayout.Space(2);
-                leftScrollPos = GUILayout.BeginScrollView(leftScrollPos, false, true);
-                {
-                    itemAbilityTree.HandleManipulatorsEvents(this, Event.current);
-                    itemAbilityTree.Draw();
-                }
-                GUILayout.EndScrollView();
             }
             GUILayout.EndVertical();
         }

@@ -9,6 +9,8 @@ using Motion;
 public class MotionServiceImplementation : MonoBehaviour, IMotionService
 {
     private IFactoryService _factoryService;
+    private ITimeService _timeService;
+    private InputContext _inputContext;
     private EventNodeScriptableObject currentMotion;
 
     private MotionEntity entity;
@@ -41,9 +43,6 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
     public MotionAnimTriggerProcessor AnimTriggerProcessor => animTriggerProcessor;
     private MotionEventTriggerProcessor eventTriggerProcessor;
 
-    public BehaviorTree CurShowBehaviorTree;
-    public int curFSMState;
-
     private CharacterData _characterData;
     
     public IMotionService OnInit(MotionEntity entity)
@@ -56,6 +55,8 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
             return this;
 
         _factoryService = Contexts.sharedInstance.meta.factoryService.instance;
+        _timeService = Contexts.sharedInstance.meta.timeService.instance;
+        _inputContext = Contexts.sharedInstance.input;
         animationProcessor = GetComponent<MotionAnimationProcessor>();
         animationProcessor.OnInit();
         animTriggerProcessor = new MotionAnimTriggerProcessor(this);
@@ -142,7 +143,7 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
         // else
         // {
             entity.ReplaceMotionStart(newID);
-        // }
+            // }
     }
 
     public void SetLocalMotion(int animGroup)
@@ -167,6 +168,10 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
             entity.RemoveMotionAttack2();
         if(entity.hasMotionAttack3)
             entity.RemoveMotionAttack3();
+    }
+
+    public void Initialize()
+    {
     }
 
     // 开始新的motion
@@ -199,7 +204,7 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
     public void UpdateMotion()
     {
         if (currentMotion.animationNodes == null) return;
-        animationProcessor.OnUpdate(checkTime);
+        animationProcessor.OnUpdate(checkTime, _timeService.DeltaTime(character.characterTimeScale.rate));
         animTriggerProcessor.OnUpdate(checkTime);
         eventTriggerProcessor.OnUpdate(elapsedTime);
         
@@ -254,7 +259,7 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
         }
         else
         {
-            ElapsedTime += Time.deltaTime * animationProcessor.AnimSpeed;
+            ElapsedTime += _timeService.DeltaTime(character.characterTimeScale.rate) * animationProcessor.AnimSpeed;
         }
     }
 
@@ -269,7 +274,7 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
             MotionType.Attack2 when (character.isPrepareAttackState && entity.hasMotionAttack2) => entity.motionAttack2.UID,
             MotionType.Attack3 when (character.isPrepareAttackState && entity.hasMotionAttack3) => entity.motionAttack3.UID,
             MotionType.Jump when (character.isPrepareJumpState && entity.hasMotionJump) => entity.motionJump.UID,
-            MotionType.Defense when(character.isPrepareDefenseState && entity.hasMotionDefense) => entity.motionDefense.UID,
+            MotionType.Defense when(character.isPrepareDefenseState && entity.hasMotionDefense && _inputContext.defense.value) => entity.motionDefense.UID,
             MotionType.JumpAttack1 when(character.isPrepareJumpAttackState && entity.hasMotionJumpAttack) => entity.motionJumpAttack.UID,
             _ => -1,
         };
@@ -287,8 +292,6 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
             MotionType.Jump when (entity.hasMotionJump) => entity.motionJump.UID,
             MotionType.Defense when(entity.hasMotionDefense) => entity.motionDefense.UID,
             MotionType.JumpAttack1 when(entity.hasMotionJumpAttack) => entity.motionJumpAttack.UID,
-            MotionType.HitFwd when(entity.hasMotionHitFwd) => entity.motionHitFwd.UID,
-            MotionType.HitBwd when(entity.hasMotionHitBwd) => entity.motionHitBwd.UID,
             _ => -1,
         };
     }
@@ -338,7 +341,13 @@ public class MotionServiceImplementation : MonoBehaviour, IMotionService
     {
         eventTriggerProcessor.OnMotionEnd();
     }
-    
+
+    public bool CheckMotionType(int motionType)
+    {
+        var id = GetMotionIDByMotionType(motionType);
+        return entity.motionStart.UID == id;
+    }
+
     #endregion
 
     private void OnAnimatorMove()

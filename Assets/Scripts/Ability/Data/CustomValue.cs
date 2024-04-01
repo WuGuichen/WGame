@@ -20,6 +20,25 @@ namespace WGame.Ability
         
         [EditorData("属性", EditorDataType.AttributeTypeID, 30)]
         public int AttrID { get; set; }
+
+        public float GetValue(BuffOwner owner)
+        {
+            float res = 0f;
+            var modVal = ModValue * 0.001f;
+            switch (ValueType)
+            {
+                case CustomValueType.Normal:
+                    res = modVal;
+                    break;
+                case CustomValueType.AttrValueAdd:
+                    res = owner.GetAttrValue(AttrID) + modVal;
+                    break;
+                case CustomValueType.AttrValueMult:
+                    res = owner.GetAttrValue(AttrID) * modVal;
+                    break;
+            }
+            return res;
+        }
         
         public void Deserialize(JsonData jd)
         {

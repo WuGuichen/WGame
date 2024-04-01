@@ -68,6 +68,7 @@ namespace WGame.Ability.Editor
                     }
                     
                     Window.DrawData(Data);
+                    
 
                     if (Data is AbilityData ability)
                     {

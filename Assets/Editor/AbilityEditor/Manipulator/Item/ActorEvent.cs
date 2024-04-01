@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
+using WGame.Ability.Editor.Custom;
 using WGame.Editor;
 
 namespace WGame.Ability.Editor
@@ -12,6 +13,7 @@ namespace WGame.Ability.Editor
         [SerializeField] private GUIContent text = new GUIContent();
         [SerializeField] private EventHandler leftHandle = null;
         [SerializeField] private EventHandler rightHandle = null;
+        [SerializeField] private Tooltip _tooltip = null;
         [SerializeField] private TrackItem _parent = null;
         
         [SerializeField] public DataEvent eventProperty = null;
@@ -23,6 +25,11 @@ namespace WGame.Ability.Editor
 
         [System.NonSerialized]
         private StringBuilder _tipBuf = new StringBuilder();
+
+        [NonSerialized] private const float MIN_TOLERANCE = 0.000001f;
+        [System.NonSerialized] private bool isFullDuration = false;
+        [System.NonSerialized] private bool isLeft = false;
+        [System.NonSerialized] private bool isRight = false;
         
         public TrackItem parent
         {
@@ -54,6 +61,7 @@ namespace WGame.Ability.Editor
                     duration = 0;
                     leftHandle = null;
                     rightHandle = null;
+                    _tooltip = new Tooltip(Window.Setting.displayBackground, Window.Setting.tinyFont);
 
                     if (eventProperty != null)
                     {
@@ -67,6 +75,7 @@ namespace WGame.Ability.Editor
                     leftHandle.Init(this, EventHandleType.Left);
                     rightHandle = ScriptableObject.CreateInstance<EventHandler>();
                     rightHandle.Init(this, EventHandleType.Right);
+                    _tooltip = null;
 
                     if (eventProperty != null)
                     {
@@ -168,6 +177,10 @@ namespace WGame.Ability.Editor
             {
                 eventProperty.EventType = EventDataType.DoAction;
             }
+            else if (eventTag == Window.Setting.trackInterruptType)
+            {
+                eventProperty.EventType = EventDataType.Interrupt;
+            }
             else if (eventTag == Window.Setting.trackEffectType)
             {
                 eventProperty.EventType = EventDataType.PlayEffect;
@@ -184,6 +197,10 @@ namespace WGame.Ability.Editor
 
             start = Window.SnapTime3(Window.Pos2Time(posX));
             eventStyle = style;
+            if (style == EventStyle.Duration)
+            {
+                duration = 0.2f;
+            }
         }
         
         public void Destroy()
@@ -198,6 +215,7 @@ namespace WGame.Ability.Editor
         {
             var x = Window.Time2Pos(start) + Window.rectTimeArea.x;
             var width = Mathf.Max(Window.FrameWidth, 8);
+
             if (duration > 0)
             {
                 width = Window.Time2Pos(end) - Window.Time2Pos(start);
@@ -228,33 +246,97 @@ namespace WGame.Ability.Editor
             BuildRect();
 
             var selected = Window.HasSelect(this);
-            var color = selected ? Window.Setting.colorRed :
-                eventStyle == EventStyle.Signal ? Window.Setting.colorEventSignal : Window.Setting.colorEventDuration;
+            var color = eventStyle == EventStyle.Signal ? Window.Setting.colorEventSignal : Window.Setting.colorEventDuration;
+            color = eventProperty.IsEnable ? color : Window.Setting.colorUnEnabled;
             using (new GUIColorScope(color))
             {
                 GUI.Box(rect, "", Window.Setting.customEventKey);
             }
 
             _tipBuf.Clear();
-            if (eventProperty != null && eventProperty.EventData != null && eventProperty.EventData is EventPlayAnim epa)
+            bool isShowTime = true;
+            if (eventProperty != null && eventProperty.EventData != null)
             {
-                if (!string.IsNullOrEmpty(epa.AnimName))
+                if (eventProperty.EventData is EventPlayAnim epa)
                 {
-                    var clip =GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
-                    duration = clip.length;
-                    _tipBuf.Append(clip.name);
-                    _tipBuf.Append(",");
+                    if (!string.IsNullOrEmpty(epa.AnimName))
+                    {
+                        var clip = GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
+                        var offset = Window.ToSecond(epa.PlayOffsetEnd + epa.PlayOffsetStart);
+                        duration = clip.length - offset;
+                        if (duration < 0)
+                            duration = 0;
+                        _tipBuf.Append(clip.name);
+                        _tipBuf.Append(",");
+                        _tipBuf.Append((epa.LayerType switch { 0 => "Base", 1 => "UpperBody", 2 => "LowerBody" }));
+                        _tipBuf.Append(",");
+                        var transRect = rect;
+                        transRect.width = Window.Time2Pos(Window.ToSecond(epa.TransDuration));
+                        using (new GUIColorScope(Window.Setting.colorDuration))
+                        {
+                            GUI.Box(transRect, "", Window.Setting.customEventKey);
+                            GUI.color = Color.black;
+                            GUI.Label(transRect, epa.TransDuration.ToString());
+                        }
+                    }
+                }
+                else if (eventProperty.EventData is EventInterrupt ei)
+                {
+                    StringToIDDefine.VisualizeMotionType(ref _tipBuf, ei.BreakType);
+                }
+                else if (eventProperty.EventData is EventSetMoveParam esmp)
+                {
+                    var define = StringToIDDefine.DefineDict[4];
+                    _tipBuf.Append(define.StringArray[esmp.ParamType]);
+                    _tipBuf.Append("[");
+                    _tipBuf.Append(esmp.ParamValue);
+                    _tipBuf.Append("]");
+                }
+                else if (eventProperty.EventData is EventSetState ess)
+                {
+                    StringToIDDefine.VisualizeStateType(ref _tipBuf, ess.StateMask, false);
+                }
+                else if (eventProperty.EventData is EventLockTick elt)
+                {
+                    _tipBuf.Append("进度停止在此");
+                    isShowTime = false;
+                }
+                else if (eventProperty.EventData is EventInputTriggerToMotion eitt)
+                {
+                    isShowTime = false;
+                    _tipBuf.Append("等待");
+                    StringToIDDefine.VisualizeInputType(ref _tipBuf, eitt.InputType, false);
+
+                    _tipBuf.Append(eitt.InputValue ? "按下" : "抬起");
+                    _tipBuf.Append(", 切换");
+
+                    StringToIDDefine.VisualizeMotionType(ref _tipBuf, eitt.StateType, true);
                 }
             }
 
-            switch (eventStyle)
+            if (selected)
             {
-                case EventStyle.Signal:
-                    _tipBuf.Append(Window.FormatTime(start));
-                    break;
-                case EventStyle.Duration:
-                    _tipBuf.Append(Window.FormatTime(duration));
-                    break;
+                using (new GUIColorScope(Window.Setting.colorPropertySelected))
+                {
+                    var selectRect = rect;
+                    selectRect.height = 6f;
+                    selectRect.y += rect.height - selectRect.height;
+                    GUI.Box(selectRect, "", Window.Setting.customEventKey);
+                }
+            }
+
+
+            if (isShowTime)
+            {
+                switch (eventStyle)
+                {
+                    case EventStyle.Signal:
+                        _tipBuf.Append(Window.FormatTime(start));
+                        break;
+                    case EventStyle.Duration:
+                        _tipBuf.Append(Window.FormatTime(duration));
+                        break;
+                }
             }
 
             text.text = _tipBuf.ToString();
@@ -266,13 +348,33 @@ namespace WGame.Ability.Editor
                 var offset = (rc.width - size.x) / 2;
                 offset = Mathf.Max(0, offset);
                 rc.x += offset;
-                GUI.Label(rc, text, EditorStyles.label);
+                if (_tooltip == null)
+                {
+                    GUI.Label(rc, text, EditorStyles.label);
+                }
+            }
+
+            if (_tooltip != null)
+            {
+                _tooltip.text = text.text;
+                var rc = rect;
+                rc.y -= 6f;
+                var size = EditorStyles.label.CalcSize(text);
+                rc.width = size.x;
+                var offset = size.x/2;
+                offset = Mathf.Max(0, offset);
+                // rc.x =;
+                _tooltip.bounds = rc;
             }
 
             if (eventStyle == EventStyle.Duration)
             {
                 leftHandle.Draw();
                 rightHandle.Draw();
+            }
+            else
+            {
+                _tooltip.Draw();
             }
         }
         
@@ -292,24 +394,30 @@ namespace WGame.Ability.Editor
                 GUILayout.Space(5);
                 Window.rightScrollPos = GUILayout.BeginScrollView(Window.rightScrollPos, false, true);
                 {
-                    using (new GUIColorScope(Window.Setting.colorInspectorLabel))
-                    {
-                        GUILayout.Label("Event");
-                    }
 
-                    GUILayout.Space(2);
-                    Window.DrawData(eventProperty);
-
-                    GUILayout.Space(5);
-                    using (new GUIColorScope(Window.Setting.colorInspectorLabel))
-                    {
-                        GUILayout.Label("Event Data");
-                    }
-
-                    GUILayout.Space(2);
+                    var eventType = eventProperty.EventType;
                     if (eventProperty.EventData != null)
                     {
-                        switch (eventProperty.EventType)
+                        if (!(eventType == EventDataType.PlayAnim
+                            || eventType == EventDataType.Interrupt))
+                        {
+                            using (new GUIColorScope(Window.Setting.colorInspectorLabel))
+                            {
+                                GUILayout.Label("Event");
+                            }
+
+                            GUILayout.Space(2);
+                            Window.DrawData(eventProperty);
+                        }
+
+                        GUILayout.Space(5);
+                        using (new GUIColorScope(Window.Setting.colorInspectorLabel))
+                        {
+                            GUILayout.Label("Event Data");
+                        }
+
+                        GUILayout.Space(2);
+                        switch (eventType)
                         {
                             // case EventDataType.EET_Interrupt:
                             //     DrawInspectorInterrupt();
@@ -321,8 +429,61 @@ namespace WGame.Ability.Editor
                                 Window.DrawData(eventProperty.EventData);
                                 break;
                         }
+
+
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label("辅助");
+                        if (eventType != EventDataType.PlayAnim)
+                        {
+                            isFullDuration = Mathf.Abs(duration - Window.Length) < MIN_TOLERANCE && start < MIN_TOLERANCE;
+                            var tmpIsFull = GUILayout.Toggle(isFullDuration, "铺满");
+                            if (isFullDuration != tmpIsFull)
+                            {
+                                if (isFullDuration)
+                                {
+                                    duration -= 0.2f;
+                                }
+                                else
+                                {
+                                    start = 0f;
+                                    duration = Window.Length;
+                                }
+
+                                isFullDuration = tmpIsFull;
+                            }
+                        }
+                        
+                        isLeft = start <MIN_TOLERANCE;
+                        var tmpLeft = GUILayout.Toggle(isLeft, "贴左侧");
+                        if (isLeft != tmpLeft)
+                        {
+                            if (isLeft)
+                            {
+                                start += 0.1f;
+                            }
+                            else
+                            {
+                                start = 0f;
+                            }
+                        }
+
+                        isRight = Math.Abs(start + duration - Window.Length) < MIN_TOLERANCE;
+                        var tmpRight = GUILayout.Toggle(isRight, "贴右侧");
+                        if (isRight != tmpRight)
+                        {
+                            if (isRight)
+                            {
+                                start -= 0.1f;
+                            }
+                            else
+                            {
+                                start = Window.Length - duration;
+                            }
+                        }
+                        GUILayout.EndHorizontal();
                     }
                 }
+
                 GUILayout.EndScrollView();
             }
             GUILayout.EndVertical();

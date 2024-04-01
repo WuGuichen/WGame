@@ -58,7 +58,7 @@ namespace Motion
             {
                 if (MotionType.EnumList[i] == param)
                 {
-                    return MotionType.EnumName[i];
+                    return MotionType.Names[i];
                 }
             }
 

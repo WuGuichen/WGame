@@ -46,6 +46,52 @@ public class ReflectionHelper
         return list;
     }
 
+    public static int GetIntValueAndName(Enum type, ref string[] names, ref int[] values)
+    {
+        var t = type.GetType();
+        var list = t.GetFields();
+        int count = 0;
+        var len = list.Length;
+        for (var i = 0; i < len; i++)
+        {
+            var info = list[i];
+                list[count] = info;
+                count++;
+        }
+
+        bool hasNames = false;
+        names = new string[count-1];
+        values = new int[count-1];
+        int offset = 1;
+        for (var i = 1; i < count; i++)
+        {
+            var info = list[i];
+
+            if (!hasNames)
+            {
+                var attrs = info.GetCustomAttributes(typeof(WLableAttribute), false);
+                if (attrs.Length == 1)
+                {
+                    var attr = ((WLableAttribute)attrs[0]);
+                    if (attr.Selecttable == false)
+                    {
+                        offset++;
+                        continue;
+                    }
+                    names[i-offset] = attr.LabelText;
+                }
+                else
+                {
+                    names[i-offset] = info.Name;
+                }
+            }
+
+            values[i-offset] = (int)info.GetValue(null);
+        }
+
+        return count;
+    }
+    
     public static int GetConstIntValueAndName(Type type, ref string[] names, ref int[] values)
     {
         var list = type

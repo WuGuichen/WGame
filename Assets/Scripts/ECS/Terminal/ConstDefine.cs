@@ -25,8 +25,6 @@ public class ConstDefine
         bind("STEP", MotionType.Step);
         bind("DEFENSE", MotionType.Defense);
         bind("LOCAL_MOTION", MotionType.LocalMotion);
-        bind("HIT_FWD", MotionType.HitFwd);
-        bind("HIT_BWD", MotionType.HitBwd);
         bind("SUCCESS", (int)TaskStatus.Success);
         bind("FAIL", (int)TaskStatus.Failure);
 

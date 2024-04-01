@@ -1,0 +1,16 @@
+{
+    "name": "WGame.HotAbility",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d08161799c47de0418a957ddabc396f6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -14,16 +14,19 @@ namespace WGame.Ability.Editor
         public string groupEffectName = "Effect Group";
         public string groupNoticeName = "Notice Group";
         public string groupActionName = "Action Group";
+        public string groupInterruptName = "Break Group";
         
         public string trackAnimationType = "Animation";
         public string trackEffectType = "Effect";
         public string trackNoticeType = "Notice";
         public string trackActionType = "Action";
+        public string trackInterruptType = "Break";
         
         public GUIContent contextNewAnimation = new GUIContent("New Animation");
         public GUIContent contextNewEffect = new GUIContent("New Effect");
         public GUIContent contextNewNotice = new GUIContent("New Notice");
         public GUIContent contextNewAction = new GUIContent("New Action");
+        public GUIContent contextNewInterrupt = new GUIContent("New Break");
         public GUIContent contextAddEventSignal = new GUIContent("Add Event Signal");
         public GUIContent contextAddEventDuration = new GUIContent("Add Event Duration");
         public GUIContent contextDelTrack = new GUIContent("Del Track");
@@ -50,6 +53,7 @@ namespace WGame.Ability.Editor
         public Color colorCamera = new Color(0.702f, 0.302f, 0.302f, 1.000f);
         public Color colorInterrupt = new Color(0.3215f, 0.827f, 0.960f, 1.000f);
         public Color colorTrackBackground = new Color(0.216f, 0.216f, 0.216f, 0.628f);
+        public Color colorUnEnabled = new Color(0.216f, 0.216f, 0.216f, 0.4f);
         public Color colorTrackHeaderBackground = new Color(0.255f, 0.255f, 0.255f, 1.000f);
         public Color colorTrackBackgroundSelected = new Color(0.260f, 0.339f, 0.477f, 0.516f);
         public Color colorClipUnion = new Color(0.229f, 0.280f, 0.316f, 0.709f);
@@ -66,7 +70,7 @@ namespace WGame.Ability.Editor
         public Color colorEventHandle = new Color(0.000f, 0.000f, 0.000f, 0.000f);
         public Color colorEventHandleSelected = new Color(0.6f, 0.6f, 1, 1f);
         public Color colorInspectorLabel = new Color(0, 1, 1, 1);
-        public Color colorPropertySelected = new Color(1.000f, 0.004f, 0.004f, 1.000f);
+        public Color colorPropertySelected = new Color(1.000f, 0.004f, 0.004f, 0.400f);
         public Color colorRefreshInterrupt = new Color(0.000f, 1.000f, 1.000f, 1.000f);
 
         public GUIContent stepBack { get; private set; }

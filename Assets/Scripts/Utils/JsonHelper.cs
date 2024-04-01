@@ -64,6 +64,14 @@ namespace WGame.Utils
             wr.WriteObjectEnd();
         }
 
+        public static void Write(ref JsonWriter wr, Vector3 value)
+        {
+            wr.WriteObjectStart();
+            WriteProperty(ref wr, "x", value.x);
+            WriteProperty(ref wr, "y", value.y);
+            WriteProperty(ref wr, "z", value.z);
+            wr.WriteObjectEnd();
+        }
         public static void WriteProperty(ref JsonWriter wr, string propertyName, Vector3 value)
         {
             wr.WritePropertyName(propertyName);

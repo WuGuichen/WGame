@@ -1,55 +1,51 @@
 using System.Collections.Generic;
-using UnityEngine;
 using WGame.Ability;
-using WGame.Notice;
-using WGame.Res;
 
 public class AbilityStatusCharacter : AbilityStatus
 {
     #region pool
 
+    public static AbilityStatusCharacter Empty()
+    {
+        var res = AbilityStatusCharacter.Get(null, null);
+        Push(res);
+        return res;
+    }
     private static Stack<AbilityStatusCharacter> _pool = new();
 
-    public static AbilityStatusCharacter Get(GameEntity entity, AbilityData abilityData)
+    public static AbilityStatusCharacter Get(EventOwner owner, AbilityData abilityData)
     {
         if (_pool.Count > 0)
         {
-            return _pool.Pop().Init(entity, abilityData);
+            return _pool.Pop().Init(owner, abilityData);
         }
 
-        return new AbilityStatusCharacter(entity, abilityData);
+        return new AbilityStatusCharacter(owner, abilityData);
     }
 
     public static void Push(AbilityStatusCharacter status)
     {
         status.Reset();
+        status._owner = null;
         _pool.Push(status);
     }
     
-    private AbilityStatusCharacter(GameEntity entity, AbilityData abilityData)
+    private AbilityStatusCharacter(EventOwner owner, AbilityData abilityData)
     {
-        Init(entity, abilityData);
+        Init(owner, abilityData);
     }
 
-    private AbilityStatusCharacter Init(GameEntity entity, AbilityData abilityData)
+    private AbilityStatusCharacter Init(EventOwner owner, AbilityData abilityData)
     {
-        _entity = entity;
+        _owner = owner;
         _cameraService = Contexts.sharedInstance.meta.mainCameraService.service;
-        if (entity.hasLinkMotion)
-        {
-            _motionService = entity.linkMotion.Motion.motionService.service;
-        }
-        else
-        {
-            WLogger.Error("请给有MotionService的entity使用");
-        }
         Initialize(abilityData);
         return this;
     }
     
     #endregion
 
-    private GameEntity _entity;
+    private EventOwner _owner;
     private IMotionService _motionService;
     private ICameraService _cameraService;
     private int _rotCameraCount = 0;
@@ -59,72 +55,28 @@ public class AbilityStatusCharacter : AbilityStatus
     {
     }
 
-    protected override void OnEnterDurationDoAction(EventDoAction actionData, float duration)
+    protected override void OnExitDuration(IEventData eventData, bool isBreak)
     {
-        switch (actionData.ActionType)
-        {
-            case WActionType.SetUnbalance:
-                _entity.isUnbalanced = actionData.ActionParam.Value.AsBool();
-                break;
-            case WActionType.MoveCamera:
-                _cameraService.Move(actionData.ActionParam.Value.AsVector3(), WEaseType.QuadOut, duration*0.001f, 0.2f);
-                _moveCameraCount++;
-                break;
-            case WActionType.RotateCamera:
-                _cameraService.Rotate(actionData.ActionParam.Value.AsVector3(), WEaseType.QuadOut, 1000f/duration, 0.2f);
-                _rotCameraCount++;
-                break;
-        }
+        eventData.Exit(_owner, isBreak);
     }
 
-    protected override void OnEndDoAction(EventDoAction actionData)
+    protected override void OnProcessDuration(IEventData eventData, float deltaTime, int duration, int totalTime)
     {
-        switch (actionData.ActionType)
-        {
-            case WActionType.SetUnbalance:
-                _entity.isUnbalanced = false;
-                break;
-            case WActionType.MoveCamera:
-                if (--_moveCameraCount <= 0)
-                {
-                    _cameraService.StopMove();
-                }
-                break;
-            case WActionType.RotateCamera:
-                _rotCameraCount--;
-                if (_rotCameraCount <= 0)
-                {
-                    _cameraService.StopRotate();
-                }
-                break;
-        }
+        eventData.Duration(_owner, deltaTime ,duration, totalTime);
     }
 
-    protected override void OnTriggerDoAction(EventDoAction actionData)
+    protected override void OnEnterDuration(IEventData eventData)
     {
+        eventData.Enter(_owner);
     }
 
-    protected override void OnEnterDurationPlayAnim(EventPlayAnim animData)
+    protected override void OnTriggerSignal(IEventData eventData)
     {
-        var clip = WAbilityMgr.Inst.GetAnimClip(animData.AnimName);
-        _motionService.AnimProcessor.RootMotionRate = 100;
-        _motionService.AnimProcessor.PlayAnimationClip(clip);
+        eventData.Enter(_owner);
     }
 
-    protected override void OnEndPlayAnim(EventPlayAnim animData)
+    protected override void OnEnd()
     {
-        _motionService.TransMotionByMotionType(MotionType.LocalMotion);
-    }
-
-    protected override void OnTriggerPlayEffect(EventPlayEffect effectData)
-    {
-        EffectMgr.LoadEffect(effectData.AddressName, _entity.gameViewService.service.Model, _entity.position.value,
-            Quaternion.identity);
-    }
-
-    protected override void OnNoticeMessage(EventNoticeMessage message)
-    {
-            _entity.notice.service.TriggerReceiver(NoticeDB.OnUseAbility,
-                MessageDB.Getter.GetCastSkill(new EntityMoveInfo(EntityMoveType.Move_Dir_Linear, 10f)));
+        base.OnEnd();
     }
 }

@@ -21,6 +21,8 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     private Vector3 curDeltaTarThrustPos;
     [SerializeField]
     private Transform headTrans;
+
+    public Transform Head => headTrans;
     
     private float height;
     private float halfHeight;
@@ -85,7 +87,15 @@ public class GameViewServiceImplementation :MonoBehaviour, IGameViewService, IEv
     public Transform Model => _model;
     public Vector3 Position => _transform.position;
     public Vector3 FocusPoint => _focusPoint.Position;
-    public Vector2 PlanarPosition => new Vector2(Position.x, Position.z);
+
+    public Vector2 PlanarPosition
+    {
+        get
+        {
+            var pos = _entity.position.value;
+            return new Vector2(pos.x, pos.z);
+        }
+    }
 
     private WEntityPoint _focusPoint;
     

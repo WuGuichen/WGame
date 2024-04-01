@@ -23,7 +23,7 @@ public class DropItemDetectSystem : IExecuteSystem
 
     public void Execute()
     {
-        coolDownTimer -= _time.DeltaTime;
+        coolDownTimer -= _time.DeltaTime(1f);
         if (coolDownTimer < 0)
         {
             Detect();

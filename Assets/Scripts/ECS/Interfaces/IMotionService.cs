@@ -1,5 +1,6 @@
 public interface IMotionService
 {
+    void Initialize();
     void StartMotion(int motionID);
     void UpdateMotion();
     void SwitchMotion(int UID, bool isNet=true);
@@ -13,6 +14,7 @@ public interface IMotionService
 
     IMotionService OnInit(MotionEntity entity);
     void OnMotionExit();
+    bool CheckMotionType(int motionType);
 
     void Destroy();
 }

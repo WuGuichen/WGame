@@ -172,11 +172,6 @@ public class WNetAgent : NetworkBehaviour
 
     private void OnMotionIdChange(int previousvalue, int newvalue)
     {
-        // 不是自己才接受广播，因为自己的变化用客户端实时变化
-        // if (IsOwner)
-        // {
-        // }
-        // WLogger.Print("执行：" + newvalue);
         if (_entity.hasLinkMotion)
         {
             _entity.linkMotion.Motion.motionService.service.SwitchMotion(newvalue, false);

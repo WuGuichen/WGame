@@ -19,12 +19,14 @@ namespace WGame.Ability
         [SerializeField] private int _triggerTime;
         [SerializeField] private int _duration;
         [SerializeField] private ETriggerType _triggerType;
-        [SerializeField] private EventDataType _dataType;
-        [SerializeReference] private IEventData _eventData;
+        [SerializeField] private EventDataType _dataType = EventDataType.DoAction;
+        [SerializeReference] private IEventData _eventData = new EventDoAction();
         
         [System.NonSerialized] private int _curTime = 0;
+        public bool IsEnable { get; set; } = true;
         
         public int EndTime { get; private set; }
+        // [EditorData("触发类型", EditorDataType.Enum)]
         public ETriggerType TriggerType
         {
             get => _triggerType;
@@ -42,7 +44,62 @@ namespace WGame.Ability
             get => _duration;
             set => _duration = value;
         }
-        
+
+        public static IEventData GetEventData(EventDataType dataType)
+        {
+            IEventData data = null;
+            switch (dataType)
+            {
+                // case EventDataType.None:
+                //     EventData = null;
+                //     break;
+                case EventDataType.PlayAnim:
+                    data = new EventPlayAnim();
+                    break;
+                case EventDataType.Interrupt:
+                    data = new EventInterrupt();
+                    break;
+                case EventDataType.DoAction:
+                    data = new EventDoAction();
+                    break;
+                case EventDataType.LockTick:
+                    data = new EventLockTick();
+                    break;
+                case EventDataType.SetState:
+                    data = new EventSetState();
+                    break;
+                case EventDataType.SetMoveParam:
+                    data = new EventSetMoveParam();
+                    break;
+                case EventDataType.TriggerInputToMotion:
+                    data = new EventInputTriggerToMotion();
+                    break;
+                case EventDataType.TriggerInputToAbility:
+                    data = new EventInputTriggerToAbility();
+                    break;
+                case EventDataType.TriggerStateToMotion:
+                    data = new EventStateToMotion();
+                    break;
+                case EventDataType.TriggerStateToAbility:
+                    data = new EventStateToAbility();
+                    break;
+                case EventDataType.PlayEffect:
+                    data = new EventPlayEffect();
+                    break;
+                case EventDataType.NoticeMessage:
+                    data = new EventNoticeMessage();
+                    break;
+                case EventDataType.MoveToPoint:
+                    data = new EventMoveToPoint();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return data;
+        }
+
+        [EditorData("事件类型", EditorDataType.EnumNamed)]
         public EventDataType EventType
         {
             get => _dataType;
@@ -51,26 +108,7 @@ namespace WGame.Ability
                 if (_dataType != value)
                 {
                     _dataType = value;
-                    switch (_dataType)
-                    {
-                        case EventDataType.None:
-                            EventData = null;
-                            break;
-                        case EventDataType.PlayAnim:
-                            EventData = new EventPlayAnim();
-                            break;
-                        case EventDataType.DoAction:
-                            EventData = new EventDoAction();
-                            break;
-                        case EventDataType.PlayEffect:
-                            EventData = new EventPlayEffect();
-                            break;
-                        case EventDataType.NoticeMessage:
-                            EventData = new EventNoticeMessage();
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
+                    EventData = GetEventData(_dataType);
                 }
             }
         }
@@ -93,32 +131,50 @@ namespace WGame.Ability
 
         public string DebugName => TrackIndex.ToString();
 
+        private const int TRACK_NAME = 0;
+        private const int TRACK_INDEX = 1;
+        private const int TRIGGER_TYPE = 2;
+        private const int TRIGGER_TIME = 3;
+        private const int IS_NABLE = 4;
+        private const int DURATION = 5;
+
         public void Deserialize(JsonData jd)
         {
-            _trackName = JsonHelper.ReadString(jd["TrackName"]);
-            _trackIndex = JsonHelper.ReadInt(jd["TrackIndex"]);
-
-            _triggerType = JsonHelper.ReadEnum<ETriggerType>(jd["TriggerType"]);
-            _triggerTime = JsonHelper.ReadInt(jd["TriggerTime"]);
-            _duration = JsonHelper.ReadInt(jd["Duration"]);
+            var cfg = jd["Cfg"];
+            _trackName = JsonHelper.ReadString(cfg[TRACK_NAME]);
+            _trackIndex = JsonHelper.ReadInt(cfg[TRACK_INDEX]);
+            _triggerType = JsonHelper.ReadEnum<ETriggerType>(cfg[TRIGGER_TYPE]);
+            _triggerTime = JsonHelper.ReadInt(cfg[TRIGGER_TIME]);
+            IsEnable = JsonHelper.ReadBool(cfg[IS_NABLE]);
+            _duration = JsonHelper.ReadInt(cfg[DURATION]);
             EndTime = _triggerTime + _duration;
-            EventType = JsonHelper.ReadEnum<EventDataType>(jd["EventType"]);
+            EventType = JsonHelper.ReadEnum<EventDataType>(jd["Type"]);
             
-            (_eventData as IData).Deserialize(jd["EventData"]);
+            (_eventData as IData).Deserialize(jd["Data"]);
         }
 
         public JsonWriter Serialize(JsonWriter writer)
         {
             writer.WriteObjectStart();
-            JsonHelper.WriteProperty(ref writer, "TrackName", _trackName);
-            JsonHelper.WriteProperty(ref writer, "TrackIndex", _trackIndex);
+            writer.WritePropertyName("Cfg");
+            writer.WriteArrayStart();
+            writer.Write(_trackName);
+            writer.Write(_trackIndex);
+            writer.Write(_triggerType.ToString());
+            writer.Write(_triggerTime);
+            writer.Write(IsEnable);
+            writer.Write(_duration);
+            // JsonHelper.WriteProperty(ref writer, "TrackName", _trackName);
+            // JsonHelper.WriteProperty(ref writer, "TrackIndex", _trackIndex);
+            //
+            // JsonHelper.WriteProperty(ref writer, "TriggerType", _triggerType.ToString());
+            // JsonHelper.WriteProperty(ref writer, "TriggerTime", _triggerTime);
+            // JsonHelper.WriteProperty(ref writer, "Duration", _duration);
+            //
+            writer.WriteArrayEnd();
+            JsonHelper.WriteProperty(ref writer, "Type", _dataType.ToString());
 
-            JsonHelper.WriteProperty(ref writer, "TriggerType", _triggerType.ToString());
-            JsonHelper.WriteProperty(ref writer, "TriggerTime", _triggerTime);
-            JsonHelper.WriteProperty(ref writer, "Duration", _duration);
-            JsonHelper.WriteProperty(ref writer, "EventType", _dataType.ToString());
-
-            writer.WritePropertyName("EventData");
+            writer.WritePropertyName("Data");
             writer.WriteObjectStart();
             writer = (EventData as IData).Serialize(writer);
             writer.WriteObjectEnd();

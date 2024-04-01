@@ -15,7 +15,14 @@ public class ProcessAbilitySystem : IExecuteSystem
     {
         foreach (var ability in _abilityGroup)
         {
-            ability.abilityService.service.Process(_timeService.DeltaTime);
+            if (ability.hasLinkCharacter)
+            {
+                ability.abilityService.service.Process(_timeService.DeltaTime(ability.linkCharacter.Character.characterTimeScale.rate));
+            }
+            else
+            {
+                ability.abilityService.service.Process(_timeService.DeltaTime(1f));
+            }
         }
     }
 }

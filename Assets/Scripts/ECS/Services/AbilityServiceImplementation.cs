@@ -1,47 +1,42 @@
 using System.Collections.Generic;
-using UnityEngine;
-using UnityTimer;
 using WGame.Ability;
 
 public class AbilityServiceImplementation : IAbility
 {
     private readonly GameEntity _entity;
-    private AbilityData _curAbility;
+    private readonly EventOwner _owner;
     private SensorContext _sensorContext;
-    private HashSet<string> _abilitySet = new();
+    private bool _isProcessAbility = false;
+    public EventOwner Owner => _owner;
+    public bool IsProcessAbility => _isProcessAbility;
 
     private LinkedList<AbilityStatusCharacter> _abilityStatusList = new();
+
+    private BuffManager _buffManager;
+    public BuffManager BuffManager => _buffManager;
 
     public AbilityServiceImplementation(GameEntity entity)
     {
         _entity = entity;
+        _owner = new EventOwnerEntity(entity);
         _sensorContext = Contexts.sharedInstance.sensor;
+        _buffManager = new BuffManager(new BuffOwnerEntity(_entity));
     }
     
     public bool Do(string name, bool unique = false)
     {
-        if (unique)
-        {
-            if (_abilitySet.Contains(name))
-            {
-                return false;
-            }
+        return false;
+    }
 
-            _abilitySet.Add(name);
-        }
-        var ability = WAbilityMgr.Inst.GetAbility(name);
-        if (ability != null)
-        {
-            var status = AbilityStatusCharacter.Get(_entity, ability);
-            _abilityStatusList.AddLast(status);
-        }
-
+    public bool SwitchMotionAbility(int id)
+    {
         return true;
     }
 
     public void Process(float deltaTime)
     {
         var node = _abilityStatusList.First;
+        _isProcessAbility = (node != null);
         while (node != null)
         {
             var status = node.Value;
@@ -54,16 +49,16 @@ public class AbilityServiceImplementation : IAbility
             {
                 var next = node.Next;
                 _abilityStatusList.Remove(node);
-                _abilitySet.Remove(node.Value.AbilityName);
                 AbilityStatusCharacter.Push(node.Value);
                 node = next;
             }
         }
+
+        _entity.characterState.state.CheckStateChange();
     }
 
     public void GenEntity(EntityMoveInfo info)
     {
-        WLogger.Print("生成技能实体");
         var sensor = _sensorContext.CreateEntity();
         // 单向绑定
         sensor.AddLinkCharacter(_entity);

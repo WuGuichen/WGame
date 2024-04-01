@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using WGame.Ability;
 
 namespace WGame.Attribute
 {
@@ -11,7 +12,6 @@ namespace WGame.Attribute
         private static Stack<WaEventContext> pool = new Stack<WaEventContext>();
 
         public GameEntity sender;
-        public int buffID;
         public int attrID;
         public int changedValue;
         public int value;
@@ -21,14 +21,12 @@ namespace WGame.Attribute
             if (pool.Count > 0)
             {
                 var context = pool.Pop();
-                context.buffID = -1;
                 context.attrID = -1;
                 return context;
             }
             else
             {
                 var context = new WaEventContext();
-                context.buffID = -1;
                 context.attrID = -1;
                 return context;
             }
@@ -140,12 +138,11 @@ namespace WGame.Attribute
             bridge = new AttrBridge();
         }
         
-        public void CallChange(GameEntity sender, int attrID, int buffID, int changedValue,int value)
+        public void CallChange(GameEntity sender, int attrID, int changedValue,int value)
         {
             var context = new WaEventContext();
             context.sender = sender;
             context.attrID = attrID;
-            context.buffID = buffID;
             context.changedValue = changedValue;
             context.value = value;
             bridge.CallInternal(context);
@@ -157,10 +154,18 @@ namespace WGame.Attribute
         private Dictionary<int, AttrType> _attrDict = new Dictionary<int, AttrType>();
 
         private GameEntity owner;
+        private BuffManager _buff;
         
         public WAttribute(GameEntity owner)
         {
             this.owner = owner;
+        }
+
+        public void Init()
+        {
+            _buff = this.owner.linkAbility.Ability.abilityService.service.BuffManager;
+            _buff.onBuffAdded += OnAddBuff;
+            _buff.onBuffRemoved += OnRemoveBuff;
         }
         
         public void Remove(int attrID)
@@ -181,7 +186,7 @@ namespace WGame.Attribute
                     return;
                 int changedValue = value - oldValue.value;
                 oldValue.AddValue(changedValue);
-                oldValue.CallChange(sender, attrID, 0, changedValue, value);
+                oldValue.CallChange(sender, attrID,  changedValue, value);
             }
             else
             {
@@ -197,19 +202,49 @@ namespace WGame.Attribute
             {
             }
         }
-
-        public void AddBuff(GameEntity sender, int attrID, int buffID)
+        
+        private void OnAddBuff(BuffStatus buff)
         {
-            if (_attrDict.TryGetValue(attrID, out var oldValue))
+            var change = buff.ChangeAttrType();
+            if (change >= 0)
             {
+                if (_attrDict.TryGetValue(change, out var value))
+                {
+                    value.CallChange(owner, change, 0, Get(change, true));
+                }
             }
         }
         
-        public int Get(int attrID)
+        private void OnRemoveBuff(BuffStatus buff)
         {
-            if (_attrDict.TryGetValue(attrID, out var oldValue))
+            var change = buff.ChangeAttrType();
+            if (change >= 0)
             {
-                return oldValue.value;
+                if (_attrDict.TryGetValue(change, out var value))
+                {
+                    value.CallChange(owner, change, 0, Get(change, true));
+                }
+            }
+        }
+        
+        public int Get(int attrID, bool containBuff = false)
+        {
+            if (containBuff)
+            {
+                var res = 0f;
+                if (_attrDict.TryGetValue(attrID, out var oldValue))
+                {
+                    res = oldValue.value;
+                }
+                float addBuffVal = _buff.Apply(attrID, res);
+                return (int)addBuffVal;
+            }
+            else
+            {
+                if (_attrDict.TryGetValue(attrID, out var oldValue))
+                {
+                    return oldValue.value;
+                }
             }
 
             return 0;
@@ -254,7 +289,10 @@ namespace WGame.Attribute
                 AttrType.Push(kv.Value);
             }
 
+            _buff.onBuffAdded -= OnAddBuff;
+            _buff.onBuffRemoved -= OnRemoveBuff;
             owner = null;
+            _buff = null;
         }
     }
 }

@@ -20,6 +20,12 @@ namespace WGame.Ability
             return new CBuffStatus(manager, buffData);
         }
 
+        public static void Push(CBuffStatus cBuffStatus)
+        {
+            cBuffStatus.Reset();
+            _pool.Push(cBuffStatus);
+        }
+
         private CBuffStatus(BuffManager manager, BuffData buffData)
         {
             Initialize(manager ,buffData);
@@ -29,7 +35,7 @@ namespace WGame.Ability
         
         private List<ICondition> _conditionList = new();
 
-        protected override void Initialize(BuffManager buffManager, BuffData buff)
+        public override void Initialize(BuffManager buffManager, BuffData buff)
         {
             base.Initialize(buffManager, buff);
 
@@ -42,6 +48,11 @@ namespace WGame.Ability
 
                 _conditionList.Add(bc);
             }
+        }
+
+        public override int ChangeAttrType()
+        {
+            return -1;
         }
 
         protected override void Reset()
@@ -57,7 +68,7 @@ namespace WGame.Ability
             base.Reset();
         }
 
-        public void OnTrigger()
+        public void OnEvent()
         {
             bool check = true;
             using (var itr = _conditionList.GetEnumerator())
@@ -89,16 +100,6 @@ namespace WGame.Ability
                     itr.Current.Reset();
                 }
             }
-        }
-
-        protected override void OnUpdate(float deltaTime)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void OnRemove()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

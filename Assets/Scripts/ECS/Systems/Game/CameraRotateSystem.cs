@@ -46,13 +46,14 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
 
     public void Execute()
     {
+        // var deltaTime = _timeService.DeltaTime(1f);
+        var deltaTime = _timeService.FixedDeltaTime; 
         if (_cameraService.IsAutoControl)
         {
             _needRefreshAngle = true;
         }
         else
         {
-            var fixedDeltaTime = _timeService.FixedDeltaTime;
             if (_needRefreshAngle)
             {
                 _pivotAngle = _cameraPivotTransform.localEulerAngles.x;
@@ -105,7 +106,7 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
                         _cameraTransform.LookAt(focusPos);
                         var tmpRot = _cameraTransform.eulerAngles;
                         // WLogger.Info(tmpRot);
-                        _lookAngle = Mathf.LerpAngle(_lookAngle, tmpRot.y, _gameContext.cameraLookSpeed.value*fixedDeltaTime);
+                        _lookAngle = Mathf.LerpAngle(_lookAngle, tmpRot.y, _gameContext.cameraLookSpeed.value*deltaTime);
                         _pivotAngle = tmpRot.x;
                     }
                 }
@@ -117,8 +118,8 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
                 }
                 else
                 {
-                    _lookAngle += (look.x * _gameContext.cameraLookSpeed.value*fixedDeltaTime);
-                    _pivotAngle += (look.y * _gameContext.cameraPivotSpeed.value*fixedDeltaTime);
+                    _lookAngle += (look.x * _gameContext.cameraLookSpeed.value*deltaTime);
+                    _pivotAngle += (look.y * _gameContext.cameraPivotSpeed.value*deltaTime);
                 }
 
                 _pivotAngle = Mathf.Clamp(_pivotAngle, _minPivotAngle, _maxPivotAngle);
@@ -136,6 +137,6 @@ public class CameraRotateSystem : IInitializeSystem, IExecuteSystem
             }
         }
 
-        _cameraService.Process(_timeService.FixedDeltaTime);
+        _cameraService.Process(deltaTime);
     }
 }

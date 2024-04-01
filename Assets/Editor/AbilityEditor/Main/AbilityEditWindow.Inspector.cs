@@ -19,7 +19,7 @@ namespace WGame.Ability.Editor
         private static Dictionary<string, AnimationClip> animationClip2stringDic = new();
         
         private int inspectorID = 0;
-        private string[] inspectorNames = new string[] { "Ability", "Buff"};
+        private string[] inspectorNames = new string[] { "Ability", "Buff", "Motion"};
 
         private void DrawInspector()
         {
@@ -39,6 +39,8 @@ namespace WGame.Ability.Editor
                         break;
                     case 1:
                         DrawInspectorBuff();
+                        break;
+                    case 2:
                         break;
                 }
             }

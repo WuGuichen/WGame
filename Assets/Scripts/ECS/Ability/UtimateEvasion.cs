@@ -23,5 +23,9 @@ public class UtimateEvasion
         sensorMono.Collider.enabled = true;
         sensorMono.RefreshPosition();
     }
-    
+
+    public void Dispose()
+    {
+        ObjectPool.Inst.PushObject(sensorMono.gameObject);
+    }
 }

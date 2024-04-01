@@ -8,6 +8,11 @@ namespace WGame.Ability.Editor.Custom
 
         private readonly int[] idArray;
 
+        public CustomDefine(Enum type)
+        {
+            ReflectionHelper.GetIntValueAndName(type, ref stringArray, ref idArray);
+        }
+        
         public CustomDefine(Type type)
         {
             ReflectionHelper.GetConstIntValueAndName(type, ref stringArray, ref idArray);

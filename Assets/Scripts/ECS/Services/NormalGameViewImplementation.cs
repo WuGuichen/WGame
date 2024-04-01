@@ -55,6 +55,7 @@ public class NormalGameViewImplementation : MonoBehaviour, IGameViewService
     }
 
     public Transform Model { get; }
+    public Transform Head { get; }
     public Vector3 FocusPoint { get; }
     public Vector2 PlanarPosition { get; }
     public GameEntity GetEntity()

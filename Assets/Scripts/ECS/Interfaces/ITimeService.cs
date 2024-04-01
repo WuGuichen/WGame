@@ -1,7 +1,7 @@
 
 public interface ITimeService
 {
-    float DeltaTime { get; }
+    float DeltaTime(float scale);
     float DivFixedDeltaTime { get; }
     float FixedDeltaTime { get; }
     float RealTimeSinceStart { get; }

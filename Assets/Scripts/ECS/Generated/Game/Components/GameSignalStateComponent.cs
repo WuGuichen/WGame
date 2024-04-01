@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly SignalStateComponent signalStateComponent = new SignalStateComponent();
+    public SignalStateComponent signalState { get { return (SignalStateComponent)GetComponent(GameComponentsLookup.SignalState); } }
+    public bool hasSignalState { get { return HasComponent(GameComponentsLookup.SignalState); } }
 
-    public bool isSignalState {
-        get { return HasComponent(GameComponentsLookup.SignalState); }
-        set {
-            if (value != isSignalState) {
-                var index = GameComponentsLookup.SignalState;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : signalStateComponent;
+    public void AddSignalState(WGame.Ability.StateMgr newState) {
+        var index = GameComponentsLookup.SignalState;
+        var component = (SignalStateComponent)CreateComponent(index, typeof(SignalStateComponent));
+        component.state = newState;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceSignalState(WGame.Ability.StateMgr newState) {
+        var index = GameComponentsLookup.SignalState;
+        var component = (SignalStateComponent)CreateComponent(index, typeof(SignalStateComponent));
+        component.state = newState;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveSignalState() {
+        RemoveComponent(GameComponentsLookup.SignalState);
     }
 }
 

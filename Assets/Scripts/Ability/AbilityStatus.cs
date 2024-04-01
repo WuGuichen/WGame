@@ -7,12 +7,15 @@ namespace WGame.Ability
     {
         protected AbilityData _ability;
         private float _curTime;
+        public bool IsToEnd => (_ability.TotalTime - _millisecondTime) < 10;
         private int _millisecondTime;
         public string AbilityName => _ability.Name;
+        public int AbilityID => _ability.ID;
         public bool IsEnable { get; private set; }
 
         private int _curTriggerredIndex;
-        private LinkedList<DataEvent> _durationList = new();
+        protected LinkedList<DataEvent> _durationList = new();
+        private List<DataEvent> _waitDeleteList = new();
 
         protected void Reset()
         {
@@ -21,38 +24,52 @@ namespace WGame.Ability
             _curTriggerredIndex = 0;
             _ability = null;
             IsEnable = false;
+            var itr = _durationList.GetEnumerator();
+            while (itr.MoveNext())
+            {
+                var item = itr.Current;
+                OnExitDuration(item.EventData, true);
+            }
+            _durationList.Clear();
         }
-        
+
         protected void Initialize(AbilityData ability)
         {
+            if (ability == null)
+            {
+                return;
+            }
             Reset();
             _ability = ability;
             IsEnable = true;
             OnStart();
-            Update();
+            Update(0);
+        }
+
+        public void SetTime(float time)
+        {
+            _curTime = time;
         }
 
         public void Process(float deltaTime)
         {
-            _millisecondTime = (int)(_curTime * 1000);
             if (!IsEnable)
             {
                 return;
             }
             
-            Update();
+            _curTime += deltaTime;
+            _millisecondTime = (int)(_curTime * 1000);
+            Update(deltaTime);
             
             if (_millisecondTime > _ability.TotalTime)
             {
                 IsEnable = false;
                 OnEnd();
-                return;
             }
-
-            _curTime += deltaTime;
         }
 
-        private void Update()
+        private void Update(float deltaTime)
         {
             int eventCount = _ability.EventList.Count;
             for (var i = _curTriggerredIndex; i < eventCount; i++)
@@ -74,7 +91,7 @@ namespace WGame.Ability
                     case ETriggerType.Duration:
                         if (checkTime)
                         {
-                            OnEnterDuration(eventData.EventData, eventData.Duration);
+                            OnEnterDuration(eventData.EventData);
                             _durationList.AddLast(eventData);
                         }
                         break;
@@ -86,98 +103,36 @@ namespace WGame.Ability
             var itr = _durationList.GetEnumerator();
             while (itr.MoveNext())
             {
-                OnProcessDuration(itr.Current);
+                OnProcessDuration(itr.Current, deltaTime);
             }
+            foreach (var dataEvent in _waitDeleteList)
+            {
+                _durationList.Remove(dataEvent);
+            }
+            _waitDeleteList.Clear();
         }
 
-        private void OnProcessDuration(DataEvent dataEvent)
+        private void OnProcessDuration(DataEvent dataEvent, float deltaTime)
         {
-            if (_curTime > dataEvent.EndTime)
+            if (_millisecondTime > dataEvent.EndTime)
             {
-                switch (dataEvent.EventType)
-                {
-                    case EventDataType.PlayAnim:
-                        OnEndPlayAnim(dataEvent.EventData as EventPlayAnim);
-                        break;
-                    case EventDataType.DoAction:
-                        OnEndDoAction(dataEvent.EventData as EventDoAction);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-                _durationList.Remove(dataEvent);
+                OnExitDuration(dataEvent.EventData, false);
+                _waitDeleteList.Add(dataEvent);
             }
             else
             {
-                // switch (dataEvent.EventType)
-                // {
-                //     case EventDataType.PlayAnim:
-                //         OnDurationPlayAnim(dataEvent.EventData as EventPlayAnim);
-                //         break;
-                //     case EventDataType.DoAction:
-                //         OnDurationDoAction(dataEvent.EventData as EventDoAction);
-                //         break;
-                //     default:
-                //         throw new ArgumentOutOfRangeException();
-                // }
+                OnProcessDuration(dataEvent.EventData, deltaTime,_millisecondTime - dataEvent.TriggerTime, dataEvent.Duration);
             }
         }
 
-        private void OnEnterDuration(IEventData eventData, float duration)
-        {
-            if (eventData is EventPlayAnim playAnim)
-            {
-                OnEnterDurationPlayAnim(playAnim);
-            }
-            else if (eventData.EventType == EventDataType.DoAction)
-            {
-                OnEnterDurationDoAction(eventData as EventDoAction, duration);
-            }
-        }
+        protected abstract void OnExitDuration(IEventData eventData, bool isBreak);
+        protected abstract void OnProcessDuration(IEventData eventData, float deltaTime, int duration, int totalTime);
+        protected abstract void OnEnterDuration(IEventData eventData);
 
-        private void OnTriggerSignal(IEventData eventData)
-        {
-            if (eventData is EventPlayEffect playEffect)
-            {
-                OnTriggerPlayEffect(playEffect);
-            }
-            else if (eventData is EventDoAction doAction)
-            {
-                OnTriggerDoAction(doAction);
-            }
-            else if (eventData is EventNoticeMessage noticeMessage)
-            {
-                OnNoticeMessage(noticeMessage);
-            }
-        }
-
-        protected abstract void OnEnterDurationDoAction(EventDoAction actionData, float duration);
-        protected abstract void OnEndDoAction(EventDoAction actionData);
-        protected abstract void OnTriggerDoAction(EventDoAction actionData);
-        protected abstract void OnEnterDurationPlayAnim(EventPlayAnim animData);
-        protected abstract void OnEndPlayAnim(EventPlayAnim animData);
-        protected abstract void OnTriggerPlayEffect(EventPlayEffect effectData);
-        protected abstract void OnNoticeMessage(EventNoticeMessage message);
+        protected abstract void OnTriggerSignal(IEventData eventData);
 
         protected virtual void OnEnd()
         {
-            var itr = _durationList.GetEnumerator();
-            while (itr.MoveNext())
-            {
-                var item = itr.Current;
-                var eType = item.EventType;
-                switch (eType)
-                {
-                    case EventDataType.PlayAnim:
-                        OnEndPlayAnim(item.EventData as EventPlayAnim);
-                        break;
-                    case EventDataType.DoAction:
-                        OnEndDoAction(item.EventData as EventDoAction);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
         }
 
         protected virtual void OnStart()

@@ -113,9 +113,8 @@ public class TestSceneSystem : MonoBehaviour
 	    if (Input.GetKeyDown(KeyCode.L))
 	    {
 		    // EntityUtils.RandomKillCharacter();
-		    // _contexts.meta.mainCameraService.service.Shake(0.6f, 0.2f, WEaseType.ElasticOut);
-		    var cam = _contexts.meta.mainCameraService.service;
-		    cam.Rotate(new Vector3(-16, -96, 0), WEaseType.QuadOut, 2f, 0.2f);
+		    var entity = EntityUtils.GetCameraEntity();
+		    entity.linkAbility.Ability.abilityService.service.BuffManager.AddBuff("AddHP");
 	    }
 
 	    var scroll = Input.mouseScrollDelta;
@@ -144,7 +143,7 @@ public class TestSceneSystem : MonoBehaviour
 
 	    EventCenter.Trigger(EventDefine.OnGameUpdate);
 
-	    TickManager.Inst.UpdateTick(_timeService.DeltaTime);
+	    TickManager.Inst.UpdateTick(_timeService.DeltaTime(1f));
     }
 
     private void FixedUpdate()
@@ -216,7 +215,9 @@ public class TestSceneSystem : MonoBehaviour
 	    WLangMgr.Inst.LordInitCode(TerminalModel.Inst.Interp);
 		_contexts.meta.factoryService.instance.InitSceneObjectRoot();
 		_contexts.meta.factoryService.instance.InitGOAPRoot();
-		WAbilityMgr.Inst.Initialize(new AbilityAssetLoader());
+		var loader = new AbilityAssetLoader();
+		WAbilityMgr.Inst.Initialize(loader);
+		DataMgr.Inst.Init(loader);
 		EventCenter.Trigger(EventDefine.OnGameSystemsInitted);
     }
 }

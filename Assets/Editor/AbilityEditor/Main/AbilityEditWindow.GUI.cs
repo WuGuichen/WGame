@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Text;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,6 +24,8 @@ namespace WGame.Ability.Editor
         private void OnGUI()
         {
             InitGUI();
+            if (PerformUndo())
+                return;
             
             UpdateGUI();
             DrawToolBar();
@@ -66,8 +70,9 @@ namespace WGame.Ability.Editor
 
                 CreateActorGroup(itemTreeView, Setting.groupAnimationName);
                 CreateActorGroup(itemTreeView, Setting.groupActionName);
-                CreateActorGroup(itemTreeView, Setting.groupEffectName);
-                CreateActorGroup(itemTreeView, Setting.groupNoticeName);
+                CreateActorGroup(itemTreeView, Setting.groupInterruptName);
+                // CreateActorGroup(itemTreeView, Setting.groupEffectName);
+                // CreateActorGroup(itemTreeView, Setting.groupNoticeName);
                 
                 DeserializeAll();
             }
@@ -179,6 +184,10 @@ namespace WGame.Ability.Editor
                     {
                         Save();
                     }
+                    if (GUILayout.Button("导出AbilityID列表"))
+                    {
+                        GenAbilityIDList();
+                    }
                     GUILayout.Space(20);
 
                     _playSpeed = GUILayout.HorizontalSlider(_playSpeed, 0.1f, 2f, GUILayout.Width(80f));
@@ -262,6 +271,47 @@ namespace WGame.Ability.Editor
             Repaint();
         }
 
+        private void GenAbilityIDList()
+        {
+            var genPath = Path.Combine(Application.dataPath, "Scripts/Ability/Gen");
+            var fileName = "AbilityIDs.cs";
+            StringBuilder sb = new StringBuilder();
+            if (!System.IO.Directory.Exists(genPath))
+            {
+                System.IO.Directory.CreateDirectory(genPath);
+            }
+
+            var filePath = genPath + fileName;
+            System.IO.StreamWriter file = new System.IO.StreamWriter(filePath, false);
+            file.Write("// auto generated code, don't edit\n\n");
+            file.Write("namespace WGame.Ability\n{\n");
+            file.Write("\tpublic class AbilityIDs\n\t{\n");
+
+            var motionNames = AbilityList();
+
+            for (int i = 0; i < motionNames.Count; i++)
+            {
+                var cfg = motionNames[i];
+                var idName = cfg.Key;
+                var id = cfg.Value;
+                sb.Append("\t\tpublic const int ");
+                sb.Append(idName);
+                sb.Append(" ");
+                sb.Append("=");
+                sb.Append(" ");
+                sb.Append(id.ToString());
+                sb.Append(";\n");
+            }
+
+            file.Write(sb.ToString());
+
+            file.Write("\t}\n");
+            file.Write("}");
+            file.Close();
+            Debug.Log("文件生成成功：" + filePath);
+            AssetDatabase.Refresh();
+        }
+
         private void Save()
         {
             
@@ -302,6 +352,7 @@ namespace WGame.Ability.Editor
                 track = CreateActorTrack(group, trackType, trackColor, trackIcon, false);
                 track.ItemIndex = evt.TrackIndex;
                 track.itemName = evt.TrackName;
+                track.IsEnable = evt.IsEnable;
             }
             
             var posX = Time2Pos(ToSecond(evt.TriggerTime)) + rectTimeArea.x;
@@ -326,6 +377,10 @@ namespace WGame.Ability.Editor
                         BuildItemEventTree(itr.Current, Setting.groupAnimationName, Setting.trackAnimationType,
                             Setting.colorAnimation, Setting.animationTrackIcon);
                         break;
+                    case EventDataType.Interrupt:
+                        BuildItemEventTree(itr.Current, Setting.groupInterruptName, Setting.trackInterruptType,
+                            Setting.colorInterrupt, Setting.interruptTrackIcon);
+                        break;
                     case EventDataType.PlayEffect:
                         BuildItemEventTree(itr.Current, Setting.groupEffectName, Setting.trackEffectType,
                             Setting.colorEffect, Setting.effectTrackIcon);
@@ -338,10 +393,12 @@ namespace WGame.Ability.Editor
                         BuildItemEventTree(itr.Current, Setting.groupActionName, Setting.trackActionType,
                             Setting.colorAction, Setting.actionTrackIcon);
                         break;
-                    case EventDataType.None:
-                        break;
+                    // case EventDataType.None:
+                    //     break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        BuildItemEventTree(itr.Current, Setting.groupActionName, Setting.trackActionType,
+                            Setting.colorAction, Setting.actionTrackIcon);
+                        break;
                 }
             }
         }
@@ -355,6 +412,19 @@ namespace WGame.Ability.Editor
             {
                 itr.Current.children.Clear();
             }
+        }
+        
+        private bool PerformUndo()
+        {
+            if (Event.current.type == EventType.ValidateCommand && Event.current.commandName == "UndoRedoPerformed")
+            {
+                GUIUtility.hotControl = 0;
+                GUIUtility.keyboardControl = 0;
+                Event.current.Use();
+                return true;
+            }
+
+            return false;
         }
     }
 }

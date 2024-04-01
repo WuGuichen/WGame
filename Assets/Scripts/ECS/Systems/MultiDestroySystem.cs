@@ -38,7 +38,7 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
                 {
                     _factory.RemoveCharacter(entity.instanceID.ID);
                 }
-
+                
                 if (entity.isCamera)
                 {
                     ActionHelper.DoSetCharacterCameraByID(-1);
@@ -46,7 +46,12 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
                 
                 if (entity.hasLinkAbility)
                 {
-                    entity.linkAbility.Ability.Destroy();
+                    var ability = entity.linkAbility.Ability;
+                    if (ability.hasAbilityEvade)
+                    {
+                        ability.abilityEvade.service.Dispose();
+                    }
+                    ability.Destroy();
                 }
 
                 if (entity.hasLinkMotion)

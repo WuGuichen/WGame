@@ -99,7 +99,7 @@ public class BTreeAgent
         if (tree != null)
         {
             tree.TREE.Tick();
-            motion.CurShowBehaviorTree = tree.TREE;
+            // motion.CurShowBehaviorTree = tree.TREE;
         }
     }
 

@@ -1,5 +1,7 @@
+using System.IO;
 using UnityEditor;
 using UnityEngine;
+using WGame.Editor;
 
 namespace WGame.Ability.Editor
 {
@@ -8,14 +10,40 @@ namespace WGame.Ability.Editor
         private float lastTime = 0f;
         private float deltaTime = 1f / 60;
 
+        private AbilityStatusCharacter _abilityStatus;
+        private GameObject _playerObject;
+        private AnimationClip _animClip;
+        private GameObject _camObj;
+        private Camera _camera;
+        private Vector3 _camPos = new Vector3(0,100,0);
+
         private void OnEnable()
         {
+            _camObj = new GameObject("AbilityCamera");
+            _camera = _camObj.AddComponent<Camera>();
+            _camObj.transform.localPosition = _camPos;
+            _camObj.transform.localRotation = Quaternion.Euler(new Vector3(18f, 0, 0));
+            _camera.depth = 100;
             EditorApplication.update += OnEditorUpdate;
+            GameAssetsMgr.Inst.InitInstance();
+            var obj = GameAssetsMgr.Inst.LoadObject<GameObject>("/Character/BaseCharacter/BaseCharacter.prefab");
+            _playerObject = Instantiate(obj).transform.GetChild(1).gameObject;
+            _playerObject.transform.parent.localPosition = _camPos + new Vector3(-0.8f, -1.5f, 2.2f);
+            _playerObject.transform.parent.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
         }
 
         private void OnDisable()
         {
             EditorApplication.update -= OnEditorUpdate;
+            if(_playerObject)
+            {
+                DestroyImmediate(_playerObject.transform.parent.gameObject);
+            }
+            if(_camObj)
+            {
+                DestroyImmediate(_camObj);
+            }
+            DestroyImmediate(_camera);
         }
 
         private void OnEditorUpdate()
@@ -43,6 +71,11 @@ namespace WGame.Ability.Editor
                 _playState = PlayState.Stop;
                 ResetPreview(fTick);
             }
+
+            if (_animClip)
+            {
+                _animClip.SampleAnimation(_playerObject, CurrentTime);
+            }
         }
 
         private void Tick(float fTick)
@@ -51,11 +84,71 @@ namespace WGame.Ability.Editor
             {
                 return;
             }
+            
+            using (var itrGroup = itemTreeView.children.GetEnumerator())
+            {
+                while (itrGroup.MoveNext())
+                {
+                    using (var itrTrack = itrGroup.Current.children.GetEnumerator())
+                    {
+                        while (itrTrack.MoveNext())
+                        {
+                            var track = itrTrack.Current as TrackItem;
+                            using (var itrEvent = track.eventList.GetEnumerator())
+                            {
+                                while (itrEvent.MoveNext())
+                                {
+                                    var ae = itrEvent.Current;
+                                    if (!ae.hasExecute && ToMillisecond(CurrentTime) >= ae.eventProperty.TriggerTime)
+                                    {
+                                        ExecuteEvent(ae, fTick);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        private void ExecuteEvent(ActorEvent evt, float fTick)
+        {
+            evt.hasExecute = true;
+            switch (evt.eventProperty.EventType)
+            {
+                case EventDataType.PlayAnim:
+                    {
+                        var epa = evt.eventProperty.EventData as EventPlayAnim;
+                        _animClip = GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
+                        var clip = _animClip;
+                    }
+                    break;
+            }
         }
 
         private void ResetPreview(float fTick)
         {
-            
+            // reset event
+            using (var itrGroup = itemTreeView.children.GetEnumerator())
+            {
+                while (itrGroup.MoveNext())
+                {
+                    using (var itrTrack = itrGroup.Current.children.GetEnumerator())
+                    {
+                        while (itrTrack.MoveNext())
+                        {
+                            var track = itrTrack.Current as TrackItem;
+                            using (var itrEvent = track.eventList.GetEnumerator())
+                            {
+                                while (itrEvent.MoveNext())
+                                {
+                                    itrEvent.Current.hasExecute = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

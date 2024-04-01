@@ -8,6 +8,7 @@ namespace WGame.Ability.Editor
     {
         [SerializeField] private List<ActorEvent> _eventList = new List<ActorEvent>();
         public List<ActorEvent> eventList => _eventList;
+        public bool IsEnable { get; set; } = true;
         
         [SerializeField] private string _type = string.Empty;
         public string type
@@ -124,7 +125,7 @@ namespace WGame.Ability.Editor
             var backgroundRect = rect;
             backgroundRect.x += (indent + Window.Setting.trackSwatchStyle.fixedWidth);
             backgroundRect.width -= (indent + Window.Setting.trackSwatchStyle.fixedWidth);
-            EditorGUI.DrawRect(backgroundRect, backgroundColor);
+            EditorGUI.DrawRect(backgroundRect, IsEnable ? backgroundColor : Window.Setting.colorUnEnabled);
 
             // track icon
             const float buttonSize = 16f;
@@ -169,6 +170,9 @@ namespace WGame.Ability.Editor
             {
                 Window.ShowContextMenu(this, null);
             }
+            var toggleRect = buttonRect;
+            toggleRect.x -= 15f;
+            IsEnable = EditorGUI.ToggleLeft(toggleRect, "启用", IsEnable);
 
             // track content
             var colorContent = selected ? Window.Setting.colorTrackBackgroundSelected : Window.Setting.colorTrackBackground;
@@ -192,6 +196,7 @@ namespace WGame.Ability.Editor
                 while (itr.MoveNext())
                 {
                     itr.Current.Draw();
+                    itr.Current.eventProperty.IsEnable = IsEnable;
                 }
             }
         }

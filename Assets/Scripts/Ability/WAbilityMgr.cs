@@ -17,6 +17,7 @@ namespace WGame.Ability
     public class WAbilityMgr : Singleton<WAbilityMgr>
     {
         private Dictionary<string, AbilityData> _abilityDataDict = new();
+        private Dictionary<int, AbilityData> _abilityDataIDDict = new();
         private Dictionary<string, AnimationClip> _animationClips = new();
         public IGameAssetLoader Loader { get; private set; }
 
@@ -29,6 +30,7 @@ namespace WGame.Ability
                 Load(filePath, (AbilityData ac) =>
                 {
                     _abilityDataDict.Add(ac.Name, ac);
+                    _abilityDataIDDict.Add(ac.ID, ac);
                     for (var i = 0; i < ac.EventList.Count; i++)
                     {
                         var evt = ac.EventList[i];
@@ -49,6 +51,7 @@ namespace WGame.Ability
             Load(filePath, (AbilityData ac) =>
             {
                 _abilityDataDict[ac.Name] = ac;
+                _abilityDataIDDict[ac.ID] = ac;
                 for (var i = 0; i < ac.EventList.Count; i++)
                 {
                     if (ac.EventList[i].EventData is EventPlayAnim epa)
@@ -92,6 +95,12 @@ namespace WGame.Ability
             WLogger.Error($"没有找到Clip {name}");
             return null;
         }
+
+        public int GetAbilityID(string name)
+        {
+            return GetAbility(name).ID;
+        }
+        
         public AbilityData GetAbility(string name)
         {
             if (_abilityDataDict.TryGetValue(name, out var abilityData))
@@ -100,6 +109,17 @@ namespace WGame.Ability
             }
 
             WLogger.Error($"没有找到Ability {name}");
+            return null;
+        }
+        
+        public AbilityData GetAbility(int id)
+        {
+            if (_abilityDataIDDict.TryGetValue(id, out var abilityData))
+            {
+                return abilityData;
+            }
+
+            WLogger.Error($"没有找到Ability {id}");
             return null;
         }
     }

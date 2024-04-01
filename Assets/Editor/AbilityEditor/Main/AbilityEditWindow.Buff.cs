@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 using WGame.Editor;
 
 namespace WGame.Ability.Editor
@@ -137,6 +137,52 @@ namespace WGame.Ability.Editor
         private void DelAllBuffCondition(CBuffData buff)
         {
             buff.RemoveAll();
+        }
+
+        public List<KeyValuePair<string, int>> BuffList()
+        {
+            var res = new List<KeyValuePair<string, int>>();
+            using (var itr = itemBuffTree.Children.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    var ap = itr.Current as ItemData;
+                    var ac = ap.Data as BuffData;
+                    res.Add(new KeyValuePair<string, int>(ac.Name, ac.ID));
+                }
+            }
+
+            return res;
+        }
+        
+        public HashSet<int> BuffIDSet()
+        {
+            HashSet<int> list = new();
+            using (var itr = itemBuffTree.Children.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    var ap = itr.Current as ItemData;
+                    var ac = ap.Data as BuffData;
+                    list.Add(ac.ID);
+                }
+            }
+
+            return list;
+        }
+        
+        public int GenEmptyBuffID()
+        {
+            var idSet = BuffIDSet();
+            for (int i = 0; i < 10000; i++)
+            {
+                if (!idSet.Contains(i))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 }

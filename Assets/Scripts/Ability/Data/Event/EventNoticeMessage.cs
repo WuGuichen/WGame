@@ -19,11 +19,25 @@ namespace WGame.Ability
                 }
             } }
         
-        [EditorData("触发消息", EditorDataType.Object)]
+        // [EditorData("触发消息", EditorDataType.Object)]
         public INoticeMessage Message { get; set; }
         
         public EventDataType EventType => EventDataType.NoticeMessage;
-        
+        public void Enter(EventOwner owner)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Duration(EventOwner owner, float deltaTime, int duration, int totalTime)
+        {
+            
+        }
+
+        public void Exit(EventOwner owner, bool isBreak)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Deserialize(JsonData jd)
         {
             ReceiverID = JsonHelper.ReadInt(jd["ReceiverID"]);

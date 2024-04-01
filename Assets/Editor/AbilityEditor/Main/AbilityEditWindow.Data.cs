@@ -14,8 +14,13 @@ namespace WGame.Ability.Editor
 
     internal sealed partial class AbilityEditWindow
     {
-        internal void DrawData(object obj)
+        internal void DrawData(object obj, bool hasGroup = true)
         {
+            if (obj == null)
+            {
+                WLogger.Error("空对象");
+                return;
+            }
             PropertyInfo[] pis = obj.GetType().GetProperties().OrderBy(p => p.MetadataToken).ToArray();
             for (int i = 0; i < pis.Length; ++i)
             {
@@ -25,7 +30,10 @@ namespace WGame.Ability.Editor
                     EditorDataAttribute epa = (EditorDataAttribute)attrs[0];
                     if (!string.IsNullOrEmpty(epa.Deprecated)) continue;
 
-                    GUILayout.BeginHorizontal();
+                    if (hasGroup)
+                    {
+                        GUILayout.BeginHorizontal();
+                    }
                     {
                         GUILayout.Label(epa.PropertyName, GUILayout.Width(epa.LabelWidth));
 
@@ -73,8 +81,20 @@ namespace WGame.Ability.Editor
                                     GameObjectField(obj, pis[i].Name, val);
                                 }
                                     break;
+                                case EditorDataType.Lable:
+                                    GUILayout.Label(val.ToString());
+                                    break;
+                                case EditorDataType.TypeID:
+                                    PopupList(obj, pis[i].Name, val, StringToIDDefine.DefineDict[epa.Param]);
+                                    break;
+                                case EditorDataType.MaskTypeID:
+                                    PopupMaskList(obj, pis[i].Name, val, StringToIDDefine.DefineDict[epa.Param]);
+                                    break;
                                 case EditorDataType.Enum:
                                     Helper.SetProperty(obj, pis[i].Name, EditorGUILayout.EnumPopup((Enum)val));
+                                    break;
+                                case EditorDataType.EnumNamed:
+                                    PopupEnum(obj, pis[i].Name, val);
                                     break;
                                 case EditorDataType.AnimationClip:
                                 {
@@ -134,9 +154,16 @@ namespace WGame.Ability.Editor
                             GUILayout.Label(sz, GUILayout.Width(epa.LabelWidth));
                         }
                     }
-                    GUILayout.EndHorizontal();
+                    if (hasGroup)
+                    {
+                        GUILayout.EndHorizontal();
+                    }
                 }
             }
+        }
+
+        private void PopupList(object obj, string propertyName, object val, Enum list)
+        {
         }
         
         private void PopupList(object obj, string propertyName, object val, List<string> list)
@@ -153,7 +180,6 @@ namespace WGame.Ability.Editor
         {
             if (obj is CustomParam param)
             {
-                Helper.SetProperty(obj, propertyName, EditorGUILayout.EnumPopup((Enum)val, GUILayout.Width(80)));
                 switch (param.ParamType)
                 {
                     case DataType.Bool:
@@ -199,9 +225,17 @@ namespace WGame.Ability.Editor
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+                Helper.SetProperty(obj, propertyName, EditorGUILayout.EnumPopup((Enum)val, GUILayout.Width(80)));
             }
 
             // Helper.SetProperty(obj, propertyName, newValue);
+        }
+
+        private void PopupMaskList(object obj, string propertyName, object val, StringToIDDefine define)
+        {
+            var intValue = EditorGUI.MaskField(EditorGUILayout.GetControlRect() ,"", (int)val
+                                                , define.StringArray);
+            Helper.SetProperty(obj, propertyName, intValue);
         }
         
         private void PopupList(object obj, string propertyName, object val, StringToIDDefine define)
@@ -212,6 +246,19 @@ namespace WGame.Ability.Editor
             if (idx >= 0 && idx < list.Length)
             {
                 Helper.SetProperty(obj, propertyName, define.IDArray[idx]);
+            }
+        }
+
+        private void PopupEnum(object obj, string propertyName, object val)
+        {
+            var type = val.GetType();
+            StringToIDDefine define = StringToIDDefine.DefineTypeDict[type];
+            int idx = define.GetIndex((int)val);
+            var list = define.StringArray;
+            idx = EditorGUILayout.Popup(idx, list);
+            if (idx >= 0 && idx < list.Length)
+            {
+                Helper.SetProperty(obj, propertyName, Enum.ToObject(type, define.IDArray[idx]));
             }
         }
 
@@ -287,7 +334,7 @@ namespace WGame.Ability.Editor
                 {
                     GUILayout.BeginVertical();
                     {
-                        GUILayout.BeginHorizontal();
+                        GUILayout.BeginHorizontal(GUILayout.MaxWidth(200f));
                         GUILayout.Label(j.ToString(), GUILayout.Width(10));
                         if (itemType.IsEnum)
                         {

@@ -14,9 +14,13 @@ namespace WGame.Ability
         Color,
         Quaternion,
         Enum,
+        EnumNamed,
         Object,
 
         GameObject,
+        Lable,
+        TypeID,
+        MaskTypeID,
 
         //popup list string
         AnimationClip,
@@ -43,7 +47,16 @@ namespace WGame.Ability
             Deprecated = null;
             LabelWidth = lableWidth;
         }
-        
+
+        public EditorDataAttribute(string name, EditorDataType type, int param)
+        {
+            Param = param;
+            PropertyName = name;
+            DataType = type;
+            Edit = true;
+            Deprecated = null;
+            LabelWidth = 60;
+        }
         public EditorDataAttribute(string name, EditorDataType type)
         {
             PropertyName = name;
@@ -58,6 +71,7 @@ namespace WGame.Ability
 
         public EditorDataType DataType { get; set; }
 
+        public int Param { get; set; }
         public bool Edit { get; set; }
 
         public string Description { get; set; }

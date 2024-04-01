@@ -27,27 +27,16 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
     private static void OnMotionStart(MotionEntity entity)
     {
         // Debug.Log("MotionStart");
-        entity.motionService.service.StartMotion(entity.motionStart.UID);
         // entity.RemoveMotionEnd();
         var character = entity.linkCharacter.Character;
-        character.isPrepareAttackState = false;
-        character.isPrepareJumpState = false;
-        character.isPrepareStepState = false;
-        character.isPrepareLocalMotionState = false;
-        character.isPrepareDefenseState = false;
-        character.isPrepareJumpAttackState = false;
+        // character.isPrepareAttackState = false;
+        // character.isPrepareJumpState = false;
+        // character.isPrepareStepState = false;
+        // character.isPrepareLocalMotionState = false;
+        // character.isPrepareDefenseState = false;
+        // character.isPrepareJumpAttackState = false;
+        character.signalState.state.ResetStates();
         character.isLockPlanarVec = false;
-        // 清除输入指令
-        if (character.hasSignalAttack)
-            character.RemoveSignalAttack();
-        if (character.hasSignalJump)
-            character.RemoveSignalJump();
-        if (character.hasSignalStep)
-            character.RemoveSignalStep();
-        if (character.hasSignalLocalMotion)
-            character.RemoveSignalLocalMotion();
-        if (character.hasSignalDefense && entity.motionStart.UID != entity.motionDefense.UID)
-            character.RemoveSignalDefense();
         
         character.ReplaceAnimMoveMulti(100);
         character.ReplaceAnimRotateMulti(100);
@@ -58,6 +47,19 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
 
         character.isRotateInFocus = false;
 
+        entity.motionService.service.StartMotion(entity.motionStart.UID);
+        // 清除输入指令
+        if (character.hasSignalAttack)
+            character.RemoveSignalAttack();
+        if (character.hasSignalJump)
+            character.RemoveSignalJump();
+        if (character.hasSignalStep)
+            character.RemoveSignalStep();
+        if (character.hasSignalLocalMotion)
+            character.RemoveSignalLocalMotion();
+        if (character.hasSignalDefense )
+            character.RemoveSignalDefense();
+            
         if (character.hasNotice)
         {
             var noticeService = character.notice.service;

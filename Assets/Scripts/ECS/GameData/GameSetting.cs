@@ -19,6 +19,7 @@ public class GameSetting : ScriptableObject
 		public GameObject PlayerPrefab;
 		public float MovementSpeed;
 		public float RotationSpeed;
+		public float GravitySpeed;
 	}
 
 	[Serializable]

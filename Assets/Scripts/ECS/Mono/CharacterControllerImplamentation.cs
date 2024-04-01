@@ -26,24 +26,25 @@ public class CharacterControllerImplamentation : MonoBehaviour, IRigidbodyServic
         set
         {
             value.y += speedVertical;
-            _controller.SimpleMove(value);
+            _controller.Move(value);
         } 
     }
 
     public void MovePosition(Vector3 dir)
     {
-        _controller.SimpleMove(dir);
+        WLogger.Print(dir);
+        _controller.Move(dir);
     }
 
     public void OnFixedUpdate(float deltaTime)
     {
-        if (_controller.isGrounded)
+        if (entity.groundSensor.intersect)
         {
             speedVertical = 0;
         }
         else
         {
-            speedVertical += deltaTime*entity.charGravity.value;
+            speedVertical += deltaTime*entity.charGravity.value*deltaTime;
         }
     }
 

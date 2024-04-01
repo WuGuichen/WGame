@@ -10,6 +10,7 @@ namespace WGame.Ability.Editor
         {
             base.Init(parent);
 
+            itemHeight = 20f;
             parent.AddChild(this);
             expand = true;
         }
@@ -112,14 +113,16 @@ namespace WGame.Ability.Editor
             var labelRect = rect;
             labelRect.x += indent;
             var size = EditorStyles.whiteLargeLabel.CalcSize(new GUIContent(itemName));
-            labelRect.y += (minHeight - size.y) * 0.5f;
+            // labelRect.y += (minHeight - size.y) * 0.5f;
+            labelRect.y += 0;
             labelRect.width = Window.headerWidth - labelRect.x - buttonSize;
             EditorGUI.LabelField(labelRect, itemName, EditorStyles.whiteLargeLabel);
 
             // button create
             var buttonRect = rect;
             buttonRect.x = Window.headerWidth - buttonSize - padding;
-            buttonRect.y += (minHeight - buttonSize) * 0.5f;
+            // buttonRect.y += (minHeight - buttonSize) * 0.5f;
+            buttonRect.y += 2f;
             buttonRect.width = buttonSize;
             buttonRect.height = buttonSize;
             if (GUI.Button(buttonRect, Window.Setting.createAddNew, Window.Setting.trackGroupAddButton))

@@ -1,12 +1,6 @@
 ## GotHit1
 
--- 选择动画
-if(HIT_IS_FWD){
-    @E_SELF:TransMotionType(HIT_FWD)
-}
-else{
-    @E_SELF:TransMotionType(HIT_BWD)
-}
+-- 选择动画(C#)
 
 -- 扣血
 atk = @E_ATTACKER:GetAttr(ATK)

@@ -34,7 +34,7 @@ namespace WGame.Ability.Editor
             set => _depth = value;
         }
 
-        public float minHeight => 32f;
+        public float minHeight => 22f;
 
         public float maxHeight => 128f;
 

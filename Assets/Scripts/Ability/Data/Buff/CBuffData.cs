@@ -61,7 +61,7 @@ namespace WGame.Ability
             switch (t)
             {
                 case ConditionType.CheckHP:
-                    cond = new CheckConditionHP();
+                    cond = new CheckConditionAttr();
                     break;
                 default:
                     cond = ConditionAlways.Instance;

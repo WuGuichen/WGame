@@ -58,7 +58,18 @@ public class EntityUtils
     {
         var factory = Contexts.sharedInstance.meta.factoryService.instance;
         var entity = factory.SelectRandomGenCharacter();
-        entity.isDestroyed = true;
+        if (entity != null)
+        {
+            entity.isDestroyed = true;
+        }
+        else
+        {
+            entity = GetCameraEntity();
+            if (entity != null)
+            {
+                entity.isDestroyed = true;
+            }
+        }
     }
 
     public static WBVH<IGameViewService> BvhRed
@@ -335,5 +346,35 @@ public class EntityUtils
         }
 
         return false;
+    }
+
+    public static bool CheckMotion(GameEntity entity, int motionType)
+    {
+        if (entity.hasLinkMotion)
+        {
+            return CheckMotion(entity.linkMotion.Motion, motionType);
+        }
+
+        return false;
+    }
+
+    public static bool CheckMotion(MotionEntity motion, int motionType)
+    {
+        return motion.motionService.service.CheckMotionType(motionType);
+    }
+
+    public static Transform GetCharacterPart(GameEntity entity, int partType)
+    {
+        var gameView = entity.gameViewService.service;
+        switch (partType)
+        {
+            case CharacterModelPart.Body:
+                return gameView.Model;
+            case CharacterModelPart.Head:
+                return gameView.Head;
+            default:
+                WLogger.Error("未定义相关部位");
+                return gameView.Model;
+        }
     }
 }

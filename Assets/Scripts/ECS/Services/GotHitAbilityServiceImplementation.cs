@@ -29,7 +29,8 @@ public class GotHitAbilityServiceImplementation : IGotHitService
 
         if (entity.isDeadState)
             return;
-        
+
+        var motion = entity.linkMotion.Motion;
         var vm = entity.linkVM.VM.vMService.service;
         var attackerPos = hitInfo.entity.gameViewService.service.PlanarPosition;
         var myPos = entity.gameViewService.service.PlanarPosition;
@@ -44,8 +45,16 @@ public class GotHitAbilityServiceImplementation : IGotHitService
         vm.Set("HIT_DIR", new Vector3(hitDir.x, 0, hitDir.y), false);
         vm.Set("HIT_IS_FWD", isFwd);
         vm.Set("HIT_POS", hitInfo.pos, false);
+
+        if (isFwd)
+        {
+            motion.motionService.service.SwitchMotion(motion.motionHitFwd.UID);
+        }
+        else{
+            motion.motionService.service.SwitchMotion(motion.motionHitBwd.UID);
+        }
         
-        if (MotionIDs.onHitDict.TryGetValue(entity.linkMotion.Motion.motionStart.UID, out var motionName))
+        if (MotionIDs.onHitDict.TryGetValue(motion.motionStart.UID, out var motionName))
         {
             vm.Call(motionName);
         }
@@ -54,7 +63,7 @@ public class GotHitAbilityServiceImplementation : IGotHitService
             vm.Call("GotHit1");
         }
         
-        MethodDefine.AddHatePointTo(hitInfo.entity.instanceID.ID, entity, 360*3, HatePointType.BeHitted);
+        // MethodDefine.AddHatePointTo(hitInfo.entity.instanceID.ID, entity, 360*3, HatePointType.BeHitted);
     }
 
     public void OnGotHit(GameEntity entity, SensorEntity sensor, int parts)
