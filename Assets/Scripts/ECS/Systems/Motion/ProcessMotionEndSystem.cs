@@ -32,15 +32,8 @@ public class ProcessMotionEndSystem : ReactiveSystem<MotionEntity>
         var noticeService = character.notice.service;
         
         entity.motionService.service.OnMotionExit();
+        // var motionDB = character.motionDB.data;
         
         // 根据动作类型处理行为
-        var newID = entity.motionEnd.UID;
-        if (newID == entity.motionLocalMotion.UID)
-        {
-            
-        }
-        else if (newID == entity.motionDefense.UID)
-        {
-        }
     }
 }

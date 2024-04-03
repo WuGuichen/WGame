@@ -1,6 +1,7 @@
 using BaseData.Character;
 using Entitas;
 using UnityEngine;
+using WGame.Ability;
 using WGame.UI;
 
 public class MoveCharacterSystem : IExecuteSystem
@@ -51,22 +52,21 @@ public class MoveCharacterSystem : IExecuteSystem
                 continue;
             if (entity.hasFocusEntity)
             {
-                var pos = entity.focusEntity.entity.position.value;
-                Vector2 tarPos = new Vector2(pos.x, pos.z);
-                pos = entity.position.value;
-                Vector2 myPos = new Vector2(pos.x, pos.z);
-                var sqrDist = (myPos - tarPos).sqrMagnitude;
-                entity.ReplaceTargetPlanarSqrDistance(sqrDist);
-                if (entity.hasKeepTargetDistance && sqrDist <= entity.keepTargetDistance.value * entity.keepTargetDistance.value)
-                {
-                    anim.ClearMotionMove();
-                    continue;
-                }
+                // var pos = entity.focusEntity.entity.position.value;
+                // Vector2 tarPos = new Vector2(pos.x, pos.z);
+                // pos = entity.position.value;
+                // Vector2 myPos = new Vector2(pos.x, pos.z);
+                // var sqrDist = (myPos - tarPos).sqrMagnitude;
+                // entity.ReplaceTargetPlanarSqrDistance(sqrDist);
+                // if (entity.hasKeepTargetDistance && sqrDist <= entity.keepTargetDistance.value * entity.keepTargetDistance.value)
+                // {
+                //     anim.ClearMotionMove();
+                //     continue;
+                // }
             }
 
             if (!entity.isMoveable
-                || !entity.hasMoveDirection
-                || entity.isLockPlanarVec)
+                || !entity.hasMoveDirection)
             {
                 continue;
             }
@@ -79,7 +79,6 @@ public class MoveCharacterSystem : IExecuteSystem
                 speedMulti = Mathf.Lerp(speedMulti, tarMuti, 1f);
             var totalMulti = entity.animMoveMulti.rate * speedMulti * 0.0001f;
             var speed = entity.movementSpeed.value * totalMulti;
-            // var speedY = entity.rigidbodyService.service.Velocity.y;
             float vecMulti;
             var model = entity.gameViewService.service.Model;
             if (entity.isCamera)
@@ -120,9 +119,7 @@ public class MoveCharacterSystem : IExecuteSystem
             {
                 var moveDir = entity.moveDirection.value;
                 moveDir = model.InverseTransformVector(moveDir);
-                // vecMulti = Mathf.Clamp01(Vector3.Dot(
-                //         model.forward,
-                //         moveDir));
+
                 if (entity.hasFocusEntity)
                 {
                     anim.UpdateMoveSpeed(
@@ -139,21 +136,31 @@ public class MoveCharacterSystem : IExecuteSystem
                 }
             }
 
-            if (Mathf.Abs(curSpeed - speed) < 0.1f)
-                curSpeed = speed;
+            var rateDeltaTime = entity.characterTimeScale.rate * _timeService.FixedDeltaTime;
+            if (entity.hasPlanarVec)
+            {
+                entity.rigidbodyService.service.Velocity = entity.planarVec.value*rateDeltaTime + deltaRootMotion;
+            }
             else
             {
-                curSpeed = Mathf.Lerp(curSpeed, speed, 0.1f);
+                if (Mathf.Abs(curSpeed - speed) < 0.1f)
+                {
+                    curSpeed = speed;
+                }
+                else
+                {
+                    curSpeed = Mathf.Lerp(curSpeed, speed, 0.1f);
+                }
+
+                var move = entity.moveDirection.value * curSpeed;
+                var totalSpeed = new Vector3(move.x, 0, move.z) * rateDeltaTime +
+                                 deltaRootMotion;
+                entity.rigidbodyService.service.Velocity = totalSpeed;
+                entity.ReplaceCharCurSpeed(curSpeed);
+                entity.ReplaceCharSpeedMulti(speedMulti);
             }
-            var move = entity.moveDirection.value * curSpeed;
-            var rateDeltaTime = entity.characterTimeScale.rate * _timeService.FixedDeltaTime;
-            var totalSpeed = new Vector3(move.x, 0, move.z) * rateDeltaTime +
-                             deltaRootMotion;
-            entity.rigidbodyService.service.Velocity = totalSpeed;
-            anim.ClearMotionMove();
             entity.rigidbodyService.service.OnFixedUpdate(rateDeltaTime);
-            entity.ReplaceCharCurSpeed(curSpeed);
-            entity.ReplaceCharSpeedMulti(speedMulti);
+            anim.ClearMotionMove();
 
             if (entity.characterInfo.value.camp == Camp.Red)
             {

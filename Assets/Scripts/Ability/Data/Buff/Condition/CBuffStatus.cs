@@ -8,16 +8,15 @@ namespace WGame.Ability
 
         private static Stack<CBuffStatus> _pool = new();
 
-        public static CBuffStatus Get(BuffManager manager, BuffData buffData)
+        public static CBuffStatus Get()
         {
             if (_pool.Count > 0)
             {
                 var res = _pool.Pop();
-                res.Initialize(manager ,buffData);
                 return res;
             }
 
-            return new CBuffStatus(manager, buffData);
+            return new CBuffStatus();
         }
 
         public static void Push(CBuffStatus cBuffStatus)
@@ -26,16 +25,16 @@ namespace WGame.Ability
             _pool.Push(cBuffStatus);
         }
 
-        private CBuffStatus(BuffManager manager, BuffData buffData)
+        private CBuffStatus()
         {
-            Initialize(manager ,buffData);
+            // Initialize(manager ,buffData);
         }
 
         #endregion
         
         private List<ICondition> _conditionList = new();
 
-        public override void Initialize(BuffManager buffManager, BuffData buff)
+        public override bool Initialize(BuffManager buffManager, BuffData buff)
         {
             base.Initialize(buffManager, buff);
 
@@ -48,6 +47,8 @@ namespace WGame.Ability
 
                 _conditionList.Add(bc);
             }
+
+            return true;
         }
 
         public override int ChangeAttrType()

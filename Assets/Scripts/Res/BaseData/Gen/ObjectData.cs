@@ -21,17 +21,15 @@ public sealed partial class ObjectData :  Bright.Config.BeanBase
         { if(!_json["id"].IsNumber) { throw new SerializationException(); }  Id = _json["id"]; }
         { if(!_json["name"].IsString) { throw new SerializationException(); }  Name = _json["name"]; }
         { if(!_json["path"].IsString) { throw new SerializationException(); }  Path = _json["path"]; }
-        { if(!_json["type"].IsNumber) { throw new SerializationException(); }  Type = (Res.PoolType)_json["type"].AsInt; }
         { if(!_json["needCache"].IsBoolean) { throw new SerializationException(); }  NeedCache = _json["needCache"]; }
         PostInit();
     }
 
-    public ObjectData(int id, string name, string path, Res.PoolType type, bool needCache ) 
+    public ObjectData(int id, string name, string path, bool needCache ) 
     {
         this.Id = id;
         this.Name = name;
         this.Path = path;
-        this.Type = type;
         this.NeedCache = needCache;
         PostInit();
     }
@@ -53,10 +51,6 @@ public sealed partial class ObjectData :  Bright.Config.BeanBase
     /// 路径
     /// </summary>
     public string Path { get; private set; }
-    /// <summary>
-    /// 类型
-    /// </summary>
-    public Res.PoolType Type { get; private set; }
     /// <summary>
     /// 是否缓存
     /// </summary>
@@ -80,7 +74,6 @@ public sealed partial class ObjectData :  Bright.Config.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "Path:" + Path + ","
-        + "Type:" + Type + ","
         + "NeedCache:" + NeedCache + ","
         + "}";
     }

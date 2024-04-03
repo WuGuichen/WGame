@@ -33,17 +33,18 @@ namespace WGame.Ability
         public EventDataType EventType => EventDataType.PlayEffect;
         public void Enter(EventOwner owner)
         {
-            throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
+            WLogger.Print("特效" + EffectName);
         }
 
         public void Duration(EventOwner owner, float deltaTime, int duration, int totalTime)
         {
-            throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
 
         public void Exit(EventOwner owner, bool isBreak)
         {
-            throw new System.NotImplementedException();
+            // throw new System.NotImplementedException();
         }
 
         public void Deserialize(JsonData jd)

@@ -114,7 +114,15 @@ public class TestSceneSystem : MonoBehaviour
 	    {
 		    // EntityUtils.RandomKillCharacter();
 		    var entity = EntityUtils.GetCameraEntity();
-		    entity.linkAbility.Ability.abilityService.service.BuffManager.AddBuff("AddHP");
+		    // entity.linkAbility.Ability.abilityService.service.BuffManager.AddBuff("AddHP");
+		    var pos = entity.gameViewService.service.HeadPos;
+		    var fwd = entity.gameViewService.service.Model.forward * 2;
+		    var tarPos = fwd + pos;
+		    tarPos.y = entity.position.value.y +0.1f;
+		    // ActionHelper.DoDropObject(new DropObjectInfo(0), pos, tarPos);
+		    // ActionHelper.DropWeapon(entity.linkWeapon.Weapon, tarPos);
+		    // entity.linkAbility.Ability.abilityService.service.BuffManager.AddBuff("OnBeHitReduceHP");
+		    entity.linkAbility.Ability.abilityService.service.BuffManager.AddBuff("ReduceCurHP50");
 	    }
 
 	    var scroll = Input.mouseScrollDelta;
@@ -143,7 +151,7 @@ public class TestSceneSystem : MonoBehaviour
 
 	    EventCenter.Trigger(EventDefine.OnGameUpdate);
 
-	    TickManager.Inst.UpdateTick(_timeService.DeltaTime(1f));
+	    TickManager.Inst.UpdateTick(_timeService.TimeDeltaTime);
     }
 
     private void FixedUpdate()

@@ -5,67 +5,55 @@ namespace WGame.Ability
         protected BuffData _buff;
         protected BuffManager _mgr = null;
         public BuffManager BuffMgr => _mgr;
-        private float _leftTime;
-        private int _leftTimeMillisecond;
-        private int _totalTime;
+        private float _lifeTime;
+        private float _lifePercentTime = 0f;
+        public float LifePercentTime => _lifePercentTime;
+        private float _totalTime;
 
-        public int ID => _buff.ID;
+        public int EntityID => _mgr.Owner.EntityID;
         public string Name => _buff.Name;
+        public BuffAddType AddType => _buff.AddType;
         
         protected const float mPrecision = 0.001f;
         public bool IsEnable { get; private set; }
 
         protected virtual void Reset()
         {
-            _leftTime = 0;
-            _leftTimeMillisecond = 0;
-            _totalTime = 0;
+            _lifeTime = 0f;
+            _totalTime = 0f;
+            _lifePercentTime = 0f;
             _buff = null;
             _mgr = null;
             IsEnable = false;
         }
 
-        public virtual void Initialize(BuffManager buffManager, BuffData buff)
+        public virtual bool Initialize(BuffManager buffManager, BuffData buff)
         {
             Reset();
             _buff = buff;
             _mgr = buffManager;
-            _totalTime = buff.Duration;
-            _leftTimeMillisecond = _totalTime;
-            _leftTime = _totalTime * 0.001f;
+            ResetTime();
             IsEnable = true;
+            return true;
         }
-
-        public void Process(float deltaTime)
+        
+        public void ResetTime()
         {
-            _leftTimeMillisecond = (int)(_leftTime * 1000);
-            
-            if (!IsEnable)
-            {
-                return;
-            }
-            
-            OnUpdate(deltaTime);
-
-            if (_leftTimeMillisecond <= 0)
-            {
-                IsEnable = false;
-                OnRemove();
-                return;
-            }
-
-            _leftTime -= deltaTime;
+            _totalTime = _buff.Duration*mPrecision;
+            _lifeTime = 0f;
+            _lifePercentTime = 0f;
         }
 
         public virtual void OnUpdate(float deltaTime)
         {
-            _leftTime += deltaTime;
+            _lifeTime += deltaTime;
+            _lifePercentTime = _lifeTime / _totalTime;
         }
         protected virtual void OnRemove(){}
         
         public virtual bool HasFinished()
         {
-            return _buff.Duration > 0 && _leftTime >= _totalTime;
+            return _buff.Duration > 0 && _lifeTime >= _totalTime;
         }
 
         public abstract int ChangeAttrType();

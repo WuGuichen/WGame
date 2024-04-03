@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using WGame.Res;
 using WGame.Runtime;
 
 public enum NativeObjectType
@@ -71,48 +70,6 @@ public class ObjectPool : SingletonMono<ObjectPool>
             });
             num--;
         }
-    }
-
-    public void GetObject(NativeObjectType type, Action<GameObject> callback = null)
-    {
-        GetObject(type, Vector3.zero, Quaternion.identity, transform, callback);
-    }
-    
-    public void GetObject(NativeObjectType type, Vector3 pos, Quaternion rot, Action<GameObject> callback = null)
-    {
-        GetObject(type, pos, rot, transform, callback);
-    }
-
-    public void GetObject(NativeObjectType type, Vector3 pos, Quaternion rot, Transform parent, Action<GameObject> callback = null)
-    {
-        var objName = type.ToString();
-        
-        if (stringObjPools.TryGetValue(objName, out var pool))
-        {
-            if (pool.Get(parent, pos, rot, out var obj))
-            {
-                obj.name = objName;
-                callback?.Invoke(obj);
-                return;
-            }
-        }
-
-        var newObj = new GameObject(objName);
-        
-        switch (type)
-        {
-            case NativeObjectType.SphereTrigger:
-                newObj.AddComponent<SphereCollider>();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
-        }
-
-        var trans = newObj.transform;
-        trans.parent = parent;
-        trans.position = pos;
-        trans.rotation = rot;
-        callback?.Invoke(newObj);
     }
 
     public void GetObject(int objId ,Action<GameObject> callback = null)
@@ -215,7 +172,7 @@ public class ObjectPool : SingletonMono<ObjectPool>
         var objId = obj.name;
         if (!stringObjPools.TryGetValue(objId, out var root))
         {
-            root = new Pool(objId.ToString(), transform);
+            root = new Pool(objId, transform);
             stringObjPools[objId] = root;
         }
         root.Push(obj); 

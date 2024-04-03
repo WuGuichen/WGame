@@ -21,8 +21,9 @@ public class ProcessAbilitySystem : IExecuteSystem
             }
             else
             {
-                ability.abilityService.service.Process(_timeService.DeltaTime(1f));
+                ability.abilityService.service.Process(_timeService.TimeDeltaTime);
             }
+            ability.abilityService.service.BuffManager.Update(_timeService.TimeDeltaTime);
         }
     }
 }

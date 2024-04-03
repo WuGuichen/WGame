@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 using WGame.UI.Main;using FairyGUI;
 using UnityEngine;
+using WGame.Ability;
 using WGame.Attribute;
 
 namespace WGame.UI
@@ -13,6 +16,18 @@ namespace WGame.UI
 
 		private EventCallback1 callback0;
 		private MainModel model;
+
+		private BuffManager buffManager;
+		private StringBuilder _builder = new();
+
+		private class BuffInfo
+		{
+			public FUI_TxtInfo UIInfo { get; set; }
+			public LinkedList<BuffStatus> Buff { get; set; } = new();
+			public float LifePercentTime => Buff.First.Value.LifePercentTime;
+		}
+		
+		private Dictionary<string, BuffInfo> _buffDict = new();
 
 		protected override void CustomInit()
 		{
@@ -130,6 +145,11 @@ namespace WGame.UI
 			item.hello.text = MainDefine.Inst.mainTopBtnListNames[idx];
 			item.index = idx;
 		}
+		
+		// void RenderBuffItemList(int idx, GObject obj)
+		// {
+		// 	var item = obj as FUI_TxtInfo;
+		// }
 
 		void OnItemClick(EventContext ctx)
 		{
@@ -185,6 +205,14 @@ namespace WGame.UI
 				attribute.CancelEvent(WAttrType.MaxHP, OnHPChanged);
 				attribute.CancelEvent(WAttrType.MaxMP, OnMPChanged);
 				attribute.CancelEvent(WAttrType.CurMP, OnMPChanged);
+				if (buffManager != null)
+				{
+					buffManager.onBuffUpdate -= OnBuffUpdate;
+					buffManager.onBuffAdded -= OnBuffAdded;
+					buffManager.onBuffRemoved -= OnBuffRemoved;
+				}
+
+				ClearBuffDict();
 			}
 			entity = EntityUtils.GetGameEntity(CharacterModel.Inst.currentControlledCharacterID);
 			if (entity != null && entity.hasAttribute)
@@ -197,15 +225,119 @@ namespace WGame.UI
 
 				ui.hpBar.visible = true;
 				ui.mpBar.visible = true;
-				ui.hpBar.max = entity.attribute.value.Get(WAttrType.MaxHP);
-				ui.hpBar.value = entity.attribute.value.Get(WAttrType.CurHP);
-				ui.mpBar.max = entity.attribute.value.Get(WAttrType.MaxMP);
-				ui.mpBar.value = entity.attribute.value.Get(WAttrType.CurMP);
+				ui.hpBar.max = entity.attribute.value.Get(WAttrType.MaxHP, true);
+				ui.hpBar.value = entity.attribute.value.Get(WAttrType.CurHP, true);
+				ui.mpBar.max = entity.attribute.value.Get(WAttrType.MaxMP, true);
+				ui.mpBar.value = entity.attribute.value.Get(WAttrType.CurMP, true);
+
+				buffManager = entity.linkAbility.Ability.abilityService.service.BuffManager;
+				buffManager.onBuffUpdate += OnBuffUpdate;
+				buffManager.onBuffAdded += OnBuffAdded;
+				buffManager.onBuffRemoved += OnBuffRemoved;
+				
+				var _buffList = buffManager.BuffList;
+				RefreshBuffDict(_buffList);
 			}
 			else
 			{
 				ui.hpBar.visible = false;
 				ui.mpBar.visible = false;
+				ClearBuffDict();
+				buffManager.onBuffUpdate -= OnBuffUpdate;
+				buffManager.onBuffAdded -= OnBuffAdded;
+				buffManager.onBuffRemoved -= OnBuffRemoved;
+				buffManager = null;
+			}
+		}
+
+		private void OnBuffUpdate(BuffStatus buff)
+		{
+			if (buff.EntityID == buffManager.Owner.EntityID)
+			{
+				var info = _buffDict[buff.Name];
+				if (info.Buff.First.Value == buff)
+				{
+					info.UIInfo.bg.scaleX = 1 - info.LifePercentTime;
+				}
+			}
+		}
+		
+		private void OnBuffAdded(BuffStatus buff)
+		{
+			if (_buffDict.TryGetValue(buff.Name, out var info))
+			{
+				info.Buff.AddLast(buff);
+			}
+			else
+			{
+				info = new BuffInfo()
+				{
+					UIInfo = ui.buffList.AddItemFromPool() as FUI_TxtInfo
+				};
+				info.Buff.AddLast(buff);
+				_buffDict.Add(buff.Name, info);
+				info.UIInfo.txtMain.text = buff.Name;
+			}
+
+			RefreshBuffNum(ref info);
+		}
+
+		private void RefreshBuffNum(ref BuffInfo info)
+		{
+			_builder.Append("[");
+			_builder.Append(info.Buff.Count);
+			_builder.Append("]");
+			info.UIInfo.txtSub.text = _builder.ToString();
+			_builder.Clear();
+		}
+
+		private void ClearBuffDict()
+		{
+			using (var itr = _buffDict.GetEnumerator())
+			{
+				while (itr.MoveNext())
+				{
+					ui.buffList.RemoveChildToPool(itr.Current.Value.UIInfo);
+				}
+			}
+			_buffDict.Clear();
+		}
+		private void RefreshBuffDict(LinkedList<BuffStatus> buffList)
+		{
+			using (var itr = buffList.GetEnumerator())
+			{
+				while (itr.MoveNext())
+				{
+					var status = itr.Current;
+					if (!_buffDict.TryGetValue(status.Name, out var info))
+					{
+						info = new BuffInfo()
+						{
+							UIInfo = ui.buffList.AddItemFromPool() as FUI_TxtInfo
+						};
+						_buffDict.Add(status.Name, info);
+					}
+					info.Buff.AddLast(itr.Current);
+					RefreshBuffNum(ref info);
+				}
+			}
+		}
+		
+		private void OnBuffRemoved(BuffStatus buff)
+		{
+			if (_buffDict.TryGetValue(buff.Name, out var info))
+			{
+				info.Buff.Remove(buff);
+				if (info.Buff.Count <= 0)
+				{
+					ui.buffList.RemoveChildToPool(info.UIInfo);	
+					_buffDict.Remove(buff.Name);
+				}
+				RefreshBuffNum(ref info);
+			}
+			else
+			{
+				WLogger.Error("有问题");
 			}
 		}
 

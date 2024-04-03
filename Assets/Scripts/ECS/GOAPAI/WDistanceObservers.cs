@@ -20,7 +20,7 @@ namespace WGame.GOAP
             {
                 return 0f;
             }
-            var motionService = reference.GetCachedComponent<MotionServiceImplementation>();
+            var motionService = reference.GetCachedComponent<MotionAbilityImplementation>();
             return DetectMgr.Inst.GetDistance(motionService.LinkEntity, entity.Entity);
         }
     }

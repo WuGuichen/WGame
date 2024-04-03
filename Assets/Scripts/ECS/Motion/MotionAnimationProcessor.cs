@@ -73,7 +73,7 @@ public class MotionAnimationProcessor : AnimancerComponent
     {
     }
 
-    public void RefreshAnimClip(int type, AnimationClip clip)
+    public void RefreshLocalMotionClip(int type, AnimationClip clip)
     {
         if (localMotionStates[type] == null)
         {
@@ -93,7 +93,7 @@ public class MotionAnimationProcessor : AnimancerComponent
         }
     }
 
-    public void RefreshAnimClip(int type, string clipName)
+    public void RefreshLocalMotionClip(int type, string clipName)
     {
         if (string.IsNullOrEmpty(clipName))
         {
@@ -101,7 +101,7 @@ public class MotionAnimationProcessor : AnimancerComponent
         }
         _factoryService.LoadAnimationClip(clipName, clip =>
         {
-            RefreshAnimClip(type, clip);
+            RefreshLocalMotionClip(type, clip);
         });
     }
 
@@ -122,7 +122,7 @@ public class MotionAnimationProcessor : AnimancerComponent
         };
     }
 
-    public void RefreshAnimClip(int type, int clipId)
+    public void RefreshLocalMotionClip(int type, int clipId)
     {
         var clip = _factoryService.GetAnimationClip(clipId);
         if (clip == null)
@@ -131,7 +131,7 @@ public class MotionAnimationProcessor : AnimancerComponent
             return;
         }
 
-        RefreshAnimClip(type, clip);
+        RefreshLocalMotionClip(type, clip);
     }
 
     public void OnUpdate(float checkTime, float deltaTime)

@@ -56,36 +56,6 @@
                     "Data" : {
                         "States" : 1
                     }
-                },
-                {
-                    "Cfg" : [
-                        "Action 1",
-                        1,
-                        "Duration",
-                        466,
-                        true,
-                        200
-                    ],
-                    "Type" : "PlayEffect",
-                    "Data" : {
-                        "EffectName" : "/Effects/HCFX_Buff_Up.prefab",
-                        "IsLoop"     : false,
-                        "LoopName"   : "",
-                        "DummyType"  : "DummyFollow",
-                        "Position"   : {
-                            "x" : 0.0,
-                            "y" : 0.0,
-                            "z" : 0.0
-                        },
-                        "Euler"      : {
-                            "x" : 0.0,
-                            "y" : 0.0,
-                            "z" : 0.0
-                        },
-                        "UseRandom"  : false,
-                        "RandomEffectList" : [
-                        ]
-                    }
                 }
             ],
             "Prop"   : [
@@ -205,6 +175,37 @@
                     "Type" : "Interrupt",
                     "Data" : {
                         "Type" : 96
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            2,
+                            100
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Duration",
+                        602,
+                        true,
+                        293
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 1
                     }
                 },
                 {
@@ -863,6 +864,40 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Signal",
+                        133,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Break 1",
                         1,
                         "Duration",
@@ -967,6 +1002,24 @@
                             2,
                             false,
                             1
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Duration",
+                        95,
+                        true,
+                        2233
+                    ],
+                    "Type" : "TriggerInputToMotion",
+                    "Data" : {
+                        "Data" : [
+                            4,
+                            true,
+                            8192
                         ]
                     }
                 },
@@ -1430,7 +1483,7 @@
                         "Move" : [
                             {
                                 "x" : 0.0,
-                                "y" : 1.20000004768372,
+                                "y" : 1.39999997615814,
                                 "z" : 0.0
                             },
                             false,
@@ -1456,6 +1509,19 @@
                             true,
                             1
                         ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Duration",
+                        733,
+                        true,
+                        200
+                    ],
+                    "Type" : "LockTick",
+                    "Data" : {
                     }
                 }
             ],
@@ -1502,6 +1568,636 @@
                     "Type" : "Interrupt",
                     "Data" : {
                         "Type" : -1
+                    }
+                }
+            ],
+            "Prop"   : [
+            ]
+        },
+        {
+            "Base" : [
+                14,
+                "LS_FinishAtk",
+                2833
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        2833
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_Finish_RU_Ataker",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            2,
+                            100
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Duration",
+                        150,
+                        true,
+                        2220
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 16
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Break 1",
+                        1,
+                        "Duration",
+                        1969,
+                        true,
+                        864
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 96
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Break 0",
+                        0,
+                        "Duration",
+                        2080,
+                        true,
+                        753
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 1
+                    }
+                }
+            ],
+            "Prop"   : [
+                {
+                    "K" : "target",
+                    "V" : {
+                        "Value" : 0,
+                        "Type"  : "Int"
+                    }
+                }
+            ]
+        },
+        {
+            "Base" : [
+                15,
+                "LS_FinishVictim",
+                2833
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        2833
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_Finish_RU_Victim",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            2,
+                            100
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Duration",
+                        0,
+                        true,
+                        2833
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 16
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Duration",
+                        2486,
+                        true,
+                        347
+                    ],
+                    "Type" : "TriggerStateToMotion",
+                    "Data" : {
+                        "Data" : [
+                            8,
+                            true,
+                            65536
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Duration",
+                        2548,
+                        true,
+                        285
+                    ],
+                    "Type" : "LockTick",
+                    "Data" : {
+                    }
+                }
+            ],
+            "Prop"   : [
+            ]
+        },
+        {
+            "Base" : [
+                16,
+                "LS_GetUpBack",
+                1667
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        1667
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_GetUpBack",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        1044
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 16
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Break 0",
+                        0,
+                        "Duration",
+                        1101,
+                        true,
+                        566
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 1
+                    }
+                }
+            ],
+            "Prop"   : [
+            ]
+        },
+        {
+            "Base" : [
+                17,
+                "LS_SpecialAttack",
+                2965
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        1333
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "LS_ComboLeft_1",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            2,
+                            100
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Signal",
+                        100,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Duration",
+                        180,
+                        true,
+                        367
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Animation 1",
+                        1,
+                        "Duration",
+                        717,
+                        true,
+                        1683
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "LS_ComboLeft_2",
+                            250,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Duration",
+                        738,
+                        true,
+                        629
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Animation 2",
+                        2,
+                        "Duration",
+                        1432,
+                        true,
+                        1533
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "LS_ComboLeft_3",
+                            150,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Duration",
+                        1569,
+                        true,
+                        562
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 1
+                    }
+                }
+            ],
+            "Prop"   : [
+            ]
+        },
+        {
+            "Base" : [
+                18,
+                "LS_Land",
+                833
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        833
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_Jump_Platformer_Land",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Break 0",
+                        0,
+                        "Duration",
+                        465,
+                        true,
+                        368
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 115
+                    }
+                }
+            ],
+            "Prop"   : [
+            ]
+        },
+        {
+            "Base" : [
+                19,
+                "LS_CounterAttack",
+                483
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        483
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_Block_L2",
+                            0,
+                            1000,
+                            100,
+                            1,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Break 0",
+                        0,
+                        "Duration",
+                        361,
+                        true,
+                        123
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 0
                     }
                 }
             ],

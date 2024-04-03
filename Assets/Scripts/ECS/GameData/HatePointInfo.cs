@@ -256,7 +256,6 @@ public class HatePointInfo
 
     public void ClearHateInfo()
     {
-        WLogger.Print("清空仇恨" + (_entity.isCampRed ? "红" : "白"));
         _hatePointDict.Clear();
         maxHateInfo = HateInfo.NULL;
         newMaxHateInfo = HateInfo.NULL;

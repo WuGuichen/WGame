@@ -35,6 +35,9 @@ namespace WGame.Ability
                         case BuffType.Condition:
                             Buff = new CBuffData();
                             break;
+                        case BuffType.ChangeAttr:
+                            Buff = new SBuffChangeAttrData();
+                            break;
                     }
                 }
             }

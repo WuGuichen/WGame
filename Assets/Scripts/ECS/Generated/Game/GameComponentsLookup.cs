@@ -66,50 +66,45 @@ public static class GameComponentsLookup {
     public const int LinkVM = 55;
     public const int LinkWeapon = 56;
     public const int LockPlanarVec = 57;
-    public const int Moveable = 58;
-    public const int MoveDirection = 59;
-    public const int MovementSpeed = 60;
-    public const int Moving = 61;
-    public const int NetAgent = 62;
-    public const int NetObject = 63;
-    public const int Notice = 64;
-    public const int NotMove = 65;
-    public const int OnGroundState = 66;
-    public const int PlayerInputState = 67;
-    public const int Position = 68;
-    public const int PrepareAttackState = 69;
-    public const int PrepareDefenseState = 70;
-    public const int PrepareHoldAttackState = 71;
-    public const int PrepareJumpAttackState = 72;
-    public const int PrepareJumpState = 73;
-    public const int PrepareLocalMotionState = 74;
-    public const int PrepareStepState = 75;
-    public const int RigidbodyService = 76;
-    public const int RotateInFocus = 77;
-    public const int RotateLeftAngle = 78;
-    public const int RotationSpeed = 79;
-    public const int RunningMultiRate = 80;
-    public const int RunState = 81;
-    public const int SignalAttack = 82;
-    public const int SignalDefense = 83;
-    public const int SignalJump = 84;
-    public const int SignalLocalMotion = 85;
-    public const int SignalState = 86;
-    public const int SignalStep = 87;
-    public const int SpawnPoint = 88;
-    public const int StateChanged = 89;
-    public const int StateSwitchState = 90;
-    public const int StateSwitchStateListener = 91;
-    public const int StepEndState = 92;
-    public const int StepState = 93;
-    public const int TargetPlanarSqrDistance = 94;
-    public const int UIHeadPad = 95;
-    public const int Unbalanced = 96;
-    public const int WalkState = 97;
-    public const int WeaponDropService = 98;
-    public const int WeaponService = 99;
+    public const int MotionDB = 58;
+    public const int Moveable = 59;
+    public const int MoveDirection = 60;
+    public const int MovementSpeed = 61;
+    public const int Moving = 62;
+    public const int NetAgent = 63;
+    public const int NetObject = 64;
+    public const int Notice = 65;
+    public const int NotMove = 66;
+    public const int OnGroundState = 67;
+    public const int PlanarVec = 68;
+    public const int PlayerInputState = 69;
+    public const int Position = 70;
+    public const int RigidbodyService = 71;
+    public const int RotateInFocus = 72;
+    public const int RotateLeftAngle = 73;
+    public const int RotationSpeed = 74;
+    public const int RunningMultiRate = 75;
+    public const int RunState = 76;
+    public const int SignalAttack = 77;
+    public const int SignalDefense = 78;
+    public const int SignalJump = 79;
+    public const int SignalLocalMotion = 80;
+    public const int SignalState = 81;
+    public const int SignalStep = 82;
+    public const int SpawnPoint = 83;
+    public const int StateChanged = 84;
+    public const int StateSwitchState = 85;
+    public const int StateSwitchStateListener = 86;
+    public const int StepEndState = 87;
+    public const int StepState = 88;
+    public const int TargetPlanarSqrDistance = 89;
+    public const int UIHeadPad = 90;
+    public const int Unbalanced = 91;
+    public const int WalkState = 92;
+    public const int WeaponDropService = 93;
+    public const int WeaponService = 94;
 
-    public const int TotalComponents = 100;
+    public const int TotalComponents = 95;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -170,6 +165,7 @@ public static class GameComponentsLookup {
         "LinkVM",
         "LinkWeapon",
         "LockPlanarVec",
+        "MotionDB",
         "Moveable",
         "MoveDirection",
         "MovementSpeed",
@@ -179,15 +175,9 @@ public static class GameComponentsLookup {
         "Notice",
         "NotMove",
         "OnGroundState",
+        "PlanarVec",
         "PlayerInputState",
         "Position",
-        "PrepareAttackState",
-        "PrepareDefenseState",
-        "PrepareHoldAttackState",
-        "PrepareJumpAttackState",
-        "PrepareJumpState",
-        "PrepareLocalMotionState",
-        "PrepareStepState",
         "RigidbodyService",
         "RotateInFocus",
         "RotateLeftAngle",
@@ -273,6 +263,7 @@ public static class GameComponentsLookup {
         typeof(LinkVM),
         typeof(LinkWeaponComponent),
         typeof(LockPlanarVec),
+        typeof(MotionDBComponent),
         typeof(MoveableComponent),
         typeof(MoveDirectionComponent),
         typeof(MovementSpeedComponent),
@@ -282,15 +273,9 @@ public static class GameComponentsLookup {
         typeof(NoticeComponent),
         typeof(NotMoveComponent),
         typeof(OnGroundStateComponent),
+        typeof(PlanarVecComponent),
         typeof(PlayerInputStateComponent),
         typeof(PositionComponent),
-        typeof(PrepareAttackState),
-        typeof(PrepareDefenseState),
-        typeof(PrepareHoldAttackState),
-        typeof(PrepareJumpAttackState),
-        typeof(PrepareJumpState),
-        typeof(PrepareLocalMotionState),
-        typeof(PrepareStepState),
         typeof(RigidbodyServiceComponent),
         typeof(RotateInFocusComponent),
         typeof(RotateLeftAngleComponent),

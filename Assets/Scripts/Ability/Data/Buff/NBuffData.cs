@@ -14,29 +14,42 @@ namespace WGame.Ability
 
         [EditorData("开始特效", EditorDataType.GameObject)]
         public string EffectStart { get; set; } = "/Effects/HCFX_Buff_Up.prefab";
-        [EditorData("开始特效", EditorDataType.GameObject)]
+
+        [EditorData("开始特效部位", EditorDataType.TypeID, 7)]
+        public int EffStartPart { get; set; } = 0;
+        [EditorData("持续特效", EditorDataType.GameObject)]
         public string EffectKeep { get; set; }
+        [EditorData("持续特效部位", EditorDataType.TypeID, 7)]
+        public int EffKeepPart { get; set; } = 0;
 
         public override void Deserialize(JsonData jd)
         {
             base.Deserialize(jd);
 
-            AttrID = JsonHelper.ReadInt(jd["Attr"]);
-            AddValue = JsonHelper.ReadInt(jd["AddVal"]);
-            MulValue = JsonHelper.ReadInt(jd["MulVal"]);
-            EffectStart = JsonHelper.ReadString(jd["EffStart"]);
-            EffectKeep = JsonHelper.ReadString(jd["EffKeep"]);
+            var cfg = jd["NBuff"];
+            AttrID = JsonHelper.ReadInt(cfg[0]);
+            AddValue = JsonHelper.ReadInt(cfg[1]);
+            MulValue = JsonHelper.ReadInt(cfg[2]);
+            EffectStart = JsonHelper.ReadString(cfg[3]);
+            EffStartPart = JsonHelper.ReadInt(cfg[4]);
+            EffectKeep = JsonHelper.ReadString(cfg[5]);
+            EffKeepPart = JsonHelper.ReadInt(cfg[6]);
         }
 
         public override JsonWriter Serialize(JsonWriter writer)
         {
             base.Serialize(writer);
             
-            JsonHelper.WriteProperty(ref writer, "Attr", AttrID);
-            JsonHelper.WriteProperty(ref writer, "AddVal", AddValue);
-            JsonHelper.WriteProperty(ref writer, "MulVal", MulValue);
-            JsonHelper.WriteProperty(ref writer, "EffStart", EffectStart);
-            JsonHelper.WriteProperty(ref writer, "EffKeep", EffectKeep);
+            writer.WritePropertyName("NBuff");
+            writer.WriteArrayStart();
+            writer.Write(AttrID);
+            writer.Write(AddValue);
+            writer.Write(MulValue);
+            writer.Write(EffectStart);
+            writer.Write(EffStartPart);
+            writer.Write(EffectKeep);
+            writer.Write(EffKeepPart);
+            writer.WriteArrayEnd();
 
             return writer;
         }

@@ -60,7 +60,7 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
             #endif
             {
                 // 用手柄控制
-                model.TickInputUpdate(_metaContext.timeService.instance.DeltaTime(1f));
+                model.TickInputUpdate(_metaContext.timeService.instance.TimeDeltaTime);
                 _inputContext.ReplaceMoveInput(model.MoveDir);
                 if (model.isLooking)
                 {

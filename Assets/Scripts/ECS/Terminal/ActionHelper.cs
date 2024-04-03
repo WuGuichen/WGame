@@ -1,7 +1,14 @@
+using System;
+using System.Collections.Generic;
+using DG.Tweening;
+using Oddworm.Framework;
 using UnityEngine;
 using Weapon;
+using WGame.Ability;
+using WGame.Res;
 using WGame.UI;
 using WGame.Runtime;
+using WGame.Utils;
 
 public partial class ActionHelper
 {
@@ -25,6 +32,10 @@ public partial class ActionHelper
         // {
         //     return;
         // }
+        var ctx = TriggerContext.Get(TriggerEventType.BeHit);
+        // ctx.AddProperty("attacker", DataType.Int, hitInfo.entity.instanceID.ID);
+        ctx.AddProperty("victim", DataType.Int, entity.instanceID.ID);
+        TriggerMgr.Inst.Trigger(ctx);
         entity.notice.service.Notice(WGame.Notice.MessageDB.Getter.GetBehitted(hitInfo));
         ability.abilityGotHit.service.OnGotHit(entity, hitInfo);
     }
@@ -105,6 +116,8 @@ public partial class ActionHelper
     public static void DoFinishAttack(AbilityEntity attacker)
     {
         var victim = EntityUtils.GetGameEntity(attacker.abilityBackStab.EntityID);
+        victim.linkMotion.Motion.motionService.service.TransMotionByMotionType(MotionType.VictimFinishAttack, AbilityIDs.LS_FinishVictim);
+        attacker.linkCharacter.Character.linkMotion.Motion.motionService.service.TransMotionByMotionType(MotionType.FinishAttack, AbilityIDs.LS_FinishAtk);
         // bool done = victim.linkAbility.Ability.abilityService.service.Do("BeFinishAtk", true);
         // if (done)
         // {
@@ -112,10 +125,92 @@ public partial class ActionHelper
         // }
     }
 
+    public static void DoDropObject(DropObjectInfo info, Vector3 startPos, Vector3 targetPos)
+    {
+        ObjectPool.Inst.GetOrNewGameObject("DropObject", out var obj);
+        var mono = obj.GetComponent<InteractableObjectMono>();
+        string effName;
+        string effGet;
+        switch (info.Rare)
+        {
+            default:
+                effName = "HCFX_Marble_01";
+                effGet = "HCFX_Marble_01_Get";
+                break;
+        }
+        var trans = obj.transform;
+        if (!mono)
+        {
+            obj.layer = LayerMask.NameToLayer("DropItem");
+            mono = obj.AddComponent<InteractableObjectMono>();
+            var col = obj.AddComponent<SphereCollider>();
+            col.radius = 0.4f;
+        }
+
+        DbgDraw.Sphere(trans.position, Quaternion.identity, new Vector3(0.4f, 0.4f, 0.4f), Color.yellow,2f);
+        EffectMgr.LoadEffect(effName, trans, Vector3.zero, Quaternion.identity, 9999999f, o =>
+        {
+            mono.Initialize(o, effGet);
+            trans.position = startPos;
+            trans.DOJump(targetPos, 4f, 1, 2f);
+        });
+    }
+
+    public static void DropWeapon(WeaponEntity weapon, Vector3 endPos)
+    {
+        var dropInfo = new DropObjectInfo(1);
+        weapon.isDestroyed = true;
+        DoDropObject(dropInfo, weapon.weaponWeaponView.service.Position, endPos);
+    }
+
+    public static void DoCreateWeapon(int typeID, Action<WeaponEntity> onComplete) 
+    {
+        var data = GameData.Tables.TbWeapon[typeID];
+        WeaponMgr.Inst.GetWeaponObj(data.ObjectId, o =>
+        {
+            var weapon = Contexts.sharedInstance.weapon.CreateEntity();
+            var service = o.GetComponent<IWeaponViewService>();
+            weapon.AddWeaponWeaponView(service.RegisterEntity(weapon));
+            weapon.AddWeaponTypeID(typeID);
+            onComplete.Invoke(weapon);
+        });
+    }
+
+    public static void DoEquipWeaponToEntity(int typeID, GameEntity entity)
+    {
+        if (entity == null || entity.isEnabled == false)
+            return;
+        if (entity.hasLinkWeapon)
+        {
+            WLogger.Print("已有装备");
+            return;
+        }
+
+        DoCreateWeapon(typeID, weapon =>
+        {
+            var data = GameData.Tables.TbWeapon[weapon.weaponTypeID.id];
+            var motion = entity.linkMotion.Motion.motionService.service;
+            motion.SetLocalMotion(data.AnimGroupId);
+            var motionEntt = entity.linkMotion.Motion;
+            weapon.weaponWeaponView.service.LinkToCharacter(entity);
+            motion.SetMotionID(MotionType.Attack1, data.Attack1);
+            motion.SetMotionID(MotionType.Attack2, data.Attack2);
+            motion.SetMotionID(MotionType.Attack3, data.Attack3);
+        });
+    }
+
     public static void Dispose()
     {
         currentCameraEntityID = -1;
     }
-    
-    
 }
+public struct DropObjectInfo
+{
+    public int Rare { get; }
+
+    public DropObjectInfo(int rare)
+    {
+        Rare = rare;
+    }
+}
+    

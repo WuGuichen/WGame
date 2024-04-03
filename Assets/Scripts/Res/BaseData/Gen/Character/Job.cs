@@ -15,6 +15,10 @@ namespace BaseData.Character
         /// 剑士
         /// </summary>
         Swordman = 1,
+        /// <summary>
+        /// 平民
+        /// </summary>
+        Civilian = 2,
     }
 
 } 

@@ -32,7 +32,7 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
         {
             inputState.EnableState(InputType.Jump);
         }
-        if (_inputContext.runInput.value && entity.linkMotion.Motion.motionStart.UID == entity.linkMotion.Motion.motionLocalMotion.UID)
+        if (_inputContext.runInput.value && entity.linkMotion.Motion.motionService.service.CheckMotionType(MotionType.LocalMotion))
         {
             // 跑
             entity.isRunState = true;
@@ -62,14 +62,10 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
         {
             // 蓄力攻击
             WTriggerMgr.Inst.TriggerEvent(MainTypeDefine.InputSignal, InputSignalSubType.Attack, InputSignalEvent.IsHold, new WTrigger.Context(entity.entityID.id));
-            entity.isPrepareHoldAttackState = true;
             inputState.EnableState(InputType.HoldAttack);
         }
         else
         {
-            if(entity.isPrepareHoldAttackState)
-                WTriggerMgr.Inst.TriggerEvent(MainTypeDefine.InputSignal, InputSignalSubType.Attack,InputSignalEvent.WasReleased, new WTrigger.Context(entity.entityID.id));
-            entity.isPrepareHoldAttackState = false;
         }
 
         if (_inputContext.attackInput.value)

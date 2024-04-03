@@ -344,24 +344,31 @@ public class FactoryServiceImplementation : IFactoryService
             whiteCount++;
         }
 
+        var motionDB = new WTypeMap();
+        entity.AddMotionDB(motionDB);
+        motionDB.Set(MotionType.LocalMotion, AbilityIDs.LocalMotion);
+        motionDB.Set(MotionType.Step, AbilityIDs.LS_Step);
+        motionDB.Set(MotionType.Hit, AbilityIDs.LS_Hit_Fwd);
+        motionDB.Set(MotionType.Spare, AbilityIDs.LS_Hit_Fwd);
+        motionDB.Set(MotionType.Jump, AbilityIDs.LS_Jump);
+        motionDB.Set(MotionType.JumpLand, AbilityIDs.LS_JumpLand);
+        motionDB.Set(MotionType.Defense, AbilityIDs.LS_Defense);
+        motionDB.Set(MotionType.Attack1, AbilityIDs.LS_Attack1);
+        motionDB.Set(MotionType.Attack2, AbilityIDs.LS_Attack2);
+        motionDB.Set(MotionType.Attack3, AbilityIDs.LS_Attack3);
+        motionDB.Set(MotionType.Death, AbilityIDs.LS_Death_L);
+        motionDB.Set(MotionType.GetUp, AbilityIDs.LS_GetUpBack);
+        motionDB.Set(MotionType.SpecialSkill, AbilityIDs.LS_SpecialAttack);
+        motionDB.Set(MotionType.JumpLand, AbilityIDs.LS_Land);
+        // motionDB.Set(MotionType.LocalMotion, AbilityIDs.LocalMotion);
         // motion
         var motion = Contexts.sharedInstance.motion.CreateEntity();
         // 链接
         entity.AddLinkMotion(motion);
         motion.AddLinkCharacter(entity);
         motion.AddMotionService(obj.GetComponentInChildren<IMotionService>().OnInit(motion));
-        motion.AddMotionLocalMotion(AbilityIDs.LocalMotion);
-        motion.AddMotionStepFwd(AbilityIDs.LS_Step);
-        motion.AddMotionHitFwd(AbilityIDs.LS_Hit_Fwd);
-        motion.AddMotionSpare(MotionIDs.Spare1);
-        motion.AddMotionHitBwd(AbilityIDs.LS_Hit_Bwd);
-        motion.AddMotionJump(AbilityIDs.LS_Jump);
-        motion.AddMotionJumpLand(AbilityIDs.LS_JumpLand);
-        motion.AddMotionDefense(AbilityIDs.LS_Defense);
-        motion.AddMotionJumpAttack(AbilityIDs.LS_Attack3);
-        motion.AddMotionDead(AbilityIDs.LS_Death_L);
         // 初始motion
-        motion.AddMotionStart(motion.motionLocalMotion.UID);
+        motion.AddMotionStart(AbilityIDs.LocalMotion);
         // 武器位
         entity.AddWeaponService(obj.GetComponentInChildren<IWeaponService>());
 
@@ -444,12 +451,13 @@ public class FactoryServiceImplementation : IFactoryService
         // todo 空手武器
         if (info.Weapon > 0)
         {
-            GenWeaponEntity(info.Weapon, out var weaponEntity);
-            SetWeaponEquipTo(weaponEntity, entity);
+            // GenWeaponEntity(info.Weapon, out var weaponEntity);
+            // SetWeaponEquipTo(weaponEntity, entity);
+            ActionHelper.DoEquipWeaponToEntity(info.Weapon, entity);
         }
         else
         {
-            motion.motionService.service.ResetMotion();
+            motion.motionService.service.SetLocalMotion(2);
         }
         
         // 加入bvh
@@ -491,117 +499,68 @@ public class FactoryServiceImplementation : IFactoryService
         
         // 数据初始化
         entity.aiAgent.service.Initialize();
-        ability.abilityService.service.SwitchMotionAbility(motion.motionLocalMotion.UID);
+        ability.abilityService.service.SwitchMotionAbility(motionDB.Get(MotionType.LocalMotion));
         motion.motionService.service.Initialize();
         attribute.Init();
     }
 
-    public void GenWeaponEntity(int weaponID, out WeaponEntity weapon)
-    {
-        var data = GameData.Tables.TbWeapon[weaponID];
-        if (data == null)
-        {
-            WLogger.Error("weapons没有相应配置id: " + weaponID);
-            weapon = null;
-            return;
-        }
-        int id = weaponBaseID + genWeaponNum;
-        genWeaponNum++;
-        weapon = _weaponContext.CreateEntity();
-        weapon.AddEntityID(id);
-        weapon.AddWeaponObject(-1);
-        weapon.AddWeaponState(-1);
-        weapon.AddWeaponTypeID(weaponID);
-    }
-
-    public void SetWeaponDrop(WeaponEntity weapon, Vector3 pos, Quaternion rot, Vector3 scale)
-    {
-        int oldId = weapon.weaponObject.objId;
-        int newId = oldId;
-        // weapon.ReplaceWeaponState(WeaponState.Drop);
-        var weaponData = GameData.Tables.TbWeapon[weapon.weaponTypeID.id];
-        newId = weaponData.DropId;
-
-        bool isNew = oldId != newId;
-
-        var info = new WeaponInfo()
-        {
-            isNewID = isNew,
-            position = pos,
-            rotation = rot,
-            scale = scale,
-        };
-        
-        if (isNew)
-        {
-            weapon.ReplaceWeaponObject(newId);
-            var parent = GameSceneMgr.Inst.genItemRoot;
-            if (weapon.hasWeaponWeaponView)
-            {
-                weapon.weaponWeaponView.service.Push();
-                weapon.RemoveWeaponWeaponView();
-            }
-            
-            WeaponMgr.Inst.GetWeaponObj(weapon.weaponObject.objId, o =>
-            {
-                weapon.ReplaceWeaponWeaponView(o.GetComponent<IWeaponViewService>());
-                if (weapon.hasLinkCharacter)
-                {
-                    weapon.weaponWeaponView.service.UnLinkCharacter(weapon.linkCharacter.Character);
-                }
-                weapon.weaponWeaponView.service.RegisterEntity(weapon);
-                weapon.weaponWeaponView.service.SetDropState(ref info);
-            }, parent);
-        }
-        else
-        {
-            if (weapon.hasLinkCharacter)
-            {
-                weapon.weaponWeaponView.service.UnLinkCharacter(weapon.linkCharacter.Character);
-            }
-            weapon.weaponWeaponView.service.SetDropState(ref info);
-        }
-    }
-
-    public void SetWeaponEquipTo(WeaponEntity weapon, GameEntity entity)
-    {
-        if (entity == null || entity.isEnabled == false)
-            return;
-        var data = GameData.Tables.TbWeapon[weapon.weaponTypeID.id];
-        if (weapon.hasWeaponWeaponView)
-        {
-            if (weapon.hasLinkCharacter)
-            {
-                // 先解除
-                if (weapon.linkCharacter.Character.entityID.id == entity.entityID.id)
-                {
-                    // 已装备
-                    return;
-                }
-
-                weapon.weaponWeaponView.service.UnLinkCharacter(weapon.linkCharacter.Character);
-            }
-
-            weapon.weaponWeaponView.service.LinkToCharacter(entity);
-        }
-        else
-        {
-            WeaponMgr.Inst.GetWeaponObj(data.ObjectId, o =>
-            {
-                weapon.AddWeaponWeaponView(o.GetComponent<IWeaponViewService>().RegisterEntity(weapon));
-                weapon.weaponWeaponView.service.LinkToCharacter(entity);
-            });
-        }
-
-        var motion = entity.linkMotion.Motion.motionService.service;
-        motion.SetLocalMotion(data.AnimGroupId);
-        var motionEntt = entity.linkMotion.Motion;
-        var abilityMgr = WAbilityMgr.Inst;
-        motionEntt.ReplaceMotionAttack1(abilityMgr.GetAbilityID(data.Attack1));
-        motionEntt.ReplaceMotionAttack2(abilityMgr.GetAbilityID(data.Attack2));
-        motionEntt.ReplaceMotionAttack3(abilityMgr.GetAbilityID(data.Attack3));
-    }
-
+    // public void GenWeaponEntity(int weaponID, out WeaponEntity weapon)
+    // {
+    //     var data = GameData.Tables.TbWeapon[weaponID];
+    //     if (data == null)
+    //     {
+    //         WLogger.Error("weapons没有相应配置id: " + weaponID);
+    //         weapon = null;
+    //         return;
+    //     }
+    //     int id = weaponBaseID + genWeaponNum;
+    //     genWeaponNum++;
+    //     weapon = _weaponContext.CreateEntity();
+    //     weapon.AddEntityID(id);
+    //     weapon.AddWeaponObject(-1);
+    //     weapon.AddWeaponState(-1);
+    //     weapon.AddWeaponTypeID(weaponID);
+    // }
+    //
+    // public void SetWeaponEquipTo(WeaponEntity weapon, GameEntity entity)
+    // {
+    //     if (entity == null || entity.isEnabled == false)
+    //         return;
+    //     var data = GameData.Tables.TbWeapon[weapon.weaponTypeID.id];
+    //     if (weapon.hasWeaponWeaponView)
+    //     {
+    //         if (weapon.hasLinkCharacter)
+    //         {
+    //             // 先解除
+    //             if (weapon.linkCharacter.Character.entityID.id == entity.entityID.id)
+    //             {
+    //                 // 已装备
+    //                 return;
+    //             }
+    //
+    //             weapon.weaponWeaponView.service.UnLinkCharacter(weapon.linkCharacter.Character);
+    //         }
+    //
+    //         weapon.weaponWeaponView.service.LinkToCharacter(entity);
+    //     }
+    //     else
+    //     {
+    //         WeaponMgr.Inst.GetWeaponObj(data.ObjectId, o =>
+    //         {
+    //             weapon.AddWeaponWeaponView(o.GetComponent<IWeaponViewService>().RegisterEntity(weapon));
+    //             weapon.weaponWeaponView.service.LinkToCharacter(entity);
+    //         });
+    //     }
+    //
+    //     var motion = entity.linkMotion.Motion.motionService.service;
+    //     motion.SetLocalMotion(data.AnimGroupId);
+    //     var motionEntt = entity.linkMotion.Motion;
+    //     var abilityMgr = WAbilityMgr.Inst;
+    //     motionEntt.ReplaceMotionAttack1(abilityMgr.GetAbilityID(data.Attack1));
+    //     motionEntt.ReplaceMotionAttack2(abilityMgr.GetAbilityID(data.Attack2));
+    //     motionEntt.ReplaceMotionAttack3(abilityMgr.GetAbilityID(data.Attack3));
+    // }
+    //
     public GameEntity SelectRandomGenCharacter()
     {
         if (genCharacterNum <= 0)

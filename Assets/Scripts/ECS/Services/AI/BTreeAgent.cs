@@ -25,7 +25,7 @@ public class BTreeAgent
     }
 
     private IVMService _vmService;
-    private MotionServiceImplementation motion;
+    // private MotionServiceImplementation motion;
     private UnityEngine.GameObject obj;
     
     private BTreeAgent(IVMService vmService)
@@ -39,7 +39,7 @@ public class BTreeAgent
     {
         _vmService = vmService;
         obj = vmService.Entity.gameViewService.service.Model.gameObject;
-        motion = vmService.Entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
+        // motion = vmService.Entity.linkMotion.Motion.motionService.service as MotionServiceImplementation;
         EventCenter.AddListener(EventDefine.OnBTreeHotUpdate, OnHotUpdate);
     }
 
@@ -107,7 +107,6 @@ public class BTreeAgent
     {
         obj = null;
         _vmService = null;
-        motion = null;
         foreach (var kv in _treeDict)
         {
             kv.Value.TREE.Reset();

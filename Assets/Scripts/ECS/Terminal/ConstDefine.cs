@@ -21,7 +21,7 @@ public class ConstDefine
         bind("ATTACK2", MotionType.Attack2);
         bind("ATTACK3", MotionType.Attack3);
         bind("JUMP", MotionType.Jump);
-        bind("JUMP_ATTACK1", MotionType.JumpAttack1);
+        bind("JUMP_ATTACK1", MotionType.JumpAttack);
         bind("STEP", MotionType.Step);
         bind("DEFENSE", MotionType.Defense);
         bind("LOCAL_MOTION", MotionType.LocalMotion);

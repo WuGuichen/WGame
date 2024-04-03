@@ -1,6 +1,7 @@
 using Motion;
 using UnityEngine;
 using Weapon;
+using WGame.Ability;
 using WGame.Attribute;
 using WGame.Res;
 
@@ -46,13 +47,15 @@ public class GotHitAbilityServiceImplementation : IGotHitService
         vm.Set("HIT_IS_FWD", isFwd);
         vm.Set("HIT_POS", hitInfo.pos, false);
 
+        int hitId;
         if (isFwd)
         {
-            motion.motionService.service.SwitchMotion(motion.motionHitFwd.UID);
+            hitId = AbilityIDs.LS_Hit_Fwd;
         }
         else{
-            motion.motionService.service.SwitchMotion(motion.motionHitBwd.UID);
+            hitId = AbilityIDs.LS_Hit_Bwd;
         }
+        motion.motionService.service.TransMotionByMotionType(MotionType.Hit, hitId);
         
         if (MotionIDs.onHitDict.TryGetValue(motion.motionStart.UID, out var motionName))
         {

@@ -4,6 +4,7 @@ namespace WGame.Ability
     {
         None = 0,
         CheckHP,
+        OnBeHit,
         MAX,
     }
 }

@@ -25,11 +25,12 @@ public class UpdateSensorAbilitySystem : IExecuteSystem
         {
             var ability = entity.linkAbility.Ability;
             var mID = entity.instanceID.ID;
+            var canStab = entity.linkMotion.Motion.motionService.service.CheckMotionType(MotionType.LocalMotion);
             if (ability.hasAbilityBackStab)
             {
                 var targetId = ability.abilityBackStab.EntityID;
                 var target = EntityUtils.GetGameEntity(targetId);
-                if (target.isUnbalanced)
+                if (!canStab || target.isUnbalanced)
                 {
                     ability.RemoveAbilityBackStab();
                     if (entity.isCamera)
@@ -61,6 +62,7 @@ public class UpdateSensorAbilitySystem : IExecuteSystem
             }
             else
             {
+                if (!canStab) continue;
                 var position = entity.position.value;
                 var sphere = new SphereF(position.ToFloat3(), BACK_STAB_DIST);
                 hitInfos.Clear();
@@ -68,11 +70,23 @@ public class UpdateSensorAbilitySystem : IExecuteSystem
                 for (int i = 0; i < hitInfos.Count; i++)
                 {
                     var hitInfo = hitInfos[i];
-                    var angleToTarget = DetectMgr.Inst.GetAngle(mID, hitInfo.EntityId);
-                    var angleToEntity = DetectMgr.Inst.GetAngle(hitInfo.EntityId, mID);
                     var target = EntityUtils.GetGameEntity(hitInfo.EntityId);
-                    if (target.isUnbalanced == false)
+                    var targetMotion = target.linkMotion.Motion.motionService.service;
+                    
+                    var targetCanBeStab = targetMotion.CheckMotionType(MotionType.LocalMotion);
+                    // if (targetCanBeStab)
+                    // {
+                    //     var hateInfo = DetectMgr.Inst.GetHatePointInfo(target.instanceID.ID);
+                    //     if (hateInfo.TryGet(entity.instanceID.ID, out var hInfo))
+                    //     {
+                    //         targetCanBeStab = hInfo.Rank <= HateRankType.Null;
+                    //     }
+                    // }
+
+                    if (targetCanBeStab && target.isUnbalanced == false)
                     {
+                        var angleToTarget = DetectMgr.Inst.GetAngle(mID, hitInfo.EntityId);
+                        var angleToEntity = DetectMgr.Inst.GetAngle(hitInfo.EntityId, mID);
                         if (angleToTarget < BACK_STAB_ANGLE
                             && angleToEntity > BACK_STAB_ANGLE_TARGET
                             && Mathf.Abs(hitInfo.Position.y - position.y) < BACK_STAB_MAX_Y_OFFSET)

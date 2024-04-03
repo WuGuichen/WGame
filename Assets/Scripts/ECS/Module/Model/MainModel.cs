@@ -293,7 +293,10 @@ namespace WGame.UI
 					break;
 				case 4:
 					var entity = EntityUtils.GetCameraEntity();
-					EntityUtils.DropEntityWeapon(entity);
+					if (entity.hasLinkWeapon)
+					{
+						ActionHelper.DropWeapon(entity.linkWeapon.Weapon, entity.position.value);
+					}
 					break;
 				default:
 					break;
@@ -344,7 +347,7 @@ namespace WGame.UI
 
 		public void OnInteractTagClick()
 		{
-			curInteractTag?.Interact();
+			curInteractTag?.Interact(EntityUtils.GetCameraEntity());
 			IsShowTag = false;
 			EventCenter.Trigger(EventDefine.OnInteractTagRefresh);
 		}

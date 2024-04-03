@@ -26,15 +26,7 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
 
     private static void OnMotionStart(MotionEntity entity)
     {
-        // Debug.Log("MotionStart");
-        // entity.RemoveMotionEnd();
         var character = entity.linkCharacter.Character;
-        // character.isPrepareAttackState = false;
-        // character.isPrepareJumpState = false;
-        // character.isPrepareStepState = false;
-        // character.isPrepareLocalMotionState = false;
-        // character.isPrepareDefenseState = false;
-        // character.isPrepareJumpAttackState = false;
         character.signalState.state.ResetStates();
         character.isLockPlanarVec = false;
         
@@ -66,14 +58,12 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
 
             // 根据动作类型处理行为
             var newID = entity.motionStart.UID;
-            if (newID == entity.motionLocalMotion.UID)
+            var motionDB = character.motionDB.data;
+            if (newID == motionDB.Get(MotionType.LocalMotion))
             {
 
             }
-            else if (newID == entity.motionDefense.UID)
-            {
-            }
-            else if (newID == entity.motionStepFwd.UID)
+            else if (newID == motionDB.Get(MotionType.Step))
             {
                 noticeService.AddReciever(NoticeDB.OnStepBeHit, 1f);
             }

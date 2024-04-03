@@ -2,20 +2,93 @@
 {
     "Data" : [
         {
+            "BuffType" : "Condition",
+            "BuffData" : {
+                "ID" : 0,
+                "Name" : "OnLowHP",
+                "Desc" : "\u8840\u91CF\u4F4E\u4E8E80%\u89E6\u53D1\u4E00\u6B21\u56DE\u8840",
+                "Target" : "None",
+                "AddType" : "AddNone",
+                "AddNum"  : 1,
+                "Duration" : -1,
+                "AddBuffList" : [
+                ],
+                "RemoveBuffList" : [
+                ],
+                "Conditions"     : [
+                    {
+                        "ConditionType" : "CheckHP",
+                        "CmpType"       : "Less",
+                        "Attr"          : 1,
+                        "CmpValue"      : {
+                            "Type" : "AttrValueMult",
+                            "AttrID" : 0,
+                            "ModValue" : 800
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "BuffType" : "Numerical",
             "BuffData" : {
                 "ID" : 0,
                 "Name" : "AddHP",
-                "Desc" : "",
+                "Desc" : "\u589E\u52A0200\u8840\u91CF\u4E0A\u9650\uFF0C\u6301\u7EED8\u79D2\uFF0C\u53EF\u5806\u79EF3\u5C42",
+                "Target" : "Self",
+                "AddType" : "UseSingleTime",
+                "AddNum"  : 3,
+                "Duration" : 8000,
+                "NBuff"    : [
+                    0,
+                    200000,
+                    0,
+                    "/Effects/HCFX_Buff_Up.prefab",
+                    0,
+                    "",
+                    0
+                ]
+            }
+        },
+        {
+            "BuffType" : "Condition",
+            "BuffData" : {
+                "ID" : 0,
+                "Name" : "OnBeHitReduceHP",
+                "Desc" : "\u88AB\u653B\u51FB\u6263\u8840",
                 "Target" : "Self",
                 "AddType" : "AddNone",
                 "AddNum"  : 1,
                 "Duration" : -1,
-                "Attr"     : 0,
-                "AddVal"   : 50000,
-                "MulVal"   : 2000,
-                "EffStart" : "/Effects/HCFX_Buff_Up.prefab",
-                "EffKeep"  : ""
+                "AddBuffList" : [
+                    "ReduceCurHP50"
+                ],
+                "RemoveBuffList" : [
+                ],
+                "Conditions"     : [
+                    {
+                        "ConditionType" : "OnBeHit"
+                    }
+                ]
+            }
+        },
+        {
+            "BuffType" : "ChangeAttr",
+            "BuffData" : {
+                "ID" : 0,
+                "Name" : "ReduceCurHP50",
+                "Desc" : "\u51CF\u5C1150\u70B9\u751F\u547D",
+                "Target" : "Self",
+                "AddType" : "AddNone",
+                "AddNum"  : 1,
+                "Duration" : -1,
+                "SBuff"    : [
+                    1,
+                    -50000,
+                    0,
+                    "/Effects/HCFX_Buff_Up.prefab",
+                    0
+                ]
             }
         }
     ]

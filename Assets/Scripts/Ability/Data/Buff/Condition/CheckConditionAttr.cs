@@ -48,7 +48,6 @@ namespace WGame.Ability
 
         public void Reset()
         {
-            throw new System.NotImplementedException();
         }
 
         public bool CheckBuff(BuffOwner buffOwner)
@@ -69,7 +68,7 @@ namespace WGame.Ability
         public JsonWriter Serialize(JsonWriter writer)
         {
             JsonHelper.WriteProperty(ref writer, "CmpType", CmpType.ToString());
-            JsonHelper.WriteProperty(ref writer, "Attr", CmpType.ToString());
+            JsonHelper.WriteProperty(ref writer, "Attr", AttType);
             writer.WritePropertyName("CmpValue");
             writer.WriteObjectStart();
             writer = CmpValue.Serialize(writer);

@@ -63,6 +63,9 @@ namespace WGame.Ability
                 case ConditionType.CheckHP:
                     cond = new CheckConditionAttr();
                     break;
+                case ConditionType.OnBeHit:
+                    cond = new CheckConditionBeHit();
+                    break;
                 default:
                     cond = ConditionAlways.Instance;
                     break;

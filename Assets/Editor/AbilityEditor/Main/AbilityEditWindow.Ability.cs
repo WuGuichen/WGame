@@ -91,7 +91,7 @@ namespace WGame.Ability.Editor
         public int GenEmptyAbilityID()
         {
             var idSet = AbilityIDSet();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 1; i < 10000; i++)
             {
                 if (!idSet.Contains(i))
                 {

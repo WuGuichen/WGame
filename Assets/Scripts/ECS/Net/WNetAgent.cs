@@ -174,7 +174,7 @@ public class WNetAgent : NetworkBehaviour
     {
         if (_entity.hasLinkMotion)
         {
-            _entity.linkMotion.Motion.motionService.service.SwitchMotion(newvalue, false);
+            // _entity.linkMotion.Motion.motionService.service.SwitchMotion(newvalue, false);
         }
     }
 

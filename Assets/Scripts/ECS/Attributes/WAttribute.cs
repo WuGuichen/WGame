@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using WGame.Ability;
+using WGame.Utils;
 
 namespace WGame.Attribute
 {
@@ -12,6 +13,7 @@ namespace WGame.Attribute
         private static Stack<WaEventContext> pool = new Stack<WaEventContext>();
 
         public GameEntity sender;
+        public GameEntity owner;
         public int attrID;
         public int changedValue;
         public int value;
@@ -97,14 +99,11 @@ namespace WGame.Attribute
         internal static void Push(AttrType value)
         {
             value.bridge.Clear();
-            value.buffValue.Clear();
             value.value = 0;
             pool.Push(value);
         }
 
         public int value { get; private set; }
-        // value减去buffValue就是基本属性值, 如果有加基本属性值的buff再说
-        private Dictionary<int, int> buffValue;
         private AttrBridge bridge;
         public AttrBridge Bridge
         {
@@ -116,36 +115,23 @@ namespace WGame.Attribute
             value += addValue;
         }
         
-        public int AddBuff(int buffID, int buffVal)
-        {
-            if (this.buffValue.TryGetValue(buffID, out int val))
-            {
-                if (val != buffVal)
-                {
-                    buffValue[buffID] = buffVal;
-                    int changedVal = buffVal - val;
-                    AddValue(changedVal);
-                    return changedVal;
-                }
-            }
-
-            return 0;
-        }
-
         public AttrType()
         {
-            buffValue = new Dictionary<int, int>();
             bridge = new AttrBridge();
         }
         
-        public void CallChange(GameEntity sender, int attrID, int changedValue,int value)
+        public void CallChange(GameEntity sender, int attrID, int changedValue,int value, GameEntity owner)
         {
             var context = new WaEventContext();
             context.sender = sender;
+            context.owner = owner;
             context.attrID = attrID;
             context.changedValue = changedValue;
             context.value = value;
             bridge.CallInternal(context);
+            var msg = TriggerContext.Get(TriggerEventType.ChangeAttr);
+            msg.AddProperty("target", DataType.Int, owner.instanceID.ID);
+            TriggerMgr.Inst.Trigger(msg);
         }
     }
 
@@ -185,8 +171,11 @@ namespace WGame.Attribute
                 if (oldValue.value == value)
                     return;
                 int changedValue = value - oldValue.value;
-                oldValue.AddValue(changedValue);
-                oldValue.CallChange(sender, attrID,  changedValue, value);
+                if (changedValue != 0)
+                {
+                    oldValue.AddValue(changedValue);
+                    oldValue.CallChange(sender, attrID, changedValue, value, owner);
+                }
             }
             else
             {
@@ -196,10 +185,27 @@ namespace WGame.Attribute
             }
         }
 
-        public void Add(GameEntity sender, int attrID, int value)
+        public void Add(GameEntity sender, int attrID, int changeValue)
         {
-            if (_attrDict.TryGetValue(attrID, out var attr))
+            if (_attrDict.TryGetValue(attrID, out var oldValue))
             {
+                var value = oldValue.value;
+                if (changeValue < -value)
+                {
+                    changeValue = value;
+                }
+
+                if (changeValue != 0)
+                {
+                    oldValue.AddValue(changeValue);
+                    oldValue.CallChange(sender, attrID, changeValue, oldValue.value, owner);
+                }
+            }
+            else
+            {
+                var attr = AttrType.Get();
+                attr.AddValue(changeValue);
+                _attrDict[attrID] = attr;
             }
         }
         
@@ -210,7 +216,7 @@ namespace WGame.Attribute
             {
                 if (_attrDict.TryGetValue(change, out var value))
                 {
-                    value.CallChange(owner, change, 0, Get(change, true));
+                    value.CallChange(owner, change, 0, Get(change, true), owner);
                 }
             }
         }
@@ -222,7 +228,7 @@ namespace WGame.Attribute
             {
                 if (_attrDict.TryGetValue(change, out var value))
                 {
-                    value.CallChange(owner, change, 0, Get(change, true));
+                    value.CallChange(owner, change, 0, Get(change, true), owner);
                 }
             }
         }

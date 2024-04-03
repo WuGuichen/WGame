@@ -16,6 +16,7 @@ namespace WGame.Ability
 
         [EditorData("堆叠类型", EditorDataType.Enum)]
         public BuffAddType AddType { get; set; } = BuffAddType.AddNone;
+        [EditorData("堆叠数量", EditorDataType.Int)]
         public int AddNum { get; set; } = 1;
         [EditorData("持续时间", EditorDataType.Int)]
         public int Duration { get; set; } = -1;

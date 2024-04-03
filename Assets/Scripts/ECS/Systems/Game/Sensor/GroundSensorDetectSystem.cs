@@ -20,6 +20,7 @@ public class GroundSensorDetectSystem : IExecuteSystem
         foreach (var entity in _groundSensorGroup)
         {
             var startPoint = entity.position.value;
+            // startPoint.y += size.y;
 
             var num = Physics.OverlapBoxNonAlloc(startPoint, size, cols, Quaternion.identity, lm);
             if (num > 0)
@@ -27,12 +28,31 @@ public class GroundSensorDetectSystem : IExecuteSystem
                 if (entity.groundSensor.intersect == false)
                 {
                     entity.ReplaceGroundSensor(true);
+                    if (entity.hasPlanarVec)
+                    {
+                        entity.RemovePlanarVec();
+                    }
+
+                    var vec = entity.rigidbodyService.service.Velocity;
+                    if (vec.y < -8f)
+                    {
+                        entity.linkMotion.Motion.motionService.service.TransMotionByMotionType(MotionType.JumpLand);
+                    }
+                    entity.rigidbodyService.service.MovePosition(new Vector3(0, -size.y, 0));
                 }
             }
             else
             {
                 if (entity.groundSensor.intersect)
+                {
                     entity.ReplaceGroundSensor(false);
+                    if (entity.hasPlanarVec == false)
+                    {
+                        var vec = entity.rigidbodyService.service.Velocity;
+                        vec.y = 0;
+                        entity.AddPlanarVec(vec);
+                    }
+                }
             }
         }
     }

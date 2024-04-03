@@ -23,7 +23,6 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         { if(!_json["desc"].IsString) { throw new SerializationException(); }  Desc = _json["desc"]; }
         { if(!_json["objectId"].IsNumber) { throw new SerializationException(); }  ObjectId = _json["objectId"]; }
         { if(!_json["dropId"].IsNumber) { throw new SerializationException(); }  DropId = _json["dropId"]; }
-        { if(!_json["localMotion"].IsNumber) { throw new SerializationException(); }  LocalMotion = _json["localMotion"]; }
         { if(!_json["attack1"].IsString) { throw new SerializationException(); }  Attack1 = _json["attack1"]; }
         { if(!_json["attack2"].IsString) { throw new SerializationException(); }  Attack2 = _json["attack2"]; }
         { if(!_json["attack3"].IsString) { throw new SerializationException(); }  Attack3 = _json["attack3"]; }
@@ -39,14 +38,13 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         PostInit();
     }
 
-    public Weapon(int id, string name, string desc, int objectId, int dropId, int localMotion, string attack1, string attack2, string attack3, string block1, string deadR1, string hitFwd1, string hitBwd1, string jump1, string jumpLand1, string Spare1, string Step1, int animGroupId ) 
+    public Weapon(int id, string name, string desc, int objectId, int dropId, string attack1, string attack2, string attack3, string block1, string deadR1, string hitFwd1, string hitBwd1, string jump1, string jumpLand1, string Spare1, string Step1, int animGroupId ) 
     {
         this.Id = id;
         this.Name = name;
         this.Desc = desc;
         this.ObjectId = objectId;
         this.DropId = dropId;
-        this.LocalMotion = localMotion;
         this.Attack1 = attack1;
         this.Attack2 = attack2;
         this.Attack3 = attack3;
@@ -87,7 +85,6 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
     /// 未拾取id
     /// </summary>
     public int DropId { get; private set; }
-    public int LocalMotion { get; private set; }
     public string Attack1 { get; private set; }
     public string Attack2 { get; private set; }
     public string Attack3 { get; private set; }
@@ -124,7 +121,6 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         + "Desc:" + Desc + ","
         + "ObjectId:" + ObjectId + ","
         + "DropId:" + DropId + ","
-        + "LocalMotion:" + LocalMotion + ","
         + "Attack1:" + Attack1 + ","
         + "Attack2:" + Attack2 + ","
         + "Attack3:" + Attack3 + ","

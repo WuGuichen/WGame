@@ -119,13 +119,13 @@ public class EntityUtils
         return GetGameEntity(ActionHelper.CurCameraEntityID);
     }
 
-    public static void DropEntityWeapon(GameEntity entity)
-    {
-        if (entity.hasLinkWeapon)
-        {
-            FactoryService.SetWeaponDrop(entity.linkWeapon.Weapon, entity.position.value + entity.gameViewService.service.Model.forward, Quaternion.identity, Vector3.one);
-        }
-    }
+    // public static void DropEntityWeapon(GameEntity entity)
+    // {
+        // if (entity.hasLinkWeapon)
+        // {
+        //     FactoryService.SetWeaponDrop(entity.linkWeapon.Weapon, entity.position.value + entity.gameViewService.service.Model.forward, Quaternion.identity, Vector3.one);
+        // }
+    // }
 
     public static Vector3 GetCameraCharacterPos()
     {
@@ -228,8 +228,10 @@ public class EntityUtils
     {
         var factory = FactoryService;
         int weaponId = 1;
-        factory.GenWeaponEntity(weaponId, out var weapon);
-        factory.SetWeaponDrop(weapon, GetRandomPositionAroundCharacter(), Quaternion.identity, Vector3.one);
+        // factory.GenWeaponEntity(weaponId, out var weapon);
+        // factory.SetWeaponDrop(weapon, GetRandomPositionAroundCharacter(), Quaternion.identity, Vector3.one);
+        var entity = GetCameraEntity();
+        ActionHelper.DoDropObject(new DropObjectInfo(1), entity.gameViewService.service.FocusPoint, GetRandomPositionAroundCharacter());
     }
 
     public static int GetTargetSensorLayer(GameEntity entity)

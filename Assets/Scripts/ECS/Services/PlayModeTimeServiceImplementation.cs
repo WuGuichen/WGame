@@ -5,6 +5,7 @@ public class PlayModeTimeServiceImplementation : ITimeService
     private float fixedDeltaTime;
     private float realTimeSinceStart;
     public float DeltaTime(float scale) => deltaTime*scale;
+    public float TimeDeltaTime => deltaTime;
     public float DivFixedDeltaTime => divFixedDeltaTime;
     public float FixedDeltaTime => fixedDeltaTime;
     public float RealTimeSinceStart => realTimeSinceStart;

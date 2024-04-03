@@ -15,6 +15,7 @@ namespace WGame.UI
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_ProgressBar1.URL, typeof(WGame.UI.Main.FUI_ProgressBar1));
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_ServerRoomView.URL, typeof(WGame.UI.Main.FUI_ServerRoomView));
 			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_ServerItem.URL, typeof(WGame.UI.Main.FUI_ServerItem));
+			UIObjectFactory.SetPackageItemExtension(WGame.UI.Main.FUI_TxtInfo.URL, typeof(WGame.UI.Main.FUI_TxtInfo));
 		}
 	}
 }

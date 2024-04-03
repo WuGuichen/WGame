@@ -10,6 +10,11 @@ namespace WGame.Res
     {
         private Dictionary<int, GameObject> loadedEffects = new Dictionary<int, GameObject>();
 
+        public static void LoadEffect(string objName, Vector3 pos, float duration = 10f, Action<GameObject> onCompeleted = null)
+        {
+            LoadEffect(objName, GameSceneMgr.Inst.Root, pos, Quaternion.identity, duration, onCompeleted);
+        }
+        
         public static void LoadEffect(string objName, Transform parent, Vector3 pos, Quaternion dir,
             float duration = 10f, Action<GameObject> onCompleted = null)
         {
@@ -58,6 +63,11 @@ namespace WGame.Res
             }
         }
 
+        public static void DisposeEffect(GameObject obj, float delayTime = -1f)
+        {
+            DisposeEffect(obj.GetInstanceID(), delayTime);
+        }
+        
         public static void DisposeEffect(int key, float delayTime = 0)
         {
             if (Inst.loadedEffects.TryGetValue(key, out var obj))
@@ -69,6 +79,10 @@ namespace WGame.Res
                         if (obj != null)
                         {
                             ObjectPool.Inst.PushObject(obj);
+                        }
+                        else
+                        {
+                            WLogger.Error("缓存池出错，请检查");
                         }
                         Inst.loadedEffects.Remove(key);
                     });
@@ -83,6 +97,10 @@ namespace WGame.Res
         
         public static void DisposeEffect(int objId ,int key, float delayTime = 0)
         {
+            if (delayTime > 9999f)
+            {
+                return;
+            }
             var data = GameData.Tables.TbObjectData[objId];
             if (Inst.loadedEffects.TryGetValue(key, out var obj))
             {
@@ -90,7 +108,7 @@ namespace WGame.Res
                 {
                     Timer.Register(delayTime, () =>
                     {
-                        if (obj != null)
+                        if (obj)
                         {
                             if (data.NeedCache)
                                 ObjectPool.Inst.PushObject(data.Id, obj);

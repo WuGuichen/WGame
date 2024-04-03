@@ -20,7 +20,7 @@ public class AbilityServiceImplementation : IAbility
         _entity = entity;
         _owner = new EventOwnerEntity(entity);
         _sensorContext = Contexts.sharedInstance.sensor;
-        _buffManager = new BuffManager(new BuffOwnerEntity(_entity));
+        _buffManager = new BuffManager(new BuffOwnerEntity(_entity, this));
     }
     
     public bool Do(string name, bool unique = false)
@@ -54,6 +54,10 @@ public class AbilityServiceImplementation : IAbility
             }
         }
 
+        if (_entity.groundSensor.intersect)
+        {
+            _entity.characterState.state.EnableState(AStateType.IsOnGround);
+        }
         _entity.characterState.state.CheckStateChange();
     }
 

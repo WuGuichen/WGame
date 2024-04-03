@@ -8,10 +8,19 @@ namespace WGame.Ability
         private const float _precision = 0.001f;
         
         private LinkedList<BuffStatus> _buffList = new();
+        private bool isNeedRefreshGetBuff = false;
+
+        public LinkedList<BuffStatus> BuffList => _buffList;
+
         private LinkedList<BuffStatus> _addList = new();
         private LinkedList<BuffStatus> _handleList = new();
+        private LinkedList<BuffStatus> _singleHandleList = new();
+
+        private HashSet<string> _updatedBuff = new();
+
         public BuffOwner Owner { get; private set; }
 
+        public Action<BuffStatus> onBuffUpdate { get; set; }
         public Action<BuffStatus> onBuffAdded { get; set; }
         public Action<BuffStatus> onBuffRemoved { get; set; }
 
@@ -26,20 +35,51 @@ namespace WGame.Ability
             {
                 while (itr.MoveNext())
                 {
-                    itr.Current.OnUpdate(deltaTime);
-                    if (itr.Current.HasFinished())
+                    if (itr.Current.AddType == BuffAddType.UseSingleTime)
+                    {
+                        _singleHandleList.AddLast(itr.Current);
+                    }
+                    else
+                    {
+                        itr.Current.OnUpdate(deltaTime);
+                        onBuffUpdate?.Invoke(itr.Current);
+                        if (itr.Current.HasFinished())
+                        {
+                            _handleList.AddLast(itr.Current);
+                        }
+                    }
+                }
+            }
+            
+            using (var itr = _singleHandleList.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    var item = itr.Current;
+                    if (_updatedBuff.Contains(item.Name))
+                    {
+                        continue;
+                    }
+                    _updatedBuff.Add(item.Name);
+                    item.OnUpdate(deltaTime);
+                    onBuffUpdate?.Invoke(itr.Current);
+                    if (item.HasFinished())
                     {
                         _handleList.AddLast(itr.Current);
                     }
                 }
             }
+            
+            _updatedBuff.Clear();
+            _singleHandleList.Clear();
+            
             using (var itr = _handleList.GetEnumerator())
             {
                 while (itr.MoveNext())
                 {
-                    BuffStatus.PushBuff(itr.Current);
                     _buffList.Remove(itr.Current);
-                    onBuffAdded.Invoke(itr.Current);
+                    onBuffRemoved.Invoke(itr.Current);
+                    BuffStatus.PushBuff(itr.Current);
                 }
             }
             _handleList.Clear();
@@ -63,50 +103,75 @@ namespace WGame.Ability
                     }
                 }
             }
-            
-            if (_addList.Count == buffData.AddNum)
+
+            if (_addList.Count > 0)
             {
-                if (buffData.AddType == BuffAddType.AddNone)
+                if (buffData.AddType == BuffAddType.RefreshAllTime)
                 {
-                    return;
+                    foreach (var buffStatus in _addList)
+                    {
+                        buffStatus.ResetTime();
+                    }
                 }
-                else
+
+                if (_addList.Count == buffData.AddNum)
                 {
-                    BuffStatus.PushBuff(_addList.First.Value);
-                    _addList.RemoveFirst();
+                    if (buffData.AddType != BuffAddType.ReplaceFist)
+                    {
+                        WLogger.Print("Return");
+                        _addList.Clear();
+                        return;
+                    }
+                    else
+                    {
+                        var item = _addList.First.Value;
+                        _buffList.Remove(item);
+                        onBuffRemoved.Invoke(item);
+                        BuffStatus.PushBuff(item);
+                    }
                 }
+
+                _addList.Clear();
             }
-            _addList.Clear();
-            
+
             BuffStatus buff = null;
             switch (buffFactoryData.BuffType)
             {
                 case BuffType.Numerical:
                     buff = new NBuffStatus();
-                    buff.Initialize(this, buffData);
                     break;
                 case BuffType.Condition:
-                    buff = CBuffStatus.Get(this, buffData);
+                    buff = CBuffStatus.Get();
+                    break;
+                case BuffType.ChangeAttr:
+                    buff = new SBuffChangeAttrStatus();
                     break;
                 default:
                     break;
             }
 
-            _buffList.AddLast(buff);
-            onBuffAdded.Invoke(buff);
+            if (buff.Initialize(this, buffData))
+            {
+                _buffList.AddLast(buff);
+                onBuffAdded.Invoke(buff);
+            }
+            else
+            {
+                BuffStatus.PushBuff(buff);
+            }
         }
         
-        public void DelBuff(int id)
+        public void DelBuff(string id)
         {
             using (var itr = _buffList.GetEnumerator())
             {
                 while (itr.MoveNext())
                 {
-                    if (id == itr.Current.ID)
+                    if (id == itr.Current.Name)
                     {
-                        BuffStatus.PushBuff(itr.Current);
                         _buffList.Remove(itr.Current);
                         onBuffRemoved.Invoke(itr.Current);
+                        BuffStatus.PushBuff(itr.Current);
 
                         break;
                     }

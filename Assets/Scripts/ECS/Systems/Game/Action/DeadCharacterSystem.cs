@@ -28,8 +28,7 @@ public class DeadCharacterSystem : IExecuteSystem
                     entity.uIHeadPad.service.OnDead(entity);
                 
                 var motion = entity.linkMotion.Motion;
-                if (motion.hasMotionDead)
-                    motion.motionService.service.SwitchMotion(motion.motionDead.UID);
+                motion.motionService.service.TransMotionByMotionType(MotionType.Death);
             }
         }
 

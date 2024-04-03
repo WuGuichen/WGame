@@ -12,51 +12,25 @@ public static class MotionComponentsLookup {
     public const int DoMoveSpeed = 1;
     public const int DoMoveType = 2;
     public const int LinkCharacter = 3;
-    public const int MotionAttack1 = 4;
-    public const int MotionAttack2 = 5;
-    public const int MotionAttack3 = 6;
-    public const int MotionDead = 7;
-    public const int MotionDefense = 8;
-    public const int MotionEnd = 9;
-    public const int MotionEndListener = 10;
-    public const int MotionHitBwd = 11;
-    public const int MotionHitFwd = 12;
-    public const int MotionJumpAttack = 13;
-    public const int MotionJump = 14;
-    public const int MotionJumpLand = 15;
-    public const int MotionLocalMotion = 16;
-    public const int MotionService = 17;
-    public const int MotionSpare = 18;
-    public const int MotionStart = 19;
-    public const int MotionStartListener = 20;
-    public const int MotionStepFwd = 21;
-    public const int MotionType = 22;
+    public const int MotionEnd = 4;
+    public const int MotionEndListener = 5;
+    public const int MotionService = 6;
+    public const int MotionStart = 7;
+    public const int MotionStartListener = 8;
+    public const int MotionType = 9;
 
-    public const int TotalComponents = 23;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
         "DoMove",
         "DoMoveSpeed",
         "DoMoveType",
         "LinkCharacter",
-        "MotionAttack1",
-        "MotionAttack2",
-        "MotionAttack3",
-        "MotionDead",
-        "MotionDefense",
         "MotionEnd",
         "MotionEndListener",
-        "MotionHitBwd",
-        "MotionHitFwd",
-        "MotionJumpAttack",
-        "MotionJump",
-        "MotionJumpLand",
-        "MotionLocalMotion",
         "MotionService",
-        "MotionSpare",
         "MotionStart",
         "MotionStartListener",
-        "MotionStepFwd",
         "MotionType"
     };
 
@@ -65,24 +39,11 @@ public static class MotionComponentsLookup {
         typeof(DoMoveSpeedComponent),
         typeof(DoMoveTypeComponent),
         typeof(LinkCharacterComponent),
-        typeof(MotionAttack1Component),
-        typeof(MotionAttack2Component),
-        typeof(MotionAttack3Component),
-        typeof(MotionDeadComponent),
-        typeof(MotionDefenseComponent),
         typeof(MotionEndComponent),
         typeof(MotionEndListenerComponent),
-        typeof(MotionHitBwdComponent),
-        typeof(MotionHitFwdComponent),
-        typeof(MotionJumpAttackComponent),
-        typeof(MotionJumpComponent),
-        typeof(MotionJumpLandComponent),
-        typeof(MotionLocalMotionComponent),
         typeof(MotionServiceComponent),
-        typeof(MotionSpareComponent),
         typeof(MotionStartComponent),
         typeof(MotionStartListenerComponent),
-        typeof(MotionStepFwdComponent),
         typeof(MotionTypeComponent)
     };
 }

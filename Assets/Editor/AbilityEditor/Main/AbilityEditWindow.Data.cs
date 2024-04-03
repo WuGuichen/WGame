@@ -233,8 +233,8 @@ namespace WGame.Ability.Editor
 
         private void PopupMaskList(object obj, string propertyName, object val, StringToIDDefine define)
         {
-            var intValue = EditorGUI.MaskField(EditorGUILayout.GetControlRect() ,"", (int)val
-                                                , define.StringArray);
+            // var intValue = EditorGUI.MaskField(EditorGUILayout.GetControlRect() ,);
+            var intValue = EditorGUILayout.MaskField("", (int)val, define.StringArray);
             Helper.SetProperty(obj, propertyName, intValue);
         }
         

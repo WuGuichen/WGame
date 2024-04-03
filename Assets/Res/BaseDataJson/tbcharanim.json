@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "默认",
+    "name": "拳头",
     "idle": "Idle",
     "walk_F": "Walk_F",
     "run_F": "Run_F",

@@ -7,7 +7,7 @@ namespace WGame.Ability
         void PlayAnim(string animName, int offsetStart, int offsetEnd, int duration, int layer, bool resetLayer);
         void SetAbilityBreak(int stateMask);
         bool CanBreakState(int stateMask);
-        bool TryGetNextAbilityID(int inputType, out int id);
+        bool TryGetNextAbilityID(int inputType, out int id, out int motionType);
         void SetMotionAbility(int motionType, bool force = false);
         void SetAbility(int abilityType, bool force = false);
         void SetWeaponState(bool enable);

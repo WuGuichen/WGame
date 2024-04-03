@@ -5,6 +5,7 @@ namespace WGame.Ability
         None = 0,
         Numerical,
         Condition,
+        ChangeAttr,
         Max,
     }
 }

@@ -16,6 +16,20 @@ public class SparseSet<T>
         checkList[key] = packed.Count;
     }
 
+    public void Set(int key, T value)
+    {
+        var index = checkList[key];
+        if (index > 0)
+        {
+            packed[index - 1] = value;
+        }
+        else
+        {
+            packed.Add(value);
+            checkList[key] = packed.Count;
+        }
+    }
+
     public void Remove(int key)
     {
         if (checkList[key] > 0)

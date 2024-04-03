@@ -30,9 +30,9 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
             if (entity.hasSignalAttack)
             {
                 inputState.EnableState(InputType.Attack);
-                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Attack, out var id))
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Attack, out var id, out var motionType))
                 {
-                    motion.motionService.service.SwitchMotion(id);
+                    motion.motionService.service.TransMotionByMotionType(motionType);
                     notChange = false;
                 }
             }
@@ -40,9 +40,9 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
             if (entity.hasSignalJump)
             {
                 inputState.EnableState(InputType.Jump);
-                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Jump, out var id))
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Jump, out var id, out var motionType))
                 {
-                    motion.motionService.service.SwitchMotion(id);
+                    motion.motionService.service.TransMotionByMotionType(motionType);
                     notChange = false;
                 }
             }
@@ -50,9 +50,9 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
             if (entity.hasSignalStep)
             {
                 inputState.EnableState(InputType.Step);
-                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Step, out var id))
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Step, out var id, out var motionType))
                 {
-                    motion.motionService.service.SwitchMotion(id);
+                    motion.motionService.service.TransMotionByMotionType(motionType);
                     notChange = false;
                 }
             }
@@ -60,19 +60,23 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
             if (entity.hasSignalLocalMotion)
             {
                 inputState.EnableState(InputType.LocalMotion);
-                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.LocalMotion, out var id))
+                if (motion.motionService.service.CurrentMotionType != MotionType.LocalMotion)
                 {
-                    motion.motionService.service.SwitchMotion(id);
-                    notChange = false;
+                    if (notChange &&
+                        ability.Owner.TryGetNextAbilityID(InputType.LocalMotion, out var id, out var motionType))
+                    {
+                        motion.motionService.service.TransMotionByMotionType(motionType);
+                        notChange = false;
+                    }
                 }
             }
 
             if (entity.hasSignalDefense)
             { 
                 inputState.EnableState(InputType.Defense);
-                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Defense, out var id))
+                if (notChange && ability.Owner.TryGetNextAbilityID(InputType.Defense, out var id, out var motionType))
                 {
-                    motion.motionService.service.SwitchMotion(id);
+                    motion.motionService.service.TransMotionByMotionType(motionType);
                     notChange = false;
                 }
             }

@@ -46,17 +46,18 @@ public class RotateCharacterSystem : IExecuteSystem
 
             if (entity.isCamera && entity.hasFocusEntity && !entity.isRotateInFocus)
             {
-                if (isCamera)
-                {
-                    fwd = _cameraService.CachedFwd;
-                }
-                else
-                {
-                    var dir = entity.focusEntity.entity.position.value - entity.position.value;
+                // if (isCamera)
+                // {
+                //     fwd = _cameraService.CachedFwd;
+                // }
+                // else
+                // {
+                    // var dir = entity.focusEntity.entity.position.value - entity.position.value;
+                    var dir = _cameraService.CachedFwd;
                     dir.y = 0;
                     fwd = dir.normalized;
-                }
-                fwd.y = 0;
+                // }
+                // fwd.y = 0;
                 if (fwd.Equals(Vector3.zero))
                 {
                     fwd = playerTrans.forward;

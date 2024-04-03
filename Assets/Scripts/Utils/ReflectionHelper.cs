@@ -111,22 +111,23 @@ public class ReflectionHelper
         }
 
         var fieldNames = type.GetField("Names");
-        bool hasNames = false;
+        int hasNames = 0;
+        names = new string[count];
         if (fieldNames != null)
         {
-            names = (string[])fieldNames.GetValue(null);
-            hasNames = true;
-        }
-        else
-        {
-            names = new string[count];
+            var tmpNames = (string[])fieldNames.GetValue(null);
+            hasNames = tmpNames.Length;
+            for (int i = 0; i < hasNames; i++)
+            {
+                names[i] = tmpNames[i];
+            }
         }
         values = new int[count];
         for (var i = 0; i < count; i++)
         {
             var info = list[i];
 
-            if (!hasNames)
+            if (i >= hasNames)
             {
                 var attrs = info.GetCustomAttributes(typeof(WLableAttribute), false);
                 if (attrs.Length == 1)

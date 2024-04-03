@@ -37,7 +37,6 @@ public partial class MethodDefine
         bind("DoMove", DoMove);
         bind("GetForward", GetForward);
         bind("GetPosition", GetPosition);
-        bind("SwitchMotion", SwitchMotion);
         bind("TransMotionType", TransMotionType);
         bind("CallMotion", CallMotion);
         bind("LoadEffect", LoadEffectToEntity);
@@ -62,17 +61,7 @@ public partial class MethodDefine
             entity.linkMotion.Motion.motionService.service.TransMotionByMotionType(param[1].Value);
         }
     }
-    public void SwitchMotion(List<Symbol> param, Interpreter interpreter)
-    {
-        if (CheckEntity(param[0].Value, out var entity))
-            return;
-        if (entity.hasLinkMotion)
-        {
-            if(param[1].Type != TYPE_INT)
-                WLogger.Error("动作ID数据错误");
-            entity.linkMotion.Motion.motionService.service.SwitchMotion(param[1].Value);
-        }
-    }
+    
     public void Print(List<Symbol> param, Interpreter interpreter)
     {
         Method.PRINT.Call(param, interpreter, interpreter.currentFileName);

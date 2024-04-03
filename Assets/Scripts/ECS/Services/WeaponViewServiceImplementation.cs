@@ -10,6 +10,8 @@ namespace Weapon
         private WeaponEntity _entity;
         private GameEntity _character;
 
+        private Transform _transform;
+
         public float lenUp;
         public float lenDown;
         public int checkNum = 4;
@@ -28,11 +30,17 @@ namespace Weapon
         private RaycastHit[] _rayHits = new RaycastHit[12];
         private int hitLayer;
         private StickWeaponTrailEffect _trail;
+        private bool hasTrail = false;
 
         private IFactoryService _factory;
 
         private float radius;
         private bool isInitted = false;
+
+        private void Awake()
+        {
+            _transform = transform;
+        }
 
         public IWeaponViewService RegisterEntity(WeaponEntity entity)
         {
@@ -42,9 +50,15 @@ namespace Weapon
             radius = GetComponent<SphereCollider>().radius;
             _factory = Contexts.sharedInstance.meta.factoryService.instance;
             // _trail.UseWithSRP = true;
-            _trail.enabled = false;
+            hasTrail = _trail;
+            if(hasTrail)
+            {
+                _trail.enabled = false;
+            }
             return this;
         }
+
+        public Vector3 Position => _transform.position;
 
         public void Push()
         {
@@ -60,12 +74,11 @@ namespace Weapon
             gameObject.layer = LayerMask.NameToLayer("DropItem");
         }
 
-        public void UnLinkCharacter(GameEntity entity)
+        private void UnLinkCharacter(GameEntity entity)
         {
             _entity.linkCharacter.Character.weaponService.service.OnDropWeapon(_entity.linkCharacter.Character, _entity);
             _entity.RemoveLinkCharacter();
             _character = null;
-            transform.parent = GameSceneMgr.Inst.genItemRoot;
         }
 
         public void LinkToCharacter(GameEntity character)
@@ -90,10 +103,10 @@ namespace Weapon
                 gameObject.layer = LayerMask.NameToLayer("EnemyWeapon");
                 hitLayer = 1 << LayerMask.NameToLayer("PlayerHitSensor");
             }
-            transform.SetParent(character.weaponService.service.WeaponHandle, false);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.identity;
-            transform.localScale = Vector3.one;
+            _transform.SetParent(character.weaponService.service.WeaponHandle, false);
+            _transform.localPosition = Vector3.zero;
+            _transform.localRotation = Quaternion.identity;
+            _transform.localScale = Vector3.one;
         }
 
         public void StartHitTargets()
@@ -101,16 +114,22 @@ namespace Weapon
             hittedList.Clear();
             lastUpDir = transform.up;
             lastOriginPosition = transform.position + lastUpDir * lenUp;
-            checkOffset = (-lenUp - lenDown) / (checkNum-1);
+            checkOffset = (-lenUp - lenDown) / (checkNum);
             _entity.isOpenSensor = true;
-            _trail.enabled = true;
+            if (hasTrail)
+            {
+                _trail.enabled = true;
+            }
         }
 
         public void EndHitTargets()
         {
             // Debug.Log("关闭武器");
             _entity.isOpenSensor = false;
-            _trail.enabled = false;
+            if(hasTrail)
+            {
+                _trail.enabled = false;
+            }
         }
 
         /// <param name="onlyThis">是否只有武器销毁，否则是因为武器持有者entity销毁</param>
@@ -118,41 +137,41 @@ namespace Weapon
         {
             var link = gameObject.GetEntityLink();
             link?.Unlink();
-            if (onlyThis)
+            if (_entity.hasLinkCharacter)
             {
-                // 只有武器entity Destroy
-                if(_character.hasLinkWeapon)
-                    _character.RemoveLinkWeapon();
-                GameObject.Destroy(this.gameObject);
+                var character = _entity.linkCharacter.Character;
+                UnLinkCharacter(character);
+                _character = null;
             }
+            WeaponMgr.Inst.PushWeaponObj(gameObject);
 
             _entity = null;
         }
 
         private void OnDrawGizmos()
         {
-            if (showLen)
-            {
-                pD = transform.position + transform.up * lenUp;
-                pC = transform.position - transform.up * lenDown;
-                if (pD != null && pC != null)
-                {
-                    Gizmos.color = Color.green;
-                    Gizmos.DrawSphere(pC, 0.04f);
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawSphere(pD, 0.04f);
-                }
-
-                lastOriginPosition = transform.position + transform.right * 0.4f;
-                lastUpDir = transform.up;
-                checkOffset = -(lenUp + lenDown) / (checkNum-1);
-                for (int i = 0; i < checkNum; i++)
-                {
-                    Gizmos.DrawLine(lastOriginPosition + (i-1) * checkOffset * lastUpDir,
-                        transform.position + lastUpDir * lenUp + i * checkOffset * transform.up);
-                }
-            }
-
+            // if (showLen)
+            // {
+            //     pD = transform.position + transform.up * lenUp;
+            //     pC = transform.position - transform.up * lenDown;
+            //     if (pD != null && pC != null)
+            //     {
+            //         Gizmos.color = Color.green;
+            //         Gizmos.DrawSphere(pC, 0.04f);
+            //         Gizmos.color = Color.red;
+            //         Gizmos.DrawSphere(pD, 0.04f);
+            //     }
+            //
+            //     lastOriginPosition = transform.position + transform.right * 0.4f;
+            //     lastUpDir = transform.up;
+            //     checkOffset = -(lenUp + lenDown) / (checkNum);
+            //     for (int i = 0; i < checkNum; i++)
+            //     {
+            //         Gizmos.DrawLine(lastOriginPosition + (i-1) * checkOffset * lastUpDir,
+            //             transform.position + lastUpDir * lenUp + i * checkOffset * transform.up);
+            //     }
+            // }
+            //
         }
 
         // 先用instanceID处理
@@ -164,7 +183,7 @@ namespace Weapon
                 var end = transform.position + lastUpDir * lenUp + i * checkOffset * transform.up;
                 var dir = end - start;
                 var num = Physics.RaycastNonAlloc(new Ray(start, dir), _rayHits, dir.magnitude, hitLayer);
-                // Oddworm.Framework.DbgDraw.Ray(start, dir, Color.black, 2f);
+                Oddworm.Framework.DbgDraw.Ray(start, dir, Color.red, 4f);
                 for (int j = 0; j < num; j++)
                 {
                     var tar = _rayHits[j];
@@ -199,23 +218,23 @@ namespace Weapon
             lastOriginPosition = transform.position + lastUpDir * lenUp;
         }
 
-        public void Interact()
+        public void Interact(GameEntity entity)
         {
-            var character = EntityUtils.GetCameraEntity();
-            if (character.hasLinkWeapon)
-            {
-                var model = character.gameViewService.service.Model;
-                _factory.SetWeaponDrop(character.linkWeapon.Weapon
-                    , model.position + model.forward, Quaternion.identity, Vector3.one);
-                _factory.SetWeaponEquipTo(_entity, character);
-            }
-            else
-            {
-                _factory.SetWeaponEquipTo(_entity, character);
-            }
+            // var character = entity;
+            // if (character.hasLinkWeapon)
+            // {
+            //     var model = character.gameViewService.service.Model;
+            //     _factory.SetWeaponDrop(character.linkWeapon.Weapon
+            //         , model.position + model.forward, Quaternion.identity, Vector3.one);
+            //     _factory.SetWeaponEquipTo(_entity, character);
+            // }
+            // else
+            // {
+            //     _factory.SetWeaponEquipTo(_entity, character);
+            // }
         }
 
-        public Vector3 TagPos => transform.position + new Vector3(0, radius, 0);
+        public Vector3 TagPos => _transform.position + new Vector3(0, radius, 0);
         public int UID => _entity.entityID.id;
     }
 

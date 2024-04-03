@@ -23,6 +23,8 @@ namespace WGame.Ability.Editor.Custom
             {4, new CustomDefine(typeof(MoveParamType))},
             {5, new CustomDefine(typeof(TriggerEventType))},
             {6, new CustomDefine(typeof(AbilityType))},
+            {7, new CustomDefine(typeof(CharacterModelPart))},
+            {8, new CustomDefine(typeof(AbilityIDs))},
         };
 
         public static Dictionary<System.Type, CustomDefine> DefineTypeDict = new()

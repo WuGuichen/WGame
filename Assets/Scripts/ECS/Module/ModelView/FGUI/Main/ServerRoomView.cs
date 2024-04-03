@@ -204,7 +204,7 @@ namespace WGame.UI
 					trans.localPosition = new Vector3(0, 0, 1000);
 					trans.localEulerAngles = new Vector3(0, 180, 0);
 					anim.OnInit();
-					anim.RefreshAnimClip(LocalMotionType.Idle, clip);
+					anim.RefreshLocalMotionClip(LocalMotionType.Idle, clip);
 					anim.ResetState(true);
 					ApplyCharacterWarpper(trans);
 				});

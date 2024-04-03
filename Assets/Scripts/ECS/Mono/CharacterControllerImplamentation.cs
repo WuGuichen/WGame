@@ -32,7 +32,6 @@ public class CharacterControllerImplamentation : MonoBehaviour, IRigidbodyServic
 
     public void MovePosition(Vector3 dir)
     {
-        WLogger.Print(dir);
         _controller.Move(dir);
     }
 

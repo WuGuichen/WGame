@@ -3,35 +3,36 @@
     "id": 0,
     "name": "血液飞溅",
     "path": "Blood_Arterial_Medium_RedBright",
-    "type": 0,
     "needCache": true
   },
   {
     "id": 1,
     "name": "白色骷髅",
     "path": "BaseCharacter",
-    "type": 0,
     "needCache": true
   },
   {
     "id": 2,
     "name": "红色骷髅",
     "path": "Character_Enemy",
-    "type": 0,
     "needCache": true
   },
   {
     "id": 3,
     "name": "基本武器_长剑",
     "path": "Sword1",
-    "type": 0,
     "needCache": true
   },
   {
     "id": 4,
     "name": "火球",
     "path": "eff_fireball",
-    "type": 0,
+    "needCache": true
+  },
+  {
+    "id": 5,
+    "name": "拳头",
+    "path": "Fist",
     "needCache": true
   }
 ]
