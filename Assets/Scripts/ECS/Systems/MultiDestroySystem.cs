@@ -47,6 +47,10 @@ public class MultiDestroySystem : MultiReactiveSystem<IDestroyableEntity, Contex
                 if (entity.hasLinkAbility)
                 {
                     var ability = entity.linkAbility.Ability;
+                    if (ability.hasAbilityService)
+                    {
+                        ability.abilityService.service.Destroy();
+                    }
                     if (ability.hasAbilityEvade)
                     {
                         ability.abilityEvade.service.Dispose();

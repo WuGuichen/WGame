@@ -157,7 +157,7 @@ namespace WGame.UI
 			ui.btnRun.onTouchBegin.Add(() =>
 			{
 				model.IsRunningState = !model.IsRunningState;
-				ui.btnRun.alpha = model.IsRunningState ? 0.6f : 1;
+				// ui.btnRun.alpha = model.IsRunningState ? 0.6f : 1;
 			});
 			
 			ui.btnFocus.onTouchBegin.Add(()=> model.IsTriggerFocus = true);

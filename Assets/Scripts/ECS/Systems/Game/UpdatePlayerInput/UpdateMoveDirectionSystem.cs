@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Entitas;
-using UnityEngine;
+using WGame.Ability;
 using Mathf = UnityEngine.Mathf;
 using Vector3 = UnityEngine.Vector3;
 
@@ -45,7 +44,7 @@ public class UpdateMoveDirectionSystem : IExecuteSystem
             move.y = Mathf.SmoothDamp(move.y, tarDup, ref curDup, 0.1f);
             move.x = Mathf.SmoothDamp(move.x, tarDright, ref curDright, 0.1f);
 
-            var moveDirection = entity.gameViewService.service.LocalizeVectorXY(move, entity.hasFocusEntity);
+            var moveDirection = entity.gameViewService.service.LocalizeVectorXY(move, entity.hasFocusEntity && entity.characterState.state.Check(AStateType.RotateToFocus));
             entity.ReplaceMoveDirection(moveDirection);
             entity.isMoving = moveDirection != Vector3.zero;
             if(entity.isMoving)

@@ -284,6 +284,11 @@ namespace WGame.Ability.Editor
                 {
                     StringToIDDefine.VisualizeMotionType(ref _tipBuf, ei.BreakType);
                 }
+                else if (eventProperty.EventData is EventSetTimeArea esta)
+                {
+                    isShowTime = false;
+                    StringToIDDefine.VisualizeTimeAreaType(ref _tipBuf, esta.AreaType);
+                }
                 else if (eventProperty.EventData is EventSetMoveParam esmp)
                 {
                     var define = StringToIDDefine.DefineDict[4];
@@ -312,6 +317,27 @@ namespace WGame.Ability.Editor
 
                     StringToIDDefine.VisualizeMotionType(ref _tipBuf, eitt.StateType, true);
                 }
+                else if (eventProperty.EventData is EventFocusKeepDist efkd)
+                {
+                    _tipBuf.Append("目标小于");
+                    _tipBuf.Append(efkd.OffsetDist);
+                    _tipBuf.Append("cm则停止移动");
+                    isShowTime = false;
+                }
+                else if (eventProperty.EventData is EventSetOwnerAttribute esoa)
+                {
+                    StringToIDDefine.VisualizeAttrType(ref _tipBuf, esoa.AttrID);
+                    _tipBuf.Append(esoa.Value);
+                    isShowTime = false;
+                }
+                else if (eventProperty.EventData is EventStateToMotion estm)
+                {
+                    isShowTime = false;
+                    _tipBuf.Append(estm.CheckType ? "如果" : "不");
+                    StringToIDDefine.VisualizeStateType(ref _tipBuf, estm.WaitState);
+                    _tipBuf.Append("切换");
+                    StringToIDDefine.VisualizeMotionType(ref _tipBuf, estm.MotionType);
+                }
             }
 
             if (selected)
@@ -319,7 +345,7 @@ namespace WGame.Ability.Editor
                 using (new GUIColorScope(Window.Setting.colorPropertySelected))
                 {
                     var selectRect = rect;
-                    selectRect.height = 6f;
+                    selectRect.height = eventStyle == EventStyle.Duration ? 6f : rect.height;
                     selectRect.y += rect.height - selectRect.height;
                     GUI.Box(selectRect, "", Window.Setting.customEventKey);
                 }

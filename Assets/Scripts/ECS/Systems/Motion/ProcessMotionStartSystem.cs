@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Entitas;
+using WGame.Attribute;
 
 public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
 {
@@ -36,6 +37,7 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
             character.linkWeapon.Weapon.weaponWeaponView.service.EndHitTargets();
 
         entity.motionService.service.AnimProcessor.SetAnimSpeed(1);
+        character.attribute.value.Set(WAttrType.Impact, 0);
 
         character.isRotateInFocus = false;
 
@@ -54,19 +56,19 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
             
         if (character.hasNotice)
         {
-            var noticeService = character.notice.service;
-
-            // 根据动作类型处理行为
-            var newID = entity.motionStart.UID;
-            var motionDB = character.motionDB.data;
-            if (newID == motionDB.Get(MotionType.LocalMotion))
-            {
-
-            }
-            else if (newID == motionDB.Get(MotionType.Step))
-            {
-                noticeService.AddReciever(NoticeDB.OnStepBeHit, 1f);
-            }
+            // var noticeService = character.notice.service;
+            //
+            // // 根据动作类型处理行为
+            // var newID = entity.motionStart.UID;
+            // var motionDB = character.motionDB.data;
+            // if (newID == motionDB.Get(MotionType.LocalMotion))
+            // {
+            //
+            // }
+            // else if (newID == motionDB.Get(MotionType.Step))
+            // {
+            //     noticeService.AddReciever(NoticeDB.OnStepBeHit, 1f);
+            // }
         }
     }
 }

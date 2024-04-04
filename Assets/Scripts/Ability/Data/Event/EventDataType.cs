@@ -6,20 +6,29 @@ namespace WGame.Ability
         PlayAnim,
         [WLable("播放/特效")]
         PlayEffect,
+        [WLable("通知/发送", false)]
         NoticeMessage,
+        [WLable("通知/接收")]
+        AddMessageReceiver,
         DoAction,
         [WLable("锁定时间状态")]
         LockTick,
-        [WLable("触发器/输入/切换Motion")]
+        [WLable("对锁定目标/保持距离")]
+        FocusKeepDist,
+        [WLable("对锁定目标/给目标施加力")]
+        FocusDoForce,
+        [WLable("触发器/输入切换Motion")]
         TriggerInputToMotion,
-        [WLable("触发器/输入/切换Ability")]
-        TriggerInputToAbility,
-        [WLable("触发器/状态/切换Motion")]
+        [WLable("触发器/状态切换Motion")]
         TriggerStateToMotion,
-        [WLable("触发器/状态/切换Ability")]
-        TriggerStateToAbility,
+        [WLable("设置/角色参数")]
+        SetOwnerProperty,
+        [WLable("设置/角色属性")]
+        SetOwnerAttr,
         [WLable("设置/状态")]
         SetState,
+        [WLable("设置/时间区域")]
+        SetTimeArea,
         [WLable("设置/移动参数")]
         SetMoveParam,
         [WLable("打断", false)]

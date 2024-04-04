@@ -9,8 +9,8 @@ public struct CharacterInitInfo
     public Race race { get; set; }
     public Camp camp { get; set; }
     public Vector3[] patrolPoints { get; set; }
-    public float moveSpeed { get; set; }
-    public float rotateSpeed { get; set; }
+    public int moveSpeed { get; set; }
+    public int rotateSpeed { get; set; }
     public int runMultiRate { get; set; }
     public int MaxHP { get; set; }
     public int CurHP { get; set; }

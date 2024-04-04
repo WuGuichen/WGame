@@ -1,5 +1,7 @@
 using Entitas;
 using UnityEngine;
+using WGame.Ability;
+using WGame.Attribute;
 
 public class RotateCharacterSystem : IExecuteSystem
 {
@@ -44,7 +46,7 @@ public class RotateCharacterSystem : IExecuteSystem
 
             var rateTime = _time.FixedDeltaTime * entity.characterTimeScale.rate;
 
-            if (entity.isCamera && entity.hasFocusEntity && !entity.isRotateInFocus)
+            if (entity.isCamera && entity.hasFocusEntity && entity.characterState.state.Check(AStateType.RotateToFocus))
             {
                 // if (isCamera)
                 // {
@@ -63,7 +65,7 @@ public class RotateCharacterSystem : IExecuteSystem
                     fwd = playerTrans.forward;
                 }
                 var tarRot = Quaternion.LookRotation(fwd);
-                var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
+                var rotRate = entity.attribute.value.Get(WAttrType.RotateSpeed) * entity.animRotateMulti.rate * 0.01f;
                 var playerRot = Quaternion.RotateTowards(playerTrans.localRotation, tarRot, rotRate * rateTime);
                 // leftAngle = fwd.GetAngle(moveDir);
                 playerTrans.localRotation = playerRot;
@@ -91,7 +93,7 @@ public class RotateCharacterSystem : IExecuteSystem
                 }
 
                 var tarRot = Quaternion.LookRotation(tarDir);
-                var rotRate = entity.rotationSpeed.value * entity.animRotateMulti.rate;
+                var rotRate = entity.attribute.value.Get(WAttrType.RotateSpeed) * entity.animRotateMulti.rate * 0.01f;
                 if (!entity.isCamera)
                 {
                     rotRate *= 0.5f;

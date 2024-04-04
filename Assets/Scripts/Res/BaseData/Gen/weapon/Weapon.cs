@@ -35,10 +35,12 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         { if(!_json["Spare1"].IsString) { throw new SerializationException(); }  Spare1 = _json["Spare1"]; }
         { if(!_json["Step1"].IsString) { throw new SerializationException(); }  Step1 = _json["Step1"]; }
         { if(!_json["animGroupId"].IsNumber) { throw new SerializationException(); }  AnimGroupId = _json["animGroupId"]; }
+        { if(!_json["ATK"].IsNumber) { throw new SerializationException(); }  ATK = _json["ATK"]; }
+        { if(!_json["Weight"].IsNumber) { throw new SerializationException(); }  Weight = _json["Weight"]; }
         PostInit();
     }
 
-    public Weapon(int id, string name, string desc, int objectId, int dropId, string attack1, string attack2, string attack3, string block1, string deadR1, string hitFwd1, string hitBwd1, string jump1, string jumpLand1, string Spare1, string Step1, int animGroupId ) 
+    public Weapon(int id, string name, string desc, int objectId, int dropId, string attack1, string attack2, string attack3, string block1, string deadR1, string hitFwd1, string hitBwd1, string jump1, string jumpLand1, string Spare1, string Step1, int animGroupId, int ATK, int Weight ) 
     {
         this.Id = id;
         this.Name = name;
@@ -57,6 +59,8 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         this.Spare1 = Spare1;
         this.Step1 = Step1;
         this.AnimGroupId = animGroupId;
+        this.ATK = ATK;
+        this.Weight = Weight;
         PostInit();
     }
 
@@ -100,6 +104,14 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
     /// 基础动画组
     /// </summary>
     public int AnimGroupId { get; private set; }
+    /// <summary>
+    /// 基础攻击力
+    /// </summary>
+    public int ATK { get; private set; }
+    /// <summary>
+    /// 质量(g)
+    /// </summary>
+    public int Weight { get; private set; }
 
     public const int __ID__ = 986069582;
     public override int GetTypeId() => __ID__;
@@ -133,6 +145,8 @@ public sealed partial class Weapon :  Bright.Config.BeanBase
         + "Spare1:" + Spare1 + ","
         + "Step1:" + Step1 + ","
         + "AnimGroupId:" + AnimGroupId + ","
+        + "ATK:" + ATK + ","
+        + "Weight:" + Weight + ","
         + "}";
     }
     

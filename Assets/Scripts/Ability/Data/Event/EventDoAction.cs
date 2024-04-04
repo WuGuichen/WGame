@@ -53,13 +53,8 @@ namespace WGame.Ability
 
         public IEventData Clone()
         {
-            var evt = new EventDoAction()
-            {
-                ActionType = ActionType,
-                ActionParam = ActionParam
-            };
-
-            return evt;
+            WLogger.Error("无法复制");
+            return null;
         }
     }
 }

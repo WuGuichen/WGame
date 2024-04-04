@@ -1,4 +1,7 @@
 // 要按规范添加方法
+
+using WGame.Attribute;
+
 public partial class AiAgentServiceImplementation
 {
     /// <summary>
@@ -19,7 +22,7 @@ public partial class AiAgentServiceImplementation
         // 重置角色移动速度
         SetMethod("S_ResetMoveSpeed", (list, interpreter) =>
         {
-            _entity.ReplaceMovementSpeed(_initInfo.moveSpeed);
+            _entity.attribute.value.Set(WAttrType.MoveSpeed,  _initInfo.moveSpeed);
         });
         // 设置当前移动速度为初始+value%, nil则设置为初始速度
         // value->int|nil, 百分比值，可以小于0
@@ -28,8 +31,8 @@ public partial class AiAgentServiceImplementation
         {
             var value = interpreter.ParseInt(list, 0, 0);
             var reset = interpreter.ParseBool(list, 1, true);
-            var real = (reset ?  _initInfo.moveSpeed : _entity.movementSpeed.value) + value * 0.01f;
-            _entity.ReplaceMovementSpeed(real);
+            var real = (reset ?  _initInfo.moveSpeed : _entity.attribute.value.Get(WAttrType.MoveSpeed)) + value * 0.01f;
+            _entity.attribute.value.Set(WAttrType.MoveSpeed, (int)real);
         });
         // 设置当前转动速度为初始值*rate%, nil则设置为初始速度
         // rate->int|nil=0, 百分比值，可以小于0
@@ -38,13 +41,13 @@ public partial class AiAgentServiceImplementation
         {
             var rate = interpreter.ParseInt(list, 0, 100) * 0.01f;
             var reset = interpreter.ParseBool(list, 1, true);
-            var real = (reset ?  _initInfo.rotateSpeed : _entity.rotationSpeed.value) * rate;
-            _entity.ReplaceRotationSpeed(real);
+            var real = (reset ?  _initInfo.rotateSpeed : _entity.attribute.value.Get(WAttrType.RotateSpeed)) * rate;
+            _entity.attribute.value.Set(WAttrType.RotateSpeed, (int)real);
         });
         // 重置角色转动速度
         SetMethod("S_ResetRotateSpeed", (list, interpreter) =>
         {
-            _entity.ReplaceRotationSpeed(_initInfo.rotateSpeed);
+            _entity.attribute.value.Set(WAttrType.RotateSpeed, _initInfo.rotateSpeed);
         });
         // 设置当前转动速度为初始+value%, nil则设置为初始速度
         // value->int|nil, 百分比值，可以小于0
@@ -53,8 +56,8 @@ public partial class AiAgentServiceImplementation
         {
             var value = interpreter.ParseInt(list, 0, 0);
             var reset = interpreter.ParseBool(list, 1, true);
-            var real = (reset ?  _initInfo.rotateSpeed : _entity.rotationSpeed.value) + value * 0.01f;
-            _entity.ReplaceRotationSpeed(real);
+            var real = (reset ?  _initInfo.rotateSpeed : _entity.attribute.value.Get(WAttrType.RotateSpeed)) + value * 0.01f;
+            _entity.attribute.value.Set(WAttrType.RotateSpeed, (int)real);
         });
         
         // 设置当前巡逻点为index或者除当前巡逻点外其他随机点

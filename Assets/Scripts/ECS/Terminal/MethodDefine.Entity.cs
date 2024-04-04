@@ -1,3 +1,5 @@
+using WGame.Attribute;
+
 /// <summary>
 /// 这里写实体方法，用E_前缀
 /// </summary>
@@ -12,8 +14,8 @@ public partial class MethodDefine
     private static void SetMoveSpeedRate(in GameEntity entity, int rate, bool reset = true)
     {
         var _initInfo = entity.characterInfo.value;
-        var real = (reset ? _initInfo.moveSpeed : entity.movementSpeed.value) * rate*0.01f;
-        entity.ReplaceMovementSpeed(real);
+        var real = (reset ? _initInfo.moveSpeed : entity.attribute.value.Get(WAttrType.MoveSpeed)) * rate*0.01f;
+        entity.attribute.value.Set(WAttrType.MoveSpeed, (int)real);
     }
 
     /// <summary>
@@ -23,7 +25,7 @@ public partial class MethodDefine
     private static void ResetMoveSpeed(in GameEntity entity)
     {
         var _initInfo = entity.characterInfo.value;
-        entity.ReplaceMovementSpeed(_initInfo.moveSpeed);
+        entity.attribute.value.Set(WAttrType.MoveSpeed, _initInfo.moveSpeed);
     }
 
     /// <summary>

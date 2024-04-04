@@ -5,17 +5,18 @@ public class NoticeDB : Singleton<NoticeDB>
 {
     public const int OnStepBeHit = 0;
     public const int OnUseAbility = 1;
+    public const int OnDefenseBeHit = 2;
 
-    public void RemoveReciever( NoticeCenter center, int key)
+    public void RemoveReciever(NoticeCenter center, int key)
     {
         center.RemoveReciever(key);
     }
 
-    public void AddReciever(NoticeCenter center, int key, int times = 9)
+    public void AddReciever(NoticeCenter center, int key, int times = 9, bool replace = false)
     {
         if (_recievers.Length > key)
         {
-            center.AddReciever(_recievers[key].Build(key, times));
+            center.AddReciever(_recievers[key].Build(key, times), replace);
         }
         else
         {
@@ -24,7 +25,8 @@ public class NoticeDB : Singleton<NoticeDB>
     }
     private readonly IReciever[] _recievers = {
         new ReceiverBeHittedOnStep(),
-        new ReceiverGenAbilityEntity()
+        new ReceiverGenAbilityEntity(),
+        new ReceiverBeHittedOnDefense()
     };
 
     public void InternalTriggerReciever(int key, GameEntity entity, IMessage message)

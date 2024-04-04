@@ -1,6 +1,6 @@
 namespace WGame.Notice
 {
-    public struct ReceiverGenAbilityEntity : IReciever
+    public class ReceiverGenAbilityEntity : IReciever
     {
         public int LeftNoticeTime { get; set; }
         public int MessageType => MessageDB.CastSkillID;

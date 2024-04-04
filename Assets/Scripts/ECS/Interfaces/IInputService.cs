@@ -13,6 +13,7 @@ public interface IInputService
     bool JumpIsHolding { get; }
     bool JumpWasReleased { get; }
     bool StepWasPressed { get; }
+    bool StepIsHolding { get; }
     bool FocusWasPressed { get; }
     bool DefensePressing { get; }
     bool SpecialWasPressed { get; }

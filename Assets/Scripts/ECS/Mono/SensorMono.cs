@@ -8,6 +8,7 @@ public class SensorMono : MonoBehaviour
     public int EntityId { get; private set; }
 
     [SerializeField] private EntityPartType _partType;
+    [SerializeField] private PartMaterialType _matrialType = PartMaterialType.Bone;
     public EntityPartType PartType => _partType;
 
     [SerializeField] private Collider _collider;
@@ -88,5 +89,24 @@ public class SensorMono : MonoBehaviour
         _entity = null;
         _colliderId = 0;
         _collider = null;
+    }
+
+    public static bool TryGetHitEffect(int weaponID, int impulse, out string res)
+    {
+        if (weaponID == 1)
+        {
+            // 长剑
+            res = "HCFX_Hit_01";
+            return true;
+        }
+        else if(weaponID == 2)
+        {
+            // 拳头
+            res = "HCFX_Hit_03";
+            return true;
+        }
+
+        res = null;
+        return false;
     }
 }

@@ -22,29 +22,24 @@ public partial class ActionHelper
 
     /// <param name="entity">受击者</param>
     /// <param name="hitInfo">受击信息</param>
-    public static void DoGotHit(GameEntity entity, ContactInfo hitInfo)
+    public static bool DoGotHit(GameEntity entity, ContactInfo hitInfo)
     {
         if (!entity.hasLinkAbility || !entity.linkAbility.Ability.hasAbilityGotHit)
-            return;
+            return false;
 
         var ability = entity.linkAbility.Ability;
-        // if (ability.abilityParryAttack.value.Parry(hitInfo))
-        // {
-        //     return;
-        // }
         var ctx = TriggerContext.Get(TriggerEventType.BeHit);
-        // ctx.AddProperty("attacker", DataType.Int, hitInfo.entity.instanceID.ID);
-        ctx.AddProperty("victim", DataType.Int, entity.instanceID.ID);
+        ctx.AddProperty("sender", DataType.Int, entity.instanceID.ID);
         TriggerMgr.Inst.Trigger(ctx);
         entity.notice.service.Notice(WGame.Notice.MessageDB.Getter.GetBehitted(hitInfo));
-        ability.abilityGotHit.service.OnGotHit(entity, hitInfo);
+        return ability.abilityGotHit.service.OnGotHit(entity, hitInfo);
     }
 
-    public static void DoHitTarget(GameEntity entity, ContactInfo hitInfo)
+    public static bool DoHitTarget(GameEntity entity, ContactInfo hitInfo)
     {
-        if (!entity.hasLinkAbility || !entity.linkAbility.Ability.hasAbilityGotHit)
-            return;
-        entity.linkAbility.Ability.abilityGotHit.service.OnHitTarget(entity, hitInfo);
+        if (!entity.hasLinkAbility || !entity.linkAbility.Ability.hasAbilityHitTarget)
+            return false;
+        return entity.linkAbility.Ability.abilityHitTarget.service.HitTarget(entity, hitInfo);
     }
     
     public static void DoReachPoint(GameEntity entity, Vector3 point)

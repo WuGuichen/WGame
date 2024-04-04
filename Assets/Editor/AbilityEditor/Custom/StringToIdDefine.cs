@@ -25,6 +25,9 @@ namespace WGame.Ability.Editor.Custom
             {6, new CustomDefine(typeof(AbilityType))},
             {7, new CustomDefine(typeof(CharacterModelPart))},
             {8, new CustomDefine(typeof(AbilityIDs))},
+            {9, new CustomDefine(typeof(NoticeDB))},
+            {10, new CustomDefine(typeof(DirectionType))},
+            {11, new CustomDefine(typeof(TimeAreaType))},
         };
 
         public static Dictionary<System.Type, CustomDefine> DefineTypeDict = new()
@@ -40,6 +43,13 @@ namespace WGame.Ability.Editor.Custom
         public static void VisualizeInputType(ref StringBuilder buf, int type, bool isNotMask = false)
         {
             VisualizeMaskType(ref buf, 3, type, isNotMask);
+        }
+
+        public static void VisualizeAttrType(ref StringBuilder buf, int type)
+        {
+            var define = Attribute;
+            buf.Append(define.StringArray[type]);
+            buf.Append(",");
         }
 
         private static void VisualizeMaskType(ref StringBuilder buf, int id, int type, bool isNotMask)
@@ -64,6 +74,11 @@ namespace WGame.Ability.Editor.Custom
         public static void VisualizeMotionType(ref StringBuilder buf, int type, bool isNotMask = false)
         {
             VisualizeMaskType(ref buf, 1, type, isNotMask);
+        }
+        
+        public static void VisualizeTimeAreaType(ref StringBuilder buf, int type)
+        {
+            VisualizeMaskType(ref buf, 11, type, true);
         }
 
         public int GetIndex(int id)

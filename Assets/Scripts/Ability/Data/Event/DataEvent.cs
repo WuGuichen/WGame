@@ -68,26 +68,35 @@ namespace WGame.Ability
                 case EventDataType.SetState:
                     data = new EventSetState();
                     break;
+                case EventDataType.SetTimeArea:
+                    data = new EventSetTimeArea();
+                    break;
                 case EventDataType.SetMoveParam:
                     data = new EventSetMoveParam();
                     break;
                 case EventDataType.TriggerInputToMotion:
                     data = new EventInputTriggerToMotion();
                     break;
-                case EventDataType.TriggerInputToAbility:
-                    data = new EventInputTriggerToAbility();
+                case EventDataType.SetOwnerAttr:
+                    data = new EventSetOwnerAttribute();
+                    break;
+                case EventDataType.SetOwnerProperty:
+                    data = new EventSetOwnerProperty();
+                    break;
+                case EventDataType.FocusKeepDist:
+                    data = new EventFocusKeepDist();
+                    break;
+                case EventDataType.FocusDoForce:
+                    data = new EventFocusDoForceOnHit();
                     break;
                 case EventDataType.TriggerStateToMotion:
                     data = new EventStateToMotion();
                     break;
-                case EventDataType.TriggerStateToAbility:
-                    data = new EventStateToAbility();
-                    break;
                 case EventDataType.PlayEffect:
                     data = new EventPlayEffect();
                     break;
-                case EventDataType.NoticeMessage:
-                    data = new EventNoticeMessage();
+                case EventDataType.AddMessageReceiver:
+                    data = new EventAddNoticeReceiver();
                     break;
                 case EventDataType.MoveToPoint:
                     data = new EventMoveToPoint();

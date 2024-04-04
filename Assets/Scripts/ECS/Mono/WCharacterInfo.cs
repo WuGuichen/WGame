@@ -1,4 +1,3 @@
-using System;
 using BaseData.Character;
 using UnityEngine;
 
@@ -64,8 +63,8 @@ public class WCharacterInfo : MonoBehaviour
             gender = data.Gender,
             race = data.Race,
             patrolPoints = defaultPatrolPoints,
-            moveSpeed = data.MoveSpeed*0.01f,
-            rotateSpeed = data.RotationSpeed * 0.01f,
+            moveSpeed = data.MoveSpeed,
+            rotateSpeed = data.RotationSpeed,
             runMultiRate = data.RunSpeedMul,
             MaxHP = data.MaxHP,
             CurHP = data.CurHP,
@@ -106,8 +105,8 @@ public class WCharacterInfo : MonoBehaviour
             gender = gender,
             race = race,
             patrolPoints = points,
-            moveSpeed = moveSpeed*0.01f,
-            rotateSpeed = rotationSpeed * 0.01f,
+            moveSpeed = moveSpeed,
+            rotateSpeed = rotationSpeed,
             runMultiRate = runSpeedRate,
             MaxHP = maxHP,
             CurHP = curHP,

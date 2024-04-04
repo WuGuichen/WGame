@@ -10,13 +10,13 @@ namespace WGame.Notice
 
         public class Define
         {
-            public struct BeHitted : IMessage
+            public class BeHitted : IMessage
             {
                 public ContactInfo hitInfo;
                 public int TypeId => BeHittedID;
             }
 
-            public struct CastSkill : IMessage
+            public class CastSkill : IMessage
             {
                 public int TypeId => CastSkillID;
                 public EntityMoveInfo Info { get; set; }

@@ -45,21 +45,21 @@ public static class GameComponentsLookup {
     public const int CharacterTimeScale = 34;
     public const int CharCurSpeed = 35;
     public const int CharGravity = 36;
-    public const int CharSpeedMulti = 37;
-    public const int DeadState = 38;
-    public const int Destroyed = 39;
-    public const int DetectedCharacter = 40;
-    public const int DropItemSensor = 41;
-    public const int EntityID = 42;
-    public const int EventMoveSpeed = 43;
-    public const int FocusEntity = 44;
-    public const int FocusTarget = 45;
-    public const int GameViewService = 46;
-    public const int GroundSensor = 47;
-    public const int InputState = 48;
-    public const int InstanceID = 49;
-    public const int JumpForce = 50;
-    public const int KeepTargetDistance = 51;
+    public const int CharObject = 37;
+    public const int CharSpeedMulti = 38;
+    public const int DeadState = 39;
+    public const int Destroyed = 40;
+    public const int DetectedCharacter = 41;
+    public const int DropItemSensor = 42;
+    public const int EntityID = 43;
+    public const int EventMoveSpeed = 44;
+    public const int FocusEntity = 45;
+    public const int FocusTarget = 46;
+    public const int GameViewService = 47;
+    public const int GroundSensor = 48;
+    public const int InputState = 49;
+    public const int InstanceID = 50;
+    public const int JumpForce = 51;
     public const int LinkAbility = 52;
     public const int LinkMotion = 53;
     public const int LinkSensor = 54;
@@ -69,42 +69,36 @@ public static class GameComponentsLookup {
     public const int MotionDB = 58;
     public const int Moveable = 59;
     public const int MoveDirection = 60;
-    public const int MovementSpeed = 61;
-    public const int Moving = 62;
-    public const int NetAgent = 63;
-    public const int NetObject = 64;
-    public const int Notice = 65;
-    public const int NotMove = 66;
-    public const int OnGroundState = 67;
+    public const int Moving = 61;
+    public const int NetAgent = 62;
+    public const int NetObject = 63;
+    public const int Notice = 64;
+    public const int NotMove = 65;
+    public const int OnGroundState = 66;
+    public const int PerfectTimeArea = 67;
     public const int PlanarVec = 68;
     public const int PlayerInputState = 69;
     public const int Position = 70;
-    public const int RigidbodyService = 71;
-    public const int RotateInFocus = 72;
-    public const int RotateLeftAngle = 73;
-    public const int RotationSpeed = 74;
+    public const int Property = 71;
+    public const int RigidbodyService = 72;
+    public const int RotateInFocus = 73;
+    public const int RotateLeftAngle = 74;
     public const int RunningMultiRate = 75;
-    public const int RunState = 76;
-    public const int SignalAttack = 77;
-    public const int SignalDefense = 78;
-    public const int SignalJump = 79;
-    public const int SignalLocalMotion = 80;
-    public const int SignalState = 81;
-    public const int SignalStep = 82;
-    public const int SpawnPoint = 83;
-    public const int StateChanged = 84;
-    public const int StateSwitchState = 85;
-    public const int StateSwitchStateListener = 86;
-    public const int StepEndState = 87;
-    public const int StepState = 88;
-    public const int TargetPlanarSqrDistance = 89;
-    public const int UIHeadPad = 90;
-    public const int Unbalanced = 91;
-    public const int WalkState = 92;
-    public const int WeaponDropService = 93;
-    public const int WeaponService = 94;
+    public const int SignalAttack = 76;
+    public const int SignalDefense = 77;
+    public const int SignalJump = 78;
+    public const int SignalLocalMotion = 79;
+    public const int SignalState = 80;
+    public const int SignalStep = 81;
+    public const int SpawnPoint = 82;
+    public const int StateChanged = 83;
+    public const int Time = 84;
+    public const int UIHeadPad = 85;
+    public const int Unbalanced = 86;
+    public const int WeaponDropService = 87;
+    public const int WeaponService = 88;
 
-    public const int TotalComponents = 95;
+    public const int TotalComponents = 89;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -144,6 +138,7 @@ public static class GameComponentsLookup {
         "CharacterTimeScale",
         "CharCurSpeed",
         "CharGravity",
+        "CharObject",
         "CharSpeedMulti",
         "DeadState",
         "Destroyed",
@@ -158,7 +153,6 @@ public static class GameComponentsLookup {
         "InputState",
         "InstanceID",
         "JumpForce",
-        "KeepTargetDistance",
         "LinkAbility",
         "LinkMotion",
         "LinkSensor",
@@ -168,22 +162,21 @@ public static class GameComponentsLookup {
         "MotionDB",
         "Moveable",
         "MoveDirection",
-        "MovementSpeed",
         "Moving",
         "NetAgent",
         "NetObject",
         "Notice",
         "NotMove",
         "OnGroundState",
+        "PerfectTimeArea",
         "PlanarVec",
         "PlayerInputState",
         "Position",
+        "Property",
         "RigidbodyService",
         "RotateInFocus",
         "RotateLeftAngle",
-        "RotationSpeed",
         "RunningMultiRate",
-        "RunState",
         "SignalAttack",
         "SignalDefense",
         "SignalJump",
@@ -192,14 +185,9 @@ public static class GameComponentsLookup {
         "SignalStep",
         "SpawnPoint",
         "StateChanged",
-        "StateSwitchState",
-        "StateSwitchStateListener",
-        "StepEndState",
-        "StepState",
-        "TargetPlanarSqrDistance",
+        "Time",
         "UIHeadPad",
         "Unbalanced",
-        "WalkState",
         "WeaponDropService",
         "WeaponService"
     };
@@ -242,6 +230,7 @@ public static class GameComponentsLookup {
         typeof(CharacterTimeScaleComponent),
         typeof(CharCurSpeedComponent),
         typeof(CharGravityComponent),
+        typeof(CharObjectComponent),
         typeof(CharSpeedMultiComponent),
         typeof(DeadStateComponent),
         typeof(DestroyedComponent),
@@ -256,7 +245,6 @@ public static class GameComponentsLookup {
         typeof(InputStateComponent),
         typeof(InstanceIDComponent),
         typeof(JumpForceComponent),
-        typeof(KeepTargetDistanceComponent),
         typeof(LinkAbilityComponent),
         typeof(LinkMotionComponent),
         typeof(LinkSensor),
@@ -266,22 +254,21 @@ public static class GameComponentsLookup {
         typeof(MotionDBComponent),
         typeof(MoveableComponent),
         typeof(MoveDirectionComponent),
-        typeof(MovementSpeedComponent),
         typeof(MovingComponent),
         typeof(NetAgentComponent),
         typeof(NetObjectComponent),
         typeof(NoticeComponent),
         typeof(NotMoveComponent),
         typeof(OnGroundStateComponent),
+        typeof(PerfectTimeAreaComponent),
         typeof(PlanarVecComponent),
         typeof(PlayerInputStateComponent),
         typeof(PositionComponent),
+        typeof(PropertyComponent),
         typeof(RigidbodyServiceComponent),
         typeof(RotateInFocusComponent),
         typeof(RotateLeftAngleComponent),
-        typeof(RotationSpeedComponent),
         typeof(RunningMultiRateComponent),
-        typeof(RunStateComponent),
         typeof(SignalAttack),
         typeof(SignalDefenseComponent),
         typeof(SignalJumpComponent),
@@ -290,14 +277,9 @@ public static class GameComponentsLookup {
         typeof(SignalStepComponent),
         typeof(SpawnPointComponent),
         typeof(StateChangedComponent),
-        typeof(StateSwitchStateComponent),
-        typeof(StateSwitchStateListenerComponent),
-        typeof(StepEndStateComponent),
-        typeof(StepStateComponent),
-        typeof(TargetPlanarSqrDistance),
+        typeof(TimeComponent),
         typeof(UIHeadPadComponent),
         typeof(UnbalancedComponent),
-        typeof(WalkStateComponent),
         typeof(WeaponDropServiceComponent),
         typeof(WeaponServiceComponent)
     };

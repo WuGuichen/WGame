@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using WGame.Ability;
+using WGame.Utils;
 
 public class AbilityServiceImplementation : IAbility
 {
@@ -13,14 +14,59 @@ public class AbilityServiceImplementation : IAbility
     private LinkedList<AbilityStatusCharacter> _abilityStatusList = new();
 
     private BuffManager _buffManager;
+    private AbilityEntity _ability;
     public BuffManager BuffManager => _buffManager;
 
-    public AbilityServiceImplementation(GameEntity entity)
+    private IGotHitService _normalStateGotHit;
+    private bool _isChangingGotHit = false;
+
+    public AbilityServiceImplementation(GameEntity entity, AbilityEntity ability)
     {
         _entity = entity;
+        _ability = ability;
         _owner = new EventOwnerEntity(entity);
         _sensorContext = Contexts.sharedInstance.sensor;
         _buffManager = new BuffManager(new BuffOwnerEntity(_entity, this));
+        entity.characterState.state.onStateEnable += OnStateEnable;
+        entity.characterState.state.onStateDisable += OnStateDisable;
+    }
+    
+    private void OnStateEnable(int mask)
+    {
+        if ((mask & AStateType.Invincible) != 0)
+        {
+            if (_isChangingGotHit)
+            {
+                WLogger.Error("不允许同时改变受击方式");
+            }
+            if (_ability.hasAbilityGotHit)
+            {
+                _normalStateGotHit = _ability.abilityGotHit.service;
+                _ability.ReplaceAbilityGotHit(GotHitImpls.Invincible);
+            }
+            else{
+                _normalStateGotHit = null;
+                _ability.AddAbilityGotHit(GotHitImpls.Invincible);
+            }
+
+            _isChangingGotHit = true;
+        }
+    }
+
+    private void OnStateDisable(int mask)
+    {
+        if ((mask & AStateType.Invincible) != 0)
+        {
+            if (_normalStateGotHit != null)
+            {
+                _ability.ReplaceAbilityGotHit(_normalStateGotHit);
+            }
+            else
+            {
+                _ability.RemoveAbilityGotHit();
+            }
+            _isChangingGotHit = false;
+        }
     }
     
     public bool Do(string name, bool unique = false)
@@ -72,5 +118,16 @@ public class AbilityServiceImplementation : IAbility
         sensor.AddMoveDirection(_entity.gameViewService.service.Model.forward);
         sensor.AddMoveInfo(info);
         sensor.AddLifeTime(8f);
+    }
+
+    public void Initialize()
+    {
+        
+    }
+
+    public void Destroy()
+    {
+        _entity.characterState.state.onStateEnable -= OnStateEnable;
+        _entity.characterState.state.onStateDisable -= OnStateDisable;
     }
 }

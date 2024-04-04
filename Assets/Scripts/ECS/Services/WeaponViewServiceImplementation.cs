@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Entitas.Unity;
 using UnityEngine;
+using WGame.Ability;
+using WGame.Attribute;
 using WGame.Res;
 
 namespace Weapon
@@ -193,21 +195,35 @@ namespace Weapon
                         if (!hittedList.Contains(colliderID))
                         {
                             hittedList.Add(colliderID);
-                            // var gameView = tar.transform.GetComponentInParent<IGameViewService>();
                             if (EntityUtils.TryGetEntitySensorMono(colliderID, out var sensorMono))
                             {
                                 var tarCharacter = sensorMono.Entity;
 
+                                if (tarCharacter.characterState.state.Check(AStateType.UnHittable))
+                                {
+                                    continue;
+                                }
                                 var info = new ContactInfo();
                                 info.pos = tar.point;
                                 info.part = sensorMono.PartType;
                                 info.dir = dir;
                                 // 受击处理
                                 info.entity = tarCharacter;
-                                ActionHelper.DoHitTarget(_character, info);
+                                bool showHitEffect = ActionHelper.DoHitTarget(_character, info);
                                 // 击中处理
                                 info.entity = _character;
-                                ActionHelper.DoGotHit(tarCharacter, info);
+                                showHitEffect = showHitEffect && ActionHelper.DoGotHit(tarCharacter, info);
+                                int impact = _character.attribute.value.Get(WAttrType.Impact, true);
+                                if(showHitEffect)
+                                {
+                                    bool hasEff = SensorMono.TryGetHitEffect(
+                                        _character.linkWeapon.Weapon.weaponTypeID.id, impact, out var effName);
+                                    if (hasEff)
+                                    {
+                                        EffectMgr.LoadEffect(effName, sensorMono.transform, info.pos, Quaternion.Euler(info.dir));
+                                    }
+                                    WLogger.Print(impact);
+                                }
                             }
                         }
                     }
@@ -245,5 +261,6 @@ namespace Weapon
         public int count;
         public GameEntity entity;
         public EntityPartType part;
+        public Quaternion rot => Quaternion.Euler(dir);
     }
 }

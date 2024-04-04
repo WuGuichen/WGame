@@ -31,5 +31,10 @@ namespace WGame.Utils
         {
             return propertyHash[key];
         }
+        
+        public bool TryGetProperty(string key, out TAny value)
+        {
+            return propertyHash.TryGetValue(key, out value);
+        }
     }
 }

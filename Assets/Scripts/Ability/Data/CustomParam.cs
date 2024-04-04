@@ -148,5 +148,11 @@ namespace WGame.Ability
             JsonHelper.WriteProperty(ref writer, "Type", ParamType.ToString());
             return writer;
         }
+
+        public CustomParam Clone()
+        {
+            WLogger.Error("无法复制");
+            return null;
+        }
     }
 }

@@ -1,7 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	1906225022	Play_Bloody_punch			\Default Work Unit\Play_Bloody_punch	
-	2646954518	play_wooden_hit			\Default Work Unit\play_wooden_hit	
-
-In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	896962063	Bloody punch	E:\UnityProjects\WGame\Client\WAudio\.cache\Windows\SFX\Bloody punch_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Bloody punch		108128
-

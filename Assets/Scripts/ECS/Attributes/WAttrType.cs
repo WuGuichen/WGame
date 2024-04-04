@@ -8,9 +8,9 @@ namespace WGame.Attribute
         public const int CurMP = 3;
         public const int ATK = 4;
         public const int DEF = 5;
-        public const int AtkForceFwd = 6;
-        public const int AtkForceRight = 7;
-        public const int AtkForceUp = 8;
+        public const int Impact = 6;
+        public const int MoveSpeed = 7;
+        public const int RotateSpeed = 8;
 
         public const int Count = 9;
 
@@ -22,9 +22,9 @@ namespace WGame.Attribute
             "当前魔力",
             "攻击",
             "防御",
-            "冲击力_前",
-            "冲击力_上",
-            "冲击力_右",
+            "冲击力",
+            "移动速度",
+            "转向速度",
         };
     }
 }  

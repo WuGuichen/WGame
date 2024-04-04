@@ -16,6 +16,7 @@ public class WInputAgentMyController : WInputAgent, IInputService
     private readonly InputAction LookAxis;
     private readonly InputAction Attack;
     private readonly InputAction Jump;
+    private readonly InputAction Step;
     private readonly InputAction Defense;
     private readonly InputAction Interact;
     
@@ -36,6 +37,9 @@ public class WInputAgentMyController : WInputAgent, IInputService
     public bool JumpWasReleased => Jump.WasReleasedThisFrame();
 
     public bool StepWasPressed => _input.GamePlay.Step.WasPressedThisFrame();
+    public bool StepIsHolding => stepIsHold;
+    private bool stepIsHold = false;
+    private bool stepReleased = true;
 
     public bool FocusWasPressed => _input.GamePlay.Focus.WasPressedThisFrame();
     private bool defensePressing = false;
@@ -46,6 +50,7 @@ public class WInputAgentMyController : WInputAgent, IInputService
     {
         Attack = _input.GamePlay.Attack;
         Jump = _input.GamePlay.Jump;
+        Step = _input.GamePlay.Step;
         MoveAxis = _input.GamePlay.Move;
         LookAxis = _input.GamePlay.Look;
         Defense = _input.GamePlay.Defense;
@@ -63,6 +68,21 @@ public class WInputAgentMyController : WInputAgent, IInputService
         {
             jumpReleased = true;
         };
+        
+        Step.performed += ctx =>
+        {
+            stepReleased = false;
+            if (ctx.interaction is HoldInteraction)
+            {
+                stepIsHold = true;
+            }
+        };
+
+        Step.canceled += ctx =>
+        {
+            stepReleased = true;
+        };
+
 
         Attack.performed += ctx =>
         {
@@ -101,6 +121,8 @@ public class WInputAgentMyController : WInputAgent, IInputService
     {
         if(jumpReleased)
             jumpIsHold = false;
+        if (stepReleased)
+            stepIsHold = false;
         if (attackReleased)
             attackReleased = false;
     }

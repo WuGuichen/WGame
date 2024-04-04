@@ -1,41 +1,48 @@
-using System.Collections.Generic;
 using UnityEngine;
 using WGame.Ability;
+using WGame.Attribute;
+using WGame.Utils;
 
 public class EventOwnerEntity : EventOwner
 {
     private readonly GameEntity _entity;
+    public int EntityID { get; private set; }
     private readonly CharacterInitInfo _initInfo;
     private readonly MotionEntity _motion;
+    private readonly IMotionService _motionService;
     private StateMgr _stateMgr;
     private StateMgr _breakStateMgr;
+    private StateMgrSingle _areaMgr;
     private WTypeMap _motionDB;
+    private WAttribute _attribute;
 
     private float _gravitySpeedConfig;
-    
+
+    private WTypeMap _triggerTimesDict = new WTypeMap();
+
     public void CleanUpState()
     {
         _breakStateMgr.CheckStateChange();
     }
 
     public bool IsLockTick { get; set; }
-    public bool CheckInput(int inputType)
+    public bool CheckInput(int inputType, bool usePreInput)
     {
-        if (_entity.isCamera)
+        if (!usePreInput && _entity.isCamera)
         {
             var input = _entity.inputState.state;
-            return input.CheckState(inputType);
+            return input.Check(inputType);
         }
         else
         {
             var signal = _entity.signalState.state;
-            return signal.CheckState(inputType);
+            return signal.Check(inputType);
         }
     }
 
     public bool CheckState(int stateMask)
     {
-        return _entity.characterState.state.CheckState(stateMask);
+        return _entity.characterState.state.Check(stateMask);
     }
 
     public void SetMoveSpeed(int rate)
@@ -79,20 +86,89 @@ public class EventOwnerEntity : EventOwner
         _entity.ReplaceCharGravity(value);
     }
 
-    public void RegisterTrigger(int triggerType, TriggerAddType addType, int triggerTimes)
+    public void AddNoticeReceiver(int key, int times = 10, bool replace = false)
     {
-        throw new System.NotImplementedException();
+        _entity.notice.service.AddReciever(key, times, replace);
+    }
+    
+    public void RemoveNoticeReceiver(int key)
+    {
+        _entity.notice.service.RemoveReciever(key);
+    }
+
+    public bool TryGetFocusPosition(out Vector3 pos)
+    {
+        if (_entity.hasFocusEntity)
+        {
+            pos = _entity.focusEntity.entity.position.value;
+            return true;
+        }
+
+        pos = Vector3.zero;
+        return false;
+    }
+
+    public bool TryGetFocusDistance(out float dist)
+    {
+        if (_entity.hasFocusEntity)
+        {
+            dist = DetectMgr.Inst.GetDistance(_entity.focusEntity.entity.instanceID.ID, EntityID);
+            return true;
+        }
+
+        dist = -1;
+        return false;
+    }
+
+    public bool TryGetAngleFocusToEntity(out float angle)
+    {
+        if (_entity.hasFocusEntity)
+        {
+            angle = DetectMgr.Inst.GetAngle(_entity.focusEntity.entity.instanceID.ID, EntityID);
+            return true;
+        }
+
+        angle = -1;
+        return false;
+    }
+
+    public bool TryGetAngleToFocus(out float angle)
+    {
+        if (_entity.hasFocusEntity)
+        {
+            angle = DetectMgr.Inst.GetAngle(EntityID, _entity.focusEntity.entity.instanceID.ID);
+            return true;
+        }
+
+        angle = -1;
+        return false;
+    }
+
+    public void SetIsInPerfectArea(int areaType, bool value)
+    {
+        if (value)
+        {
+            _areaMgr.EnableState(areaType);
+        }
+        else
+        {
+            _areaMgr.DisableState(areaType);
+        }
     }
 
     public EventOwnerEntity(GameEntity entity)
     {
         _entity = entity;
+        EntityID = entity.instanceID.ID;
         _motionDB = entity.motionDB.data;
+        _attribute = entity.attribute.value;
         _gravitySpeedConfig = Contexts.sharedInstance.setting.gameSetting.value.PlayerConfig.GravitySpeed;
         _initInfo = entity.characterInfo.value;
         _motion = entity.linkMotion.Motion;
+        _motionService = _motion.motionService.service;
         _stateMgr = entity.characterState.state;
         _breakStateMgr = new StateMgr();
+        _areaMgr = entity.perfectTimeArea.state;
         _stateMgr.onStateEnable += change =>
         {
             if ((change & AStateType.EnableWeapon) != 0)
@@ -120,9 +196,58 @@ public class EventOwnerEntity : EventOwner
         _breakStateMgr.EnableState(stateMask);
     }
 
+    public void SetProperty<T>(string name, DataType type, T value)
+    {
+        _entity.property.value.AddProperty(name, type, value);
+    }
+
+    public void SetAttribute(int attrID, int value)
+    {
+        _attribute.Set(attrID, value);
+    }
+
+    public void SetAreaAttr(int areaType, bool isEndArea)
+    {
+        string propName = null;
+        int attrType = WAttrType.Impact;
+        switch (areaType)
+        {
+            case TimeAreaType.PerfectDamage:
+                propName = isEndArea ? "vec" : "maxVec";
+                break;
+            case TimeAreaType.PerfectDamage2:
+                propName = isEndArea ? "vec2" : "maxVec2";
+                break;
+            case TimeAreaType.PerfectDamage3:
+                propName = isEndArea ? "vec3" : "maxVec3";
+                break;
+            case TimeAreaType.PerfectDamage4:
+                propName = isEndArea ? "vec4" : "maxVec4";
+                break;
+            case TimeAreaType.Beginning:
+                if (!isEndArea)
+                {
+                    propName = "vec";
+                }
+                break;
+            default:
+                return;
+        }
+
+        if (propName == null)
+        {
+            return;
+        }
+
+        if (_motionService.TryGetCurAbilityProperty(propName, out var value))
+        {
+            _attribute.Set(attrType, value.AsInt());
+        }
+    }
+
     public bool CanBreakState(int stateMask)
     {
-        return _breakStateMgr.CheckState(stateMask);
+        return _breakStateMgr.Check(stateMask);
     }
 
     public bool TryGetNextAbilityID(int inputType, out int id, out int motionType)
@@ -133,45 +258,49 @@ public class EventOwnerEntity : EventOwner
         switch (inputType)
         {
             case InputType.LocalMotion:
-                if (_breakStateMgr.CheckState(MotionType.LocalMotion))
+                if (_breakStateMgr.Check(MotionType.LocalMotion))
                 {
                     motionType = MotionType.LocalMotion;
                 }
                 break;
             case InputType.Attack:
-                if (_breakStateMgr.CheckState(MotionType.Attack1))
+                if (_breakStateMgr.Check(MotionType.Attack1))
                 {
                     motionType = MotionType.Attack1;
                 }
-                else if (_breakStateMgr.CheckState(MotionType.Attack2))
+                else if (_breakStateMgr.Check(MotionType.Attack2))
                 {
                     motionType = MotionType.Attack2;
                 }
-                else if (_breakStateMgr.CheckState(MotionType.Attack3))
+                else if (_breakStateMgr.Check(MotionType.Attack3))
                 {
                     motionType = MotionType.Attack3;
                 }
-                else if (_breakStateMgr.CheckState(MotionType.JumpAttack))
+                else if (_breakStateMgr.Check(MotionType.JumpAttack))
                 {
                     motionType = MotionType.JumpAttack;
                 }
                 break;
             case InputType.Defense:
-                if (_breakStateMgr.CheckState(MotionType.Defense))
+                if (_breakStateMgr.Check(MotionType.Defense))
                 {
                     motionType = MotionType.Defense;
                 }
                 break;
             case InputType.Jump:
-                if (_breakStateMgr.CheckState(MotionType.Jump))
+                if (_breakStateMgr.Check(MotionType.Jump))
                 {
                     motionType = MotionType.Jump;
                 }
                 break;
             case InputType.Step:
-                if (_breakStateMgr.CheckState(MotionType.Step))
+                if (_breakStateMgr.Check(MotionType.Step))
                 {
                     motionType = MotionType.Step;
+                }
+                else if (_breakStateMgr.Check(MotionType.StepEmergency))
+                {
+                    motionType = MotionType.StepEmergency;
                 }
                 break;
         }

@@ -28,6 +28,8 @@ public class MotionType
     public const int Death = 1 << 15;
     [WLable("起身")]
     public const int GetUp = 1 << 16;
+    [WLable("紧急闪避")]
+    public const int StepEmergency = 1 << 17;
 
     // 特殊动作不用专门写id
 

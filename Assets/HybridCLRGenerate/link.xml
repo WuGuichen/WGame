@@ -131,6 +131,8 @@
     <type fullname="DG.Tweening.DOTween" preserve="all" />
     <type fullname="DG.Tweening.Ease" preserve="all" />
     <type fullname="DG.Tweening.Plugins.Options.VectorOptions" preserve="all" />
+    <type fullname="DG.Tweening.Sequence" preserve="all" />
+    <type fullname="DG.Tweening.ShortcutExtensions" preserve="all" />
     <type fullname="DG.Tweening.TweenCallback" preserve="all" />
     <type fullname="DG.Tweening.TweenSettingsExtensions" preserve="all" />
   </assembly>
@@ -436,7 +438,9 @@
     <type fullname="UnityEngine.Time" preserve="all" />
     <type fullname="UnityEngine.Transform" preserve="all" />
     <type fullname="UnityEngine.Vector2" preserve="all" />
+    <type fullname="UnityEngine.Vector2Int" preserve="all" />
     <type fullname="UnityEngine.Vector3" preserve="all" />
+    <type fullname="UnityEngine.Vector3Int" preserve="all" />
     <type fullname="UnityEngine.Vector4" preserve="all" />
     <type fullname="UnityEngine.WaitForSeconds" preserve="all" />
   </assembly>
@@ -452,9 +456,11 @@
     <type fullname="UnityEngine.CapsuleCollider" preserve="all" />
     <type fullname="UnityEngine.CharacterController" preserve="all" />
     <type fullname="UnityEngine.Collider" preserve="all" />
+    <type fullname="UnityEngine.CollisionFlags" preserve="all" />
     <type fullname="UnityEngine.Physics" preserve="all" />
     <type fullname="UnityEngine.RaycastHit" preserve="all" />
     <type fullname="UnityEngine.Rigidbody" preserve="all" />
+    <type fullname="UnityEngine.RigidbodyConstraints" preserve="all" />
     <type fullname="UnityEngine.SphereCollider" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.UI">
@@ -484,8 +490,23 @@
   <assembly fullname="WGame.Utils">
     <type fullname="SparseSet`1" preserve="all" />
     <type fullname="TAny" preserve="all" />
+    <type fullname="TAnyBool" preserve="all" />
+    <type fullname="TAnyColor" preserve="all" />
     <type fullname="TAnyExtension" preserve="all" />
+    <type fullname="TAnyFloat" preserve="all" />
+    <type fullname="TAnyInt" preserve="all" />
+    <type fullname="TAnyString" preserve="all" />
+    <type fullname="TAnyVal`1" preserve="all" />
+    <type fullname="TAnyVector2" preserve="all" />
+    <type fullname="TAnyVector2Int" preserve="all" />
+    <type fullname="TAnyVector3" preserve="all" />
+    <type fullname="TAnyVector3Int" preserve="all" />
+    <type fullname="TAnyVector4" preserve="all" />
+    <type fullname="WEaseManager" preserve="all" />
+    <type fullname="WEaseType" preserve="all" />
+    <type fullname="WGame.Utils.DataType" preserve="all" />
     <type fullname="WGame.Utils.JsonHelper" preserve="all" />
+    <type fullname="WGame.Utils.PropertyContext" preserve="all" />
     <type fullname="WLableAttribute" preserve="all" />
     <type fullname="WUtils" preserve="all" />
   </assembly>

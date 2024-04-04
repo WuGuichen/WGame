@@ -114,7 +114,9 @@
                         "Data" : [
                             128,
                             true,
-                            16
+                            16,
+                            false,
+                            false
                         ]
                     }
                 },
@@ -179,6 +181,20 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        343
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 64
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Action 1",
                         1,
                         "Signal",
@@ -191,6 +207,71 @@
                         "Data" : [
                             2,
                             100
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Duration",
+                        0,
+                        true,
+                        1333
+                    ],
+                    "Type" : "FocusKeepDist",
+                    "Data" : {
+                        "Offset" : 80
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            10
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Signal",
+                        147,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Signal",
+                        170,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            0
                         ]
                     }
                 },
@@ -342,6 +423,48 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        0,
+                        true,
+                        647
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 64
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Duration",
+                        0,
+                        true,
+                        2033
+                    ],
+                    "Type" : "FocusKeepDist",
+                    "Data" : {
+                        "Offset" : 100
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 6",
+                        6,
+                        "Duration",
+                        0,
+                        true,
+                        200
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 32
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Action 2",
                         1,
                         "Signal",
@@ -407,6 +530,20 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 6",
+                        6,
+                        "Duration",
+                        438,
+                        true,
+                        240
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Break 0",
                         0,
                         "Duration",
@@ -421,6 +558,20 @@
                 }
             ],
             "Prop"   : [
+                {
+                    "K" : "vec",
+                    "V" : {
+                        "Value" : 200,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxVec",
+                    "V" : {
+                        "Value" : 1500,
+                        "Type"  : "Int"
+                    }
+                }
             ]
         },
         {
@@ -430,27 +581,6 @@
                 1883
             ],
             "Events" : [
-                {
-                    "Cfg" : [
-                        "Animation 0",
-                        0,
-                        "Duration",
-                        0,
-                        true,
-                        1883
-                    ],
-                    "Type" : "PlayAnim",
-                    "Data" : {
-                        "AnimCfg" : [
-                            "Longs_Attack_L",
-                            0,
-                            0,
-                            100,
-                            0,
-                            false
-                        ]
-                    }
-                },
                 {
                     "Cfg" : [
                         "Break 0",
@@ -514,6 +644,69 @@
                             1,
                             120
                         ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        0,
+                        true,
+                        1883
+                    ],
+                    "Type" : "FocusKeepDist",
+                    "Data" : {
+                        "Offset" : 100
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Duration",
+                        0,
+                        true,
+                        200
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 32
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        3,
+                        true,
+                        1883
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_Attack_L",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Duration",
+                        44,
+                        true,
+                        297
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 64
                     }
                 },
                 {
@@ -583,6 +776,20 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Duration",
+                        701,
+                        true,
+                        200
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Break 0",
                         0,
                         "Duration",
@@ -611,6 +818,20 @@
                 }
             ],
             "Prop"   : [
+                {
+                    "K" : "vec",
+                    "V" : {
+                        "Value" : 300,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxVec",
+                    "V" : {
+                        "Value" : 1000,
+                        "Type"  : "Int"
+                    }
+                }
             ]
         },
         {
@@ -691,6 +912,20 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Duration",
+                        0,
+                        true,
+                        316
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 64
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Action 3",
                         3,
                         "Signal",
@@ -704,6 +939,34 @@
                             1,
                             120
                         ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        0,
+                        true,
+                        1950
+                    ],
+                    "Type" : "FocusKeepDist",
+                    "Data" : {
+                        "Offset" : 100
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Duration",
+                        0,
+                        true,
+                        200
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 32
                     }
                 },
                 {
@@ -745,13 +1008,27 @@
                         "Action 0",
                         0,
                         "Duration",
-                        439,
+                        396,
                         true,
-                        468
+                        459
                     ],
                     "Type" : "SetState",
                     "Data" : {
                         "States" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Duration",
+                        459,
+                        true,
+                        302
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 1
                     }
                 },
                 {
@@ -815,12 +1092,26 @@
                 }
             ],
             "Prop"   : [
+                {
+                    "K" : "vec",
+                    "V" : {
+                        "Value" : 500,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxVec",
+                    "V" : {
+                        "Value" : 1400,
+                        "Type"  : "Int"
+                    }
+                }
             ]
         },
         {
             "Base" : [
                 6,
-                "LS_Step",
+                "LS_StepEmergency",
                 1700
             ],
             "Events" : [
@@ -881,10 +1172,56 @@
                 },
                 {
                     "Cfg" : [
-                        "Action 2",
-                        2,
+                        "Action 3",
+                        3,
+                        "Duration",
+                        0,
+                        true,
+                        851
+                    ],
+                    "Type" : "AddMessageReceiver",
+                    "Data" : {
+                        "Type" : 0,
+                        "Times" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        0,
+                        true,
+                        1700
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 32
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 5",
+                        4,
                         "Signal",
-                        133,
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            400
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Signal",
+                        215,
                         true,
                         0
                     ],
@@ -1001,8 +1338,39 @@
                         "Data" : [
                             2,
                             false,
-                            1
+                            1,
+                            false,
+                            false
                         ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Duration",
+                        0,
+                        true,
+                        2328
+                    ],
+                    "Type" : "AddMessageReceiver",
+                    "Data" : {
+                        "Type" : 2,
+                        "Times" : 999999
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        0,
+                        true,
+                        2328
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 32
                     }
                 },
                 {
@@ -1019,7 +1387,9 @@
                         "Data" : [
                             4,
                             true,
-                            8192
+                            8192,
+                            false,
+                            false
                         ]
                     }
                 },
@@ -1495,12 +1865,32 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Duration",
+                        346,
+                        true,
+                        587
+                    ],
+                    "Type" : "TriggerInputToMotion",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            true,
+                            128,
+                            false,
+                            true
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Action 1",
                         1,
                         "Duration",
-                        376,
+                        348,
                         true,
-                        559
+                        585
                     ],
                     "Type" : "TriggerStateToMotion",
                     "Data" : {
@@ -1975,6 +2365,48 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Duration",
+                        0,
+                        true,
+                        2965
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 64
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Duration",
+                        0,
+                        true,
+                        2965
+                    ],
+                    "Type" : "FocusKeepDist",
+                    "Data" : {
+                        "Offset" : 0
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        0,
+                        true,
+                        148
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 32
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Action 0",
                         0,
                         "Signal",
@@ -2002,6 +2434,20 @@
                     "Type" : "SetState",
                     "Data" : {
                         "States" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        248,
+                        true,
+                        238
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 1
                     }
                 },
                 {
@@ -2041,6 +2487,20 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        792,
+                        true,
+                        392
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 2
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Animation 2",
                         2,
                         "Duration",
@@ -2073,9 +2533,65 @@
                     "Data" : {
                         "States" : 1
                     }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        1627,
+                        true,
+                        392
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 4
+                    }
                 }
             ],
             "Prop"   : [
+                {
+                    "K" : "vec",
+                    "V" : {
+                        "Value" : 200,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxVec",
+                    "V" : {
+                        "Value" : 1000,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "vec2",
+                    "V" : {
+                        "Value" : 300,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxVec2",
+                    "V" : {
+                        "Value" : 1200,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "vec3",
+                    "V" : {
+                        "Value" : 400,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxVec3",
+                    "V" : {
+                        "Value" : 1100,
+                        "Type"  : "Int"
+                    }
+                }
             ]
         },
         {
@@ -2198,6 +2714,418 @@
                     "Type" : "Interrupt",
                     "Data" : {
                         "Type" : 0
+                    }
+                }
+            ],
+            "Prop"   : [
+            ]
+        },
+        {
+            "Base" : [
+                20,
+                "LS_Step",
+                1783
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        1783
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_Dodge_Fwd",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            400
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Duration",
+                        0,
+                        true,
+                        1583
+                    ],
+                    "Type" : "AddMessageReceiver",
+                    "Data" : {
+                        "Type" : 0,
+                        "Times" : 8
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        0,
+                        true,
+                        1783
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 32
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            2,
+                            100
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Duration",
+                        38,
+                        true,
+                        1745
+                    ],
+                    "Type" : "TriggerInputToMotion",
+                    "Data" : {
+                        "Data" : [
+                            256,
+                            true,
+                            1,
+                            false,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Signal",
+                        164,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Break 2",
+                        2,
+                        "Duration",
+                        519,
+                        true,
+                        1264
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 131072
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Break 1",
+                        1,
+                        "Duration",
+                        788,
+                        true,
+                        995
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 32
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Break 0",
+                        0,
+                        "Duration",
+                        933,
+                        true,
+                        850
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 5
+                    }
+                }
+            ],
+            "Prop"   : [
+            ]
+        },
+        {
+            "Base" : [
+                21,
+                "LS_JumpAttack",
+                2167
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        2167
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_JumpAttack_RD",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            0,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        0,
+                        true,
+                        0
+                    ],
+                    "Type" : "SetMoveParam",
+                    "Data" : {
+                        "Data" : [
+                            1,
+                            0
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Duration",
+                        0,
+                        true,
+                        78
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 32
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 2",
+                        2,
+                        "Duration",
+                        107,
+                        true,
+                        594
+                    ],
+                    "Type" : "SetState",
+                    "Data" : {
+                        "States" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Duration",
+                        148,
+                        true,
+                        439
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 1
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Duration",
+                        373,
+                        true,
+                        1798
+                    ],
+                    "Type" : "TriggerStateToMotion",
+                    "Data" : {
+                        "Data" : [
+                            8,
+                            true,
+                            1
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 3",
+                        3,
+                        "Duration",
+                        734,
+                        true,
+                        200
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 64
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Duration",
+                        738,
+                        true,
+                        1429
+                    ],
+                    "Type" : "TriggerStateToMotion",
+                    "Data" : {
+                        "Data" : [
+                            8,
+                            false,
+                            4096
+                        ]
+                    }
+                }
+            ],
+            "Prop"   : [
+            ]
+        },
+        {
+            "Base" : [
+                22,
+                "LS_JumpFall",
+                3233
+            ],
+            "Events" : [
+                {
+                    "Cfg" : [
+                        "Animation 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        3233
+                    ],
+                    "Type" : "PlayAnim",
+                    "Data" : {
+                        "AnimCfg" : [
+                            "Longs_Jump_Platformer_Fall",
+                            0,
+                            0,
+                            100,
+                            0,
+                            false
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Duration",
+                        0,
+                        true,
+                        3233
+                    ],
+                    "Type" : "TriggerStateToMotion",
+                    "Data" : {
+                        "Data" : [
+                            8,
+                            true,
+                            512
+                        ]
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
+                        "Duration",
+                        1928,
+                        true,
+                        1305
+                    ],
+                    "Type" : "LockTick",
+                    "Data" : {
                     }
                 }
             ],

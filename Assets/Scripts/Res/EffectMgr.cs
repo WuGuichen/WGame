@@ -15,6 +15,11 @@ namespace WGame.Res
             LoadEffect(objName, GameSceneMgr.Inst.Root, pos, Quaternion.identity, duration, onCompeleted);
         }
         
+        public static void LoadEffect(string objName, Vector3 pos, Quaternion rot,float duration = 10f, Action<GameObject> onCompeleted = null)
+        {
+            LoadEffect(objName, GameSceneMgr.Inst.Root, pos, rot, duration, onCompeleted);
+        }
+        
         public static void LoadEffect(string objName, Transform parent, Vector3 pos, Quaternion dir,
             float duration = 10f, Action<GameObject> onCompleted = null)
         {
@@ -129,6 +134,20 @@ namespace WGame.Res
                     Inst.loadedEffects.Remove(key);
                 }
             }
+        }
+
+        private static readonly Dictionary<int, string> _effectMap = new()
+        {
+            {WUtils.SortPairInt(1, 2), "HCFX_Hit_01"},
+            {WUtils.SortPairInt(1, 1), "HCFX_Hit_10"},
+            {WUtils.SortPairInt(2, 1), "HCFX_Hit_03"},
+            {WUtils.SortPairInt(2, 2), "HCFX_Hit_04"},
+        };
+        
+        public bool TryGetBodyHitEffect(int weaponID, int charId, out string effName)
+        {
+            var id = WUtils.SortPairInt(weaponID, charId);
+            return _effectMap.TryGetValue(id, out effName);
         }
     }
 }

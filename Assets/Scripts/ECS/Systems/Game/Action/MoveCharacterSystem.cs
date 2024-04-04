@@ -2,6 +2,7 @@ using BaseData.Character;
 using Entitas;
 using UnityEngine;
 using WGame.Ability;
+using WGame.Attribute;
 using WGame.UI;
 
 public class MoveCharacterSystem : IExecuteSystem
@@ -46,44 +47,32 @@ public class MoveCharacterSystem : IExecuteSystem
                 DoMove(motion);
                 continue;
             }
-            if(entity.isUnbalanced)
-                continue;
-            if(entity.isNotMove)
-                continue;
-            if (entity.hasFocusEntity)
-            {
-                // var pos = entity.focusEntity.entity.position.value;
-                // Vector2 tarPos = new Vector2(pos.x, pos.z);
-                // pos = entity.position.value;
-                // Vector2 myPos = new Vector2(pos.x, pos.z);
-                // var sqrDist = (myPos - tarPos).sqrMagnitude;
-                // entity.ReplaceTargetPlanarSqrDistance(sqrDist);
-                // if (entity.hasKeepTargetDistance && sqrDist <= entity.keepTargetDistance.value * entity.keepTargetDistance.value)
-                // {
-                //     anim.ClearMotionMove();
-                //     continue;
-                // }
-            }
 
-            if (!entity.isMoveable
+            if (entity.characterState.state.Check(AStateType.KeepDistance)
+                || entity.characterState.state.Check(AStateType.Unbalance)
+                || !entity.isMoveable
                 || !entity.hasMoveDirection)
             {
+                anim.ClearMotionMove();
+                anim.UpdateMoveSpeed(0,0);
                 continue;
             }
 
-            var isRunning = entity.isRunState;
+            var isRunning = entity.characterState.state.Check(AStateType.IsRunning);
             var tarMuti = isRunning ? entity.runningMultiRate.rate : 100;
             if (Mathf.Abs(speedMulti - tarMuti) < 0.1f)
                 speedMulti = tarMuti;
             else
                 speedMulti = Mathf.Lerp(speedMulti, tarMuti, 1f);
-            var totalMulti = entity.animMoveMulti.rate * speedMulti * 0.0001f;
-            var speed = entity.movementSpeed.value * totalMulti;
+            var totalMulti = entity.animMoveMulti.rate * speedMulti * 0.000001f;
+            var animMulti = totalMulti * 100;
+            var speed = entity.attribute.value.Get(WAttrType.MoveSpeed) * totalMulti;
             float vecMulti;
             var model = entity.gameViewService.service.Model;
+            var needFocus = entity.hasFocusEntity && entity.characterState.state.Check(AStateType.RotateToFocus);
             if (entity.isCamera)
             {
-                if (entity.hasFocusEntity)
+                if (needFocus)
                 {
                     if (motion.hasMotionService)
                     {
@@ -91,14 +80,14 @@ public class MoveCharacterSystem : IExecuteSystem
                         if (mainModel.IsUseJoystick)
                         {
                             anim.UpdateMoveSpeed(
-                                mainModel.MoveDir.y * totalMulti,
-                                mainModel.MoveDir.x * totalMulti);
+                                mainModel.MoveDir.y * animMulti,
+                                mainModel.MoveDir.x * animMulti);
                         }
                         else
                         {
                             anim.UpdateMoveSpeed(
-                                _inputService.Move.y * totalMulti,
-                                _inputService.Move.x * totalMulti);
+                                _inputService.Move.y * animMulti,
+                                _inputService.Move.x * animMulti);
                         }
                     }
                 }
@@ -110,7 +99,7 @@ public class MoveCharacterSystem : IExecuteSystem
                     speed *= vecMulti;
                     if (motion.hasMotionService)
                     {
-                        anim.UpdateMoveSpeed(vecMulti*totalMulti, 0);
+                        anim.UpdateMoveSpeed(vecMulti*animMulti, 0);
                     }
                 }
 
@@ -120,7 +109,7 @@ public class MoveCharacterSystem : IExecuteSystem
                 var moveDir = entity.moveDirection.value;
                 moveDir = model.InverseTransformVector(moveDir);
 
-                if (entity.hasFocusEntity)
+                if (needFocus)
                 {
                     anim.UpdateMoveSpeed(
                         moveDir.z,
@@ -132,7 +121,7 @@ public class MoveCharacterSystem : IExecuteSystem
                         model.forward,
                         entity.moveDirection.value));
                     speed *= vecMulti;
-                    anim.UpdateMoveSpeed(vecMulti * totalMulti, 0);
+                    anim.UpdateMoveSpeed(vecMulti * animMulti, 0);
                 }
             }
 

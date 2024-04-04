@@ -119,6 +119,11 @@ public class MotionAbilityImplementation : MonoBehaviour, IMotionService
         entity.ReplaceMotionStart(newID);
     }
 
+    public bool TryGetCurAbilityProperty(string name, out TAny value)
+    {
+        return _curMotionAbilityStatus.TryGetProperty(name, out value);
+    }
+
     public void SetLocalMotion(int animGroup)
     {
         if (_curAnimGroup == animGroup)

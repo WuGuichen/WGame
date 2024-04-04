@@ -30,16 +30,13 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
         var inputState = entity.inputState.state;
         if (_inputContext.runInput.value)
         {
-            inputState.EnableState(InputType.Jump);
+            // inputState.EnableState(InputType.Jump);
+            inputState.EnableState(InputType.Run);
         }
         if (_inputContext.runInput.value && entity.linkMotion.Motion.motionService.service.CheckMotionType(MotionType.LocalMotion))
         {
             // 跑
-            entity.isRunState = true;
-        }
-        else
-        {
-            entity.isRunState = false;
+            entity.characterState.state.EnableState(AStateType.IsRunning);
         }
         
         if (_inputContext.jumpInput.value)
@@ -47,7 +44,7 @@ public class UpdateDeviceInputSignalSystem : IExecuteSystem
             inputState.EnableState(InputType.Jump);
             // 跳
             // 这里会有预输入
-            // entity.ReplaceSignalJump(1f);
+            entity.ReplaceSignalJump(0.2f);
         }
 
         if (_inputContext.defense.value)

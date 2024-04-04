@@ -15,6 +15,7 @@ using WGame.Ability;
 using WGame.Attribute;
 using WGame.Res;
 using WGame.Runtime;
+using WGame.Utils;
 using Random = UnityEngine.Random;
 
 public class FactoryServiceImplementation : IFactoryService
@@ -311,6 +312,7 @@ public class FactoryServiceImplementation : IFactoryService
         int instanceID = _gameEntityDB.Register(entity);
         entity.AddInstanceID(instanceID);
         entity.AddCharacterTimeScale(1);
+        entity.AddProperty(new PropertyContext());
         
         var info = entity.characterInfo.value;
         // 游戏物体
@@ -322,6 +324,7 @@ public class FactoryServiceImplementation : IFactoryService
         entity.AddCharacterState(new StateMgr());
         entity.AddInputState(new StateMgr());
         entity.AddSignalState(new StateMgr());
+        entity.AddPerfectTimeArea(new StateMgrSingle());
         // 是否是动态加载的角色
         var isDynamicLoad = entity.hasPosition;
         if (!isDynamicLoad)
@@ -351,7 +354,6 @@ public class FactoryServiceImplementation : IFactoryService
         motionDB.Set(MotionType.Hit, AbilityIDs.LS_Hit_Fwd);
         motionDB.Set(MotionType.Spare, AbilityIDs.LS_Hit_Fwd);
         motionDB.Set(MotionType.Jump, AbilityIDs.LS_Jump);
-        motionDB.Set(MotionType.JumpLand, AbilityIDs.LS_JumpLand);
         motionDB.Set(MotionType.Defense, AbilityIDs.LS_Defense);
         motionDB.Set(MotionType.Attack1, AbilityIDs.LS_Attack1);
         motionDB.Set(MotionType.Attack2, AbilityIDs.LS_Attack2);
@@ -360,6 +362,9 @@ public class FactoryServiceImplementation : IFactoryService
         motionDB.Set(MotionType.GetUp, AbilityIDs.LS_GetUpBack);
         motionDB.Set(MotionType.SpecialSkill, AbilityIDs.LS_SpecialAttack);
         motionDB.Set(MotionType.JumpLand, AbilityIDs.LS_Land);
+        motionDB.Set(MotionType.StepEmergency, AbilityIDs.LS_StepEmergency);
+        motionDB.Set(MotionType.Falling, AbilityIDs.LS_JumpFall);
+        motionDB.Set(MotionType.JumpAttack, AbilityIDs.LS_JumpAttack);
         // motionDB.Set(MotionType.LocalMotion, AbilityIDs.LocalMotion);
         // motion
         var motion = Contexts.sharedInstance.motion.CreateEntity();
@@ -373,8 +378,6 @@ public class FactoryServiceImplementation : IFactoryService
         entity.AddWeaponService(obj.GetComponentInChildren<IWeaponService>());
 
         // 不用等待GameObject的组件的绑定
-        entity.AddMovementSpeed(info.moveSpeed);
-        entity.AddRotationSpeed(info.rotateSpeed);
         entity.AddRunningMultiRate(info.runMultiRate);
         entity.AddJumpForce(5f);
         entity.AddCharGravity(-10f);
@@ -389,6 +392,8 @@ public class FactoryServiceImplementation : IFactoryService
         attribute.Set(WAttrType.CurMP, info.CurMP);
         attribute.Set(WAttrType.ATK, info.ATK);
         attribute.Set(WAttrType.DEF, info.DEF);
+        attribute.Set(WAttrType.MoveSpeed, info.moveSpeed);
+        attribute.Set(WAttrType.RotateSpeed, info.rotateSpeed);
         entity.AddAttribute(attribute);
 
         // 地面检测状态
@@ -407,9 +412,11 @@ public class FactoryServiceImplementation : IFactoryService
 
         // ----- LinkAbilityEntity -----
         var ability = Contexts.sharedInstance.ability.CreateEntity();
-        ability.AddAbilityService(new AbilityServiceImplementation(entity));
+        ability.AddAbilityService(new AbilityServiceImplementation(entity, ability));
         // 受击能力
-        ability.AddAbilityGotHit(new GotHitAbilityServiceImplementation());
+        ability.AddAbilityGotHit(GotHitImpls.Normal);
+        ability.AddAbilityHitTarget(HitTargetImpls.Normal);
+        
         entity.AddLinkAbility(ability);
         ability.AddLinkCharacter(entity);
         // ----- end -----

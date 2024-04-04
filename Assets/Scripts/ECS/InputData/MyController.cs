@@ -223,7 +223,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""60443159-62d8-4ab6-b07e-dbc920853d05"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""ConOne"",
@@ -267,8 +267,8 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c4e60d8f-af40-4096-97e4-5c5dc23ebf6d"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""ConOne"",
                     ""action"": ""Step"",
@@ -279,7 +279,7 @@ public partial class @MyController: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""7e030891-1881-4014-bb7a-3b6885184335"",
                     ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""ConTwo"",
                     ""action"": ""Step"",

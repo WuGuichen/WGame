@@ -88,12 +88,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Action<object,object>
 	// System.Action<object>
 	// System.Action<ulong>
-	// System.ArraySegment.Enumerator<UnityEngine.Vector2>
-	// System.ArraySegment.Enumerator<UnityEngine.Vector3>
-	// System.ArraySegment.Enumerator<int>
-	// System.ArraySegment<UnityEngine.Vector2>
-	// System.ArraySegment<UnityEngine.Vector3>
-	// System.ArraySegment<int>
 	// System.ByReference<UnityEngine.Vector2>
 	// System.ByReference<UnityEngine.Vector3>
 	// System.ByReference<int>
@@ -417,6 +411,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Func<object,object,int>
 	// System.Func<object,object>
 	// System.Func<object>
+	// System.IComparable<float>
 	// System.IComparable<object>
 	// System.IEquatable<UnityEngine.Quaternion>
 	// System.IEquatable<UnityEngine.Vector3>
@@ -472,18 +467,12 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Predicate<byte>
 	// System.Predicate<int>
 	// System.Predicate<object>
-	// System.ReadOnlySpan.Enumerator<UnityEngine.Vector2>
-	// System.ReadOnlySpan.Enumerator<UnityEngine.Vector3>
-	// System.ReadOnlySpan.Enumerator<int>
 	// System.ReadOnlySpan<UnityEngine.Vector2>
 	// System.ReadOnlySpan<UnityEngine.Vector3>
 	// System.ReadOnlySpan<int>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.CreateValueCallback<object,object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable.Enumerator<object,object>
 	// System.Runtime.CompilerServices.ConditionalWeakTable<object,object>
-	// System.Span.Enumerator<UnityEngine.Vector2>
-	// System.Span.Enumerator<UnityEngine.Vector3>
-	// System.Span.Enumerator<int>
 	// System.Span<UnityEngine.Vector2>
 	// System.Span<UnityEngine.Vector3>
 	// System.Span<int>
@@ -491,6 +480,10 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.ValueTuple<int,byte>
 	// System.ValueTuple<int,int>
 	// System.ValueTuple<object,int>
+	// TAnyVal<UnityEngine.Vector2Int>
+	// TAnyVal<UnityEngine.Vector4>
+	// TAnyVal<int>
+	// TAnyVal<object>
 	// Unity.Collections.NativeArray.Enumerator<UnityEngine.Vector2>
 	// Unity.Collections.NativeArray.Enumerator<UnityEngine.Vector3>
 	// Unity.Collections.NativeArray.Enumerator<int>
@@ -653,6 +646,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Collections.Generic.IEnumerable<int> System.Linq.Enumerable.Iterator<object>.Select<int>(System.Func<object,int>)
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Iterator<int>.Select<object>(System.Func<int,object>)
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Iterator<object>.Select<object>(System.Func<object,object>)
+		// System.Void TAny.Set<int>(TAny,int)
+		// System.Void TAny.Set<object>(TAny,object)
 		// System.Void* Unity.Collections.LowLevel.Unsafe.NativeArrayUnsafeUtility.GetUnsafeReadOnlyPtr<UnityEngine.Vector2>(Unity.Collections.NativeArray<UnityEngine.Vector2>)
 		// System.Void* Unity.Collections.LowLevel.Unsafe.NativeArrayUnsafeUtility.GetUnsafeReadOnlyPtr<UnityEngine.Vector3>(Unity.Collections.NativeArray<UnityEngine.Vector3>)
 		// System.Void* Unity.Collections.LowLevel.Unsafe.NativeArrayUnsafeUtility.GetUnsafeReadOnlyPtr<int>(Unity.Collections.NativeArray<int>)
@@ -727,6 +722,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void UnityHFSM.StateMachineShortcuts.AddTriggerTransition<int,int,int>(UnityHFSM.StateMachine<int,int,int>,int,int,int,System.Func<UnityHFSM.Transition<int>,bool>,System.Action<UnityHFSM.Transition<int>>,System.Action<UnityHFSM.Transition<int>>,bool)
 		// UnityHFSM.TransitionBase<int> UnityHFSM.StateMachineShortcuts.CreateOptimizedTransition<int>(int,int,System.Func<UnityHFSM.Transition<int>,bool>,System.Action<UnityHFSM.Transition<int>>,System.Action<UnityHFSM.Transition<int>>,bool)
 		// int WGame.Utils.JsonHelper.ReadEnum<int>(LitJson.JsonData)
+		// System.Void WGame.Utils.PropertyContext.AddProperty<object>(string,WGame.Utils.DataType,object)
 		// string string.Join<object>(string,System.Collections.Generic.IEnumerable<object>)
 		// string string.JoinCore<object>(System.Char*,int,System.Collections.Generic.IEnumerable<object>)
 	}

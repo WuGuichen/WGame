@@ -2,6 +2,7 @@ using CleverCrow.Fluid.BTs.Trees;
 using Oddworm.Framework;
 using Pathfinding;
 using UnityEngine;
+using WGame.Attribute;
 
 public class MoveAgent
 {
@@ -248,8 +249,8 @@ public class MoveAgent
     /// <param name="reset"></param>
     public void SetMoveSpeedRate(float rate = 1f, bool reset = true)
     {
-        var real = (reset ? _initInfo.moveSpeed : _entity.movementSpeed.value) * rate;
-        _entity.ReplaceMovementSpeed(real);
+        var real = (reset ? _initInfo.moveSpeed : _entity.attribute.value.Get(WAttrType.MoveSpeed, false)) * rate;
+        _entity.attribute.value.Set(WAttrType.MoveSpeed, (int)real);
     }
 
     public void Dispose()

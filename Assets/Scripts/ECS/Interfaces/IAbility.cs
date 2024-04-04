@@ -1,6 +1,6 @@
 using WGame.Ability;
 
-public interface IAbility
+public interface IAbility : IBaseService
 {
     public EventOwner Owner { get; }
     BuffManager BuffManager { get; }

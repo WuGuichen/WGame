@@ -85,7 +85,7 @@ public class EmitInputSystem : IInitializeSystem, IExecuteSystem, ITearDownSyste
                 _inputContext.ReplaceMoveInput(_inputService.Move);
                 _inputContext.ReplaceLookInput(_inputService.Look);
                 _inputContext.ReplaceJumpInput(_inputService.JumpWasReleased && !_inputService.JumpIsHolding);
-                _inputContext.ReplaceRunInput(_inputService.JumpIsHolding);
+                _inputContext.ReplaceRunInput(_inputService.StepIsHolding);
                 _inputContext.ReplaceAttackInput(_inputService.AttackWasPressed);
                 _inputContext.ReplaceAttackHoldInput(_inputService.AttackIsHolding);
                 _inputContext.ReplaceStepInput(_inputService.StepWasPressed);

@@ -21,7 +21,7 @@ namespace WGame.Ability
         
         private void OnEvent(TriggerContext context)
         {
-            var victim = context.GetProperty("victim").AsInt();
+            var victim = context.GetProperty("sender").AsInt();
             if (victim == _owner.EntityID)
             {
                 _owner.OnEvent();

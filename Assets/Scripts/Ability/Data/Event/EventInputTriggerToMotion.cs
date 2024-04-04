@@ -12,6 +12,10 @@ namespace WGame.Ability
         
         [EditorData("切换到状态", EditorDataType.TypeID, 1)]
         public int StateType { get; set; }
+        [EditorData("需要检查是否可切换", EditorDataType.Bool, 140f)]
+        public bool CheckBreak { get; set; } = false;
+        [EditorData("是否启用预输入", EditorDataType.Bool, 140f)]
+        public bool UsePreInput { get; set; } = false;
 
         public string DebugName { get; }
         public void Deserialize(JsonData jd)
@@ -20,6 +24,8 @@ namespace WGame.Ability
             InputType = JsonHelper.ReadInt(data[0]);
             InputValue = JsonHelper.ReadBool(data[1]);
             StateType = JsonHelper.ReadInt(data[2]);
+            CheckBreak = JsonHelper.ReadBool(data[3]);
+            UsePreInput = JsonHelper.ReadBool(data[4]);
         }
 
         public JsonWriter Serialize(JsonWriter writer)
@@ -29,6 +35,8 @@ namespace WGame.Ability
             writer.Write(InputType);
             writer.Write(InputValue);
             writer.Write(StateType);
+            writer.Write(CheckBreak);
+            writer.Write(UsePreInput);
             writer.WriteArrayEnd();
             return writer;
         }
@@ -40,9 +48,9 @@ namespace WGame.Ability
 
         public void Duration(EventOwner owner, float deltaTime, int duration, int totalTime)
         {
-            if (InputValue == owner.CheckInput(InputType))
+            if (InputValue == owner.CheckInput(InputType, UsePreInput))
             {
-                owner.SetMotionAbility(StateType, true);
+                owner.SetMotionAbility(StateType, !CheckBreak);
             }
         }
 

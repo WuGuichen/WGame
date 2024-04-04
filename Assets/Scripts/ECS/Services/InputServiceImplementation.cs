@@ -9,6 +9,7 @@ public class InputServiceImplementation : IInputService
     private readonly InputAction LookAxis;
     private readonly InputAction Attack;
     private readonly InputAction Jump;
+    private readonly InputAction Step;
     private readonly InputAction Defense;
     private readonly InputAction Interact;
     private MyController _input;
@@ -24,11 +25,13 @@ public class InputServiceImplementation : IInputService
     private bool jumpReleased = true;
     private bool attackIsHold = false;
     private bool attackReleased = true;
-    // private bool jumpIsTap = false;
     public bool JumpIsHolding => jumpIsHold;
-    public bool JumpWasReleased => Jump.WasReleasedThisFrame();
+    public bool JumpWasReleased => jumpReleased;
 
     public bool StepWasPressed => _input.GamePlay.Step.WasPressedThisFrame();
+    public bool StepIsHolding => stepIsHold;
+    private bool stepIsHold = false;
+    private bool stepReleased = true;
 
     public bool FocusWasPressed => _input.GamePlay.Focus.WasPressedThisFrame();
     private bool defensePressing = false;
@@ -44,22 +47,12 @@ public class InputServiceImplementation : IInputService
             _input = new MyController();
             Attack = actions[SettingDefine.attack];
             Jump = actions[SettingDefine.jump];
+            Step = actions[SettingDefine.step];
             MoveAxis = actions[SettingDefine.move];
             LookAxis = actions[SettingDefine.look];
             Defense = actions[SettingDefine.defense];
             Interact = actions[SettingDefine.interact];
-            // Attack = _input.GamePlay.Attack;
-            // Jump = _input.GamePlay.Jump;
-            // Defense = _input.GamePlay.Defense;
         }
-        // Jump.LoadBindingOverridesFromJson();
-        // MoveAxis = new InputAction();
-        // MoveAxis.AddCompositeBinding("2DVector")
-        //     .With("Up", "<Keyboard>/w")
-        //     .With("Down", "<Keyboard>/s")
-        //     .With("Left", "<Keyboard>/a")
-        //     .With("Right", "<Keyboard>/d");
-        // MoveAxis.Enable();
 
         Jump.performed += ctx =>
         {
@@ -74,6 +67,20 @@ public class InputServiceImplementation : IInputService
             jumpReleased = true;
         };
 
+        Step.performed += ctx =>
+        {
+            stepReleased = false;
+            if (ctx.interaction is HoldInteraction)
+            {
+                stepIsHold = true;
+            }
+        };
+
+        Step.canceled += ctx =>
+        {
+            stepReleased = true;
+        };
+
         Attack.performed += ctx =>
         {
             attackReleased = false;
@@ -82,6 +89,7 @@ public class InputServiceImplementation : IInputService
                 attackIsHold = true;
             }
         };
+        
         Attack.canceled += ctx =>
         {
             attackReleased = true;

@@ -8,7 +8,7 @@ public class FGUIEditorTool : EditorWindow
     public static void OpenFairyGUINew()
     {
         System.Diagnostics.Process p = new System.Diagnostics.Process();
-        p.StartInfo.FileName = $"{System.Environment.CurrentDirectory}\\..\\FGUIProject\\FairyGUI_Editor\\FairyGUI-Editor.exe";
+        p.StartInfo.FileName = $"{System.Environment.CurrentDirectory}\\..\\FGUIProject\\FairyGUI-Editor\\FairyGUI-Editor.exe";
         //Debug.Log(p.StartInfo.FileName);
         p.StartInfo.Arguments = $"\"{System.Environment.CurrentDirectory}\\..\\FGUIProject\\FGUIProject.fairy\"";
         Debug.Log(p.StartInfo.Arguments);

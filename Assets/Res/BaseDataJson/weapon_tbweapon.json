@@ -16,7 +16,9 @@
     "jumpLand1": "LS_JumpLand",
     "Spare1": "LS_Spare",
     "Step1": "LS_Step",
-    "animGroupId": 2
+    "animGroupId": 2,
+    "ATK": 100,
+    "Weight": 1200
   },
   {
     "id": 2,
@@ -35,6 +37,8 @@
     "jumpLand1": "LS_JumpLand",
     "Spare1": "LS_Spare",
     "Step1": "LS_Step",
-    "animGroupId": 2
+    "animGroupId": 2,
+    "ATK": 60,
+    "Weight": 800
   }
 ]

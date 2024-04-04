@@ -17,10 +17,12 @@ MonoBehaviour:
   groupEffectName: Effect Group
   groupNoticeName: Notice Group
   groupActionName: Action Group
+  groupInterruptName: Break Group
   trackAnimationType: Animation
   trackEffectType: Effect
   trackNoticeType: Notice
   trackActionType: Action
+  trackInterruptType: Break
   contextNewAnimation:
     m_Text: New Animation
     m_Image: {fileID: 0}
@@ -35,6 +37,10 @@ MonoBehaviour:
     m_Tooltip: 
   contextNewAction:
     m_Text: New Action
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  contextNewInterrupt:
+    m_Text: New Break
     m_Image: {fileID: 0}
     m_Tooltip: 
   contextAddEventSignal:
@@ -106,5 +112,5 @@ MonoBehaviour:
   colorEventHandle: {r: 0, g: 0, b: 0, a: 0}
   colorEventHandleSelected: {r: 0.6, g: 0.6, b: 1, a: 1}
   colorInspectorLabel: {r: 0, g: 1, b: 1, a: 1}
-  colorPropertySelected: {r: 1, g: 1, b: 1, a: 1}
+  colorPropertySelected: {r: 1, g: 0.40889072, b: 0, a: 1}
   colorRefreshInterrupt: {r: 0, g: 1, b: 1, a: 1}

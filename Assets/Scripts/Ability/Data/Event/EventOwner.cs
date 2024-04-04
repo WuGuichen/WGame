@@ -4,8 +4,12 @@ namespace WGame.Ability
 {
     public interface EventOwner
     {
+        int EntityID { get; }
         void PlayAnim(string animName, int offsetStart, int offsetEnd, int duration, int layer, bool resetLayer);
         void SetAbilityBreak(int stateMask);
+        void SetProperty<T>(string name, Utils.DataType type,T value);
+        void SetAttribute(int attrID, int value);
+        void SetAreaAttr(int areaType, bool isEndArea);
         bool CanBreakState(int stateMask);
         bool TryGetNextAbilityID(int inputType, out int id, out int motionType);
         void SetMotionAbility(int motionType, bool force = false);
@@ -15,7 +19,7 @@ namespace WGame.Ability
         void EnableStates(int typeMask);
         void CleanUpState();
         bool IsLockTick { get; set; }
-        bool CheckInput(int inputType);
+        bool CheckInput(int inputType, bool usePreInput);
         bool CheckState(int stateMask);
         void SetMoveSpeed(int rate);
         void SetRotateSpeed(int rate);
@@ -24,6 +28,12 @@ namespace WGame.Ability
         void SetAnimGroup(int id);
         void Move(Vector3 deltaPos);
         void SetGravity(float value, bool reset = false);
-        void RegisterTrigger(int triggerType, TriggerAddType addType, int triggerTimes);
+        void AddNoticeReceiver(int key, int times = 10, bool replace = false);
+        void RemoveNoticeReceiver(int key);
+        bool TryGetFocusPosition(out Vector3 pos);
+        bool TryGetFocusDistance(out float dist);
+        bool TryGetAngleFocusToEntity(out float angle);
+        bool TryGetAngleToFocus(out float angle);
+        void SetIsInPerfectArea(int areaType, bool value);
     }
 }

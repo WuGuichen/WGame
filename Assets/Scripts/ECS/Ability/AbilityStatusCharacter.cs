@@ -54,6 +54,11 @@ public class AbilityStatusCharacter : AbilityStatus
     protected override void OnStart()
     {
     }
+    
+    public bool TryGetProperty(string name, out TAny value)
+    {
+        return _ability.Context.TryGetProperty(name, out value);
+    }
 
     protected override void OnExitDuration(IEventData eventData, bool isBreak)
     {

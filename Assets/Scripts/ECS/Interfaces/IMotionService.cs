@@ -4,7 +4,7 @@ public interface IMotionService
     void StartMotion(int motionID);
     void UpdateMotion();
     int CurrentMotionType { get; }
-    // void SwitchMotion(int UID, bool isNet=true);
+    bool TryGetCurAbilityProperty(string name, out TAny value);
     void SetLocalMotion(int animGroup);
     void SetMotionID(int motionType ,string name);
     GameEntity LinkEntity { get; }

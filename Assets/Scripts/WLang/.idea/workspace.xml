@@ -5,94 +5,90 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4619b81-a009-41e5-87cd-268c260b8858" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Searcher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Searcher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ability/Data/Action/WAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventInterrupt.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventOwner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventSetState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS/Ability/ParryAttack.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS/Components/Ability/AbilityParryAttackComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS/Components/CharacterTimeScaleComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS/Generated/Ability/Components/AbilityAbilityParryAttackComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameCharacterTimeScaleComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ECS/Interfaces/IHotAbility.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HotAbility/WGame.HotAbility.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Custom/CustomDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Custom/CustomDefine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventAddNoticeReceiver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventFocusDoForceOnHit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Custom/StringToIdDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Custom/StringToIdDefine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Ability.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Data.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.GUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Inspector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Inspector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Preview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.Preview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Main/AbilityEditWindow.State.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Manipulator/Item/ActorEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Manipulator/Item/GroupItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Manipulator/Item/GroupItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Manipulator/Item/TrackItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Manipulator/Item/TrackItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Manipulator/Item/TreeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Manipulator/Item/TreeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/Resource/AbilityWindowSetting.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/Resource/AbilityWindowSetting.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/WGame.Ability.Editor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/WGame.Ability.Editor.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Editor/AbilityEditor/WindowSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/AbilityEditor/WindowSetting.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Prefabs/AbilityData/TestGroup.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prefabs/AbilityData/TestGroup.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Prefabs/Character/BaseCharacter/BaseCharacter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prefabs/Character/BaseCharacter/BaseCharacter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Prefabs/Character/BaseCharacter/Character_Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prefabs/Character/BaseCharacter/Character_Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Res/AvatarMask/UpperBody.mask" beforeDir="false" afterPath="$PROJECT_DIR$/../../Res/AvatarMask/UpperBody.mask" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Res/BaseDataJson/weapon_tbweapon.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Res/BaseDataJson/weapon_tbweapon.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ability/AbilityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/AbilityData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ability/AbilityStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/AbilityStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Res/BaseDataJson/tbcharacterinfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Res/BaseDataJson/tbcharacterinfo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Res/Effects/VFX_Klaus/Prefabs/Hyper Casual FX/HCFX_Hit_03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Res/Effects/VFX_Klaus/Prefabs/Hyper Casual FX/HCFX_Hit_04.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Buff/Condition/CheckConditionBeHit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Buff/Condition/CheckConditionBeHit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/CustomParam.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/CustomParam.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Define/AStateType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Define/AStateType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Define/InputType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Define/InputType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Define/MotionType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Define/MotionType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/DataEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/DataEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventDataType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventDataType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventDoAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventDoAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventNoticeMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventNoticeMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventPlayAnim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventPlayAnim.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventPlayEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventPlayEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/IEventData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/IEventData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ability/EditorDataAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/EditorDataAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ability/WAbilityMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/WAbilityMgr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Ability/AbilityStatusCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Ability/AbilityStatusCharacter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Ability/UtimateEvasion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Ability/UtimateEvasion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Components/States/SignalStateComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Components/States/SignalStateComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventInputTriggerToAbility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventInputTriggerToMotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventInputTriggerToMotion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventNoticeMessage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventOwner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventOwner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventStateToAbility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/EventTriggerSetValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/EventSetOwnerProperty.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/Data/Event/Trigger/EventTriggerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/Data/Event/Trigger/EventTriggerBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ability/GenAbilityIDs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Ability/GenAbilityIDs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Ability/EventOwnerEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Ability/EventOwnerEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Attributes/WAttrType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Attributes/WAttrType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/Attributes/CharacterAttributeComponents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Components/Attributes/CharacterAttributeComponents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/NeedLandComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/Notice/MessageDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Components/Notice/MessageDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/Notice/NoticeDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Components/Notice/NoticeDB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/Notice/Recievers/ReceiverBeHittedOnStep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Components/Notice/Recievers/ReceiverBeHittedOnStep.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/Notice/Recievers/ReceiverGenAbilityEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Components/Notice/Recievers/ReceiverGenAbilityEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/States/FocusComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/States/PrepareActionStates.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/States/RunStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/States/StateSwitchStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/States/StepEndStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/States/StepStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Components/States/WalkStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/GameData/CharacterInitInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/GameData/CharacterInitInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Generated/Ability/AbilityComponentsLookup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Generated/Ability/AbilityComponentsLookup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameSignalStateComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameSignalStateComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Events/Components/StateSwitchStateListenerComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Events/GameEventSystems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Generated/Events/GameEventSystems.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Events/Interfaces/IStateSwitchStateListener.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Events/Systems/StateSwitchStateEventSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameKeepTargetDistanceComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameMovementSpeedComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameRotationSpeedComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameRunStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameStateSwitchStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameStateSwitchStateListenerComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameStepEndStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameStepStateComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameTargetPlanarSqrDistanceComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/Components/GameWalkStateComponent.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Generated/Game/GameComponentsLookup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Generated/Game/GameComponentsLookup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/InputData/MyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/InputData/MyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/InputData/MyController.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/InputData/MyController.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/InputData/WInputAgentMyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/InputData/WInputAgentMyController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Interfaces/IAbility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Interfaces/IAbility.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Interfaces/IMotionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Interfaces/IMotionService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Interfaces/ITimeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Interfaces/ITimeService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Mono/TestSceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Mono/TestSceneSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Motion/MotionAnimationProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Motion/MotionAnimationProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Net/WNetAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Net/WNetAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Nodes/MotionType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Nodes/MotionType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/AI/BTreeAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/AI/BTreeAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Interfaces/IGotHitService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Interfaces/IGotHitService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Interfaces/IInputService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Interfaces/IInputService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Interfaces/INoticeService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Interfaces/INoticeService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Mono/SensorMono.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Mono/SensorMono.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Mono/WCharacterInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Mono/WCharacterInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Services/AI/MoveAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/AI/MoveAgent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Services/AbilityServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/AbilityServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Services/AiAgentServiceImplementation.Register.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/AiAgentServiceImplementation.Register.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Services/FactoryServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/FactoryServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/GameViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/GameViewServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/GotHitAbilityServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/GotHitAbilityServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/MotionServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/MotionServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Services/PlayModeTimeServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/PlayModeTimeServiceImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Ability/ProcessAbilitySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Ability/ProcessAbilitySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Services/GotHitAbilityServiceImplementation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Services/InputServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/InputServiceImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Services/WeaponViewServiceImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Services/WeaponViewServiceImplementation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Systems/EmitInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/EmitInputSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Systems/Game/Action/MoveCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Game/Action/MoveCharacterSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Systems/Game/Action/RotateCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Game/Action/RotateCharacterSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Game/Sensor/DropItemDetectSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Game/Sensor/DropItemDetectSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Systems/Game/UpdatePlayerInput/UpdateDeviceInputSignalSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Game/UpdatePlayerInput/UpdateDeviceInputSignalSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Game/UpdatePlayerInput/UpdateFocusInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Game/UpdatePlayerInput/UpdateFocusInputSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Motion/ProcessMotionSignalUpdateSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Motion/ProcessMotionSignalUpdateSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Game/UpdatePlayerInput/UpdateMoveDirectionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Game/UpdatePlayerInput/UpdateMoveDirectionSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Systems/Motion/ProcessMotionStartSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Motion/ProcessMotionStartSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Systems/MultiDestroySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/MultiDestroySystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Sensor/DetectCharacterSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Sensor/DetectCharacterSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Systems/Sensor/UpdateTriggerObjectSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Systems/Sensor/UpdateTriggerObjectSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ECS/Terminal/ActionHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Terminal/ActionHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Terminal/ConstDefine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Terminal/ConstDefine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ECS/Utilies/EntityUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Utilies/EntityUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Res/BaseData/Gen/weapon/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Res/BaseData/Gen/weapon/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Res/ObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Res/ObjectPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Utils/ReflectionHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Utils/ReflectionHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Utils/WLableAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Utils/WLableAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Motion/GotHit1.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/GotHit1.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Motion/GotHit_10.wl" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Motion/GotHit_10.wl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Luban/Config/Datas/weapons.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Luban/Config/Datas/weapons.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ECS/Terminal/MethodDefine.Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ECS/Terminal/MethodDefine.Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Res/EffectMgr.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Res/EffectMgr.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Res/WGame.Res.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/../Res/WGame.Res.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Luban/Config/Datas/characterInfoData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Luban/Config/Datas/characterInfoData.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +142,7 @@
       <workItem from="1711278511958" duration="665000" />
       <workItem from="1711352080545" duration="876000" />
       <workItem from="1711817411787" duration="667000" />
+      <workItem from="1712172327563" duration="621000" />
     </task>
     <servers />
   </component>

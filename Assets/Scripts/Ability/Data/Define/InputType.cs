@@ -10,7 +10,8 @@ namespace WGame.Ability
         public const int LocalMotion = 1 << 5;
         public const int Step = 1 << 6;
         public const int Special = 1 << 7;
+        public const int Run = 1 << 8;
 
-        public const int Count = 8;
+        public const int Count = 9;
     }
 }

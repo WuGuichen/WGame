@@ -2,12 +2,11 @@ using UnityTimer;
 
 namespace WGame.Notice
 {
-    public struct ReceiverBeHittedOnStep : IReciever
+    public class ReceiverBeHittedOnStep : IReciever
     {
         public void OnAdded(GameEntity entity)
         {
             entity.linkAbility.Ability.abilityEvade.service.Enable();
-            WLogger.Print("Added");
         }
 
         public int LeftNoticeTime { get; set; }
@@ -17,14 +16,19 @@ namespace WGame.Notice
         public void OnRemoved(GameEntity entity)
         {
             entity.linkAbility.Ability.abilityEvade.service.Disable();
-            WLogger.Print("Remove");
         }
 
         public void OnTrigger(GameEntity entity, IMessage message)
         {
-            UnityEngine.Time.timeScale = 0.2f;
-            WLogger.Print("极限");
-            Timer.Register(0.1f, () => { UnityEngine.Time.timeScale = 1f; });
+            // UnityEngine.Time.timeScale = 0.2f;
+            var msg = message as MessageDB.Define.BeHitted;
+            entity.ReplaceCharacterTimeScale(0.2f);
+            msg.hitInfo.entity.ReplaceCharacterTimeScale(0.2f);
+            Timer.Register(0.3f, () =>
+            {
+                entity.ReplaceCharacterTimeScale(1f);
+                msg.hitInfo.entity.ReplaceCharacterTimeScale(1f);
+            });
         }
 
         public bool CheckCondition(IMessage message)
