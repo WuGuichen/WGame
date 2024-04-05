@@ -60,7 +60,7 @@ public class ProcessMotionSignalUpdateSystem : IExecuteSystem, ICleanupSystem
             if (entity.hasSignalLocalMotion)
             {
                 inputState.EnableState(InputType.LocalMotion);
-                if (motion.motionService.service.CurrentMotionType != MotionType.LocalMotion)
+                if (!motion.motionService.service.CheckMotionType(MotionType.LocalMotion))
                 {
                     if (notChange &&
                         ability.Owner.TryGetNextAbilityID(InputType.LocalMotion, out var id, out var motionType))

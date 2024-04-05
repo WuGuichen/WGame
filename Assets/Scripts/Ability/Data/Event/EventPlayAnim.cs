@@ -21,10 +21,16 @@ namespace WGame.Ability
         public int LayerType { get; set; }
         [EditorData("部位重置", EditorDataType.Bool)]
         public bool ResetLayer { get; set; }
+
+        [EditorData("播放速率(%)", EditorDataType.Int)]
+        public int SpeedRate { get; set; } = 100;
+
+        private float _speedRate;
         
         public EventDataType EventType => EventDataType.PlayAnim;
         public void Enter(EventOwner owner)
         {
+            owner.SetAnimSpeed(_speedRate);
             owner.PlayAnim(AnimName, PlayOffsetStart, PlayOffsetEnd, TransDuration, LayerType, ResetLayer);
         }
 
@@ -45,6 +51,8 @@ namespace WGame.Ability
             TransDuration = JsonHelper.ReadInt(cfg[3]);
             LayerType = JsonHelper.ReadInt(cfg[4]);
             ResetLayer = JsonHelper.ReadBool(cfg[5]);
+            SpeedRate = JsonHelper.ReadInt(cfg[6]);
+            _speedRate = SpeedRate * 0.01f;
         }
 
         public JsonWriter Serialize(JsonWriter writer)
@@ -57,6 +65,7 @@ namespace WGame.Ability
             writer.Write(TransDuration);
             writer.Write(LayerType);
             writer.Write(ResetLayer);
+            writer.Write(SpeedRate);
             writer.WriteArrayEnd();
             return writer;
         }

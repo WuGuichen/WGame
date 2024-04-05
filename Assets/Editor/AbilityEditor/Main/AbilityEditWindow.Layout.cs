@@ -21,7 +21,7 @@ namespace WGame.Ability.Editor
 
         private const float minInspectorWidth = 300f;
         private const float maxInspectorWidth = 800f;
-        private float _inspectorWidth = 720f;
+        private float _inspectorWidth = 680f;
         public float inspectorWidth
         {
             get => _inspectorWidth;

@@ -23,6 +23,11 @@ public class RigidbodyServiceImplamentation : MonoBehaviour, IRigidbodyService, 
         return this;
     }
 
+    public CharacterMoveInfo AddMoveRequest(Vector3 deltaPos, float duration, WEaseType easeType, bool ignoreTimeScale = false)
+    {
+        throw new NotImplementedException();
+    }
+
     public Vector3 GetSensorBoundsCenter()
     {
         return _rigidCollider.center + transform.position;
@@ -41,6 +46,11 @@ public class RigidbodyServiceImplamentation : MonoBehaviour, IRigidbodyService, 
 
     public void OnFixedUpdate(float deltaTime)
     {
+    }
+
+    public void OnUpdate(float deltaTime)
+    {
+        
     }
 
     public void SetEntity(GameEntity entity)

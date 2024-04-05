@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BaseData;
 using Entitas.Unity;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class MotionAbilityImplementation : MonoBehaviour, IMotionService
 
     private EventOwner _eventOwner;
     private AbilityStatusCharacter _curMotionAbilityStatus;
+    private float _curAbilitySpeed;
+    private bool _hasChangeAbilitySpeed;
 
     private MotionEntity entity;
     private GameEntity character;
@@ -42,6 +45,7 @@ public class MotionAbilityImplementation : MonoBehaviour, IMotionService
     public MotionAnimationProcessor AnimProcessor => animationProcessor;
 
     private int _curMotionType = -1;
+    private int _endMotionType = -1;
 
     private CharacterData _characterData;
     
@@ -52,6 +56,7 @@ public class MotionAbilityImplementation : MonoBehaviour, IMotionService
         this.character = this.entity.linkCharacter.Character;
         motionDB = character.motionDB.data;
         _curMotionType = MotionType.LocalMotion;
+        _endMotionType = MotionType.LocalMotion;
         _timeService = Contexts.sharedInstance.meta.timeService.instance;
         // _inputContext = Contexts.sharedInstance.input;
         animationProcessor = GetComponent<MotionAnimationProcessor>();
@@ -161,6 +166,7 @@ public class MotionAbilityImplementation : MonoBehaviour, IMotionService
     public void Initialize()
     {
         _curMotionAbilityStatus = AbilityStatusCharacter.Empty();
+        _curAbilitySpeed = 1f;
         _eventOwner = character.linkAbility.Ability.abilityService.service.Owner;
     }
 
@@ -174,6 +180,19 @@ public class MotionAbilityImplementation : MonoBehaviour, IMotionService
             AbilityStatusCharacter.Push(_curMotionAbilityStatus);
         }
         _curMotionAbilityStatus = AbilityStatusCharacter.Get(_eventOwner, data);
+
+        if (_curMotionAbilityStatus.TryGetProperty("speed", out var value))
+        {
+            _curAbilitySpeed = value.AsFloat();
+            animationProcessor.SetAnimSpeed(_curAbilitySpeed);
+            _hasChangeAbilitySpeed = true;
+        }
+        else
+        {
+            _curAbilitySpeed = 1f;
+            animationProcessor.SetAnimSpeed();
+            _hasChangeAbilitySpeed = false;
+        }
         
         ElapsedTime = 0.0f;
         hasCheckCodeTime = -1f;
@@ -214,7 +233,8 @@ public class MotionAbilityImplementation : MonoBehaviour, IMotionService
         ElapsedTime += _timeService.DeltaTime(character.characterTimeScale.rate) * animationProcessor.AnimSpeed;
         var deltaTime = _timeService.DeltaTime(character.characterTimeScale.rate);
         animationProcessor.OnUpdate(checkTime, deltaTime);
-        _curMotionAbilityStatus.Process((_eventOwner.IsLockTick) ?  0f : deltaTime);
+        var abilityDeltaTime = _hasChangeAbilitySpeed ? deltaTime * _curAbilitySpeed : deltaTime;
+        _curMotionAbilityStatus.Process((_eventOwner.IsLockTick) ?  0f : abilityDeltaTime);
         if (_curMotionAbilityStatus.IsToEnd)
         {
             EnterLocalMotion();
@@ -232,6 +252,19 @@ public class MotionAbilityImplementation : MonoBehaviour, IMotionService
     
     public void OnMotionExit()
     {
+        if (_endMotionType == MotionType.FinishAttack)
+        {
+            if (character.hasFinishAtkTarget)
+            {
+                character.RemoveFinishAtkTarget();
+            }
+        }
+        _endMotionType = _curMotionType;
+    }
+
+    public void SetAnimSpeed(float value)
+    {
+        animationProcessor.SetAnimSpeed(_curAbilitySpeed * value);
     }
 
     public bool CheckMotionType(int motionType)

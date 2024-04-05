@@ -89,6 +89,9 @@ namespace WGame.Ability
                 case EventDataType.FocusDoForce:
                     data = new EventFocusDoForceOnHit();
                     break;
+                case EventDataType.FinishTargetHit:
+                    data = new EventFinishTargetHit();
+                    break;
                 case EventDataType.TriggerStateToMotion:
                     data = new EventStateToMotion();
                     break;

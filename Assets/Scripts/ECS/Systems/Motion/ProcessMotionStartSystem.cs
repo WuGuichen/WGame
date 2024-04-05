@@ -36,8 +36,9 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
         if(character.hasLinkWeapon)
             character.linkWeapon.Weapon.weaponWeaponView.service.EndHitTargets();
 
-        entity.motionService.service.AnimProcessor.SetAnimSpeed(1);
-        character.attribute.value.Set(WAttrType.Impact, 0);
+        var anim = entity.motionService.service.AnimProcessor;
+        anim.RootMotionRate = 0;
+        character.attribute.value.Set(WAttrType.ImpactVec, 0);
 
         character.isRotateInFocus = false;
 
@@ -54,21 +55,20 @@ public class ProcessMotionStartSystem : ReactiveSystem<MotionEntity>
         if (character.hasSignalDefense )
             character.RemoveSignalDefense();
             
-        if (character.hasNotice)
-        {
+        // if (character.hasNotice)
+        // {
             // var noticeService = character.notice.service;
             //
             // // 根据动作类型处理行为
             // var newID = entity.motionStart.UID;
             // var motionDB = character.motionDB.data;
-            // if (newID == motionDB.Get(MotionType.LocalMotion))
+            // if (newID != motionDB.Get(MotionType.FinishAttack))
             // {
-            //
             // }
             // else if (newID == motionDB.Get(MotionType.Step))
             // {
             //     noticeService.AddReciever(NoticeDB.OnStepBeHit, 1f);
             // }
-        }
+        // }
     }
 }

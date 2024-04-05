@@ -156,6 +156,18 @@ public class EventOwnerEntity : EventOwner
         }
     }
 
+    public void ApplyHitToFinishAtkTarget(int hitRate)
+    {
+        if (_entity.hasFinishAtkTarget)
+        {
+            _entity.finishAtkTarget.target.attribute.value.OnGotHit(hitRate, _entity, _attribute);
+        }
+        else
+        {
+            WLogger.Print("有错误");
+        }
+    }
+
     public EventOwnerEntity(GameEntity entity)
     {
         _entity = entity;
@@ -188,7 +200,12 @@ public class EventOwnerEntity : EventOwner
     public void PlayAnim(string animName, int offsetStart, int offsetEnd, int duration, int layer, bool resetLayer)
     {
         var clip = WAbilityMgr.Inst.GetAnimClip(animName);
-        _motion.motionService.service.AnimProcessor.PlayAnimationClip(clip, duration*0.001f, offsetStart*0.001f, layer, resetLayer);
+        _motionService.AnimProcessor.PlayAnimationClip(clip, duration*0.001f, offsetStart*0.001f, layer, resetLayer);
+    }
+
+    public void SetAnimSpeed(float rate)
+    {
+        _motionService.SetAnimSpeed(rate);
     }
 
     public void SetAbilityBreak(int stateMask)
@@ -208,40 +225,87 @@ public class EventOwnerEntity : EventOwner
 
     public void SetAreaAttr(int areaType, bool isEndArea)
     {
-        string propName = null;
-        int attrType = WAttrType.Impact;
+        string vecName = null;
+        string dmgName = null;
         switch (areaType)
         {
             case TimeAreaType.PerfectDamage:
-                propName = isEndArea ? "vec" : "maxVec";
+                if (isEndArea)
+                {
+                    vecName = "vec";
+                    dmgName = "dmg";
+                }
+                else
+                {
+                    vecName = "maxVec";
+                    dmgName = "maxDmg";
+                }
                 break;
             case TimeAreaType.PerfectDamage2:
-                propName = isEndArea ? "vec2" : "maxVec2";
+                if (isEndArea)
+                {
+                    vecName = "vec2";
+                    dmgName = "dmg2";
+                }
+                else
+                {
+                    vecName = "maxVec2";
+                    dmgName = "maxDmg2";
+                }
                 break;
             case TimeAreaType.PerfectDamage3:
-                propName = isEndArea ? "vec3" : "maxVec3";
+                if (isEndArea)
+                {
+                    vecName = "vec3";
+                    dmgName = "dmg3";
+                }
+                else
+                {
+                    vecName = "maxVec3";
+                    dmgName = "maxDmg3";
+                }
                 break;
             case TimeAreaType.PerfectDamage4:
-                propName = isEndArea ? "vec4" : "maxVec4";
+                if (isEndArea)
+                {
+                    vecName = "vec4";
+                    dmgName = "dmg4";
+                }
+                else
+                {
+                    vecName = "maxVec4";
+                    dmgName = "maxDmg4";
+                }
                 break;
             case TimeAreaType.Beginning:
                 if (!isEndArea)
                 {
-                    propName = "vec";
+                    vecName = "vec";
+                    dmgName = "dmg";
                 }
                 break;
             default:
                 return;
         }
 
-        if (propName == null)
+        if (vecName != null)
         {
-            return;
-        }
-
-        if (_motionService.TryGetCurAbilityProperty(propName, out var value))
-        {
-            _attribute.Set(attrType, value.AsInt());
+            if (_motionService.TryGetCurAbilityProperty(vecName, out var value))
+            {
+                _attribute.Set(WAttrType.ImpactVec, value.AsInt());
+            }
+            else
+            {
+                WLogger.Error("数据未配置" + vecName);
+            }
+            if (_motionService.TryGetCurAbilityProperty(dmgName, out var dmgValue))
+            {
+                _attribute.Set(WAttrType.DmgRate, dmgValue.AsInt());
+            }
+            else
+            {
+                WLogger.Error("数据未配置" + dmgName);
+            }
         }
     }
 

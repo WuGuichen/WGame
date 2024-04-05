@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using WGame.Ability;
 using WGame.Utils;
 
@@ -152,6 +153,56 @@ namespace WGame.Attribute
             _buff = this.owner.linkAbility.Ability.abilityService.service.BuffManager;
             _buff.onBuffAdded += OnAddBuff;
             _buff.onBuffRemoved += OnRemoveBuff;
+        }
+
+        private const float Factor1 = 19.2f / 49f;
+        private const float Factor2 = 0.4f / 3f;
+        private const float Factor3 = 0.8f / 121f;
+
+        public void OnGotHit(int dmgRate, GameEntity attacker, WAttribute attackerAttr)
+        {
+            var rate = dmgRate * 0.01f;
+            var atk = attackerAttr.Get(WAttrType.ATK, true);
+            var finAtk = atk * rate;
+            var mFinDef = Get(WAttrType.DEF, true);
+            // 计算受伤率（1-减伤率）
+            var finHitRate = 1f;
+            if (mFinDef > 8 * finAtk)
+            {
+                finHitRate = 0.1f;
+            }
+            else if (mFinDef > finAtk)
+            {
+                finHitRate = (Factor1 * Mathf.Pow(finAtk / mFinDef - 0.125f, 2) + 0.1f);
+            }
+            else if (mFinDef > 0.4f*finAtk)
+            {
+                finHitRate = (Factor2 * Mathf.Pow(finAtk / mFinDef - 2.5f, 2) + 0.7f);
+            }
+            else if (mFinDef > 0.125f*finAtk)
+            {
+                finHitRate = (Factor3 * Mathf.Pow(finAtk / mFinDef - 8, 2) + 0.9f);
+            }
+            else
+            {
+                finHitRate = 0.9f;
+            }
+
+            var _buf = new System.Text.StringBuilder();
+            _buf.Append("DEF:");
+            _buf.Append(mFinDef);
+            _buf.Append(", ATK:");
+            _buf.Append(finAtk);
+            _buf.Append(", hitRate:");
+            _buf.Append(finHitRate);
+            WLogger.Print(_buf.ToString());
+            
+            var finallyHit = finAtk * finHitRate;
+            if (finallyHit < 1)
+            {
+                finallyHit = 1;
+            }
+            Add(attacker, WAttrType.CurHP, -(int)finallyHit);
         }
         
         public void Remove(int attrID)

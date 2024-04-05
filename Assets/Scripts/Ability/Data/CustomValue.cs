@@ -13,12 +13,12 @@ namespace WGame.Ability
     {
         public string DebugName => "数值";
 
-        [EditorData("", EditorDataType.Enum, 0)]
+        [EditorData("", EditorDataType.Enum, 0f)]
         public CustomValueType ValueType { get; set; } = CustomValueType.Normal;
-        [EditorData("值(千分比)", EditorDataType.Int, 35)]
+        [EditorData("值(千分比)", EditorDataType.Int, 35f)]
         public int ModValue { get; set; }
         
-        [EditorData("属性", EditorDataType.AttributeTypeID, 30)]
+        [EditorData("属性", EditorDataType.AttributeTypeID, 30f)]
         public int AttrID { get; set; }
 
         public float GetValue(BuffOwner owner)

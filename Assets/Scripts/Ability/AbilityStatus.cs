@@ -85,14 +85,20 @@ namespace WGame.Ability
                     case ETriggerType.Signal:
                         if (checkTime)
                         {
-                            OnTriggerSignal(eventData.EventData);
+                            if (eventData.IsEnable)
+                            {
+                                OnTriggerSignal(eventData.EventData);
+                            }
                         }
                         break;
                     case ETriggerType.Duration:
                         if (checkTime)
                         {
-                            OnEnterDuration(eventData.EventData);
-                            _durationList.AddLast(eventData);
+                            if (eventData.IsEnable)
+                            {
+                                OnEnterDuration(eventData.EventData);
+                                _durationList.AddLast(eventData);
+                            }
                         }
                         break;
                     default:

@@ -240,19 +240,21 @@ public class MotionAnimationProcessor : AnimancerComponent
     
     public void SetAnimSpeed(float value = 1.0f)
     {
-        if (value < 0)
-            value = 0;
+        if (value < 0f)
+            value = 0f;
         Playable.Speed = value;
     }
 
     public Vector3 DeltaRootMotionPos => deltaPosition;
 
     public Vector3 DeltaEventMovePos { get; set; } = Vector3.zero;
+    public Vector3 DeltaMovePos { get; set; } = Vector3.zero;
 
     public void ClearMotionMove()
     {
         deltaPosition = Vector3.zero;
         DeltaEventMovePos = Vector3.zero;
+        DeltaMovePos = Vector3.zero;
     }
 }
 

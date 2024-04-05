@@ -32,7 +32,7 @@ public class MoveCharacterSystem : IExecuteSystem
             speedMulti = entity.charSpeedMulti.value;
             var motion = entity.linkMotion.Motion;
             var anim = motion.motionService.service.AnimProcessor;
-            var deltaRootMotion = anim.DeltaRootMotionPos + anim.DeltaEventMovePos;
+            var deltaRootMotion = anim.DeltaRootMotionPos + anim.DeltaEventMovePos + anim.DeltaMovePos;
             if (entity.hasActionThrust)
             {
                 anim.ClearMotionMove();

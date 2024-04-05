@@ -122,7 +122,8 @@ public class TestSceneSystem : MonoBehaviour
 		    // ActionHelper.DoDropObject(new DropObjectInfo(0), pos, tarPos);
 		    // ActionHelper.DropWeapon(entity.linkWeapon.Weapon, tarPos);
 		    // entity.linkAbility.Ability.abilityService.service.BuffManager.AddBuff("OnBeHitReduceHP");
-		    entity.linkAbility.Ability.abilityService.service.BuffManager.AddBuff("ReduceCurHP50");
+		    // entity.linkAbility.Ability.abilityService.service.BuffManager.AddBuff("ReduceCurHP50");
+		    entity.rigidbodyService.service.AddMoveRequest(fwd, 1f, WEaseType.Linear);
 	    }
 
 	    var scroll = Input.mouseScrollDelta;

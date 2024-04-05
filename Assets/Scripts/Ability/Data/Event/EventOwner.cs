@@ -6,6 +6,7 @@ namespace WGame.Ability
     {
         int EntityID { get; }
         void PlayAnim(string animName, int offsetStart, int offsetEnd, int duration, int layer, bool resetLayer);
+        void SetAnimSpeed(float rate);
         void SetAbilityBreak(int stateMask);
         void SetProperty<T>(string name, Utils.DataType type,T value);
         void SetAttribute(int attrID, int value);
@@ -35,5 +36,6 @@ namespace WGame.Ability
         bool TryGetAngleFocusToEntity(out float angle);
         bool TryGetAngleToFocus(out float angle);
         void SetIsInPerfectArea(int areaType, bool value);
+        void ApplyHitToFinishAtkTarget(int hitRate);
     }
 }

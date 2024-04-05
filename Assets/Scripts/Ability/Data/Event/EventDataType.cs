@@ -17,6 +17,8 @@ namespace WGame.Ability
         FocusKeepDist,
         [WLable("对锁定目标/给目标施加力")]
         FocusDoForce,
+        [WLable("对终结技目标/给目标造成伤害")]
+        FinishTargetHit,
         [WLable("触发器/输入切换Motion")]
         TriggerInputToMotion,
         [WLable("触发器/状态切换Motion")]

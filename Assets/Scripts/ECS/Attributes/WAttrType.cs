@@ -8,11 +8,14 @@ namespace WGame.Attribute
         public const int CurMP = 3;
         public const int ATK = 4;
         public const int DEF = 5;
-        public const int Impact = 6;
+        [WLable("", false)]
+        public const int ImpactVec = 6;
         public const int MoveSpeed = 7;
         public const int RotateSpeed = 8;
+        [WLable("", false)]
+        public const int DmgRate = 9;
 
-        public const int Count = 9;
+        public const int Count = 10;
 
         public static readonly string[] Names = new string[Count]
         {
@@ -22,9 +25,10 @@ namespace WGame.Attribute
             "当前魔力",
             "攻击",
             "防御",
-            "冲击力",
+            "冲击速度",
             "移动速度",
             "转向速度",
+            "伤害率"
         };
     }
 }  

@@ -6,10 +6,10 @@ namespace WGame.Ability
     public class CustomProperty : IData
     {
         public string DebugName { get; }
-        [EditorData("", EditorDataType.String)]
+        [EditorData("", EditorDataType.String, 0f)]
         public string Name { get; set; }
 
-        [EditorData("", EditorDataType.Object)]
+        [EditorData("", EditorDataType.Object, 0f)]
         public CustomParam Value { get; set; } = new CustomParam();
         
         public void Deserialize(JsonData jd)

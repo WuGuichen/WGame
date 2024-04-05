@@ -25,7 +25,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -135,6 +136,13 @@
                 }
             ],
             "Prop"   : [
+                {
+                    "K" : "speed",
+                    "V" : {
+                        "Value" : 1.5,
+                        "Type"  : "Float"
+                    }
+                }
             ]
         },
         {
@@ -161,7 +169,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -366,7 +375,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -544,6 +554,20 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 6",
+                        6,
+                        "Duration",
+                        823,
+                        true,
+                        290
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 64
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Break 0",
                         0,
                         "Duration",
@@ -569,6 +593,20 @@
                     "K" : "maxVec",
                     "V" : {
                         "Value" : 1500,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "dmg",
+                    "V" : {
+                        "Value" : 70,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxDmg",
+                    "V" : {
+                        "Value" : 130,
                         "Type"  : "Int"
                     }
                 }
@@ -691,7 +729,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -790,6 +829,20 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Duration",
+                        997,
+                        true,
+                        332
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 64
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Break 0",
                         0,
                         "Duration",
@@ -831,6 +884,20 @@
                         "Value" : 1000,
                         "Type"  : "Int"
                     }
+                },
+                {
+                    "K" : "dmg",
+                    "V" : {
+                        "Value" : 80,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxDmg",
+                    "V" : {
+                        "Value" : 120,
+                        "Type"  : "Int"
+                    }
                 }
             ]
         },
@@ -858,28 +925,29 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
                 {
                     "Cfg" : [
-                        "Break 0",
-                        0,
+                        "Action 4",
+                        4,
                         "Duration",
                         0,
                         true,
-                        102
+                        1950
                     ],
-                    "Type" : "Interrupt",
+                    "Type" : "FocusKeepDist",
                     "Data" : {
-                        "Type" : 96
+                        "Offset" : 100
                     }
                 },
                 {
                     "Cfg" : [
-                        "Action 0",
-                        0,
+                        "Action 3",
+                        3,
                         "Signal",
                         0,
                         true,
@@ -888,8 +956,8 @@
                     "Type" : "SetMoveParam",
                     "Data" : {
                         "Data" : [
-                            2,
-                            100
+                            1,
+                            120
                         ]
                     }
                 },
@@ -926,8 +994,22 @@
                 },
                 {
                     "Cfg" : [
-                        "Action 3",
-                        3,
+                        "Break 0",
+                        0,
+                        "Duration",
+                        0,
+                        true,
+                        102
+                    ],
+                    "Type" : "Interrupt",
+                    "Data" : {
+                        "Type" : 96
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 0",
+                        0,
                         "Signal",
                         0,
                         true,
@@ -936,23 +1018,9 @@
                     "Type" : "SetMoveParam",
                     "Data" : {
                         "Data" : [
-                            1,
-                            120
+                            2,
+                            100
                         ]
-                    }
-                },
-                {
-                    "Cfg" : [
-                        "Action 4",
-                        4,
-                        "Duration",
-                        0,
-                        true,
-                        1950
-                    ],
-                    "Type" : "FocusKeepDist",
-                    "Data" : {
-                        "Offset" : 100
                     }
                 },
                 {
@@ -1050,6 +1118,20 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 5",
+                        5,
+                        "Duration",
+                        880,
+                        true,
+                        778
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 64
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Break 0",
                         0,
                         "Duration",
@@ -1105,6 +1187,20 @@
                         "Value" : 1400,
                         "Type"  : "Int"
                     }
+                },
+                {
+                    "K" : "dmg",
+                    "V" : {
+                        "Value" : 80,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxDmg",
+                    "V" : {
+                        "Value" : 140,
+                        "Type"  : "Int"
+                    }
                 }
             ]
         },
@@ -1132,7 +1228,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -1320,7 +1417,8 @@
                             0,
                             100,
                             1,
-                            true
+                            true,
+                            100
                         ]
                     }
                 },
@@ -1410,7 +1508,8 @@
                             0,
                             100,
                             1,
-                            true
+                            true,
+                            100
                         ]
                     }
                 },
@@ -1455,7 +1554,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -1549,7 +1649,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -1643,7 +1744,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -1739,7 +1841,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -1835,7 +1938,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -1942,7 +2046,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -1988,7 +2093,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2059,6 +2165,34 @@
                 },
                 {
                     "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        313,
+                        true,
+                        0
+                    ],
+                    "Type" : "FinishTargetHit",
+                    "Data" : {
+                        "Rate" : 140
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 1",
+                        1,
+                        "Signal",
+                        989,
+                        true,
+                        0
+                    ],
+                    "Type" : "FinishTargetHit",
+                    "Data" : {
+                        "Rate" : 160
+                    }
+                },
+                {
+                    "Cfg" : [
                         "Break 1",
                         1,
                         "Duration",
@@ -2088,9 +2222,9 @@
             ],
             "Prop"   : [
                 {
-                    "K" : "target",
+                    "K" : "dmgRate",
                     "V" : {
-                        "Value" : 0,
+                        "Value" : 300,
                         "Type"  : "Int"
                     }
                 }
@@ -2120,7 +2254,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2248,7 +2383,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2342,7 +2478,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2467,7 +2604,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2516,7 +2654,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2546,6 +2685,20 @@
                     "Type" : "SetTimeArea",
                     "Data" : {
                         "Area" : 4
+                    }
+                },
+                {
+                    "Cfg" : [
+                        "Action 4",
+                        4,
+                        "Duration",
+                        2147,
+                        true,
+                        823
+                    ],
+                    "Type" : "SetTimeArea",
+                    "Data" : {
+                        "Area" : 64
                     }
                 }
             ],
@@ -2591,6 +2744,48 @@
                         "Value" : 1100,
                         "Type"  : "Int"
                     }
+                },
+                {
+                    "K" : "dmg",
+                    "V" : {
+                        "Value" : 60,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxDmg",
+                    "V" : {
+                        "Value" : 90,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "dmg2",
+                    "V" : {
+                        "Value" : 70,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxDmg2",
+                    "V" : {
+                        "Value" : 100,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "dmg3",
+                    "V" : {
+                        "Value" : 80,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxDmg3",
+                    "V" : {
+                        "Value" : 120,
+                        "Type"  : "Int"
+                    }
                 }
             ]
         },
@@ -2618,7 +2813,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2698,7 +2894,8 @@
                             1000,
                             100,
                             1,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2744,7 +2941,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -2768,7 +2966,7 @@
                 {
                     "Cfg" : [
                         "Action 2",
-                        2,
+                        1,
                         "Signal",
                         0,
                         true,
@@ -2814,7 +3012,7 @@
                 {
                     "Cfg" : [
                         "Action 5",
-                        5,
+                        4,
                         "Signal",
                         0,
                         true,
@@ -2890,7 +3088,7 @@
                     ],
                     "Type" : "Interrupt",
                     "Data" : {
-                        "Type" : 32
+                        "Type" : 36
                     }
                 },
                 {
@@ -2904,7 +3102,7 @@
                     ],
                     "Type" : "Interrupt",
                     "Data" : {
-                        "Type" : 5
+                        "Type" : 1
                     }
                 }
             ],
@@ -2935,7 +3133,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },
@@ -3067,6 +3266,34 @@
                 }
             ],
             "Prop"   : [
+                {
+                    "K" : "vec",
+                    "V" : {
+                        "Value" : 400,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxVec",
+                    "V" : {
+                        "Value" : 1300,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "dmg",
+                    "V" : {
+                        "Value" : 80,
+                        "Type"  : "Int"
+                    }
+                },
+                {
+                    "K" : "maxDmg",
+                    "V" : {
+                        "Value" : 140,
+                        "Type"  : "Int"
+                    }
+                }
             ]
         },
         {
@@ -3093,7 +3320,8 @@
                             0,
                             100,
                             0,
-                            false
+                            false,
+                            100
                         ]
                     }
                 },

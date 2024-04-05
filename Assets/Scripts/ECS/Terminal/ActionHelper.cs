@@ -112,12 +112,12 @@ public partial class ActionHelper
     {
         var victim = EntityUtils.GetGameEntity(attacker.abilityBackStab.EntityID);
         victim.linkMotion.Motion.motionService.service.TransMotionByMotionType(MotionType.VictimFinishAttack, AbilityIDs.LS_FinishVictim);
-        attacker.linkCharacter.Character.linkMotion.Motion.motionService.service.TransMotionByMotionType(MotionType.FinishAttack, AbilityIDs.LS_FinishAtk);
-        // bool done = victim.linkAbility.Ability.abilityService.service.Do("BeFinishAtk", true);
-        // if (done)
-        // {
-        //     attacker.abilityService.service.Do("FinishAtk", true);
-        // }
+        var attackerCharacter = attacker.linkCharacter.Character;
+        attackerCharacter.linkMotion.Motion.motionService.service.TransMotionByMotionType(MotionType.FinishAttack, AbilityIDs.LS_FinishAtk);
+        attackerCharacter.AddFinishAtkTarget(victim);
+        // var abilityFinishAtk =WAbilityMgr.Inst.GetAbility(attackerCharacter.motionDB.data.Get(MotionType.FinishAttack));
+        // var atkRate = abilityFinishAtk.Context.GetProperty("dmgRate").AsInt();
+        // WLogger.Print(atkRate);
     }
 
     public static void DoDropObject(DropObjectInfo info, Vector3 startPos, Vector3 targetPos)

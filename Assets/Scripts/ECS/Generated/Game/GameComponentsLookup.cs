@@ -53,52 +53,53 @@ public static class GameComponentsLookup {
     public const int DropItemSensor = 42;
     public const int EntityID = 43;
     public const int EventMoveSpeed = 44;
-    public const int FocusEntity = 45;
-    public const int FocusTarget = 46;
-    public const int GameViewService = 47;
-    public const int GroundSensor = 48;
-    public const int InputState = 49;
-    public const int InstanceID = 50;
-    public const int JumpForce = 51;
-    public const int LinkAbility = 52;
-    public const int LinkMotion = 53;
-    public const int LinkSensor = 54;
-    public const int LinkVM = 55;
-    public const int LinkWeapon = 56;
-    public const int LockPlanarVec = 57;
-    public const int MotionDB = 58;
-    public const int Moveable = 59;
-    public const int MoveDirection = 60;
-    public const int Moving = 61;
-    public const int NetAgent = 62;
-    public const int NetObject = 63;
-    public const int Notice = 64;
-    public const int NotMove = 65;
-    public const int OnGroundState = 66;
-    public const int PerfectTimeArea = 67;
-    public const int PlanarVec = 68;
-    public const int PlayerInputState = 69;
-    public const int Position = 70;
-    public const int Property = 71;
-    public const int RigidbodyService = 72;
-    public const int RotateInFocus = 73;
-    public const int RotateLeftAngle = 74;
-    public const int RunningMultiRate = 75;
-    public const int SignalAttack = 76;
-    public const int SignalDefense = 77;
-    public const int SignalJump = 78;
-    public const int SignalLocalMotion = 79;
-    public const int SignalState = 80;
-    public const int SignalStep = 81;
-    public const int SpawnPoint = 82;
-    public const int StateChanged = 83;
-    public const int Time = 84;
-    public const int UIHeadPad = 85;
-    public const int Unbalanced = 86;
-    public const int WeaponDropService = 87;
-    public const int WeaponService = 88;
+    public const int FinishAtkTarget = 45;
+    public const int FocusEntity = 46;
+    public const int FocusTarget = 47;
+    public const int GameViewService = 48;
+    public const int GroundSensor = 49;
+    public const int InputState = 50;
+    public const int InstanceID = 51;
+    public const int JumpForce = 52;
+    public const int LinkAbility = 53;
+    public const int LinkMotion = 54;
+    public const int LinkSensor = 55;
+    public const int LinkVM = 56;
+    public const int LinkWeapon = 57;
+    public const int LockPlanarVec = 58;
+    public const int MotionDB = 59;
+    public const int Moveable = 60;
+    public const int MoveDirection = 61;
+    public const int Moving = 62;
+    public const int NetAgent = 63;
+    public const int NetObject = 64;
+    public const int Notice = 65;
+    public const int NotMove = 66;
+    public const int OnGroundState = 67;
+    public const int PerfectTimeArea = 68;
+    public const int PlanarVec = 69;
+    public const int PlayerInputState = 70;
+    public const int Position = 71;
+    public const int Property = 72;
+    public const int RigidbodyService = 73;
+    public const int RotateInFocus = 74;
+    public const int RotateLeftAngle = 75;
+    public const int RunningMultiRate = 76;
+    public const int SignalAttack = 77;
+    public const int SignalDefense = 78;
+    public const int SignalJump = 79;
+    public const int SignalLocalMotion = 80;
+    public const int SignalState = 81;
+    public const int SignalStep = 82;
+    public const int SpawnPoint = 83;
+    public const int StateChanged = 84;
+    public const int Time = 85;
+    public const int UIHeadPad = 86;
+    public const int Unbalanced = 87;
+    public const int WeaponDropService = 88;
+    public const int WeaponService = 89;
 
-    public const int TotalComponents = 89;
+    public const int TotalComponents = 90;
 
     public static readonly string[] componentNames = {
         "AbilitySystem",
@@ -146,6 +147,7 @@ public static class GameComponentsLookup {
         "DropItemSensor",
         "EntityID",
         "EventMoveSpeed",
+        "FinishAtkTarget",
         "FocusEntity",
         "FocusTarget",
         "GameViewService",
@@ -238,6 +240,7 @@ public static class GameComponentsLookup {
         typeof(DropItemSensorComponent),
         typeof(EntityIDComponent),
         typeof(EventMoveSpeedComponent),
+        typeof(FinishAtkTargetComponent),
         typeof(FocusEntityComponent),
         typeof(FocusTargetComponent),
         typeof(GameViewServiceComponent),

@@ -44,7 +44,6 @@ namespace WGame.Ability
         }
 
         private Vector3 _lastDeltaPos;
-        private Vector3 _totalPos;
         public EventDataType EventType => EventDataType.MoveToPoint;
         public void Enter(EventOwner owner)
         {
@@ -54,20 +53,14 @@ namespace WGame.Ability
             }
 
             _lastDeltaPos = Vector3.zero;
-            _totalPos = Vector3.zero;
         }
 
         public void Duration(EventOwner owner, float deltaTime, int duration, int totalTime)
         {
             var rate = WEaseManager.Evaluate(EaseType, duration, totalTime);
             var curPos = Point * rate;
-            if (rate > 1f)
-            {
-                rate = 1f;
-            }
             
             owner.Move(curPos - _lastDeltaPos);
-            _totalPos += curPos - _lastDeltaPos;
             _lastDeltaPos = curPos;
         }
 
@@ -77,7 +70,6 @@ namespace WGame.Ability
             if (!isBreak)
             {
                 owner.Move(Point - _lastDeltaPos);
-                _totalPos += Point - _lastDeltaPos;
             }
         }
 

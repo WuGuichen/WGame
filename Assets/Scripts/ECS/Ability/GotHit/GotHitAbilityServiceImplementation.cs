@@ -1,6 +1,7 @@
 using UnityEngine;
 using Weapon;
 using WGame.Ability;
+using WGame.Attribute;
 using WGame.Res;
 
 public class GotHitAbilityServiceImplementation : IGotHitService
@@ -29,6 +30,11 @@ public class GotHitAbilityServiceImplementation : IGotHitService
             hitId = AbilityIDs.LS_Hit_Bwd;
         }
         motion.motionService.service.TransMotionByMotionType(MotionType.Hit, hitId);
+
+        var attacker = hitInfo.entity;
+        var attackAttr = attacker.attribute.value;
+        var hitRate = attackAttr.Get(WAttrType.DmgRate, true);
+        entity.attribute.value.OnGotHit(hitRate, attacker, attackAttr);
         
         return true;
     }

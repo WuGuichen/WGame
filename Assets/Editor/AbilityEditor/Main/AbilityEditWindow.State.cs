@@ -262,7 +262,7 @@ namespace WGame.Ability.Editor
                             //todo 重置动画播放时间
                             var clip = GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
                             var offset = ToSecond(epa.PlayOffsetStart + epa.PlayOffsetEnd);
-                            Length = ToSecond(e.eventProperty.TriggerTime) + clip.length - offset;
+                            Length = ToSecond(e.eventProperty.TriggerTime) + (clip.length - offset) * 100f / epa.SpeedRate;
                         }
                     });
                 }

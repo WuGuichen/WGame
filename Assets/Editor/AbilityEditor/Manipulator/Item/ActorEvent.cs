@@ -262,8 +262,9 @@ namespace WGame.Ability.Editor
                     if (!string.IsNullOrEmpty(epa.AnimName))
                     {
                         var clip = GameAssetsMgr.Inst.LoadAnimClip(epa.AnimName);
-                        var offset = Window.ToSecond(epa.PlayOffsetEnd + epa.PlayOffsetStart);
+                        var offset = Window.ToSecond((epa.PlayOffsetEnd + epa.PlayOffsetStart));
                         duration = clip.length - offset;
+                        duration = duration * 100f / epa.SpeedRate;
                         if (duration < 0)
                             duration = 0;
                         _tipBuf.Append(clip.name);
@@ -337,6 +338,12 @@ namespace WGame.Ability.Editor
                     StringToIDDefine.VisualizeStateType(ref _tipBuf, estm.WaitState);
                     _tipBuf.Append("切换");
                     StringToIDDefine.VisualizeMotionType(ref _tipBuf, estm.MotionType);
+                }
+                else if (eventProperty.EventData is EventFinishTargetHit efth)
+                {
+                    _tipBuf.Append("对终结目标造成");
+                    _tipBuf.Append(efth.DmgRate);
+                    _tipBuf.Append("%伤害");
                 }
             }
 

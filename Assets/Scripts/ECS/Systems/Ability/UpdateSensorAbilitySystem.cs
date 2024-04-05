@@ -8,7 +8,7 @@ public class UpdateSensorAbilitySystem : IExecuteSystem
 {
     private readonly IGroup<GameEntity> _whiteGroup;
     private List<HitInfo> hitInfos = new();
-    private const float BACK_STAB_DIST = 2f;
+    private const float BACK_STAB_DIST = 1.5f;
     private const float BACK_STAB_DIST_OUT = BACK_STAB_DIST + 0.2f;
     private const float BACK_STAB_ANGLE = 30f;
     private const float BACK_STAB_ANGLE_TARGET = 172f;

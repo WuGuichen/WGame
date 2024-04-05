@@ -330,12 +330,15 @@ namespace WGame.Ability.Editor
                 }
                 GUILayout.EndHorizontal();
 
+                int deleteIndex = -1;
+                int swapIndex = -1;
+                bool swapUp = false;
                 for (int j = 0; j < list.Count; ++j)
                 {
                     GUILayout.BeginVertical();
                     {
-                        GUILayout.BeginHorizontal(GUILayout.MaxWidth(200f));
-                        GUILayout.Label(j.ToString(), GUILayout.Width(10));
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label(j.ToString(), GUILayout.Width(18f));
                         if (itemType.IsEnum)
                         {
                             list[j] = EditorGUILayout.EnumPopup((Enum)list[j]);
@@ -359,9 +362,45 @@ namespace WGame.Ability.Editor
                                     break;
                             }
                         }
+
+                        if (GUILayout.Button("X", GUILayout.Width(18f)))
+                        {
+                            deleteIndex = j;
+                        }
+                        if (GUILayout.Button("上", GUILayout.Width(22f)))
+                        {
+                            if(j > 0)
+                                swapIndex = j;
+                            swapUp = true;
+                        }
+                        if (GUILayout.Button("下", GUILayout.Width(22f)))
+                        {
+                            if(j < list.Count-1)
+                                swapIndex = j;
+                            swapUp = false;
+                        }
                         GUILayout.EndHorizontal();
                     }
                     GUILayout.EndVertical();
+                }
+
+                if (deleteIndex >= 0)
+                {
+                    list.RemoveAt(deleteIndex);
+                    GUI.FocusControl(null);
+                }
+
+                if (swapIndex >= 0)
+                {
+                    if (swapUp)
+                    {
+                        (list[swapIndex], list[swapIndex-1]) = (list[swapIndex-1], list[swapIndex]);
+                    }
+                    else
+                    {
+                        (list[swapIndex], list[swapIndex+1]) = (list[swapIndex+1], list[swapIndex]);
+                    }
+                    GUI.FocusControl(null);
                 }
             }
             GUILayout.EndVertical();

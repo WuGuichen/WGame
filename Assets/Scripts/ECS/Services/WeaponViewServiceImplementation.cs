@@ -213,7 +213,7 @@ namespace Weapon
                                 // 击中处理
                                 info.entity = _character;
                                 showHitEffect = showHitEffect && ActionHelper.DoGotHit(tarCharacter, info);
-                                int impact = _character.attribute.value.Get(WAttrType.Impact, true);
+                                int impact = _character.attribute.value.Get(WAttrType.ImpactVec, true);
                                 if(showHitEffect)
                                 {
                                     bool hasEff = SensorMono.TryGetHitEffect(
@@ -222,7 +222,11 @@ namespace Weapon
                                     {
                                         EffectMgr.LoadEffect(effName, sensorMono.transform, info.pos, Quaternion.Euler(info.dir));
                                     }
-                                    WLogger.Print(impact);
+
+                                    var moveDir = _character.gameViewService.service.Model.forward;
+                                    var weight = 1000f;
+                                    var dirRate = impact / weight;
+                                    tarCharacter.rigidbodyService.service.AddMoveRequest(moveDir * dirRate, 1f, WEaseType.Linear);
                                 }
                             }
                         }
